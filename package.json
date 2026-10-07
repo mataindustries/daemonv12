@@ -19,7 +19,9 @@
     "demo:production": "node bin/daemonv12.js render examples/production-demo.json --stems --format wav,mp3",
     "demo:samples": "node bin/daemonv12.js render examples/sample-demo.json --stems",
     "fixtures:samples": "node scripts/generate-sample-demo.ts",
-    "demo:mcp": "node mcp/demo.ts"
+    "demo:mcp": "node mcp/demo.ts",
+    "fixtures:orbital-foundry": "node scripts/generate-orbital-foundry.ts",
+    "demo:orbital-foundry": "node bin/daemonv12.js render examples/orbital-foundry-audition.json --out-dir renders/orbital-foundry --stems --format wav,mp3"
   },
   "devDependencies": {
     "@tonejs/midi": "2.0.28",
