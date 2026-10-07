@@ -1,0 +1,21 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { resolveSoundfont, createDefaultRenderer } from '../src/render/index.ts';
+import { runCommand } from '../src/pipeline.ts';
+import { verifyDemoAudio } from './helpers/wav-analysis.ts';
+const env={...process.env};delete env.DAEMONV12_FLUIDSYNTH;delete env.DAEMONV12_SOUNDFONT;
+const sf=await resolveSoundfont({env});
+const probe=sf.value?await createDefaultRenderer({soundfont:sf.value,env}):null;
+const skip=sf.diagnostic?sf.diagnostic.message:probe?.diagnostic?probe.diagnostic.message:false;
+test('real FluidSynth demo meets audio contract and repeats byte-identically',{skip},async t=>{
+ const dir=mkdtempSync(join(tmpdir(),'daemonv12-real-'));t.after(()=>rmSync(dir,{force:true,recursive:true}));
+ const first=await runCommand('render','examples/demo.json',{outDir:dir,env});assert.equal(first.exitCode,0,JSON.stringify(first.result.errors));
+ const wav=readFileSync(join(dir,'demo.wav')),manifest=readFileSync(join(dir,'demo.render.json'));
+ t.diagnostic(JSON.stringify(verifyDemoAudio(wav)));
+ const second=await runCommand('render','examples/demo.json',{outDir:dir,env});assert.equal(second.exitCode,0,JSON.stringify(second.result.errors));
+ assert.deepEqual(readFileSync(join(dir,'demo.wav')),wav);assert.deepEqual(readFileSync(join(dir,'demo.render.json')),manifest);
+ assert.deepEqual(first.result.manifest,second.result.manifest);
+});
