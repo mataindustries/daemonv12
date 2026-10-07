@@ -2,3 +2,6 @@ export type { AudioRenderer, RenderRequest, RenderOutcome, RendererOptions, Soun
 export { resolveSoundfont } from './soundfont.ts';
 export { createFluidSynthRenderer as createDefaultRenderer } from './fluidsynth.ts';
 export { decodePcm, encodePcm, mixPcm, pcmRenderer, PCM_RATE, MAX_PCM_FRAMES, type Pcm, type PcmTrigger } from './pcm.ts';
+export { gainAmplitude, balance, gainPan, sumFloat, quantize, padPcm, productionRenderer } from './production.ts';
+export { analyzeWav, type AudioAnalysis } from './analysis.ts';
+export { createAudioProcessor, type AudioProcessor } from './ffmpeg.ts';
