@@ -26,7 +26,11 @@ function track(events: Event[], endTick: number): number[] {
   bytes.push(...encodeVlq(endTick - previous), 0xff, 0x2f, 0);
   return chunk('MTrk', bytes);
 }
-export function encodeSmf(timeline: Timeline): Uint8Array {
+export function encodeSmf(timeline: Timeline, trackId?: string): Uint8Array {
+  // Select after channel assignment: stem chunks match their master chunks byte for byte.
+  const selected = timeline.tracks.map((part, index) => ({ part, index }))
+    .filter(({ part }) => trackId === undefined || part.id === trackId);
+  if (trackId !== undefined && selected.length !== 1) throw new Error(`Unknown or ambiguous MIDI track: ${trackId}`);
   const meter = timeline.timeSignature;
   const conductor: Event[] = [
     { tick:0, rank:0, pitch:0, bytes:metaText(timeline.title) },
@@ -34,8 +38,8 @@ export function encodeSmf(timeline: Timeline): Uint8Array {
   ];
   if (timeline.key) conductor.push({ tick:0, rank:2, pitch:0, bytes:[0xff,0x59,2,timeline.key.sharpsFlats & 0xff,timeline.key.mode==='minor'?1:0] });
   conductor.push({ tick:0, rank:3, pitch:0, bytes:[0xff,0x51,3,...be(timeline.usPerQuarter,3)] });
-  const chunks = [chunk('MThd',[0,1,...be(timeline.tracks.length+1,2),...be(timeline.ppq,2)]),track(conductor,timeline.endTick)];
-  timeline.tracks.forEach((part,i) => {
+  const chunks = [chunk('MThd',[0,1,...be(selected.length+1,2),...be(timeline.ppq,2)]),track(conductor,timeline.endTick)];
+  selected.forEach(({ part, index: i }) => {
     const channel = i < 9 ? i : i+1;
     const events: Event[] = [
       { tick:0, rank:0, pitch:0, bytes:metaText(part.id) },

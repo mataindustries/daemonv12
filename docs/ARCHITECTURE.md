@@ -7,6 +7,12 @@ Status: V0 design, engine `0.0.x`, project `formatVersion: 1`.
 Normative details: [V0_SPEC.md](V0_SPEC.md). Phase plan: [ROADMAP.md](ROADMAP.md).
 Implementation steps: [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
 
+V0.1 adds optional `render --stems` at the existing per-track render seam. The pipeline
+encodes each track with the same conductor, event ordering, original channel and EOT,
+renders it through `AudioRenderer`, and appends stem provenance to the manifest. The
+master path and project schema are unchanged. See [README](../README.md#track-stems-v01)
+for output and cleanup contracts. The V0 design below remains the baseline.
+
 ---
 
 ## 1. What V0 proves
@@ -274,7 +280,7 @@ SoundFont synth is a fallback for hosts without apt.
 | Future capability | Seam |
 |---|---|
 | Sample instruments, drum kits (V0.2), the 12 V12 voices (V1) | New `instrument.type` values: `"drumkit"`, `"sampler"`, `"voice"`. Drum hits become named pitches (`"kick"`). |
-| Stems, track gain and pan (V0.1) | Per-track render jobs. Optional `mix` object on tracks. |
+| Stems (V0.1); gain and pan deferred | Per-track render jobs. No project schema change for stems. |
 | Effects, buses, MP3, loudness, analysis (V0.3) | Optional `effects` on tracks and project. An FFmpeg stage after `AudioRenderer`. An `analyze` command. |
 | Tempo or meter changes, automation, sections (V1) | Optional additive fields (`tempoChanges`, `automation`, `sections`). Ticks already absorb any tempo map. |
 | MCP (V0.4) | MCP tools wrap `pipeline.ts`. JSON Schema is generated for tool inputs. |
@@ -307,5 +313,6 @@ field as `UNKNOWN_FIELD` instead of silently mis-rendering it.
 - At most 15 tracks (16 MIDI channels minus the GM drum channel).
 - Overlapping notes of the same pitch on the same track are errors (MIDI cannot represent them faithfully).
 - Duplicate JSON keys are silently resolved by `JSON.parse` (last one wins). Detecting them needs a custom parser. Deferred.
-- WAV tail length is renderer-defined. Exact-length, sample-aligned stems arrive with V0.1.
+- WAV tail length is renderer-defined, including V0.1 stems. They share the musical origin and EOT;
+  fixed tails and equal-length output are deferred.
 - Tested on Linux only. macOS/Windows should work but are not supported in V0.

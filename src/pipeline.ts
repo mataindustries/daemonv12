@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { resolveSoundfont, createDefaultRenderer, type AudioRenderer, type Soundfont } from './render/index.ts';
-import { readFileSync, mkdirSync, rmSync, renameSync, writeFileSync } from 'node:fs';
+import { readFileSync, mkdirSync, rmSync, renameSync, writeFileSync, lstatSync, readdirSync, rmdirSync } from 'node:fs';
 import { basename, join } from 'node:path';
 import { ENGINE_VERSION } from './version.ts';
 import { encodeSmf } from './midi/smf.ts';
@@ -31,11 +31,11 @@ export function summarize(project: Project, timeline: Timeline) {
 }
 
 export type Command = 'validate' | 'midi' | 'render';
-export interface CommandOptions { outDir?: string; soundfont?: string; env?: NodeJS.ProcessEnv; timeoutMs?: number }
+export interface CommandOptions { outDir?: string; soundfont?: string; env?: NodeJS.ProcessEnv; timeoutMs?: number; stems?: boolean }
 export interface CommandResult {
   ok: boolean; command: Command | null; engineVersion: string; project: string | null;
   errors: Diagnostic[]; warnings: Diagnostic[]; summary: ReturnType<typeof summarize> | null;
-  artifacts: { midi?: string; wav?: string; manifest?: string }; manifest: Record<string, unknown> | null; omitted?: number;
+  artifacts: { midi?: string; wav?: string; manifest?: string; stems?: { trackId: string; wav: string }[] }; manifest: Record<string, unknown> | null; omitted?: number;
 }
 export function resultFor(command: Command | null, path: string | null, diagnostics: Diagnostic[], summary: CommandResult['summary'] = null,
   omitted = 0): CommandResult {
@@ -58,6 +58,26 @@ function removeArtifacts(paths: string[]): Diagnostic[] {
   }
   return diagnostics;
 }
+// IDs are already unique lowercase slugs. Escape Windows device basenames injectively;
+// underscores cannot occur in a validated ID, so this never merges two identities.
+export function stemFileName(trackId: string): string {
+  return `${/^(con|prn|aux|nul|com[1-9]|lpt[1-9])$/.test(trackId) ? '_' : ''}${trackId}.wav`;
+}
+function removeStems(directory: string): Diagnostic[] {
+  const diagnostics: Diagnostic[] = [];
+  try {
+    // Never follow a directory symlink or recursively delete an output-path collision.
+    if (!lstatSync(directory).isDirectory()) return [writeFailure(directory, 'Expected a stem directory, not a file or symlink.')];
+    for (const file of readdirSync(directory)) {
+      if (!/^_?[a-z][a-z0-9-]*\.(wav|mid)(\.tmp)?$/.test(file)) continue;
+      diagnostics.push(...removeArtifacts([join(directory, file)]));
+    }
+    rmdirSync(directory);
+  } catch (error) {
+    if (!['ENOENT', 'ENOTDIR'].includes((error as NodeJS.ErrnoException).code ?? '')) diagnostics.push(writeFailure(directory, error));
+  }
+  return diagnostics;
+}
 function writeFailure(path: string, error: unknown): Diagnostic {
   const d = diagnostic('OUTPUT_WRITE_FAILED','',path,'writable output path');
   d.message = `Cannot write or clean output ${JSON.stringify(path)}: ${error instanceof Error ? error.message : String(error)}`;
@@ -68,6 +88,8 @@ function atomicWrite(path: string, data: string | Uint8Array): void {
 }
 export async function runCommand(command: Command, path: string, options: CommandOptions = {}): Promise<{ result: CommandResult; diagnostics: Diagnostic[]; exitCode: number; stack?: string }> {
   const paths=artifactPaths(path,options.outDir??'renders');
+  const stemDir=paths.wav.replace(/\.wav$/,'.stems');
+  const cleanup=()=>[...removeArtifacts(Object.values(paths)),...removeStems(stemDir)];
   let compilation: Compilation | undefined;
   let result = resultFor(command,path,[]);
   let stack: string | undefined;
@@ -90,7 +112,7 @@ export async function runCommand(command: Command, path: string, options: Comman
           if(probe.diagnostic)diagnostics.push(probe.diagnostic);else renderer=probe.value;
         }
       }
-      diagnostics.push(...removeArtifacts(Object.values(paths)));
+      diagnostics.push(...cleanup());
       if (!diagnostics.some(d=>d.severity==='error')) {
         let outputPath=options.outDir??'renders';
         try {
@@ -114,9 +136,43 @@ export async function runCommand(command: Command, path: string, options: Comman
                 soundfont:{file:soundfont.file,sha256:soundfont.sha256,bytes:soundfont.bytes},
                 wav:{file:basename(paths.wav),sha256:hash(wav),bytes:wav.length,frames:rendered.wav.frames,durationSeconds:Number((rendered.wav.frames/rendered.wav.sampleRate).toFixed(6))},
               };
-              outputPath=paths.manifest;
-              atomicWrite(paths.manifest,JSON.stringify(manifest,null,2)+'\n');
-              result.artifacts={...paths};result.manifest=manifest;
+              const stems = [];
+              if (options.stems) {
+                outputPath=stemDir;
+                mkdirSync(stemDir);
+                for (const track of compilation.timeline!.tracks) {
+                  const file=stemFileName(track.id), wavPath=join(stemDir,file);
+                  const midiPath=join(stemDir,file.replace(/\.wav$/,'.mid'));
+                  const stemMidi=encodeSmf(compilation.timeline!,track.id);
+                  outputPath=midiPath;
+                  atomicWrite(midiPath,stemMidi);
+                  const stem=await renderer.render({midiPath,wavPath});
+                  if (!stem.ok) {
+                    diagnostics.push({...stem.diagnostic,path:`tracks[${track.index}]`});
+                    break;
+                  }
+                  const duration=ticksToSeconds(compilation.timeline!.endTick,compilation.timeline!.usPerQuarter);
+                  if (stem.wav.frames < Math.ceil(duration*stem.wav.sampleRate)) {
+                    diagnostics.push(diagnostic('RENDERER_FAILED',`tracks[${track.index}]`,stem.wav.frames,
+                      `stem covering the complete ${duration} second musical timeline`));
+                    break;
+                  }
+                  outputPath=wavPath;
+                  const bytes=readFileSync(wavPath);
+                  stems.push({trackId:track.id,trackIndex:track.index,
+                    midi:{sha256:hash(stemMidi),bytes:stemMidi.length,notes:track.notes.length},
+                    renderer:stem.renderer,
+                    wav:{file:`${basename(stemDir)}/${file}`,sha256:hash(bytes),bytes:bytes.length,
+                      ...stem.wav,durationSeconds:Number((stem.wav.frames/stem.wav.sampleRate).toFixed(6))}});
+                  rmSync(midiPath);
+                }
+              }
+              if (!diagnostics.some(d=>d.severity==='error')) {
+                const completeManifest=options.stems?{...manifest,stems}:manifest;
+                outputPath=paths.manifest;
+                atomicWrite(paths.manifest,JSON.stringify(completeManifest,null,2)+'\n');
+                result.artifacts={...paths,...(options.stems?{stems:stems.map(stem=>({trackId:stem.trackId,wav:join(stemDir,stemFileName(stem.trackId))}))}:{})};result.manifest=completeManifest;
+              }
             }
           }
         }
@@ -132,7 +188,7 @@ export async function runCommand(command: Command, path: string, options: Comman
     stack=error instanceof Error?error.stack:undefined;
   }
   failed ||= diagnostics.some(d=>d.severity==='error');
-  if (failed && command !== 'validate') diagnostics.push(...removeArtifacts(Object.values(paths)));
+  if (failed && command !== 'validate') diagnostics.push(...cleanup());
   const final=resultFor(command,path,diagnostics,result.summary,compilation?.omitted);
   final.ok=!failed;
   if (!failed) { final.artifacts=result.artifacts; final.manifest=result.manifest; }
