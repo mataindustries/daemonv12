@@ -11,18 +11,47 @@ import type { Project } from './project/types.ts';
 import { resolve } from './timing/resolve.ts';
 import { ticksToSeconds } from './timing/musical-time.ts';
 import type { Timeline } from './timing/timeline.ts';
+import { loadKits, readAsset, outputInAssets } from './project/assets.ts';
+import { type Kits } from './project/sample-schema.ts';
+import { decodePcm, type Pcm } from './render/index.ts';
+import { renderSampledProject } from './sample-render.ts';
 export interface Compilation {
   diagnostics: Diagnostic[]; omitted?: number; project: Project | null; timeline: Timeline | null; projectBytes?: Uint8Array;
+  kits?: Kits; assets?: Map<string, {bytes:Buffer; pcm?:Pcm}>;
 }
-function compile(loaded: LoadResult): Compilation {
+function compile(loaded: LoadResult, kits: Kits = new Map()): Compilation {
   if (loaded.diagnostics.length) return { diagnostics: loaded.diagnostics, project: null, timeline: null };
-  const validated = validateProject(loaded.value);
+  const validated = validateProject(loaded.value, kits);
   const resolved = validated.project ? resolve(validated.project) : { timeline: null, diagnostics: [] };
   return { ...capDiagnostics([...validated.diagnostics, ...resolved.diagnostics]), project: validated.project,
     timeline: resolved.timeline, ...(loaded.bytes ? { projectBytes: loaded.bytes } : {}) };
 }
-export function compileProjectText(text: string): Compilation { return compile(parseProjectText(text)); }
-export function compileProjectFile(path: string): Compilation { return compile(loadProject(path)); }
+export function compileProjectText(text: string, kits: Kits = new Map()): Compilation { return compile(parseProjectText(text), kits); }
+export function compileProjectFile(path: string): Compilation {
+  const loaded=loadProject(path);
+  if (loaded.diagnostics.length || (loaded.value as {formatVersion?:unknown}|null)?.formatVersion !== 1) return compile(loaded);
+  const kitData=loadKits(loaded.value,path);
+  if (kitData.diagnostics.length) return {project:null,timeline:null,...capDiagnostics(kitData.diagnostics)};
+  const compilation=compile(loaded,kitData.kits);
+  if (!compilation.project || !compilation.timeline) return compilation;
+  const assets=new Map<string,{bytes:Buffer;pcm?:Pcm}>(Array.from(kitData.files,([file,bytes])=>[file,{bytes}]));
+  for (const [i,track] of compilation.project.tracks.entries()) {
+    const instrument=track.instrument;
+    const files=instrument.type==='sampler'?[instrument.sample]:instrument.type==='drumkit'?kitData.kits.get(instrument.kit)!.map(e=>e.sample):[];
+    for(const file of files) {
+      if(assets.get(file)?.pcm)continue;
+      const at=`tracks[${i}].instrument`,read=readAsset(path,file,at);
+      if(read.diagnostic)compilation.diagnostics.push(read.diagnostic);
+      else {
+        const decoded=decodePcm(read.bytes!);
+        if(decoded.error) compilation.diagnostics.push(diagnostic('UNSUPPORTED_WAV',at,file,decoded.error));
+        else assets.set(file,{bytes:read.bytes!,pcm:decoded.pcm!});
+      }
+    }
+  }
+  if(compilation.diagnostics.some(d=>d.severity==='error'))compilation.timeline=null;
+  return {...compilation,kits:kitData.kits,assets,...capDiagnostics(compilation.diagnostics)};
+}
 export function summarize(project: Project, timeline: Timeline) {
   return { title: project.title, bars: project.bars, timeSignature: `${project.timeSignature.numerator}/${project.timeSignature.denominator}`,
     bpm: project.bpm, key: project.key?.text ?? null, tracks: timeline.tracks.length,
@@ -89,13 +118,18 @@ function atomicWrite(path: string, data: string | Uint8Array): void {
 export async function runCommand(command: Command, path: string, options: CommandOptions = {}): Promise<{ result: CommandResult; diagnostics: Diagnostic[]; exitCode: number; stack?: string }> {
   const paths=artifactPaths(path,options.outDir??'renders');
   const stemDir=paths.wav.replace(/\.wav$/,'.stems');
-  const cleanup=()=>[...removeArtifacts(Object.values(paths)),...removeStems(stemDir)];
+  let protectedOutput=false;
+  const cleanup=()=>protectedOutput?[writeFailure(options.outDir??'renders','Output must be outside the project assets directory.')]:[...removeArtifacts(Object.values(paths)),...removeStems(stemDir)];
   let compilation: Compilation | undefined;
   let result = resultFor(command,path,[]);
   let stack: string | undefined;
   let diagnostics: Diagnostic[]=[];
   let failed=false;
   try {
+    if(command!=='validate') {
+      try { protectedOutput=outputInAssets(path,options.outDir??'renders'); }
+      catch(error) { diagnostics.push(writeFailure(options.outDir??'renders',error));protectedOutput=true; }
+    }
     compilation=compileProjectFile(path);
     diagnostics=[...compilation.diagnostics];
     result=resultFor(command,path,diagnostics,compilation.timeline?summarize(compilation.project!,compilation.timeline):null,compilation.omitted);
@@ -103,7 +137,10 @@ export async function runCommand(command: Command, path: string, options: Comman
     if (!failed && command !== 'validate') {
       let soundfont: Soundfont | undefined;
       let renderer: AudioRenderer | undefined;
-      if (command === 'render') {
+      const hasSamples=compilation.timeline!.tracks.some(t=>t.instrument.type!=='gm');
+      const hasGm=compilation.timeline!.tracks.some(t=>t.instrument.type==='gm');
+      if (command === 'midi' && hasSamples) diagnostics.push({...diagnostic('SAMPLES_OMITTED','',undefined,'MIDI contains GM tracks only; use render for sampled audio'),severity:'warning'});
+      if (command === 'render' && hasGm) {
         const sf = await resolveSoundfont({soundfont:options.soundfont,env:options.env??{}});
         if (sf.diagnostic) diagnostics.push(sf.diagnostic);
         else {
@@ -120,7 +157,16 @@ export async function runCommand(command: Command, path: string, options: Comman
           const midi=encodeSmf(compilation.timeline!);
           outputPath=paths.midi;
           atomicWrite(paths.midi,midi);result.artifacts.midi=paths.midi;
-          if(renderer && soundfont) {
+          if(command === 'render' && hasSamples) {
+            const sampled=await renderSampledProject({compilation,path,paths,stemDir,midi,stems:!!options.stems,renderer,soundfont,stemFileName});
+            diagnostics.push(...sampled.diagnostics);
+            if(sampled.manifest) {
+              outputPath=paths.manifest;
+              atomicWrite(paths.manifest,JSON.stringify(sampled.manifest,null,2)+'\n');
+              result.manifest=sampled.manifest;
+              result.artifacts={...paths,...(options.stems?{stems:compilation.timeline!.tracks.map(t=>({trackId:t.id,wav:join(stemDir,stemFileName(t.id))}))}:{})};
+            }
+          } else if(renderer && soundfont) {
             const rendered=await renderer.render({midiPath:paths.midi,wavPath:paths.wav});
             if(!rendered.ok)diagnostics.push(rendered.diagnostic);
             else {

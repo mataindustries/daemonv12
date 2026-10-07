@@ -60,3 +60,10 @@ export function formatPosition(tick: number, meter: TimeSignature): string {
 }
 export function usPerQuarter(bpm: number): number { return Math.round(60_000_000 / bpm); }
 export function ticksToSeconds(ticks: number, tempo: number): number { return ticks * tempo / (PPQ * 1_000_000); }
+// Round each absolute tick independently, ties toward the later frame. BigInt avoids
+// precision loss even for the largest accepted project and eliminates accumulated drift.
+export function ticksToFrames(tick: number, tempo: number, rate = 44100, ceil = false): number {
+  const denominator = 960n * 1000000n;
+  const numerator = BigInt(tick) * BigInt(tempo) * BigInt(rate);
+  return Number((numerator + (ceil ? denominator - 1n : denominator / 2n)) / denominator);
+}

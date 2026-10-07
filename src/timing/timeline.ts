@@ -4,5 +4,5 @@ export interface Timeline {
   key: { sharpsFlats: number; mode: 'major' | 'minor' } | null;
   ticksPerBar: number; endTick: number; tracks: TimelineTrack[];
 }
-export interface TimelineTrack { id: string; index: number; instrument: { type: 'gm'; program: number }; notes: TimelineNote[] }
+export interface TimelineTrack { id: string; index: number; instrument: { type: 'gm'; program: number } | { type: 'sampler'; sample: string } | { type: 'drumkit'; kit: string }; notes: TimelineNote[] }
 export interface TimelineNote { tick: number; durationTicks: number; pitch: number; velocity: number }

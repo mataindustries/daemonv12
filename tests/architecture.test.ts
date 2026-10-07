@@ -11,7 +11,7 @@ test('architecture: deterministic core, renderer boundary, zero runtime dependen
     const text = readFileSync(`src/${file}`, 'utf8');
     assert.doesNotMatch(text, /Math\.random|\bDate\b|performance\.now|process\.hrtime/);
     if (!file.startsWith('render/')) assert.doesNotMatch(text, /from\s+['"][^'"]*render\/(?!index\.ts)[^'"]+['"]/);
-    if (/^(timing|midi)\/|^project\/(pitch|key|gm-programs|validate)/.test(file)) assert.doesNotMatch(text, /node:|process\.env/);
+    if (/^(timing|midi)\/|^project\/(pitch|key|gm-programs|validate|sample-schema)/.test(file)) assert.doesNotMatch(text, /node:|process\.env/);
     if (file.startsWith('render/')) assert.doesNotMatch(text, /process\.env|from\s+['"][^'"]*(project|timing|midi)\//);
   }
 });

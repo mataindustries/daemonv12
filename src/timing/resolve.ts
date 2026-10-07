@@ -22,7 +22,7 @@ export function resolve(project: Project): { timeline: Timeline | null; diagnost
       const previous = new Map<number, LocatedNote>();
       for (const note of notes) {
         const prev = previous.get(note.pitch);
-        if (prev && note.tick < prev.tick + prev.durationTicks) {
+        if (track.instrument.type === 'gm' && prev && note.tick < prev.tick + prev.durationTicks) {
           const d = diagnostic('NOTE_OVERLAP', note.path, note.pitch, 'non-overlapping notes of the same pitch on one track',
             note.tick > prev.tick ? `Shorten the earlier note to "${formatDuration(note.tick-prev.tick)}" or move one note to another track.` : 'Move one note to another track or remove the duplicate.');
           d.message = `Pitch ${note.pitch}: ${prev.path} (tracks[${index}].clips[${prev.clip}], ${formatPosition(prev.tick, project.timeSignature)}) overlaps ${note.path} (tracks[${index}].clips[${note.clip}], ${formatPosition(note.tick, project.timeSignature)}).${prev.path === note.path && prev.clip === note.clip ? ' Both pitches come from the same chord.' : ''}`;
@@ -31,7 +31,7 @@ export function resolve(project: Project): { timeline: Timeline | null; diagnost
         // Retain the furthest-reaching note to catch nesting as well as adjacent overlaps.
         if (!prev || note.tick + note.durationTicks > prev.tick + prev.durationTicks) previous.set(note.pitch, note);
       }
-      return { id: track.id, index, instrument: { type: 'gm', program: track.instrument.program },
+      return { id: track.id, index, instrument: track.instrument.type === 'gm' ? { type: 'gm' as const, program: track.instrument.program } : track.instrument,
         notes: notes.map(({ tick, durationTicks, pitch, velocity }) => ({ tick, durationTicks, pitch, velocity })) };
     }),
   };

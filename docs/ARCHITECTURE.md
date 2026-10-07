@@ -3,7 +3,7 @@
 > **DaemonV12: 12 instruments for agents.** A headless, deterministic music engine. AI agents drive it
 > through plain project files and a CLI (MCP comes later). It needs no DAW, GUI, browser or MIDI hardware.
 
-Status: V0 design, engine `0.0.x`, project `formatVersion: 1`.
+Status: V0.2 implemented, engine `0.2.0`, project `formatVersion: 1`.
 Normative details: [V0_SPEC.md](V0_SPEC.md). Phase plan: [ROADMAP.md](ROADMAP.md).
 Implementation steps: [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
 
@@ -12,6 +12,24 @@ encodes each track with the same conductor, event ordering, original channel and
 renders it through `AudioRenderer`, and appends stem provenance to the manifest. The
 master path and project schema are unchanged. See [README](../README.md#track-stems-v01)
 for output and cleanup contracts. The V0 design below remains the baseline.
+
+V0.2 adds `sampler` and `drumkit` instruments at the existing discriminator seam.
+The normative extension is [V0_2_SAMPLES.md](V0_2_SAMPLES.md). `project/sample-schema.ts`
+validates portable kit definitions and paths; `project/assets.ts` owns contained
+asset IO. The pipeline compiles against loaded kits and validates WAV bytes via
+`render/index.ts`. Timing still resolves ticks; `ticksToFrames` uses exact BigInt
+division at the orchestration boundary. `sample-render.ts` orchestrates PCM jobs,
+GM jobs, stems and provenance. `render/pcm.ts` sees only PCM and frame requests;
+it has no project, timing or MIDI imports. All rendering imports still use the
+public render entry point. The CLI contains no new musical logic.
+
+Architecture review found no need to change V0/V0.1 contracts. The relevant existing
+constraints are renderer-defined GM tails, original-index channels, and a full-score
+GM master that is not the sum of independent GM stems. V0.2 preserves each. A small
+integer PCM summing layer is sufficient for fixed-format one-shots; FFmpeg and a
+general mixer remain unnecessary. Sample-only projects skip the GM renderer.
+Only sample-aware projects enter the new master-mixing path. Output under source
+assets is refused, and existing artifact cleanup includes sampled stems.
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "name": "daemonv12",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Headless music engine for AI agents. 12 instruments for agents.",
   "private": true,
   "type": "module",
@@ -14,7 +14,9 @@
     "typecheck": "tsc -p tsconfig.json",
     "test": "node --test \"tests/**/*.test.ts\"",
     "check": "npm run typecheck && npm test",
-    "demo": "node bin/daemonv12.js render examples/demo.json"
+    "demo": "node bin/daemonv12.js render examples/demo.json",
+    "demo:samples": "node bin/daemonv12.js render examples/sample-demo.json --stems",
+    "fixtures:samples": "node scripts/generate-sample-demo.ts"
   },
   "devDependencies": {
     "@tonejs/midi": "2.0.28",

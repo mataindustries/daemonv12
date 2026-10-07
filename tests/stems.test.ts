@@ -26,7 +26,7 @@ test('stem MIDI contains exactly its original track chunk and conductor, preserv
   assert.deepEqual(encodeSmf(timeline,track.id),bytes);
   const parsed=new tonejs.Midi(bytes);assert.equal(parsed.tracks.length,1);
   const part=parsed.tracks[0]!;
-  assert.equal(part.name,track.id);assert.equal(part.channel,i);assert.equal(part.instrument.number,track.instrument.program);
+  assert.equal(part.name,track.id);assert.equal(part.channel,i);assert.ok(track.instrument.type==='gm');assert.equal(part.instrument.number,track.instrument.program);
   assert.equal(part.endOfTrackTicks,timeline.endTick);
   assert.deepEqual(part.notes.map(n=>[n.ticks,n.durationTicks,n.midi,Math.round(n.velocity*127)]),track.notes.map(n=>[n.tick,n.durationTicks,n.pitch,Math.round(n.velocity*127)]));
  }

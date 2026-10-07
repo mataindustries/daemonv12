@@ -6,8 +6,11 @@ export interface Project {
 }
 export interface Track {
   id: string; description: string | null;
-  instrument: { type: 'gm'; program: number; programName: string };
+  instrument: Instrument;
   clips: { bar: number; pattern: string }[]; patterns: Pattern[];
 }
+export type Instrument = { type: 'gm'; program: number; programName: string }
+  | { type: 'sampler'; sample: string }
+  | { type: 'drumkit'; kit: string };
 export interface Pattern { id: string; description: string | null; bars: number; notes: Note[] }
 export interface Note { startTicks: number; durationTicks: number; pitches: number[]; velocity: number }
