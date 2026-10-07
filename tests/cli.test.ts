@@ -46,3 +46,33 @@ test('output write failure maps to environment exit 3 and retains compiled summa
  const dir=temp(t),file=join(dir,'file');writeFileSync(file,'obstruction');
  const r=run(['midi','examples/demo.json','--out-dir',file,'--json']);assert.equal(r.status,3);const j=JSON.parse(r.stdout);assert.equal(j.errors[0].code,'OUTPUT_WRITE_FAILED');assert.equal(j.summary.notes,89);assert.deepEqual(j.artifacts,{});
 });
+const fakeEnv=(mode='ok')=>({...process.env,DAEMONV12_FLUIDSYNTH:resolve('tests/helpers/fake-fluidsynth.mjs'),DAEMONV12_SOUNDFONT:resolve('tests/fixtures/fake.sf2'),FAKE_FLUIDSYNTH_MODE:mode});
+test('CLI render fake success: manifest keys, hashes, file bytes and reported artifacts',t=>{
+ const dir=temp(t),r=run(['render','examples/demo.json','--out-dir',dir,'--json'],fakeEnv());assert.equal(r.status,0,r.stdout);const j=JSON.parse(r.stdout);
+ assert.deepEqual(Object.keys(j.manifest),['engine','project','midi','renderer','soundfont','wav']);assert.equal(j.manifest.renderer.version,'9.9.9');assert.equal(j.manifest.soundfont.file,'fake.sf2');
+ assert.equal(j.manifest.midi.sha256,'32bf52317120de2c48a5cab8292a614724c63acf3940ffa84f24a5fcebd536dc');
+ assert.deepEqual(readdirSync(dir),['demo.mid','demo.render.json','demo.wav']);assert.equal(readFileSync(j.artifacts.manifest,'utf8'),JSON.stringify(j.manifest,null,2)+'\n');
+ for(const [key,path] of [['project','examples/demo.json'],['midi',j.artifacts.midi],['wav',j.artifacts.wav],['soundfont','tests/fixtures/fake.sf2']])assert.equal(j.manifest[key].sha256,createHash('sha256').update(readFileSync(path)).digest('hex'));
+ assert.deepEqual(j.manifest.renderer.settings,{sampleRate:44100,sampleFormat:'s16',channels:2,gain:0.5,reverb:false,chorus:false,cpuCores:1});
+ assert.equal(j.manifest.project.seed,1);assert.equal(j.manifest.wav.durationSeconds,0.1);
+});
+for(const mode of ['silent-error','exit-1','no-output','bad-wav','empty-wav','float-wav','wrong-rate'])test(`CLI render ${mode} exits 3 with no stale artifacts`,t=>{
+ const dir=temp(t);for(const f of ['demo.mid','demo.wav','demo.render.json','demo.mid.tmp','demo.wav.tmp','demo.render.json.tmp'])writeFileSync(join(dir,f),'stale');
+ const r=run(['render','examples/demo.json','--out-dir',dir,'--json'],fakeEnv(mode));assert.equal(r.status,3);const j=JSON.parse(r.stdout);assert.equal(j.errors[0].code,'RENDERER_FAILED');assert.equal(j.summary.notes,89);assert.deepEqual(j.artifacts,{});assert.equal(j.manifest,null);assert.deepEqual(readdirSync(dir),[]);
+});
+test('CLI missing renderer and SoundFont exit 3; compile precedes render preflight',t=>{
+ const dir=temp(t);
+ for(const [args,env,code] of [
+  [['--soundfont','/nope.sf2'],fakeEnv(),'SOUNDFONT_NOT_FOUND'],
+  [[],{...fakeEnv(),DAEMONV12_FLUIDSYNTH:'/nope/fluidsynth'},'RENDERER_NOT_FOUND'],
+  [['--soundfont','tests/fixtures/invalid/bad-syntax.json'],fakeEnv(),'SOUNDFONT_INVALID'],
+ ] as const){for(const f of ['demo.mid','demo.wav','demo.render.json'])writeFileSync(join(dir,f),'stale');const r=run(['render','examples/demo.json','--out-dir',dir,...args,'--json'],env);assert.equal(r.status,3);assert.equal(JSON.parse(r.stdout).errors[0].code,code);assert.deepEqual(readdirSync(dir),[]);}
+ const r=run(['render','tests/fixtures/invalid/bad-pitch.json','--out-dir',dir,'--soundfont','/missing','--json'],fakeEnv());assert.equal(r.status,1);assert.equal(JSON.parse(r.stdout).errors[0].code,'INVALID_PITCH');
+});
+test('CLI diagnostic cap and warning-only success',t=>{
+ const dir=temp(t),file=join(dir,'project.json'),p=JSON.parse(readFileSync('tests/fixtures/valid/minimal.json','utf8'));
+ p.tracks[0].patterns[0].notes=Array.from({length:105},()=>({start:'1:1',pitch:'X4',duration:'1/4'}));writeFileSync(file,JSON.stringify(p));
+ const r=run(['validate',file,'--json']);assert.equal(r.status,1);const j=JSON.parse(r.stdout);assert.equal(j.errors.length,100);assert.equal(j.omitted,5);
+ assert.match(run(['validate',file]).stderr,/… and 5 more/);
+ p.tracks[0].patterns[0].notes=[];p.tracks[0].clips=[];writeFileSync(file,JSON.stringify(p));const w=run(['validate',file,'--json']);assert.equal(w.status,0);assert.equal(JSON.parse(w.stdout).warnings.length,2);
+});

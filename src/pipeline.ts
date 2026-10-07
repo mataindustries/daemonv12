@@ -1,4 +1,6 @@
-import { mkdirSync, rmSync, renameSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { resolveSoundfont, createDefaultRenderer, type AudioRenderer, type Soundfont } from './render/index.ts';
+import { readFileSync, mkdirSync, rmSync, renameSync, writeFileSync } from 'node:fs';
 import { basename, join } from 'node:path';
 import { ENGINE_VERSION } from './version.ts';
 import { encodeSmf } from './midi/smf.ts';
@@ -64,7 +66,7 @@ function writeFailure(path: string, error: unknown): Diagnostic {
 function atomicWrite(path: string, data: string | Uint8Array): void {
   writeFileSync(`${path}.tmp`,data); renameSync(`${path}.tmp`,path);
 }
-export async function runCommand(command: Command, path: string, options: CommandOptions = {}): Promise<{ result: CommandResult; exitCode: number; stack?: string }> {
+export async function runCommand(command: Command, path: string, options: CommandOptions = {}): Promise<{ result: CommandResult; diagnostics: Diagnostic[]; exitCode: number; stack?: string }> {
   const paths=artifactPaths(path,options.outDir??'renders');
   let compilation: Compilation | undefined;
   let result = resultFor(command,path,[]);
@@ -77,10 +79,52 @@ export async function runCommand(command: Command, path: string, options: Comman
     result=resultFor(command,path,diagnostics,compilation.timeline?summarize(compilation.project!,compilation.timeline):null,compilation.omitted);
     failed=!compilation.timeline;
     if (!failed && command !== 'validate') {
+      let soundfont: Soundfont | undefined;
+      let renderer: AudioRenderer | undefined;
+      if (command === 'render') {
+        const sf = await resolveSoundfont({soundfont:options.soundfont,env:options.env??{}});
+        if (sf.diagnostic) diagnostics.push(sf.diagnostic);
+        else {
+          soundfont=sf.value;
+          const probe=await createDefaultRenderer({soundfont,env:options.env??{},timeoutMs:options.timeoutMs});
+          if(probe.diagnostic)diagnostics.push(probe.diagnostic);else renderer=probe.value;
+        }
+      }
       diagnostics.push(...removeArtifacts(Object.values(paths)));
       if (!diagnostics.some(d=>d.severity==='error')) {
-        try { mkdirSync(options.outDir??'renders',{recursive:true}); atomicWrite(paths.midi,encodeSmf(compilation.timeline!)); result.artifacts.midi=paths.midi; }
-        catch(error) { diagnostics.push(writeFailure(paths.midi,error)); }
+        let outputPath=options.outDir??'renders';
+        try {
+          mkdirSync(options.outDir??'renders',{recursive:true});
+          const midi=encodeSmf(compilation.timeline!);
+          outputPath=paths.midi;
+          atomicWrite(paths.midi,midi);result.artifacts.midi=paths.midi;
+          if(renderer && soundfont) {
+            const rendered=await renderer.render({midiPath:paths.midi,wavPath:paths.wav});
+            if(!rendered.ok)diagnostics.push(rendered.diagnostic);
+            else {
+              outputPath=paths.wav;
+              const wav=readFileSync(paths.wav);
+              const hash=(bytes:Uint8Array)=>createHash('sha256').update(bytes).digest('hex');
+              const summary=result.summary!;
+              const manifest={
+                engine:{name:'daemonv12',version:ENGINE_VERSION},
+                project:{file:basename(path),sha256:hash(compilation.projectBytes!),formatVersion:1,seed:compilation.project!.seed},
+                midi:{file:basename(paths.midi),sha256:hash(midi),bytes:midi.length,ppq:compilation.timeline!.ppq,durationTicks:summary.durationTicks,durationSeconds:summary.durationSeconds,notes:summary.notes},
+                renderer:rendered.renderer,
+                soundfont:{file:soundfont.file,sha256:soundfont.sha256,bytes:soundfont.bytes},
+                wav:{file:basename(paths.wav),sha256:hash(wav),bytes:wav.length,frames:rendered.wav.frames,durationSeconds:Number((rendered.wav.frames/rendered.wav.sampleRate).toFixed(6))},
+              };
+              outputPath=paths.manifest;
+              atomicWrite(paths.manifest,JSON.stringify(manifest,null,2)+'\n');
+              result.artifacts={...paths};result.manifest=manifest;
+            }
+          }
+        }
+        catch(error) {
+          // Only filesystem failures belong to the output error class. Bugs reach the outer handler.
+          if (!/^E[A-Z]+$/.test((error as NodeJS.ErrnoException).code??'')) throw error;
+          diagnostics.push(writeFailure(outputPath,error));
+        }
       }
     }
   } catch(error) {
@@ -92,5 +136,5 @@ export async function runCommand(command: Command, path: string, options: Comman
   const final=resultFor(command,path,diagnostics,result.summary,compilation?.omitted);
   final.ok=!failed;
   if (!failed) { final.artifacts=result.artifacts; final.manifest=result.manifest; }
-  return {result:final,exitCode:Math.max(failed?1:0,exitCodeFor(diagnostics)),...(stack?{stack}:{})};
+  return {result:final,diagnostics:capDiagnostics(diagnostics).diagnostics,exitCode:Math.max(failed?1:0,exitCodeFor(diagnostics)),...(stack?{stack}:{})};
 }
