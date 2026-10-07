@@ -7,18 +7,22 @@ import type { Project } from './types.ts';
 import { assetPath, type Kits } from './sample-schema.ts';
 
 type ObjectValue = Record<string, unknown>;
-type Kind = 'project' | 'track' | 'instrument' | 'clip' | 'pattern' | 'note';
+type Kind = 'project' | 'track' | 'instrument' | 'clip' | 'pattern' | 'note' | 'mix' | 'master' | 'effect';
 type Rule = (value: unknown, path: string) => Parsed<unknown>;
 interface Field { rule?: Rule; object?: Kind; array?: Kind; optional?: boolean; example: unknown }
 const fields: Record<Kind, Record<string, Field>> = {
-  project: { formatVersion:{rule:number(1,1,true),example:1}, title:{rule:string(200,true),example:'My project'}, description:{rule:string(2000),optional:true,example:''}, bpm:{rule:number(20,300),example:120}, timeSignature:{rule:parseTimeSignature,example:'4/4'}, key:{rule:parseKey,optional:true,example:'D minor'}, bars:{rule:number(1,1000,true),example:1}, seed:{rule:number(0,4294967295,true),optional:true,example:0}, tracks:{array:'track',example:[]} },
-  track: { id:{rule:id,example:'lead'}, description:{rule:string(2000),optional:true,example:''}, instrument:{object:'instrument',example:{type:'gm',program:'acoustic_grand_piano'}}, clips:{array:'clip',example:[]}, patterns:{array:'pattern',example:[]} },
+  project: { formatVersion:{rule:number(1,1,true),example:1}, title:{rule:string(200,true),example:'My project'}, description:{rule:string(2000),optional:true,example:''}, bpm:{rule:number(20,300),example:120}, timeSignature:{rule:parseTimeSignature,example:'4/4'}, key:{rule:parseKey,optional:true,example:'D minor'}, bars:{rule:number(1,1000,true),example:1}, seed:{rule:number(0,4294967295,true),optional:true,example:0}, tracks:{array:'track',example:[]}, master:{object:'master',optional:true,example:{gainDb:0}} },
+  track: { id:{rule:id,example:'lead'}, description:{rule:string(2000),optional:true,example:''}, instrument:{object:'instrument',example:{type:'gm',program:'acoustic_grand_piano'}}, clips:{array:'clip',example:[]}, patterns:{array:'pattern',example:[]}, mix:{object:'mix',optional:true,example:{gainDb:0,pan:0}}, effects:{array:'effect',optional:true,example:[]} },
+  mix: {gainDb:{rule:number(-60,12),optional:true,example:0},pan:{rule:number(-1,1),optional:true,example:0}},
+  master: {gainDb:{rule:number(-60,12),optional:true,example:0},effects:{array:'effect',optional:true,example:[]}},
+  effect: {type:{rule:(v,p)=>['highpass','lowpass','delay'].includes(v as string)?{value:v}:{diagnostic:diagnostic('OUT_OF_RANGE',p,v,'highpass, lowpass or delay')},example:'highpass'}},
   instrument: { type:{rule:instrumentType,example:'gm'}, program:{rule:parseProgram,example:'acoustic_grand_piano'} },
   clip: { bar:{rule:number(1,Number.MAX_SAFE_INTEGER,true),example:1}, pattern:{rule:id,example:'one'} },
   pattern: { id:{rule:id,example:'one'}, description:{rule:string(2000),optional:true,example:''}, bars:{rule:number(1,1000,true),example:1}, notes:{array:'note',example:[]} },
   note: { start:{rule:positionSyntax,example:'1:1'}, pitch:{rule:parsePitch,example:'C4'}, duration:{rule:durationSyntax,example:'1/4'}, velocity:{rule:velocity,optional:true,example:0.8} },
 };
 const aliases: Record<Kind, Record<string,string>> = {
+  mix:{},master:{},effect:{},
   project:{tempo:'bpm',time_signature:'timeSignature',timesig:'timeSignature',meter:'timeSignature',signature:'timeSignature',length:'bars',measures:'bars',numBars:'bars',name:'title',version:'formatVersion',schemaVersion:'formatVersion',format:'formatVersion',instruments:'tracks',parts:'tracks',patterns:'tracks[i].patterns',notes:'tracks[i].patterns[j].notes'},
   track:{name:'id',program:'instrument',patch:'instrument',sound:'instrument',preset:'instrument',notes:'patterns',arrangement:'clips',placements:'clips',sequence:'clips'},
   instrument:{kind:'type',preset:'program',patch:'program',name:'program',sound:'program'},
@@ -67,6 +71,7 @@ export function validateProject(value: unknown, kits: Kits = new Map()): { proje
     const instrument = get<ObjectValue>(`${trackPath}.instrument`);
     const type = kind === 'instrument' ? v.type : instrument?.type;
     let schema = fields[kind];
+    if (kind === 'effect') schema = {...fields.effect, ...(v.type === 'delay' ? {timeMs:{rule:number(1,2000),example:120},wet:{rule:number(0,0.5),example:0.15}} : v.type === 'highpass' || v.type === 'lowpass' ? {frequencyHz:{rule:number(20,20000),example:150}} : {})};
     if (kind === 'instrument' && (type === 'sampler' || type === 'drumkit')) schema = {
       type: fields.instrument.type!, [type === 'sampler' ? 'sample' : 'kit']: {rule:assetPath,example:type === 'sampler'?'assets/impact.wav':'assets/kit/kit.json'},
     };
@@ -88,6 +93,7 @@ export function validateProject(value: unknown, kits: Kits = new Map()): { proje
         if (!Array.isArray(item)) {add(diagnostic('WRONG_TYPE',p,item,'array'));continue;}
         parsed.set(p,item);
         if (name === 'tracks' && (item.length<1 || item.length>15)) add(diagnostic('OUT_OF_RANGE',p,item,'1–15 tracks'));
+        if (name === 'effects' && item.length>8) add(diagnostic('OUT_OF_RANGE',p,item.length,'0–8 effects'));
         item.forEach((child,i)=>visit(child,field.array!,formatPath(p,i))); continue;
       }
       if (kind==='note' && name==='pitch' && Array.isArray(item) && type !== 'drumkit') {
@@ -147,10 +153,12 @@ export function validateProject(value: unknown, kits: Kits = new Map()): { proje
   diagnostics.sort((a,b)=>(order.get(a.path)??0)-(order.get(b.path)??0));
   if(diagnostics.some(d=>d.severity==='error'))return {project:null,diagnostics};
   const read=<T>(p:string):T=>get<T>(p)!;
+  const effects=(p:string)=>get<unknown[]>(p)?.map((_,i)=>{const q=`${p}[${i}]`,type=read<'highpass'|'lowpass'|'delay'>(`${q}.type`);return type==='delay'?{type,timeMs:read<number>(`${q}.timeMs`),wet:read<number>(`${q}.wet`)}:{type,frequencyHz:read<number>(`${q}.frequencyHz`)};});
   const project:Project={formatVersion:1,title:read('title'),description:get<string>('description')??null,bpm:read('bpm'),timeSignature:meter!,key:get<Key>('key')??null,bars:projectBars!,seed:get<number>('seed')??0,
+    ...(parsed.has('master')?{master:{...(parsed.has('master.gainDb')?{gainDb:read<number>('master.gainDb')} : {}),...(parsed.has('master.effects')?{effects:effects('master.effects')!}:{})}}:{}),
     tracks:read<unknown[]>('tracks').map((_,i)=>{
       const p=`tracks[${i}]`,raw=read<ObjectValue>(`${p}.instrument`);
-      return {id:read<string>(`${p}.id`),description:get<string>(`${p}.description`)??null,instrument:raw.type === 'sampler' ? {type:'sampler',sample:raw.sample as string} : raw.type === 'drumkit' ? {type:'drumkit',kit:raw.kit as string} : {type:'gm',program:read<number>(`${p}.instrument.program`),programName:raw.program as string},
+      return {...(parsed.has(`${p}.mix`)?{mix:{...(parsed.has(`${p}.mix.gainDb`)?{gainDb:read<number>(`${p}.mix.gainDb`)}:{}),...(parsed.has(`${p}.mix.pan`)?{pan:read<number>(`${p}.mix.pan`)}:{})}}:{}),...(parsed.has(`${p}.effects`)?{effects:effects(`${p}.effects`)!}:{}),id:read<string>(`${p}.id`),description:get<string>(`${p}.description`)??null,instrument:raw.type === 'sampler' ? {type:'sampler',sample:raw.sample as string} : raw.type === 'drumkit' ? {type:'drumkit',kit:raw.kit as string} : {type:'gm',program:read<number>(`${p}.instrument.program`),programName:raw.program as string},
         clips:read<unknown[]>(`${p}.clips`).map((_,j)=>({bar:read<number>(`${p}.clips[${j}].bar`),pattern:read<string>(`${p}.clips[${j}].pattern`)})),
         patterns:read<unknown[]>(`${p}.patterns`).map((_,j)=>{const pp=`${p}.patterns[${j}]`;return {id:read<string>(`${pp}.id`),description:get<string>(`${pp}.description`)??null,bars:read<number>(`${pp}.bars`),notes:read<unknown[]>(`${pp}.notes`).map((_,k)=>{const np=`${pp}.notes[${k}]`;return {startTicks:read<number>(`${np}.startTicks`),durationTicks:get<number>(`${np}.durationTicks`)??0,pitches:get<number[]>(`${np}.pitch`)??[60],velocity:get<number>(`${np}.velocity`)??0.8};})};})};
     })};

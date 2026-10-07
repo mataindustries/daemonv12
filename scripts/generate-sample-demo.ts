@@ -34,3 +34,17 @@ const project={...original,title:'DaemonV12 Sample Pulse',description:'Original 
   {id:'impact',instrument:{type:'sampler',sample:'assets/pulse-kit/impact.wav'},clips:[{bar:8,pattern:'accent'}],patterns:[{id:'accent',bars:1,notes:[{start:'1:1',velocity:0.75}]}]},
 ]};
 writeFileSync(`${output}/sample-demo.json`,JSON.stringify(project,null,2)+'\n');
+// V0.3 production treatment of the same arrangement; keep the V0.2 fixture as a regression reference.
+const production={...project,title:'DaemonV12 Production Pulse',
+  description:'Balanced bass and piano, stereo percussion, filtered piano with a short cinematic echo. No normalization.',
+  master:{gainDb:-1,effects:[]},
+  tracks:project.tracks.map((track:any)=>({...track,...({
+    kick:{mix:{gainDb:-3,pan:0}},
+    snare:{mix:{gainDb:-2,pan:0.25}},
+    hats:{mix:{gainDb:-4,pan:0.55},effects:[{type:'highpass',frequencyHz:1800}]},
+    bass:{mix:{gainDb:-4,pan:0}},
+    keys:{mix:{gainDb:-2,pan:-0.35},effects:[{type:'highpass',frequencyHz:150},{type:'delay',timeMs:180,wet:0.16}]},
+    impact:{mix:{gainDb:-2,pan:0.15},effects:[{type:'lowpass',frequencyHz:5000}]},
+  } as Record<string,unknown>)[track.id]})),
+};
+writeFileSync(`${output}/production-demo.json`,JSON.stringify(production,null,2)+'\n');

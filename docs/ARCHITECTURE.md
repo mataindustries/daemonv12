@@ -3,7 +3,7 @@
 > **DaemonV12: 12 instruments for agents.** A headless, deterministic music engine. AI agents drive it
 > through plain project files and a CLI (MCP comes later). It needs no DAW, GUI, browser or MIDI hardware.
 
-Status: V0.2 implemented, engine `0.2.0`, project `formatVersion: 1`.
+Status: V0.3 implemented, engine `0.3.0`, project `formatVersion: 1`.
 Normative details: [V0_SPEC.md](V0_SPEC.md). Phase plan: [ROADMAP.md](ROADMAP.md).
 Implementation steps: [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
 
@@ -30,6 +30,16 @@ integer PCM summing layer is sufficient for fixed-format one-shots; FFmpeg and a
 general mixer remain unnecessary. Sample-only projects skip the GM renderer.
 Only sample-aware projects enter the new master-mixing path. Output under source
 assets is refused, and existing artifact cleanup includes sampled stems.
+
+V0.3 adds an opt-in production route through the per-track orchestration in
+`sample-render.ts`. `render/production.ts` owns gain/balance, unsaturated summation,
+quantization and padding; `render/analysis.ts` measures PCM WAV; `render/ffmpeg.ts`
+is the sole effects/export/loudness subprocess boundary. Production stems include
+track processing and pad to master duration. Legacy projects keep their existing
+full-score GM master and unequal tails. FFmpeg is required only for production,
+explicit export formats and analysis. See [V0_3_AUDIO.md](V0_3_AUDIO.md) for the decision,
+exact additive schema, routing and provenance. The historical V0 design below is
+preserved as the baseline; its deferred V0.3 items are superseded by that contract.
 
 ---
 

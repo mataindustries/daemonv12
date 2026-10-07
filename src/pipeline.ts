@@ -13,7 +13,7 @@ import { ticksToSeconds } from './timing/musical-time.ts';
 import type { Timeline } from './timing/timeline.ts';
 import { loadKits, readAsset, outputInAssets } from './project/assets.ts';
 import { type Kits } from './project/sample-schema.ts';
-import { decodePcm, type Pcm } from './render/index.ts';
+import { createAudioProcessor, analyzeWav, type AudioProcessor, type AudioAnalysis, decodePcm, type Pcm } from './render/index.ts';
 import { renderSampledProject } from './sample-render.ts';
 export interface Compilation {
   diagnostics: Diagnostic[]; omitted?: number; project: Project | null; timeline: Timeline | null; projectBytes?: Uint8Array;
@@ -59,12 +59,13 @@ export function summarize(project: Project, timeline: Timeline) {
     durationSeconds: Number(ticksToSeconds(timeline.endTick, timeline.usPerQuarter).toFixed(6)) };
 }
 
-export type Command = 'validate' | 'midi' | 'render';
-export interface CommandOptions { outDir?: string; soundfont?: string; env?: NodeJS.ProcessEnv; timeoutMs?: number; stems?: boolean }
+export type Command = 'validate' | 'midi' | 'render' | 'analyze';
+export interface CommandOptions { outDir?: string; soundfont?: string; env?: NodeJS.ProcessEnv; timeoutMs?: number; stems?: boolean; format?: 'wav' | 'mp3' | 'wav,mp3' }
 export interface CommandResult {
   ok: boolean; command: Command | null; engineVersion: string; project: string | null;
   errors: Diagnostic[]; warnings: Diagnostic[]; summary: ReturnType<typeof summarize> | null;
-  artifacts: { midi?: string; wav?: string; manifest?: string; stems?: { trackId: string; wav: string }[] }; manifest: Record<string, unknown> | null; omitted?: number;
+  analysis?: AudioAnalysis | Record<string,unknown>;
+  artifacts: { mp3?: string; analysis?: string; midi?: string; wav?: string; manifest?: string; stems?: { trackId: string; wav: string }[] }; manifest: Record<string, unknown> | null; omitted?: number;
 }
 export function resultFor(command: Command | null, path: string | null, diagnostics: Diagnostic[], summary: CommandResult['summary'] = null,
   omitted = 0): CommandResult {
@@ -116,10 +117,24 @@ function atomicWrite(path: string, data: string | Uint8Array): void {
   writeFileSync(`${path}.tmp`,data); renameSync(`${path}.tmp`,path);
 }
 export async function runCommand(command: Command, path: string, options: CommandOptions = {}): Promise<{ result: CommandResult; diagnostics: Diagnostic[]; exitCode: number; stack?: string }> {
+  if(command==='analyze') {
+    const basic=analyzeWav(path);const diagnostics:Diagnostic[]=[];
+    let analysis:AudioAnalysis|undefined=basic.value;
+    if(basic.diagnostic)diagnostics.push(basic.diagnostic);
+    else {
+      const probe=await createAudioProcessor({env:options.env??{},timeoutMs:options.timeoutMs});
+      if(probe.diagnostic)diagnostics.push(probe.diagnostic);
+      else {const loudness=await probe.value.loudness(path);if(loudness.diagnostic)diagnostics.push(loudness.diagnostic);else analysis={...basic.value,...loudness.value};}
+    }
+    const result=resultFor(command,path,diagnostics);
+    if(result.ok)result.analysis=analysis;
+    return {result,diagnostics,exitCode:exitCodeFor(diagnostics)};
+  }
   const paths=artifactPaths(path,options.outDir??'renders');
+  const mp3Path=paths.wav.replace(/\.wav$/,'.mp3'),analysisPath=paths.wav.replace(/\.wav$/,'.analysis.json');
   const stemDir=paths.wav.replace(/\.wav$/,'.stems');
   let protectedOutput=false;
-  const cleanup=()=>protectedOutput?[writeFailure(options.outDir??'renders','Output must be outside the project assets directory.')]:[...removeArtifacts(Object.values(paths)),...removeStems(stemDir)];
+  const cleanup=()=>protectedOutput?[writeFailure(options.outDir??'renders','Output must be outside the project assets directory.')]:[...removeArtifacts([...Object.values(paths),mp3Path,analysisPath]),...removeStems(stemDir)];
   let compilation: Compilation | undefined;
   let result = resultFor(command,path,[]);
   let stack: string | undefined;
@@ -137,6 +152,12 @@ export async function runCommand(command: Command, path: string, options: Comman
     if (!failed && command !== 'validate') {
       let soundfont: Soundfont | undefined;
       let renderer: AudioRenderer | undefined;
+      let processor: AudioProcessor | undefined;
+      const production=compilation.project!.master!==undefined || compilation.project!.tracks.some(t=>t.mix!==undefined || t.effects!==undefined);
+      if(command==='render' && (production || options.format!==undefined)) {
+        const probe=await createAudioProcessor({env:options.env??{},timeoutMs:options.timeoutMs});
+        if(probe.diagnostic)diagnostics.push(probe.diagnostic);else processor=probe.value;
+      }
       const hasSamples=compilation.timeline!.tracks.some(t=>t.instrument.type!=='gm');
       const hasGm=compilation.timeline!.tracks.some(t=>t.instrument.type==='gm');
       if (command === 'midi' && hasSamples) diagnostics.push({...diagnostic('SAMPLES_OMITTED','',undefined,'MIDI contains GM tracks only; use render for sampled audio'),severity:'warning'});
@@ -157,12 +178,11 @@ export async function runCommand(command: Command, path: string, options: Comman
           const midi=encodeSmf(compilation.timeline!);
           outputPath=paths.midi;
           atomicWrite(paths.midi,midi);result.artifacts.midi=paths.midi;
-          if(command === 'render' && hasSamples) {
-            const sampled=await renderSampledProject({compilation,path,paths,stemDir,midi,stems:!!options.stems,renderer,soundfont,stemFileName});
+          if(command === 'render' && (hasSamples || production)) {
+            const sampled=await renderSampledProject({compilation,path,paths,stemDir,midi,stems:!!options.stems,renderer,soundfont,stemFileName,processor:production?processor:undefined});
             diagnostics.push(...sampled.diagnostics);
             if(sampled.manifest) {
               outputPath=paths.manifest;
-              atomicWrite(paths.manifest,JSON.stringify(sampled.manifest,null,2)+'\n');
               result.manifest=sampled.manifest;
               result.artifacts={...paths,...(options.stems?{stems:compilation.timeline!.tracks.map(t=>({trackId:t.id,wav:join(stemDir,stemFileName(t.id))}))}:{})};
             }
@@ -216,10 +236,34 @@ export async function runCommand(command: Command, path: string, options: Comman
               if (!diagnostics.some(d=>d.severity==='error')) {
                 const completeManifest=options.stems?{...manifest,stems}:manifest;
                 outputPath=paths.manifest;
-                atomicWrite(paths.manifest,JSON.stringify(completeManifest,null,2)+'\n');
                 result.artifacts={...paths,...(options.stems?{stems:stems.map(stem=>({trackId:stem.trackId,wav:join(stemDir,stemFileName(stem.trackId))}))}:{})};result.manifest=completeManifest;
               }
             }
+          }
+          if(command==='render' && result.manifest && !diagnostics.some(d=>d.severity==='error')) {
+            if(processor) {
+              const analyze=async(file:string)=>{
+                const basic=analyzeWav(file);if(basic.diagnostic){diagnostics.push(basic.diagnostic);return null;}
+                const loudness=await processor.loudness(file);if(loudness.diagnostic){diagnostics.push(loudness.diagnostic);return null;}
+                return {...basic.value,...loudness.value};
+              };
+              const master=await analyze(paths.wav),tracks=[];
+              for(const stem of result.artifacts.stems??[]) {
+                const analysis=await analyze(stem.wav);tracks.push({trackId:stem.trackId,analysis});
+              }
+              const report={master,tracks};
+              result.manifest.audioTool=processor.identity;result.manifest.analysis=report;result.analysis=report;
+              const processing=result.manifest.production as {tracks:{clippedSamples:number}[];master:{clippedSamples:number}}|undefined;
+              if(master?.clipping || tracks.some(t=>t.analysis?.clipping) || processing?.master.clippedSamples || processing?.tracks.some(t=>t.clippedSamples))
+                diagnostics.push({...diagnostic('AUDIO_CLIPPING','',undefined,'audio without overload','Reduce the affected track or master gain. See analysis and production clipping counts.'),severity:'warning'});
+              if(options.format?.includes('mp3') && !diagnostics.some(d=>d.severity==='error')) {
+                const exported=await processor.mp3(paths.wav,mp3Path);
+                if(exported.diagnostic)diagnostics.push(exported.diagnostic);
+                else {const bytes=readFileSync(mp3Path);result.manifest.mp3={file:basename(mp3Path),sha256:createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length,...exported.value};result.artifacts.mp3=mp3Path;}
+              }
+              if(!diagnostics.some(d=>d.severity==='error')) {outputPath=analysisPath;atomicWrite(analysisPath,JSON.stringify(report,null,2)+'\n');result.artifacts.analysis=analysisPath;}
+            }
+            if(!diagnostics.some(d=>d.severity==='error')) {outputPath=paths.manifest;atomicWrite(paths.manifest,JSON.stringify(result.manifest,null,2)+'\n');}
           }
         }
         catch(error) {
@@ -237,6 +281,6 @@ export async function runCommand(command: Command, path: string, options: Comman
   if (failed && command !== 'validate') diagnostics.push(...cleanup());
   const final=resultFor(command,path,diagnostics,result.summary,compilation?.omitted);
   final.ok=!failed;
-  if (!failed) { final.artifacts=result.artifacts; final.manifest=result.manifest; }
+  if (!failed) { final.artifacts=result.artifacts; final.manifest=result.manifest; if(result.analysis)final.analysis=result.analysis; }
   return {result:final,diagnostics:capDiagnostics(diagnostics).diagnostics,exitCode:Math.max(failed?1:0,exitCodeFor(diagnostics)),...(stack?{stack}:{})};
 }

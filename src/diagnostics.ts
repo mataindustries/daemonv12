@@ -1,4 +1,5 @@
 export const diagnosticCodes = [
+  'AUDIO_TOOL_NOT_FOUND', 'AUDIO_PROCESSING_FAILED', 'AUDIO_CLIPPING',
   'USAGE_ERROR', 'FILE_NOT_FOUND', 'FILE_READ_FAILED', 'JSON_PARSE_ERROR',
   'UNSUPPORTED_FORMAT_VERSION', 'MISSING_FIELD', 'UNKNOWN_FIELD', 'WRONG_TYPE',
   'OUT_OF_RANGE', 'INVALID_ID', 'DUPLICATE_ID', 'INVALID_TIME_SIGNATURE', 'INVALID_KEY',
@@ -51,7 +52,7 @@ export function diagnostic(code: DiagnosticCode, path: string, received: unknown
 export function exitCodeFor(ds: readonly Diagnostic[]): number {
   return ds.reduce((highest, d) => Math.max(highest, d.severity === 'warning' ? 0
     : d.code === 'INTERNAL_ERROR' ? 4
-    : /^(SOUNDFONT_|RENDERER_|OUTPUT_WRITE_FAILED)/.test(d.code) ? 3
+    : /^(SOUNDFONT_|RENDERER_|AUDIO_TOOL_|AUDIO_PROCESSING_|OUTPUT_WRITE_FAILED)/.test(d.code) ? 3
     : ['USAGE_ERROR', 'FILE_NOT_FOUND', 'FILE_READ_FAILED'].includes(d.code) ? 2 : 1), 0);
 }
 export function levenshtein(a: string, b: string): number {

@@ -177,4 +177,5 @@ test('resource limit fails cleanly before PCM allocation; generated fixtures are
   const generated=spawnSync(process.execPath,['scripts/generate-sample-demo.ts',f.root],{encoding:'utf8'});assert.equal(generated.status,0,generated.stderr);
   for(const file of ['kick.wav','snare.wav','hat.wav','impact.wav','kit.json'])assert.deepEqual(readFileSync(join(f.root,'assets/pulse-kit',file)),readFileSync(join('examples/assets/pulse-kit',file)));
   assert.deepEqual(readFileSync(join(f.root,'sample-demo.json')),readFileSync('examples/sample-demo.json'));
+  assert.deepEqual(readFileSync(join(f.root,'production-demo.json')),readFileSync('examples/production-demo.json'));
 });

@@ -1,13 +1,13 @@
 # DaemonV12
 
-**12 instruments for agents.** DaemonV12 V0.2 is a headless music engine: author a JSON project with musical positions, track-local patterns, General MIDI instruments and sampled drum kits, then validate it, generate deterministic MIDI, and render WAV audio with provenance.
+**12 instruments for agents.** DaemonV12 V0.3 is a headless music engine: author a JSON project with musical positions, track-local patterns, General MIDI instruments and sampled drum kits, then validate it, generate deterministic MIDI, and render WAV audio with provenance.
 
 ## Requirements
 
 Open the repository in its devcontainer, or use Linux with Node **22.18+** and:
 
 ```sh
-sudo apt-get install -y fluidsynth fluid-soundfont-gm
+sudo apt-get install -y fluidsynth fluid-soundfont-gm ffmpeg
 npm ci
 ```
 
@@ -73,11 +73,32 @@ Sample rendering uses a narrow deterministic PCM layer, with no FFmpeg, resampli
 effects or normalization. Sample/mixed renders are limited to 600 seconds including
 tails. See [sample format, timing and provenance](docs/V0_2_SAMPLES.md) for the full contract.
 
+## Production audio (V0.3)
+
+Add `"mix": {"gainDb": -4, "pan": -0.3}` to a track; negative pan is left.
+Optional ordered `effects` support `highpass`, `lowpass`, and single-tap `delay`.
+Use project `"master": {"gainDb": -1}` for master gain. No automatic normalization
+runs. Production stems include track processing and share the master duration.
+Projects without these fields keep their existing rendering behavior.
+
+```sh
+npm run demo:production  # upgraded sample arrangement: WAV, MP3, six stems, analysis
+npx daemonv12 render examples/production-demo.json --stems --format wav,mp3
+npx daemonv12 analyze renders/production-demo.wav --json
+```
+
+FFmpeg supplies effects, MP3 and integrated LUFS/true-peak measurements behind an
+isolated adapter. Set `DAEMONV12_FFMPEG` to select it. WAV remains canonical, including
+when `--format mp3` is used. The analysis JSON and manifest report peaks, loudness,
+clipping, production settings and tool versions. See the [V0.3 contract](docs/V0_3_AUDIO.md)
+for ranges, pan law, effects, stem semantics and compatibility.
+
 ## Commands
 
 - `validate <project.json>` checks structure, musical time, references, bounds, GM overlaps and sample assets without writing files.
 - `midi <project.json> [--out-dir <dir>]` writes canonical format-1 MIDI at 960 PPQ; sampled tracks are omitted with a warning.
-- `render <project.json> [--out-dir <dir>] [--soundfont <file.sf2>] [--stems]` writes MIDI, WAV, and provenance.
+- `render <project.json> [--out-dir <dir>] [--soundfont <file.sf2>] [--stems] [--format wav|mp3|wav,mp3]` writes MIDI, WAV, provenance and optional MP3.
+- `analyze <audio.wav>` reports PCM format, duration, peaks, clipping and loudness.
 
 Each command accepts `--json` for one structured JSON result. Exit codes: **0** success, **1** invalid project, **2** usage/file access, **3** renderer/environment, **4** internal bug.
 Use `npx daemonv12 --help` or `npx daemonv12 --version` for CLI information.
@@ -89,6 +110,7 @@ Set `DAEMONV12_FLUIDSYNTH` to select a renderer executable.
 ## Documentation
 
 - [V0 specification](docs/V0_SPEC.md): exact format, timing, diagnostics, and output contracts.
+- [V0.3 audio production](docs/V0_3_AUDIO.md): gain/pan, effects, WAV/MP3, analysis and provenance.
 - [V0.2 samples](docs/V0_2_SAMPLES.md): one-shots, reusable kits, PCM mixing, asset security, provenance and limits.
 - [Architecture](docs/ARCHITECTURE.md): module boundaries and determinism model.
 - [Implementation handoff](docs/CODEX_HANDOFF.md): milestones and acceptance tests.
