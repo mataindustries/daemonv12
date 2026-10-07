@@ -91,6 +91,21 @@ Sample rendering uses a narrow deterministic PCM layer, with no FFmpeg, resampli
 effects or normalization. Sample/mixed renders are limited to 600 seconds including
 tails. See [sample format, timing and provenance](docs/V0_2_SAMPLES.md) for the full contract.
 
+## ORBITAL FOUNDRY sound pack
+
+[ORBITAL FOUNDRY](examples/assets/orbital-foundry/README.md) supplies twelve original,
+deterministically generated cinematic/industrial sounds: propulsion, mechanical
+percussion, steel, impact, transitions, drone, air and a tense energy motif.
+The compact PCM16 pack includes a seven-hit named kit, a machine-readable
+[catalog](examples/orbital-foundry.catalog.json), and a native
+[30-second audition](examples/orbital-foundry-audition.json). Existing MCP instrument
+and kit discovery finds it under the project's assets directory.
+
+`npm run fixtures:orbital-foundry` regenerates the source pack.
+`npm run demo:orbital-foundry` renders WAV, MP3, twelve stems, analysis and provenance
+under `renders/orbital-foundry/` (FFmpeg required; no SoundFont required).
+See the [measured verification](docs/ORBITAL_FOUNDRY_VERIFICATION.md).
+
 ## Production audio (V0.3)
 
 Add `"mix": {"gainDb": -4, "pan": -0.3}` to a track; negative pan is left.

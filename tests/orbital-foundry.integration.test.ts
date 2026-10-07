@@ -1,0 +1,42 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { createHash } from 'node:crypto';
+import { runCommand } from '../src/pipeline.ts';
+import { createAudioProcessor, decodePcm } from '../src/render/index.ts';
+import { inspect } from '../scripts/inspect-orbital-foundry.ts';
+const env={...process.env,DAEMONV12_FLUIDSYNTH:'/intentionally-unused',DAEMONV12_SOUNDFONT:'/intentionally-unused'};
+const processor=await createAudioProcessor({env});
+test('real Orbital Foundry audition: loudness, full-duration activity, aligned stems, provenance and byte repeatability',{skip:processor.diagnostic?.message??false},async t=>{
+  const outDir=mkdtempSync(join(tmpdir(),'orbital-render-'));t.after(()=>rmSync(outDir,{recursive:true,force:true}));
+  const options={outDir,stems:true,format:'wav,mp3' as const,env};
+  const first=await runCommand('render','examples/orbital-foundry-audition.json',options);
+  assert.equal(first.exitCode,0,JSON.stringify(first.result.errors));assert.deepEqual(first.result.warnings,[]);
+  const artifacts=first.result.artifacts,manifest:any=first.result.manifest,analysis=manifest.analysis.master;
+  assert.equal(analysis.durationSeconds,30);assert.equal(analysis.clipping,false);
+  assert.ok(analysis.integratedLufs>=-18&&analysis.integratedLufs<=-16,JSON.stringify(analysis));
+  assert.ok(analysis.truePeakDbfs< -1);assert.equal(analysis.fullScaleSamples,0);
+  assert.equal(manifest.production.master.clippedSamples,0);
+  assert.ok(manifest.production.tracks.every((t:any)=>t.clippedSamples===0));
+  assert.equal(manifest.soundfont,null);assert.equal(manifest.midi.notes,0);
+  assert.equal(artifacts.stems!.length,12);assert.ok(readFileSync(artifacts.mp3!).length>10000);
+  const before=new Map<string,Buffer>();
+  for(const path of [artifacts.wav!,artifacts.manifest!,artifacts.analysis!,...artifacts.stems!.map(s=>s.wav)])before.set(path,readFileSync(path));
+  for(const stem of artifacts.stems!) {
+    const bytes=readFileSync(stem.wav),pcm=decodePcm(bytes).pcm!;
+    assert.equal(pcm.frames,1323000);assert.ok(pcm.samples.some(v=>Math.abs(v)>100));
+    assert.equal(manifest.stems.find((s:any)=>s.trackId===stem.trackId).wav.sha256,createHash('sha256').update(bytes).digest('hex'));
+    if(stem.trackId==='cinematic-impact')assert.ok(pcm.samples.slice(0,16*44100*2).every(v=>v===0));
+  }
+  for(const asset of manifest.samples.assets)assert.equal(asset.sha256,createHash('sha256').update(readFileSync(join('examples',asset.file))).digest('hex'));
+  const spectral=inspect(artifacts.wav!);
+  assert.ok(spectral.bandPowerPercent['30-120 Hz']!<50,'Sub-bass must not dominate total unweighted power');
+  assert.ok(spectral.bandPowerPercent['2000-6000 Hz']!>8,'Keep metallic presence');
+  assert.ok(spectral.perSecondRmsDbfs.slice(2,28).every(v=>v!==null&&v> -30),'Activity must extend through 28 s');
+  assert.ok(spectral.perSecondRmsDbfs[29]!<spectral.perSecondRmsDbfs[27]!-8,'Intentional ending fade');
+  assert.equal((await runCommand('render','examples/orbital-foundry-audition.json',options)).exitCode,0);
+  for(const [path,bytes] of before)assert.deepEqual(readFileSync(path),bytes,path);
+  t.diagnostic(JSON.stringify(analysis));
+});
