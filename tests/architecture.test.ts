@@ -9,6 +9,7 @@ test('architecture: deterministic core, renderer boundary, zero runtime dependen
   assert.equal(pkg.dependencies, undefined);
   for (const file of readdirSync('src', { recursive: true, encoding: 'utf8' }).filter(f => f.endsWith('.ts'))) {
     const text = readFileSync(`src/${file}`, 'utf8');
+    assert.doesNotMatch(text, /from\s+['"][^'"]*(?:@modelcontextprotocol|\/mcp\/|\bzod\b)/);
     assert.doesNotMatch(text, /Math\.random|\bDate\b|performance\.now|process\.hrtime/);
     if (!file.startsWith('render/')) assert.doesNotMatch(text, /from\s+['"][^'"]*render\/(?!index\.ts)[^'"]+['"]/);
     if (/^(timing|midi)\/|^project\/(pitch|key|gm-programs|validate|sample-schema)/.test(file)) assert.doesNotMatch(text, /node:|process\.env/);

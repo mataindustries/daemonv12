@@ -28,7 +28,13 @@ function compile(loaded: LoadResult, kits: Kits = new Map()): Compilation {
 }
 export function compileProjectText(text: string, kits: Kits = new Map()): Compilation { return compile(parseProjectText(text), kits); }
 export function compileProjectFile(path: string): Compilation {
-  const loaded=loadProject(path);
+  return compileWithAssets(loadProject(path), path);
+}
+// Validate proposed authoring bytes against the destination's assets without writing a file.
+export function compileProjectTextWithAssets(text: string, path: string): Compilation {
+  return compileWithAssets(parseProjectText(text), path);
+}
+function compileWithAssets(loaded: LoadResult, path: string): Compilation {
   if (loaded.diagnostics.length || (loaded.value as {formatVersion?:unknown}|null)?.formatVersion !== 1) return compile(loaded);
   const kitData=loadKits(loaded.value,path);
   if (kitData.diagnostics.length) return {project:null,timeline:null,...capDiagnostics(kitData.diagnostics)};

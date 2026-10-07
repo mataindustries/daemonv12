@@ -1,6 +1,7 @@
 {
   "name": "daemonv12",
-  "version": "0.3.0",
+  "version": "0.4.0",
+  "workspaces": ["mcp"],
   "description": "Headless music engine for AI agents. 12 instruments for agents.",
   "private": true,
   "type": "module",
@@ -17,7 +18,8 @@
     "demo": "node bin/daemonv12.js render examples/demo.json",
     "demo:production": "node bin/daemonv12.js render examples/production-demo.json --stems --format wav,mp3",
     "demo:samples": "node bin/daemonv12.js render examples/sample-demo.json --stems",
-    "fixtures:samples": "node scripts/generate-sample-demo.ts"
+    "fixtures:samples": "node scripts/generate-sample-demo.ts",
+    "demo:mcp": "node mcp/demo.ts"
   },
   "devDependencies": {
     "@tonejs/midi": "2.0.28",

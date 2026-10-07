@@ -1,6 +1,6 @@
 # DaemonV12
 
-**12 instruments for agents.** DaemonV12 V0.3 is a headless music engine: author a JSON project with musical positions, track-local patterns, General MIDI instruments and sampled drum kits, then validate it, generate deterministic MIDI, and render WAV audio with provenance.
+**12 instruments for agents.** DaemonV12 V0.4 is a headless music engine: create and revise music through MCP or project JSON, then validate it, generate deterministic MIDI, and render WAV audio with provenance. It supports musical positions, track-local patterns, General MIDI instruments and sampled drum kits.
 
 ## Requirements
 
@@ -11,7 +11,25 @@ sudo apt-get install -y fluidsynth fluid-soundfont-gm ffmpeg
 npm ci
 ```
 
-TypeScript runs directly in Node; there is no build step or runtime npm dependency.
+TypeScript runs directly in Node; there is no build step. The engine has no runtime
+npm dependencies; the separate MCP workspace depends on the official MCP SDK and Zod.
+
+## MCP for AI agents (V0.4)
+
+```sh
+node mcp/bin/daemonv12-mcp.js --root /absolute/path/to/music-workspace
+npm run demo:mcp
+```
+
+Configure an MCP client to launch that stdio command with an existing workspace
+root. Nine tools cover project creation, reading, validation, transactional editing,
+instrument/kit discovery, rendering with optional stems/MP3, audio analysis and
+provenance inspection. Paths stay within the chosen workspace; creation never
+overwrites, patches require the last-read revision, and renders use fresh directories.
+
+The demo starts with no project JSON and drives real creation → edits → WAV/MP3 +
+stems → analysis through stdio. It saves a tool transcript and verifies repeat
+render hashes. See [MCP setup, tool contracts and demo](docs/V0_4_MCP.md).
 
 ## Quickstart
 
@@ -109,6 +127,7 @@ Set `DAEMONV12_FLUIDSYNTH` to select a renderer executable.
 
 ## Documentation
 
+- [V0.4 MCP interface](docs/V0_4_MCP.md): stdio configuration, tools, edits, path safety and agent demo.
 - [V0 specification](docs/V0_SPEC.md): exact format, timing, diagnostics, and output contracts.
 - [V0.3 audio production](docs/V0_3_AUDIO.md): gain/pan, effects, WAV/MP3, analysis and provenance.
 - [V0.2 samples](docs/V0_2_SAMPLES.md): one-shots, reusable kits, PCM mixing, asset security, provenance and limits.

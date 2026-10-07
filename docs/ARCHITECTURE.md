@@ -1,11 +1,22 @@
 # DaemonV12 Architecture
 
 > **DaemonV12: 12 instruments for agents.** A headless, deterministic music engine. AI agents drive it
-> through plain project files and a CLI (MCP comes later). It needs no DAW, GUI, browser or MIDI hardware.
+> through project files, a CLI and stdio MCP tools. It needs no DAW, GUI, browser or MIDI hardware.
 
-Status: V0.3 implemented, engine `0.3.0`, project `formatVersion: 1`.
+Status: V0.4 implemented, engine `0.4.0`, project `formatVersion: 1`.
 Normative details: [V0_SPEC.md](V0_SPEC.md). Phase plan: [ROADMAP.md](ROADMAP.md).
 Implementation steps: [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
+
+V0.4 adds the isolated `mcp/` npm workspace, importing the core in one direction
+only. Nine stdio tools expose project creation/read/validation/transactional edits,
+GM/sample/kit discovery, rendering, analysis and provenance. The SDK and Zod stay
+outside `src/`; the root engine still has no runtime npm dependencies. A narrow
+`compileProjectTextWithAssets` extraction allows candidate edits to reuse the exact
+file-compilation checks without first writing the proposed project. Render and
+analysis tools call `runCommand`, as the CLI does. Engine audio paths are unchanged.
+MCP adds explicit workspace containment, revision-checked atomic project writes,
+and a new output directory for every render. See [V0_4_MCP.md](V0_4_MCP.md) for
+the complete contract. Historical phase descriptions below remain the baseline.
 
 V0.1 adds optional `render --stems` at the existing per-track render seam. The pipeline
 encodes each track with the same conductor, event ordering, original channel and EOT,
