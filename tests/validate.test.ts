@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { validateProject } from '../src/project/validate.ts';
 import { loadProject, parseProjectText } from '../src/project/load.ts';
+import { compileProjectText } from '../src/pipeline.ts';
 import type { DiagnosticCode } from '../src/diagnostics.ts';
 // These fixtures deliberately contain values outside the authored schema.
 type Mutable = Record<string, any>;
@@ -52,8 +53,8 @@ const cases:Case[]=[
  [43,(p,n)=>{p.timeSignature='4/3';n[0]!.start='1:9';},'INVALID_TIME_SIGNATURE','timeSignature'],
  [44,(p,n)=>{n[0]!.pitch='H#4';p.bpm=500;n[0]!.velocty=1;},'OUT_OF_RANGE','bpm'],
 ];
-function compile(text:string) {const loaded=parseProjectText(text);return loaded.diagnostics.length?loaded:validateProject(loaded.value);}
-for(const [index,mutate,code,path,hint] of cases) test(`handoff validation case ${index}`,{todo:index===37||index===38?'enabled with resolver in M5':false},()=>{
+const compile = compileProjectText;
+for(const [index,mutate,code,path,hint] of cases) test(`handoff validation case ${index}`,()=>{
  const p=minimal();const changed=mutate(p,p.tracks[0].patterns[0].notes);
  const ds=compile(JSON.stringify(index===41?changed:p)).diagnostics;
  const errors=ds.filter(d=>d.severity==='error');
