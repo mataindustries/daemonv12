@@ -19,7 +19,7 @@ export function durationSyntax(value: unknown, path: string): Parsed<RegExpExecA
   if (m) return { value: m };
   const hints: Record<string, string> = { '4n': '1/4', '8t': '1/12', '4n.': '3/8', '1/4.': '3/8', '1': '1/1' };
   return { diagnostic: diagnostic(typeof value === 'string' ? 'INVALID_DURATION' : 'WRONG_TYPE', path, value,
-    'positive whole-note fraction N/D', hints[String(value)] ? `Use "${hints[String(value)]}".` : durationHint) };
+    'positive whole-note fraction N/D', Object.hasOwn(hints,String(value)) ? `Use "${hints[String(value)]}".` : durationHint) };
 }
 export function positionSyntax(value: unknown, path: string): Parsed<RegExpExecArray> {
   const m = typeof value === 'string' && positionRegex.exec(value);

@@ -97,3 +97,9 @@ test('numeric and length boundaries; duplicate local ids',()=>{
  for(const [field,v] of [['seed',4294967295],['bpm',20],['bpm',300],['title','x'.repeat(200)],['description','x'.repeat(2000)]] as const){const p=minimal();p[field]=v;assert.deepEqual(validateProject(p).diagnostics,[]);}
  const p=minimal();p.tracks[0].patterns.push(structuredClone(p.tracks[0].patterns[0]));const d=validateProject(p).diagnostics.find(d=>d.code==='DUPLICATE_ID');assert.equal(d?.path,'tracks[0].patterns[1].id');assert.match(d!.hint!,/patterns\[0\].id/);
 });
+test('invalid timing skips only dependent checks and duration aliases ignore object prototypes',()=>{
+ const p=minimal();p.timeSignature='4/3';p.tracks[0].patterns[0].notes[0].duration='1/7';p.tracks[0].clips[0].bar=2;
+ assert.deepEqual(validateProject(p).diagnostics.map(d=>d.code),['INVALID_TIME_SIGNATURE']);
+ p.timeSignature='4/4';p.tracks[0].clips[0].bar=1;p.tracks[0].patterns[0].notes[0].duration='constructor';
+ const d=validateProject(p).diagnostics[0]!;assert.equal(d.code,'INVALID_DURATION');assert.match(d.hint!,/whole-note fractions/);assert.doesNotMatch(d.hint!,/function/);
+});

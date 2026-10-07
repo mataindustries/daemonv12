@@ -23,7 +23,25 @@ export interface Diagnostic {
 export type Parsed<T> = { value: T; diagnostic?: never } | { value?: never; diagnostic: Diagnostic };
 export function diagnostic(code: DiagnosticCode, path: string, received: unknown,
   expected: string, hint?: string): Diagnostic {
-  return { code, severity: 'error', path, message: `${code.toLowerCase().replaceAll('_', ' ')}: ${JSON.stringify(received) ?? 'missing value'}.`,
+  const value = JSON.stringify(received) ?? 'missing value';
+  const messages: Partial<Record<DiagnosticCode,string>> = {
+    MISSING_FIELD: `Required field ${path} is missing.`,
+    UNKNOWN_FIELD: `Unknown field ${path}.`,
+    WRONG_TYPE: `Expected ${expected}; received ${value}.`,
+    OUT_OF_RANGE: `Value ${value} is outside the allowed range: ${expected}.`,
+    INVALID_PITCH: `Invalid pitch ${value}.`,
+    INVALID_POSITION: `Invalid musical position ${value}.`,
+    POSITION_OUT_OF_RANGE: `Position ${value} is outside the pattern or is not in canonical form.`,
+    INVALID_DURATION: `Invalid duration ${value}.`,
+    OFF_GRID: `Value ${value} cannot be represented as whole-number ticks at 960 PPQ.`,
+    NOTE_EXCEEDS_PATTERN: `Duration ${value} takes the note past the pattern boundary.`,
+    UNKNOWN_PATTERN: `Pattern ${value} is not defined in this track.`,
+    CLIP_EXCEEDS_PROJECT: `The clip at bar ${value} extends beyond the project.`,
+    PATTERN_UNUSED: `Pattern ${value} is not referenced by a clip.`,
+    TRACK_EMPTY: 'This track has no clips to play.',
+  };
+  const label=code.toLowerCase().replaceAll('_',' ');
+  return { code, severity: 'error', path, message: messages[code] ?? `${label[0]!.toUpperCase()}${label.slice(1)}: ${value}.`,
     expected, ...(received === undefined ? {} : { received }), ...(hint ? { hint } : {}) };
 }
 export function exitCodeFor(ds: readonly Diagnostic[]): number {

@@ -4,8 +4,9 @@ export const keyTonics = {
   major: ['Cb','Gb','Db','Ab','Eb','Bb','F','C','G','D','A','E','B','F#','C#'],
   minor: ['Ab','Eb','Bb','F','C','G','D','A','E','B','F#','C#','G#','D#','A#'],
 };
+const pitchClasses: Record<string,number> = { C:0,D:2,E:4,F:5,G:7,A:9,B:11 };
 function pitchClass(tonic: string): number {
-  return (({ C:0,D:2,E:4,F:5,G:7,A:9,B:11 }[tonic[0] as 'C'] ?? 0) + (tonic[1] === '#' ? 1 : tonic[1] === 'b' ? -1 : 0) + 12) % 12;
+  return ((pitchClasses[tonic[0]!] ?? 0) + (tonic[1] === '#' ? 1 : tonic[1] === 'b' ? -1 : 0) + 12) % 12;
 }
 export function parseKey(value: unknown, path = 'key'): Parsed<Key> {
   const m = typeof value === 'string' && /^([A-G])(#|b)? (major|minor)$/.exec(value);

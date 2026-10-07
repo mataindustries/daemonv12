@@ -76,3 +76,12 @@ test('CLI diagnostic cap and warning-only success',t=>{
  assert.match(run(['validate',file]).stderr,/… and 5 more/);
  p.tracks[0].patterns[0].notes=[];p.tracks[0].clips=[];writeFileSync(file,JSON.stringify(p));const w=run(['validate',file,'--json']);assert.equal(w.status,0);assert.equal(JSON.parse(w.stdout).warnings.length,2);
 });
+test('human diagnostics preserve traversal order across warnings and errors',t=>{
+ const dir=temp(t),file=join(dir,'mixed.json'),p=JSON.parse(readFileSync('tests/fixtures/valid/minimal.json','utf8'));
+ p.tracks[0].clips=[];p.tracks[0].patterns[0].notes[0].pitch='H4';writeFileSync(file,JSON.stringify(p));
+ const r=run(['validate',file]);assert.equal(r.status,1);assert.ok(r.stderr.indexOf('warning[TRACK_EMPTY]')<r.stderr.indexOf('error[INVALID_PITCH]'));
+});
+test('render preflight failure creates no output directory',t=>{
+ const dir=temp(t),out=join(dir,'uncreated');const r=run(['render','examples/demo.json','--out-dir',out,'--soundfont','/missing','--json'],fakeEnv());
+ assert.equal(r.status,3);assert.deepEqual(readdirSync(dir),[]);
+});

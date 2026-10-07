@@ -44,3 +44,12 @@ test('probe missing, non-executable, failure, timeout and unknown version',async
  for(const mode of ['probe-fail','probe-hang'])assert.equal((await createDefaultRenderer({soundfont,env:env(mode),probeTimeoutMs:100})).diagnostic?.code,'RENDERER_FAILED');
  const r=await createDefaultRenderer({soundfont,env:env('unknown-version')});assert.ok(r.value);const out=await r.value.render({midiPath:'input.mid',wavPath:join(dir,'unknown.wav')});assert.ok(out.ok);assert.equal(out.renderer.version,'unknown');
 });
+test('pipeline timeouts clean every artifact; unexpected exceptions map to internal error',async t=>{
+ const {runCommand}=await import('../src/pipeline.ts');const dir=temp(t);
+ const timeout=await runCommand('render','examples/demo.json',{outDir:dir,env:{...env('hang'),DAEMONV12_SOUNDFONT:resolve('tests/fixtures/fake.sf2')},timeoutMs:150});
+ assert.equal(timeout.exitCode,3);assert.match(timeout.result.errors[0]!.message,/timed out/);assert.deepEqual(readdirSync(dir),[]);
+ for(const f of ['demo.mid','demo.wav','demo.render.json'])writeFileSync(join(dir,f),'stale');
+ const brokenEnv=new Proxy({}, {get(){throw new Error('unexpected test failure');}});
+ const internal=await runCommand('render','examples/demo.json',{outDir:dir,env:brokenEnv});
+ assert.equal(internal.exitCode,4);assert.equal(internal.result.errors[0]?.code,'INTERNAL_ERROR');assert.equal(internal.result.summary?.notes,89);assert.match(internal.stack!,/unexpected test failure/);assert.deepEqual(readdirSync(dir),[]);
+});
