@@ -1,0 +1,142 @@
+{
+  "formatVersion": 1,
+  "title": "DaemonV12 Demo",
+  "description": "8-bar V0 demo in D minor: Dm Bb F C | Dm Bb Gm-A Dm. Phrase A returns at bar 5; bars 7-8 are an ending variation.",
+  "bpm": 96,
+  "timeSignature": "4/4",
+  "key": "D minor",
+  "bars": 8,
+  "seed": 1,
+  "tracks": [
+    {
+      "id": "bass",
+      "description": "Finger bass: root, pickup, fifth, root.",
+      "instrument": { "type": "gm", "program": "electric_bass_finger" },
+      "clips": [
+        { "bar": 1, "pattern": "phrase-a" },
+        { "bar": 3, "pattern": "phrase-b" },
+        { "bar": 5, "pattern": "phrase-a" },
+        { "bar": 7, "pattern": "ending" }
+      ],
+      "patterns": [
+        {
+          "id": "phrase-a",
+          "description": "Dm | Bb",
+          "bars": 2,
+          "notes": [
+            { "start": "1:1", "pitch": "D2", "duration": "3/8", "velocity": 0.9 },
+            { "start": "1:2+1/8", "pitch": "D2", "duration": "1/8", "velocity": 0.7 },
+            { "start": "1:3", "pitch": "A2", "duration": "1/4" },
+            { "start": "1:4", "pitch": "D2", "duration": "1/4" },
+            { "start": "2:1", "pitch": "Bb1", "duration": "3/8", "velocity": 0.9 },
+            { "start": "2:2+1/8", "pitch": "Bb1", "duration": "1/8", "velocity": 0.7 },
+            { "start": "2:3", "pitch": "F2", "duration": "1/4" },
+            { "start": "2:4", "pitch": "Bb1", "duration": "1/4" }
+          ]
+        },
+        {
+          "id": "phrase-b",
+          "description": "F | C",
+          "bars": 2,
+          "notes": [
+            { "start": "1:1", "pitch": "F2", "duration": "3/8", "velocity": 0.9 },
+            { "start": "1:2+1/8", "pitch": "F2", "duration": "1/8", "velocity": 0.7 },
+            { "start": "1:3", "pitch": "C3", "duration": "1/4" },
+            { "start": "1:4", "pitch": "F2", "duration": "1/4" },
+            { "start": "2:1", "pitch": "C2", "duration": "3/8", "velocity": 0.9 },
+            { "start": "2:2+1/8", "pitch": "C2", "duration": "1/8", "velocity": 0.7 },
+            { "start": "2:3", "pitch": "G2", "duration": "1/4" },
+            { "start": "2:4", "pitch": "C2", "duration": "1/4" }
+          ]
+        },
+        {
+          "id": "ending",
+          "description": "Gm A | Dm held",
+          "bars": 2,
+          "notes": [
+            { "start": "1:1", "pitch": "G2", "duration": "3/8", "velocity": 0.9 },
+            { "start": "1:2+1/8", "pitch": "G2", "duration": "1/8", "velocity": 0.7 },
+            { "start": "1:3", "pitch": "A2", "duration": "1/4", "velocity": 0.9 },
+            { "start": "1:4", "pitch": "A1", "duration": "1/4" },
+            { "start": "2:1", "pitch": "D2", "duration": "1/1", "velocity": 0.9 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keys",
+      "description": "Piano eighth-note arpeggios, then a held final chord.",
+      "instrument": { "type": "gm", "program": "acoustic_grand_piano" },
+      "clips": [
+        { "bar": 1, "pattern": "phrase-a" },
+        { "bar": 3, "pattern": "phrase-b" },
+        { "bar": 5, "pattern": "phrase-a" },
+        { "bar": 7, "pattern": "ending" }
+      ],
+      "patterns": [
+        {
+          "id": "phrase-a",
+          "description": "Dm | Bb arpeggios",
+          "bars": 2,
+          "notes": [
+            { "start": "1:1", "pitch": "D4", "duration": "1/8", "velocity": 0.9 },
+            { "start": "1:1+1/8", "pitch": "F4", "duration": "1/8" },
+            { "start": "1:2", "pitch": "A4", "duration": "1/8" },
+            { "start": "1:2+1/8", "pitch": "D5", "duration": "1/8" },
+            { "start": "1:3", "pitch": "A4", "duration": "1/8" },
+            { "start": "1:3+1/8", "pitch": "F4", "duration": "1/8" },
+            { "start": "1:4", "pitch": "D4", "duration": "1/8" },
+            { "start": "1:4+1/8", "pitch": "F4", "duration": "1/8" },
+            { "start": "2:1", "pitch": "D4", "duration": "1/8", "velocity": 0.9 },
+            { "start": "2:1+1/8", "pitch": "F4", "duration": "1/8" },
+            { "start": "2:2", "pitch": "Bb4", "duration": "1/8" },
+            { "start": "2:2+1/8", "pitch": "D5", "duration": "1/8" },
+            { "start": "2:3", "pitch": "Bb4", "duration": "1/8" },
+            { "start": "2:3+1/8", "pitch": "F4", "duration": "1/8" },
+            { "start": "2:4", "pitch": "D4", "duration": "1/8" },
+            { "start": "2:4+1/8", "pitch": "F4", "duration": "1/8" }
+          ]
+        },
+        {
+          "id": "phrase-b",
+          "description": "F | C arpeggios",
+          "bars": 2,
+          "notes": [
+            { "start": "1:1", "pitch": "C4", "duration": "1/8", "velocity": 0.9 },
+            { "start": "1:1+1/8", "pitch": "F4", "duration": "1/8" },
+            { "start": "1:2", "pitch": "A4", "duration": "1/8" },
+            { "start": "1:2+1/8", "pitch": "C5", "duration": "1/8" },
+            { "start": "1:3", "pitch": "A4", "duration": "1/8" },
+            { "start": "1:3+1/8", "pitch": "F4", "duration": "1/8" },
+            { "start": "1:4", "pitch": "C4", "duration": "1/8" },
+            { "start": "1:4+1/8", "pitch": "F4", "duration": "1/8" },
+            { "start": "2:1", "pitch": "C4", "duration": "1/8", "velocity": 0.9 },
+            { "start": "2:1+1/8", "pitch": "E4", "duration": "1/8" },
+            { "start": "2:2", "pitch": "G4", "duration": "1/8" },
+            { "start": "2:2+1/8", "pitch": "C5", "duration": "1/8" },
+            { "start": "2:3", "pitch": "G4", "duration": "1/8" },
+            { "start": "2:3+1/8", "pitch": "E4", "duration": "1/8" },
+            { "start": "2:4", "pitch": "C4", "duration": "1/8" },
+            { "start": "2:4+1/8", "pitch": "E4", "duration": "1/8" }
+          ]
+        },
+        {
+          "id": "ending",
+          "description": "Gm A rising | Dm chord",
+          "bars": 2,
+          "notes": [
+            { "start": "1:1", "pitch": "D4", "duration": "1/8", "velocity": 0.9 },
+            { "start": "1:1+1/8", "pitch": "G4", "duration": "1/8" },
+            { "start": "1:2", "pitch": "Bb4", "duration": "1/8" },
+            { "start": "1:2+1/8", "pitch": "D5", "duration": "1/8" },
+            { "start": "1:3", "pitch": "C#4", "duration": "1/8" },
+            { "start": "1:3+1/8", "pitch": "E4", "duration": "1/8", "velocity": 0.85 },
+            { "start": "1:4", "pitch": "A4", "duration": "1/8", "velocity": 0.9 },
+            { "start": "1:4+1/8", "pitch": "C#5", "duration": "1/8", "velocity": 0.95 },
+            { "start": "2:1", "pitch": ["D4", "F4", "A4", "D5"], "duration": "1/1", "velocity": 0.9 }
+          ]
+        }
+      ]
+    }
+  ]
+}
