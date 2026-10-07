@@ -8,7 +8,7 @@ fields or new pipeline stages (see ARCHITECTURE §11).
 | Phase | Capability unlocked | Explicitly deferred |
 |---|---|---|
 | **V0** — JSON → MIDI → WAV | Strict, agent-friendly project format: semantic time, track-local patterns + clips, GM instruments by name. Staged validation with fix hints. Canonical byte-exact MIDI. Headless FluidSynth render to WAV with a provenance manifest. CLI `validate` / `midi` / `render` with `--json` and exit-code classes. 1–15 tracks mixed into one WAV. 8-bar demo. | Everything below, plus tempo/meter changes, CC/automation, drums, and randomness. |
-| **V0.1** — Stems & mixdown | `render --stems`: one sample-aligned, equal-length WAV per track; deterministic mixdown of the stems. Optional per-track `mix` (`gain` dB, `pan`). `inspect` command (flattened Timeline as JSON, so agents can see what plays when). `fmt` command (canonical layout: one note per line, canonical key order, so diffs stay one line per musical change). Exact-length output (musical length + fixed tail). | Samples, effects, encoding, analysis. |
+| **V0.1** — Multitrack stems | `render --stems`: independent per-track MIDI → FluidSynth WAVs, unchanged V0 master, deterministic stem provenance and all-or-nothing cleanup on command completion. Existing formatVersion 1; no authoring changes. | Mixdown from stems, gain/pan, fixed tails/equal-length output, `inspect`, `fmt`, samples, effects, encoding, analysis. |
 | **V0.2** — Samples & drum kits | `instrument.type: "drumkit"` with named hits (`"pitch": "kick"`) and `"sampler"` (one-shot and pitch-mapped samples). Sample files are referenced by path, hashed in the manifest and never embedded. A deterministic JS sample renderer produces stems next to FluidSynth stems. | Time-stretching, synthesis, effects, MP3. |
 | **V0.3** — Mixer, effects, FFmpeg, analysis | Declarative per-track and master `effects` (EQ, compressor, reverb, delay) compiled to an FFmpeg filtergraph. Buses. WAV/FLAC/MP3 export. `analyze` command: integrated LUFS, true peak, RMS per bar, spectral balance, waveform and spectrogram PNG, all as JSON metrics an agent can reason about. Loudness-normalized masters. | MCP, automation curves. |
 | **V0.4** — MCP server | stdio MCP server wrapping the same pipeline: `validate_project`, `render_project`, `inspect_timeline`, `analyze_audio`, `list_instruments`, `apply_edit` (structured, validated edits instead of whole-file rewrites), `get_schema` (JSON Schema exported from the format). | Remote/cloud rendering, auth, multi-user. |
@@ -20,7 +20,7 @@ fields or new pipeline stages (see ARCHITECTURE §11).
   15 tracks** in a single mix. The schema has `tracks[]` anyway, SMF format 1 is natively multi-track,
   and channel assignment is a few lines of code. A one-track limit would have been an artificial rule
   to remove later. V0.1 keeps everything stem-specific.
-- V0.1 introduces mixing by summing stems in JS, not FFmpeg, because V0.2's sample stems must mix with
-  FluidSynth stems *before* FFmpeg arrives in V0.3. FFmpeg then takes over effects, encoding and analysis.
+- V0.1 is scoped to independent stems. The master still uses the original full-project FluidSynth
+  render. Mixing and exact-length output are deferred; WAVs retain natural renderer tails.
 - Tempo and meter changes wait until V1 because the 8–32-bar cues needed before scoring do not need them.
   The tick-based Timeline already supports them, so adding them is additive.
