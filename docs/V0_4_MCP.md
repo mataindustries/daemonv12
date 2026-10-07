@@ -39,6 +39,10 @@ Use an absolute Node executable path if the client's PATH cannot locate Node.
 Client configuration locations differ; this is a launch configuration, not a
 machine-specific checked-in configuration. The workspace can be this repository
 to access `examples/assets`, or a separate music folder with its own assets.
+Claude Code users get this server automatically from the checked-in `.mcp.json`
+(project scope, approved on first launch). It resolves the launcher and root from
+`${CLAUDE_PROJECT_DIR:-.}`, so it works in any checkout location and uses this
+repository as the workspace.
 Stdout contains only MCP JSON-RPC. Startup failures go to stderr and exit 2.
 
 The server inherits `DAEMONV12_FLUIDSYNTH`, `DAEMONV12_SOUNDFONT` and

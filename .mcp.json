@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "daemonv12": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "${CLAUDE_PROJECT_DIR:-.}/mcp/bin/daemonv12-mcp.js",
+        "--root",
+        "${CLAUDE_PROJECT_DIR:-.}"
+      ],
+      "env": {}
+    }
+  }
+}
