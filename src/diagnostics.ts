@@ -6,7 +6,8 @@ export const diagnosticCodes = [
   'POSITION_OUT_OF_RANGE', 'INVALID_DURATION', 'OFF_GRID', 'NOTE_EXCEEDS_PATTERN',
   'UNKNOWN_PATTERN', 'CLIP_EXCEEDS_PROJECT', 'NOTE_OVERLAP', 'PATTERN_UNUSED', 'TRACK_EMPTY',
   'SOUNDFONT_NOT_FOUND', 'SOUNDFONT_INVALID', 'RENDERER_NOT_FOUND', 'RENDERER_FAILED',
-  'OUTPUT_WRITE_FAILED', 'INTERNAL_ERROR',
+  'OUTPUT_WRITE_FAILED', 'INTERNAL_ERROR', 'INVALID_ASSET_PATH', 'ASSET_NOT_FOUND', 'ASSET_READ_FAILED',
+  'INVALID_DRUMKIT', 'UNKNOWN_DRUM_HIT', 'UNSUPPORTED_WAV', 'SAMPLES_OMITTED',
 ] as const;
 export type DiagnosticCode = typeof diagnosticCodes[number];
 export interface Diagnostic {
@@ -39,6 +40,9 @@ export function diagnostic(code: DiagnosticCode, path: string, received: unknown
     CLIP_EXCEEDS_PROJECT: `The clip at bar ${value} extends beyond the project.`,
     PATTERN_UNUSED: `Pattern ${value} is not referenced by a clip.`,
     TRACK_EMPTY: 'This track has no clips to play.',
+    SAMPLES_OMITTED: 'MIDI contains GM tracks only. Use render to hear sample instruments.',
+    UNSUPPORTED_WAV: `Unsupported sample WAV ${value}: ${expected}`,
+    UNKNOWN_DRUM_HIT: `No drum-kit mapping for ${value}.`,
   };
   const label=code.toLowerCase().replaceAll('_',' ');
   return { code, severity: 'error', path, message: messages[code] ?? `${label[0]!.toUpperCase()}${label.slice(1)}: ${value}.`,

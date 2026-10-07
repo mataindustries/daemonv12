@@ -4,6 +4,7 @@ import { parsePitch } from './pitch.ts';
 import { parseKey, type Key } from './key.ts';
 import { parseProgram } from './gm-programs.ts';
 import type { Project } from './types.ts';
+import { assetPath, type Kits } from './sample-schema.ts';
 
 type ObjectValue = Record<string, unknown>;
 type Kind = 'project' | 'track' | 'instrument' | 'clip' | 'pattern' | 'note';
@@ -40,7 +41,7 @@ function id(v: unknown,p: string): Parsed<string> {
   return {value:v};
 }
 function instrumentType(v: unknown,p: string): Parsed<string> {
-  return v === 'gm' ? {value:v} : {diagnostic:diagnostic(typeof v === 'string'?'UNSUPPORTED_INSTRUMENT_TYPE':'WRONG_TYPE',p,v,'"gm"','V0 supports only "gm".')};
+  return v === 'gm' || v === 'sampler' || v === 'drumkit' ? {value:v} : {diagnostic:diagnostic(typeof v === 'string'?'UNSUPPORTED_INSTRUMENT_TYPE':'WRONG_TYPE',p,v,'"gm", "sampler" or "drumkit"')};
 }
 function velocity(v: unknown,p: string): Parsed<unknown> {
   const result=number(Number.MIN_VALUE,1)(v,p);
@@ -49,7 +50,7 @@ function velocity(v: unknown,p: string): Parsed<unknown> {
 }
 function isObject(v: unknown): v is ObjectValue { return v !== null && typeof v === 'object' && !Array.isArray(v); }
 
-export function validateProject(value: unknown): { project: Project | null; diagnostics: Diagnostic[] } {
+export function validateProject(value: unknown, kits: Kits = new Map()): { project: Project | null; diagnostics: Diagnostic[] } {
   const diagnostics: Diagnostic[]=[];
   const parsed=new Map<string,unknown>();
   const order=new Map<string,number>();
@@ -62,7 +63,23 @@ export function validateProject(value: unknown): { project: Project | null; diag
     if(!order.has(path))order.set(path,order.size);
     if (!isObject(v)) { add(diagnostic('WRONG_TYPE',path,v,'object')); return; }
     parsed.set(path,v); objects.push({kind,value:v,path});
-    for (const [name,field] of Object.entries(fields[kind])) {
+    const trackPath = /^(tracks\[\d+\])/.exec(path)?.[1];
+    const instrument = get<ObjectValue>(`${trackPath}.instrument`);
+    const type = kind === 'instrument' ? v.type : instrument?.type;
+    let schema = fields[kind];
+    if (kind === 'instrument' && (type === 'sampler' || type === 'drumkit')) schema = {
+      type: fields.instrument.type!, [type === 'sampler' ? 'sample' : 'kit']: {rule:assetPath,example:type === 'sampler'?'assets/impact.wav':'assets/kit/kit.json'},
+    };
+    if (kind === 'note' && (type === 'sampler' || type === 'drumkit')) schema = {
+      start:fields.note.start!, ...(type === 'drumkit' ? {pitch:{rule:(v:unknown,p:string):Parsed<unknown>=>{
+        const entries=kits.get(instrument?.kit as string);
+        const named=entries?.find(e=>e.name===v);
+        const pitch=named?{value:named.pitch}:parsePitch(v,p);
+        if (!entries) return {diagnostic:diagnostic('INVALID_DRUMKIT',p,instrument?.kit,'loaded valid drum kit')};
+        return !pitch.diagnostic && entries.some(e=>e.pitch===pitch.value) ? pitch : {diagnostic:diagnostic('UNKNOWN_DRUM_HIT',p,v,`kit name or pitch: ${entries.map(e=>`${e.name} (${e.pitch})`).join(', ')}`)};
+      },example:'kick'}} : {}), velocity:fields.note.velocity!,
+    };
+    for (const [name,field] of Object.entries(schema)) {
       const p=formatPath(path,name); order.set(p,order.size);
       if (!Object.hasOwn(v,name)) { if (!field.optional) add(diagnostic('MISSING_FIELD',p,undefined,`required ${name}`,`Add ${JSON.stringify(name)}: ${JSON.stringify(field.example)}.`)); continue; }
       const item=v[name];
@@ -73,7 +90,7 @@ export function validateProject(value: unknown): { project: Project | null; diag
         if (name === 'tracks' && (item.length<1 || item.length>15)) add(diagnostic('OUT_OF_RANGE',p,item,'1–15 tracks'));
         item.forEach((child,i)=>visit(child,field.array!,formatPath(p,i))); continue;
       }
-      if (kind==='note' && name==='pitch' && Array.isArray(item)) {
+      if (kind==='note' && name==='pitch' && Array.isArray(item) && type !== 'drumkit') {
         if (!item.length) {add(diagnostic('OUT_OF_RANGE',p,item,'non-empty pitch array'));continue;}
         const pitches:number[]=[];
         item.forEach((pitch,i)=>{const q=formatPath(p,i);order.set(q,order.size);const r=parsePitch(pitch,q);if(r.diagnostic)add(r.diagnostic);else pitches.push(r.value);});
@@ -82,14 +99,14 @@ export function validateProject(value: unknown): { project: Project | null; diag
       const r=field.rule!(item,p);
       if(r.diagnostic)add(r.diagnostic);else parsed.set(p,kind==='note'&&name==='pitch'?[r.value]:r.value);
     }
-    for(const name of Object.keys(v)) if(!Object.hasOwn(fields[kind],name)) {
+    for(const name of Object.keys(v)) if(!Object.hasOwn(schema,name)) {
       const p=formatPath(path,name);order.set(p,order.size);
       const alias=Object.hasOwn(aliases[kind],name)?aliases[kind][name]:undefined;
       const candidate=alias ?? didYouMean(name,Object.keys(fields[kind]),2);
       let hint=candidate && (!alias || !Object.hasOwn(v,candidate))?`Use ${candidate}.`:undefined;
       if(hint && kind==='track' && candidate==='instrument')hint='Use instrument: {"type": "gm", "program": "acoustic_grand_piano"}.';
       if(hint && kind==='track' && name==='notes')hint='Notes live inside patterns; place patterns with clips.';
-      add(diagnostic('UNKNOWN_FIELD',p,v[name],`allowed fields: ${Object.keys(fields[kind]).join(', ')}`,hint));
+      add(diagnostic('UNKNOWN_FIELD',p,v[name],`allowed fields: ${Object.keys(schema).join(', ')}`,hint));
     }
   }
   visit(value,'project','');
@@ -133,9 +150,9 @@ export function validateProject(value: unknown): { project: Project | null; diag
   const project:Project={formatVersion:1,title:read('title'),description:get<string>('description')??null,bpm:read('bpm'),timeSignature:meter!,key:get<Key>('key')??null,bars:projectBars!,seed:get<number>('seed')??0,
     tracks:read<unknown[]>('tracks').map((_,i)=>{
       const p=`tracks[${i}]`,raw=read<ObjectValue>(`${p}.instrument`);
-      return {id:read<string>(`${p}.id`),description:get<string>(`${p}.description`)??null,instrument:{type:'gm',program:read<number>(`${p}.instrument.program`),programName:raw.program as string},
+      return {id:read<string>(`${p}.id`),description:get<string>(`${p}.description`)??null,instrument:raw.type === 'sampler' ? {type:'sampler',sample:raw.sample as string} : raw.type === 'drumkit' ? {type:'drumkit',kit:raw.kit as string} : {type:'gm',program:read<number>(`${p}.instrument.program`),programName:raw.program as string},
         clips:read<unknown[]>(`${p}.clips`).map((_,j)=>({bar:read<number>(`${p}.clips[${j}].bar`),pattern:read<string>(`${p}.clips[${j}].pattern`)})),
-        patterns:read<unknown[]>(`${p}.patterns`).map((_,j)=>{const pp=`${p}.patterns[${j}]`;return {id:read<string>(`${pp}.id`),description:get<string>(`${pp}.description`)??null,bars:read<number>(`${pp}.bars`),notes:read<unknown[]>(`${pp}.notes`).map((_,k)=>{const np=`${pp}.notes[${k}]`;return {startTicks:read<number>(`${np}.startTicks`),durationTicks:read<number>(`${np}.durationTicks`),pitches:read<number[]>(`${np}.pitch`),velocity:get<number>(`${np}.velocity`)??0.8};})};})};
+        patterns:read<unknown[]>(`${p}.patterns`).map((_,j)=>{const pp=`${p}.patterns[${j}]`;return {id:read<string>(`${pp}.id`),description:get<string>(`${pp}.description`)??null,bars:read<number>(`${pp}.bars`),notes:read<unknown[]>(`${pp}.notes`).map((_,k)=>{const np=`${pp}.notes[${k}]`;return {startTicks:read<number>(`${np}.startTicks`),durationTicks:get<number>(`${np}.durationTicks`)??0,pitches:get<number[]>(`${np}.pitch`)??[60],velocity:get<number>(`${np}.velocity`)??0.8};})};})};
     })};
   return {project,diagnostics};
 }

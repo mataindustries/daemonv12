@@ -24,8 +24,8 @@ function print(result: CommandResult, json: boolean, diagnostics: Diagnostic[] =
     if(kind==='wav' && result.manifest) {
       const wav=result.manifest.wav as {durationSeconds:number};
       const renderer=result.manifest.renderer as {name:string;version:string;settings:{sampleRate:number}};
-      const sf=result.manifest.soundfont as {file:string};
-      detail=` (${wav.durationSeconds.toFixed(3)} s, ${renderer.settings.sampleRate} Hz, 16-bit stereo, ${renderer.name} ${renderer.version}, ${sf.file})`;
+      const sf=result.manifest.soundfont as {file:string}|null;
+      detail=` (${wav.durationSeconds.toFixed(3)} s, ${renderer.settings.sampleRate} Hz, 16-bit stereo, ${renderer.name} ${renderer.version}${sf?`, ${sf.file}`:''})`;
     }
     process.stdout.write(`  wrote ${file}${detail}\n`);
   }

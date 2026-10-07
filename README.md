@@ -1,6 +1,6 @@
 # DaemonV12
 
-**12 instruments for agents.** DaemonV12 V0 is a headless music engine: author a JSON project with musical positions, track-local patterns and General MIDI instruments, then validate it, generate deterministic MIDI, and render WAV audio with provenance.
+**12 instruments for agents.** DaemonV12 V0.2 is a headless music engine: author a JSON project with musical positions, track-local patterns, General MIDI instruments and sampled drum kits, then validate it, generate deterministic MIDI, and render WAV audio with provenance.
 
 ## Requirements
 
@@ -22,6 +22,8 @@ npx daemonv12 midi examples/demo.json
 npx daemonv12 render examples/demo.json --stems
 # Master-only demo render:
 npm run demo
+# Six-track sample demo, with generated kick/snare/hats and an impact:
+npm run demo:samples
 ```
 
 The demo produces `renders/demo.mid`, `renders/demo.wav`, and `renders/demo.render.json`.
@@ -51,12 +53,30 @@ or symlink collisions, reports `OUTPUT_WRITE_FAILED`, and never recursively dele
 unrelated directories. The manifest is written last, only after every output succeeds.
 As in V0, this is cleanup on command completion, not a crash-atomic multi-file commit.
 
-No project schema changes, mixing, normalization, panning or effects are introduced.
+V0.1's GM stem behavior remains unchanged in V0.2.
+
+## Sample instruments (V0.2)
+
+Use `{"type":"sampler","sample":"assets/pulse-kit/impact.wav"}` for one-shots or
+`{"type":"drumkit","kit":"assets/pulse-kit/kit.json"}` for reusable mapped kits.
+Notes use existing musical positions: `{"start":"1:2","pitch":"snare","velocity":0.8}`.
+Sampler notes omit pitch; both omit duration and play the full WAV, including overlapping tails.
+
+Samples must be 44.1 kHz, 16-bit PCM WAV, mono or stereo, beneath the project's
+`assets/` directory. Paths and symlink containment are validated. Sample-only renders
+need no FluidSynth or SoundFont. Mixed renders combine sampled tracks with the
+existing GM master; `--stems` exports every track aligned to time zero.
+
+`npm run demo:samples` writes `renders/sample-demo.wav`, MIDI, provenance and six stems.
+`npm run fixtures:samples` regenerates the small original development sounds.
+Sample rendering uses a narrow deterministic PCM layer, with no FFmpeg, resampling,
+effects or normalization. Sample/mixed renders are limited to 600 seconds including
+tails. See [sample format, timing and provenance](docs/V0_2_SAMPLES.md) for the full contract.
 
 ## Commands
 
-- `validate <project.json>` checks structure, musical time, references, bounds, and overlaps without writing files.
-- `midi <project.json> [--out-dir <dir>]` writes canonical format-1 MIDI at 960 PPQ.
+- `validate <project.json>` checks structure, musical time, references, bounds, GM overlaps and sample assets without writing files.
+- `midi <project.json> [--out-dir <dir>]` writes canonical format-1 MIDI at 960 PPQ; sampled tracks are omitted with a warning.
 - `render <project.json> [--out-dir <dir>] [--soundfont <file.sf2>] [--stems]` writes MIDI, WAV, and provenance.
 
 Each command accepts `--json` for one structured JSON result. Exit codes: **0** success, **1** invalid project, **2** usage/file access, **3** renderer/environment, **4** internal bug.
@@ -69,6 +89,7 @@ Set `DAEMONV12_FLUIDSYNTH` to select a renderer executable.
 ## Documentation
 
 - [V0 specification](docs/V0_SPEC.md): exact format, timing, diagnostics, and output contracts.
+- [V0.2 samples](docs/V0_2_SAMPLES.md): one-shots, reusable kits, PCM mixing, asset security, provenance and limits.
 - [Architecture](docs/ARCHITECTURE.md): module boundaries and determinism model.
 - [Implementation handoff](docs/CODEX_HANDOFF.md): milestones and acceptance tests.
 - [Roadmap](docs/ROADMAP.md): later phases, outside V0.

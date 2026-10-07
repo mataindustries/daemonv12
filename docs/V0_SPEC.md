@@ -1,6 +1,8 @@
 # DaemonV12 V0 Specification
 
 Status: **normative** for engine `0.0.x` and project `formatVersion: 1`.
+V0.2 preserves this GM baseline; additive sample behavior is specified in
+[V0_2_SAMPLES.md](V0_2_SAMPLES.md). Engine version strings below are historical V0 examples.
 Rationale lives in [ARCHITECTURE.md](ARCHITECTURE.md). This document says *what* to build, exactly.
 Wherever a number, string, ordering or byte is given here, the implementation must match it exactly.
 

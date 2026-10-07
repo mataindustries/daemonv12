@@ -25,7 +25,7 @@ const cases:Case[]=[
  [14,p=>p.timeSignature='4:4','INVALID_TIME_SIGNATURE','timeSignature','4/4'],
  [15,p=>p.key='D dorian','INVALID_KEY','key'], [16,p=>p.key='D# major','INVALID_KEY','key','Eb major'],
  [17,p=>p.formatVersion=2,'UNSUPPORTED_FORMAT_VERSION','formatVersion'],
- [18,p=>p.tracks[0].instrument.type='sampler','UNSUPPORTED_INSTRUMENT_TYPE','tracks[0].instrument.type'],
+ [18,p=>p.tracks[0].instrument.type='unsupported','UNSUPPORTED_INSTRUMENT_TYPE','tracks[0].instrument.type'],
  [19,p=>p.tracks[0].instrument.program='acoustic_grand_pianoo','UNKNOWN_GM_PROGRAM','tracks[0].instrument.program','acoustic_grand_piano'],
  [20,p=>p.tracks[0].instrument.program=33,'WRONG_TYPE','tracks[0].instrument.program','electric_bass_finger'],
  [21,p=>p.tracks[0].id='Lead Synth','INVALID_ID','tracks[0].id','lead-synth'],

@@ -30,7 +30,7 @@ test('CLI usage errors, missing/unreadable projects, help/version',()=>{
   const r=run([...args,'--json']);assert.equal(r.status,2,JSON.stringify(args));const j=JSON.parse(r.stdout);assert.equal(j.errors[0].code,'USAGE_ERROR');assert.deepEqual(j.artifacts,{});
  }
  for(const [path,code] of [['/no/daemonv12.json','FILE_NOT_FOUND'],['tests','FILE_READ_FAILED']]){const r=run(['validate',path!,'--json']);assert.equal(r.status,2);assert.equal(JSON.parse(r.stdout).errors[0].code,code);}
- assert.equal(run(['--version']).stdout,'daemonv12 0.0.1\n');assert.equal(run(['-v']).status,0);
+ assert.equal(run(['--version']).stdout,'daemonv12 0.2.0\n');assert.equal(run(['-v']).status,0);
  for(const args of [['help'],['--help'],['-h']]){const r=run(args);assert.equal(r.status,0);assert.match(r.stdout,/Usage:/);}
  const empty=run([]);assert.equal(empty.status,2);assert.equal(empty.stdout,'');assert.match(empty.stderr,/Usage:/);
 });
