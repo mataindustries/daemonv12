@@ -1,0 +1,2748 @@
+{
+  "formatVersion": 1,
+  "title": "Shoot the Moon — The Claim",
+  "bpm": 100,
+  "timeSignature": "4/4",
+  "key": "D minor",
+  "bars": 24,
+  "seed": 1002407,
+  "tracks": [
+    {
+      "id": "atmosphere-drone",
+      "description": "Orbital machinery; finite gestures leave transmission, vacuum and breath space.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/10-dark-drone.wav"
+      },
+      "patterns": [
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.53
+            },
+            {
+              "start": "3:4+1/12",
+              "velocity": 0.24
+            }
+          ]
+        },
+        {
+          "id": "decision-orbit",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "2:2",
+              "velocity": 0.54
+            }
+          ]
+        },
+        {
+          "id": "strike-breath",
+          "bars": 3,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.24
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.43
+            },
+            {
+              "start": "3:4+1/8",
+              "velocity": 0.52
+            }
+          ]
+        },
+        {
+          "id": "monuments-ending",
+          "bars": 7,
+          "notes": [
+            {
+              "start": "1:4",
+              "velocity": 0.48
+            },
+            {
+              "start": "4:3+1/6",
+              "velocity": 0.53
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 5,
+          "pattern": "decision-orbit"
+        },
+        {
+          "bar": 10,
+          "pattern": "strike-breath"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        },
+        {
+          "bar": 18,
+          "pattern": "monuments-ending"
+        }
+      ],
+      "mix": {
+        "gainDb": 1,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 130
+        }
+      ]
+    },
+    {
+      "id": "atmosphere-air",
+      "description": "Wide lunar air; follows the full arc, ending naturally at the reel boundary.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/11-air-texture.wav"
+      },
+      "patterns": [
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.62
+            },
+            {
+              "start": "3:3+1/6",
+              "velocity": 0.25
+            }
+          ]
+        },
+        {
+          "id": "decision-orbit",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "2:2+1/8",
+              "velocity": 0.55
+            }
+          ]
+        },
+        {
+          "id": "strike-breath",
+          "bars": 3,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.26
+            },
+            {
+              "start": "3:2",
+              "velocity": 0.12
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "3:1",
+              "velocity": 0.63
+            },
+            {
+              "start": "5:4+1/6",
+              "velocity": 0.61
+            }
+          ]
+        },
+        {
+          "id": "monuments-ending",
+          "bars": 7,
+          "notes": [
+            {
+              "start": "3:4",
+              "velocity": 0.68
+            },
+            {
+              "start": "4:3+1/6",
+              "velocity": 0.33
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 5,
+          "pattern": "decision-orbit"
+        },
+        {
+          "bar": 10,
+          "pattern": "strike-breath"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        },
+        {
+          "bar": 18,
+          "pattern": "monuments-ending"
+        }
+      ],
+      "mix": {
+        "gainDb": 2.5,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 650
+        }
+      ]
+    },
+    {
+      "id": "bass-sub",
+      "description": "Sparse 49 Hz punctuation, alternating with kick rather than doubling every pulse.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/orbital-foundry/kit.json"
+      },
+      "patterns": [
+        {
+          "id": "decision-orbit",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "2:1",
+              "pitch": "sub-pulse",
+              "velocity": 0.54
+            },
+            {
+              "start": "2:2",
+              "pitch": "sub-pulse",
+              "velocity": 0.54
+            },
+            {
+              "start": "2:3",
+              "pitch": "sub-pulse",
+              "velocity": 0.74
+            },
+            {
+              "start": "2:4",
+              "pitch": "sub-pulse",
+              "velocity": 0.54
+            },
+            {
+              "start": "3:1+3/16",
+              "pitch": "sub-pulse",
+              "velocity": 0.53
+            },
+            {
+              "start": "3:3",
+              "pitch": "sub-pulse",
+              "velocity": 0.53
+            },
+            {
+              "start": "3:4+1/16",
+              "pitch": "sub-pulse",
+              "velocity": 0.53
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "sub-pulse",
+              "velocity": 0.53
+            },
+            {
+              "start": "4:3",
+              "pitch": "sub-pulse",
+              "velocity": 0.53
+            },
+            {
+              "start": "4:4+1/16",
+              "pitch": "sub-pulse",
+              "velocity": 0.53
+            },
+            {
+              "start": "5:1+3/16",
+              "pitch": "sub-pulse",
+              "velocity": 0.53
+            },
+            {
+              "start": "5:3",
+              "pitch": "sub-pulse",
+              "velocity": 0.53
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 5,
+          "pattern": "decision-orbit"
+        }
+      ],
+      "mix": {
+        "gainDb": -6,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 32
+        }
+      ]
+    },
+    {
+      "id": "rhythm-drive",
+      "description": "Mechanical kick and industrial snare; asymmetrical propulsion and double-time raid.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/orbital-foundry/kit.json"
+      },
+      "patterns": [
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "3:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.83
+            }
+          ]
+        },
+        {
+          "id": "decision-orbit",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "2:3",
+              "pitch": "mechanical-kick",
+              "velocity": 0.77
+            },
+            {
+              "start": "3:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.91
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.69
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.8
+            },
+            {
+              "start": "3:4+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.63
+            },
+            {
+              "start": "3:2",
+              "pitch": "industrial-snare",
+              "velocity": 0.64
+            },
+            {
+              "start": "3:4",
+              "pitch": "industrial-snare",
+              "velocity": 0.77
+            },
+            {
+              "start": "4:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.91
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.69
+            },
+            {
+              "start": "4:3+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.8
+            },
+            {
+              "start": "4:4+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.63
+            },
+            {
+              "start": "4:2",
+              "pitch": "industrial-snare",
+              "velocity": 0.64
+            },
+            {
+              "start": "4:4",
+              "pitch": "industrial-snare",
+              "velocity": 0.77
+            },
+            {
+              "start": "5:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.91
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.69
+            },
+            {
+              "start": "5:2",
+              "pitch": "industrial-snare",
+              "velocity": 0.64
+            }
+          ]
+        },
+        {
+          "id": "strike-breath",
+          "bars": 3,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.82
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.7
+            },
+            {
+              "start": "1:3",
+              "pitch": "mechanical-kick",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.59
+            },
+            {
+              "start": "1:4",
+              "pitch": "mechanical-kick",
+              "velocity": 0.6799999999999999
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.77
+            },
+            {
+              "start": "2:1",
+              "pitch": "industrial-snare",
+              "velocity": 0.8
+            },
+            {
+              "start": "2:2",
+              "pitch": "mechanical-kick",
+              "velocity": 0.73
+            },
+            {
+              "start": "2:3",
+              "pitch": "mechanical-kick",
+              "velocity": 0.73
+            },
+            {
+              "start": "2:4",
+              "pitch": "mechanical-kick",
+              "velocity": 0.73
+            },
+            {
+              "start": "3:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.82
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.82
+            },
+            {
+              "start": "3:4",
+              "pitch": "mechanical-kick",
+              "velocity": 0.82
+            },
+            {
+              "start": "4:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.82
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "mechanical-kick",
+              "velocity": 0.82
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.82
+            },
+            {
+              "start": "4:3+1/16",
+              "pitch": "mechanical-kick",
+              "velocity": 0.82
+            },
+            {
+              "start": "3:2",
+              "pitch": "industrial-snare",
+              "velocity": 0.66
+            },
+            {
+              "start": "3:4",
+              "pitch": "industrial-snare",
+              "velocity": 0.66
+            },
+            {
+              "start": "4:1+1/8",
+              "pitch": "industrial-snare",
+              "velocity": 0.78
+            },
+            {
+              "start": "4:2+1/16",
+              "pitch": "industrial-snare",
+              "velocity": 0.78
+            },
+            {
+              "start": "4:3",
+              "pitch": "industrial-snare",
+              "velocity": 0.6864
+            }
+          ]
+        },
+        {
+          "id": "monuments-ending",
+          "bars": 7,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "1:4",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "2:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "2:2",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "2:3",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "2:4",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "2:4+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "1:2",
+              "pitch": "industrial-snare",
+              "velocity": 0.67
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "industrial-snare",
+              "velocity": 0.67
+            },
+            {
+              "start": "2:2+1/8",
+              "pitch": "industrial-snare",
+              "velocity": 0.67
+            },
+            {
+              "start": "2:3+1/8",
+              "pitch": "industrial-snare",
+              "velocity": 0.67
+            },
+            {
+              "start": "2:4+1/8",
+              "pitch": "industrial-snare",
+              "velocity": 0.67
+            },
+            {
+              "start": "3:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.77
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.77
+            },
+            {
+              "start": "3:4",
+              "pitch": "mechanical-kick",
+              "velocity": 0.77
+            },
+            {
+              "start": "3:3",
+              "pitch": "industrial-snare",
+              "velocity": 0.62
+            },
+            {
+              "start": "4:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "4:4",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "4:3",
+              "pitch": "industrial-snare",
+              "velocity": 0.62
+            },
+            {
+              "start": "5:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "5:4",
+              "pitch": "mechanical-kick",
+              "velocity": 0.68
+            },
+            {
+              "start": "6:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.56
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 5,
+          "pattern": "decision-orbit"
+        },
+        {
+          "bar": 10,
+          "pattern": "strike-breath"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        },
+        {
+          "bar": 18,
+          "pattern": "monuments-ending"
+        }
+      ],
+      "mix": {
+        "gainDb": -2,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 48
+        }
+      ]
+    },
+    {
+      "id": "rhythm-detail",
+      "description": "Steel landmarks and high machine ticks; recurring 3+3+2 cell.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/orbital-foundry/kit.json"
+      },
+      "patterns": [
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "4:1",
+              "pitch": "metallic-strike",
+              "velocity": 0.65
+            }
+          ]
+        },
+        {
+          "id": "decision-orbit",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "2:3",
+              "pitch": "metallic-strike",
+              "velocity": 0.72
+            },
+            {
+              "start": "2:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "2:4",
+              "pitch": "machine-tick",
+              "velocity": 0.5080000000000002
+            },
+            {
+              "start": "2:4+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.5859999999999999
+            },
+            {
+              "start": "2:4+3/16",
+              "pitch": "machine-tick",
+              "velocity": 0.625
+            },
+            {
+              "start": "3:1",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "3:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "3:2",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "3:3",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "3:4",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "3:4+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "metallic-strike",
+              "velocity": 0.48
+            },
+            {
+              "start": "4:1",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "4:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:2",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "4:3",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:4",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "4:4+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "metallic-strike",
+              "velocity": 0.48
+            },
+            {
+              "start": "5:1",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "5:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "5:2",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "5:3",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "5:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "5:1",
+              "pitch": "machine-tick",
+              "velocity": 0.45
+            },
+            {
+              "start": "5:1+1/16",
+              "pitch": "machine-tick",
+              "velocity": 0.47500000000000003
+            },
+            {
+              "start": "5:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.5
+            },
+            {
+              "start": "5:1+3/16",
+              "pitch": "machine-tick",
+              "velocity": 0.525
+            },
+            {
+              "start": "5:2",
+              "pitch": "machine-tick",
+              "velocity": 0.55
+            },
+            {
+              "start": "5:2+1/16",
+              "pitch": "machine-tick",
+              "velocity": 0.575
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.6000000000000001
+            },
+            {
+              "start": "5:2+3/16",
+              "pitch": "machine-tick",
+              "velocity": 0.625
+            },
+            {
+              "start": "5:3",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "5:3+1/16",
+              "pitch": "machine-tick",
+              "velocity": 0.675
+            }
+          ]
+        },
+        {
+          "id": "strike-breath",
+          "bars": 3,
+          "notes": [
+            {
+              "start": "2:1",
+              "pitch": "metallic-strike",
+              "velocity": 0.65
+            },
+            {
+              "start": "2:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.49
+            },
+            {
+              "start": "2:3",
+              "pitch": "metallic-strike",
+              "velocity": 0.41
+            },
+            {
+              "start": "3:1",
+              "pitch": "machine-tick",
+              "velocity": 0.28
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "metallic-strike",
+              "velocity": 0.76
+            },
+            {
+              "start": "1:3",
+              "pitch": "machine-tick",
+              "velocity": 0.45
+            },
+            {
+              "start": "1:3+1/16",
+              "pitch": "machine-tick",
+              "velocity": 0.505
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.56
+            },
+            {
+              "start": "1:3+3/16",
+              "pitch": "machine-tick",
+              "velocity": 0.615
+            },
+            {
+              "start": "1:4",
+              "pitch": "machine-tick",
+              "velocity": 0.67
+            },
+            {
+              "start": "1:4+1/16",
+              "pitch": "machine-tick",
+              "velocity": 0.7250000000000001
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.78
+            },
+            {
+              "start": "2:1",
+              "pitch": "metallic-strike",
+              "velocity": 0.81
+            },
+            {
+              "start": "3:1",
+              "pitch": "machine-tick",
+              "velocity": 0.73
+            },
+            {
+              "start": "3:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.49
+            },
+            {
+              "start": "3:2",
+              "pitch": "machine-tick",
+              "velocity": 0.49
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.73
+            },
+            {
+              "start": "3:3",
+              "pitch": "machine-tick",
+              "velocity": 0.49
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.49
+            },
+            {
+              "start": "3:4",
+              "pitch": "machine-tick",
+              "velocity": 0.73
+            },
+            {
+              "start": "3:4+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.49
+            },
+            {
+              "start": "4:1",
+              "pitch": "machine-tick",
+              "velocity": 0.86
+            },
+            {
+              "start": "4:1+1/16",
+              "pitch": "machine-tick",
+              "velocity": 0.56
+            },
+            {
+              "start": "4:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.56
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "machine-tick",
+              "velocity": 0.86
+            },
+            {
+              "start": "4:2",
+              "pitch": "machine-tick",
+              "velocity": 0.56
+            },
+            {
+              "start": "4:2+1/16",
+              "pitch": "machine-tick",
+              "velocity": 0.56
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.86
+            },
+            {
+              "start": "4:2+3/16",
+              "pitch": "machine-tick",
+              "velocity": 0.56
+            },
+            {
+              "start": "4:3",
+              "pitch": "machine-tick",
+              "velocity": 0.56
+            },
+            {
+              "start": "4:3+1/16",
+              "pitch": "machine-tick",
+              "velocity": 0.86
+            },
+            {
+              "start": "4:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.56
+            },
+            {
+              "start": "4:4",
+              "pitch": "metallic-strike",
+              "velocity": 0.94
+            }
+          ]
+        },
+        {
+          "id": "monuments-ending",
+          "bars": 7,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "metallic-strike",
+              "velocity": 0.72
+            },
+            {
+              "start": "1:4",
+              "pitch": "metallic-strike",
+              "velocity": 0.53
+            },
+            {
+              "start": "2:2",
+              "pitch": "metallic-strike",
+              "velocity": 0.77
+            },
+            {
+              "start": "2:3",
+              "pitch": "metallic-strike",
+              "velocity": 0.56
+            },
+            {
+              "start": "2:4",
+              "pitch": "metallic-strike",
+              "velocity": 0.58
+            },
+            {
+              "start": "1:1",
+              "pitch": "machine-tick",
+              "velocity": 0.72
+            },
+            {
+              "start": "1:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.51
+            },
+            {
+              "start": "1:2",
+              "pitch": "machine-tick",
+              "velocity": 0.51
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.51
+            },
+            {
+              "start": "1:3",
+              "pitch": "machine-tick",
+              "velocity": 0.51
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.51
+            },
+            {
+              "start": "1:4",
+              "pitch": "machine-tick",
+              "velocity": 0.51
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.51
+            },
+            {
+              "start": "2:1",
+              "pitch": "machine-tick",
+              "velocity": 0.51
+            },
+            {
+              "start": "2:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.51
+            },
+            {
+              "start": "2:2",
+              "pitch": "machine-tick",
+              "velocity": 0.51
+            },
+            {
+              "start": "2:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "2:3",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "2:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "2:4",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "2:4+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.65
+            },
+            {
+              "start": "3:1",
+              "pitch": "machine-tick",
+              "velocity": 0.47
+            },
+            {
+              "start": "3:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.47
+            },
+            {
+              "start": "3:2",
+              "pitch": "machine-tick",
+              "velocity": 0.47
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.47
+            },
+            {
+              "start": "3:3",
+              "pitch": "machine-tick",
+              "velocity": 0.47
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.47
+            },
+            {
+              "start": "3:4",
+              "pitch": "machine-tick",
+              "velocity": 0.47
+            },
+            {
+              "start": "3:4+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.47
+            },
+            {
+              "start": "4:1",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:2",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:3",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:4",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "4:4+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.43
+            },
+            {
+              "start": "5:1",
+              "pitch": "machine-tick",
+              "velocity": 0.38999999999999996
+            },
+            {
+              "start": "5:1+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.38999999999999996
+            },
+            {
+              "start": "5:2",
+              "pitch": "machine-tick",
+              "velocity": 0.38999999999999996
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.38999999999999996
+            },
+            {
+              "start": "5:3",
+              "pitch": "machine-tick",
+              "velocity": 0.38999999999999996
+            },
+            {
+              "start": "5:3+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.38999999999999996
+            },
+            {
+              "start": "5:4",
+              "pitch": "machine-tick",
+              "velocity": 0.38999999999999996
+            },
+            {
+              "start": "5:4+1/8",
+              "pitch": "machine-tick",
+              "velocity": 0.38999999999999996
+            },
+            {
+              "start": "6:1",
+              "pitch": "metallic-strike",
+              "velocity": 0.61
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 5,
+          "pattern": "decision-orbit"
+        },
+        {
+          "bar": 10,
+          "pattern": "strike-breath"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        },
+        {
+          "bar": 18,
+          "pattern": "monuments-ending"
+        }
+      ],
+      "mix": {
+        "gainDb": 0,
+        "pan": 0.18
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 420
+        }
+      ]
+    },
+    {
+      "id": "impact-weight",
+      "description": "Low-boom phrase weight reserved for touchdown, strikes, and claim.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/orbital-foundry/kit.json"
+      },
+      "patterns": [
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "3:1",
+              "pitch": "low-boom",
+              "velocity": 0.67
+            }
+          ]
+        },
+        {
+          "id": "strike-breath",
+          "bars": 3,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "low-boom",
+              "velocity": 0.85
+            },
+            {
+              "start": "2:1",
+              "pitch": "low-boom",
+              "velocity": 0.49
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "2:1+1/16",
+              "pitch": "low-boom",
+              "velocity": 0.65
+            },
+            {
+              "start": "5:2",
+              "pitch": "low-boom",
+              "velocity": 0.57
+            }
+          ]
+        },
+        {
+          "id": "monuments-ending",
+          "bars": 7,
+          "notes": [
+            {
+              "start": "2:2",
+              "pitch": "low-boom",
+              "velocity": 0.43
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 10,
+          "pattern": "strike-breath"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        },
+        {
+          "bar": 18,
+          "pattern": "monuments-ending"
+        }
+      ],
+      "mix": {
+        "gainDb": -4,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 35
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 1600
+        }
+      ]
+    },
+    {
+      "id": "impact-wide",
+      "description": "First Strike broadband mass; reduced counterstrike and scar callbacks.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/07-cinematic-impact.wav"
+      },
+      "patterns": [
+        {
+          "id": "strike-breath",
+          "bars": 3,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.98
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "2:1",
+              "velocity": 0.49
+            }
+          ]
+        },
+        {
+          "id": "monuments-ending",
+          "bars": 7,
+          "notes": [
+            {
+              "start": "2:2",
+              "velocity": 0.39
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 10,
+          "pattern": "strike-breath"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        },
+        {
+          "bar": 18,
+          "pattern": "monuments-ending"
+        }
+      ],
+      "mix": {
+        "gainDb": 1.5,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 48
+        }
+      ]
+    },
+    {
+      "id": "transition-riser",
+      "description": "Four-second pressure gestures positioned by their actual endpoints.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/08-tension-riser.wav"
+      },
+      "patterns": [
+        {
+          "id": "decision-orbit",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "4:1+1/12",
+              "velocity": 0.75
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 5,
+          "pattern": "decision-orbit"
+        }
+      ],
+      "mix": {
+        "gainDb": -2,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 260
+        }
+      ]
+    },
+    {
+      "id": "transition-reverse",
+      "description": "Two-second steel suction connects launch, impacts and final resolution.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/09-reverse-swell.wav"
+      },
+      "patterns": [
+        {
+          "id": "decision-orbit",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "1:3+1/6",
+              "velocity": 0.7
+            },
+            {
+              "start": "4:4+1/6",
+              "velocity": 0.72
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "1:1+1/6",
+              "velocity": 0.82
+            }
+          ]
+        },
+        {
+          "id": "monuments-ending",
+          "bars": 7,
+          "notes": [
+            {
+              "start": "2:1+1/6",
+              "velocity": 0.67
+            },
+            {
+              "start": "5:1+1/6",
+              "velocity": 0.57
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 5,
+          "pattern": "decision-orbit"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        },
+        {
+          "bar": 18,
+          "pattern": "monuments-ending"
+        }
+      ],
+      "mix": {
+        "gainDb": 0,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 300
+        }
+      ]
+    },
+    {
+      "id": "divider-energy",
+      "description": "D/Ab gated alarm: reversal warning, then alien 3+3+2 attack identity.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/12-alarm-energy-pulse.wav"
+      },
+      "patterns": [
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.6
+            },
+            {
+              "start": "2:1",
+              "velocity": 0.82
+            },
+            {
+              "start": "3:1",
+              "velocity": 0.65
+            },
+            {
+              "start": "3:2+1/8",
+              "velocity": 0.65
+            },
+            {
+              "start": "3:4",
+              "velocity": 0.65
+            },
+            {
+              "start": "4:1",
+              "velocity": 0.75
+            },
+            {
+              "start": "4:1+3/16",
+              "velocity": 0.75
+            },
+            {
+              "start": "4:2+1/8",
+              "velocity": 0.75
+            },
+            {
+              "start": "4:3",
+              "velocity": 0.75
+            },
+            {
+              "start": "4:4",
+              "velocity": 0.88
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        }
+      ],
+      "mix": {
+        "gainDb": -2.5,
+        "pan": -0.16
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 380
+        }
+      ]
+    },
+    {
+      "id": "claim-motif",
+      "description": "Human/Claim D-A-E-F: restrained open fifth, questioning ninth, determined minor third; expanded F-sharp at resolution.",
+      "instrument": {
+        "type": "gm",
+        "program": "lead_1_square"
+      },
+      "patterns": [
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:3",
+              "pitch": "D4",
+              "duration": "7/16",
+              "velocity": 0.378
+            },
+            {
+              "start": "2:2",
+              "pitch": "A4",
+              "duration": "5/16",
+              "velocity": 0.387
+            },
+            {
+              "start": "3:2",
+              "pitch": "E4",
+              "duration": "1/4",
+              "velocity": 0.405
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "F4",
+              "duration": "3/16",
+              "velocity": 0.441
+            }
+          ]
+        },
+        {
+          "id": "decision-orbit",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "2:1",
+              "pitch": "D4",
+              "duration": "7/48",
+              "velocity": 0.55
+            },
+            {
+              "start": "2:2",
+              "pitch": "A4",
+              "duration": "1/6",
+              "velocity": 0.57
+            },
+            {
+              "start": "3:1",
+              "pitch": "D4",
+              "duration": "3/16",
+              "velocity": 0.69
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "A4",
+              "duration": "1/8",
+              "velocity": 0.67
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "E5",
+              "duration": "1/8",
+              "velocity": 0.71
+            },
+            {
+              "start": "3:4+1/8",
+              "pitch": "F5",
+              "duration": "3/16",
+              "velocity": 0.74
+            },
+            {
+              "start": "4:1",
+              "pitch": "D5",
+              "duration": "3/20",
+              "velocity": 0.62
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "A4",
+              "duration": "1/8",
+              "velocity": 0.65
+            },
+            {
+              "start": "4:3+1/8",
+              "pitch": "E5",
+              "duration": "1/8",
+              "velocity": 0.68
+            },
+            {
+              "start": "4:4+1/8",
+              "pitch": "F5",
+              "duration": "3/16",
+              "velocity": 0.7
+            }
+          ]
+        },
+        {
+          "id": "strike-breath",
+          "bars": 3,
+          "notes": [
+            {
+              "start": "2:2",
+              "pitch": "E4",
+              "duration": "3/16",
+              "velocity": 0.43
+            },
+            {
+              "start": "2:3+1/8",
+              "pitch": "D4",
+              "duration": "1/4",
+              "velocity": 0.36
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "4:4",
+              "pitch": [
+                "D5",
+                "A5"
+              ],
+              "duration": "1/8",
+              "velocity": 0.78
+            },
+            {
+              "start": "5:2",
+              "pitch": [
+                "D4",
+                "A4",
+                "E5"
+              ],
+              "duration": "1/4",
+              "velocity": 0.67
+            }
+          ]
+        },
+        {
+          "id": "monuments-ending",
+          "bars": 7,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "D4",
+              "duration": "1/8",
+              "velocity": 0.64
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "A4",
+              "duration": "1/8",
+              "velocity": 0.64
+            },
+            {
+              "start": "1:4",
+              "pitch": "E5",
+              "duration": "1/8",
+              "velocity": 0.64
+            },
+            {
+              "start": "2:1",
+              "pitch": "F5",
+              "duration": "1/8",
+              "velocity": 0.64
+            },
+            {
+              "start": "2:2",
+              "pitch": "D5",
+              "duration": "1/8",
+              "velocity": 0.64
+            },
+            {
+              "start": "2:3",
+              "pitch": "A4",
+              "duration": "1/8",
+              "velocity": 0.64
+            },
+            {
+              "start": "2:4",
+              "pitch": "E5",
+              "duration": "1/8",
+              "velocity": 0.64
+            },
+            {
+              "start": "3:1",
+              "pitch": "D4",
+              "duration": "1/4",
+              "velocity": 0.73
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "A4",
+              "duration": "1/4",
+              "velocity": 0.74
+            },
+            {
+              "start": "3:4",
+              "pitch": "E5",
+              "duration": "3/16",
+              "velocity": 0.71
+            },
+            {
+              "start": "4:1",
+              "pitch": "F#5",
+              "duration": "3/8",
+              "velocity": 0.76
+            },
+            {
+              "start": "4:3",
+              "pitch": "E5",
+              "duration": "1/4",
+              "velocity": 0.69
+            },
+            {
+              "start": "5:1",
+              "pitch": "D5",
+              "duration": "3/8",
+              "velocity": 0.72
+            },
+            {
+              "start": "5:3",
+              "pitch": "A4",
+              "duration": "3/8",
+              "velocity": 0.65
+            },
+            {
+              "start": "6:1",
+              "pitch": [
+                "D4",
+                "A4",
+                "E5"
+              ],
+              "duration": "5/4",
+              "velocity": 0.6
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 5,
+          "pattern": "decision-orbit"
+        },
+        {
+          "bar": 10,
+          "pattern": "strike-breath"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        },
+        {
+          "bar": 18,
+          "pattern": "monuments-ending"
+        }
+      ],
+      "mix": {
+        "gainDb": 3.5,
+        "pan": -0.12
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 260
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 2700
+        },
+        {
+          "type": "delay",
+          "timeMs": 150,
+          "wet": 0.18
+        }
+      ]
+    },
+    {
+      "id": "vesper-motif",
+      "description": "Rival Eb-D-A-Ab semitone collapse; inversion/reordering at reversal, high tritone raid coloration.",
+      "instrument": {
+        "type": "gm",
+        "program": "pad_6_metallic"
+      },
+      "patterns": [
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "4:1",
+              "pitch": "Eb5",
+              "duration": "3/20",
+              "velocity": 0.72
+            },
+            {
+              "start": "4:2",
+              "pitch": "D5",
+              "duration": "7/40",
+              "velocity": 0.66
+            },
+            {
+              "start": "4:3",
+              "pitch": "A4",
+              "duration": "1/8",
+              "velocity": 0.6
+            },
+            {
+              "start": "4:3+3/16",
+              "pitch": "Ab4",
+              "duration": "1/10",
+              "velocity": 0.62
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "Ab4",
+              "duration": "1/10",
+              "velocity": 0.78
+            },
+            {
+              "start": "1:1+1/8",
+              "pitch": "A4",
+              "duration": "1/8",
+              "velocity": 0.8
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "D5",
+              "duration": "1/8",
+              "velocity": 0.77
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "Eb5",
+              "duration": "1/8",
+              "velocity": 0.83
+            },
+            {
+              "start": "3:1",
+              "pitch": "D5",
+              "duration": "3/40",
+              "velocity": 0.66
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "Ab5",
+              "duration": "3/40",
+              "velocity": 0.66
+            },
+            {
+              "start": "3:4",
+              "pitch": "Eb5",
+              "duration": "3/40",
+              "velocity": 0.66
+            },
+            {
+              "start": "4:1",
+              "pitch": "D5",
+              "duration": "3/40",
+              "velocity": 0.66
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "Ab5",
+              "duration": "3/40",
+              "velocity": 0.66
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "Eb5",
+              "duration": "3/40",
+              "velocity": 0.66
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        }
+      ],
+      "mix": {
+        "gainDb": 5.5,
+        "pan": 0.2
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 520
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 6200
+        }
+      ]
+    },
+    {
+      "id": "harmonic-field",
+      "description": "Sparse suspended D-minor field becomes Bb(add9), Gsus, then D(add9) claimed-Moon resolution.",
+      "instrument": {
+        "type": "gm",
+        "program": "pad_3_polysynth"
+      },
+      "patterns": [
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "pitch": [
+                "D3",
+                "A3",
+                "E4"
+              ],
+              "duration": "3/2",
+              "velocity": 0.39
+            },
+            {
+              "start": "3:1",
+              "pitch": [
+                "D3",
+                "A3"
+              ],
+              "duration": "5/8",
+              "velocity": 0.43
+            }
+          ]
+        },
+        {
+          "id": "decision-orbit",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": [
+                "D3",
+                "Eb4"
+              ],
+              "duration": "3/8",
+              "velocity": 0.27
+            },
+            {
+              "start": "3:1",
+              "pitch": [
+                "D3",
+                "A3",
+                "F4"
+              ],
+              "duration": "11/16",
+              "velocity": 0.55
+            },
+            {
+              "start": "4:1",
+              "pitch": [
+                "Bb3",
+                "D4",
+                "E4"
+              ],
+              "duration": "9/16",
+              "velocity": 0.57
+            }
+          ]
+        },
+        {
+          "id": "strike-breath",
+          "bars": 3,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": [
+                "D3",
+                "A3",
+                "Eb4"
+              ],
+              "duration": "5/8",
+              "velocity": 0.6
+            },
+            {
+              "start": "3:2",
+              "pitch": [
+                "A3",
+                "E4"
+              ],
+              "duration": "3/8",
+              "velocity": 0.32
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "2:1",
+              "pitch": [
+                "Bb3",
+                "D4",
+                "Ab4"
+              ],
+              "duration": "1/2",
+              "velocity": 0.65
+            },
+            {
+              "start": "3:1",
+              "pitch": [
+                "D4",
+                "Ab4",
+                "Eb5"
+              ],
+              "duration": "5/8",
+              "velocity": 0.47
+            },
+            {
+              "start": "5:2",
+              "pitch": [
+                "D3",
+                "A3",
+                "F4"
+              ],
+              "duration": "3/8",
+              "velocity": 0.61
+            }
+          ]
+        },
+        {
+          "id": "monuments-ending",
+          "bars": 7,
+          "notes": [
+            {
+              "start": "3:1",
+              "pitch": [
+                "Bb2",
+                "F3",
+                "A3",
+                "D4"
+              ],
+              "duration": "7/8",
+              "velocity": 0.64
+            },
+            {
+              "start": "4:1",
+              "pitch": [
+                "G3",
+                "A3",
+                "D4",
+                "E4"
+              ],
+              "duration": "7/8",
+              "velocity": 0.67
+            },
+            {
+              "start": "5:1",
+              "pitch": [
+                "A2",
+                "E3",
+                "A3",
+                "D4"
+              ],
+              "duration": "7/8",
+              "velocity": 0.65
+            },
+            {
+              "start": "6:1",
+              "pitch": [
+                "D3",
+                "A3",
+                "E4",
+                "F#4"
+              ],
+              "duration": "11/8",
+              "velocity": 0.68
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 5,
+          "pattern": "decision-orbit"
+        },
+        {
+          "bar": 10,
+          "pattern": "strike-breath"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        },
+        {
+          "bar": 18,
+          "pattern": "monuments-ending"
+        }
+      ],
+      "mix": {
+        "gainDb": 3,
+        "pan": -0.06
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 190
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 3800
+        }
+      ]
+    },
+    {
+      "id": "bass-motion",
+      "description": "Pitched eighth-note machinery moves D/C/Bb/A; no sustained sub blanket.",
+      "instrument": {
+        "type": "gm",
+        "program": "synth_bass_1"
+      },
+      "patterns": [
+        {
+          "id": "decision-orbit",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "3:1",
+              "pitch": "D2",
+              "duration": "1/15",
+              "velocity": 0.74
+            },
+            {
+              "start": "3:1+1/8",
+              "pitch": "D3",
+              "duration": "3/32",
+              "velocity": 0.66
+            },
+            {
+              "start": "3:2",
+              "pitch": "A2",
+              "duration": "3/32",
+              "velocity": 0.66
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "C3",
+              "duration": "3/32",
+              "velocity": 0.74
+            },
+            {
+              "start": "3:3",
+              "pitch": "D3",
+              "duration": "3/32",
+              "velocity": 0.66
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "A2",
+              "duration": "3/32",
+              "velocity": 0.66
+            },
+            {
+              "start": "4:1",
+              "pitch": "Bb2",
+              "duration": "3/32",
+              "velocity": 0.74
+            },
+            {
+              "start": "4:1+1/8",
+              "pitch": "F3",
+              "duration": "3/32",
+              "velocity": 0.66
+            },
+            {
+              "start": "4:2",
+              "pitch": "A2",
+              "duration": "3/32",
+              "velocity": 0.66
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "C3",
+              "duration": "3/32",
+              "velocity": 0.74
+            },
+            {
+              "start": "4:3",
+              "pitch": "D3",
+              "duration": "3/32",
+              "velocity": 0.66
+            },
+            {
+              "start": "4:3+1/8",
+              "pitch": "A2",
+              "duration": "3/32",
+              "velocity": 0.66
+            },
+            {
+              "start": "5:1",
+              "pitch": "A2",
+              "duration": "1/15",
+              "velocity": 0.74
+            },
+            {
+              "start": "5:1+1/8",
+              "pitch": "A2",
+              "duration": "1/15",
+              "velocity": 0.66
+            },
+            {
+              "start": "5:2",
+              "pitch": "C3",
+              "duration": "1/15",
+              "velocity": 0.66
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "Eb3",
+              "duration": "1/15",
+              "velocity": 0.74
+            }
+          ]
+        },
+        {
+          "id": "strike-breath",
+          "bars": 3,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "D2",
+              "duration": "1/4",
+              "velocity": 0.75
+            }
+          ]
+        },
+        {
+          "id": "reversal-raid",
+          "bars": 5,
+          "notes": [
+            {
+              "start": "2:2",
+              "pitch": "D3",
+              "duration": "1/12",
+              "velocity": 0.72
+            },
+            {
+              "start": "2:3",
+              "pitch": "Eb3",
+              "duration": "1/12",
+              "velocity": 0.72
+            },
+            {
+              "start": "2:4",
+              "pitch": "D3",
+              "duration": "1/12",
+              "velocity": 0.72
+            },
+            {
+              "start": "3:1",
+              "pitch": "D3",
+              "duration": "1/16",
+              "velocity": 0.72
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "Ab2",
+              "duration": "1/16",
+              "velocity": 0.72
+            },
+            {
+              "start": "3:4",
+              "pitch": "D3",
+              "duration": "1/16",
+              "velocity": 0.72
+            },
+            {
+              "start": "4:1",
+              "pitch": "D3",
+              "duration": "1/16",
+              "velocity": 0.72
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "Ab2",
+              "duration": "1/16",
+              "velocity": 0.72
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "D3",
+              "duration": "1/16",
+              "velocity": 0.72
+            },
+            {
+              "start": "4:3+1/16",
+              "pitch": "D3",
+              "duration": "1/16",
+              "velocity": 0.72
+            }
+          ]
+        },
+        {
+          "id": "monuments-ending",
+          "bars": 7,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "D3",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "1:1+1/8",
+              "pitch": "A2",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "1:2",
+              "pitch": "C3",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "D3",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "1:3",
+              "pitch": "Bb2",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "A2",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "1:4",
+              "pitch": "E3",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "A2",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "2:1",
+              "pitch": "D3",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "2:1+1/8",
+              "pitch": "A2",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "2:2",
+              "pitch": "C3",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "2:2+1/8",
+              "pitch": "D3",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "2:3",
+              "pitch": "Bb2",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "2:3+1/8",
+              "pitch": "A2",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "2:4",
+              "pitch": "E3",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "2:4+1/8",
+              "pitch": "A2",
+              "duration": "3/40",
+              "velocity": 0.69
+            },
+            {
+              "start": "3:1",
+              "pitch": "Bb2",
+              "duration": "7/48",
+              "velocity": 0.7
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "F3",
+              "duration": "7/48",
+              "velocity": 0.7
+            },
+            {
+              "start": "3:4",
+              "pitch": "A2",
+              "duration": "7/48",
+              "velocity": 0.7
+            },
+            {
+              "start": "4:1",
+              "pitch": "G2",
+              "duration": "7/48",
+              "velocity": 0.7
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "D3",
+              "duration": "7/48",
+              "velocity": 0.7
+            },
+            {
+              "start": "4:4",
+              "pitch": "A2",
+              "duration": "7/48",
+              "velocity": 0.7
+            },
+            {
+              "start": "5:1",
+              "pitch": "A2",
+              "duration": "7/48",
+              "velocity": 0.7
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "E3",
+              "duration": "7/48",
+              "velocity": 0.7
+            },
+            {
+              "start": "5:4",
+              "pitch": "A2",
+              "duration": "7/48",
+              "velocity": 0.7
+            },
+            {
+              "start": "6:1",
+              "pitch": [
+                "D2",
+                "D3"
+              ],
+              "duration": "9/8",
+              "velocity": 0.7
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 5,
+          "pattern": "decision-orbit"
+        },
+        {
+          "bar": 10,
+          "pattern": "strike-breath"
+        },
+        {
+          "bar": 13,
+          "pattern": "reversal-raid"
+        },
+        {
+          "bar": 18,
+          "pattern": "monuments-ending"
+        }
+      ],
+      "mix": {
+        "gainDb": 2.2,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 85
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 1900
+        }
+      ]
+    }
+  ],
+  "description": "FINAL / one revision. Locked Shoot the Moon score: 100 BPM, 4/4, 24 bars / 57.6s at 60fps. D-A-E-F Human/Claim; Eb-D-A-Ab Vesper, reversed at counterstrike; D/Ab Divider 3+3+2 double-time. True vacuum 21.0–21.6. Broader Bb(add9)-Gsus-Asus-D(add9) resolution. Reduced breath tails, stronger rival/midrange, controlled transients. Native renderer retains post-reel release padding.",
+  "master": {
+    "gainDb": 0.5,
+    "effects": [
+      {
+        "type": "highpass",
+        "frequencyHz": 30
+      }
+    ]
+  }
+}
