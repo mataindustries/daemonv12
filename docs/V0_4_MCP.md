@@ -9,7 +9,10 @@ CLI, timing, rendering, sample, production and provenance behavior is unchanged.
 From this checkout, run `npm ci`. Node 22.18+ runs TypeScript directly; no build is
 needed. FluidSynth plus a GM SoundFont are needed for GM rendering. FFmpeg is needed
 for production effects, MP3 and loudness analysis. Sample-only legacy rendering
-does not need either executable. See the README for OS packages.
+does not need either executable. See the [builder quickstart](../README.md),
+[rootless setup and doctor](DEVELOPER_SETUP.md), and the separate
+[tested MCP client examples](MCP_CLIENTS.md). `npm run smoke -- --mcp` verifies
+sample-only audio and stdio tool discovery without a full agent composition.
 
 Launch command:
 

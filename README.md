@@ -1,52 +1,93 @@
 # DaemonV12
 
-**12 instruments for agents.** DaemonV12 V0.4 is a headless music engine: create and revise music through MCP or project JSON, then validate it, generate deterministic MIDI, and render WAV audio with provenance. It supports musical positions, track-local patterns, General MIDI instruments and sampled drum kits.
+**12 instruments for agents.** DaemonV12 V0.4 is a working headless music engine
+for AI builders. An agent can create and edit musical projects through nine stdio
+MCP tools, then render deterministic MIDI, WAV/MP3 and stems with hashes and
+provenance. General MIDI, WAV instruments, reusable drum kits and the original
+Orbital Foundry cinematic pack are included. No GUI or audio device is needed.
 
-## Requirements
-
-Open the repository in its devcontainer, or use Linux with Node **22.18+** and:
+**Hear something immediately** after cloning, with Node **22.18+**:
 
 ```sh
-sudo apt-get install -y fluidsynth fluid-soundfont-gm ffmpeg
 npm ci
+npm run smoke -- --mcp
 ```
 
-TypeScript runs directly in Node; there is no build step. The engine has no runtime
-npm dependencies; the separate MCP workspace depends on the official MCP SDK and Zod.
+Open the WAV at the printed `Listen:` path. This checks the environment, validates
+the bundled sample-only example, verifies audible PCM and its hash, and discovers
+all nine MCP tools. It works without FluidSynth, a SoundFont or FFmpeg. On a remote
+machine, download/open the WAV locally. Setup and [MCP client examples](docs/MCP_CLIENTS.md)
+follow below; the [engine contracts](#documentation) remain the technical reference.
 
-## MCP for AI agents (V0.4)
+## 5 minute quickstart
+
+### A. Codespaces / devcontainer
+
+Open the clone in its devcontainer (or create a Codespace). Its setup installs
+Node 22, FluidSynth, FluidR3 GM and FFmpeg, runs `npm ci`, doctor and a smoke render.
+From the repository root:
 
 ```sh
-node mcp/bin/daemonv12-mcp.js --root /absolute/path/to/music-workspace
-npm run demo:mcp
+npm ci
+npx --no-install daemonv12 doctor
+npm run demo:sample-only           # renders/sample-only-demo.wav; Node only
+npm run demo:orbital-foundry       # renders/orbital-foundry/; FFmpeg, no FluidSynth
+npm run smoke -- --mcp             # fast stdio discovery check
 ```
 
-Configure an MCP client to launch that stdio command with an existing workspace
-root. Nine tools cover project creation, reading, validation, transactional editing,
-instrument/kit discovery, rendering with optional stems/MP3, audio analysis and
-provenance inspection. Paths stay within the chosen workspace; creation never
-overwrites, patches require the last-read revision, and renders use fresh directories.
+### B. Unprivileged / rootless Linux
 
-The demo starts with no project JSON and drives real creation → edits → WAV/MP3 +
-stems → analysis through stdio. It saves a tool transcript and verifies repeat
-render hashes. See [MCP setup, tool contracts and demo](docs/V0_4_MCP.md).
-
-## Quickstart
+With Node 22.18+ already installed, run from the repository root:
 
 ```sh
-npm run check
-npx daemonv12 validate examples/demo.json
-npx daemonv12 midi examples/demo.json
-npx daemonv12 render examples/demo.json --stems
-# Master-only demo render:
-npm run demo
-# Six-track sample demo, with generated kick/snare/hats and an impact:
-npm run demo:samples
+npm ci
+npm run demo:sample-only           # working sound before installing audio tools
+./scripts/bootstrap-audio-tools.sh
+source "${DAEMONV12_AUDIO_PREFIX:-${XDG_DATA_HOME:-$HOME/.local/share}/daemonv12/audio-tools}/env.sh"
+npx --no-install daemonv12 doctor --json
+npm run demo:orbital-foundry
 ```
 
-The demo produces `renders/demo.mid`, `renders/demo.wav`, and `renders/demo.render.json`.
-The manifest records input/output hashes, engine and renderer versions, SoundFont identity, and render settings.
-The WAV includes the renderer's natural release tail.
+The noninteractive bootstrap uses pinned, verified user-space packages; no sudo,
+system package installation or shell startup edits. It currently supports Linux
+x86_64 with glibc 2.28+ and needs about 250 MB of downloads plus runtime/cache disk
+space. Network speed can extend the quickstart. See [paths, prerequisites, limitations
+and Cloud setup](docs/DEVELOPER_SETUP.md). Other platforms can use the Node-only demo
+and provide their own audio executables. `doctor` exits 3 when any optional audio/MCP
+capability is unavailable; the sample smoke still succeeds when its own requirements
+are met.
+
+## Connect an agent through MCP
+
+The client launches this process; `--root` must be an existing music workspace.
+Choose the clone as root to use its `examples/assets`:
+
+```sh
+node /absolute/path/to/daemonv12/mcp/bin/daemonv12-mcp.js --root /absolute/path/to/daemonv12
+```
+
+Minimal Claude-style / generic stdio configuration:
+
+```json
+{
+  "mcpServers": {
+    "daemonv12": {
+      "command": "/absolute/path/to/node",
+      "args": ["/absolute/path/to/daemonv12/mcp/bin/daemonv12-mcp.js", "--root", "/absolute/path/to/music-workspace"]
+    }
+  }
+}
+```
+
+Replace every placeholder; JSON paths do not automatically expand `~` or shell
+variables. For rootless audio, pass the bootstrap's three `DAEMONV12_*` paths in
+the client's environment. [Codex CLI, Claude-style JSON and troubleshooting](docs/MCP_CLIENTS.md)
+are separate from the [nine tools and editing contracts](docs/V0_4_MCP.md).
+Stdout is reserved for MCP; a manual launch waits for protocol input.
+
+TypeScript runs directly in Node with no build step. The engine has zero runtime
+npm dependencies; the MCP workspace uses the official SDK and Zod. Install all
+workspace dependencies with `npm ci`. For full verification, run `npm run check`.
 
 ## Track stems (V0.1)
 
@@ -85,7 +126,10 @@ Samples must be 44.1 kHz, 16-bit PCM WAV, mono or stereo, beneath the project's
 need no FluidSynth or SoundFont. Mixed renders combine sampled tracks with the
 existing GM master; `--stems` exports every track aligned to time zero.
 
-`npm run demo:samples` writes `renders/sample-demo.wav`, MIDI, provenance and six stems.
+`npm run demo:sample-only` plays the existing drum/impact tracks from the sample
+demo, writing `renders/sample-only-demo.wav`, MIDI and provenance with Node alone.
+`npm run demo:samples` is the **mixed GM/sample** version: it needs FluidSynth and
+a SoundFont and writes `renders/sample-demo.wav`, MIDI, provenance and six stems.
 `npm run fixtures:samples` regenerates the small original development sounds.
 Sample rendering uses a narrow deterministic PCM layer, with no FFmpeg, resampling,
 effects or normalization. Sample/mixed renders are limited to 600 seconds including
@@ -128,6 +172,7 @@ for ranges, pan law, effects, stem semantics and compatibility.
 
 ## Commands
 
+- `doctor [--soundfont <file.sf2>] [--json]` probes versions, paths, SoundFont validity, dependencies and each rendering/MCP capability without writing artifacts. [Stable JSON fields and exit behavior](docs/DEVELOPER_SETUP.md#doctor).
 - `validate <project.json>` checks structure, musical time, references, bounds, GM overlaps and sample assets without writing files.
 - `midi <project.json> [--out-dir <dir>]` writes canonical format-1 MIDI at 960 PPQ; sampled tracks are omitted with a warning.
 - `render <project.json> [--out-dir <dir>] [--soundfont <file.sf2>] [--stems] [--format wav|mp3|wav,mp3]` writes MIDI, WAV, provenance and optional MP3.
@@ -143,6 +188,9 @@ Set `DAEMONV12_FLUIDSYNTH` to select a renderer executable.
 ## Documentation
 
 - [V0.4 MCP interface](docs/V0_4_MCP.md): stdio configuration, tools, edits, path safety and agent demo.
+- [MCP clients](docs/MCP_CLIENTS.md): Codex CLI and generic/Claude-style setup, absolute paths and environment variables.
+- [Developer setup](docs/DEVELOPER_SETUP.md): doctor JSON, rootless bootstrap, smoke, CI and Cloud persistence.
+- [Sharing and licensing audit](docs/SHARING.md): future npm packaging and the owner's outstanding code-license decision.
 - [V0 specification](docs/V0_SPEC.md): exact format, timing, diagnostics, and output contracts.
 - [V0.3 audio production](docs/V0_3_AUDIO.md): gain/pan, effects, WAV/MP3, analysis and provenance.
 - [V0.2 samples](docs/V0_2_SAMPLES.md): one-shots, reusable kits, PCM mixing, asset security, provenance and limits.

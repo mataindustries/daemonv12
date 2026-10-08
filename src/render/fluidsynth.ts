@@ -3,6 +3,7 @@ import { rmSync, renameSync } from 'node:fs';
 import { diagnostic, type Diagnostic, type Parsed } from '../diagnostics.ts';
 import type { AudioRenderer, RendererOptions, RenderOutcome, RenderRequest } from './renderer.ts';
 import { readWavInfo } from './wav.ts';
+import { executablePath } from './environment.ts';
 const settings = { sampleRate:44100, sampleFormat:'s16', channels:2, gain:0.5, reverb:false, chorus:false, cpuCores:1 };
 const errorPattern=/error|panic|not a soundfont or midi file|no midi file specified/i;
 export function buildArgs(soundfont: string, midi: string, tmp: string): string[] {
@@ -31,12 +32,19 @@ function failure(exe:string,args:string[],result:ProcessResult,reason:string):Di
   const d=diagnostic('RENDERER_FAILED','',{exitCode:result.exitCode,stderr:result.stderr},'successful renderer with valid WAV output',commandLine(exe,args));
   d.message=reason;return d;
 }
-export async function createFluidSynthRenderer(options:RendererOptions):Promise<Parsed<AudioRenderer>> {
-  const exe=options.env.DAEMONV12_FLUIDSYNTH || 'fluidsynth';
+export function fluidSynthCommand(env:NodeJS.ProcessEnv):string { return env.DAEMONV12_FLUIDSYNTH || 'fluidsynth'; }
+export async function probeFluidSynth(options:{env:NodeJS.ProcessEnv;probeTimeoutMs?:number}):Promise<Parsed<{command:string;path:string|null;version:string}>> {
+  const exe=fluidSynthCommand(options.env);
   const probe=await invoke(exe,['--version'],options.env,options.probeTimeoutMs??10000);
-  if(probe.error?.code==='ENOENT')return {diagnostic:diagnostic('RENDERER_NOT_FOUND','',exe,'installed renderer','sudo apt-get install -y fluidsynth, or set DAEMONV12_FLUIDSYNTH.')};
+  if(probe.error?.code==='ENOENT')return {diagnostic:diagnostic('RENDERER_NOT_FOUND','',exe,'installed renderer','Run ./scripts/bootstrap-audio-tools.sh on supported Linux, install fluidsynth with your OS package manager, or set DAEMONV12_FLUIDSYNTH.')};
   if(probe.error||probe.timedOut||probe.exitCode!==0)return {diagnostic:failure(exe,['--version'],probe,probe.timedOut?'Renderer probe timed out.':`Renderer probe failed: ${probe.error?.message??`exit ${probe.exitCode}`}.`)};
   const version=/version\s+(\d+\.\d+\.\d+)/i.exec(probe.stdout)?.[1]??'unknown';
+  return {value:{command:exe,path:executablePath(exe,options.env),version}};
+}
+export async function createFluidSynthRenderer(options:RendererOptions):Promise<Parsed<AudioRenderer>> {
+  const probe=await probeFluidSynth(options);
+  if(probe.diagnostic)return probe;
+  const exe=probe.value.command,version=probe.value.version;
   return {value:{name:'fluidsynth',async render(request:RenderRequest):Promise<RenderOutcome>{
     const tmp=request.wavPath+'.tmp',args=buildArgs(options.soundfont.path,request.midiPath,tmp);
     let result:ProcessResult={exitCode:null,stdout:'',stderr:'',timedOut:false,errorLine:false};

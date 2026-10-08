@@ -2,7 +2,9 @@ import { parseArgs } from 'node:util';
 import { diagnostic, formatDiagnosticHuman, type Diagnostic } from '../diagnostics.ts';
 import { resultFor, runCommand, type Command, type CommandOptions, type CommandResult } from '../pipeline.ts';
 import { ENGINE_VERSION } from '../version.ts';
+import { formatDoctor, inspectEnvironment } from '../doctor.ts';
 const usage = `Usage:
+  daemonv12 doctor [--soundfont <file.sf2>] [--json]
   daemonv12 validate <project.json> [--json]
   daemonv12 midi <project.json> [--out-dir <dir>] [--json]
   daemonv12 render <project.json> [--out-dir <dir>] [--soundfont <file.sf2>] [--stems] [--format wav|mp3|wav,mp3] [--json]
@@ -46,6 +48,12 @@ async function main(): Promise<void> {
     project=positionals[1]??null;
     if ((values.help || name==='help') && positionals.length <= (name==='help'?1:0) && !values.version && values['out-dir']===undefined && values.soundfont===undefined && values.stems===undefined && values.format===undefined) { process.stdout.write(usage+'\n');return; }
     if(values.version && !positionals.length && !values.help && values['out-dir']===undefined && values.soundfont===undefined && values.stems===undefined && values.format===undefined){process.stdout.write(`daemonv12 ${ENGINE_VERSION}\n`);return;}
+    if(name==='doctor') {
+      if(positionals.length!==1 || values.help || values.version || values['out-dir']!==undefined || values.stems!==undefined || values.format!==undefined)throw new Error('Doctor accepts only --json and --soundfont <file.sf2>.');
+      const report=await inspectEnvironment({env:process.env,soundfont:values.soundfont});
+      process.stdout.write(json ? JSON.stringify(report,null,2)+'\n' : formatDoctor(report));
+      process.exitCode=report.ok?0:3;return;
+    }
     if (!command || positionals.length!==2 || values.help || values.version || ((command==='validate'||command==='analyze') && values['out-dir']!==undefined) || (command!=='render' && (values.soundfont!==undefined || values.stems!==undefined || values.format!==undefined)) || (values.format!==undefined && !['wav','mp3','wav,mp3'].includes(values.format)))throw new Error('Invalid command, arguments, or command-specific flags.');
     options={outDir:values['out-dir'],soundfont:values.soundfont,stems:values.stems,format:values.format as CommandOptions['format'],env:process.env};
   } catch(error) {

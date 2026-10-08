@@ -4,11 +4,17 @@ import { createHash } from 'node:crypto';
 import { diagnostic, type Parsed } from '../diagnostics.ts';
 import type { Soundfont } from './renderer.ts';
 export const DEFAULT_SOUNDFONTS = ['/usr/share/sounds/sf2/FluidR3_GM.sf2','/usr/share/soundfonts/FluidR3_GM.sf2','/usr/share/sounds/sf2/default-GM.sf2','/usr/share/soundfonts/default.sf2'] as const;
-export async function resolveSoundfont(options: { soundfont?: string; env: NodeJS.ProcessEnv; defaults?: readonly string[] }): Promise<Parsed<Soundfont>> {
+export interface SoundfontOptions { soundfont?: string; env: NodeJS.ProcessEnv; defaults?: readonly string[] }
+export function selectSoundfont(options:SoundfontOptions):{path:string|undefined;selection:'argument'|'environment'|'default'|'missing'} {
+  if(options.soundfont!==undefined)return {path:options.soundfont,selection:'argument'};
+  if(options.env.DAEMONV12_SOUNDFONT)return {path:options.env.DAEMONV12_SOUNDFONT,selection:'environment'};
+  const path=(options.defaults??DEFAULT_SOUNDFONTS).find(p=>existsSync(p));
+  return {path,selection:path===undefined?'missing':'default'};
+}
+export async function resolveSoundfont(options: SoundfontOptions): Promise<Parsed<Soundfont>> {
   const defaults=options.defaults??DEFAULT_SOUNDFONTS;
-  const explicit=options.soundfont??(options.env.DAEMONV12_SOUNDFONT||undefined);
-  const path=explicit??defaults.find(p=>existsSync(p));
-  const hint='sudo apt-get install -y fluid-soundfont-gm, or pass --soundfont <file.sf2>.';
+  const {path}=selectSoundfont(options);
+  const hint='Run ./scripts/bootstrap-audio-tools.sh on supported Linux, install fluid-soundfont-gm, or set DAEMONV12_SOUNDFONT / pass --soundfont <file.sf2>.';
   if(path===undefined)return {diagnostic:diagnostic('SOUNDFONT_NOT_FOUND','',[...defaults],'installed GM SoundFont',hint)};
   let fd:number|undefined;
   try {
