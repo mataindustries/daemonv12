@@ -103,7 +103,7 @@ grep -Eq 'version[[:space:]]+2\.3\.7([[:space:]]|$)' "$stage/fluidsynth-version"
 grep -Eq '^ffmpeg version 6\.1\.1([[:space:]-]|$)' "$stage/ffmpeg-version" || fail 'Runtime FFmpeg differs from pinned 6.1.1. Use a new prefix or restore the locked runtime.'
 "$runtime/bin/ffmpeg" -hide_banner -filters > "$stage/filters" 2>&1 || fail 'FFmpeg filter discovery failed.'
 "$runtime/bin/ffmpeg" -hide_banner -encoders > "$stage/encoders" 2>&1 || fail 'FFmpeg encoder discovery failed.'
-for filter in highpass lowpass aecho loudnorm; do
+for filter in highpass lowpass aecho acompressor loudnorm; do
   grep -Eq "^[[:space:]]*[A-Z.]{3}[[:space:]]+$filter[[:space:]]" "$stage/filters" || fail "Pinned FFmpeg is missing $filter."
 done
 grep -Eq '^[[:space:]]*[A-Z.]{6}[[:space:]]+libmp3lame[[:space:]]' "$stage/encoders" || fail 'Pinned FFmpeg is missing libmp3lame.'

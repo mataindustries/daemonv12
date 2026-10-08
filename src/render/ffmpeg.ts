@@ -5,22 +5,25 @@ import { resolve } from 'node:path';
 import { diagnostic, type Diagnostic, type Parsed } from '../diagnostics.ts';
 import { MAX_PCM_FRAMES } from './pcm.ts';
 import { executablePath } from './environment.ts';
-export type AudioEffect = { type: 'highpass' | 'lowpass'; frequencyHz: number } | { type: 'delay'; timeMs: number; wet: number };
+import { validateEffect, type Effect } from '../audio-types.ts';
+import { builtinEffect } from './dynamics.ts';
+export type AudioEffect = Effect;
 export interface AudioProcessor {
   identity: { name: string; version: string };
-  effects(samples: Float64Array, effects: AudioEffect[]): Promise<Parsed<Float64Array>>;
+  effects(samples: Float64Array, effects: AudioEffect[], frameLimit?: number): Promise<Parsed<Float64Array>>;
   loudness(path: string): Promise<Parsed<{ integratedLufs: number | null; loudnessRangeLu: number | null; truePeakDbfs: number | null }>>;
   mp3(input: string, output: string): Promise<Parsed<{ codec: string; bitrateKbps: number }>>;
 }
 export function effectFilters(effects: AudioEffect[]): string {
   if (effects.length > 8) throw new RangeError('At most 8 effects.');
   return effects.map(effect => {
+    validateEffect(effect);
     if (effect.type === 'highpass' || effect.type === 'lowpass') {
-      if (!Number.isFinite(effect.frequencyHz) || effect.frequencyHz < 20 || effect.frequencyHz > 20000) throw new RangeError('Invalid filter frequency.');
       return `${effect.type}=f=${effect.frequencyHz}:p=2:r=f64`;
     }
-    if (effect.type !== 'delay' || !Number.isFinite(effect.timeMs) || effect.timeMs < 1 || effect.timeMs > 2000 || !Number.isFinite(effect.wet) || effect.wet < 0 || effect.wet > 0.5) throw new RangeError('Invalid delay.');
-    return `aecho=1:1:${effect.timeMs}:${effect.wet}`;
+    if(effect.type==='delay')return `aecho=1:1:${effect.timeMs}:${effect.wet}`;
+    if(effect.type==='compressor')return `acompressor=threshold=${10**(effect.thresholdDb/20)}:ratio=${effect.ratio}:attack=${effect.attackMs}:release=${effect.releaseMs}:makeup=${10**((effect.makeupGainDb??0)/20)}:knee=1:link=maximum:detection=rms`;
+    throw new RangeError('Built-in effects do not have FFmpeg syntax.');
   }).join(',');
 }
 export function ffmpegCommand(env:NodeJS.ProcessEnv):string { return env.DAEMONV12_FFMPEG || 'ffmpeg'; }
@@ -62,7 +65,7 @@ export async function inspectFfmpeg(options:{env:NodeJS.ProcessEnv;timeoutMs?:nu
   const has=(text:string,name:string)=>new RegExp(`^\\s*[A-Z.]{3,6}\\s+${name}\\s`, 'm').test(text);
   const filterText=filters.value?.stdout.toString()??'',encoderText=encoders.value?.stdout.toString()??'';
   return {command,path:executablePath(command,options.env),version:version.value,available:true,
-    capabilities:{effects:['highpass','lowpass','aecho'].every(name=>has(filterText,name))&&has(encoderText,'pcm_f64le'),mp3:has(encoderText,'libmp3lame'),loudnessAnalysis:has(filterText,'loudnorm')},
+    capabilities:{effects:['highpass','lowpass','aecho','acompressor'].every(name=>has(filterText,name))&&has(encoderText,'pcm_f64le'),mp3:has(encoderText,'libmp3lame'),loudnessAnalysis:has(filterText,'loudnorm')},
     diagnostic:filters.diagnostic??encoders.diagnostic??null};
 }
 export async function createAudioProcessor(options: { env: NodeJS.ProcessEnv; timeoutMs?: number }): Promise<Parsed<AudioProcessor>> {
@@ -72,20 +75,37 @@ export async function createAudioProcessor(options: { env: NodeJS.ProcessEnv; ti
   const base = ['-hide_banner', '-nostdin', '-nostats', '-threads', '1', '-filter_threads', '1'];
   return { value: {
     identity: { name: 'ffmpeg', version },
-    async effects(samples, effects) {
+    async effects(samples, effects, frameLimit) {
       if (!effects.length) return { value: samples };
-      const input = Buffer.alloc(samples.length * 8);
-      for (let i = 0; i < samples.length; i++) input.writeDoubleLE(samples[i]! / 32768, i * 8);
-      const result = await invoke([...base, '-f', 'f64le', '-ar', '44100', '-ac', '2', '-i', 'pipe:0', '-af', effectFilters(effects), '-c:a', 'pcm_f64le', '-f', 'f64le', 'pipe:1'], input, MAX_PCM_FRAMES * 16);
-      if (result.diagnostic) return result;
-      const bytes = result.value.stdout;
-      if (!bytes.length || bytes.length % 16) return { diagnostic: diagnostic('AUDIO_PROCESSING_FAILED', '', bytes.length, 'complete nonempty stereo float audio') };
-      const output = new Float64Array(bytes.length / 8);
-      for (let i = 0; i < output.length; i++) {
-        output[i] = bytes.readDoubleLE(i * 8) * 32768;
-        if (!Number.isFinite(output[i])) return { diagnostic: diagnostic('AUDIO_PROCESSING_FAILED', '', 'non-finite audio', 'finite processed samples') };
+      async function processFfmpeg(samples:Float64Array,chain:AudioEffect[]):Promise<Parsed<Float64Array>> {
+        const input = Buffer.alloc(samples.length * 8);
+        for (let i = 0; i < samples.length; i++) input.writeDoubleLE(samples[i]! / 32768, i * 8);
+        const filters=effectFilters(chain)+(frameLimit===undefined?'':`,atrim=end_sample=${frameLimit}`);
+        const result = await invoke([...base, '-f', 'f64le', '-ar', '44100', '-ac', '2', '-i', 'pipe:0', '-af', filters, '-c:a', 'pcm_f64le', '-f', 'f64le', 'pipe:1'], input, MAX_PCM_FRAMES * 16);
+        if (result.diagnostic) return result;
+        const bytes = result.value.stdout;
+        if (!bytes.length || bytes.length % 16) return { diagnostic: diagnostic('AUDIO_PROCESSING_FAILED', '', bytes.length, 'complete nonempty stereo float audio') };
+        const output = new Float64Array(bytes.length / 8);
+        for (let i = 0; i < output.length; i++) {
+          output[i] = bytes.readDoubleLE(i * 8) * 32768;
+          if (!Number.isFinite(output[i])) return { diagnostic: diagnostic('AUDIO_PROCESSING_FAILED', '', 'non-finite audio', 'finite processed samples') };
+        }
+        return { value: output };
       }
-      return { value: output };
+      try {
+        if(effects.length>8)throw new RangeError('At most 8 effects.');
+        let current=samples,chain:AudioEffect[]=[];
+        for(const effect of effects) {
+          validateEffect(effect);
+          if(effect.type==='reverb'||effect.type==='saturation') {
+            if(chain.length) {const result=await processFfmpeg(current,chain);if(result.diagnostic)return result;current=result.value;chain=[];}
+            current=builtinEffect(current,effect,frameLimit??Infinity);
+          } else chain.push(effect);
+        }
+        return chain.length?await processFfmpeg(current,chain):{value:current};
+      } catch(error) {
+        return {diagnostic:diagnostic('AUDIO_PROCESSING_FAILED','',String(error),'valid bounded effect chain')};
+      }
     },
     async loudness(path) {
       const result = await invoke([...base, '-i', resolve(path), '-map', '0:a:0', '-af', 'loudnorm=print_format=json', '-f', 'null', '-']);

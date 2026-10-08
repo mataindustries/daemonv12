@@ -1,6 +1,6 @@
 # DaemonV12
 
-**12 instruments for agents.** DaemonV12 V0.4 is a working headless music engine
+**12 instruments for agents.** DaemonV12 V0.5 is a working headless music engine
 for AI builders. An agent can create and edit musical projects through nine stdio
 MCP tools, then render deterministic MIDI, WAV/MP3 and stems with hashes and
 provenance. General MIDI, WAV instruments, reusable drum kits and the original
@@ -170,6 +170,26 @@ when `--format mp3` is used. The analysis JSON and manifest report peaks, loudne
 clipping, production settings and tool versions. See the [V0.3 contract](docs/V0_3_AUDIO.md)
 for ranges, pan law, effects, stem semantics and compatibility.
 
+## Timeline and dynamics (V0.5)
+
+Score locked video with an exact runtime and automatic VO ducking:
+
+```json
+"render": {"duration":{"seconds":175.2},"tail":"auto"},
+"master": {"ducking":{"source":"assets/vo.wav","amountDb":12,"thresholdDb":-35,"attackMs":50,"releaseMs":300}}
+```
+
+Use `"render":{"duration":{"bars":16},"tail":"none"}` for exact musical loops
+and aligned stems. Track gain/pan automation and ordered compressor, algorithmic
+reverb and soft saturation work through project files and the existing MCP tools.
+Stems include track automation/effects; VO ducking affects the master. Exact loop
+length alone does not guarantee a click-free waveform transition.
+
+`npm run demo:v05` renders and verifies the synthetic narrated Foundry cue and
+four-bar loop under `renders/v05/`. See the [V0.5 contract](docs/V0_5_TIMELINE_DYNAMICS.md)
+for tagged time values, tails, ranges and processing order. Existing projects keep
+their previous audio behavior.
+
 ## Commands
 
 - `doctor [--soundfont <file.sf2>] [--json]` probes versions, paths, SoundFont validity, dependencies and each rendering/MCP capability without writing artifacts. [Stable JSON fields and exit behavior](docs/DEVELOPER_SETUP.md#doctor).
@@ -187,6 +207,7 @@ Set `DAEMONV12_FLUIDSYNTH` to select a renderer executable.
 
 ## Documentation
 
+- [V0.5 timeline and dynamics](docs/V0_5_TIMELINE_DYNAMICS.md): exact duration, tails, loops, gain/pan automation, VO ducking and production effects.
 - [V0.4 MCP interface](docs/V0_4_MCP.md): stdio configuration, tools, edits, path safety and agent demo.
 - [MCP clients](docs/MCP_CLIENTS.md): Codex CLI and generic/Claude-style setup, absolute paths and environment variables.
 - [Developer setup](docs/DEVELOPER_SETUP.md): doctor JSON, rootless bootstrap, smoke, CI and Cloud persistence.

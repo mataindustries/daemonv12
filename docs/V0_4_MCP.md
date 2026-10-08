@@ -4,6 +4,11 @@ DaemonV12 exposes nine semantic music tools over stdio using the official Model
 Context Protocol TypeScript SDK. The project format remains version 1. Existing
 CLI, timing, rendering, sample, production and provenance behavior is unchanged.
 
+V0.5 extends the same tools and transactional edits with render duration/tail,
+track gain/pan automation, master VO ducking and compressor/reverb/saturation.
+See [V0_5_TIMELINE_DYNAMICS.md](V0_5_TIMELINE_DYNAMICS.md) for the additive schema;
+the V0.4 contracts below remain the baseline.
+
 ## Install and connect
 
 From this checkout, run `npm ci`. Node 22.18+ runs TypeScript directly; no build is

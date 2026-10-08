@@ -42,7 +42,7 @@ cat > "$prefix/bin/ffmpeg" <<'EOF'
 #!/usr/bin/env bash
 case "$*" in
   *-version*) printf 'ffmpeg version 6.1.1\\n' ;;
-  *-filters*) printf ' ... highpass A->A\\n ... lowpass A->A\\n ... aecho A->A\\n ... loudnorm A->A\\n' ;;
+  *-filters*) printf ' ... highpass A->A\\n ... lowpass A->A\\n ... acompressor A->A\\n ... aecho A->A\\n ... loudnorm A->A\\n' ;;
   *-encoders*) [[ \$\{BOOTSTRAP_FAKE_MODE:-\} == missing-mp3 ]] || printf ' A....D libmp3lame MP3\\n' ;;
 esac
 EOF
