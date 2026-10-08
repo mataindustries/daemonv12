@@ -1,0 +1,244 @@
+{
+  "formatVersion": 1,
+  "title": "DaemonV12 Sample-Only Pulse",
+  "description": "The existing sample-demo drum and impact tracks, without its General MIDI tracks. Requires only Node; no new notes or assets.",
+  "bpm": 96,
+  "timeSignature": "4/4",
+  "key": "D minor",
+  "bars": 8,
+  "seed": 1,
+  "tracks": [
+    {
+      "id": "kick",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/pulse-kit/kit.json"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "groove"
+        },
+        {
+          "bar": 2,
+          "pattern": "groove"
+        },
+        {
+          "bar": 3,
+          "pattern": "groove"
+        },
+        {
+          "bar": 4,
+          "pattern": "groove"
+        },
+        {
+          "bar": 5,
+          "pattern": "groove"
+        },
+        {
+          "bar": 6,
+          "pattern": "groove"
+        },
+        {
+          "bar": 7,
+          "pattern": "groove"
+        },
+        {
+          "bar": 8,
+          "pattern": "groove"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "groove",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "kick",
+              "velocity": 0.9
+            },
+            {
+              "start": "1:3",
+              "pitch": "kick",
+              "velocity": 0.85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "snare",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/pulse-kit/kit.json"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "groove"
+        },
+        {
+          "bar": 2,
+          "pattern": "groove"
+        },
+        {
+          "bar": 3,
+          "pattern": "groove"
+        },
+        {
+          "bar": 4,
+          "pattern": "groove"
+        },
+        {
+          "bar": 5,
+          "pattern": "groove"
+        },
+        {
+          "bar": 6,
+          "pattern": "groove"
+        },
+        {
+          "bar": 7,
+          "pattern": "groove"
+        },
+        {
+          "bar": 8,
+          "pattern": "groove"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "groove",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:2",
+              "pitch": "snare",
+              "velocity": 0.8
+            },
+            {
+              "start": "1:4",
+              "pitch": "snare",
+              "velocity": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hats",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/pulse-kit/kit.json"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "groove"
+        },
+        {
+          "bar": 2,
+          "pattern": "groove"
+        },
+        {
+          "bar": 3,
+          "pattern": "groove"
+        },
+        {
+          "bar": 4,
+          "pattern": "groove"
+        },
+        {
+          "bar": 5,
+          "pattern": "groove"
+        },
+        {
+          "bar": 6,
+          "pattern": "groove"
+        },
+        {
+          "bar": 7,
+          "pattern": "groove"
+        },
+        {
+          "bar": 8,
+          "pattern": "groove"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "groove",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "hat",
+              "velocity": 0.65
+            },
+            {
+              "start": "1:1+1/8",
+              "pitch": "hat",
+              "velocity": 0.45
+            },
+            {
+              "start": "1:2",
+              "pitch": "hat",
+              "velocity": 0.65
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "hat",
+              "velocity": 0.45
+            },
+            {
+              "start": "1:3",
+              "pitch": "hat",
+              "velocity": 0.65
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "hat",
+              "velocity": 0.45
+            },
+            {
+              "start": "1:4",
+              "pitch": "hat",
+              "velocity": 0.65
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "hat",
+              "velocity": 0.45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "impact",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/pulse-kit/impact.wav"
+      },
+      "clips": [
+        {
+          "bar": 8,
+          "pattern": "accent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "accent",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.75
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

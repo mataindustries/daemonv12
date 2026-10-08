@@ -4,6 +4,7 @@ import { readFileSync, renameSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { diagnostic, type Diagnostic, type Parsed } from '../diagnostics.ts';
 import { MAX_PCM_FRAMES } from './pcm.ts';
+import { executablePath } from './environment.ts';
 export type AudioEffect = { type: 'highpass' | 'lowpass'; frequencyHz: number } | { type: 'delay'; timeMs: number; wet: number };
 export interface AudioProcessor {
   identity: { name: string; version: string };
@@ -22,8 +23,9 @@ export function effectFilters(effects: AudioEffect[]): string {
     return `aecho=1:1:${effect.timeMs}:${effect.wet}`;
   }).join(',');
 }
-export async function createAudioProcessor(options: { env: NodeJS.ProcessEnv; timeoutMs?: number }): Promise<Parsed<AudioProcessor>> {
-  const exe = options.env.DAEMONV12_FFMPEG || 'ffmpeg';
+export function ffmpegCommand(env:NodeJS.ProcessEnv):string { return env.DAEMONV12_FFMPEG || 'ffmpeg'; }
+function invocation(options: { env: NodeJS.ProcessEnv; timeoutMs?: number }) {
+  const exe = ffmpegCommand(options.env);
   async function invoke(args: string[], input?: Buffer, limit = 65536): Promise<Parsed<{ stdout: Buffer; stderr: string }>> {
     return new Promise(resolveResult => {
       const child = spawn(exe, args, { env: options.env, shell: false, stdio: ['pipe', 'pipe', 'pipe'] });
@@ -43,10 +45,30 @@ export async function createAudioProcessor(options: { env: NodeJS.ProcessEnv; ti
       child.stdin.end(input);
     });
   }
+  return invoke;
+}
+async function ffmpegVersion(invoke:ReturnType<typeof invocation>):Promise<Parsed<string>> {
   const probe = await invoke(['-version']);
   if (probe.diagnostic) return probe;
   const version = /ffmpeg version ([^\s]+)/.exec(probe.value.stdout.toString())?.[1];
   if (!version) return { diagnostic: diagnostic('AUDIO_PROCESSING_FAILED', '', 'invalid version response', 'FFmpeg version') };
+  return {value:version};
+}
+export async function inspectFfmpeg(options:{env:NodeJS.ProcessEnv;timeoutMs?:number}) {
+  const invoke=invocation(options), command=ffmpegCommand(options.env);
+  const version=await ffmpegVersion(invoke);
+  if(version.diagnostic)return {command,path:executablePath(command,options.env),version:null,available:false,capabilities:{effects:false,mp3:false,loudnessAnalysis:false},diagnostic:version.diagnostic};
+  const [filters,encoders]=await Promise.all([invoke(['-hide_banner','-filters'],undefined,1048576),invoke(['-hide_banner','-encoders'],undefined,1048576)]);
+  const has=(text:string,name:string)=>new RegExp(`^\\s*[A-Z.]{3,6}\\s+${name}\\s`, 'm').test(text);
+  const filterText=filters.value?.stdout.toString()??'',encoderText=encoders.value?.stdout.toString()??'';
+  return {command,path:executablePath(command,options.env),version:version.value,available:true,
+    capabilities:{effects:['highpass','lowpass','aecho'].every(name=>has(filterText,name))&&has(encoderText,'pcm_f64le'),mp3:has(encoderText,'libmp3lame'),loudnessAnalysis:has(filterText,'loudnorm')},
+    diagnostic:filters.diagnostic??encoders.diagnostic??null};
+}
+export async function createAudioProcessor(options: { env: NodeJS.ProcessEnv; timeoutMs?: number }): Promise<Parsed<AudioProcessor>> {
+  const invoke=invocation(options),probe=await ffmpegVersion(invoke);
+  if(probe.diagnostic)return probe;
+  const version=probe.value;
   const base = ['-hide_banner', '-nostdin', '-nostats', '-threads', '1', '-filter_threads', '1'];
   return { value: {
     identity: { name: 'ffmpeg', version },
