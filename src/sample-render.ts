@@ -2,8 +2,9 @@
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, renameSync, mkdirSync, rmSync, rmdirSync } from 'node:fs';
 import { basename, join } from 'node:path';
-import { decodePcm, mixPcm, pcmRenderer, PCM_RATE, MAX_PCM_FRAMES, type AudioProcessor, gainPan, sumFloat, quantize, padPcm, productionRenderer, type PcmTrigger, type AudioRenderer, type Soundfont } from './render/index.ts';
+import { decodePcm, mixPcm, pcmRenderer, PCM_RATE, MAX_PCM_FRAMES, type AudioProcessor, gainPan, automatedGainPan, fitFloat, applyDucking, sumFloat, quantize, padPcm, productionRenderer, dynamicsRenderer, type PcmTrigger, type AudioRenderer, type Soundfont } from './render/index.ts';
 import { ticksToFrames, ticksToSeconds } from './timing/musical-time.ts';
+import { renderPlan, automationFrames } from './timing/render-plan.ts';
 import { encodeSmf } from './midi/smf.ts';
 import { diagnostic, type Diagnostic } from './diagnostics.ts';
 import { ENGINE_VERSION } from './version.ts';
@@ -23,9 +24,13 @@ function wavIdentity(file:string,bytes:Buffer,frames:number) {
 export async function renderSampledProject(request:Request):Promise<{manifest?:Record<string,unknown>;diagnostics:Diagnostic[]}> {
   const {compilation:c,path,paths,stemDir,midi,renderer,soundfont}=request;
   const production=!!request.processor;
+  const project=c.project!,plan=renderPlan(project);
+  const dynamics=project.render!==undefined || project.master?.ducking!==undefined || project.tracks.some(t=>t.automation!==undefined)
+    || [...project.tracks.flatMap(t=>t.effects??[]),...project.master?.effects??[]].some(e=>['compressor','reverb','saturation'].includes(e.type));
   const processedTracks:Record<string,unknown>[]=[];
   const timeline=c.timeline!,diagnostics:Diagnostic[]=[],stems:Record<string,unknown>[]=[];
-  const minimumFrames=ticksToFrames(timeline.endTick,timeline.usPerQuarter,PCM_RATE,true);
+  const minimumFrames=production?plan.minimumFrames:ticksToFrames(timeline.endTick,timeline.usPerQuarter,PCM_RATE,true);
+  const cap=plan.audioEndFrames??undefined;
   if(minimumFrames>MAX_PCM_FRAMES) return {diagnostics:[diagnostic('RENDERER_FAILED','',minimumFrames,'sample render of at most 600 seconds including tails')]};
   const master:PcmTrigger[]=[];
   let gmRenderer:unknown=null,gmSource:unknown=null;
@@ -40,10 +45,11 @@ export async function renderSampledProject(request:Request):Promise<{manifest?:R
   if(request.stems || production)mkdirSync(stemDir);
   async function processTrack(samples:Float64Array,index:number) {
     const track=c.project!.tracks[index]!;
-    const processed=await request.processor!.effects(gainPan(samples,track.mix?.gainDb,track.mix?.pan),track.effects??[]);
+    const automation={gainDb:automationFrames(track.automation?.gainDb,project),pan:automationFrames(track.automation?.pan,project)};
+    const processed=await request.processor!.effects(automatedGainPan(samples,track.mix?.gainDb,track.mix?.pan,automation),track.effects??[],cap);
     if(processed.diagnostic) {diagnostics.push({...processed.diagnostic,path:`tracks[${index}]`});return null;}
-    const output=quantize(processed.value);
-    processedTracks.push({trackId:track.id,gainDb:track.mix?.gainDb??0,pan:track.mix?.pan??0,effects:track.effects??[],clippedSamples:output.clippedSamples,preClipPeakDbfs:output.preClipPeakDbfs});
+    const output=quantize(cap!==undefined&&processed.value.length/2>cap?fitFloat(processed.value,cap):processed.value);
+    processedTracks.push({trackId:track.id,gainDb:track.mix?.gainDb??0,pan:track.mix?.pan??0,effects:track.effects??[],...(track.automation?{automation:track.automation,resolvedAutomation:automation}:{}),clippedSamples:output.clippedSamples,preClipPeakDbfs:output.preClipPeakDbfs});
     master.push({frame:0,velocity:1,pcm:decodePcm(output.bytes).pcm!});
     return output;
   }
@@ -59,8 +65,8 @@ export async function renderSampledProject(request:Request):Promise<{manifest?:R
       if(rendered.wav.frames<minimumFrames)return {diagnostics:[diagnostic('RENDERER_FAILED',`tracks[${track.index}]`,rendered.wav.frames,'stem covering the full timeline')]};
       let bytes:Buffer=readFileSync(wavPath),frames=rendered.wav.frames;
       if(production) {
-        if(frames>MAX_PCM_FRAMES)return {diagnostics:[diagnostic('RENDERER_FAILED',`tracks[${track.index}]`,frames,'at most 600 seconds including tails')]};
-        const processed=await processTrack(sumFloat([{frame:0,velocity:1,pcm:decodePcm(bytes).pcm!}],minimumFrames),track.index);
+        if(Math.min(frames,cap??Infinity)>MAX_PCM_FRAMES)return {diagnostics:[diagnostic('RENDERER_FAILED',`tracks[${track.index}]`,frames,'at most 600 seconds including tails')]};
+        const processed=await processTrack(sumFloat([{frame:0,velocity:1,pcm:decodePcm(bytes).pcm!}],minimumFrames,cap),track.index);
         if(!processed)return {diagnostics};
         bytes=processed.bytes;frames=processed.frames;write(wavPath,bytes);gmRenderer=rendered.renderer;
       }
@@ -72,8 +78,8 @@ export async function renderSampledProject(request:Request):Promise<{manifest?:R
       const file=instrument.type==='sampler'?instrument.sample:c.kits!.get(instrument.kit)!.find(e=>e.pitch===note.pitch)!.sample;
       return {file,tick:note.tick,frame:ticksToFrames(note.tick,timeline.usPerQuarter),velocity:note.velocity,pcm:c.assets!.get(file)!.pcm!};
     });
-    if(triggers.some(t=>t.frame+t.pcm.frames>MAX_PCM_FRAMES))return {diagnostics:[diagnostic('RENDERER_FAILED',`tracks[${track.index}]`,undefined,'sample render of at most 600 seconds including tails')]};
-    const mixed=production?await processTrack(sumFloat(triggers,minimumFrames),track.index):mixPcm(triggers,minimumFrames);
+    if(triggers.some(t=>Math.min(t.frame+t.pcm.frames,cap??Infinity)>MAX_PCM_FRAMES))return {diagnostics:[diagnostic('RENDERER_FAILED',`tracks[${track.index}]`,undefined,'sample render of at most 600 seconds including tails')]};
+    const mixed=production?await processTrack(sumFloat(triggers,minimumFrames,cap),track.index):mixPcm(triggers,minimumFrames);
     if(!mixed)return {diagnostics};
     // The master sums the same quantized track PCM exported as stems. GM remains one
     // full-score FluidSynth render, preserving the V0.1 master/stem relationship.
@@ -86,12 +92,19 @@ export async function renderSampledProject(request:Request):Promise<{manifest?:R
     }
   }
   if(master.some(t=>t.pcm.frames>MAX_PCM_FRAMES))return {diagnostics:[diagnostic('RENDERER_FAILED','',undefined,'sample render of at most 600 seconds including tails')]};
-  let mixed;
+  let mixed,duckingProvenance:Record<string,unknown>|undefined;
   if(production) {
     const settings=c.project!.master;
-    const output=await request.processor!.effects(gainPan(sumFloat(master,minimumFrames),settings?.gainDb),settings?.effects??[]);
+    const output=await request.processor!.effects(gainPan(sumFloat(master,minimumFrames,cap),settings?.gainDb),settings?.effects??[],cap);
     if(output.diagnostic)return {diagnostics:[output.diagnostic]};
-    mixed=quantize(output.value);
+    let samples=cap!==undefined&&output.value.length/2>cap?fitFloat(output.value,cap):output.value;
+    if(plan.outputFrames!==null)samples=fitFloat(samples,plan.outputFrames);
+    if(settings?.ducking) {
+      const reference=c.sidechain!,ducked=applyDucking(samples,reference.pcm,settings.ducking);
+      samples=ducked.samples;
+      duckingProvenance={...settings.ducking,reference:{file:reference.file,sha256:hash(reference.bytes),bytes:reference.bytes.length,frames:reference.pcm.frames,sampleRate:PCM_RATE,channels:reference.pcm.channels,bitsPerSample:16},...ducked.metrics,mixedIntoMaster:false};
+    }
+    mixed=quantize(samples);
     for(const stem of stems) {
       const wav=stem.wav as {file:string;frames:number};
       const file=request.stemFileName(stem.trackId as string),wavPath=join(stemDir,file);
@@ -107,11 +120,12 @@ export async function renderSampledProject(request:Request):Promise<{manifest?:R
     engine:{name:'daemonv12',version:ENGINE_VERSION},
     project:{file:basename(path),sha256:hash(c.projectBytes!),formatVersion:1,seed:c.project!.seed},
     midi:{file:basename(paths.midi),sha256:hash(midi),bytes:midi.length,ppq:960,durationTicks:timeline.endTick,durationSeconds:Number(ticksToSeconds(timeline.endTick,timeline.usPerQuarter).toFixed(6)),notes:timeline.tracks.filter(t=>t.instrument.type==='gm').reduce((n,t)=>n+t.notes.length,0)},
-    renderer:production?productionRenderer:pcmRenderer,gmRenderer,gmSource,
+    renderer:production?(dynamics?dynamicsRenderer:productionRenderer):pcmRenderer,gmRenderer,gmSource,
     soundfont:soundfont?{file:soundfont.file,sha256:soundfont.sha256,bytes:soundfont.bytes}:null,
-    samples:{timing:'nearest frame, ties later; ceil project end; absolute tick * usPerQuarter * 44100 / 960000000',
+    samples:{timing:dynamics?'nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000':'nearest frame, ties later; ceil project end; absolute tick * usPerQuarter * 44100 / 960000000',
       assets:Array.from(c.assets!).sort(([a],[b])=>a<b?-1:a>b?1:0).map(([file,asset])=>({file,sha256:hash(asset.bytes),bytes:asset.bytes.length,...(asset.pcm?{frames:asset.pcm.frames,channels:asset.pcm.channels,sampleRate:PCM_RATE,bitsPerSample:16}:{kind:'drumkit'})})),tracks:sampleTracks},
-    ...(production?{production:{processor:request.processor!.identity,tracks:processedTracks,master:{gainDb:c.project!.master?.gainDb??0,effects:c.project!.master?.effects??[],clippedSamples:mixed.clippedSamples,preClipPeakDbfs:'preClipPeakDbfs' in mixed?mixed.preClipPeakDbfs:null},stemAlignment:'zero-padded to master frames; post-track, pre-master processing'}}:{}),
+    ...(dynamics?{timeline:{authoredDurationTicks:timeline.endTick,authoredFrames:plan.authoredFrames,duration:project.render?.duration??'auto',tail:project.render?.tail??'auto',requestedFinalFrames:plan.outputFrames,audioEndFrames:plan.audioEndFrames,resultingFrames:mixed.frames,rounding:'nearest sample frame; ties later; combined musical timeline + explicit tail rounded once'}}:{}),
+    ...(production?{production:{processor:request.processor!.identity,...(dynamics?{runtime:{name:'node',version:process.version}}:{}),tracks:processedTracks,master:{gainDb:c.project!.master?.gainDb??0,effects:c.project!.master?.effects??[],...(duckingProvenance?{ducking:duckingProvenance}:{}),clippedSamples:mixed.clippedSamples,preClipPeakDbfs:'preClipPeakDbfs' in mixed?mixed.preClipPeakDbfs:null},stemAlignment:dynamics?'trim/pad to master frames; post-track, pre-master gain/effects/ducking':'zero-padded to master frames; post-track, pre-master processing'}}:{}),
     mix:{clippedSamples:mixed.clippedSamples,gm:production?'sum processed independent tracks':'full-score render',samples:'sum exported track PCM'},
     wav:wavIdentity(basename(paths.wav),mixed.bytes,mixed.frames),...(request.stems?{stems}:{}),
   }};

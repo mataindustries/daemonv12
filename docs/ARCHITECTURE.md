@@ -3,9 +3,19 @@
 > **DaemonV12: 12 instruments for agents.** A headless, deterministic music engine. AI agents drive it
 > through project files, a CLI and stdio MCP tools. It needs no DAW, GUI, browser or MIDI hardware.
 
-Status: V0.4 implemented, engine `0.4.0`, project `formatVersion: 1`.
+Status: V0.5 implemented, engine `0.5.0`, project `formatVersion: 1`.
 Normative details: [V0_SPEC.md](V0_SPEC.md). Phase plan: [ROADMAP.md](ROADMAP.md).
 Implementation steps: [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
+
+V0.5 adds pure `timing/render-plan.ts` boundary resolution and tagged wall time
+(`timing/wall-time.ts`), optional gain/pan automation, and contained master VO
+references. `audio-types.ts` shares effect types/ranges across validation and
+processing. `render/dynamics.ts` owns activity envelopes, algorithmic reverb and
+soft saturation; compressor syntax stays in the FFmpeg adapter. Production
+orchestration resolves points to frames, controls tails, keeps stems pre-master,
+and ducks only the master. Legacy routes and MIDI encoding remain unchanged.
+[V0_5_TIMELINE_DYNAMICS.md](V0_5_TIMELINE_DYNAMICS.md) is normative for these additions;
+historical limitations below remain V0 context.
 
 V0.4 adds the isolated `mcp/` npm workspace, importing the core in one direction
 only. Nine stdio tools expose project creation/read/validation/transactional edits,

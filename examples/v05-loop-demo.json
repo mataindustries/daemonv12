@@ -1,0 +1,111 @@
+{
+  "formatVersion": 1,
+  "title": "Foundry — Four Bar Layer",
+  "bpm": 100,
+  "timeSignature": "4/4",
+  "bars": 4,
+  "render": {
+    "duration": {
+      "bars": 4
+    },
+    "tail": "none"
+  },
+  "tracks": [
+    {
+      "id": "pulse",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/orbital-foundry/kit.json"
+      },
+      "mix": {
+        "gainDb": -7
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "pulse"
+        },
+        {
+          "bar": 2,
+          "pattern": "pulse"
+        },
+        {
+          "bar": 3,
+          "pattern": "pulse"
+        },
+        {
+          "bar": 4,
+          "pattern": "pulse"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "pulse",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "sub-pulse",
+              "velocity": 0.6
+            },
+            {
+              "start": "1:2",
+              "pitch": "machine-tick",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:3",
+              "pitch": "mechanical-kick",
+              "velocity": 0.6
+            },
+            {
+              "start": "1:4",
+              "pitch": "industrial-snare",
+              "velocity": 0.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "air",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/11-air-texture.wav"
+      },
+      "mix": {
+        "gainDb": -9
+      },
+      "effects": [
+        {
+          "type": "reverb",
+          "roomSize": 0.7,
+          "decaySeconds": 2,
+          "wet": 0.25
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "layer"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "layer",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.4
+            },
+            {
+              "start": "4:4",
+              "velocity": 0.4
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

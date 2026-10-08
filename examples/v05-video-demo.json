@@ -1,0 +1,294 @@
+{
+  "formatVersion": 1,
+  "title": "Orbital Foundry — Narrated Systems",
+  "description": "V0.5 synthetic locked-picture acceptance cue; original Foundry sounds and fake VO activity, not the Shoot the Moon score.",
+  "bpm": 120,
+  "timeSignature": "4/4",
+  "bars": 4,
+  "seed": 5,
+  "render": {
+    "duration": {
+      "seconds": 8
+    },
+    "tail": "auto"
+  },
+  "master": {
+    "gainDb": 5,
+    "ducking": {
+      "source": "assets/v05/synthetic-vo.wav",
+      "amountDb": 12,
+      "thresholdDb": -35,
+      "attackMs": 50,
+      "releaseMs": 300
+    }
+  },
+  "tracks": [
+    {
+      "id": "atmosphere",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/10-dark-drone.wav"
+      },
+      "mix": {
+        "gainDb": -3,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 70
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.6,
+          "decaySeconds": 1.2,
+          "wet": 0.18
+        }
+      ],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "seconds": 0
+            },
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 0.7
+            },
+            "value": -3
+          },
+          {
+            "at": {
+              "seconds": 7
+            },
+            "value": -3,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8
+            },
+            "value": -45
+          }
+        ],
+        "pan": [
+          {
+            "at": {
+              "musical": "1:1"
+            },
+            "value": -0.35,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "musical": "3:1"
+            },
+            "value": 0.35,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "musical": "5:1"
+            },
+            "value": 0
+          }
+        ]
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "cue"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.7
+            },
+            {
+              "start": "3:1",
+              "velocity": 0.7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "machines",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/orbital-foundry/kit.json"
+      },
+      "mix": {
+        "gainDb": -5,
+        "pan": 0.15
+      },
+      "effects": [
+        {
+          "type": "saturation",
+          "driveDb": 5,
+          "mix": 0.25
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -17,
+          "ratio": 3,
+          "attackMs": 8,
+          "releaseMs": 150
+        }
+      ],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "seconds": 0
+            },
+            "value": -5
+          },
+          {
+            "at": {
+              "seconds": 7
+            },
+            "value": -5,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8
+            },
+            "value": -45
+          }
+        ]
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "pulse"
+        },
+        {
+          "bar": 2,
+          "pattern": "pulse"
+        },
+        {
+          "bar": 3,
+          "pattern": "pulse"
+        },
+        {
+          "bar": 4,
+          "pattern": "pulse"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "pulse",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "mechanical-kick",
+              "velocity": 0.65
+            },
+            {
+              "start": "1:2",
+              "pitch": "machine-tick",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:3",
+              "pitch": "industrial-snare",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:4",
+              "pitch": "metallic-strike",
+              "velocity": 0.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "energy",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/12-alarm-energy-pulse.wav"
+      },
+      "mix": {
+        "gainDb": -6,
+        "pan": -0.25
+      },
+      "effects": [
+        {
+          "type": "lowpass",
+          "frequencyHz": 6000
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.4,
+          "decaySeconds": 0.8,
+          "wet": 0.12
+        }
+      ],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "seconds": 0
+            },
+            "value": -6
+          },
+          {
+            "at": {
+              "seconds": 7
+            },
+            "value": -6,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8
+            },
+            "value": -45
+          }
+        ]
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "cue"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.55
+            },
+            {
+              "start": "2:1",
+              "velocity": 0.55
+            },
+            {
+              "start": "3:1",
+              "velocity": 0.55
+            },
+            {
+              "start": "4:1",
+              "velocity": 0.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

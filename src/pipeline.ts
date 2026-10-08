@@ -18,6 +18,7 @@ import { renderSampledProject } from './sample-render.ts';
 export interface Compilation {
   diagnostics: Diagnostic[]; omitted?: number; project: Project | null; timeline: Timeline | null; projectBytes?: Uint8Array;
   kits?: Kits; assets?: Map<string, {bytes:Buffer; pcm?:Pcm}>;
+  sidechain?: {file:string;bytes:Buffer;pcm:Pcm};
 }
 function compile(loaded: LoadResult, kits: Kits = new Map()): Compilation {
   if (loaded.diagnostics.length) return { diagnostics: loaded.diagnostics, project: null, timeline: null };
@@ -53,6 +54,16 @@ function compileWithAssets(loaded: LoadResult, path: string): Compilation {
         if(decoded.error) compilation.diagnostics.push(diagnostic('UNSUPPORTED_WAV',at,file,decoded.error));
         else assets.set(file,{bytes:read.bytes!,pcm:decoded.pcm!});
       }
+    }
+  }
+  const ducking=compilation.project.master?.ducking;
+  if(ducking) {
+    const at='master.ducking.source',read=readAsset(path,ducking.source,at,true);
+    if(read.diagnostic)compilation.diagnostics.push(read.diagnostic);
+    else {
+      const decoded=decodePcm(read.bytes!);
+      if(decoded.error || decoded.pcm!.frames>44100*600)compilation.diagnostics.push(diagnostic('UNSUPPORTED_WAV',at,ducking.source,decoded.error??'sidechain duration must be at most 600 seconds'));
+      else compilation.sidechain={file:ducking.source,bytes:read.bytes!,pcm:decoded.pcm!};
     }
   }
   if(compilation.diagnostics.some(d=>d.severity==='error'))compilation.timeline=null;
@@ -159,7 +170,7 @@ export async function runCommand(command: Command, path: string, options: Comman
       let soundfont: Soundfont | undefined;
       let renderer: AudioRenderer | undefined;
       let processor: AudioProcessor | undefined;
-      const production=compilation.project!.master!==undefined || compilation.project!.tracks.some(t=>t.mix!==undefined || t.effects!==undefined);
+      const production=compilation.project!.render!==undefined || compilation.project!.master!==undefined || compilation.project!.tracks.some(t=>t.mix!==undefined || t.effects!==undefined || t.automation!==undefined);
       if(command==='render' && (production || options.format!==undefined)) {
         const probe=await createAudioProcessor({env:options.env??{},timeoutMs:options.timeoutMs});
         if(probe.diagnostic)diagnostics.push(probe.diagnostic);else processor=probe.value;

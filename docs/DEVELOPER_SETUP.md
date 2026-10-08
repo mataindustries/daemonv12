@@ -52,7 +52,7 @@ or render artifacts. Example excerpt from an environment without audio tools:
 | `dependencies` | Zero engine runtime dependencies; presence and exact version of root development tools and the MCP workspace's runtime dependencies. |
 | `readiness.generalMidi` | Supported Node + working FluidSynth version probe + readable RIFF/sfbk SoundFont. |
 | `readiness.sampleOnly` | Supported Node; no FluidSynth, SoundFont, FFmpeg or npm requirement. Applies to plain sample WAV rendering without production fields/export. |
-| `readiness.productionEffects` | Supported Node + FFmpeg highpass/lowpass/aecho, float PCM encoder and loudnorm (production rendering also analyzes the result). |
+| `readiness.productionEffects` | Supported Node + FFmpeg highpass/lowpass/aecho/acompressor, float PCM encoder and loudnorm (production rendering also analyzes the result). |
 | `readiness.mp3` | Supported Node + FFmpeg libmp3lame and loudnorm. |
 | `readiness.loudnessAnalysis` | Supported Node + FFmpeg loudnorm. |
 | `readiness.mcp` | Supported Node + the pinned MCP runtime packages present. Stdio startup is verified separately by smoke. |

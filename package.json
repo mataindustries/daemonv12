@@ -1,6 +1,6 @@
 {
   "name": "daemonv12",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "workspaces": ["mcp"],
   "description": "Headless music engine for AI agents. 12 instruments for agents.",
   "private": true,
@@ -28,6 +28,10 @@
     "demo:production": "node bin/daemonv12.js render examples/production-demo.json --stems --format wav,mp3",
     "demo:samples": "node bin/daemonv12.js render examples/sample-demo.json --stems",
     "demo:sample-only": "node bin/daemonv12.js render examples/sample-only-demo.json",
+    "fixtures:v05": "node scripts/generate-v05-fixtures.ts",
+    "demo:v05": "node scripts/verify-v05.ts",
+    "demo:v05-loop": "node bin/daemonv12.js render examples/v05-loop-demo.json --out-dir renders/v05 --stems",
+    "test:v05": "node --test \"tests/v05*.test.ts\"",
     "fixtures:samples": "node scripts/generate-sample-demo.ts",
     "demo:mcp": "node mcp/demo.ts",
     "fixtures:orbital-foundry": "node scripts/generate-orbital-foundry.ts",
