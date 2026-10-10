@@ -1,0 +1,50 @@
+{
+  "name": "glass-fire-promo",
+  "version": "0.1.0",
+  "description": "GLASS//FIRE: the 24-second DaemonV12 promo. A deterministic, data-driven Remotion motion system. Isolated from the DaemonV12 package.",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "dev": "node scripts/click-track.ts && remotion studio src/index.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint src",
+    "test": "node --test \"tests/**/*.test.ts\"",
+    "check": "npm run typecheck && npm run lint && npm test",
+    "glasshouse:extract": "node scripts/extract-glasshouse.ts",
+    "fixture:export": "node scripts/export-fixture.ts",
+    "click": "node scripts/click-track.ts",
+    "analyze": "node scripts/analyze-stems.ts",
+    "render:preview": "remotion render src/index.ts GlassFire out/glass-fire-preview-540p.mp4 --scale=0.5 --crf=26",
+    "render:final": "remotion render src/index.ts GlassFire out/glass-fire-1080p60.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p --props=props/final.json",
+    "render:silent": "remotion render src/index.ts GlassFire out/glass-fire-1080p60-silent.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p",
+    "contact-sheet": "remotion still src/index.ts ContactSheet out/glass-fire-contact-sheet.png --frame=0",
+    "verify": "node scripts/verify.ts",
+    "render:click": "node scripts/click-track.ts && remotion render src/index.ts GlassFire out/glass-fire-preview-click-540p.mp4 --scale=0.5 --crf=26 --props=props/click.json"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "5.3.0",
+    "@fontsource-variable/jetbrains-mono": "5.3.0",
+    "@remotion/cli": "4.0.534",
+    "@remotion/fonts": "4.0.534",
+    "@remotion/media": "4.0.534",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.534",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "4.0.534",
+    "@remotion/eslint-config-flat": "4.0.534",
+    "@remotion/renderer": "4.0.534",
+    "@types/node": "22.20.5",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.39.5",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  }
+}
