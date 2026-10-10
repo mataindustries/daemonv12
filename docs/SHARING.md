@@ -22,12 +22,12 @@ missed: **Node refuses to strip TypeScript types under `node_modules`**, so even
   which compiles `src/` and `mcp/` to `dist/` with type erasure only. `bin/launch.js`
   runs the TypeScript in a checkout and `dist/` in an installed package. A checkout
   never executes `dist/`, so development keeps its zero-build loop.
-- **Explicit `files` allowlist:** `bin/`, `dist/`, six starter projects, the sound
-  catalog, `examples/assets/` (all three CC0 packs), format and MCP docs, the rootless
+- **Explicit `files` allowlist:** `bin/`, `dist/`, seven starter projects, the two sound
+  catalogs, `examples/assets/` (all four CC0 packs), format and MCP docs, the rootless
   bootstrap and its lock, `CHANGELOG.md` and `SECURITY.md`. Tests, reports, CI,
   devcontainer, historical examples, internal docs, generators and renders are
   excluded. The package has no install-time scripts.
-- **Measured tarball:** 88 files, about 4.9 MB packed and 7.4 MB unpacked; 6.9 MB of
+- **Measured tarball:** 103 files, about 5.6 MB packed and 8.3 MB unpacked; 7.7 MB of
   that is the CC0 sample audio. The external 148 MB FluidR3 GM SoundFont is not
   bundled.
 - **Proof:** `npm run test:package` packs the repository, installs only the tarball
@@ -57,10 +57,12 @@ recordings or sample sources were used. Existing asset terms are already explici
 
 - The twelve Orbital Foundry WAVs have an existing **CC0-1.0** dedication in
   `examples/assets/orbital-foundry/LICENSE`; it expressly does not license code.
+- The ten GLASSHOUSE WAVs have the same **CC0-1.0** dedication in
+  `examples/assets/glasshouse/LICENSE`, which likewise does not license code.
 - Pulse-kit WAV fixtures have an existing **CC0-1.0** dedication in that kit's
   README. These asset terms remain unchanged.
 - The synthetic voice-over reference `examples/assets/v05/synthetic-vo.wav` has a
-  **CC0-1.0** dedication in its directory README. All three packs ship in the npm
+  **CC0-1.0** dedication in its directory README. All four packs ship in the npm
   package with their notices; dependencies are installed by npm, not bundled.
 - No separately vendored third-party implementation was identified in this
   review. That is an inspection finding, not a legal provenance guarantee for

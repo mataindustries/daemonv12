@@ -32,8 +32,9 @@ calling tools. DaemonV12 gives them a music format built for that:
   stems, a `.render.json` provenance manifest and an analysis report (peak, RMS,
   integrated LUFS, loudness range, true peak, clipping).
 - **Sounds:** the 128 General MIDI instruments (through FluidSynth and a
-  SoundFont), your own WAV one-shots and drum kits, and the bundled
-  **Orbital Foundry** pack: twelve original CC0 cinematic/industrial sounds.
+  SoundFont), your own WAV one-shots and drum kits, and two bundled CC0 packs:
+  **Orbital Foundry** (twelve cinematic/industrial sounds) and **GLASSHOUSE**
+  (ten tuned C# electronic/bass sounds built from one glass and one vocal identity).
 - **Production:** track gain/pan and their automation; high-pass, low-pass,
   delay, compressor, reverb and saturation; master gain; voice-over ducking.
 - **Timing:** exact output durations in bars, musical time or seconds, with
@@ -45,6 +46,7 @@ Measured examples (Linux; Ubuntu's FluidSynth 2.3.4, FluidR3_GM and FFmpeg 6.1.1
 |---|---|---|
 | `shoot-the-moon-locked-score.json` | 24-bar cinematic score an agent composed through the MCP tools | 61.0 s, 14 tracks, −16.9 LUFS, no clipping |
 | `orbital-foundry-audition.json` | All twelve Orbital Foundry sounds | 30.0 s, −17.4 LUFS; WAV SHA-256 `c1dd6439…`, byte-identical to the [earlier recorded render](docs/ORBITAL_FOUNDRY_VERIFICATION.md) made with a different Node version |
+| `glasshouse-audition.json` | All ten GLASSHOUSE sounds at 140 BPM in C# minor | 25.6 s, −17.7 LUFS, −2.2 dBTP, no clipping ([verification](docs/GLASSHOUSE_VERIFICATION.md)) |
 | `v05-loop-demo.json` | Four-bar game loop at 100 BPM | exactly 423,360 frames (9.6 s) with aligned stems |
 | `sample-only-demo.json` | Drum kit and impact, Node only | 20.0 s in about 0.2 s |
 
@@ -199,6 +201,6 @@ run commands as `npx --no-install daemonv12 …` or `node bin/daemonv12.js …`.
 
 **The code license has not been chosen yet.** Until the owner adds one, the
 repository is visible, but no license grants rights to copy, modify or
-redistribute the code. The Orbital Foundry, pulse-kit and synthetic voice-over
-WAV assets are dedicated to the public domain under CC0-1.0 (see their
+redistribute the code. The Orbital Foundry, GLASSHOUSE, pulse-kit and synthetic
+voice-over WAV assets are dedicated to the public domain under CC0-1.0 (see their
 directories). Dependencies and external audio tools keep their own licenses.

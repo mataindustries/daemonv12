@@ -67,8 +67,8 @@ test('packed tarball installs and works from an empty directory without the sour
 
   await t.test('tarball: explicit allowlist, compiled runtime only, size budget', () => {
     const required = ['package.json', 'README.md', 'CHANGELOG.md', 'SECURITY.md', 'bin/daemonv12.js', 'bin/daemonv12-mcp.js', 'bin/launch.js',
-      'dist/src/cli/main.js', 'dist/mcp/main.js', 'examples/README.md', 'examples/orbital-foundry.catalog.json', ...STARTER_PROJECTS.map(project => `examples/${project}`),
-      'examples/assets/orbital-foundry/kit.json', 'examples/assets/orbital-foundry/LICENSE', 'examples/assets/pulse-kit/kit.json', 'examples/assets/v05/synthetic-vo.wav',
+      'dist/src/cli/main.js', 'dist/mcp/main.js', 'examples/README.md', 'examples/orbital-foundry.catalog.json', 'examples/glasshouse.catalog.json', ...STARTER_PROJECTS.map(project => `examples/${project}`),
+      'examples/assets/orbital-foundry/kit.json', 'examples/assets/orbital-foundry/LICENSE', 'examples/assets/glasshouse/kit.json', 'examples/assets/glasshouse/LICENSE', 'examples/assets/pulse-kit/kit.json', 'examples/assets/v05/synthetic-vo.wav',
       'scripts/bootstrap-audio-tools.sh', 'scripts/audio-tools-linux-64.lock', 'docs/MCP_CLIENTS.md', 'docs/V0_SPEC.md'];
     for (const path of required) assert.ok(packed.includes(path), `tarball is missing ${path}`);
     for (const path of packed) assert.doesNotMatch(path, /\.ts$|\.tgz$|^(src|mcp|tests|reports|renders|node_modules|\.github|\.devcontainer)\/|\.daemonv12-renders|package-lock\.json/, `tarball must not contain ${path}`);

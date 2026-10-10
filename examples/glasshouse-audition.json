@@ -1,0 +1,1779 @@
+{
+  "formatVersion": 1,
+  "title": "GLASSHOUSE — Pack Audition",
+  "description": "Twenty-four-second pack audition at 140 BPM in C# minor: the glass family, the vox chop, the phase-locked low pair, a half-time beat and the prism payoff. All ten sounds are original generated assets. Not GLASS//FIRE.",
+  "bpm": 140,
+  "timeSignature": "4/4",
+  "key": "C# minor",
+  "bars": 14,
+  "seed": 140,
+  "master": {
+    "gainDb": 1.4,
+    "effects": []
+  },
+  "tracks": [
+    {
+      "id": "glass-hit",
+      "description": "Parent identity: bright tuned glass transient, sparkling 1.5–10 kHz halo over a pure C#5.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/glasshouse/kit.json"
+      },
+      "mix": {
+        "gainDb": -1,
+        "pan": 0.12
+      },
+      "effects": [
+        {
+          "type": "reverb",
+          "roomSize": 0.55,
+          "decaySeconds": 1.4,
+          "wet": 0.16
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "audition"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "audition",
+          "bars": 14,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.86,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "1:1+3/16",
+              "velocity": 0.7,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "1:2+1/8",
+              "velocity": 0.78,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "1:3+1/8",
+              "velocity": 0.62,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.74,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "2:1",
+              "velocity": 0.86,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "2:1+3/16",
+              "velocity": 0.7,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "2:2+1/8",
+              "velocity": 0.78,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "2:3+1/8",
+              "velocity": 0.62,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "2:4",
+              "velocity": 0.5,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "3:2+1/8",
+              "velocity": 0.42,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "4:2+1/8",
+              "velocity": 0.42,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "5:1",
+              "velocity": 0.66,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "5:3+3/16",
+              "velocity": 0.5,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "6:2+1/8",
+              "velocity": 0.5,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "7:1",
+              "velocity": 0.66,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "7:3+3/16",
+              "velocity": 0.5,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "8:2+1/8",
+              "velocity": 0.5,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "9:1",
+              "velocity": 0.66,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "9:3+3/16",
+              "velocity": 0.5,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "10:2+1/8",
+              "velocity": 0.5,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "11:1",
+              "velocity": 0.56,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "11:1+3/16",
+              "velocity": 0.56,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "11:2+1/8",
+              "velocity": 0.56,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "11:3+1/8",
+              "velocity": 0.56,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "11:4",
+              "velocity": 0.56,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "13:1",
+              "velocity": 0.6,
+              "pitch": "glass-hit"
+            },
+            {
+              "start": "14:1",
+              "velocity": 0.42,
+              "pitch": "glass-hit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glass-reverse",
+      "description": "Suction into a boundary: the same glass, bloomed through stereo diffusion, then reversed.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/glasshouse/02-glass-reverse.wav"
+      },
+      "mix": {
+        "gainDb": -1,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "audition"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "audition",
+          "bars": 14,
+          "notes": [
+            {
+              "start": "2:3",
+              "velocity": 0.72
+            },
+            {
+              "start": "4:3",
+              "velocity": 0.72
+            },
+            {
+              "start": "10:3",
+              "velocity": 0.72
+            },
+            {
+              "start": "12:3",
+              "velocity": 0.85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glass-crush",
+      "description": "The glass two octaves down, saturated and crushed into a dark tonal bass-call.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/glasshouse/kit.json"
+      },
+      "mix": {
+        "gainDb": -2,
+        "pan": -0.08
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "audition"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "audition",
+          "bars": 14,
+          "notes": [
+            {
+              "start": "1:4+1/8",
+              "velocity": 0.72,
+              "pitch": "glass-crush"
+            },
+            {
+              "start": "2:3",
+              "velocity": 0.8,
+              "pitch": "glass-crush"
+            },
+            {
+              "start": "6:2+1/16",
+              "velocity": 0.78,
+              "pitch": "glass-crush"
+            },
+            {
+              "start": "7:4+1/16",
+              "velocity": 0.78,
+              "pitch": "glass-crush"
+            },
+            {
+              "start": "8:2+1/16",
+              "velocity": 0.78,
+              "pitch": "glass-crush"
+            },
+            {
+              "start": "9:4+1/16",
+              "velocity": 0.78,
+              "pitch": "glass-crush"
+            },
+            {
+              "start": "10:2+1/16",
+              "velocity": 0.78,
+              "pitch": "glass-crush"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ghost-vox",
+      "description": "Synthetic airy \"oh-ah\" vowel; vocal character without a singer.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/glasshouse/04-ghost-vox.wav"
+      },
+      "mix": {
+        "gainDb": -3,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "reverb",
+          "roomSize": 0.6,
+          "decaySeconds": 1.6,
+          "wet": 0.2
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "audition"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "audition",
+          "bars": 14,
+          "notes": [
+            {
+              "start": "3:1",
+              "velocity": 0.82
+            },
+            {
+              "start": "4:1",
+              "velocity": 0.82
+            },
+            {
+              "start": "11:1",
+              "velocity": 0.82
+            },
+            {
+              "start": "12:1",
+              "velocity": 0.7
+            },
+            {
+              "start": "9:1",
+              "velocity": 0.62
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vox-chip",
+      "description": "An 85 ms slice of the ghost-vox \"ah\" with a consonant-like attack.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/glasshouse/kit.json"
+      },
+      "mix": {
+        "gainDb": -2,
+        "pan": -0.18
+      },
+      "effects": [
+        {
+          "type": "delay",
+          "timeMs": 321,
+          "wet": 0.14
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "audition"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "audition",
+          "bars": 14,
+          "notes": [
+            {
+              "start": "3:3",
+              "velocity": 0.9,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "3:3+1/8",
+              "velocity": 0.74,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "3:3+3/16",
+              "velocity": 0.9,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "3:4+1/8",
+              "velocity": 0.74,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "4:3",
+              "velocity": 0.9,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "4:3+1/16",
+              "velocity": 0.74,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "4:3+1/8",
+              "velocity": 0.9,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "4:3+3/16",
+              "velocity": 0.74,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "4:4",
+              "velocity": 0.9,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "4:4+1/16",
+              "velocity": 0.74,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "4:4+1/8",
+              "velocity": 0.9,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "4:4+3/16",
+              "velocity": 0.74,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "7:1+3/16",
+              "velocity": 0.72,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "7:2+1/8",
+              "velocity": 0.58,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "7:3+3/16",
+              "velocity": 0.66,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "7:4+1/16",
+              "velocity": 0.5,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "8:1+3/16",
+              "velocity": 0.72,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "8:2+1/8",
+              "velocity": 0.58,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "8:3+3/16",
+              "velocity": 0.66,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "8:4+1/16",
+              "velocity": 0.5,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "9:1+3/16",
+              "velocity": 0.72,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "9:2+1/8",
+              "velocity": 0.58,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "9:3+3/16",
+              "velocity": 0.66,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "9:4+1/16",
+              "velocity": 0.5,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "10:1+3/16",
+              "velocity": 0.72,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "10:2+1/8",
+              "velocity": 0.58,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "10:3+3/16",
+              "velocity": 0.66,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "10:4+1/16",
+              "velocity": 0.5,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "12:3",
+              "velocity": 0.4,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "12:3+1/16",
+              "velocity": 0.464,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "12:3+1/8",
+              "velocity": 0.529,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "12:3+3/16",
+              "velocity": 0.593,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "12:4",
+              "velocity": 0.657,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "12:4+1/16",
+              "velocity": 0.721,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "12:4+1/8",
+              "velocity": 0.786,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "12:4+3/16",
+              "velocity": 0.85,
+              "pitch": "vox-chip"
+            },
+            {
+              "start": "14:3",
+              "velocity": 0.42,
+              "pitch": "vox-chip"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bass-punch-cs",
+      "description": "Upper-bass attack: 277→69 Hz drop, C#2 harmonics through 1 kHz for small speakers, short body.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/glasshouse/kit.json"
+      },
+      "mix": {
+        "gainDb": -7,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "audition"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "audition",
+          "bars": 14,
+          "notes": [
+            {
+              "start": "5:1",
+              "velocity": 1,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "5:2+3/16",
+              "velocity": 0.78,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "5:3+1/8",
+              "velocity": 0.86,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "6:1",
+              "velocity": 1,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "6:2+3/16",
+              "velocity": 0.78,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "6:3+1/8",
+              "velocity": 0.86,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "6:4+1/8",
+              "velocity": 0.6,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "7:1",
+              "velocity": 1,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "7:2+3/16",
+              "velocity": 0.78,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "7:3+1/8",
+              "velocity": 0.86,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "8:1",
+              "velocity": 1,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "8:2+3/16",
+              "velocity": 0.78,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "8:3+1/8",
+              "velocity": 0.86,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "8:4+1/8",
+              "velocity": 0.6,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "9:1",
+              "velocity": 1,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "9:2+3/16",
+              "velocity": 0.78,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "9:3+1/8",
+              "velocity": 0.86,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "10:1",
+              "velocity": 1,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "10:2+3/16",
+              "velocity": 0.78,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "10:3+1/8",
+              "velocity": 0.86,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "10:4+1/8",
+              "velocity": 0.6,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "11:1",
+              "velocity": 0.7,
+              "pitch": "bass-punch-cs"
+            },
+            {
+              "start": "13:1",
+              "velocity": 0.85,
+              "pitch": "bass-punch-cs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sub-cs",
+      "description": "Clean, stable 69.30 Hz sine body with controlled decay; no stereo or harmonics.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/glasshouse/kit.json"
+      },
+      "mix": {
+        "gainDb": -9,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "audition"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "audition",
+          "bars": 14,
+          "notes": [
+            {
+              "start": "5:1",
+              "velocity": 1,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "5:2+3/16",
+              "velocity": 0.78,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "5:3+1/8",
+              "velocity": 0.86,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "6:1",
+              "velocity": 1,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "6:2+3/16",
+              "velocity": 0.78,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "6:3+1/8",
+              "velocity": 0.86,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "7:1",
+              "velocity": 1,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "7:2+3/16",
+              "velocity": 0.78,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "7:3+1/8",
+              "velocity": 0.86,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "8:1",
+              "velocity": 1,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "8:2+3/16",
+              "velocity": 0.78,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "8:3+1/8",
+              "velocity": 0.86,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "9:1",
+              "velocity": 1,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "9:2+3/16",
+              "velocity": 0.78,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "9:3+1/8",
+              "velocity": 0.86,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "10:1",
+              "velocity": 1,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "10:2+3/16",
+              "velocity": 0.78,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "10:3+1/8",
+              "velocity": 0.86,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "11:1",
+              "velocity": 0.82,
+              "pitch": "sub-cs"
+            },
+            {
+              "start": "13:1",
+              "velocity": 0.85,
+              "pitch": "sub-cs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chrome-clap",
+      "description": "Clap/snare hybrid: four uneven centered bursts, G#3 body, faint C#6 glass ring, mid/side tail.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/glasshouse/kit.json"
+      },
+      "mix": {
+        "gainDb": 0,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "audition"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "audition",
+          "bars": 14,
+          "notes": [
+            {
+              "start": "5:3",
+              "velocity": 0.92,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "6:3",
+              "velocity": 0.92,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "6:4+3/16",
+              "velocity": 0.34,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "7:3",
+              "velocity": 0.92,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "8:3",
+              "velocity": 0.92,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "8:4+3/16",
+              "velocity": 0.34,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "9:3",
+              "velocity": 0.92,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "10:3",
+              "velocity": 0.92,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "10:4+3/16",
+              "velocity": 0.34,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "12:3",
+              "velocity": 0.6,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "12:4",
+              "velocity": 0.7,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "12:4+1/8",
+              "velocity": 0.8,
+              "pitch": "chrome-clap"
+            },
+            {
+              "start": "13:1",
+              "velocity": 0.45,
+              "pitch": "chrome-clap"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pixel-hat",
+      "description": "Tight 6–12 kHz tick: high glass modes plus resonant noise; nothing below 2 kHz.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/glasshouse/kit.json"
+      },
+      "mix": {
+        "gainDb": 0,
+        "pan": 0.22
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "audition"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "audition",
+          "bars": 14,
+          "notes": [
+            {
+              "start": "4:1",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:1+1/16",
+              "velocity": 0.22,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:1+1/8",
+              "velocity": 0.32,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:1+3/16",
+              "velocity": 0.24,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:2",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:2+1/16",
+              "velocity": 0.22,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:2+1/8",
+              "velocity": 0.32,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:2+3/16",
+              "velocity": 0.24,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:3",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:3+1/16",
+              "velocity": 0.22,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:3+1/8",
+              "velocity": 0.32,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:3+3/16",
+              "velocity": 0.24,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:4",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:4+1/16",
+              "velocity": 0.22,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:4+1/8",
+              "velocity": 0.32,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "4:4+3/16",
+              "velocity": 0.24,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:1",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:1+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:1+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:1+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:2",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:2+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:2+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:2+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:3",
+              "velocity": 0.52,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:3+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:3+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:3+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:4",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:4+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:4+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "5:4+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:1",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:1+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:1+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:1+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:2",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:2+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:2+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:2+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:3",
+              "velocity": 0.52,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:3+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:3+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:3+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:4",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:4+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:4+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "6:4+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:1",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:1+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:1+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:1+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:2",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:2+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:2+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:2+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:3",
+              "velocity": 0.52,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:3+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:3+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:3+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:4",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:4+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:4+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "7:4+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:1",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:1+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:1+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:1+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:2",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:2+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:2+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:2+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:3",
+              "velocity": 0.52,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:3+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:3+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:3+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:4",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:4+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:4+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:4+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:4+1/8",
+              "velocity": 0.3,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:4+5/32",
+              "velocity": 0.38,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:4+3/16",
+              "velocity": 0.46,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "8:4+7/32",
+              "velocity": 0.54,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:1",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:1+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:1+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:1+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:2",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:2+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:2+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:2+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:3",
+              "velocity": 0.52,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:3+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:3+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:3+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:4",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:4+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:4+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "9:4+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:1",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:1+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:1+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:1+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:2",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:2+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:2+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:2+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:3",
+              "velocity": 0.52,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:3+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:3+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:3+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:4",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:4+1/16",
+              "velocity": 0.36,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:4+1/8",
+              "velocity": 0.55,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:4+3/16",
+              "velocity": 0.42,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:4+1/8",
+              "velocity": 0.3,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:4+5/32",
+              "velocity": 0.38,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:4+3/16",
+              "velocity": 0.46,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "10:4+7/32",
+              "velocity": 0.54,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "11:1",
+              "velocity": 0.3,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "11:1+1/8",
+              "velocity": 0.3,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "11:2",
+              "velocity": 0.3,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "11:2+1/8",
+              "velocity": 0.3,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "11:3",
+              "velocity": 0.3,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "11:3+1/8",
+              "velocity": 0.3,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "11:4",
+              "velocity": 0.3,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "11:4+1/8",
+              "velocity": 0.3,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:1",
+              "velocity": 0.22,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:1+1/32",
+              "velocity": 0.236,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:1+1/16",
+              "velocity": 0.252,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:1+3/32",
+              "velocity": 0.268,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:1+1/8",
+              "velocity": 0.285,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:1+5/32",
+              "velocity": 0.301,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:1+3/16",
+              "velocity": 0.317,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:1+7/32",
+              "velocity": 0.333,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:2",
+              "velocity": 0.349,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:2+1/32",
+              "velocity": 0.365,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:2+1/16",
+              "velocity": 0.381,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:2+3/32",
+              "velocity": 0.397,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:2+1/8",
+              "velocity": 0.414,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:2+5/32",
+              "velocity": 0.43,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:2+3/16",
+              "velocity": 0.446,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:2+7/32",
+              "velocity": 0.462,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:3",
+              "velocity": 0.478,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:3+1/32",
+              "velocity": 0.494,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:3+1/16",
+              "velocity": 0.51,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:3+3/32",
+              "velocity": 0.526,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:3+1/8",
+              "velocity": 0.543,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:3+5/32",
+              "velocity": 0.559,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:3+3/16",
+              "velocity": 0.575,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:3+7/32",
+              "velocity": 0.591,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:4",
+              "velocity": 0.607,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:4+1/32",
+              "velocity": 0.623,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:4+1/16",
+              "velocity": 0.639,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:4+3/32",
+              "velocity": 0.655,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:4+1/8",
+              "velocity": 0.672,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:4+5/32",
+              "velocity": 0.688,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:4+3/16",
+              "velocity": 0.704,
+              "pitch": "pixel-hat"
+            },
+            {
+              "start": "12:4+7/32",
+              "velocity": 0.72,
+              "pitch": "pixel-hat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prism-impact",
+      "description": "Payoff: the glass refracted into a spread C# minor chord over a centered C#2 drop and soft air.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/glasshouse/10-prism-impact.wav"
+      },
+      "mix": {
+        "gainDb": -2,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "audition"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "audition",
+          "bars": 14,
+          "notes": [
+            {
+              "start": "13:1",
+              "velocity": 0.9
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
