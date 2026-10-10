@@ -41,7 +41,7 @@ npm pack --dry-run       # review the file list and sizes
 - [ ] `test:package` passes; with FluidSynth, a SoundFont and FFmpeg installed it also
       covers GM, production effects, MP3 and exact stems.
 - [ ] The file list contains only `bin/`, `dist/`, the allowlisted examples, assets,
-      docs and bootstrap files (about 88 files, 4.9 MB packed).
+      docs and bootstrap files (about 103 files, 5.6 MB packed).
 
 ## 4. CI
 

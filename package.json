@@ -40,11 +40,13 @@
     "examples/README.md",
     "examples/sample-only-demo.json",
     "examples/orbital-foundry-audition.json",
+    "examples/glasshouse-audition.json",
     "examples/v05-loop-demo.json",
     "examples/v05-video-demo.json",
     "examples/production-demo.json",
     "examples/shoot-the-moon-locked-score.json",
     "examples/orbital-foundry.catalog.json",
+    "examples/glasshouse.catalog.json",
     "examples/assets/",
     "docs/MCP_CLIENTS.md",
     "docs/DEVELOPER_SETUP.md",
@@ -85,7 +87,9 @@
     "fixtures:samples": "node scripts/generate-sample-demo.ts",
     "demo:mcp": "node mcp/demo.ts",
     "fixtures:orbital-foundry": "node scripts/generate-orbital-foundry.ts",
-    "demo:orbital-foundry": "node bin/daemonv12.js render examples/orbital-foundry-audition.json --out-dir renders/orbital-foundry --stems --format wav,mp3"
+    "demo:orbital-foundry": "node bin/daemonv12.js render examples/orbital-foundry-audition.json --out-dir renders/orbital-foundry --stems --format wav,mp3",
+    "fixtures:glasshouse": "node scripts/generate-glasshouse.ts && node scripts/create-glasshouse-audition.ts",
+    "demo:glasshouse": "node bin/daemonv12.js render examples/glasshouse-audition.json --out-dir renders/glasshouse --stems --format wav,mp3"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.3.1",

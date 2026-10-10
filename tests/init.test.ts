@@ -21,8 +21,8 @@ test('init creates a self-contained workspace whose projects validate where they
   assert.equal(report.mcp.command, process.execPath);
   assert.deepEqual(report.mcp.args, [resolve('bin/daemonv12-mcp.js'), '--root', workspace]);
   assert.deepEqual(report.mcp.env, { DAEMONV12_FLUIDSYNTH: 'fluidsynth', DAEMONV12_FFMPEG: '/opt/audio/ffmpeg' });
-  assert.deepEqual(readdirSync(join(workspace, 'assets')).sort(), ['orbital-foundry', 'pulse-kit', 'v05']);
-  assert.ok(existsSync(join(workspace, 'assets/orbital-foundry/LICENSE')), 'CC0 notice travels with the pack');
+  assert.deepEqual(readdirSync(join(workspace, 'assets')).sort(), ['glasshouse', 'orbital-foundry', 'pulse-kit', 'v05']);
+  for (const pack of ['orbital-foundry', 'glasshouse']) assert.ok(existsSync(join(workspace, `assets/${pack}/LICENSE`)), `CC0 notice travels with ${pack}`);
   assert.deepEqual(readFileSync(join(workspace, 'README.md')), readFileSync('examples/README.md'));
   for (const project of STARTER_PROJECTS) {
     const validation = await runCommand('validate', join(workspace, project));
@@ -30,7 +30,8 @@ test('init creates a self-contained workspace whose projects validate where they
   }
   // An agent discovers the bundled kit from a project it has not created yet, at the workspace root.
   const kits = await new DaemonTools(workspace).call('daemonv12_drumkits_list', { project: 'new-cue.json' });
-  assert.ok((kits.kits as { kit: string }[]).some(kit => kit.kit === 'assets/orbital-foundry/kit.json'), JSON.stringify(kits));
+  for (const kit of ['assets/orbital-foundry/kit.json', 'assets/glasshouse/kit.json'])
+    assert.ok((kits.kits as { kit: string }[]).some(found => found.kit === kit), JSON.stringify(kits));
 });
 
 test('init renders sample-only audio immediately with Node alone', async t => {

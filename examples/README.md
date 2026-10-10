@@ -16,6 +16,7 @@ goes to `renders/` here.
 |---|---|---|---|
 | `sample-only-demo.json` | Pulse drum kit and an impact one-shot; 8 bars at 96 BPM. | Node only | 20.0 s |
 | `orbital-foundry-audition.json` | All twelve Orbital Foundry sounds across 12 tracks with per-track gain/pan. | FFmpeg | 30.0 s |
+| `glasshouse-audition.json` | All ten GLASSHOUSE sounds: glass family, vox chops, phase-locked low pair, half-time beat, payoff. 140 BPM, C# minor. | FFmpeg | 25.6 s (24 s plus reverb tails) |
 | `v05-loop-demo.json` | An exact four-bar game layer at 100 BPM: tails are cut at the boundary and stems align. | FFmpeg | exactly 9.6 s (423,360 frames) |
 | `v05-video-demo.json` | Locked-picture cue: exact 8 s output, gain/pan automation, VO ducking, compressor, reverb and saturation. | FFmpeg | exactly 8.0 s |
 | `production-demo.json` | General MIDI bass and piano with samples, gain/pan, high/low-pass filters and delay. | FluidSynth, SoundFont, FFmpeg | 23.2 s |
@@ -42,6 +43,9 @@ and tool versions. MP3 is a listening copy, not a repeatability guarantee.
 - `assets/orbital-foundry/`: twelve original cinematic/industrial sounds and a
   seven-hit kit (`kit.json`), CC0-1.0. `orbital-foundry.catalog.json` describes
   every sound's role, duration, peak and suggested use.
+- `assets/glasshouse/`: ten original electronic/bass sounds tuned to C# (one glass
+  identity, one synthetic voice, a phase-locked punch/sub pair, clap, hat) and a
+  seven-hit kit, CC0-1.0. `glasshouse.catalog.json` adds tuning and family links.
 - `assets/pulse-kit/`: a small kick/snare/hat kit and an impact, CC0-1.0.
 - `assets/v05/synthetic-vo.wav`: synthetic voice-over activity used as a ducking
   reference (not speech), CC0-1.0.

@@ -15,7 +15,7 @@ No engine, project-format or audio changes. Renders are byte-identical to 0.5.0.
 - **Installable tarball.** Node does not strip TypeScript types under
   `node_modules`, so installed copies run JavaScript compiled into `dist/` by the
   `prepare` script during `npm pack` / `npm publish`. Source checkouts still run
-  TypeScript directly. An explicit `files` allowlist ships the runtime, six starter
+  TypeScript directly. An explicit `files` allowlist ships the runtime, seven starter
   projects, the CC0 sound packs, the format docs and the rootless audio bootstrap.
 - **`daemonv12 init <dir>`** creates a music workspace (starter projects and sound
   packs) and prints the MCP client configuration for it.
@@ -34,6 +34,12 @@ No engine, project-format or audio changes. Renders are byte-identical to 0.5.0.
   it; a manual workflow verifies full audio.
 - **Docs.** README rewritten for first-time users; new examples guide, MCP client
   guide, CONTRIBUTING, SECURITY and public-beta release checklist.
+- **GLASSHOUSE sound pack.** Ten original CC0 electronic/bass sounds tuned to C#:
+  one glass identity (hit, reverse, crush, prism impact), one synthetic voice
+  (ghost-vox, vox-chip), a phase-locked punch/sub pair, clap and hat. Deterministic
+  4x-oversampled generator, catalog, seven-hit kit, a 140 BPM audition (a starter
+  project) and source/render tests. Asset and documentation only; the engine is
+  unchanged.
 
 ## 0.5.0: timeline, automation, ducking and dynamics (2026-10-08)
 
