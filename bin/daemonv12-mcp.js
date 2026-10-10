@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 import { launch } from './launch.js';
 
-await launch('daemonv12', 'src/cli/main', 3);
+await launch('daemonv12-mcp', 'mcp/main', 2);

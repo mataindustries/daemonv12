@@ -1,51 +1,47 @@
-# Sharing and future package audit
+# Sharing and package readiness
 
-Both root `daemonv12` and workspace `@daemonv12/mcp` remain **private**. This pass
-does not publish, create a release or choose a code license.
+The repository can be shared by GitHub clone today, and `npm pack` produces a
+self-contained, installable tarball. Nothing has been published: the package stays
+`"private": true`, and the code license is the owner's outstanding decision. The
+deliberate release steps are in [PUBLIC_BETA_RELEASE.md](PUBLIC_BETA_RELEASE.md).
 
-## npm structure
+## Package structure (resolved for the public beta)
 
-The root already has a version, Node engine requirement, executable
-`bin/daemonv12.js`, direct TypeScript sources and zero runtime npm dependencies.
-The MCP workspace has its own bin and pinned SDK/Zod runtime dependencies.
-Repository, homepage and issue URLs now match the existing Git remote.
+The earlier audit found that both `daemonv12` and the `@daemonv12/mcp` workspace
+were private, that the MCP workspace imported engine source outside its own package,
+that npm workspaces do not turn into dependencies of a packed root tarball, and that
+there was no `files` allowlist. A real install test also showed a blocker the dry run
+missed: **Node refuses to strip TypeScript types under `node_modules`**, so even
+`daemonv12 --version` crashed from an installed tarball. Now:
 
-The initial `npm pack --dry-run --json` audit found **119 entries**, **6,164,931
-unpacked bytes** and **4,506,965 compressed bytes**. Most size is the checked-in
-original sample packs; the external 148 MB FluidR3 GM SoundFont is not vendored.
-Ignored `renders/`, `.daemonv12-renders/` and `node_modules/` are excluded, but
-the default pack includes tests, devcontainer files, generator scripts, docs,
-examples and portfolio reports (some report links are local historical paths).
-After the readiness additions, the default root pack contains **132 entries**,
-approximately **6.25 MB unpacked / 4.54 MB compressed**, including **5,486,200
-bytes of sample assets** and no generated render paths. The separate MCP dry run
-contains **9 entries / 37,275 unpacked bytes**, confirming that it omits the
-engine sources it currently imports.
-
-Before any intentional npm publication:
-
-1. Choose a root code license and add its file/metadata; audit all intended assets.
-2. Decide whether to publish the zero-dependency engine and MCP as separate
-   packages or bundle MCP. A root tarball can contain `mcp/` source without
-   installing its nested runtime dependencies: npm **workspaces do not make
-   those root package dependencies**. A separately published MCP package also
-   currently imports `../src`; its tarball alone is not standalone.
-3. Define an explicit `files` allowlist for source/bin/docs and intentional demo
-   assets; exclude tests, reports, development/bootstrap caches and generated
-   renders. If retaining demos, include their WAVs, kit JSON and existing CC0
-   notices. If removing examples, adjust demo/smoke scripts and documentation.
-4. Decide the installed package's public entry points and Node support policy.
-   Direct `.ts` execution works on supported Node; there is currently no library
-   `exports` contract or compiled distribution to promise to consumers.
-5. Pack and test actual tarballs in an empty directory, including CLI bins, MCP
-   dependency resolution, an audible sample render and package size. A dry run
-   alone is not a publication-readiness proof.
-6. Only after those decisions should the owner intentionally change `private`
-   and carry out a separate publishing/release workflow.
-
-This repository is clone-ready with `npm ci`; it is **not yet a standalone npm
-distribution**. No `files` allowlist or publication-facing dependency layout was
-guessed during a portability pass.
+- **One package, two executables:** `daemonv12` (CLI) and `daemonv12-mcp` (MCP
+  server). The MCP SDK and Zod are ordinary root `dependencies`, exactly pinned; the
+  engine under `src/` still imports no npm package. The `mcp/` workspace manifest is
+  gone, and `mcp/bin/daemonv12-mcp.js` remains as a compatibility path for clones.
+- **Compiled runtime for installs only.** `npm pack`/`npm publish` run `prepare`,
+  which compiles `src/` and `mcp/` to `dist/` with type erasure only. `bin/launch.js`
+  runs the TypeScript in a checkout and `dist/` in an installed package. A checkout
+  never executes `dist/`, so development keeps its zero-build loop.
+- **Explicit `files` allowlist:** `bin/`, `dist/`, six starter projects, the sound
+  catalog, `examples/assets/` (all three CC0 packs), format and MCP docs, the rootless
+  bootstrap and its lock, `CHANGELOG.md` and `SECURITY.md`. Tests, reports, CI,
+  devcontainer, historical examples, internal docs, generators and renders are
+  excluded. The package has no install-time scripts.
+- **Measured tarball:** 88 files, about 4.9 MB packed and 7.4 MB unpacked; 6.9 MB of
+  that is the CC0 sample audio. The external 148 MB FluidR3 GM SoundFont is not
+  bundled.
+- **Proof:** `npm run test:package` packs the repository, installs only the tarball
+  into an empty directory, and exercises the CLI, `init`, Node-only rendering, the
+  nine MCP tools and (when available) full audio, failing if any installed process
+  loads a module from the checkout. CI runs it on Linux and macOS.
+- **Publish safety:** `"private": true` makes npm refuse to publish (note that
+  `npm publish --dry-run` does not check it). The `prepublishOnly` guard
+  (`scripts/release-guard.ts`) additionally refuses without a license, a LICENSE
+  file, a matching changelog section, a clean git tree and an explicit
+  `DAEMONV12_RELEASE=<version>` confirmation.
+- **Name:** neither `daemonv12` nor `daemonv12-mcp` exists on npm yet. Until the owner
+  publishes, documentation avoids bare `npx daemonv12…`, which would download
+  whatever package later claims the name.
 
 ## Licensing inventory and owner decision
 
@@ -63,6 +59,9 @@ recordings or sample sources were used. Existing asset terms are already explici
   `examples/assets/orbital-foundry/LICENSE`; it expressly does not license code.
 - Pulse-kit WAV fixtures have an existing **CC0-1.0** dedication in that kit's
   README. These asset terms remain unchanged.
+- The synthetic voice-over reference `examples/assets/v05/synthetic-vo.wav` has a
+  **CC0-1.0** dedication in its directory README. All three packs ship in the npm
+  package with their notices; dependencies are installed by npm, not bundled.
 - No separately vendored third-party implementation was identified in this
   review. That is an inspection finding, not a legal provenance guarantee for
   every line of code or project metadata.
@@ -76,8 +75,8 @@ recordings or sample sources were used. Existing asset terms are already explici
   Redistribution of external binaries requires reviewing their applicable
   license/notice/source obligations separately from choosing a code license.
 
-Once the owner selects a code license, update the root LICENSE, appropriate root
-and MCP package `license` fields, README sharing language and any required
+Once the owner selects a code license, add the root LICENSE file, set the package
+`license` field, update the README license section and add any required
 copyright/NOTICE material. Confirm coverage of code, project examples, kit/catalog
 metadata and documentation; preserve separately scoped asset and dependency
 licenses. No license selection is made here.

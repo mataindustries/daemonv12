@@ -42,7 +42,7 @@ try {
     const { Client } = await import('@modelcontextprotocol/client');
     const { StdioClientTransport } = await import('@modelcontextprotocol/client/stdio');
     const client = new Client({ name: 'daemonv12-smoke', version: '0.4.0' });
-    const transport = new StdioClientTransport({ command: process.execPath, args: [join(root, 'mcp/bin/daemonv12-mcp.js'), '--root', root] });
+    const transport = new StdioClientTransport({ command: process.execPath, args: [join(root, 'bin/daemonv12-mcp.js'), '--root', root] });
     try {
       await client.connect(transport, { timeout: 10000 });
       const { tools } = await client.listTools({}, { timeout: 10000 });

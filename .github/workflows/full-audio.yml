@@ -1,0 +1,43 @@
+name: Full audio verification
+# Manual: downloads FluidSynth, a 148 MB SoundFont and FFmpeg, so it stays out of
+# ordinary CI. Run it before a release (Actions > Full audio verification > Run workflow).
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  system-tools:
+    name: System packages (apt)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends fluidsynth fluid-soundfont-gm ffmpeg
+      - run: npm ci
+      - run: npx --no-install daemonv12 doctor
+      - name: Full suite, including real-audio integration tests that skip elsewhere
+        run: npm run check
+      - name: Installed tarball renders GM, production effects, MP3 and exact stems
+        run: npm run test:package
+      - run: npm run demo:share
+
+  rootless-bootstrap:
+    name: Rootless bootstrap (no sudo)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: ./scripts/bootstrap-audio-tools.sh --prefix "$RUNNER_TEMP/daemonv12-audio-tools"
+      - name: Doctor, smoke, installed tarball and share demo with the bootstrapped tools
+        run: |
+          source "$RUNNER_TEMP/daemonv12-audio-tools/env.sh"
+          npx --no-install daemonv12 doctor
+          npm run smoke -- --mcp
+          npm run test:package
+          npm run demo:share

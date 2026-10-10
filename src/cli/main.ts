@@ -1,16 +1,21 @@
 import { parseArgs } from 'node:util';
-import { diagnostic, formatDiagnosticHuman, type Diagnostic } from '../diagnostics.ts';
+import { diagnostic, exitCodeFor, formatDiagnosticHuman, type Diagnostic } from '../diagnostics.ts';
 import { resultFor, runCommand, type Command, type CommandOptions, type CommandResult } from '../pipeline.ts';
 import { ENGINE_VERSION } from '../version.ts';
 import { formatDoctor, inspectEnvironment } from '../doctor.ts';
+import { formatInit, initWorkspace } from './init.ts';
 const usage = `Usage:
   daemonv12 doctor [--soundfont <file.sf2>] [--json]
+  daemonv12 init <new-workspace-directory> [--json]
   daemonv12 validate <project.json> [--json]
   daemonv12 midi <project.json> [--out-dir <dir>] [--json]
   daemonv12 render <project.json> [--out-dir <dir>] [--soundfont <file.sf2>] [--stems] [--format wav|mp3|wav,mp3] [--json]
   daemonv12 analyze <audio.wav> [--json]
   daemonv12 help | --help | -h
-  daemonv12 --version | -v`;
+  daemonv12 --version | -v
+
+init copies starter projects and CC0 sound packs into a new workspace and prints
+the MCP server configuration for it. The MCP server is the daemonv12-mcp command.`;
 function print(result: CommandResult, json: boolean, diagnostics: Diagnostic[] = [...result.errors,...result.warnings]): void {
   if (json) { process.stdout.write(JSON.stringify(result,null,2)+'\n'); return; }
   for (const d of diagnostics) process.stderr.write(formatDiagnosticHuman(d)+'\n');
@@ -48,6 +53,14 @@ async function main(): Promise<void> {
     project=positionals[1]??null;
     if ((values.help || name==='help') && positionals.length <= (name==='help'?1:0) && !values.version && values['out-dir']===undefined && values.soundfont===undefined && values.stems===undefined && values.format===undefined) { process.stdout.write(usage+'\n');return; }
     if(values.version && !positionals.length && !values.help && values['out-dir']===undefined && values.soundfont===undefined && values.stems===undefined && values.format===undefined){process.stdout.write(`daemonv12 ${ENGINE_VERSION}\n`);return;}
+    if(name==='init') {
+      if(positionals.length!==2 || values.help || values.version || values['out-dir']!==undefined || values.soundfont!==undefined || values.stems!==undefined || values.format!==undefined)throw new Error('Init accepts one new or empty directory and --json.');
+      const init=initWorkspace(positionals[1]!,process.env);
+      if(json)process.stdout.write(JSON.stringify(init,null,2)+'\n');
+      else if(init.ok)process.stdout.write(formatInit(init));
+      else for(const d of init.errors)process.stderr.write(formatDiagnosticHuman(d)+'\n');
+      process.exitCode=exitCodeFor(init.errors);return;
+    }
     if(name==='doctor') {
       if(positionals.length!==1 || values.help || values.version || values['out-dir']!==undefined || values.stems!==undefined || values.format!==undefined)throw new Error('Doctor accepts only --json and --soundfont <file.sf2>.');
       const report=await inspectEnvironment({env:process.env,soundfont:values.soundfont});

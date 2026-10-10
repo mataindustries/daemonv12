@@ -1,19 +1,64 @@
 {
   "name": "daemonv12",
   "version": "0.5.0",
-  "workspaces": ["mcp"],
-  "description": "Headless music engine for AI agents. 12 instruments for agents.",
+  "description": "Headless, deterministic music engine for AI agents: JSON projects to MIDI, WAV, MP3 and stems, with a nine-tool stdio MCP server.",
   "private": true,
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "ai-agents",
+    "music",
+    "audio",
+    "midi",
+    "wav",
+    "mp3",
+    "stems",
+    "sampler",
+    "soundfont",
+    "fluidsynth",
+    "ffmpeg",
+    "headless",
+    "deterministic",
+    "offline-rendering",
+    "cli"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mataindustries/daemonv12.git"
+    "url": "git+https://github.com/mataindustries/daemonv12.git"
   },
   "homepage": "https://github.com/mataindustries/daemonv12#readme",
   "bugs": { "url": "https://github.com/mataindustries/daemonv12/issues" },
   "type": "module",
   "bin": {
-    "daemonv12": "bin/daemonv12.js"
+    "daemonv12": "bin/daemonv12.js",
+    "daemonv12-mcp": "bin/daemonv12-mcp.js"
   },
+  "files": [
+    "bin/",
+    "dist/",
+    "examples/README.md",
+    "examples/sample-only-demo.json",
+    "examples/orbital-foundry-audition.json",
+    "examples/v05-loop-demo.json",
+    "examples/v05-video-demo.json",
+    "examples/production-demo.json",
+    "examples/shoot-the-moon-locked-score.json",
+    "examples/orbital-foundry.catalog.json",
+    "examples/assets/",
+    "docs/MCP_CLIENTS.md",
+    "docs/DEVELOPER_SETUP.md",
+    "docs/V0_SPEC.md",
+    "docs/V0_1_STEMS.md",
+    "docs/V0_2_SAMPLES.md",
+    "docs/V0_3_AUDIO.md",
+    "docs/V0_4_MCP.md",
+    "docs/V0_5_TIMELINE_DYNAMICS.md",
+    "scripts/bootstrap-audio-tools.sh",
+    "scripts/audio-tools-linux-64.lock",
+    "CHANGELOG.md",
+    "SECURITY.md"
+  ],
   "engines": {
     "node": ">=22.18.0"
   },
@@ -21,9 +66,14 @@
     "typecheck": "tsc -p tsconfig.json",
     "test": "node --test \"tests/**/*.test.ts\"",
     "check": "npm run typecheck && npm test",
+    "build": "node scripts/build.ts",
+    "prepare": "node scripts/build.ts --prepare",
+    "prepublishOnly": "node scripts/release-guard.ts",
     "doctor": "node bin/daemonv12.js doctor",
     "smoke": "node scripts/smoke.ts",
-    "test:readiness": "node --test tests/doctor.test.ts tests/bootstrap.test.ts tests/smoke.test.ts",
+    "test:package": "node --test tests/package.clean-room.ts",
+    "test:readiness": "node --test tests/doctor.test.ts tests/bootstrap.test.ts tests/smoke.test.ts tests/init.test.ts tests/package.clean-room.ts",
+    "demo:share": "node scripts/demo-share.ts",
     "demo": "node bin/daemonv12.js render examples/demo.json",
     "demo:production": "node bin/daemonv12.js render examples/production-demo.json --stems --format wav,mp3",
     "demo:samples": "node bin/daemonv12.js render examples/sample-demo.json --stems",
@@ -37,7 +87,12 @@
     "fixtures:orbital-foundry": "node scripts/generate-orbital-foundry.ts",
     "demo:orbital-foundry": "node bin/daemonv12.js render examples/orbital-foundry-audition.json --out-dir renders/orbital-foundry --stems --format wav,mp3"
   },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.3.1",
+    "zod": "4.6.5"
+  },
   "devDependencies": {
+    "@modelcontextprotocol/client": "2.3.1",
     "@tonejs/midi": "2.0.28",
     "@types/node": "22.20.5",
     "typescript": "7.0.2"

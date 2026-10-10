@@ -11,31 +11,32 @@ the V0.4 contracts below remain the baseline.
 
 ## Install and connect
 
-From this checkout, run `npm ci`. Node 22.18+ runs TypeScript directly; no build is
-needed. FluidSynth plus a GM SoundFont are needed for GM rendering. FFmpeg is needed
-for production effects, MP3 and loudness analysis. Sample-only legacy rendering
-does not need either executable. See the [builder quickstart](../README.md),
-[rootless setup and doctor](DEVELOPER_SETUP.md), and the separate
-[tested MCP client examples](MCP_CLIENTS.md). `npm run smoke -- --mcp` verifies
-sample-only audio and stdio tool discovery without a full agent composition.
+Install the package (or clone and run `npm ci`); Node 22.18+ is required. The
+`daemonv12-mcp` executable is the server. FluidSynth plus a GM SoundFont are needed
+for GM rendering. FFmpeg is needed for production effects, explicit export formats,
+MP3 and loudness analysis. Sample-only legacy rendering needs neither executable.
+See the [builder quickstart](../README.md), [rootless setup and doctor](DEVELOPER_SETUP.md)
+and the separate [tested MCP client examples](MCP_CLIENTS.md). `npm run smoke -- --mcp`
+verifies sample-only audio and stdio tool discovery from a clone.
 
 Launch command:
 
 ```sh
-node mcp/bin/daemonv12-mcp.js --root /absolute/path/to/music-workspace
+daemonv12-mcp --root /absolute/path/to/music-workspace
+# from a clone: node bin/daemonv12-mcp.js --root /absolute/path/to/music-workspace
 ```
 
-The root must already exist and is mandatory. The command is suitable for a local
-MCP client's stdio configuration; the client launches the process. Use paths for
-your checkout and workspace, for example this common `mcpServers` JSON shape:
+The root must already exist and is mandatory; `daemonv12 init <dir>` creates one
+with starter projects and assets. The client launches the process. For example,
+this common `mcpServers` JSON shape:
 
 ```json
 {
   "mcpServers": {
     "daemonv12": {
-      "command": "node",
+      "command": "/absolute/path/to/node",
       "args": [
-        "/absolute/path/to/daemonv12/mcp/bin/daemonv12-mcp.js",
+        "/absolute/path/to/daemonv12/bin/daemonv12-mcp.js",
         "--root", "/absolute/path/to/music-workspace"
       ]
     }
@@ -45,9 +46,10 @@ your checkout and workspace, for example this common `mcpServers` JSON shape:
 
 Use an absolute Node executable path if the client's PATH cannot locate Node.
 Client configuration locations differ; this is a launch configuration, not a
-machine-specific checked-in configuration. The workspace can be this repository
-to access `examples/assets`, or a separate music folder with its own assets.
-Stdout contains only MCP JSON-RPC. Startup failures go to stderr and exit 2.
+machine-specific checked-in configuration. Stdout contains only MCP JSON-RPC.
+Startup failures go to stderr and exit 2. `--help` and `--version` print and exit.
+At initialization the server sends short `instructions` describing the tool
+workflow, musical time syntax and which features need which audio tools.
 
 The server inherits `DAEMONV12_FLUIDSYNTH`, `DAEMONV12_SOUNDFONT` and
 `DAEMONV12_FFMPEG` from its operator-controlled environment, just as the CLI does.
@@ -165,10 +167,11 @@ partially published result. A stale revision reports `PROJECT_CONFLICT`.
 
 ## Architecture and security
 
-`mcp/` is a separate npm workspace. Its pinned dependencies are official
-`@modelcontextprotocol/server` 2.3.1 and Zod 4.6.5; the official client 2.3.1 is a
-development dependency for tests/demo. The root engine package retains zero
-runtime dependencies. Only MCP imports the SDK. The low-level official `Server`
+`mcp/` is part of the single `daemonv12` package (it was a separate npm workspace
+before the public-beta packaging). The package's only runtime dependencies are the
+pinned official `@modelcontextprotocol/server` 2.3.1 and Zod 4.6.5, used solely by
+`mcp/`; the official client 2.3.1 is a development dependency for tests/demo. The
+engine under `src/` still imports no npm packages. Only MCP imports the SDK. The low-level official `Server`
 and `StdioServerTransport` own protocol initialization/framing; the adapter owns
 tool argument validation so schema errors retain structured diagnostics.
 

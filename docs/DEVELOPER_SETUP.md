@@ -1,9 +1,12 @@
 # Developer setup and portability
 
 Node **22.18.0+** runs the repository's TypeScript directly. Run `npm ci` from the
-checkout root; it installs both the engine's development tools and the MCP
-workspace's pinned dependencies. No build or global `npm link` is required.
-The CLI and MCP server render offline; no audio device or desktop session is needed.
+checkout root; it installs the pinned MCP runtime dependencies and the development
+tools. Its `prepare` step also compiles `dist/` for packaging, which a checkout never
+executes (a build problem there only prints a warning). No global `npm link` is
+required. The CLI and MCP server render offline; no audio device or desktop session
+is needed. An installed package (`npm install` of a packed tarball) needs no `npm ci`:
+the same commands below work as `daemonv12 …`.
 
 ## Doctor
 
@@ -19,9 +22,11 @@ SoundFont resolver reads its RIFF/sfbk header and hashes its bytes, just as the
 renderer does. This checks availability, not the completeness/playability of all
 SoundFont instruments. Run a demo to prove real audio.
 
-JSON has `schemaVersion: 1`, `command: "doctor"`, `engineVersion`, `ok`, `platform`,
-`architecture`, `node`, `npm`, `fluidsynth`, `soundfont`, `ffmpeg`, `dependencies`,
-`readiness` and `fixes`. Missing paths/versions are `null`; readiness values are
+JSON has `schemaVersion: 1`, `command: "doctor"`, `engineVersion`, `installation`,
+`ok`, `platform`, `architecture`, `node`, `npm`, `fluidsynth`, `soundfont`, `ffmpeg`,
+`dependencies`, `readiness` and `fixes`. `installation` (added for the public beta)
+is `{mode, root}`: `"source"` for a checkout or `"package"` for an installed copy, and
+the absolute package root, so you can see which copy is running. Missing paths/versions are `null`; readiness values are
 booleans. `fixes` contains `{component, action}` objects. There are no timestamps
 or render artifacts. Example excerpt from an environment without audio tools:
 
@@ -29,7 +34,8 @@ or render artifacts. Example excerpt from an environment without audio tools:
 {
   "schemaVersion": 1,
   "command": "doctor",
-  "engineVersion": "0.4.0",
+  "engineVersion": "0.5.0",
+  "installation": { "mode": "source", "root": "/absolute/path/to/daemonv12" },
   "ok": false,
   "readiness": {
     "generalMidi": false,
@@ -49,7 +55,7 @@ or render artifacts. Example excerpt from an environment without audio tools:
 | `fluidsynth` | Selected command, resolved path, version, availability and probe error. |
 | `soundfont` | Selection source (`argument`, `environment`, `default`, `missing`), absolute path, readability, header validity, size, SHA-256 and error. |
 | `ffmpeg` | Selected command/path/version, availability, filter/encoder capabilities and probe diagnostic. |
-| `dependencies` | Zero engine runtime dependencies; presence and exact version of root development tools and the MCP workspace's runtime dependencies. |
+| `dependencies` | Zero engine runtime dependencies; presence and exact version of the development tools (needed only in a checkout) and the package's MCP runtime dependencies. |
 | `readiness.generalMidi` | Supported Node + working FluidSynth version probe + readable RIFF/sfbk SoundFont. |
 | `readiness.sampleOnly` | Supported Node; no FluidSynth, SoundFont, FFmpeg or npm requirement. Applies to plain sample WAV rendering without production fields/export. |
 | `readiness.productionEffects` | Supported Node + FFmpeg highpass/lowpass/aecho/acompressor, float PCM encoder and loudnorm (production rendering also analyzes the result). |
@@ -59,7 +65,9 @@ or render artifacts. Example excerpt from an environment without audio tools:
 
 Exit **0** means all six readiness flags are true; **3** means at least one is
 false. Missing npm/development tools produce fixes but do not block an installed
-runtime's readiness. Usage errors exit **2**. A minimal sample environment can
+runtime's readiness; an installed package never asks for development tools. The
+human-readable report explains what each capability unlocks, ends with a summary of
+what is ready now, and names the absolute bootstrap path of the running copy. Usage errors exit **2**. A minimal sample environment can
 therefore have a successful smoke and a doctor exit of 3; inspect `readiness`, not
 just `ok`, for the capability you need.
 
@@ -141,13 +149,15 @@ Sources: [micromamba installation](https://mamba.readthedocs.io/en/stable/instal
 [official pinned micromamba release](https://github.com/mamba-org/micromamba-releases/releases/tag/2.3.2-0),
 [Debian package integrity](https://packages.debian.org/bookworm/all/fluid-soundfont-gm/download).
 
-## Fast smoke and CI
+## Fast smoke, release gate and CI
 
 ```sh
 npm run smoke
 npm run smoke -- --mcp
-npm run test:readiness
-npm run check
+npm run demo:share         # best demo this machine supports, with paths and loudness
+npm run check              # typecheck and the full test suite
+npm run test:package       # release gate: pack, install the tarball elsewhere, use it
+npm run test:readiness     # doctor, bootstrap, smoke, init and package tests
 ```
 
 Smoke uses `examples/sample-only-demo.json`, an exact subset of the existing
@@ -158,12 +168,31 @@ then prints its listening path. No expensive stems or full agent session runs.
 `--mcp` additionally initializes the actual stdio server and discovers nine tools;
 it does not edit a project or compose music.
 
-CI runs `npm ci` and the unchanged full check plus sample/MCP smoke on Node
-22.18.0 and 24. The smoke step explicitly selects missing external audio tools,
-proving the Node-only path. Doctor JSON, missing tools/dependencies and bootstrap
+`test:package` runs `npm pack` exactly as `npm publish` would (including the `dist/`
+build), installs only the tarball into an empty temporary directory outside the
+repository, and checks: the file allowlist, compiled modules and size budget; both
+executables' help and version; doctor in installed-package mode; `init`; a Node-only
+render that is audible and byte-identical to the checkout's; a production project
+failing clearly without FFmpeg; the nine MCP tools, server instructions and a
+create/patch/validate/render session; and, when this machine has FluidSynth, a
+SoundFont and FFmpeg, GM, production, MP3 and exact-length stem renders. Every
+installed Node process records the modules it loads, and the test fails if any
+comes from the checkout. It needs npm and its cache or registry access for the
+three runtime dependencies, takes about 5 seconds (about 20 with full audio), and
+leaves no files in the repository. Set `DAEMONV12_KEEP_CLEAN_ROOM=1` to keep the
+temporary directory for inspection.
+
+CI (`.github/workflows/check.yml`) runs `npm ci`, the full check and the sample/MCP
+smoke on Node 22.18.0 and 24, plus `test:package` on Linux (Node 22.18.0 and 24) and
+macOS arm64 (Node 24). Both select missing external audio tools to prove the
+Node-only path. Doctor JSON, missing tools/dependencies and bootstrap
 integrity/retry/idempotence/failure behavior have focused tests. Bootstrap tests
-use tiny local artifacts and mock downloads/installations; ordinary tests make
-no network requests. CI does not download SoundFonts or create a release.
+use tiny local artifacts and mock downloads/installations; ordinary tests make no
+network requests apart from `test:package`'s npm install. CI does not download
+SoundFonts or create a release. The manual **Full audio verification** workflow
+(`full-audio.yml`) installs the apt audio packages, and separately runs the rootless
+bootstrap, then runs the full suite, `test:package` with real audio and
+`demo:share`.
 
 ## Cloud setup and persistence
 

@@ -2,11 +2,10 @@ import { spawnSync } from 'node:child_process';
 import { closeSync, openSync, readFileSync, statSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { installation as detectInstallation, packageRoot } from './installation.ts';
 import { executablePath, fluidSynthCommand, inspectFfmpeg, probeFluidSynth, resolveSoundfont, selectSoundfont, type SoundfontOptions } from './render/index.ts';
 import { ENGINE_VERSION } from './version.ts';
 
-const checkout = fileURLToPath(new URL('../', import.meta.url));
 export const REQUIRED_NODE = '>=22.18.0';
 export function supportedNode(version: string): boolean {
   const match = /^v?(\d+)\.(\d+)\.(\d+)$/.exec(version);
@@ -43,9 +42,16 @@ function dependencies(root: string, manifest: string, kind: 'dependencies' | 'de
   return { available: packages.every(pkg => pkg.present && pkg.matches), packages };
 }
 
+// Where to get the external audio tools; the rootless script ships in checkouts and packages.
+function audioInstall(root: string, packages: string, brew: string): string {
+  return `Rootless on Linux x86_64 (glibc >=2.28): bash ${join(root, 'scripts', 'bootstrap-audio-tools.sh')}, then source the printed env.sh. `
+    + `Or use system packages (Debian/Ubuntu: sudo apt-get install ${packages}; macOS Homebrew: brew install ${brew}).`;
+}
+
 export interface DoctorOptions extends SoundfontOptions { nodeVersion?: string; dependencyRoot?: string; probeTimeoutMs?: number }
 export async function inspectEnvironment(options: DoctorOptions) {
-  const { env } = options, root = options.dependencyRoot ?? checkout;
+  const { env } = options, root = options.dependencyRoot ?? packageRoot();
+  const installation = detectInstallation(root);
   const node = { version: options.nodeVersion ?? process.version, required: REQUIRED_NODE, supported: supportedNode(options.nodeVersion ?? process.version), path: process.execPath };
   const npmProbe = spawnSync('npm', ['--version'], { env, encoding: 'utf8', timeout: options.probeTimeoutMs ?? 3000, maxBuffer: 8192, shell: false });
   const npm = { command: 'npm', path: executablePath('npm', env), version: npmProbe.status === 0 ? npmProbe.stdout.trim() : null,
@@ -66,7 +72,7 @@ export async function inspectEnvironment(options: DoctorOptions) {
   const soundfont = { selection: selected.selection, path: selected.path === undefined ? null : resolve(selected.path), readable,
     valid: !!sf.value, bytes: sf.value?.bytes ?? null, sha256: sf.value?.sha256 ?? null, error: sf.diagnostic?.message ?? null };
   const development = dependencies(root, 'package.json', 'devDependencies');
-  const mcp = dependencies(root, 'mcp/package.json', 'dependencies');
+  const mcp = dependencies(root, 'package.json', 'dependencies');
   const readiness = {
     generalMidi: node.supported && fluidsynth.available && soundfont.valid,
     sampleOnly: node.supported,
@@ -76,29 +82,46 @@ export async function inspectEnvironment(options: DoctorOptions) {
     mcp: node.supported && mcp.available,
   };
   const fixes: { component: string; action: string }[] = [];
-  if (!node.supported) fixes.push({ component: 'node', action: `Install Node ${REQUIRED_NODE}; the CLI runs TypeScript directly. Use the devcontainer or your Node version manager.` });
-  if (!npm.available) fixes.push({ component: 'npm', action: 'Install npm alongside Node to run npm ci. Rendering itself does not need npm.' });
-  if (!fluidsynth.available) fixes.push({ component: 'fluidsynth', action: 'Run ./scripts/bootstrap-audio-tools.sh on supported Linux, or install FluidSynth. Set DAEMONV12_FLUIDSYNTH to its executable path; inspect the probe error for missing shared libraries.' });
-  if (!soundfont.valid) fixes.push({ component: 'soundfont', action: 'Run ./scripts/bootstrap-audio-tools.sh, then set DAEMONV12_SOUNDFONT to the printed FluidR3_GM.sf2 path. An explicit selection must be readable and valid; it never falls back to a system file.' });
-  if (!readiness.productionEffects || !readiness.mp3 || !readiness.loudnessAnalysis) fixes.push({ component: 'ffmpeg', action: 'Run ./scripts/bootstrap-audio-tools.sh on supported Linux, or install a full FFmpeg build with highpass, lowpass, aecho, acompressor, loudnorm and libmp3lame. Set DAEMONV12_FFMPEG to its executable path.' });
-  if (!development.available || !mcp.available) fixes.push({ component: 'dependencies', action: 'Run npm ci from the checkout root, including workspaces and development dependencies. It installs pinned engine test tools and MCP runtime dependencies.' });
-  return { schemaVersion: 1 as const, command: 'doctor' as const, engineVersion: ENGINE_VERSION,
+  if (!node.supported) fixes.push({ component: 'node', action: `Install Node ${REQUIRED_NODE}; older versions cannot run DaemonV12. Use the devcontainer or your Node version manager.` });
+  if (!npm.available) fixes.push({ component: 'npm', action: 'Install npm alongside Node to install DaemonV12 and its dependencies. Rendering itself does not need npm.' });
+  if (!fluidsynth.available) fixes.push({ component: 'fluidsynth', action: `General MIDI tracks (instrument type "gm") need FluidSynth; sampler and drumkit tracks render without it. ${audioInstall(root, 'fluidsynth fluid-soundfont-gm ffmpeg', 'fluid-synth ffmpeg')} Set DAEMONV12_FLUIDSYNTH to the executable if it is not on PATH; inspect the probe error for missing shared libraries.` });
+  if (!soundfont.valid) fixes.push({ component: 'soundfont', action: 'General MIDI tracks also need a General MIDI SoundFont (.sf2) such as FluidR3_GM. The rootless bootstrap installs one (Debian/Ubuntu package: fluid-soundfont-gm). Set DAEMONV12_SOUNDFONT to its absolute path or pass --soundfont <file.sf2>. An explicit selection must be readable and valid; it never falls back to a system file.' });
+  if (!readiness.productionEffects || !readiness.mp3 || !readiness.loudnessAnalysis) fixes.push({ component: 'ffmpeg', action: `Production rendering (track mix, effects or automation; master; render duration/tail), MP3 export and the analyze command need FFmpeg with highpass, lowpass, aecho, acompressor, loudnorm and libmp3lame. Plain sample-only projects render without it. ${audioInstall(root, 'ffmpeg', 'ffmpeg')} Set DAEMONV12_FFMPEG to the executable if it is not on PATH.` });
+  if (installation.mode === 'source' && (!development.available || !mcp.available)) fixes.push({ component: 'dependencies', action: `Run npm ci in ${root}. It installs the pinned MCP runtime (@modelcontextprotocol/server, zod) and the development tools.` });
+  if (installation.mode === 'package' && !mcp.available) fixes.push({ component: 'dependencies', action: 'Reinstall daemonv12 with npm (from the registry or a release tarball) so npm installs its runtime dependencies @modelcontextprotocol/server and zod.' });
+  return { schemaVersion: 1 as const, command: 'doctor' as const, engineVersion: ENGINE_VERSION, installation,
     ok: Object.values(readiness).every(Boolean), platform: process.platform, architecture: process.arch,
     node, npm, fluidsynth, soundfont, ffmpeg, dependencies: { engineRuntime: { count: 0 }, development, mcp }, readiness, fixes };
 }
 export type DoctorReport = Awaited<ReturnType<typeof inspectEnvironment>>;
 
+// What each readiness flag unlocks, in the order a first-time user needs them.
+const capabilities: Record<keyof DoctorReport['readiness'], string> = {
+  sampleOnly: 'sampler/drum-kit projects without production fields (Node only)',
+  generalMidi: 'General MIDI instruments (FluidSynth + a GM SoundFont)',
+  productionEffects: 'mix, effects, automation, master and exact durations (FFmpeg)',
+  mp3: 'MP3 export (FFmpeg with libmp3lame)',
+  loudnessAnalysis: 'LUFS/true-peak analysis and the analyze command (FFmpeg)',
+  mcp: 'daemonv12-mcp stdio server for agents (MCP SDK + Zod)',
+};
 export function formatDoctor(report: DoctorReport): string {
   const tool = (name: string, item: { available: boolean; version: string | null; path: string | null; command: string; error?: string | null }) =>
     `  ${name}: ${item.available ? `${item.version ?? 'unknown version'} (${item.path ?? 'path unresolved'})` : `unavailable (${item.path ?? item.command})${item.error ? ` — ${item.error}` : ''}`}`;
-  return [`DaemonV12 ${report.engineVersion} doctor`,
+  const flags = Object.entries(report.readiness) as [keyof DoctorReport['readiness'], boolean][];
+  const ready = flags.filter(([, value]) => value).map(([name]) => name), missing = flags.filter(([, value]) => !value).map(([name]) => name);
+  const source = report.installation.mode === 'source';
+  return [`DaemonV12 ${report.engineVersion} doctor (${source ? 'source checkout' : 'installed package'}: ${report.installation.root})`,
     `  Node: ${report.node.version} (${report.node.supported ? 'supported' : 'unsupported'}; requires ${report.node.required})`,
     tool('npm', report.npm), tool('FluidSynth', report.fluidsynth),
     `  SoundFont: ${report.soundfont.path ?? 'not found'} (${report.soundfont.selection}; ${report.soundfont.valid ? 'readable RIFF/sfbk' : report.soundfont.error ?? 'invalid'})`,
     tool('FFmpeg', { ...report.ffmpeg, error: report.ffmpeg.diagnostic?.message ?? null }),
-    `  Repository development dependencies: ${report.dependencies.development.available ? 'ready' : 'missing or different versions'}`,
+    `  Development dependencies: ${!source ? 'not needed by an installed package' : report.dependencies.development.available ? 'ready' : 'missing or different versions'}`,
     `  MCP runtime dependencies: ${report.dependencies.mcp.available ? 'ready' : 'missing or different versions'}`,
-    ...Object.entries(report.readiness).map(([name, ready]) => `  ${name}: ${ready ? 'ready' : 'not ready'}`),
+    'Capabilities:',
+    ...flags.map(([name, value]) => `  ${name}: ${value ? 'ready' : 'not ready'} — ${capabilities[name]}`),
+    missing.length === 0 ? 'Summary: everything is ready.'
+      : `Summary: ready now: ${ready.length ? ready.join(', ') : 'nothing'}. Not ready: ${missing.join(', ')}; the fixes below say what each needs.`,
     ...report.fixes.map(fix => `  Fix ${fix.component}: ${fix.action}`),
-    'Read-only probes; no audio was rendered. Readiness does not test a project or load SoundFont instruments.', ''].join('\n');
+    'Read-only probes; no audio was rendered. Readiness does not test a project or load SoundFont instruments.',
+    ...(missing.length ? ['Exit code 3 only means at least one capability is not ready; ready capabilities work regardless.'] : []), ''].join('\n');
 }

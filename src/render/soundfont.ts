@@ -14,7 +14,7 @@ export function selectSoundfont(options:SoundfontOptions):{path:string|undefined
 export async function resolveSoundfont(options: SoundfontOptions): Promise<Parsed<Soundfont>> {
   const defaults=options.defaults??DEFAULT_SOUNDFONTS;
   const {path}=selectSoundfont(options);
-  const hint='Run ./scripts/bootstrap-audio-tools.sh on supported Linux, install fluid-soundfont-gm, or set DAEMONV12_SOUNDFONT / pass --soundfont <file.sf2>.';
+  const hint='General MIDI (gm) tracks need a GM SoundFont (.sf2) such as FluidR3_GM; sampler and drumkit tracks do not. Install fluid-soundfont-gm or run the rootless scripts/bootstrap-audio-tools.sh, then set DAEMONV12_SOUNDFONT or pass --soundfont <file.sf2>; daemonv12 doctor shows details.';
   if(path===undefined)return {diagnostic:diagnostic('SOUNDFONT_NOT_FOUND','',[...defaults],'installed GM SoundFont',hint)};
   let fd:number|undefined;
   try {

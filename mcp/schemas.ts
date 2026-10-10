@@ -79,7 +79,8 @@ export const schemas = {
   daemonv12_instruments_list: z.strictObject({project: project.optional(), query: z.string().max(100).default(''),
     offset: z.number().int().min(0).default(0), limit: z.number().int().min(1).max(128).default(128)}),
   daemonv12_drumkits_list: z.strictObject({project, offset: z.number().int().min(0).default(0), limit: z.number().int().min(1).max(50).default(20)}),
-  daemonv12_render: z.strictObject({project, stems: z.boolean().default(false), format: z.enum(['wav', 'mp3', 'wav,mp3']).optional()}),
+  daemonv12_render: z.strictObject({project, stems: z.boolean().default(false), format: z.enum(['wav', 'mp3', 'wav,mp3']).optional()
+    .describe('Omit for a plain WAV render. Any explicit format also writes loudness analysis and requires FFmpeg.')}),
   daemonv12_analyze: z.strictObject({audio: z.string().max(512).describe('Workspace-relative WAV path returned by render.')}),
   daemonv12_render_info: z.strictObject({manifest: z.string().max(512).describe('Workspace-relative manifest path returned by render.'),
     detail: z.enum(['summary', 'full']).default('summary')}),

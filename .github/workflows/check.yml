@@ -22,3 +22,30 @@ jobs:
           DAEMONV12_FLUIDSYNTH: /daemonv12-unavailable/fluidsynth
           DAEMONV12_SOUNDFONT: /daemonv12-unavailable/FluidR3_GM.sf2
           DAEMONV12_FFMPEG: /daemonv12-unavailable/ffmpeg
+
+  # Release gate: pack exactly what npm would publish, install only that tarball into an
+  # empty directory, and prove both executables, a Node-only render and nine MCP tools
+  # work without the source checkout. Audio tools are hidden; full audio is verified by
+  # the manual "Full audio verification" workflow.
+  package:
+    name: Package clean room (${{ matrix.os }}, Node ${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-24.04, node: '22.18.0' }
+          - { os: ubuntu-24.04, node: '24' }
+          - { os: macos-14, node: '24' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run test:package
+        env:
+          DAEMONV12_FLUIDSYNTH: /daemonv12-unavailable/fluidsynth
+          DAEMONV12_SOUNDFONT: /daemonv12-unavailable/FluidR3_GM.sf2
+          DAEMONV12_FFMPEG: /daemonv12-unavailable/ffmpeg

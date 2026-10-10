@@ -36,7 +36,7 @@ export function fluidSynthCommand(env:NodeJS.ProcessEnv):string { return env.DAE
 export async function probeFluidSynth(options:{env:NodeJS.ProcessEnv;probeTimeoutMs?:number}):Promise<Parsed<{command:string;path:string|null;version:string}>> {
   const exe=fluidSynthCommand(options.env);
   const probe=await invoke(exe,['--version'],options.env,options.probeTimeoutMs??10000);
-  if(probe.error?.code==='ENOENT')return {diagnostic:diagnostic('RENDERER_NOT_FOUND','',exe,'installed renderer','Run ./scripts/bootstrap-audio-tools.sh on supported Linux, install fluidsynth with your OS package manager, or set DAEMONV12_FLUIDSYNTH.')};
+  if(probe.error?.code==='ENOENT')return {diagnostic:diagnostic('RENDERER_NOT_FOUND','',exe,'installed renderer','FluidSynth is needed only for General MIDI (gm) tracks; sampler and drumkit tracks render without it. Install fluidsynth (apt-get install fluidsynth, brew install fluid-synth, or the rootless scripts/bootstrap-audio-tools.sh on Linux x86_64) or set DAEMONV12_FLUIDSYNTH; daemonv12 doctor shows details.')};
   if(probe.error||probe.timedOut||probe.exitCode!==0)return {diagnostic:failure(exe,['--version'],probe,probe.timedOut?'Renderer probe timed out.':`Renderer probe failed: ${probe.error?.message??`exit ${probe.exitCode}`}.`)};
   const version=/version\s+(\d+\.\d+\.\d+)/i.exec(probe.stdout)?.[1]??'unknown';
   return {value:{command:exe,path:executablePath(exe,options.env),version}};

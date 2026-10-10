@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "noEmitOnError": true,
+    "rewriteRelativeImportExtensions": true,
+    "rootDir": ".",
+    "outDir": "dist",
+    "newLine": "lf"
+  },
+  "include": ["src", "mcp"],
+  "exclude": ["mcp/demo.ts"]
+}
