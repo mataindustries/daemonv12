@@ -14,7 +14,7 @@ export async function runDemo(root: string, env: Record<string, string> = Object
   cpSync(fileURLToPath(new URL('../examples/assets', import.meta.url)), join(root, 'assets'), {recursive: true});
   const client = new Client({name: 'daemonv12-agent-demo', version: '0.4.0'});
   const transport = new StdioClientTransport({command: process.execPath,
-    args: [fileURLToPath(new URL('bin/daemonv12-mcp.js', import.meta.url)), '--root', root], env, stderr: 'pipe'});
+    args: [fileURLToPath(new URL('../bin/daemonv12-mcp.js', import.meta.url)), '--root', root], env, stderr: 'pipe'});
   let stderr = '';
   transport.stderr?.on('data', chunk => { stderr += String(chunk); });
   const transcript: {tool: string; arguments: Record<string, unknown>; result: ToolResult}[] = [];

@@ -41,7 +41,9 @@ function invocation(options: { env: NodeJS.ProcessEnv; timeoutMs?: number }) {
       child.on('close', code => {
         clearTimeout(timer);
         if (failure || code !== 0) {
-          const d = diagnostic(missing ? 'AUDIO_TOOL_NOT_FOUND' : 'AUDIO_PROCESSING_FAILED', '', { exitCode: code, reason: failure, stderr: stderr.slice(-2000) }, 'working FFmpeg with highpass, lowpass, aecho, loudnorm and libmp3lame', 'Install ffmpeg or set DAEMONV12_FFMPEG.');
+          const d = diagnostic(missing ? 'AUDIO_TOOL_NOT_FOUND' : 'AUDIO_PROCESSING_FAILED', '', { exitCode: code, reason: failure, stderr: stderr.slice(-2000) }, 'working FFmpeg with highpass, lowpass, aecho, loudnorm and libmp3lame', missing
+            ? 'FFmpeg is needed for production fields (track mix, effects or automation; master; render), any explicit output format or MP3, and loudness analysis. Sample-only projects render without it when no format is requested. Install ffmpeg (apt-get or brew, or the rootless scripts/bootstrap-audio-tools.sh) or set DAEMONV12_FFMPEG; daemonv12 doctor shows details.'
+            : 'Install ffmpeg or set DAEMONV12_FFMPEG.');
           resolveResult({ diagnostic: d });
         } else resolveResult({ value: { stdout: Buffer.concat(chunks), stderr } });
       });

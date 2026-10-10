@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process';
 import { mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
-import { inspectEnvironment, supportedNode } from '../src/doctor.ts';
+import { formatDoctor, inspectEnvironment, supportedNode } from '../src/doctor.ts';
 
 const cli = resolve('bin/daemonv12.js');
 const fakeEnv = () => ({ ...process.env, DAEMONV12_FLUIDSYNTH: resolve('tests/helpers/fake-fluidsynth.mjs'),
@@ -36,14 +36,28 @@ test('doctor leaves sample readiness true without audio tools or npm, and gives 
 });
 test('doctor diagnoses invalid readable SoundFonts and missing workspace dependencies', async t => {
   const dir = temp(t), bad = join(dir, 'bad.sf2'); writeFileSync(bad, 'not a SoundFont');
-  mkdirSync(join(dir, 'mcp'));
-  writeFileSync(join(dir, 'package.json'), JSON.stringify({ devDependencies: { 'daemonv12-missing-development-fixture': '1.0.0' } }));
-  writeFileSync(join(dir, 'mcp/package.json'), JSON.stringify({ dependencies: { 'daemonv12-missing-runtime-fixture': '1.0.0' } }));
+  mkdirSync(join(dir, 'src/cli'), { recursive: true }); writeFileSync(join(dir, 'src/cli/main.ts'), '');
+  writeFileSync(join(dir, 'package.json'), JSON.stringify({ name: 'daemonv12', devDependencies: { 'daemonv12-missing-development-fixture': '1.0.0' },
+    dependencies: { 'daemonv12-missing-runtime-fixture': '1.0.0' } }));
   const result = await inspectEnvironment({ env: fakeEnv(), soundfont: bad, dependencyRoot: dir });
+  assert.deepEqual(result.installation, { mode: 'source', root: dir });
   assert.equal(result.soundfont.readable, true); assert.equal(result.soundfont.valid, false);
   assert.equal(result.dependencies.development.available, false); assert.equal(result.dependencies.mcp.available, false);
   assert.equal(result.dependencies.mcp.packages[0]?.version, null); assert.equal(result.readiness.mcp, false);
-  assert.ok(result.fixes.some(fix => fix.component === 'dependencies' && fix.action.includes('npm ci')));
+  assert.ok(result.fixes.some(fix => fix.component === 'dependencies' && fix.action.includes(`npm ci in ${dir}`)));
+});
+test('an installed package needs no development tools and points fixes at its own files', async t => {
+  const dir = temp(t);
+  writeFileSync(join(dir, 'package.json'), JSON.stringify({ name: 'daemonv12', devDependencies: { 'daemonv12-missing-development-fixture': '1.0.0' },
+    dependencies: { 'daemonv12-missing-runtime-fixture': '1.0.0' } }));
+  const result = await inspectEnvironment({ env: { PATH: '', DAEMONV12_FLUIDSYNTH: '/missing/fluidsynth', DAEMONV12_FFMPEG: '/missing/ffmpeg' }, defaults: [], dependencyRoot: dir });
+  assert.deepEqual(result.installation, { mode: 'package', root: dir }); assert.equal(result.readiness.mcp, false);
+  const dependencies = result.fixes.filter(fix => fix.component === 'dependencies');
+  assert.equal(dependencies.length, 1); assert.match(dependencies[0]!.action, /Reinstall daemonv12/); assert.doesNotMatch(dependencies[0]!.action, /npm ci/);
+  assert.ok(result.fixes.some(fix => fix.component === 'fluidsynth' && fix.action.includes(join(dir, 'scripts', 'bootstrap-audio-tools.sh'))));
+  const human = formatDoctor(result);
+  assert.match(human, /installed package/); assert.match(human, /Development dependencies: not needed/);
+  assert.match(human, /sampleOnly: ready — sampler\/drum-kit projects/); assert.match(human, /Summary: ready now: sampleOnly\. Not ready:/);
 });
 test('doctor distinguishes an installed FFmpeg from its missing production capabilities', async () => {
   const result = await inspectEnvironment({ env: { ...fakeEnv(), FAKE_AUDIO_MODE: 'missing-mp3' } });
@@ -62,7 +76,8 @@ test('doctor CLI emits one stable JSON report from another cwd and creates no ar
   const result = spawnSync(process.execPath, [cli, 'doctor', '--json'], { encoding: 'utf8', cwd: dir, env: fakeEnv() });
   assert.equal(result.status, 0, result.stdout + result.stderr); assert.equal(result.stderr, '');
   const report = JSON.parse(result.stdout);
-  assert.deepEqual(Object.keys(report), ['schemaVersion', 'command', 'engineVersion', 'ok', 'platform', 'architecture', 'node', 'npm', 'fluidsynth', 'soundfont', 'ffmpeg', 'dependencies', 'readiness', 'fixes']);
+  assert.deepEqual(Object.keys(report), ['schemaVersion', 'command', 'engineVersion', 'installation', 'ok', 'platform', 'architecture', 'node', 'npm', 'fluidsynth', 'soundfont', 'ffmpeg', 'dependencies', 'readiness', 'fixes']);
+  assert.deepEqual(report.installation, { mode: 'source', root: resolve('.') });
   assert.deepEqual(readdirSync(dir), ['keep']);
   const missing = spawnSync(process.execPath, [cli, 'doctor', '--json', '--soundfont', '/missing.sf2'], { encoding: 'utf8', cwd: dir, env: fakeEnv() });
   assert.equal(missing.status, 3); assert.equal(JSON.parse(missing.stdout).readiness.sampleOnly, true); assert.deepEqual(readdirSync(dir), ['keep']);

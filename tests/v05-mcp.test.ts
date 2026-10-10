@@ -11,7 +11,7 @@ test('V0.5 real stdio create/read/transactional patch/validate/render supports t
   const root=mkdtempSync(join(tmpdir(),'v05-stdio-'));t.after(()=>rmSync(root,{recursive:true,force:true}));
   cpSync('examples/assets',join(root,'assets'),{recursive:true});
   const client=new Client({name:'v05-test',version:'1'});
-  const transport=new StdioClientTransport({command:process.execPath,args:[resolve('mcp/bin/daemonv12-mcp.js'),'--root',root]});
+  const transport=new StdioClientTransport({command:process.execPath,args:[resolve('bin/daemonv12-mcp.js'),'--root',root]});
   await client.connect(transport);t.after(async()=>{await client.close();});
   const listed=await client.listTools();assert.equal(listed.tools.length,9);
   const call=async(name:string,args:Record<string,unknown>)=>(await client.callTool({name:`daemonv12_${name}`,arguments:args})).structuredContent as any;

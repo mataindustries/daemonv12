@@ -34,7 +34,7 @@ From an MCP workspace rooted at the repository, call the existing tools:
 {"tool":"daemonv12_drumkits_list","arguments":{"project":"examples/orbital-foundry-audition.json"}}
 ```
 
-These are tool names and argument examples, not an additional API. Instrument discovery returns descriptive numbered WAV paths; kit discovery returns validated names and pitch mappings. No new MCP tools or discovery registry are needed. The catalog lives outside `assets/` because native discovery treats JSON inside `assets/` as kit candidates.
+In a workspace created by `daemonv12 init`, drop the `examples/` prefix (for example `"project":"orbital-foundry-audition.json"`). These are tool names and argument examples, not an additional API. Instrument discovery returns descriptive numbered WAV paths; kit discovery returns validated names and pitch mappings. No new MCP tools or discovery registry are needed. The catalog lives outside `assets/` because native discovery treats JSON inside `assets/` as kit candidates.
 
 For projects in `examples/`, use:
 

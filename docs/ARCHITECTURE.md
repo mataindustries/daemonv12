@@ -7,6 +7,16 @@ Status: V0.5 implemented, engine `0.5.0`, project `formatVersion: 1`.
 Normative details: [V0_SPEC.md](V0_SPEC.md). Phase plan: [ROADMAP.md](ROADMAP.md).
 Implementation steps: [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
 
+Public-beta packaging changes no engine behavior. One `daemonv12` package ships
+both executables. `bin/launch.js` runs the `src/` and `mcp/` TypeScript directly in
+a checkout; an installed package runs JavaScript compiled into `dist/` during
+`npm pack`/`npm publish` (`prepare` runs `scripts/build.ts`, which only erases
+types), because Node does not strip types under `node_modules`.
+`src/installation.ts` finds the package root in both layouts. The engine under
+`src/` still imports no npm packages; the package's runtime dependencies (MCP SDK,
+Zod) serve only `mcp/`. `tests/package.clean-room.ts` proves the packed tarball
+works without the checkout.
+
 V0.5 adds pure `timing/render-plan.ts` boundary resolution and tagged wall time
 (`timing/wall-time.ts`), optional gain/pan automation, and contained master VO
 references. `audio-types.ts` shares effect types/ranges across validation and
@@ -17,10 +27,10 @@ and ducks only the master. Legacy routes and MIDI encoding remain unchanged.
 [V0_5_TIMELINE_DYNAMICS.md](V0_5_TIMELINE_DYNAMICS.md) is normative for these additions;
 historical limitations below remain V0 context.
 
-V0.4 adds the isolated `mcp/` npm workspace, importing the core in one direction
-only. Nine stdio tools expose project creation/read/validation/transactional edits,
+V0.4 adds the isolated `mcp/` layer (originally its own npm workspace, now part of
+the single package), importing the core in one direction only. Nine stdio tools expose project creation/read/validation/transactional edits,
 GM/sample/kit discovery, rendering, analysis and provenance. The SDK and Zod stay
-outside `src/`; the root engine still has no runtime npm dependencies. A narrow
+outside `src/`; the engine itself has no runtime npm dependencies. A narrow
 `compileProjectTextWithAssets` extraction allows candidate edits to reuse the exact
 file-compilation checks without first writing the proposed project. Render and
 analysis tools call `runCommand`, as the CLI does. Engine audio paths are unchanged.
@@ -31,7 +41,7 @@ the complete contract. Historical phase descriptions below remain the baseline.
 V0.1 adds optional `render --stems` at the existing per-track render seam. The pipeline
 encodes each track with the same conductor, event ordering, original channel and EOT,
 renders it through `AudioRenderer`, and appends stem provenance to the manifest. The
-master path and project schema are unchanged. See [README](../README.md#track-stems-v01)
+master path and project schema are unchanged. See [V0_1_STEMS.md](V0_1_STEMS.md)
 for output and cleanup contracts. The V0 design below remains the baseline.
 
 V0.2 adds `sampler` and `drumkit` instruments at the existing discriminator seam.
@@ -233,8 +243,8 @@ trivial equality checks and no ambiguity for agents.
 
 | Need | Choice | Why |
 |---|---|---|
-| Runtime | **Node ≥ 22.18**, ESM, **zero runtime npm dependencies** | Node's built-ins cover everything: `node:fs`, `node:child_process`, `node:crypto`, `node:util` `parseArgs`, `node:test`. |
-| Language | **TypeScript, zero-build.** Node strips types natively. `tsc` (TypeScript 7) only typechecks (`noEmit`). | With no `dist/`, there are no stale-build bugs, which are a classic agent failure mode. `erasableSyntaxOnly` keeps the code strippable. Verified on Node 22.22 with TS 7.0.2. |
+| Runtime | **Node ≥ 22.18**, ESM, **zero runtime npm dependencies in the engine** (the MCP layer adds the SDK and Zod) | Node's built-ins cover everything: `node:fs`, `node:child_process`, `node:crypto`, `node:util` `parseArgs`, `node:test`. |
+| Language | **TypeScript, zero-build in a checkout.** Node strips types natively. `tsc` (TypeScript 7) typechecks (`noEmit`). | A checkout never runs a `dist/`, so there are no stale-build bugs, which are a classic agent failure mode. `erasableSyntaxOnly` keeps the code strippable. Verified on Node 22.22 with TS 7.0.2. Packed tarballs ship a type-erased `dist/` built at pack time, because Node refuses to strip types under `node_modules`. |
 | Validation | **Hand-written staged validator.** No Ajv, zod or JSON Schema in V0. | Error quality is the main agent-facing feature. Most rules are musical (grid, beat ranges, overlaps), which JSON Schema cannot express. One code path gives one consistent diagnostic format. A JSON Schema *export* arrives with MCP (V0.4), where tool schemas need it. |
 | MIDI writing | **Own ~150-line SMF writer** (`midi/smf.ts`) | The byte layout is the heart of the determinism guarantee, so the engine owns it and pins it byte-for-byte in tests. `@tonejs/midi` was evaluated: unmaintained since 2022, CommonJS-only (the named ESM import fails at runtime, verified), float- and seconds-oriented API, and equal-tick ordering is an internal detail. |
 | MIDI test oracle | **`@tonejs/midi` (devDependency only)** | An independent parser checks note counts and timing in our output. Caveat (verified): its *reader* mislabels minor keys (D minor shows as "F minor"), so key signatures are asserted on raw bytes. |

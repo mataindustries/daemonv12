@@ -1,12 +1,15 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { STARTER_PROJECTS } from '../src/cli/init.ts';
 import { ENGINE_VERSION } from '../src/version.ts';
 import { capDiagnostics, diagnostic, didYouMean, exitCodeFor, formatDiagnosticHuman, formatPath, levenshtein } from '../src/diagnostics.ts';
-test('architecture: deterministic core, renderer boundary, zero runtime dependencies', () => {
+test('architecture: deterministic core, renderer boundary, engine imports no npm packages', () => {
   const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
   assert.equal(pkg.version, ENGINE_VERSION);
-  assert.equal(pkg.dependencies, undefined);
+  // Runtime dependencies serve only the MCP adapter, exactly pinned; src/ imports none of them.
+  assert.deepEqual(Object.keys(pkg.dependencies).sort(), ['@modelcontextprotocol/server', 'zod']);
+  for (const version of Object.values(pkg.dependencies)) assert.match(version as string, /^\d+\.\d+\.\d+$/);
   for (const file of readdirSync('src', { recursive: true, encoding: 'utf8' }).filter(f => f.endsWith('.ts'))) {
     const text = readFileSync(`src/${file}`, 'utf8');
     assert.doesNotMatch(text, /from\s+['"][^'"]*(?:@modelcontextprotocol|\/mcp\/|\bzod\b)/);
@@ -15,6 +18,16 @@ test('architecture: deterministic core, renderer boundary, zero runtime dependen
     if (/^(timing|midi)\/|^project\/(pitch|key|gm-programs|validate|sample-schema)/.test(file)) assert.doesNotMatch(text, /node:|process\.env/);
     if (file.startsWith('render/')) assert.doesNotMatch(text, /process\.env|from\s+['"][^'"]*(project|timing|midi)\//);
   }
+});
+test('package contract: two executables, no install scripts, explicit runtime allowlist', () => {
+  const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
+  assert.deepEqual(pkg.bin, { daemonv12: 'bin/daemonv12.js', 'daemonv12-mcp': 'bin/daemonv12-mcp.js' });
+  for (const bin of Object.values(pkg.bin) as string[]) assert.match(readFileSync(bin, 'utf8'), /^#!\/usr\/bin\/env node\n/);
+  for (const script of ['preinstall', 'install', 'postinstall']) assert.equal(pkg.scripts[script], undefined, script);
+  for (const entry of pkg.files as string[]) assert.ok(entry === 'dist/' || existsSync(entry), entry);
+  for (const project of STARTER_PROJECTS) assert.ok(pkg.files.includes(`examples/${project}`), project);
+  assert.ok(pkg.files.includes('examples/README.md') && pkg.files.includes('examples/assets/'));
+  assert.ok(!(pkg.files as string[]).some(entry => /^(src|mcp|tests|reports|renders|\.github|\.devcontainer)(\/|$)/.test(entry)));
 });
 test('diagnostics helpers and exit classes', () => {
   assert.equal(levenshtein('kitten', 'sitting'), 3);
