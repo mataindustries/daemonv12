@@ -32,7 +32,7 @@ export const config = {
    * nothing else on the page (status line, capability strip, install snippet) claims it.
    * Flip to true once V0.6 is merged into main. That is the only change needed.
    */
-  v06Released: false,
+  v06Released: true,
 
   /** Branch the V0.6 links use while v06Released is false. */
   v06PreviewRef: 'v06-sample-performance',
