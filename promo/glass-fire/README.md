@@ -17,7 +17,7 @@ Run from `promo/glass-fire/` with Node ≥ 22.18:
 ```sh
 npm ci
 npm run dev             # Remotion Studio (also writes the dev click track)
-npm run check           # typecheck + lint + 28 unit tests (no browser)
+npm run check           # typecheck + lint + 38 unit tests (no browser)
 npm run verify          # render-level QA through the real renderer (17 checks)
 npm run contact-sheet   # out/glass-fire-contact-sheet.png (36 frames on one sheet)
 npm run render:preview  # out/glass-fire-preview-540p.mp4  (960×540, 60 fps, silent)
@@ -25,6 +25,12 @@ npm run render:click    # same, with the 160 BPM reference click (development on
 npm run render:silent   # out/glass-fire-1080p60-silent.mp4 (1920×1080, 60 fps, 24 s)
 npm run analyze         # final audio → public/sync/promo-data.json
 npm run render:final    # out/glass-fire-1080p60.mp4 with the final master
+
+# The 15-second vertical cut (1080×1920, 60 fps, 900 frames); see "Vertical cut" below.
+npm run vertical:prepare        # public/sync/vertical-15s.wav and vertical-extras.json
+npm run render:vertical         # out/daemonv12-vertical-15s.mp4 (prepare → picture → mux)
+npm run render:vertical-poster  # out/daemonv12-vertical-poster.png (1080×1920)
+npm run verify:vertical         # render-level QA; add -- --video out/daemonv12-vertical-15s.mp4
 ```
 
 Each act can be opened on its own in Studio (`Acts/Act1-Hook` … `Acts/Act6-Payoff`) or
@@ -135,19 +141,57 @@ Both are bundled from fontsource (OFL) and loaded through `@remotion/fonts`, nev
 fetched at render time. Copy is sparse and uppercase, and every word is placed on a
 musical event.
 
-## Layout and the vertical derivative
+## Vertical cut (`GlassFireVertical`)
 
-Layout reads `useStage()`: `u` is one design pixel scaled to the short edge, and positions
-are fractions of W/H, with safe margins from `sx`/`sy`. A 9:16 version means registering a
-1080×1920 composition and adjusting per-act positions (lane count and height, type sizes,
-the Act 5 plane). The timing, data and primitives stay unchanged. It was not built in
-this pass.
+A 15-second 1080×1920 cut for TikTok, Reels, Shorts, LinkedIn and X. It is its own
+composition, built from the same data, primitives and motion system. The landscape
+`GlassFire` composition is untouched.
+
+**The edit** (`src/vertical/edit.ts`) is ten whole bars of the final master, cut only on bar
+lines. Output bar *k* starts at (*k* − 1) · 1.5 s, exactly like a song bar.
+
+| Output bars | Song bars | Section | Frames |
+|---|---|---|---|
+| 1 | 4 | HOOK: pre-drop riser and stop | 0–89 |
+| 2–3 | 5, 8 | DROP 1 (cut 5 → 8: both bars open on the halftime downbeat) | 90–269 |
+| 4–5 | 9–10 | FAKEOUT | 270–449 |
+| 6–8 | 11, 12, 14 | DROP 2 (cut 12 → 14: both bars open on the two-step downbeat) | 450–719 |
+| 9–10 | 15–16 | PAYOFF, to the last sample of the master | 720–899 |
+
+`npm run vertical:prepare` cuts the audio from the final `master.wav` with two 8 ms
+equal-power crossfades that end on the bar line, plus a 2 ms fade-in. Every other output
+sample is byte-identical to the master; the script checks this and prints a seam report.
+It also writes `vertical-extras.json` from the render manifest. That file holds:
+
+- the exact sample triggers, each with its GLASSHOUSE identity;
+- the project's real gain/pan automation;
+- the master gate's silences, from `master-gate.wav` when its SHA-256 matches the manifest;
+- the GM programs, from `project.json`, also hash-checked.
+
+The composition remaps all music data through the same edit, so lanes, cues and camera
+moves read the music at the time it is heard.
+
+**The file.** `npm run render:vertical` renders the picture with Remotion
+(`out/daemonv12-vertical-15s.video.mp4`). `scripts/vertical-mux.ts` then copies that H.264
+stream untouched and encodes AAC once from `vertical-15s.wav` at its own 44.1 kHz. Remotion's
+own audio track would be padded to a whole AAC frame and read 15.019 s, because 15 s at 48 kHz
+is not a multiple of 1024 samples. The mux writes an exact edit list instead, so the video
+stream, the audio stream and the file all read 15.000 s.
+
+**Portrait layout** (`src/vertical/`). The arrangement is rotated so time runs down the frame
+(`primitives/Columns.tsx`). It has six columns, and each trigger falls into a horizontal
+playhead as its own GLASSHOUSE waveform. Drop 2 tilts the same columns into a perspective plane.
+All copy stays inside `SAFE` (`layout.ts`): the centre 70 % of the width, between the top and
+bottom platform overlays. `npm run verify:vertical` renders the copy layers alone and checks
+every copy beat against that box.
+
+**CTA.** The end-card line is the single constant `CTA_LINE` in `src/vertical/config.ts`.
 
 ## Files
 
 ```
 src/
-  index.ts, Root.tsx       composition registry (GlassFire, Acts/*, QA/ContactSheet)
+  index.ts, Root.tsx       composition registry (GlassFire, GlassFireVertical, Acts/*, QA/ContactSheet)
   GlassFire.tsx            main composition, data loading, audio, chrome
   ContactSheet.tsx         QA still made of frozen real frames
   context.tsx              data provider, global time inside acts
@@ -157,8 +201,11 @@ src/
   motion/physics.ts        springs, impacts, smear, hashes
   primitives/              the components above
   acts/                    Act1Hook … Act6Payoff
-scripts/                   analyze-stems, click-track, extract-glasshouse, export-fixture, verify, lib/{wav,analyze}
-tests/                     timeline, data, motion, analyzer, isolation
-props/                     final.json (sync data + master), click.json (fixture + click)
+  vertical/                the 15-second cut: edit, sections, cues, data remap, layout, config (CTA),
+                           primitives/ (Columns, TriggerTags, VChrome), sections/ (VHook … VPayoff)
+scripts/                   analyze-stems, click-track, extract-glasshouse, export-fixture, verify,
+                           vertical-prepare, vertical-mux, verify-vertical, lib/{wav,analyze,png}
+tests/                     timeline, data, motion, analyzer, isolation, vertical
+props/                     final.json (sync data + master), click.json (fixture + click), vertical.json
 public/sync/               final audio drop zone (git-ignored except README)
 ```

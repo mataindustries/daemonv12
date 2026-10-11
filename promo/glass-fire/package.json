@@ -23,7 +23,11 @@
     "render:silent": "remotion render src/index.ts GlassFire out/glass-fire-1080p60-silent.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p",
     "contact-sheet": "remotion still src/index.ts ContactSheet out/glass-fire-contact-sheet.png --frame=0",
     "verify": "node scripts/verify.ts",
-    "render:click": "node scripts/click-track.ts && remotion render src/index.ts GlassFire out/glass-fire-preview-click-540p.mp4 --scale=0.5 --crf=26 --props=props/click.json"
+    "render:click": "node scripts/click-track.ts && remotion render src/index.ts GlassFire out/glass-fire-preview-click-540p.mp4 --scale=0.5 --crf=26 --props=props/click.json",
+    "vertical:prepare": "node scripts/vertical-prepare.ts",
+    "render:vertical": "node scripts/vertical-prepare.ts && remotion render src/index.ts GlassFireVertical out/daemonv12-vertical-15s.video.mp4 --codec=h264 --crf=14 --pixel-format=yuv420p --props=props/vertical.json && node scripts/vertical-mux.ts",
+    "render:vertical-poster": "remotion still src/index.ts GlassFireVertical out/daemonv12-vertical-poster.png --frame=38 --props=props/vertical.json",
+    "verify:vertical": "node scripts/verify-vertical.ts"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "5.3.0",

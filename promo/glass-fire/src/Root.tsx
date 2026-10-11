@@ -4,6 +4,8 @@ import {ContactSheet, SHEET_HEIGHT, SHEET_WIDTH} from './ContactSheet.tsx';
 import {calculateGlassFireMetadata, GlassFire, glassFireSchema, loadPromoData, type GlassFireProps} from './GlassFire.tsx';
 import {ACT, type ActId} from './timeline/acts.ts';
 import {FPS} from './timeline/grid.ts';
+import {calculateVerticalMetadata, GlassFireVertical, glassFireVerticalSchema} from './vertical/GlassFireVertical.tsx';
+import {V_DURATION_IN_FRAMES, V_FPS, V_HEIGHT, V_WIDTH} from './vertical/edit.ts';
 
 const actPreviewSchema = glassFireSchema.extend({act: z.enum(['hook', 'ignition', 'drop1', 'fakeout', 'drop2', 'payoff'])});
 type ActPreviewProps = GlassFireProps & {act: ActId};
@@ -34,6 +36,17 @@ export const RemotionRoot = () => {
         schema={glassFireSchema}
         defaultProps={{dataSource: 'fixture', audio: 'none'}}
         calculateMetadata={calculateGlassFireMetadata}
+      />
+      <Composition
+        id="GlassFireVertical"
+        component={GlassFireVertical}
+        durationInFrames={V_DURATION_IN_FRAMES}
+        fps={V_FPS}
+        width={V_WIDTH}
+        height={V_HEIGHT}
+        schema={glassFireVerticalSchema}
+        defaultProps={{dataSource: 'fixture', audio: 'none', layers: 'all'}}
+        calculateMetadata={calculateVerticalMetadata}
       />
       <Folder name="Acts">
         <Composition id="Act1-Hook" component={ActPreview} durationInFrames={180} fps={60} width={1920} height={1080} schema={actPreviewSchema} defaultProps={{act: 'hook', dataSource: 'fixture', audio: 'none'}} calculateMetadata={calculateActMetadata} />
