@@ -25,4 +25,6 @@ export type Instrument = { type: 'gm'; program: number; programName: string }
   | { type: 'sampler'; sample: string }
   | { type: 'drumkit'; kit: string };
 export interface Pattern { id: string; description: string | null; bars: number; notes: Note[] }
-export interface Note { startTicks: number; durationTicks: number; pitches: number[]; velocity: number }
+// Present only when a sampler/drum-kit note departs from rate 1, offset 0 and no glide.
+export interface SamplePlayback { rate: number; offsetSeconds: number; glide?: { to: number; durationTicks: number } }
+export interface Note { startTicks: number; durationTicks: number; pitches: number[]; velocity: number; playback?: SamplePlayback }

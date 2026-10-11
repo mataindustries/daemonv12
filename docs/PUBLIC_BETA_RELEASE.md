@@ -9,11 +9,10 @@ purpose, in order. Steps marked **owner** are decisions only the owner can make.
       `package.json`, and update the README "License" section and
       [SHARING.md](SHARING.md). Confirm it covers code, example projects, kit and
       catalog metadata and docs. The CC0 asset dedications stay as they are.
-- [ ] **Version.** `0.5.0` has never been tagged or published, and the packaging work
-      does not change audio output. The simplest first public release is `v0.5.0`,
-      folding the CHANGELOG "Unreleased" entries into the 0.5.0 section. To mark the
-      packaging separately, use `0.5.1` and change `package.json` and
-      `src/version.ts` together (render manifests record the engine version).
+- [ ] **Version.** Nothing has been tagged or published. The first public release is
+      `v0.6.0`: sample performance plus the packaging work, both under the CHANGELOG
+      0.6.0 section. A later version changes `package.json` and `src/version.ts`
+      together (render manifests record the engine version).
 - [ ] **npm name and account.** `daemonv12` and `daemonv12-mcp` were unclaimed when
       this was written. Decide which npm account or organization owns `daemonv12`,
       and enable two-factor authentication.
@@ -41,7 +40,7 @@ npm pack --dry-run       # review the file list and sizes
 - [ ] `test:package` passes; with FluidSynth, a SoundFont and FFmpeg installed it also
       covers GM, production effects, MP3 and exact stems.
 - [ ] The file list contains only `bin/`, `dist/`, the allowlisted examples, assets,
-      docs and bootstrap files (about 103 files, 5.6 MB packed).
+      docs and bootstrap files (about 106 files, 5.6 MB packed).
 
 ## 4. CI
 
@@ -52,14 +51,14 @@ npm pack --dry-run       # review the file list and sizes
 ## 5. Tag and GitHub release (owner)
 
 ```sh
-git tag -a v0.5.0 -m "DaemonV12 0.5.0 public beta"
-git push origin v0.5.0
-npm pack                     # attach daemonv12-0.5.0.tgz so people can install without npm
-gh release create v0.5.0 daemonv12-0.5.0.tgz --title "DaemonV12 0.5.0 (public beta)" --notes-file release-notes.md
+git tag -a v0.6.0 -m "DaemonV12 0.6.0 public beta"
+git push origin v0.6.0
+npm pack                     # attach daemonv12-0.6.0.tgz so people can install without npm
+gh release create v0.6.0 daemonv12-0.6.0.tgz --title "DaemonV12 0.6.0 (public beta)" --notes-file release-notes.md
 ```
 
 A tarball attached to the release installs with
-`npm install -g https://github.com/mataindustries/daemonv12/releases/download/v0.5.0/daemonv12-0.5.0.tgz`.
+`npm install -g https://github.com/mataindustries/daemonv12/releases/download/v0.6.0/daemonv12-0.6.0.tgz`.
 
 ## 6. npm publication (only when intentionally enabled)
 
@@ -72,15 +71,15 @@ A tarball attached to the release installs with
 3. Publish, confirming the exact version:
 
    ```sh
-   DAEMONV12_RELEASE=0.5.0 npm publish --access public
+   DAEMONV12_RELEASE=0.6.0 npm publish --access public
    ```
 
    `prepare` rebuilds `dist/` before packing. A 0.x version already signals beta.
 4. Verify from an empty directory:
 
    ```sh
-   npx -y daemonv12@0.5.0 doctor
-   npm install -g daemonv12@0.5.0 && daemonv12 init /tmp/daemonv12-check && daemonv12-mcp --version
+   npx -y daemonv12@0.6.0 doctor
+   npm install -g daemonv12@0.6.0 && daemonv12 init /tmp/daemonv12-check && daemonv12-mcp --version
    ```
 
 5. Update docs that avoid bare `npx`: once the name is yours, clients can launch
@@ -89,15 +88,16 @@ A tarball attached to the release installs with
 ## 7. Release notes template
 
 ```markdown
-DaemonV12 0.5.0 is a public beta of a headless, deterministic music engine for
+DaemonV12 0.6.0 is a public beta of a headless, deterministic music engine for
 AI agents: JSON projects or nine MCP tools in; MIDI, WAV, MP3, stems, loudness
 analysis and SHA-256 provenance out.
 
 Try it: git clone … && npm ci && npm run demo:share
 Connect an agent: docs/MCP_CLIENTS.md (Claude Code, Codex CLI, any stdio client)
 
-Highlights: General MIDI, samples and drum kits, the CC0 Orbital Foundry pack,
-automation, compressor/reverb/saturation, VO ducking, exact loop and video durations.
+Highlights: General MIDI, samples and drum kits, sample performance (playback rate,
+glides, source offsets), the CC0 Orbital Foundry and GLASSHOUSE packs, automation,
+compressor/reverb/saturation, VO ducking, exact loop and video durations.
 
 Limitations: offline renderer, not a DAW or real-time engine; GM/sample palette;
 rootless audio bootstrap is Linux x86_64 only; Windows untested.

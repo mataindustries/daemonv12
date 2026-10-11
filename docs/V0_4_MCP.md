@@ -9,6 +9,10 @@ track gain/pan automation, master VO ducking and compressor/reverb/saturation.
 See [V0_5_TIMELINE_DYNAMICS.md](V0_5_TIMELINE_DYNAMICS.md) for the additive schema;
 the V0.4 contracts below remain the baseline.
 
+V0.6 adds `playbackRate`, `offsetSeconds` and `glide` to the sampler/drum-kit note
+schema used by `pattern_put`, `notes_append` and `track_add`; there are still nine
+tools. See [V0_6_SAMPLE_PERFORMANCE.md](V0_6_SAMPLE_PERFORMANCE.md#mcp).
+
 ## Install and connect
 
 Install the package (or clone and run `npm ci`); Node 22.18+ is required. The

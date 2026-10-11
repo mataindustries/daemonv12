@@ -1,6 +1,6 @@
 {
   "name": "daemonv12",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Headless, deterministic music engine for AI agents: JSON projects to MIDI, WAV, MP3 and stems, with a nine-tool stdio MCP server.",
   "private": true,
   "keywords": [
@@ -41,6 +41,7 @@
     "examples/sample-only-demo.json",
     "examples/orbital-foundry-audition.json",
     "examples/glasshouse-audition.json",
+    "examples/ghost-shift.json",
     "examples/v05-loop-demo.json",
     "examples/v05-video-demo.json",
     "examples/production-demo.json",
@@ -56,6 +57,7 @@
     "docs/V0_3_AUDIO.md",
     "docs/V0_4_MCP.md",
     "docs/V0_5_TIMELINE_DYNAMICS.md",
+    "docs/V0_6_SAMPLE_PERFORMANCE.md",
     "scripts/bootstrap-audio-tools.sh",
     "scripts/audio-tools-linux-64.lock",
     "CHANGELOG.md",
@@ -89,7 +91,9 @@
     "fixtures:orbital-foundry": "node scripts/generate-orbital-foundry.ts",
     "demo:orbital-foundry": "node bin/daemonv12.js render examples/orbital-foundry-audition.json --out-dir renders/orbital-foundry --stems --format wav,mp3",
     "fixtures:glasshouse": "node scripts/generate-glasshouse.ts && node scripts/create-glasshouse-audition.ts",
-    "demo:glasshouse": "node bin/daemonv12.js render examples/glasshouse-audition.json --out-dir renders/glasshouse --stems --format wav,mp3"
+    "demo:glasshouse": "node bin/daemonv12.js render examples/glasshouse-audition.json --out-dir renders/glasshouse --stems --format wav,mp3",
+    "demo:ghost-shift": "node bin/daemonv12.js render examples/ghost-shift.json --out-dir renders/ghost-shift --stems --format wav,mp3",
+    "test:v06": "node --test \"tests/v06*.test.ts\""
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.3.1",

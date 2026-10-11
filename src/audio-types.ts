@@ -12,6 +12,8 @@ export const effectParameters = {
   saturation: { driveDb: [0, 24], mix: [0, 1] },
 } as const;
 export interface DuckingSettings { amountDb: number; thresholdDb: number; attackMs: number; releaseMs: number }
+// Sample playback-rate multipliers: two octaves either way. Pitch and duration change together.
+export const playbackRateRange = [0.25, 4] as const;
 export function validateEffect(effect: Effect): void {
   if (!Object.hasOwn(effectParameters, effect.type)) throw new RangeError('Unknown effect.');
   for (const [key, range] of Object.entries(effectParameters[effect.type])) {

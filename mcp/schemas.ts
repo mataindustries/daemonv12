@@ -1,5 +1,5 @@
 import * as z from 'zod/v4';
-import { effectParameters } from '../src/audio-types.ts';
+import { effectParameters, playbackRateRange } from '../src/audio-types.ts';
 
 const id = z.string().regex(/^[a-z][a-z0-9-]{0,31}$/);
 const description = z.string().max(2000);
@@ -29,11 +29,17 @@ export const instrument = z.discriminatedUnion('type', [
   z.strictObject({type: z.literal('sampler'), sample: z.string().describe('Project-relative assets/ WAV path.')}),
   z.strictObject({type: z.literal('drumkit'), kit: z.string().describe('Project-relative assets/ kit JSON path.')}),
 ]);
+const playbackRate = range(playbackRateRange);
 const note = z.strictObject({
   start: z.string().describe('Pattern-relative BAR:BEAT or BAR:BEAT+N/D; 1-based.'),
   pitch: z.union([pitch, z.array(pitch).min(1).max(128)]).optional().describe('Required for GM/drumkit; omitted for sampler. Chords only for GM.'),
   duration: z.string().optional().describe('Whole-note fraction, e.g. 1/4. Required only for GM; omitted for samples.'),
   velocity: z.number().gt(0).max(1).optional(),
+  playbackRate: playbackRate.optional().describe('Sampler/drum-kit notes only. Speed multiplier, default 1: pitch and duration change together (2 = one octave up at half length; n semitones = 2^(n/12)). Not time-stretching.'),
+  offsetSeconds: z.number().min(0).max(600).optional().describe('Sampler/drum-kit notes only. Start this many seconds into the source WAV (at most six decimals); must land before its last frame. Default 0.'),
+  glide: z.strictObject({to: playbackRate.describe('Destination playbackRate; must differ from the starting rate.'),
+    duration: z.string().describe('Whole-note fraction, e.g. 1/8: time from the note start to reach `to`; the rate then holds.')})
+    .optional().describe('Sampler/drum-kit notes only. Rate moves linearly from playbackRate to `to`, with a continuous read position.'),
 });
 const notes = z.array(note).max(10000);
 const pattern = z.strictObject({id, description: description.optional(), bars, notes});

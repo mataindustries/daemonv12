@@ -17,6 +17,7 @@ goes to `renders/` here.
 | `sample-only-demo.json` | Pulse drum kit and an impact one-shot; 8 bars at 96 BPM. | Node only | 20.0 s |
 | `orbital-foundry-audition.json` | All twelve Orbital Foundry sounds across 12 tracks with per-track gain/pan. | FFmpeg | 30.0 s |
 | `glasshouse-audition.json` | All ten GLASSHOUSE sounds: glass family, vox chops, phase-locked low pair, half-time beat, payoff. 140 BPM, C# minor. | FFmpeg | 25.6 s (24 s plus reverb tails) |
+| `ghost-shift.json` | GHOST//SHIFT: one GLASSHOUSE vocal sample performed into the whole lead with `playbackRate`, `glide` and `offsetSeconds`: a pitched, chopped hook, risers, bass dives and a tape stop. 140 BPM, C# minor. | FFmpeg | exactly 12.0 s |
 | `v05-loop-demo.json` | An exact four-bar game layer at 100 BPM: tails are cut at the boundary and stems align. | FFmpeg | exactly 9.6 s (423,360 frames) |
 | `v05-video-demo.json` | Locked-picture cue: exact 8 s output, gain/pan automation, VO ducking, compressor, reverb and saturation. | FFmpeg | exactly 8.0 s |
 | `production-demo.json` | General MIDI bass and piano with samples, gain/pan, high/low-pass filters and delay. | FluidSynth, SoundFont, FFmpeg | 23.2 s |
@@ -31,6 +32,7 @@ General MIDI (`"type": "gm"`) tracks need FluidSynth and a GM SoundFont.
 daemonv12 render sample-only-demo.json                          # WAV, MIDI and provenance
 daemonv12 render orbital-foundry-audition.json --stems --format wav,mp3
 daemonv12 render v05-loop-demo.json --stems                     # exactly 423,360 frames
+daemonv12 render ghost-shift.json --stems --format wav,mp3      # one sample, performed
 daemonv12 analyze renders/orbital-foundry-audition.wav          # LUFS, true peak, clipping
 ```
 
@@ -61,6 +63,7 @@ Project format and behavior:
 [samples and kits](https://github.com/mataindustries/daemonv12/blob/main/docs/V0_2_SAMPLES.md),
 [production audio](https://github.com/mataindustries/daemonv12/blob/main/docs/V0_3_AUDIO.md),
 [timeline and dynamics](https://github.com/mataindustries/daemonv12/blob/main/docs/V0_5_TIMELINE_DYNAMICS.md),
+[sample performance](https://github.com/mataindustries/daemonv12/blob/main/docs/V0_6_SAMPLE_PERFORMANCE.md),
 [MCP clients](https://github.com/mataindustries/daemonv12/blob/main/docs/MCP_CLIENTS.md).
 
 In a source checkout, `examples/` also keeps historical and test fixtures that

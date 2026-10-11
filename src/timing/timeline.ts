@@ -5,4 +5,5 @@ export interface Timeline {
   ticksPerBar: number; endTick: number; tracks: TimelineTrack[];
 }
 export interface TimelineTrack { id: string; index: number; instrument: { type: 'gm'; program: number } | { type: 'sampler'; sample: string } | { type: 'drumkit'; kit: string }; notes: TimelineNote[] }
-export interface TimelineNote { tick: number; durationTicks: number; pitch: number; velocity: number }
+export interface TimelineNote { tick: number; durationTicks: number; pitch: number; velocity: number;
+  playback?: { rate: number; offsetSeconds: number; glide?: { to: number; durationTicks: number } } }

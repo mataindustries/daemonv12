@@ -23,6 +23,7 @@ export const instructions = [
   '-> daemonv12_project_validate -> daemonv12_render (stems true/false; format "wav", "mp3" or "wav,mp3") -> daemonv12_analyze -> daemonv12_render_info.',
   'Note positions are pattern-relative "BAR:BEAT" or "BAR:BEAT+N/D" (for example "1:1", "2:3+1/8"); durations are whole-note fractions such as "1/4"; clips place patterns at project bars.',
   'Drum-kit notes use the kit hit names; sampler and drum-kit notes omit duration and sampler notes omit pitch.',
+  'Sampler and drum-kit notes may also set playbackRate (0.25-4; pitch and duration change together, 2^(n/12) for n semitones), offsetSeconds (start inside the WAV) and glide {"to": rate, "duration": "1/8"}.',
   'General MIDI ("gm") tracks need FluidSynth and a SoundFont. Track mix/effects/automation, master and render fields need FFmpeg, as do an explicit render format, MP3 and analyze.',
   'Sampler and drum-kit projects without those fields render with Node alone when format is omitted. If a render reports a missing tool, tell the user which one instead of retrying.',
   'Report the returned workspace-relative artifact paths (WAV, MP3, stems, manifest); audio bytes never travel through MCP.',

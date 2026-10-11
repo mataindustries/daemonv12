@@ -4,6 +4,10 @@ Engine `0.2.0` extends `formatVersion: 1`. All V0 GM authoring, golden MIDI byte
 FluidSynth settings, and V0.1 GM stem behavior remain supported. This document is
 normative for the added sample behavior; V0_SPEC remains the GM baseline.
 
+V0.6 lets sample notes perform their sample: optional playback rate, rate glides
+and source offsets. Without those fields everything below is unchanged. See
+[V0_6_SAMPLE_PERFORMANCE.md](V0_6_SAMPLE_PERFORMANCE.md).
+
 ## Authoring
 
 Keep the existing track → patterns → notes and clips structure. Add either:

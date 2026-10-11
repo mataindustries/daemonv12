@@ -10,11 +10,12 @@ import { validateProject } from './project/validate.ts';
 import type { Project } from './project/types.ts';
 import { resolve } from './timing/resolve.ts';
 import { ticksToSeconds } from './timing/musical-time.ts';
+import { secondsToFrames } from './timing/wall-time.ts';
 import type { Timeline } from './timing/timeline.ts';
 import { loadKits, readAsset, outputInAssets } from './project/assets.ts';
 import { type Kits } from './project/sample-schema.ts';
 import { createAudioProcessor, analyzeWav, type AudioProcessor, type AudioAnalysis, decodePcm, type Pcm } from './render/index.ts';
-import { renderSampledProject } from './sample-render.ts';
+import { renderSampledProject, playbackBudget } from './sample-render.ts';
 export interface Compilation {
   diagnostics: Diagnostic[]; omitted?: number; project: Project | null; timeline: Timeline | null; projectBytes?: Uint8Array;
   kits?: Kits; assets?: Map<string, {bytes:Buffer; pcm?:Pcm}>;
@@ -56,6 +57,22 @@ function compileWithAssets(loaded: LoadResult, path: string): Compilation {
       }
     }
   }
+  // A sample offset must start inside the WAV that its note actually plays. An offset at or past
+  // the end would be a silent event, so it is a project error rather than an empty voice.
+  for (const [i,track] of compilation.project.tracks.entries()) {
+    const instrument=track.instrument;
+    if(instrument.type==='gm')continue;
+    track.patterns.forEach((pattern,j)=>pattern.notes.forEach((note,k)=>{
+      if(!note.playback?.offsetSeconds)return;
+      const file=instrument.type==='sampler'?instrument.sample:kitData.kits.get(instrument.kit)!.find(e=>e.pitch===note.pitches[0])!.sample;
+      const pcm=assets.get(file)?.pcm,frame=secondsToFrames(note.playback.offsetSeconds);
+      if(!pcm || frame<pcm.frames)return;
+      // Largest microsecond offset that still rounds (ties later) to the final source frame.
+      const latest=Number((BigInt(2*pcm.frames-1)*1000000n-1n)/88200n)/1e6;
+      compilation.diagnostics.push(diagnostic('OUT_OF_RANGE',`tracks[${i}].patterns[${j}].notes[${k}].offsetSeconds`,note.playback.offsetSeconds,
+        `an offset before the end of ${file} (${pcm.frames} frames, ${(pcm.frames/44100).toFixed(6)} s); this one resolves to frame ${frame}`,`Use at most ${latest} seconds.`));
+    }));
+  }
   const ducking=compilation.project.master?.ducking;
   if(ducking) {
     const at='master.ducking.source',read=readAsset(path,ducking.source,at,true);
@@ -66,8 +83,16 @@ function compileWithAssets(loaded: LoadResult, path: string): Compilation {
       else compilation.sidechain={file:ducking.source,bytes:read.bytes!,pcm:decoded.pcm!};
     }
   }
+  if(!compilation.diagnostics.some(d=>d.severity==='error')) {
+    const budget=playbackBudget({...compilation,kits:kitData.kits,assets},productionRoute(compilation.project));
+    if(budget)compilation.diagnostics.push(budget);
+  }
   if(compilation.diagnostics.some(d=>d.severity==='error'))compilation.timeline=null;
   return {...compilation,kits:kitData.kits,assets,...capDiagnostics(compilation.diagnostics)};
+}
+// Any mix, effects, automation, master or render field selects the production route.
+export function productionRoute(project: Project): boolean {
+  return project.render!==undefined || project.master!==undefined || project.tracks.some(t=>t.mix!==undefined || t.effects!==undefined || t.automation!==undefined);
 }
 export function summarize(project: Project, timeline: Timeline) {
   return { title: project.title, bars: project.bars, timeSignature: `${project.timeSignature.numerator}/${project.timeSignature.denominator}`,
@@ -170,7 +195,7 @@ export async function runCommand(command: Command, path: string, options: Comman
       let soundfont: Soundfont | undefined;
       let renderer: AudioRenderer | undefined;
       let processor: AudioProcessor | undefined;
-      const production=compilation.project!.render!==undefined || compilation.project!.master!==undefined || compilation.project!.tracks.some(t=>t.mix!==undefined || t.effects!==undefined || t.automation!==undefined);
+      const production=productionRoute(compilation.project!);
       if(command==='render' && (production || options.format!==undefined)) {
         const probe=await createAudioProcessor({env:options.env??{},timeoutMs:options.timeoutMs});
         if(probe.diagnostic)diagnostics.push(probe.diagnostic);else processor=probe.value;

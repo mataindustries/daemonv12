@@ -3,9 +3,22 @@
 > **DaemonV12: 12 instruments for agents.** A headless, deterministic music engine. AI agents drive it
 > through project files, a CLI and stdio MCP tools. It needs no DAW, GUI, browser or MIDI hardware.
 
-Status: V0.5 implemented, engine `0.5.0`, project `formatVersion: 1`.
+Status: V0.6 implemented, engine `0.6.0`, project `formatVersion: 1`.
 Normative details: [V0_SPEC.md](V0_SPEC.md). Phase plan: [ROADMAP.md](ROADMAP.md).
 Implementation steps: [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
+
+V0.6 adds sample performance at the existing seams. Validation accepts optional
+`playbackRate`, `offsetSeconds` and a closed `glide` on sampler/drum-kit notes and
+normalizes explicit defaults away. The asset-aware compile checks each offset
+against the WAV its note plays. `sample-render.ts` resolves the offset and glide
+to frames, using the same absolute-tick rounding as triggers, and records
+provenance. `render/playback.ts` sees only PCM and frame numbers: a closed-form
+read position, voice length and a band-limited interpolator built from basic
+IEEE-754 arithmetic. A performed voice is an optional `playback` on the existing
+`PcmTrigger`, consumed by both `mixPcm` and `sumFloat`, so stems, automation,
+effects, boundaries, analysis and MP3 need no second path. Unperformed triggers,
+and rate 1 without a glide, read source samples exactly as before.
+[V0_6_SAMPLE_PERFORMANCE.md](V0_6_SAMPLE_PERFORMANCE.md) is normative.
 
 Public-beta packaging changes no engine behavior. One `daemonv12` package ships
 both executables. `bin/launch.js` runs the `src/` and `mcp/` TypeScript directly in
