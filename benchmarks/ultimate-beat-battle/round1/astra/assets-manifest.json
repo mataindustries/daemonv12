@@ -1,0 +1,66 @@
+{
+  "seed": 601138,
+  "synthesis": "Python/NumPy float64, SciPy SOS filters; 24 Hz high-pass, 18 ms endpoint taper, peak scaling, explicit floor(x*32767+0.5), PCM16. Reproducible in this recorded environment; asset hashes pin the portable sources.",
+  "sounds": [
+    {
+      "file": "assets/rubber-reed-d4.wav",
+      "origin": "benchmark-only synthesis",
+      "frames": 20286,
+      "seconds": 0.46,
+      "sample_rate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "peak_target_dbfs": -6,
+      "fundamental_hz": 293.6647679174076,
+      "seed": 601138,
+      "recipe": "D4 additive reed: 34 harmonic partials, a 1850-to-730 Hz falling formant, restrained 2650 Hz second formant, 2.5% 9 ms pitch settle, 1.8 ms attack, 135 ms amplitude decay, seeded 6 ms breath transient.",
+      "sha256": "0bc3d3a037d8cf7906c2026f3f7dd35df7d8ff54ee710ea604079610532afa31"
+    },
+    {
+      "file": "assets/pocket-bass-d2.wav",
+      "origin": "benchmark-only synthesis",
+      "frames": 25578,
+      "seconds": 0.58,
+      "sample_rate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "peak_target_dbfs": -5,
+      "fundamental_hz": 73.41619197935188,
+      "seed": 601138,
+      "recipe": "D2 sine body with 22%, 11%, 3.5%, 1.5% partials 2\u20135, 7% 14 ms pitch settle, 3.5 ms attack, 220 ms decay. Higher harmonics decay faster; mono.",
+      "sha256": "0ac44265b9e787c7cead503dd10100f343e3c5610926f031afbcff6980226d93"
+    },
+    {
+      "file": "assets/heel-kick.wav",
+      "origin": "benchmark-only synthesis",
+      "frames": 10584,
+      "seconds": 0.24,
+      "sample_rate": 44100,
+      "channels": 1,
+      "bits": 16,
+      "peak_target_dbfs": -5,
+      "fundamental_hz": null,
+      "seed": 601138,
+      "recipe": "149-to-49 Hz analytic pitch drop (20 ms time constant), 54 ms body decay, 185 Hz 12 ms knock, seeded 2.4 ms band-passed click, mono.",
+      "sha256": "9b67aaac056035f04d10ecd07d24bd9c0aca5126b3609dfe61995190215256f3"
+    },
+    {
+      "file": "assets/chrome-clap.wav",
+      "origin": "unaltered checked-in CC0 asset",
+      "source": "examples/assets/glasshouse/08-chrome-clap.wav",
+      "sha256": "e0a5a42c4cfcd1d9d59f56e38fb762a8a19b8033304599ba15bc787481544eff"
+    },
+    {
+      "file": "assets/pixel-hat.wav",
+      "origin": "unaltered checked-in CC0 asset",
+      "source": "examples/assets/glasshouse/09-pixel-hat.wav",
+      "sha256": "19451e5b4592e54d61f4555cfaec19d277b7e8499a49651b58b934ad6622f491"
+    },
+    {
+      "file": "assets/machine-tick.wav",
+      "origin": "unaltered checked-in CC0 asset",
+      "source": "examples/assets/orbital-foundry/04-machine-tick.wav",
+      "sha256": "76f29351c8c7e257a985e195158db933fc7117e564af6c84a110ae8f6e60e1a2"
+    }
+  ]
+}

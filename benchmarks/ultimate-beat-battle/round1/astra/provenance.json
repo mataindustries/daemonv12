@@ -1,0 +1,48 @@
+{
+  "engine_commit": "ed75e9e2a0172266e56b292886ad7c1500677862",
+  "engine_version": "0.6.0",
+  "native_manifest": "output/soft-teeth/project.render.json",
+  "project_sha256": "59f6a9e1d3276e29f6dd95f87fd9ca176ad9897bd3160a8554561fcd635b19e1",
+  "master_sha256": "6906e398271b4ba97d8c2937afed51b586b7b37cb5d9c45eee0ad7aa67442b7d",
+  "runtime": {
+    "name": "node",
+    "version": "v24.19.0"
+  },
+  "audio_tool": {
+    "name": "ffmpeg",
+    "version": "6.1.1"
+  },
+  "gm_renderer": {
+    "name": "fluidsynth",
+    "version": "2.3.7",
+    "settings": {
+      "sampleRate": 44100,
+      "sampleFormat": "s16",
+      "channels": 2,
+      "gain": 0.5,
+      "reverb": false,
+      "chorus": false,
+      "cpuCores": 1
+    }
+  },
+  "soundfont": {
+    "file": "FluidR3_GM.sf2",
+    "sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
+    "bytes": 148398306
+  },
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "environment_script": "/workspace/.daemonv12-audio/env.sh",
+  "environment_script_sha256": "43734145be4070e25f150261b38dadb2cf45315cf471c50a7119b33f056bc2c4",
+  "headless_wrapper": "/tmp/daemonv12-fluidsynth-headless",
+  "headless_wrapper_sha256": "bc400b13eb85fe7e8690a3198006b58c810054912a673d357a145c5838077798",
+  "asset_manifest": "assets-manifest.json",
+  "asset_generation_verification": "asset-determinism.json",
+  "render_verification": "determinism.json",
+  "final_audio_postprocessing": "None. WAV and MP3 are direct DaemonV12 CLI outputs.",
+  "git_tracked_diff": "",
+  "git_status": "?? .codex/\n?? benchmarks/",
+  "committed": false,
+  "pushed": false
+}
