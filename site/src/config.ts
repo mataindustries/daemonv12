@@ -9,7 +9,7 @@ export const config = {
    * Drives the canonical link, absolute Open Graph/Twitter image URLs and sitemap.xml.
    * Leave empty until the Cloudflare Pages URL (or a custom domain) is known.
    */
-  siteUrl: '',
+  siteUrl: 'https://daemonv12.pages.dev',
 
   /** Public repository. */
   repoUrl: 'https://github.com/mataindustries/daemonv12',
