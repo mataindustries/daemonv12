@@ -1,0 +1,14 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Renders, contact sheets and QA frames are reproducible; never commit them.
+out
+
+# Development click track (npm run click) is generated from the 160 BPM grid.
+public/dev/
+
+# Final audio and analysis arrive from the music branch; see SYNC_HANDOFF.md.
+public/sync/*
+!public/sync/README.md
