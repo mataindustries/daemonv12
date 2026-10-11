@@ -6,7 +6,7 @@ import { executablePath } from '../render/index.ts';
 import { ENGINE_VERSION } from '../version.ts';
 
 // Newcomer order. Every file here and examples/assets/ is in the package "files" allowlist.
-export const STARTER_PROJECTS = ['sample-only-demo.json', 'orbital-foundry-audition.json', 'glasshouse-audition.json', 'v05-loop-demo.json',
+export const STARTER_PROJECTS = ['sample-only-demo.json', 'orbital-foundry-audition.json', 'glasshouse-audition.json', 'ghost-shift.json', 'v05-loop-demo.json',
   'v05-video-demo.json', 'production-demo.json', 'shoot-the-moon-locked-score.json'] as const;
 const STARTER_FILES = [...STARTER_PROJECTS, 'orbital-foundry.catalog.json', 'glasshouse.catalog.json', 'README.md'];
 const AUDIO_VARIABLES = ['DAEMONV12_FLUIDSYNTH', 'DAEMONV12_SOUNDFONT', 'DAEMONV12_FFMPEG'] as const;

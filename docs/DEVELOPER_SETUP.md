@@ -34,7 +34,7 @@ or render artifacts. Example excerpt from an environment without audio tools:
 {
   "schemaVersion": 1,
   "command": "doctor",
-  "engineVersion": "0.5.0",
+  "engineVersion": "0.6.0",
   "installation": { "mode": "source", "root": "/absolute/path/to/daemonv12" },
   "ok": false,
   "readiness": {

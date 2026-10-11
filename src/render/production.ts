@@ -1,5 +1,6 @@
 // Deterministic PCM production operations. Values use signed-16 sample units until export.
 import { encodePcm, PCM_RATE, MAX_PCM_FRAMES, type Pcm, type PcmTrigger } from './pcm.ts';
+import { voiceFrames, voiceSamples } from './playback.ts';
 export function gainAmplitude(db: number): number {
   if (!Number.isFinite(db) || db < -60 || db > 12) throw new RangeError('gainDb must be -60 through 12.');
   return 10 ** (db / 20);
@@ -14,12 +15,14 @@ export function gainPan(samples: Float64Array, gainDb = 0, pan = 0): Float64Arra
   return samples.map((v, i) => v * gain * (i % 2 ? right : left));
 }
 export function sumFloat(triggers: PcmTrigger[], minimumFrames: number, maximumFrames = Infinity): Float64Array {
-  const frames = Math.min(maximumFrames, triggers.reduce((end, t) => Math.max(end, t.frame + t.pcm.frames), minimumFrames));
+  const frames = Math.min(maximumFrames, triggers.reduce((end, t) => Math.max(end, t.frame + voiceFrames(t.pcm, t.playback)), minimumFrames));
   if (!Number.isSafeInteger(frames) || frames < 1 || frames > MAX_PCM_FRAMES) throw new RangeError('Production rendering supports at most 600 seconds including tails.');
   const sum = new Float64Array(frames * 2);
-  for (const { pcm, frame, velocity } of triggers) {
-    for (let i = 0; i < Math.min(pcm.frames, frames-frame); i++) for (let c = 0; c < 2; c++) {
-      sum[(frame + i) * 2 + c]! += Math.round(pcm.samples[i * pcm.channels + (pcm.channels === 1 ? 0 : c)]! * velocity);
+  for (const { pcm, frame, velocity, playback } of triggers) {
+    // A performed voice is only computed up to the permitted boundary.
+    const voice = voiceSamples(pcm, playback, frames - frame);
+    for (let i = 0; i < Math.min(voice.length / pcm.channels, frames-frame); i++) for (let c = 0; c < 2; c++) {
+      sum[(frame + i) * 2 + c]! += Math.round(voice[i * pcm.channels + (pcm.channels === 1 ? 0 : c)]! * velocity);
     }
   }
   return sum;

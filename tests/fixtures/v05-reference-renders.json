@@ -1,0 +1,77 @@
+{
+  "description": "WAV SHA-256s of DaemonV12 0.5.0 renders made before sample performance existed (render --stems). V0.6 must reproduce them: projects without playback fields keep their historical bytes.",
+  "engine": "0.5.0",
+  "environment": {
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "fluidsynth": "2.3.4",
+    "soundfontSha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
+    "node": "v22.23.3"
+  },
+  "renders": {
+    "sample-only-demo": {
+      "depends": "Node only: legacy integer PCM route",
+      "wav": "6f0e2ded2d3cff99673e5d2285937b39e2424656911064193c0e1b55b52f8bce",
+      "stems": {
+        "hats": "55b0630a5a942cc340cb049ee956d4fba1a5d2102d9312c513f7e7dc2d5e8e9b",
+        "impact": "11d7cd1a80caf9a19e1f4568fbe5ee37874201d9cf8aa83e87371357b0d4ee77",
+        "kick": "24b2ef2b1c907809868989b75b68e538224944ca31380b5073d54b266d4b51d3",
+        "snare": "2b577811361ee94b215c890a959d40d331fe856e33fd747f31c2d37384c976d2"
+      }
+    },
+    "orbital-foundry-audition": {
+      "depends": "FFmpeg present for the production route; gain/pan only, so no FFmpeg audio processing",
+      "wav": "c1dd6439d38b701efc897a3652716d3ea2ce5cdf3198845d3727a15f42d6fcee",
+      "stems": {
+        "air-texture": "c285a12244b7304f7a79ec0e90dfb77de1caa3b811d66ccd296407d6b05aed39",
+        "alarm-energy-pulse": "535fc1422d9b9b3b15803e239a7e8c7d19338c0688c282c0bc87948ab3de739f",
+        "cinematic-impact": "727c57062213030896478e3aa3922646b0fdab5ff9a25b24771c3887426e2b03",
+        "dark-drone": "d552701667100f8d18c10156d3ec0332e078030973dc7a60f13568d625c51c9f",
+        "industrial-snare": "350dff4403bcee4e38456e097ec0aabee4b9175e09950f0c370e66440ddaf563",
+        "low-boom": "1d87874cbbf274d30734e8dc4113316f8e1a9a7d34c730be439eddfad2a5ccee",
+        "machine-tick": "66c0dbf90276a22306d76305c4d2d4687d33eb47b594dcb28e8ee8311d87029e",
+        "mechanical-kick": "e1041d9d07ace3ef084a90f661225b99dc504bc29dceb0abe06300cd92b20b8f",
+        "metallic-strike": "2073da5dfdaece62f6d614d24008e38fe7c3a0b6c6b98e6987c33926769d13a0",
+        "reverse-swell": "332cf2602e44fc74f3530db6e9e8aab883feca77ae0db650f6bbaff17653f3e9",
+        "sub-pulse": "c6e3bc2ab0d065377a9ea247f6c7e53908ede83c8c0d1da9ef05b9d84764ba48",
+        "tension-riser": "b97778f7fa83903ab7d98807871527eee47cf798acd1a60a3ee257342d12af08"
+      }
+    },
+    "glasshouse-audition": {
+      "depends": "the recorded FFmpeg version (delay effect)",
+      "wav": "fed0082960cb69d7cb58255c2a91b16eb30c42ba655fabdb12f742ad74b74773",
+      "stems": {
+        "bass-punch-cs": "b3067b59f210e0dbeda7831039df80ed935873d9cdea9ee0a3c5520f9d5065e3",
+        "chrome-clap": "feeb63858402da1696445590813b11dd08eccc0947cfb6926a2fefaebf507c55",
+        "ghost-vox": "38c584e80d88bf031ffb8691f17eeb03f3319eb7b77aa5a103df5b999f5a8ee9",
+        "glass-crush": "aaff1d299113d7fff072dffc450493c2e1564cf3f61d3ec35a349cf9a788a1c3",
+        "glass-hit": "1ea226b9e82405e47e113d8a55d9537d16070abd1efb1b8e6a4bacd459006bce",
+        "glass-reverse": "e8321f9449a2f2ec0d4f4503cb31b89d0ee76565e50aaac2180fcbd3fc60153d",
+        "pixel-hat": "da2c52d4daab07145adea112473fbcc8013769003ffea53575c372e5312a5460",
+        "prism-impact": "55db77d3159133f5cdddbb8cce05d8daad541749c0076c6eca3248c51c7a73cc",
+        "sub-cs": "a749247fb07cce08737750a4e7c1779adbdc619f0896603bc3d788a3a1f36f03",
+        "vox-chip": "cdd01cce2ea0cac423a685a8436137edfe62e7fa8f5afc7aec4e9adb730b88f2"
+      }
+    },
+    "glass-fire": {
+      "depends": "the recorded FFmpeg and FluidSynth versions and SoundFont",
+      "wav": "22c0d1a5d95a7ad980ff3127d1538bbd2249df47e2deb5d28839f4fad4ad1ae6",
+      "stems": {
+        "bass-punch": "296446c64248bfd36aa476f9a735dca73fdac018899f7382c3b0509a5c88b6bf",
+        "chrome-clap": "5acb9f8068581c0b94a47b6d007d9e5b66adc8f151b54aea8ddde6cacbc095a6",
+        "fire-voice": "aefea83ffcdcefb7bd155f9fd91d2bebd802455dfc8d67a3f839ec6624fa6621",
+        "ghost-vox": "6f5e2ae947089aa069fff7aa9d911c454bc471764c7e912923c74ed2a0a317cc",
+        "glass-crush": "aa5a3e573249417eb8a4f5907fcd1c52456a733984a145deec386827d5df8cb8",
+        "glass-hit": "81e7948f20c3a083b3812cfa0f1ce39bb30a0f306f62d8f0d6cabb3bcca600af",
+        "glass-reverse": "4e4d6e809c6fe9605e2d818ef7d9b1ff4118535dd136f8a8583c2308713752d3",
+        "halo": "f71140073075212bfd23698984a76713dff77dba5354272d701766cd8dbad05b",
+        "hook-throw": "ea721d70cde7497800de8f27452f832c75e04a9ec5e5e40089c133cea3a56503",
+        "kick": "c68b48469ecbfa47cbd11b518a0c2bc7f262eccc0c36e024580476e89a2dad47",
+        "lead": "b06fb9bdf9f6023047014cf445ac6315283b65ffa51dd2d179a0b127539a373b",
+        "pixel-hat": "6d00032f76be0631167fd0ea1c40973d2b6a87ad36c645932d355d97cb43b92d",
+        "prism-impact": "8f258392832dd0a33f87dd25375fc71439ec7ee8f1dcd7d6689ca4d29325fbe6",
+        "sub": "74c4c7ee6350f92aa8c03f44e661e963958aed63f93e3afe96fa06d582a96214",
+        "vox-chip": "2621be38046752064eae91a92e08744d8cf72a5fac642f92a893dac1ee5fb634"
+      }
+    }
+  }
+}

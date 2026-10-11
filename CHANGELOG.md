@@ -4,7 +4,30 @@ Notable changes to DaemonV12. Every release reads project `formatVersion: 1`, an
 existing projects keep their rendered output unless an entry says otherwise. No
 version has been tagged or published to npm yet.
 
-## Unreleased: public beta packaging
+## 0.6.0: sample performance (2026-10-11)
+
+The last engine milestone before distribution. Projects without the new fields
+render byte-identical audio to 0.5.0 (the Orbital Foundry, GLASSHOUSE and
+GLASS//FIRE masters and stems are pinned in the test suite).
+
+- **Playback rate.** Sampler and drum-kit notes take optional `playbackRate`
+  (0.25–4). Pitch and duration change together; this is not time-stretching.
+- **Glides.** `glide: {"to": rate, "duration": "1/8"}` moves the rate linearly from
+  the note onset, with a continuous read position, then holds it: tape stops,
+  spin-ups, dives and vocal bends.
+- **Source offsets.** `offsetSeconds` starts a voice inside its WAV (microsecond
+  input, nearest source frame). Offsets at or past the end are validation errors.
+- **Interpolation.** Band-limited Kaiser-windowed sinc with a rate-following cutoff,
+  bit-exact on every platform. Rate 1 without a glide copies source frames exactly.
+- **Provenance and MCP.** Performed triggers record rate, glide, requested and
+  resolved offset and voice length; `samples.playback` names the algorithm. The nine
+  MCP tools accept the fields; there is no new tool. Agent-facing hints convert
+  semitone guesses and redirect field aliases.
+- **GHOST//SHIFT.** A 12-second starter project in which one GLASSHOUSE vocal sample
+  performs a whole lead. `npm run demo:ghost-shift`, `npm run test:v06`.
+- [V0_6_SAMPLE_PERFORMANCE.md](docs/V0_6_SAMPLE_PERFORMANCE.md) is the contract.
+
+### Public beta packaging (first released with 0.6.0)
 
 No engine, project-format or audio changes. Renders are byte-identical to 0.5.0.
 

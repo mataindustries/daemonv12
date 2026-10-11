@@ -150,6 +150,18 @@ test('packed tarball installs and works from an empty directory without the sour
     const reference = await runCommand('render', join(repo, 'examples', 'sample-only-demo.json'), { outDir: join(root, 'reference'), env: HIDDEN_AUDIO });
     assert.equal(reference.exitCode, 0);
     assert.equal(result.manifest.wav.sha256, (reference.result.manifest!.wav as { sha256: string }).sha256, 'compiled package and TypeScript checkout must render identical bytes');
+    // Sample performance (rate, offset, glide, kit hit) from compiled JavaScript, Node only. The pinned
+    // hash holds on every platform: performed voices use only basic IEEE-754 arithmetic.
+    const vox = (notes: unknown[]) => ({ id: 'vox', instrument: { type: 'sampler', sample: 'assets/glasshouse/04-ghost-vox.wav' }, clips: [{ bar: 1, pattern: 'p' }], patterns: [{ id: 'p', bars: 1, notes }] });
+    writeFileSync(join(workspace, 'performance-check.json'), JSON.stringify({ formatVersion: 1, title: 'Performance check', bpm: 140, timeSignature: '4/4', bars: 1, tracks: [
+      vox([{ start: '1:1', playbackRate: 1.498307, offsetSeconds: 0.468322 }, { start: '1:2', glide: { to: 0.25, duration: '1/2' } }, { start: '1:3', playbackRate: 0.5, offsetSeconds: 0.62 }]),
+      { id: 'kit', instrument: { type: 'drumkit', kit: 'assets/glasshouse/kit.json' }, clips: [{ bar: 1, pattern: 'p' }], patterns: [{ id: 'p', bars: 1, notes: [{ start: '1:1', pitch: 'chrome-clap', playbackRate: 0.890899 }] }] }] }));
+    const performed = cli(['render', 'performance-check.json', '--json'], workspace);
+    assert.equal(performed.status, 0, performed.stdout + performed.stderr);
+    const performedHash = JSON.parse(performed.stdout).manifest.wav.sha256;
+    const checkout = await runCommand('render', join(workspace, 'performance-check.json'), { outDir: join(root, 'reference-performance'), env: HIDDEN_AUDIO });
+    assert.equal(performedHash, (checkout.result.manifest!.wav as { sha256: string }).sha256, 'compiled sample performance must match the checkout');
+    assert.equal(performedHash, '5aab74d37b6292895f0270f316da44156e1a9f06a5b5833264cb8d2b8978664c', 'performed voices must be identical on every platform');
     // Without FFmpeg, production projects fail clearly instead of producing partial output.
     const production = cli(['render', 'v05-loop-demo.json', '--json'], workspace);
     assert.equal(production.status, 3); assert.equal(JSON.parse(production.stdout).errors[0].code, 'AUDIO_TOOL_NOT_FOUND');
@@ -206,6 +218,10 @@ test('packed tarball installs and works from an empty directory without the sour
     assert.equal(foundry.status, 0, foundry.stdout);
     const reference = await runCommand('render', join(repo, 'examples', 'orbital-foundry-audition.json'), { outDir: join(root, 'reference'), env: { ...process.env, ...audio } });
     assert.equal(JSON.parse(foundry.stdout).manifest.wav.sha256, (reference.result.manifest!.wav as { sha256: string }).sha256, 'production route must match the checkout byte for byte');
+    const ghost = cli(['render', 'ghost-shift.json', '--json', '--out-dir', 'full'], workspace, audio);
+    assert.equal(ghost.status, 0, ghost.stdout);
+    const ghostReference = await runCommand('render', join(repo, 'examples', 'ghost-shift.json'), { outDir: join(root, 'reference'), env: { ...process.env, ...audio } });
+    assert.equal(JSON.parse(ghost.stdout).manifest.wav.sha256, (ghostReference.result.manifest!.wav as { sha256: string }).sha256, 'GHOST//SHIFT must match the checkout byte for byte');
     const gm = cli(['render', 'production-demo.json', '--json', '--out-dir', 'full', '--format', 'wav,mp3'], workspace, audio);
     assert.equal(gm.status, 0, gm.stdout);
     const gmResult = JSON.parse(gm.stdout);

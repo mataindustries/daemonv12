@@ -10,6 +10,7 @@ import { validateProject } from './project/validate.ts';
 import type { Project } from './project/types.ts';
 import { resolve } from './timing/resolve.ts';
 import { ticksToSeconds } from './timing/musical-time.ts';
+import { secondsToFrames } from './timing/wall-time.ts';
 import type { Timeline } from './timing/timeline.ts';
 import { loadKits, readAsset, outputInAssets } from './project/assets.ts';
 import { type Kits } from './project/sample-schema.ts';
@@ -55,6 +56,22 @@ function compileWithAssets(loaded: LoadResult, path: string): Compilation {
         else assets.set(file,{bytes:read.bytes!,pcm:decoded.pcm!});
       }
     }
+  }
+  // A sample offset must start inside the WAV that its note actually plays. An offset at or past
+  // the end would be a silent event, so it is a project error rather than an empty voice.
+  for (const [i,track] of compilation.project.tracks.entries()) {
+    const instrument=track.instrument;
+    if(instrument.type==='gm')continue;
+    track.patterns.forEach((pattern,j)=>pattern.notes.forEach((note,k)=>{
+      if(!note.playback?.offsetSeconds)return;
+      const file=instrument.type==='sampler'?instrument.sample:kitData.kits.get(instrument.kit)!.find(e=>e.pitch===note.pitches[0])!.sample;
+      const pcm=assets.get(file)?.pcm,frame=secondsToFrames(note.playback.offsetSeconds);
+      if(!pcm || frame<pcm.frames)return;
+      // Largest microsecond offset that still rounds (ties later) to the final source frame.
+      const latest=Number((BigInt(2*pcm.frames-1)*1000000n-1n)/88200n)/1e6;
+      compilation.diagnostics.push(diagnostic('OUT_OF_RANGE',`tracks[${i}].patterns[${j}].notes[${k}].offsetSeconds`,note.playback.offsetSeconds,
+        `an offset before the end of ${file} (${pcm.frames} frames, ${(pcm.frames/44100).toFixed(6)} s); this one resolves to frame ${frame}`,`Use at most ${latest} seconds.`));
+    }));
   }
   const ducking=compilation.project.master?.ducking;
   if(ducking) {

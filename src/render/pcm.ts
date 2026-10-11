@@ -1,4 +1,5 @@
 import { readWavInfo } from './wav.ts';
+import { voiceFrames, voiceSamples, type VoicePlayback } from './playback.ts';
 
 export const PCM_RATE = 44100;
 export interface Pcm { frames: number; channels: number; samples: Int16Array }
@@ -21,18 +22,18 @@ export function encodePcm(samples: Int16Array): Buffer {
   for(let i=0;i<samples.length;i++) bytes.writeInt16LE(samples[i]!,44+i*2);
   return bytes;
 }
-export interface PcmTrigger { frame: number; velocity: number; pcm: Pcm }
+export interface PcmTrigger { frame: number; velocity: number; pcm: Pcm; playback?: VoicePlayback }
 // Integer per-voice quantization makes addition order-independent. Saturate once per output.
 // Explicit resource limit keeps large valid musical timelines from exhausting the process.
 export const MAX_PCM_FRAMES = PCM_RATE * 600;
 export function mixPcm(triggers: PcmTrigger[], minimumFrames: number): { bytes: Buffer; frames: number; clippedSamples: number } {
-  const frames = triggers.reduce((end,t)=>Math.max(end,t.frame+t.pcm.frames),minimumFrames);
+  const frames = triggers.reduce((end,t)=>Math.max(end,t.frame+voiceFrames(t.pcm,t.playback)),minimumFrames);
   if (!Number.isSafeInteger(frames) || frames < 1 || frames > MAX_PCM_FRAMES) throw new RangeError('Sample rendering supports at most 600 seconds including tails.');
   const sum = new Float64Array(frames*2);
   for(const trigger of triggers) {
-    const {pcm,frame,velocity} = trigger;
-    for(let i=0;i<pcm.frames;i++) for(let c=0;c<2;c++) {
-      const sample=pcm.samples[i*pcm.channels+(pcm.channels===1?0:c)]!;
+    const {pcm,frame,velocity} = trigger, voice = voiceSamples(pcm,trigger.playback);
+    for(let i=0;i<voice.length/pcm.channels;i++) for(let c=0;c<2;c++) {
+      const sample=voice[i*pcm.channels+(pcm.channels===1?0:c)]!;
       sum[(frame+i)*2+c]! += Math.round(sample*velocity);
     }
   }

@@ -5,7 +5,7 @@ as a JSON project, directly or through nine MCP tools, and DaemonV12 renders it
 offline to MIDI, WAV, MP3 and per-track stems, with loudness analysis and a
 SHA-256 provenance manifest. No DAW, GUI, audio device or API key.
 
-> **Public beta, version 0.5.** Works today from a GitHub clone or a packed
+> **Public beta, version 0.6.** Works today from a GitHub clone or a packed
 > release tarball. Not yet published to npm, and the code license is still an
 > open owner decision (see [status](#status-and-limitations)).
 
@@ -35,6 +35,10 @@ calling tools. DaemonV12 gives them a music format built for that:
   SoundFont), your own WAV one-shots and drum kits, and two bundled CC0 packs:
   **Orbital Foundry** (twelve cinematic/industrial sounds) and **GLASSHOUSE**
   (ten tuned C# electronic/bass sounds built from one glass and one vocal identity).
+- **Sample performance:** any sample or drum-kit hit can play faster or slower
+  (pitch and duration change together), glide between rates for tape stops,
+  risers and dives, and start from inside its WAV, so one sound becomes many
+  pitched chops.
 - **Production:** track gain/pan and their automation; high-pass, low-pass,
   delay, compressor, reverb and saturation; master gain; voice-over ducking.
 - **Timing:** exact output durations in bars, musical time or seconds, with
@@ -47,6 +51,7 @@ Measured examples (Linux; Ubuntu's FluidSynth 2.3.4, FluidR3_GM and FFmpeg 6.1.1
 | `shoot-the-moon-locked-score.json` | 24-bar cinematic score an agent composed through the MCP tools | 61.0 s, 14 tracks, −16.9 LUFS, no clipping |
 | `orbital-foundry-audition.json` | All twelve Orbital Foundry sounds | 30.0 s, −17.4 LUFS; WAV SHA-256 `c1dd6439…`, byte-identical to the [earlier recorded render](docs/ORBITAL_FOUNDRY_VERIFICATION.md) made with a different Node version |
 | `glasshouse-audition.json` | All ten GLASSHOUSE sounds at 140 BPM in C# minor | 25.6 s, −17.7 LUFS, −2.2 dBTP, no clipping ([verification](docs/GLASSHOUSE_VERIFICATION.md)) |
+| `ghost-shift.json` | GHOST//SHIFT: one 0.95-second vocal sample performed into a pitched, chopped hook, risers, bass dives and a tape stop | exactly 12.0 s, −15.7 LUFS, −2.1 dBTP, no clipping ([sample performance](docs/V0_6_SAMPLE_PERFORMANCE.md#ghostshift)) |
 | `v05-loop-demo.json` | Four-bar game loop at 100 BPM | exactly 423,360 frames (9.6 s) with aligned stems |
 | `sample-only-demo.json` | Drum kit and impact, Node only | 20.0 s in about 0.2 s |
 
@@ -112,10 +117,10 @@ play it locally. `npx --no-install daemonv12 doctor` shows what is installed.
 commands above. TypeScript runs directly; there is no build step to remember.
 
 **B. Package tarball (the future npm path):** `npm pack` in a clone produces
-`daemonv12-0.5.0.tgz`, which installs anywhere without the clone:
+`daemonv12-0.6.0.tgz`, which installs anywhere without the clone:
 
 ```sh
-npm install -g ./daemonv12-0.5.0.tgz     # once published: npm install -g daemonv12
+npm install -g ./daemonv12-0.6.0.tgz     # once published: npm install -g daemonv12
 daemonv12 doctor
 daemonv12 init ~/daemonv12-music && cd ~/daemonv12-music
 daemonv12 render sample-only-demo.json   # renders/sample-only-demo.wav, Node only
@@ -149,9 +154,10 @@ music assets**: game loops, video cues, stingers, sketches and stems. It is:
 - **Not a replacement for Ableton, Logic or a human producer.** There is no GUI,
   plugin (VST/AU) hosting, recording, synthesis engine or mastering chain.
 - **Limited in palette.** Melodic sounds come from General MIDI, so their quality
-  depends on the SoundFont. Samples are one-shots without pitch-shifting or
-  time-stretching. The curated 12-voice rack the name refers to is a
-  [roadmap](docs/ROADMAP.md) goal, not a current feature.
+  depends on the SoundFont. Samples are one-shots; playback rate repitches
+  them, changing pitch and duration together, but nothing time-stretches. The
+  curated 12-voice rack the name refers to is a [roadmap](docs/ROADMAP.md) goal,
+  not a current feature.
 - **Simple in structure.** One tempo and meter per project, up to 15 tracks, and
   at most 600 seconds per sample/production render.
 - **Deterministic per tool version.** WAV, stems and manifests repeat byte for
@@ -167,10 +173,11 @@ is untested.
 
 ## Examples
 
-Start with the six curated projects in [examples/README.md](examples/README.md):
-Node-only samples, Orbital Foundry, an exact game loop, a narrated-video cue with
-ducking, a production mix and the agent-composed score. Other files in
-`examples/` are historical fixtures kept for tests.
+Start with the eight curated projects in [examples/README.md](examples/README.md):
+Node-only samples, Orbital Foundry, GLASSHOUSE, the GHOST//SHIFT sample-performance
+demo, an exact game loop, a narrated-video cue with ducking, a production mix and
+the agent-composed score. Other files in `examples/` are historical fixtures kept
+for tests.
 
 ## Commands
 
@@ -192,7 +199,7 @@ run commands as `npx --no-install daemonv12 …` or `node bin/daemonv12.js …`.
 
 - [MCP clients](docs/MCP_CLIENTS.md): Claude Code, Codex CLI and generic stdio setup, workspaces, environment, troubleshooting.
 - [MCP tools](docs/V0_4_MCP.md): the nine tools, edit operations and path safety.
-- [Project format](docs/V0_SPEC.md), [stems](docs/V0_1_STEMS.md), [samples and kits](docs/V0_2_SAMPLES.md), [production audio](docs/V0_3_AUDIO.md), [timeline and dynamics](docs/V0_5_TIMELINE_DYNAMICS.md).
+- [Project format](docs/V0_SPEC.md), [stems](docs/V0_1_STEMS.md), [samples and kits](docs/V0_2_SAMPLES.md), [production audio](docs/V0_3_AUDIO.md), [timeline and dynamics](docs/V0_5_TIMELINE_DYNAMICS.md), [sample performance](docs/V0_6_SAMPLE_PERFORMANCE.md).
 - [Developer setup](docs/DEVELOPER_SETUP.md): doctor JSON, rootless bootstrap, smoke tests and CI.
 - [Architecture](docs/ARCHITECTURE.md), [roadmap](docs/ROADMAP.md), [changelog](CHANGELOG.md).
 - [Contributing](CONTRIBUTING.md), [security](SECURITY.md), [sharing and licensing](docs/SHARING.md), [release checklist](docs/PUBLIC_BETA_RELEASE.md).

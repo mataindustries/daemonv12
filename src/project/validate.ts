@@ -1,7 +1,7 @@
 import { diagnostic, didYouMean, formatPath, type Diagnostic, type Parsed } from '../diagnostics.ts';
 import { durationSyntax, positionSyntax, parseDuration, parsePosition, parseTimeSignature, ticksPerBar, formatDuration, formatPosition, usPerQuarter, ticksToFrames, type TimeSignature } from '../timing/musical-time.ts';
 import { secondsToMicroseconds, secondsToFrames } from '../timing/wall-time.ts';
-import { effectParameters, type Effect } from '../audio-types.ts';
+import { effectParameters, playbackRateRange, type Effect } from '../audio-types.ts';
 import { renderPlan } from '../timing/render-plan.ts';
 import { parsePitch } from './pitch.ts';
 import { parseKey, type Key } from './key.ts';
@@ -10,7 +10,7 @@ import type { Project, RenderSettings, TrackAutomation, AutomationPoint, Ducking
 import { assetPath, type Kits } from './sample-schema.ts';
 
 type ObjectValue = Record<string, unknown>;
-type Kind = 'project' | 'track' | 'instrument' | 'clip' | 'pattern' | 'note' | 'mix' | 'master' | 'effect' | 'render' | 'renderDuration' | 'time' | 'automation' | 'gainPoint' | 'panPoint' | 'ducking';
+type Kind = 'project' | 'track' | 'instrument' | 'clip' | 'pattern' | 'note' | 'mix' | 'master' | 'effect' | 'render' | 'renderDuration' | 'time' | 'automation' | 'gainPoint' | 'panPoint' | 'ducking' | 'glide';
 type Rule = (value: unknown, path: string) => Parsed<unknown>;
 interface Field { rule?: Rule; object?: Kind; array?: Kind; optional?: boolean; example: unknown }
 const fields: Record<Kind, Record<string, Field>> = {
@@ -29,9 +29,15 @@ const fields: Record<Kind, Record<string, Field>> = {
   clip: { bar:{rule:number(1,Number.MAX_SAFE_INTEGER,true),example:1}, pattern:{rule:id,example:'one'} },
   pattern: { id:{rule:id,example:'one'}, description:{rule:string(2000),optional:true,example:''}, bars:{rule:number(1,1000,true),example:1}, notes:{array:'note',example:[]} },
   note: { start:{rule:positionSyntax,example:'1:1'}, pitch:{rule:parsePitch,example:'C4'}, duration:{rule:durationSyntax,example:'1/4'}, velocity:{rule:velocity,optional:true,example:0.8} },
+  glide: { to:{rule:playbackRate,example:0.5}, duration:{rule:durationSyntax,example:'1/8'} },
 };
+// Sample performance: optional on sampler and drum-kit notes only.
+const samplePerformance: Record<string, Field> = { playbackRate:{rule:playbackRate,optional:true,example:1.5}, offsetSeconds:{rule:seconds,optional:true,example:0.125}, glide:{object:'glide',optional:true,example:{to:0.5,duration:'1/8'}} };
+const performanceAliases: Record<string,string> = {rate:'playbackRate',speed:'playbackRate',pitchRatio:'playbackRate',semitones:'playbackRate',transpose:'playbackRate',pitchShift:'playbackRate',
+  offset:'offsetSeconds',startOffset:'offsetSeconds',sampleOffset:'offsetSeconds',offsetMs:'offsetSeconds',glideTo:'glide',glideDuration:'glide',bend:'glide',portamento:'glide',slide:'glide'};
 const aliases: Record<Kind, Record<string,string>> = {
   mix:{},master:{},effect:{},render:{},renderDuration:{},time:{},automation:{},gainPoint:{},panPoint:{},ducking:{},
+  glide:{rate:'to',playbackRate:'to',target:'to',dur:'duration',length:'duration',time:'duration'},
   project:{tempo:'bpm',time_signature:'timeSignature',timesig:'timeSignature',meter:'timeSignature',signature:'timeSignature',length:'bars',measures:'bars',numBars:'bars',name:'title',version:'formatVersion',schemaVersion:'formatVersion',format:'formatVersion',instruments:'tracks',parts:'tracks',patterns:'tracks[i].patterns',notes:'tracks[i].patterns[j].notes'},
   track:{name:'id',program:'instrument',patch:'instrument',sound:'instrument',preset:'instrument',notes:'patterns',arrangement:'clips',placements:'clips',sequence:'clips'},
   instrument:{kind:'type',preset:'program',patch:'program',name:'program',sound:'program'},
@@ -59,6 +65,15 @@ function instrumentType(v: unknown,p: string): Parsed<string> {
 function velocity(v: unknown,p: string): Parsed<unknown> {
   const result=number(Number.MIN_VALUE,1)(v,p);
   if (result.diagnostic && typeof v === 'number' && v > 1 && v <=127) result.diagnostic.hint=`MIDI-style velocity; use v/127 = ${(v/127).toFixed(2)}.`;
+  return result;
+}
+// Semitones are the likeliest wrong unit for a speed multiplier.
+function semitoneRate(v: unknown): number | undefined {
+  return typeof v === 'number' && Number.isFinite(v) && Math.abs(v) <= 24 ? Number((2**(v/12)).toFixed(6)) : undefined;
+}
+function playbackRate(v: unknown,p: string): Parsed<unknown> {
+  const result=number(playbackRateRange[0],playbackRateRange[1])(v,p);
+  if (result.diagnostic && typeof v === 'number') result.diagnostic.hint=`playbackRate multiplies speed, so pitch and duration change together: 2 is one octave up at half length, 0.5 one octave down at double length.${Number.isInteger(v) && semitoneRate(v) !== undefined ? ` For ${v} semitones use ${semitoneRate(v)} (2^(${v}/12)).` : ' For n semitones use 2^(n/12).'}`;
   return result;
 }
 function isObject(v: unknown): v is ObjectValue { return v !== null && typeof v === 'object' && !Array.isArray(v); }
@@ -114,7 +129,7 @@ export function validateProject(value: unknown, kits: Kits = new Map()): { proje
         const pitch=named?{value:named.pitch}:parsePitch(v,p);
         if (!entries) return {diagnostic:diagnostic('INVALID_DRUMKIT',p,instrument?.kit,'loaded valid drum kit')};
         return !pitch.diagnostic && entries.some(e=>e.pitch===pitch.value) ? pitch : {diagnostic:diagnostic('UNKNOWN_DRUM_HIT',p,v,`kit name or pitch: ${entries.map(e=>`${e.name} (${e.pitch})`).join(', ')}`)};
-      },example:'kick'}} : {}), velocity:fields.note.velocity!,
+      },example:'kick'}} : {}), velocity:fields.note.velocity!, ...samplePerformance,
     };
     for (const [name,field] of Object.entries(schema)) {
       const p=formatPath(path,name); order.set(p,order.size);
@@ -138,14 +153,19 @@ export function validateProject(value: unknown, kits: Kits = new Map()): { proje
       const r=field.rule!(item,p);
       if(r.diagnostic)add(r.diagnostic);else parsed.set(p,kind==='note'&&name==='pitch'?[r.value]:r.value);
     }
+    const sampleNote=kind==='note' && (type==='sampler' || type==='drumkit');
+    const aliasTable=sampleNote?{...aliases.note,...performanceAliases}:aliases[kind];
     for(const name of Object.keys(v)) if(!Object.hasOwn(schema,name)) {
-      const p=formatPath(path,name);order.set(p,order.size);
-      const alias=Object.hasOwn(aliases[kind],name)?aliases[kind][name]:undefined;
-      const candidate=alias ?? didYouMean(name,Object.keys(fields[kind]),2);
+      const p=formatPath(path,name),value=v[name];order.set(p,order.size);
+      const alias=Object.hasOwn(aliasTable,name)?aliasTable[name]:undefined;
+      const candidate=alias ?? didYouMean(name,[...Object.keys(fields[kind]),...(sampleNote?Object.keys(samplePerformance):[])],2);
       let hint=candidate && (!alias || !Object.hasOwn(v,candidate))?`Use ${candidate}.`:undefined;
       if(hint && kind==='track' && candidate==='instrument')hint='Use instrument: {"type": "gm", "program": "acoustic_grand_piano"}.';
       if(hint && kind==='track' && name==='notes')hint='Notes live inside patterns; place patterns with clips.';
-      add(diagnostic('UNKNOWN_FIELD',p,v[name],`allowed fields: ${Object.keys(schema).join(', ')}`,hint));
+      if(hint && sampleNote && candidate==='glide')hint='Use glide: {"to": 0.5, "duration": "1/8"}, the destination playbackRate and the musical time to reach it.';
+      if(hint && sampleNote && ['semitones','transpose','pitchShift'].includes(name) && semitoneRate(value)!==undefined)hint=`Use playbackRate: ${semitoneRate(value)} for ${value} semitones (2^(n/12)); pitch and duration change together.`;
+      if(kind==='note' && !sampleNote && Object.hasOwn(samplePerformance,name))hint='playbackRate, offsetSeconds and glide apply only to sampler and drum-kit notes.';
+      add(diagnostic('UNKNOWN_FIELD',p,value,`allowed fields: ${Object.keys(schema).join(', ')}`,hint));
     }
   }
   visit(value,'project','');
@@ -205,11 +225,23 @@ export function validateProject(value: unknown, kits: Kits = new Map()): { proje
       if(parsed.has(`${p}.duration`)) {const r=parseDuration(o.value.duration,`${p}.duration`);if(r.diagnostic)add(r.diagnostic);else {duration=r.value;parsed.set(`${p}.durationTicks`,duration);}}
       if(bars!==undefined && start!==undefined && duration!==undefined && start+duration>bars*ticksPerBar(meter))add(diagnostic('NOTE_EXCEEDS_PATTERN',`${p}.duration`,o.value.duration,'note ending within pattern',`Use at most "${formatDuration(bars*ticksPerBar(meter)-start)}" or lengthen the pattern.`));
     }
+    if(o.kind==='glide') {
+      // A glide may outlast its pattern and its voice; it only has to move the rate.
+      if(parsed.has(`${p}.duration`)) {const r=parseDuration(o.value.duration,`${p}.duration`);if(r.diagnostic)add(r.diagnostic);else parsed.set(`${p}.durationTicks`,r.value);}
+      const np=p.slice(0,-'.glide'.length),from=Object.hasOwn(get<ObjectValue>(np)!,'playbackRate')?get<number>(`${np}.playbackRate`):1,to=get<number>(`${p}.to`);
+      if(from!==undefined && from===to)add(diagnostic('OUT_OF_RANGE',`${p}.to`,to,`a destination rate other than the starting playbackRate ${from}`,'Remove glide to hold one playbackRate.'));
+    }
   }
   diagnostics.sort((a,b)=>(order.get(a.path)??0)-(order.get(b.path)??0));
   if(diagnostics.some(d=>d.severity==='error'))return {project:null,diagnostics};
   const read=<T>(p:string):T=>get<T>(p)!;
   const effects=(p:string)=>get<unknown[]>(p)?.map((_,i)=>{const q=`${p}[${i}]`,type=read<Effect['type']>(`${q}.type`);return {type,...Object.fromEntries(Object.keys(effectParameters[type]).filter(key=>parsed.has(`${q}.${key}`)).map(key=>[key,read(`${q}.${key}`)]))} as Effect;});
+  // Explicit defaults (rate 1, offset 0, no glide) normalize to an unperformed note.
+  const playback=(p:string)=>{
+    const rate=get<number>(`${p}.playbackRate`)??1,offsetSeconds=get<number>(`${p}.offsetSeconds`)??0;
+    const glide=parsed.has(`${p}.glide`)?{to:read<number>(`${p}.glide.to`),durationTicks:read<number>(`${p}.glide.durationTicks`)}:undefined;
+    return rate!==1 || offsetSeconds>0 || glide ? {playback:{rate,offsetSeconds,...(glide?{glide}:{})}} : {};
+  };
   const automation=(p:string):TrackAutomation=>Object.fromEntries(['gainDb','pan'].filter(lane=>parsed.has(`${p}.${lane}`)).map(lane=>[lane,read<unknown[]>(`${p}.${lane}`).map((_,i)=>{
     const q=`${p}.${lane}[${i}]`,musical=get<string>(`${q}.at.musical`);
     return {at:musical===undefined?{seconds:read<number>(`${q}.at.seconds`)}:{musical},value:read<number>(`${q}.value`),transition:get<'step'|'linear'>(`${q}.transition`)??'step'} satisfies AutomationPoint;
@@ -221,7 +253,7 @@ export function validateProject(value: unknown, kits: Kits = new Map()): { proje
       const p=`tracks[${i}]`,raw=read<ObjectValue>(`${p}.instrument`);
       return {...(parsed.has(`${p}.automation`)?{automation:automation(`${p}.automation`)}:{}),...(parsed.has(`${p}.mix`)?{mix:{...(parsed.has(`${p}.mix.gainDb`)?{gainDb:read<number>(`${p}.mix.gainDb`)}:{}),...(parsed.has(`${p}.mix.pan`)?{pan:read<number>(`${p}.mix.pan`)}:{})}}:{}),...(parsed.has(`${p}.effects`)?{effects:effects(`${p}.effects`)!}:{}),id:read<string>(`${p}.id`),description:get<string>(`${p}.description`)??null,instrument:raw.type === 'sampler' ? {type:'sampler',sample:raw.sample as string} : raw.type === 'drumkit' ? {type:'drumkit',kit:raw.kit as string} : {type:'gm',program:read<number>(`${p}.instrument.program`),programName:raw.program as string},
         clips:read<unknown[]>(`${p}.clips`).map((_,j)=>({bar:read<number>(`${p}.clips[${j}].bar`),pattern:read<string>(`${p}.clips[${j}].pattern`)})),
-        patterns:read<unknown[]>(`${p}.patterns`).map((_,j)=>{const pp=`${p}.patterns[${j}]`;return {id:read<string>(`${pp}.id`),description:get<string>(`${pp}.description`)??null,bars:read<number>(`${pp}.bars`),notes:read<unknown[]>(`${pp}.notes`).map((_,k)=>{const np=`${pp}.notes[${k}]`;return {startTicks:read<number>(`${np}.startTicks`),durationTicks:get<number>(`${np}.durationTicks`)??0,pitches:get<number[]>(`${np}.pitch`)??[60],velocity:get<number>(`${np}.velocity`)??0.8};})};})};
+        patterns:read<unknown[]>(`${p}.patterns`).map((_,j)=>{const pp=`${p}.patterns[${j}]`;return {id:read<string>(`${pp}.id`),description:get<string>(`${pp}.description`)??null,bars:read<number>(`${pp}.bars`),notes:read<unknown[]>(`${pp}.notes`).map((_,k)=>{const np=`${pp}.notes[${k}]`;return {startTicks:read<number>(`${np}.startTicks`),durationTicks:get<number>(`${np}.durationTicks`)??0,pitches:get<number[]>(`${np}.pitch`)??[60],velocity:get<number>(`${np}.velocity`)??0.8,...playback(np)};})};})};
     })};
   if(project.render) {
     const plan=renderPlan(project);
