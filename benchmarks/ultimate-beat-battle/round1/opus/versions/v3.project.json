@@ -1,0 +1,4093 @@
+{
+ "formatVersion": 1,
+ "title": "Next Door",
+ "description": "Ultimate Beat Battle Round 1 (Opus). A 2-step garage miniature in C# minor at 140 BPM. A synthetic singer is in the room with you while the party plays through the wall; at bar 5 the door opens. One 808 made monophonic from three choked voices; the same voice an octave down answers in the switch; GLASSHOUSE glass answers the hook.",
+ "bpm": 140,
+ "timeSignature": "4/4",
+ "key": "C# minor",
+ "bars": 16,
+ "seed": 1,
+ "render": {
+  "duration": {
+   "seconds": 29.6
+  },
+  "tail": "auto"
+ },
+ "master": {
+  "gainDb": 0,
+  "effects": [
+   {
+    "type": "highpass",
+    "frequencyHz": 28
+   },
+   {
+    "type": "compressor",
+    "thresholdDb": -18,
+    "ratio": 2,
+    "attackMs": 15,
+    "releaseMs": 160,
+    "makeupGainDb": 2
+   }
+  ]
+ },
+ "tracks": [
+  {
+   "id": "vox",
+   "description": "The hook: synthetic vowel syllables sung on G#4, pitched per note with playbackRate; tape start at 0:00, tape stop at the end.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/opus-vox/kit.json"
+   },
+   "mix": {
+    "gainDb": 0,
+    "pan": 0
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 190
+    },
+    {
+     "type": "compressor",
+     "thresholdDb": -20,
+     "ratio": 3,
+     "attackMs": 5,
+     "releaseMs": 90,
+     "makeupGainDb": 2
+    },
+    {
+     "type": "saturation",
+     "driveDb": 5,
+     "mix": 0.3
+    },
+    {
+     "type": "delay",
+     "timeMs": 321,
+     "wet": 0.14
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.55,
+     "decaySeconds": 1.4,
+     "wet": 0.18
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "description": "Hook bars 1-8 and 13-16; switch calls in 9-10; bar 8 stutter; bar 15 suspension bend; bar 16 tape stop.",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "ya-m",
+       "velocity": 0.86,
+       "playbackRate": 0.25,
+       "glide": {
+        "to": 1,
+        "duration": "1/8"
+       }
+      },
+      {
+       "start": "1:1+13/64",
+       "pitch": "ya-s",
+       "velocity": 0.72,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "1:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.84,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "hey-s",
+       "velocity": 0.9,
+       "playbackRate": 1.587401
+      },
+      {
+       "start": "1:4",
+       "pitch": "ah-l",
+       "velocity": 0.8,
+       "playbackRate": 1.498307
+      },
+      {
+       "start": "2:1",
+       "pitch": "da-m",
+       "velocity": 0.88,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "2:1+13/64",
+       "pitch": "da-s",
+       "velocity": 0.7,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "2:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.82,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "2:3+1/8",
+       "pitch": "ya-s",
+       "velocity": 0.78,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "2:4",
+       "pitch": "ah-l",
+       "velocity": 0.8,
+       "playbackRate": 1
+      },
+      {
+       "start": "3:1",
+       "pitch": "ya-m",
+       "velocity": 0.86,
+       "playbackRate": 1
+      },
+      {
+       "start": "3:1+13/64",
+       "pitch": "ya-s",
+       "velocity": 0.72,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "3:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.84,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "3:3+1/8",
+       "pitch": "hey-s",
+       "velocity": 0.9,
+       "playbackRate": 1.587401
+      },
+      {
+       "start": "3:4",
+       "pitch": "ah-l",
+       "velocity": 0.8,
+       "playbackRate": 1.498307
+      },
+      {
+       "start": "4:1",
+       "pitch": "da-m",
+       "velocity": 0.88,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "4:1+13/64",
+       "pitch": "da-s",
+       "velocity": 0.7,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "4:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.82,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "4:3+1/8",
+       "pitch": "ya-s",
+       "velocity": 0.78,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "5:1",
+       "pitch": "ya-m",
+       "velocity": 0.86,
+       "playbackRate": 1
+      },
+      {
+       "start": "5:1+13/64",
+       "pitch": "ya-s",
+       "velocity": 0.72,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "5:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.84,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "5:3+1/8",
+       "pitch": "hey-s",
+       "velocity": 0.9,
+       "playbackRate": 1.587401
+      },
+      {
+       "start": "5:4",
+       "pitch": "ah-l",
+       "velocity": 0.8,
+       "playbackRate": 1.498307
+      },
+      {
+       "start": "6:1",
+       "pitch": "da-m",
+       "velocity": 0.88,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "6:1+13/64",
+       "pitch": "da-s",
+       "velocity": 0.7,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "6:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.82,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "6:3+1/8",
+       "pitch": "ya-s",
+       "velocity": 0.78,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "6:4",
+       "pitch": "ah-l",
+       "velocity": 0.8,
+       "playbackRate": 1
+      },
+      {
+       "start": "7:1",
+       "pitch": "ya-m",
+       "velocity": 0.86,
+       "playbackRate": 1
+      },
+      {
+       "start": "7:1+13/64",
+       "pitch": "ya-s",
+       "velocity": 0.72,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "7:2+1/8",
+       "pitch": "wo-s",
+       "velocity": 0.8,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "7:3",
+       "pitch": "da-s",
+       "velocity": 0.82,
+       "playbackRate": 1.587401
+      },
+      {
+       "start": "7:3+1/8",
+       "pitch": "hey-s",
+       "velocity": 0.9,
+       "playbackRate": 1.781797
+      },
+      {
+       "start": "7:4",
+       "pitch": "ah-l",
+       "velocity": 0.92,
+       "playbackRate": 2
+      },
+      {
+       "start": "8:1",
+       "pitch": "da-m",
+       "velocity": 0.88,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "8:1+13/64",
+       "pitch": "da-s",
+       "velocity": 0.7,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "8:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.82,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "8:3+1/8",
+       "pitch": "ya-s",
+       "velocity": 0.78,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "8:4",
+       "pitch": "da-s",
+       "velocity": 0.5,
+       "playbackRate": 1
+      },
+      {
+       "start": "8:4+1/32",
+       "pitch": "da-s",
+       "velocity": 0.57,
+       "playbackRate": 1.059463
+      },
+      {
+       "start": "8:4+1/16",
+       "pitch": "da-s",
+       "velocity": 0.64,
+       "playbackRate": 1.122462
+      },
+      {
+       "start": "8:4+3/32",
+       "pitch": "da-s",
+       "velocity": 0.71,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "8:4+1/8",
+       "pitch": "da-s",
+       "velocity": 0.78,
+       "playbackRate": 1.259921
+      },
+      {
+       "start": "8:4+5/32",
+       "pitch": "da-s",
+       "velocity": 0.85,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "9:1",
+       "pitch": "ya-m",
+       "velocity": 0.731,
+       "playbackRate": 1
+      },
+      {
+       "start": "9:1+13/64",
+       "pitch": "ya-s",
+       "velocity": 0.612,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "9:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.714,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "10:1",
+       "pitch": "da-m",
+       "velocity": 0.748,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "10:1+13/64",
+       "pitch": "da-s",
+       "velocity": 0.595,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "10:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.697,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "13:1",
+       "pitch": "ya-m",
+       "velocity": 0.86,
+       "playbackRate": 1
+      },
+      {
+       "start": "13:1+13/64",
+       "pitch": "ya-s",
+       "velocity": 0.72,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "13:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.84,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "13:3+1/8",
+       "pitch": "hey-s",
+       "velocity": 0.9,
+       "playbackRate": 1.587401
+      },
+      {
+       "start": "13:4",
+       "pitch": "ah-l",
+       "velocity": 0.8,
+       "playbackRate": 1.498307
+      },
+      {
+       "start": "14:1",
+       "pitch": "da-m",
+       "velocity": 0.88,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "14:1+13/64",
+       "pitch": "da-s",
+       "velocity": 0.7,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "14:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.82,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "14:3+1/8",
+       "pitch": "ya-s",
+       "velocity": 0.78,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "14:4",
+       "pitch": "ah-l",
+       "velocity": 0.8,
+       "playbackRate": 1
+      },
+      {
+       "start": "15:1",
+       "pitch": "ya-m",
+       "velocity": 0.86,
+       "playbackRate": 1
+      },
+      {
+       "start": "15:1+13/64",
+       "pitch": "ya-s",
+       "velocity": 0.72,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "15:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.84,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "15:3+1/8",
+       "pitch": "hey-s",
+       "velocity": 0.9,
+       "playbackRate": 1.587401
+      },
+      {
+       "start": "15:4",
+       "pitch": "ah-l",
+       "velocity": 0.86,
+       "playbackRate": 1.33484,
+       "glide": {
+        "to": 1.259921,
+        "duration": "1/8"
+       }
+      },
+      {
+       "start": "16:1",
+       "pitch": "ah-l",
+       "velocity": 0.9,
+       "playbackRate": 1.33484,
+       "glide": {
+        "to": 0.25,
+        "duration": "1/2"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vox-low",
+   "description": "The hook an octave down (slowed-tape voice): switch answers, six-beat spin-up riser, octave double under the final drop, closing \"oo\".",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/opus-vox/kit.json"
+   },
+   "mix": {
+    "gainDb": -2,
+    "pan": -0.2
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 140
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 3600
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.7,
+     "decaySeconds": 1.8,
+     "wet": 0.28
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "9:3+1/8",
+       "pitch": "hey-s",
+       "velocity": 0.9,
+       "playbackRate": 0.793701
+      },
+      {
+       "start": "9:4",
+       "pitch": "ah-l",
+       "velocity": 0.8,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "10:3+1/8",
+       "pitch": "ya-s",
+       "velocity": 0.78,
+       "playbackRate": 0.594604
+      },
+      {
+       "start": "10:4",
+       "pitch": "ah-l",
+       "velocity": 0.8,
+       "playbackRate": 0.5
+      },
+      {
+       "start": "11:3",
+       "pitch": "ah-l",
+       "velocity": 0.85,
+       "playbackRate": 0.25,
+       "glide": {
+        "to": 1,
+        "duration": "3/2"
+       }
+      },
+      {
+       "start": "13:1",
+       "pitch": "ya-m",
+       "velocity": 0.387,
+       "playbackRate": 0.5
+      },
+      {
+       "start": "13:1+13/64",
+       "pitch": "ya-s",
+       "velocity": 0.324,
+       "playbackRate": 0.594604
+      },
+      {
+       "start": "13:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.378,
+       "playbackRate": 0.66742
+      },
+      {
+       "start": "13:3+1/8",
+       "pitch": "hey-s",
+       "velocity": 0.405,
+       "playbackRate": 0.793701
+      },
+      {
+       "start": "13:4",
+       "pitch": "ah-l",
+       "velocity": 0.36,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "14:1",
+       "pitch": "da-m",
+       "velocity": 0.396,
+       "playbackRate": 0.66742
+      },
+      {
+       "start": "14:1+13/64",
+       "pitch": "da-s",
+       "velocity": 0.315,
+       "playbackRate": 0.594604
+      },
+      {
+       "start": "14:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.369,
+       "playbackRate": 0.66742
+      },
+      {
+       "start": "14:3+1/8",
+       "pitch": "ya-s",
+       "velocity": 0.351,
+       "playbackRate": 0.594604
+      },
+      {
+       "start": "14:4",
+       "pitch": "ah-l",
+       "velocity": 0.36,
+       "playbackRate": 0.5
+      },
+      {
+       "start": "16:3+1/8",
+       "pitch": "oo-l",
+       "velocity": 0.6,
+       "playbackRate": 0.66742
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vox-harm",
+   "description": "Inhale filling the silent last beat of bar 12, then the hook harmonised a third below in the final drop.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/opus-vox/kit.json"
+   },
+   "mix": {
+    "gainDb": -5,
+    "pan": 0.4
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 220
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.6,
+     "decaySeconds": 1.6,
+     "wet": 0.26
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "12:4",
+       "pitch": "breath-in",
+       "velocity": 1
+      },
+      {
+       "start": "13:1",
+       "pitch": "ya-m",
+       "velocity": 0.731,
+       "playbackRate": 0.793701
+      },
+      {
+       "start": "13:1+13/64",
+       "pitch": "ya-s",
+       "velocity": 0.612,
+       "playbackRate": 1
+      },
+      {
+       "start": "13:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.714,
+       "playbackRate": 1.059463
+      },
+      {
+       "start": "13:3+1/8",
+       "pitch": "hey-s",
+       "velocity": 0.765,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "13:4",
+       "pitch": "ah-l",
+       "velocity": 0.68,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "14:1",
+       "pitch": "da-m",
+       "velocity": 0.748,
+       "playbackRate": 1.059463
+      },
+      {
+       "start": "14:1+13/64",
+       "pitch": "da-s",
+       "velocity": 0.595,
+       "playbackRate": 1
+      },
+      {
+       "start": "14:2+1/8",
+       "pitch": "wo-m",
+       "velocity": 0.697,
+       "playbackRate": 1.059463
+      },
+      {
+       "start": "14:3+1/8",
+       "pitch": "ya-s",
+       "velocity": 0.663,
+       "playbackRate": 1
+      },
+      {
+       "start": "14:4",
+       "pitch": "ah-l",
+       "velocity": 0.68,
+       "playbackRate": 0.793701
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "keys",
+   "description": "GM electric piano: rootless voice-led chords; 2-step stabs, held in the switch, eighth pulse into the gap.",
+   "instrument": {
+    "type": "gm",
+    "program": "electric_piano_1"
+   },
+   "mix": {
+    "gainDb": 4,
+    "pan": -0.25
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 140
+    },
+    {
+     "type": "saturation",
+     "driveDb": 6,
+     "mix": 0.3
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 7000
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.5,
+     "decaySeconds": 1.2,
+     "wet": 0.16
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "5:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "D#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.66
+      },
+      {
+       "start": "5:2+13/64",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "D#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.4752
+      },
+      {
+       "start": "5:3+1/8",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "D#4"
+       ],
+       "duration": "5/16",
+       "velocity": 0.594
+      },
+      {
+       "start": "6:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "C#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.66
+      },
+      {
+       "start": "6:2+13/64",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "C#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.4752
+      },
+      {
+       "start": "6:3+1/8",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "C#4"
+       ],
+       "duration": "5/16",
+       "velocity": 0.594
+      },
+      {
+       "start": "7:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "A3",
+        "C#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.66
+      },
+      {
+       "start": "7:2+13/64",
+       "pitch": [
+        "E3",
+        "G#3",
+        "A3",
+        "C#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.4752
+      },
+      {
+       "start": "7:3+1/8",
+       "pitch": [
+        "E3",
+        "G#3",
+        "A3",
+        "C#4"
+       ],
+       "duration": "5/16",
+       "velocity": 0.594
+      },
+      {
+       "start": "8:1",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A#3",
+        "C#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.66
+      },
+      {
+       "start": "8:2+13/64",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A#3",
+        "C#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.4752
+      },
+      {
+       "start": "8:3+1/8",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A#3",
+        "C#4"
+       ],
+       "duration": "5/16",
+       "velocity": 0.594
+      },
+      {
+       "start": "9:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "C#4"
+       ],
+       "duration": "95/96",
+       "velocity": 0.52
+      },
+      {
+       "start": "10:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "A3",
+        "C#4"
+       ],
+       "duration": "95/96",
+       "velocity": 0.52
+      },
+      {
+       "start": "11:1",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A#3",
+        "C#4"
+       ],
+       "duration": "95/96",
+       "velocity": 0.55
+      },
+      {
+       "start": "12:1",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A3",
+        "C4"
+       ],
+       "duration": "15/128",
+       "velocity": 0.42
+      },
+      {
+       "start": "12:1+1/8",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A3",
+        "C4"
+       ],
+       "duration": "15/128",
+       "velocity": 0.48
+      },
+      {
+       "start": "12:2",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A3",
+        "C4"
+       ],
+       "duration": "15/128",
+       "velocity": 0.54
+      },
+      {
+       "start": "12:2+1/8",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A3",
+        "C4"
+       ],
+       "duration": "15/128",
+       "velocity": 0.6
+      },
+      {
+       "start": "12:3",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A3",
+        "C4"
+       ],
+       "duration": "15/128",
+       "velocity": 0.66
+      },
+      {
+       "start": "12:3+1/8",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A3",
+        "C4"
+       ],
+       "duration": "15/128",
+       "velocity": 0.72
+      },
+      {
+       "start": "13:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "D#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.7
+      },
+      {
+       "start": "13:2+13/64",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "D#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.504
+      },
+      {
+       "start": "13:3+1/8",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "D#4"
+       ],
+       "duration": "5/16",
+       "velocity": 0.63
+      },
+      {
+       "start": "14:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "C#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.7
+      },
+      {
+       "start": "14:2+13/64",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "C#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.504
+      },
+      {
+       "start": "14:3+1/8",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "C#4"
+       ],
+       "duration": "5/16",
+       "velocity": 0.63
+      },
+      {
+       "start": "15:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "A3",
+        "C#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.7
+      },
+      {
+       "start": "15:2+13/64",
+       "pitch": [
+        "E3",
+        "G#3",
+        "A3",
+        "C#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.52
+      },
+      {
+       "start": "15:3",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A3",
+        "C4"
+       ],
+       "duration": "95/192",
+       "velocity": 0.7
+      },
+      {
+       "start": "16:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "D#4",
+        "G#4"
+       ],
+       "duration": "1/2",
+       "velocity": 0.72
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "keys-far",
+   "description": "Bars 1-4: the electric piano next door, cut at 4:3.",
+   "instrument": {
+    "type": "gm",
+    "program": "electric_piano_1"
+   },
+   "mix": {
+    "gainDb": 4,
+    "pan": 0
+   },
+   "effects": [
+    {
+     "type": "lowpass",
+     "frequencyHz": 600
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 600
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.7,
+     "decaySeconds": 1.4,
+     "wet": 0.3
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "musical": "3:1"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "4:3"
+      },
+      "value": 3
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "D#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.72
+      },
+      {
+       "start": "1:2+13/64",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "D#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.5184
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "D#4"
+       ],
+       "duration": "5/16",
+       "velocity": 0.648
+      },
+      {
+       "start": "2:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "C#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.72
+      },
+      {
+       "start": "2:2+13/64",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "C#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.5184
+      },
+      {
+       "start": "2:3+1/8",
+       "pitch": [
+        "E3",
+        "G#3",
+        "B3",
+        "C#4"
+       ],
+       "duration": "5/16",
+       "velocity": 0.648
+      },
+      {
+       "start": "3:1",
+       "pitch": [
+        "E3",
+        "G#3",
+        "A3",
+        "C#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.72
+      },
+      {
+       "start": "3:2+13/64",
+       "pitch": [
+        "E3",
+        "G#3",
+        "A3",
+        "C#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.5184
+      },
+      {
+       "start": "3:3+1/8",
+       "pitch": [
+        "E3",
+        "G#3",
+        "A3",
+        "C#4"
+       ],
+       "duration": "5/16",
+       "velocity": 0.648
+      },
+      {
+       "start": "4:1",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A#3",
+        "C#4"
+       ],
+       "duration": "35/192",
+       "velocity": 0.72
+      },
+      {
+       "start": "4:2+13/64",
+       "pitch": [
+        "D#3",
+        "F#3",
+        "A#3",
+        "C#4"
+       ],
+       "duration": "1/24",
+       "velocity": 0.5184
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "choir",
+   "description": "GM choir aahs: a human halo behind the synthetic voice.",
+   "instrument": {
+    "type": "gm",
+    "program": "choir_aahs"
+   },
+   "mix": {
+    "gainDb": 4,
+    "pan": 0
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 300
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.7,
+     "decaySeconds": 2,
+     "wet": 0.35
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "9:1",
+       "pitch": [
+        "G#3",
+        "C#4",
+        "E4"
+       ],
+       "duration": "95/96",
+       "velocity": 0.6
+      },
+      {
+       "start": "10:1",
+       "pitch": [
+        "A3",
+        "C#4",
+        "E4"
+       ],
+       "duration": "95/96",
+       "velocity": 0.6
+      },
+      {
+       "start": "11:1",
+       "pitch": [
+        "F#3",
+        "C#4",
+        "D#4"
+       ],
+       "duration": "95/96",
+       "velocity": 0.6
+      },
+      {
+       "start": "12:1",
+       "pitch": [
+        "F#3",
+        "C4",
+        "D#4"
+       ],
+       "duration": "71/96",
+       "velocity": 0.68
+      },
+      {
+       "start": "13:1",
+       "pitch": [
+        "G#3",
+        "B3",
+        "E4"
+       ],
+       "duration": "95/96",
+       "velocity": 0.5
+      },
+      {
+       "start": "14:1",
+       "pitch": [
+        "G#3",
+        "C#4",
+        "E4"
+       ],
+       "duration": "95/96",
+       "velocity": 0.5
+      },
+      {
+       "start": "15:1",
+       "pitch": [
+        "A3",
+        "C#4",
+        "E4"
+       ],
+       "duration": "47/96",
+       "velocity": 0.5
+      },
+      {
+       "start": "15:3",
+       "pitch": [
+        "F#3",
+        "C4",
+        "D#4"
+       ],
+       "duration": "47/96",
+       "velocity": 0.55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "glass",
+   "description": "GLASSHOUSE glass-hit at seven pitches: answers to the hook, a falling line in the switch, a counter-line in the final drop.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/glasshouse/glass-kit.json"
+   },
+   "mix": {
+    "gainDb": 2,
+    "pan": 0.35
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 400
+    },
+    {
+     "type": "delay",
+     "timeMs": 321,
+     "wet": 0.25
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.6,
+     "decaySeconds": 1.6,
+     "wet": 0.25
+    }
+   ],
+   "automation": {
+    "pan": [
+     {
+      "at": {
+       "musical": "13:1"
+      },
+      "value": 0.4,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "16:1"
+      },
+      "value": -0.35
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:4+13/64",
+       "pitch": "glass-hit",
+       "velocity": 0.5,
+       "playbackRate": 2.244924
+      },
+      {
+       "start": "2:4+13/64",
+       "pitch": "glass-hit",
+       "velocity": 0.55,
+       "playbackRate": 1.498307
+      },
+      {
+       "start": "3:4+13/64",
+       "pitch": "glass-hit",
+       "velocity": 0.55,
+       "playbackRate": 2.244924
+      },
+      {
+       "start": "5:4+13/64",
+       "pitch": "glass-hit",
+       "velocity": 0.6,
+       "playbackRate": 2.244924
+      },
+      {
+       "start": "6:4+13/64",
+       "pitch": "glass-hit",
+       "velocity": 0.55,
+       "playbackRate": 1.498307
+      },
+      {
+       "start": "7:4+13/64",
+       "pitch": "glass-hit",
+       "velocity": 0.6,
+       "playbackRate": 2.996614
+      },
+      {
+       "start": "9:3",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 2.378414
+      },
+      {
+       "start": "9:4+1/8",
+       "pitch": "glass-hit",
+       "velocity": 0.5,
+       "playbackRate": 2
+      },
+      {
+       "start": "10:3",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 1.781797
+      },
+      {
+       "start": "10:4+1/8",
+       "pitch": "glass-hit",
+       "velocity": 0.5,
+       "playbackRate": 1.498307
+      },
+      {
+       "start": "13:1+1/8",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 1.781797
+      },
+      {
+       "start": "13:2+5/64",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 2
+      },
+      {
+       "start": "13:3",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 2.378414
+      },
+      {
+       "start": "14:1+1/8",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 2.244924
+      },
+      {
+       "start": "14:2+5/64",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 2
+      },
+      {
+       "start": "14:3",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 1.781797
+      },
+      {
+       "start": "15:1+1/8",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 2
+      },
+      {
+       "start": "15:2+5/64",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 1.587401
+      },
+      {
+       "start": "15:3",
+       "pitch": "glass-hit",
+       "velocity": 0.62,
+       "playbackRate": 1.887749
+      },
+      {
+       "start": "16:1",
+       "pitch": "glass-hit",
+       "velocity": 0.7,
+       "playbackRate": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "glass-fx",
+   "description": "Reverse glass (two beats) into bars 5 and 13; prism impacts on 13:1 and on the final downbeat, slowing to half speed.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/glasshouse/glass-kit.json"
+   },
+   "mix": {
+    "gainDb": -2,
+    "pan": 0
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 120
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.6,
+     "decaySeconds": 1.4,
+     "wet": 0.2
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "4:3",
+       "pitch": "glass-reverse",
+       "velocity": 0.85
+      },
+      {
+       "start": "12:3",
+       "pitch": "glass-reverse",
+       "velocity": 0.6
+      },
+      {
+       "start": "13:1",
+       "pitch": "prism-impact",
+       "velocity": 0.85
+      },
+      {
+       "start": "16:1",
+       "pitch": "prism-impact",
+       "velocity": 0.75,
+       "glide": {
+        "to": 0.5,
+        "duration": "1/1"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "drums-far",
+   "description": "Bars 1-4: the 2-step beat heard through a wall, creeping closer, stopping dead on 4:3.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/opus-drums/kit.json"
+   },
+   "mix": {
+    "gainDb": -2
+   },
+   "effects": [
+    {
+     "type": "lowpass",
+     "frequencyHz": 450
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 450
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.65,
+     "decaySeconds": 0.9,
+     "wet": 0.25
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "musical": "3:1"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "4:3"
+      },
+      "value": 3
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "next-door"
+    },
+    {
+     "bar": 3,
+     "pattern": "next-door-cut"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "next-door",
+     "bars": 2,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "kick",
+       "velocity": 0.95
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "kick",
+       "velocity": 0.85
+      },
+      {
+       "start": "1:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "1:4",
+       "pitch": "clap",
+       "velocity": 0.92
+      },
+      {
+       "start": "1:1+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "1:2+1/8",
+       "pitch": "hat",
+       "velocity": 0.74
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "1:4+1/8",
+       "pitch": "hat",
+       "velocity": 0.76
+      },
+      {
+       "start": "2:1",
+       "pitch": "kick",
+       "velocity": 0.95
+      },
+      {
+       "start": "2:1+13/64",
+       "pitch": "kick",
+       "velocity": 0.42
+      },
+      {
+       "start": "2:3+1/8",
+       "pitch": "kick",
+       "velocity": 0.85
+      },
+      {
+       "start": "2:4+13/64",
+       "pitch": "kick",
+       "velocity": 0.5
+      },
+      {
+       "start": "2:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "2:4",
+       "pitch": "clap",
+       "velocity": 0.92
+      },
+      {
+       "start": "2:1+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "2:2+1/8",
+       "pitch": "hat",
+       "velocity": 0.74
+      },
+      {
+       "start": "2:3+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "2:4+1/8",
+       "pitch": "hat",
+       "velocity": 0.76
+      }
+     ]
+    },
+    {
+     "id": "next-door-cut",
+     "description": "As next-door, but nothing from 4:3: the door opens.",
+     "bars": 2,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "kick",
+       "velocity": 0.95
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "kick",
+       "velocity": 0.85
+      },
+      {
+       "start": "1:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "1:4",
+       "pitch": "clap",
+       "velocity": 0.92
+      },
+      {
+       "start": "1:1+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "1:2+1/8",
+       "pitch": "hat",
+       "velocity": 0.74
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "1:4+1/8",
+       "pitch": "hat",
+       "velocity": 0.76
+      },
+      {
+       "start": "2:1",
+       "pitch": "kick",
+       "velocity": 0.95
+      },
+      {
+       "start": "2:1+13/64",
+       "pitch": "kick",
+       "velocity": 0.42
+      },
+      {
+       "start": "2:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "2:1+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "2:2+1/8",
+       "pitch": "hat",
+       "velocity": 0.74
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kick",
+   "description": "2-step kick (1 and the and-of-3, swung ghost and pickup on alternate bars); quarters in the build.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/opus-drums/kit.json"
+   },
+   "mix": {
+    "gainDb": -3
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 45
+    }
+   ],
+   "clips": [
+    {
+     "bar": 5,
+     "pattern": "two-step"
+    },
+    {
+     "bar": 7,
+     "pattern": "two-step"
+    },
+    {
+     "bar": 11,
+     "pattern": "build"
+    },
+    {
+     "bar": 13,
+     "pattern": "two-step"
+    },
+    {
+     "bar": 15,
+     "pattern": "last"
+    },
+    {
+     "bar": 16,
+     "pattern": "end"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "two-step",
+     "bars": 2,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "kick",
+       "velocity": 0.95
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "kick",
+       "velocity": 0.85
+      },
+      {
+       "start": "2:1",
+       "pitch": "kick",
+       "velocity": 0.95
+      },
+      {
+       "start": "2:1+13/64",
+       "pitch": "kick",
+       "velocity": 0.42
+      },
+      {
+       "start": "2:3+1/8",
+       "pitch": "kick",
+       "velocity": 0.85
+      },
+      {
+       "start": "2:4+13/64",
+       "pitch": "kick",
+       "velocity": 0.5
+      }
+     ]
+    },
+    {
+     "id": "build",
+     "description": "Quarter notes; beat 4 of bar 12 is silent.",
+     "bars": 2,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "kick",
+       "velocity": 0.7
+      },
+      {
+       "start": "1:2",
+       "pitch": "kick",
+       "velocity": 0.74
+      },
+      {
+       "start": "1:3",
+       "pitch": "kick",
+       "velocity": 0.7799999999999999
+      },
+      {
+       "start": "1:4",
+       "pitch": "kick",
+       "velocity": 0.82
+      },
+      {
+       "start": "2:1",
+       "pitch": "kick",
+       "velocity": 0.86
+      },
+      {
+       "start": "2:2",
+       "pitch": "kick",
+       "velocity": 0.8999999999999999
+      },
+      {
+       "start": "2:3",
+       "pitch": "kick",
+       "velocity": 0.94
+      }
+     ]
+    },
+    {
+     "id": "last",
+     "bars": 1,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "kick",
+       "velocity": 0.95
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "kick",
+       "velocity": 0.85
+      },
+      {
+       "start": "1:4+1/8",
+       "pitch": "kick",
+       "velocity": 0.6
+      }
+     ]
+    },
+    {
+     "id": "end",
+     "bars": 1,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "kick",
+       "velocity": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clap",
+   "description": "Clap on 2 and 4, a snare flick into the switch, half-time on 3 in the switch.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/opus-drums/kit.json"
+   },
+   "mix": {
+    "gainDb": 8,
+    "pan": 0
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 180
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.45,
+     "decaySeconds": 0.9,
+     "wet": 0.16
+    }
+   ],
+   "clips": [
+    {
+     "bar": 5,
+     "pattern": "drop"
+    },
+    {
+     "bar": 9,
+     "pattern": "half"
+    },
+    {
+     "bar": 13,
+     "pattern": "drop-b"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "drop",
+     "bars": 4,
+     "notes": [
+      {
+       "start": "1:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "1:4",
+       "pitch": "clap",
+       "velocity": 0.92
+      },
+      {
+       "start": "2:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "2:4",
+       "pitch": "clap",
+       "velocity": 0.92
+      },
+      {
+       "start": "3:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "3:4",
+       "pitch": "clap",
+       "velocity": 0.92
+      },
+      {
+       "start": "4:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "4:4",
+       "pitch": "clap",
+       "velocity": 0.92
+      },
+      {
+       "start": "4:4+1/8",
+       "pitch": "snare",
+       "velocity": 0.5
+      },
+      {
+       "start": "4:4+13/64",
+       "pitch": "snare",
+       "velocity": 0.62
+      }
+     ]
+    },
+    {
+     "id": "half",
+     "bars": 2,
+     "notes": [
+      {
+       "start": "1:3",
+       "pitch": "clap",
+       "velocity": 0.85
+      },
+      {
+       "start": "2:3",
+       "pitch": "clap",
+       "velocity": 0.85
+      }
+     ]
+    },
+    {
+     "id": "drop-b",
+     "bars": 3,
+     "notes": [
+      {
+       "start": "1:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "1:4",
+       "pitch": "clap",
+       "velocity": 0.92
+      },
+      {
+       "start": "2:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "2:4",
+       "pitch": "clap",
+       "velocity": 0.92
+      },
+      {
+       "start": "3:2",
+       "pitch": "clap",
+       "velocity": 0.9
+      },
+      {
+       "start": "3:4",
+       "pitch": "clap",
+       "velocity": 0.92
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hats",
+   "description": "Swung offbeat hats with rims answering the vocal; shaker in the switch; snare roll climbing an octave in the build.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/opus-drums/kit.json"
+   },
+   "mix": {
+    "gainDb": 2,
+    "pan": 0.15
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 300
+    }
+   ],
+   "automation": {
+    "pan": [
+     {
+      "at": {
+       "musical": "11:1"
+      },
+      "value": -0.35,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "12:3"
+      },
+      "value": 0.35
+     },
+     {
+      "at": {
+       "musical": "13:1"
+      },
+      "value": 0.15
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 5,
+     "pattern": "groove"
+    },
+    {
+     "bar": 7,
+     "pattern": "groove"
+    },
+    {
+     "bar": 9,
+     "pattern": "shaker"
+    },
+    {
+     "bar": 11,
+     "pattern": "roll"
+    },
+    {
+     "bar": 13,
+     "pattern": "groove"
+    },
+    {
+     "bar": 15,
+     "pattern": "last"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "groove",
+     "bars": 2,
+     "notes": [
+      {
+       "start": "1:1+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "1:1+13/64",
+       "pitch": "hat",
+       "velocity": 0.34
+      },
+      {
+       "start": "1:2+1/8",
+       "pitch": "hat",
+       "velocity": 0.74
+      },
+      {
+       "start": "1:2+13/64",
+       "pitch": "hat",
+       "velocity": 0.32
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "1:3+13/64",
+       "pitch": "hat",
+       "velocity": 0.36
+      },
+      {
+       "start": "1:4+5/64",
+       "pitch": "hat",
+       "velocity": 0.3
+      },
+      {
+       "start": "1:4+1/8",
+       "pitch": "hat",
+       "velocity": 0.76
+      },
+      {
+       "start": "1:4+13/64",
+       "pitch": "hat",
+       "velocity": 0.38
+      },
+      {
+       "start": "2:1+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "2:1+13/64",
+       "pitch": "hat",
+       "velocity": 0.34
+      },
+      {
+       "start": "2:2+5/64",
+       "pitch": "rim",
+       "velocity": 0.62
+      },
+      {
+       "start": "2:2+1/8",
+       "pitch": "hat",
+       "velocity": 0.74
+      },
+      {
+       "start": "2:2+13/64",
+       "pitch": "hat",
+       "velocity": 0.32
+      },
+      {
+       "start": "2:3+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "2:3+13/64",
+       "pitch": "rim",
+       "velocity": 0.58
+      },
+      {
+       "start": "2:4+5/64",
+       "pitch": "hat",
+       "velocity": 0.32
+      },
+      {
+       "start": "2:4+1/8",
+       "pitch": "hat-open",
+       "velocity": 0.6
+      }
+     ]
+    },
+    {
+     "id": "shaker",
+     "bars": 2,
+     "notes": [
+      {
+       "start": "1:1+1/8",
+       "pitch": "shaker",
+       "velocity": 0.7
+      },
+      {
+       "start": "1:2+1/8",
+       "pitch": "shaker",
+       "velocity": 0.6
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "shaker",
+       "velocity": 0.7
+      },
+      {
+       "start": "1:4+5/64",
+       "pitch": "shaker",
+       "velocity": 0.45
+      },
+      {
+       "start": "1:4+1/8",
+       "pitch": "shaker",
+       "velocity": 0.62
+      },
+      {
+       "start": "2:1+1/8",
+       "pitch": "shaker",
+       "velocity": 0.7
+      },
+      {
+       "start": "2:2+1/8",
+       "pitch": "shaker",
+       "velocity": 0.6
+      },
+      {
+       "start": "2:3+1/8",
+       "pitch": "shaker",
+       "velocity": 0.7
+      },
+      {
+       "start": "2:4+5/64",
+       "pitch": "shaker",
+       "velocity": 0.45
+      },
+      {
+       "start": "2:4+1/8",
+       "pitch": "shaker",
+       "velocity": 0.62
+      }
+     ]
+    },
+    {
+     "id": "roll",
+     "description": "Eighths, sixteenths, then thirty-seconds; each hit 1/2 semitone higher (playbackRate).",
+     "bars": 2,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "snare",
+       "velocity": 0.45,
+       "playbackRate": 1
+      },
+      {
+       "start": "1:1+1/8",
+       "pitch": "snare",
+       "velocity": 0.48,
+       "playbackRate": 1.029302
+      },
+      {
+       "start": "1:2",
+       "pitch": "snare",
+       "velocity": 0.51,
+       "playbackRate": 1.059463
+      },
+      {
+       "start": "1:2+1/8",
+       "pitch": "snare",
+       "velocity": 0.54,
+       "playbackRate": 1.090508
+      },
+      {
+       "start": "1:3",
+       "pitch": "snare",
+       "velocity": 0.57,
+       "playbackRate": 1.122462
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "snare",
+       "velocity": 0.6,
+       "playbackRate": 1.155353
+      },
+      {
+       "start": "1:4",
+       "pitch": "snare",
+       "velocity": 0.63,
+       "playbackRate": 1.189207
+      },
+      {
+       "start": "1:4+1/8",
+       "pitch": "snare",
+       "velocity": 0.66,
+       "playbackRate": 1.224054
+      },
+      {
+       "start": "2:1",
+       "pitch": "snare",
+       "velocity": 0.68,
+       "playbackRate": 1.259921
+      },
+      {
+       "start": "2:1+1/16",
+       "pitch": "snare",
+       "velocity": 0.705,
+       "playbackRate": 1.29684
+      },
+      {
+       "start": "2:1+1/8",
+       "pitch": "snare",
+       "velocity": 0.73,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "2:1+3/16",
+       "pitch": "snare",
+       "velocity": 0.755,
+       "playbackRate": 1.373954
+      },
+      {
+       "start": "2:2",
+       "pitch": "snare",
+       "velocity": 0.78,
+       "playbackRate": 1.414214
+      },
+      {
+       "start": "2:2+1/16",
+       "pitch": "snare",
+       "velocity": 0.805,
+       "playbackRate": 1.455653
+      },
+      {
+       "start": "2:2+1/8",
+       "pitch": "snare",
+       "velocity": 0.83,
+       "playbackRate": 1.498307
+      },
+      {
+       "start": "2:2+3/16",
+       "pitch": "snare",
+       "velocity": 0.855,
+       "playbackRate": 1.542211
+      },
+      {
+       "start": "2:3",
+       "pitch": "snare",
+       "velocity": 0.86,
+       "playbackRate": 1.587401
+      },
+      {
+       "start": "2:3+1/32",
+       "pitch": "snare",
+       "velocity": 0.875,
+       "playbackRate": 1.633915
+      },
+      {
+       "start": "2:3+1/16",
+       "pitch": "snare",
+       "velocity": 0.89,
+       "playbackRate": 1.681793
+      },
+      {
+       "start": "2:3+3/32",
+       "pitch": "snare",
+       "velocity": 0.905,
+       "playbackRate": 1.731073
+      },
+      {
+       "start": "2:3+1/8",
+       "pitch": "snare",
+       "velocity": 0.92,
+       "playbackRate": 1.781797
+      },
+      {
+       "start": "2:3+5/32",
+       "pitch": "snare",
+       "velocity": 0.935,
+       "playbackRate": 1.834008
+      },
+      {
+       "start": "2:3+3/16",
+       "pitch": "snare",
+       "velocity": 0.95,
+       "playbackRate": 1.887749
+      },
+      {
+       "start": "2:3+7/32",
+       "pitch": "snare",
+       "velocity": 0.965,
+       "playbackRate": 1.943064
+      }
+     ]
+    },
+    {
+     "id": "last",
+     "bars": 1,
+     "notes": [
+      {
+       "start": "1:1+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "1:1+13/64",
+       "pitch": "hat",
+       "velocity": 0.34
+      },
+      {
+       "start": "1:2+1/8",
+       "pitch": "hat",
+       "velocity": 0.74
+      },
+      {
+       "start": "1:2+13/64",
+       "pitch": "hat",
+       "velocity": 0.32
+      },
+      {
+       "start": "1:3+1/8",
+       "pitch": "hat",
+       "velocity": 0.72
+      },
+      {
+       "start": "1:3+13/64",
+       "pitch": "hat",
+       "velocity": 0.36
+      },
+      {
+       "start": "1:4+5/64",
+       "pitch": "hat",
+       "velocity": 0.3
+      },
+      {
+       "start": "1:4+1/8",
+       "pitch": "hat",
+       "velocity": 0.76
+      },
+      {
+       "start": "1:4+13/64",
+       "pitch": "hat",
+       "velocity": 0.38
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bass-a",
+   "description": "808 voice 1 of 3 (round robin). Automation: choke, kick duck, section level.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/opus-bass/sub-808-cs2.wav"
+   },
+   "mix": {
+    "gainDb": -15
+   },
+   "effects": [
+    {
+     "type": "saturation",
+     "driveDb": 7,
+     "mix": 0.3
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 1100
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "seconds": 0
+      },
+      "value": -10,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 1.063428
+      },
+      "value": -10,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 1.071428
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 2.785712
+      },
+      "value": -10,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 3.420568
+      },
+      "value": -10,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 3.428568
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 5.142852
+      },
+      "value": -8,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 5.991994
+      },
+      "value": -7,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 5.999994
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 8.357135
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 8.56342
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 8.57142
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 10.071419
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 10.277704
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 10.285704
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 11.785703
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 11.991988
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 11.999988
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 13.714272
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 14.563414
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 14.571414
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 17.571411
+      },
+      "value": -11.666667,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 17.646411
+      },
+      "value": -6.666667,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 17.777697
+      },
+      "value": -6,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 17.785697
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 18.214268
+      },
+      "value": -4.666667,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.420553
+      },
+      "value": -4,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.428553
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 18.857124
+      },
+      "value": -7.666667,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.932124
+      },
+      "value": -2.666667,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.06341
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.07141
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 19.499981
+      },
+      "value": -0.666667,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.706266
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.714266
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 20.134837
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 20.142837
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 22.071407
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 22.277692
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 22.285692
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 23.785691
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 23.991976
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 23.999976
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 25.499975
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 25.574975
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 25.70626
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 25.71426
+      },
+      "value": -60
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "velocity": 0.9,
+       "playbackRate": 1
+      },
+      {
+       "start": "2:3+1/8",
+       "velocity": 0.9,
+       "playbackRate": 0.793701
+      },
+      {
+       "start": "4:1",
+       "velocity": 0.9,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "5:4+1/8",
+       "velocity": 0.6,
+       "playbackRate": 2
+      },
+      {
+       "start": "6:4+1/8",
+       "velocity": 0.6,
+       "playbackRate": 1.587401
+      },
+      {
+       "start": "7:4+1/8",
+       "velocity": 0.6,
+       "playbackRate": 1.33484
+      },
+      {
+       "start": "9:1",
+       "velocity": 0.9,
+       "playbackRate": 0.793701
+      },
+      {
+       "start": "11:2",
+       "velocity": 0.604,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "11:3+1/8",
+       "velocity": 0.685,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "12:1",
+       "velocity": 0.766,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "12:2+1/8",
+       "velocity": 0.847,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "12:4",
+       "velocity": 0.928,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "13:4+1/8",
+       "velocity": 0.6,
+       "playbackRate": 2
+      },
+      {
+       "start": "14:4+1/8",
+       "velocity": 0.6,
+       "playbackRate": 1.587401
+      },
+      {
+       "start": "15:4+1/8",
+       "velocity": 0.9,
+       "playbackRate": 0.749154,
+       "glide": {
+        "to": 1,
+        "duration": "1/8"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bass-b",
+   "description": "808 voice 2 of 3 (round robin). Automation: choke, kick duck, section level.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/opus-bass/sub-808-cs2.wav"
+   },
+   "mix": {
+    "gainDb": -15
+   },
+   "effects": [
+    {
+     "type": "saturation",
+     "driveDb": 7,
+     "mix": 0.3
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 1100
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "seconds": 1.071428
+      },
+      "value": -10,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 1.706284
+      },
+      "value": -10,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 1.714284
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 3.428568
+      },
+      "value": -10,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 4.491996
+      },
+      "value": -8.75,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 4.499996
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 6.857136
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 6.932136
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 7.920564
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 7.928564
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 8.57142
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 8.64642
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 8.917634
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 8.919634
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 8.994634
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 9.634848
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 9.642848
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 10.285704
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 10.360704
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 11.349132
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 11.357132
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 11.999988
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 12.074988
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 12.346202
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 12.348202
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 12.423202
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 13.063416
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 13.071416
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 17.14284
+      },
+      "value": -13,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 17.21784
+      },
+      "value": -8,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 17.349126
+      },
+      "value": -7.333333,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 17.357126
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 17.785697
+      },
+      "value": -6,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 17.991982
+      },
+      "value": -5.333333,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 17.999982
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 18.428553
+      },
+      "value": -9,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.503553
+      },
+      "value": -4,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.634839
+      },
+      "value": -3.333333,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.642839
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 19.07141
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.277695
+      },
+      "value": -1.333333,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.285695
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 19.714266
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.789266
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.920552
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.928552
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 20.571408
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 20.646408
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 21.634836
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 21.642836
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 22.285692
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 22.360692
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 22.631906
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 22.633906
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 22.708906
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 23.34912
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 23.35712
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 23.999976
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 24.074976
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 24.849118
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 24.857118
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 25.71426
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 25.78926
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 26.563402
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 26.571402
+      },
+      "value": -60
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:3+1/8",
+       "velocity": 0.9,
+       "playbackRate": 1
+      },
+      {
+       "start": "3:1",
+       "velocity": 0.9,
+       "playbackRate": 0.66742
+      },
+      {
+       "start": "5:1",
+       "velocity": 0.9,
+       "playbackRate": 1
+      },
+      {
+       "start": "6:1",
+       "velocity": 0.9,
+       "playbackRate": 0.793701
+      },
+      {
+       "start": "7:1",
+       "velocity": 0.9,
+       "playbackRate": 0.66742
+      },
+      {
+       "start": "8:1",
+       "velocity": 0.9,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "11:1",
+       "velocity": 0.55,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "11:2+1/8",
+       "velocity": 0.631,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "11:4",
+       "velocity": 0.712,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "12:1+1/8",
+       "velocity": 0.793,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "12:3",
+       "velocity": 0.874,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "13:1",
+       "velocity": 0.9,
+       "playbackRate": 1
+      },
+      {
+       "start": "14:1",
+       "velocity": 0.9,
+       "playbackRate": 0.793701
+      },
+      {
+       "start": "15:1",
+       "velocity": 0.9,
+       "playbackRate": 0.66742
+      },
+      {
+       "start": "16:1",
+       "velocity": 0.9,
+       "playbackRate": 1,
+       "glide": {
+        "to": 0.5,
+        "duration": "1/2"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bass-c",
+   "description": "808 voice 3 of 3 (round robin). Automation: choke, kick duck, section level.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/opus-bass/sub-808-cs2.wav"
+   },
+   "mix": {
+    "gainDb": -15
+   },
+   "effects": [
+    {
+     "type": "saturation",
+     "driveDb": 7,
+     "mix": 0.3
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 1100
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "seconds": 1.714284
+      },
+      "value": -10,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 2.777712
+      },
+      "value": -10,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 2.785712
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 4.499996
+      },
+      "value": -8.75,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 5.134852
+      },
+      "value": -8,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 5.142852
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 7.928564
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 8.003564
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 8.349135
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 8.357135
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 9.642848
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 9.717848
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 10.063419
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 10.071419
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 11.357132
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 11.432132
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 11.777703
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 11.785703
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 13.071416
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 13.146416
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 13.706272
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 13.714272
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 17.357126
+      },
+      "value": -7.333333,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 17.563411
+      },
+      "value": -6.666667,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 17.571411
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 17.999982
+      },
+      "value": -10.333333,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.074982
+      },
+      "value": -5.333333,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.206268
+      },
+      "value": -4.666667,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.214268
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 18.642839
+      },
+      "value": -3.333333,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.849124
+      },
+      "value": -2.666667,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 18.857124
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 19.285695
+      },
+      "value": -6.333333,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.360695
+      },
+      "value": -1.333333,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.491981
+      },
+      "value": -0.666667,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 19.499981
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 19.928552
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 20.134837
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 20.142837
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 21.642836
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 21.717836
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 22.063407
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 22.071407
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 23.35712
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 23.43212
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 23.777691
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 23.785691
+      },
+      "value": -60
+     },
+     {
+      "at": {
+       "seconds": 24.857118
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 25.069404
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 25.071404
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 25.146404
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 25.491975
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "seconds": 25.499975
+      },
+      "value": -60
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "2:1",
+       "velocity": 0.9,
+       "playbackRate": 0.793701
+      },
+      {
+       "start": "3:3+1/8",
+       "velocity": 0.9,
+       "playbackRate": 0.66742
+      },
+      {
+       "start": "5:3+1/8",
+       "velocity": 0.9,
+       "playbackRate": 1
+      },
+      {
+       "start": "6:3+1/8",
+       "velocity": 0.9,
+       "playbackRate": 0.793701
+      },
+      {
+       "start": "7:3+1/8",
+       "velocity": 0.9,
+       "playbackRate": 0.66742
+      },
+      {
+       "start": "8:3+1/8",
+       "velocity": 0.9,
+       "playbackRate": 0.749154,
+       "glide": {
+        "to": 0.793701,
+        "duration": "1/8"
+       }
+      },
+      {
+       "start": "11:1+1/8",
+       "velocity": 0.577,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "11:3",
+       "velocity": 0.658,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "11:4+1/8",
+       "velocity": 0.739,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "12:2",
+       "velocity": 0.82,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "12:3+1/8",
+       "velocity": 0.901,
+       "playbackRate": 0.749154
+      },
+      {
+       "start": "13:3+1/8",
+       "velocity": 0.9,
+       "playbackRate": 1
+      },
+      {
+       "start": "14:3+1/8",
+       "velocity": 0.9,
+       "playbackRate": 0.793701
+      },
+      {
+       "start": "15:3",
+       "velocity": 0.9,
+       "playbackRate": 0.749154
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
