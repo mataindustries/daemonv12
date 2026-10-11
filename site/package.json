@@ -1,0 +1,44 @@
+{
+  "name": "daemonv12-site",
+  "version": "0.1.0",
+  "description": "Public landing site for DaemonV12. Static, prerendered, isolated from the DaemonV12 package.",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vite build --ssr src/prerender.tsx --outDir .ssr --emptyOutDir && node scripts/prerender.mjs",
+    "preview": "vite preview --port 4173 --strictPort",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "test": "node --test \"tests/**/*.test.ts\"",
+    "check": "npm run typecheck && npm run lint && npm test",
+    "qa": "node scripts/qa.ts",
+    "og": "node scripts/og.ts",
+    "waveforms": "node scripts/extract-waveforms.ts",
+    "promo:web": "sh scripts/make-promo-web.sh",
+    "ghost-shift": "node scripts/extract-ghost-shift.ts"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "@fontsource-variable/archivo": "5.3.0",
+    "@fontsource-variable/jetbrains-mono": "5.3.0",
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "eslint": "9.39.5",
+    "globals": "17.12.0",
+    "playwright-core": "1.63.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.70.1",
+    "vite": "8.3.1"
+  }
+}
