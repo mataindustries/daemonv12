@@ -41,7 +41,7 @@ export const CUES = {
   drop2: {at: '11:1', snap: 'kick'},
   mcpToolsOut: {at: '11:4', snap: 'kick'},
   instruments: {at: '12:1', snap: 'kick'},
-  instrumentsOut: {at: '12:3'},
+  instrumentsOut: {at: '13:1'},
   compose: {at: '14:1', snap: 'kick'},
   edit: {at: '14:2', snap: 'kick'},
   process: {at: '14:3', snap: 'kick'},
