@@ -15,7 +15,7 @@ import type { Timeline } from './timing/timeline.ts';
 import { loadKits, readAsset, outputInAssets } from './project/assets.ts';
 import { type Kits } from './project/sample-schema.ts';
 import { createAudioProcessor, analyzeWav, type AudioProcessor, type AudioAnalysis, decodePcm, type Pcm } from './render/index.ts';
-import { renderSampledProject } from './sample-render.ts';
+import { renderSampledProject, playbackBudget } from './sample-render.ts';
 export interface Compilation {
   diagnostics: Diagnostic[]; omitted?: number; project: Project | null; timeline: Timeline | null; projectBytes?: Uint8Array;
   kits?: Kits; assets?: Map<string, {bytes:Buffer; pcm?:Pcm}>;
@@ -83,8 +83,16 @@ function compileWithAssets(loaded: LoadResult, path: string): Compilation {
       else compilation.sidechain={file:ducking.source,bytes:read.bytes!,pcm:decoded.pcm!};
     }
   }
+  if(!compilation.diagnostics.some(d=>d.severity==='error')) {
+    const budget=playbackBudget({...compilation,kits:kitData.kits,assets},productionRoute(compilation.project));
+    if(budget)compilation.diagnostics.push(budget);
+  }
   if(compilation.diagnostics.some(d=>d.severity==='error'))compilation.timeline=null;
   return {...compilation,kits:kitData.kits,assets,...capDiagnostics(compilation.diagnostics)};
+}
+// Any mix, effects, automation, master or render field selects the production route.
+export function productionRoute(project: Project): boolean {
+  return project.render!==undefined || project.master!==undefined || project.tracks.some(t=>t.mix!==undefined || t.effects!==undefined || t.automation!==undefined);
 }
 export function summarize(project: Project, timeline: Timeline) {
   return { title: project.title, bars: project.bars, timeSignature: `${project.timeSignature.numerator}/${project.timeSignature.denominator}`,
@@ -187,7 +195,7 @@ export async function runCommand(command: Command, path: string, options: Comman
       let soundfont: Soundfont | undefined;
       let renderer: AudioRenderer | undefined;
       let processor: AudioProcessor | undefined;
-      const production=compilation.project!.render!==undefined || compilation.project!.master!==undefined || compilation.project!.tracks.some(t=>t.mix!==undefined || t.effects!==undefined || t.automation!==undefined);
+      const production=productionRoute(compilation.project!);
       if(command==='render' && (production || options.format!==undefined)) {
         const probe=await createAudioProcessor({env:options.env??{},timeoutMs:options.timeoutMs});
         if(probe.diagnostic)diagnostics.push(probe.diagnostic);else processor=probe.value;

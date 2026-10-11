@@ -23,6 +23,9 @@ GLASS//FIRE masters and stems are pinned in the test suite).
   resolved offset and voice length; `samples.playback` names the algorithm. The nine
   MCP tools accept the fields; there is no new tool. Agent-facing hints convert
   semitone guesses and redirect field aliases.
+- **Render budget.** Compilation rejects projects whose transformed voices would
+  exceed one billion interpolation taps in total or a 128 MiB buffer per voice,
+  before any audio work, with a structured `OUT_OF_RANGE` diagnostic.
 - **GHOST//SHIFT.** A 12-second starter project in which one GLASSHOUSE vocal sample
   performs a whole lead. `npm run demo:ghost-shift`, `npm run test:v06`.
 - [V0_6_SAMPLE_PERFORMANCE.md](docs/V0_6_SAMPLE_PERFORMANCE.md) is the contract.

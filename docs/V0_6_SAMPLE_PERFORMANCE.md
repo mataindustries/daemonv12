@@ -167,6 +167,39 @@ series in z²). No platform math library enters a performed voice, so its bytes 
 identical on every platform and Node version. Golden SHA-256 values in the test
 suite pin the voice and mix bytes.
 
+## Render budget
+
+Interpolation costs CPU and memory in proportion to the voices that use it. A compact
+project can repeat slowed voices through overlapping clips until it describes hours of
+work, so every compilation (validate, midi, render and the MCP project tools) checks a
+budget from project and WAV metadata before any audio work:
+
+```
+voice taps  = frames x (ceil(2 x 32 / (0.92 x min(1, 1/fastest rate))) + 1)
+voice bytes = frames x channels x 8
+```
+
+`frames` is the voice length as rendered: cut at the permitted audio boundary on the
+production route. `fastest rate` is the higher of `playbackRate` and `glide.to`,
+because pitching up widens the kernel. The tap count is the interpolator's own loop
+bound, so the estimate is conservative and within 3% for constant rates. A second
+channel shares the kernel weights and costs about 5% more CPU, so it adds memory,
+not taps. Unperformed voices and rate 1 without a glide copy source frames and cost
+nothing.
+
+| Limit | Value | Meaning |
+|---|---|---|
+| `interpolationTaps` | 1,000,000,000 in total | About 9 seconds of interpolation at the measured ~9 ns per tap |
+| `performedVoiceBytes` | 128 MiB per voice | About 95 s of stereo or 190 s of mono performed audio |
+
+A project over either limit fails compilation with `OUT_OF_RANGE` at `tracks[i]`. The
+message names the budget and the metric, `received` carries the metric and limit, and
+the hint says how to reduce the cost: fewer simultaneous or overlapping performed notes
+and clips, shorter sources or later offsets, rates nearer 1, or `render.duration`.
+Accumulation stops at the first voice past the limit, so even a 10,000-voice project
+is rejected in milliseconds. GHOST//SHIFT uses 8.5% of the tap budget and 0.4% of the
+voice memory limit.
+
 ## Sampler and drum kits
 
 Sampler notes and drum-kit notes accept the same fields. Kit hits resolve exactly

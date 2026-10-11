@@ -97,6 +97,22 @@ function interpolate(pcm: Pcm, playback: VoicePlayback, frames: number): Float64
   }
   return output;
 }
+// Pre-flight cost of one voice as `interpolate` would perform it, at most `limit` frames.
+// work: kernel taps evaluated, i.e. frames x taps per frame, with taps bounded by the fastest
+// rate the voice reaches (pitching up widens the kernel). A second channel shares the weights
+// and costs about 5% more, so work counts taps, not channels. bytes: the Float64 buffer
+// allocated for the voice, frames x channels x 8. Unperformed voices and rate 1 without a glide
+// read the source in place and cost neither.
+export function voiceCost(pcm: Pcm, playback?: VoicePlayback, limit = Infinity): { work: number; bytes: number } {
+  if (!playback || (playback.rate === 1 && !playback.glide)) return { work: 0, bytes: 0 };
+  const frames = Math.max(0, Math.min(limit, voiceFrames(pcm, playback)));
+  const fastest = Math.max(playback.rate, playback.glide?.to ?? playback.rate);
+  const taps = Math.ceil(2 * ZERO_CROSSINGS / (CUTOFF * Math.min(1, 1 / fastest))) + 1;
+  return { work: frames * taps, bytes: frames * pcm.channels * 8 };
+}
+// Render budget for performed voices, checked before any audio work: one billion kernel taps
+// (about 9 s of interpolation at the measured ~9 ns per tap) and 128 MiB per voice buffer.
+export const PLAYBACK_WORK_LIMIT = 1_000_000_000, PLAYBACK_VOICE_BYTES_LIMIT = 128 * 1024 * 1024;
 // The voice's source values in the source's channel layout, at most `limit` frames. Without
 // playback this is the source itself; rate 1 without a glide copies source frames exactly.
 export function voiceSamples(pcm: Pcm, playback?: VoicePlayback, limit = Infinity): Int16Array | Float64Array {
