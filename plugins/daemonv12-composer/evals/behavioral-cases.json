@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "status": "planned",
+  "evidenceKind": "supplied hypothetical observations; not measured audio",
+  "cases": [
+    {
+      "id": "B11",
+      "name": "Awkward but distinctive opening",
+      "prompt": "Improve this DaemonV12 opening without losing its identity.",
+      "observations": [
+        "The first sound is the clear signature hook.",
+        "The first beat obscures the pulse and the hook's final gesture does not connect to the groove entrance.",
+        "The groove later uses the same timbre, but different phrasing makes the entrance feel pasted in."
+      ],
+      "acceptance": [
+        "Reviews the first 1, 3 and 5 seconds as distinct questions.",
+        "Diagnoses deliberate gesture, pulse/context and continuity rather than merely confirming hook presence.",
+        "Proposes a cheap timing, trim, pickup, answer or context test and compares the full entrance."
+      ],
+      "failureSignals": ["Makes the opening louder as the primary fix.", "Passes the opening solely because identity exists at second zero."]
+    },
+    {
+      "id": "B12",
+      "name": "Technically perfect but safe",
+      "prompt": "V3 is clean, coherent, balanced and complete, but feels too safe. Decide the next step.",
+      "observations": ["There is no obvious technical defect.", "The hook and arrangement remain predictable throughout.", "V1, V2 and V3 were complete meaningful renders."],
+      "acceptance": [
+        "Invokes a Risk Pass and proposes exactly one risk tied to the thesis.",
+        "States upside, downside, minimum cheap comparison and keep/revert criterion.",
+        "Accepts reverting a failed test; does not assume strange means better."
+      ],
+      "failureSignals": ["Polishes gain or metrics indefinitely.", "Bundles unrelated risks or forces a risky change despite stronger musical evidence for the original."]
+    },
+    {
+      "id": "B13",
+      "name": "Louder but smaller payoff",
+      "prompt": "The DaemonV12 payoff measures louder but feels smaller. Diagnose and propose a revision.",
+      "observations": [
+        "Supplied section measurements show higher payoff loudness than the establishment section.",
+        "Payoff attacks are softened, stereo contrast decreases and useful pitch range contracts.",
+        "The arrangement adds sustained low-mid layers and repeats the hook unchanged."
+      ],
+      "acceptance": [
+        "Uses the Impact Test across low end, transients, register, presence, top end, stereo, density, space and musical consequence.",
+        "Relates the observed changes to scale and proposes a focused supported arrangement test.",
+        "Treats the supplied values as proxy evidence and preserves style-appropriate sparse arrivals."
+      ],
+      "failureSignals": ["Uses master gain as the main remedy.", "Treats higher loudness as proof of stronger impact."]
+    },
+    {
+      "id": "B14",
+      "name": "Over-analysis loop",
+      "prompt": "At V4, I want to write another analyzer to resolve a tiny spectral uncertainty. Decide whether to do it.",
+      "observations": ["V3 and V4 made only marginal improvements.", "Existing native analysis and section comparisons are available.", "No specific audible decision currently depends on the extra number."],
+      "acceptance": [
+        "Applies musical hypothesis, minimum evidence, cost and keep/revert requirements.",
+        "Declines unnecessary new tooling because no unresolved musical decision depends on it.",
+        "Compares the stronger existing candidate and stops if final checks pass; leaves room for a genuine material concern or user override."
+      ],
+      "failureSignals": ["Builds software just to obtain more metrics.", "Uses the five-version default as an absolute engine limit."]
+    },
+    {
+      "id": "B15",
+      "name": "Low-mid buildup",
+      "prompt": "A DaemonV12 section feels boxy and loses punch. Several parts overlap roughly 120–500 Hz. Plan the next test.",
+      "observations": ["Bass calls, a pad, distorted source material and long tails overlap.", "Some low-mid body serves the musical thesis.", "No conventional EQ control has been established in the current engine."],
+      "acceptance": [
+        "Examines overlapping roles, register, source length and tails before broad processing.",
+        "Retains useful warmth/body and proposes a focused subtraction, spacing or verified filtering test.",
+        "Checks engine support before recommending effects."
+      ],
+      "failureSignals": ["Treats 120–500 Hz as universally undesirable.", "Invents an EQ control or removes all low-mid energy."]
+    },
+    {
+      "id": "B16",
+      "name": "Width from arrangement",
+      "prompt": "Panning a mono sound in this DaemonV12 payoff did not create the width I expected. Explain and propose a supported test.",
+      "observations": ["The source is mono and is duplicated equally into both render channels before pan.", "The payoff shifts the same source left and right without adding differing content.", "Current-engine pan semantics must be verified from source/spec."],
+      "acceptance": [
+        "Verifies balance/pan semantics and distinguishes positioning from decorrelated content.",
+        "Proposes differing answers, timing, octave/timbral doubles or section contrast using supported controls.",
+        "Uses stereo and mono comparisons as evidence and acknowledges phase risks."
+      ],
+      "failureSignals": ["Claims panning alone generates new decorrelated stereo information.", "Chases maximum side energy as a quality target."]
+    },
+    {
+      "id": "B17",
+      "name": "Interesting ending damages replay",
+      "prompt": "The DaemonV12 ending is technically clever, but returning to the start feels awkward. Compare alternatives.",
+      "observations": ["The last three seconds introduce an unrelated texture with a long tail.", "The opening's deliberate gesture is lost when played after that tail.", "The ending is technically valid and unclipped."],
+      "acceptance": [
+        "Reviews final three seconds and end-to-start continuity.",
+        "Compares at least two thesis-related replay alternatives and a deliberate version of the existing gesture if useful.",
+        "Chooses from musical consequence rather than effect novelty; does not ban the technique."
+      ],
+      "failureSignals": ["Keeps the effect just because it is technically interesting.", "Mistakes a valid file ending for a replayable composition."]
+    },
+    {
+      "id": "B18",
+      "name": "Correct decision is stop",
+      "prompt": "V4 is strong. The proposed V5 has no clear audible hypothesis. Should I render again or lock?",
+      "observations": [
+        "Thesis, intentional opening, readable hook, groove, consequential payoff and replay ending pass review.",
+        "No obvious technical defect remains; the Risk Pass was tested and reverted on musical evidence.",
+        "Two recent revisions were marginal and remaining ideas are speculative."
+      ],
+      "acceptance": ["Locks the stronger V4 rather than inventing a V5 task.", "Records stop decision, uncertainty and deterministic lock evidence.", "Distinguishes the default iteration budget from user overrides or a genuine new defect."],
+      "failureSignals": ["Runs V5 merely to fill the available version count.", "Builds another analyzer without a decision it could change."]
+    }
+  ]
+}
