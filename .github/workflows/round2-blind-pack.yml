@@ -1,0 +1,163 @@
+name: Build Round 2 blind listening pack
+
+on:
+  push:
+    branches:
+      - benchmark/round2-blind-pack
+    paths:
+      - .github/workflows/round2-blind-pack.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout blind-pack branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install audio tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg zip
+
+      - name: Fetch locked contestant branches
+        run: |
+          git fetch origin benchmark/round2-opus-composer:refs/remotes/origin/benchmark/round2-opus-composer
+          git fetch origin benchmark/round2-haiku-composer:refs/remotes/origin/benchmark/round2-haiku-composer
+          git fetch origin beat-battle/round2-astra-latch-release:refs/remotes/origin/beat-battle/round2-astra-latch-release
+
+      - name: Extract anonymous source files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/round2-src blind-build
+
+          python3 - <<'PY'
+          import json, subprocess, pathlib
+          m=json.load(open('blind/round2/MAPPING.json'))
+          out=pathlib.Path('/tmp/round2-src')
+          for label, item in m['blind_to_contestant'].items():
+              ref='origin/'+item['branch']
+              path=item['source_path']
+              data=subprocess.check_output(['git','show',f'{ref}:{path}'])
+              (out/f'{label}.mp3').write_bytes(data)
+          PY
+
+          for f in /tmp/round2-src/*.mp3; do
+            ffprobe -v error -show_entries stream=codec_name,sample_rate,channels -of default=nw=1 "$f"
+          done
+
+      - name: Loudness-match with gain only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib, re, subprocess, json, hashlib
+
+          TARGET=-17.0
+          TP_LIMIT=-0.5
+          srcdir=pathlib.Path('/tmp/round2-src')
+          outdir=pathlib.Path('blind-build')
+          outdir.mkdir(exist_ok=True)
+
+          def measure(path):
+              p=subprocess.run([
+                  'ffmpeg','-hide_banner','-nostats','-i',str(path),
+                  '-filter_complex','ebur128=peak=true','-f','null','-'
+              ],stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,text=True,check=False)
+              text=p.stderr
+              # Use the last summary values.
+              Is=re.findall(r'I:\s*(-?\d+(?:\.\d+)?)\s+LUFS',text)
+              Ps=re.findall(r'Peak:\s*(-?\d+(?:\.\d+)?)\s+dBFS',text)
+              if not Is or not Ps:
+                  raise RuntimeError(f'Could not parse EBU R128 output for {path}')
+              return float(Is[-1]), float(Ps[-1])
+
+          report={}
+          for label in ['A','B','C']:
+              src=srcdir/f'{label}.mp3'
+              out=outdir/f'{label}.mp3'
+              source_i, source_tp=measure(src)
+              gain=TARGET-source_i
+              if source_tp+gain > TP_LIMIT:
+                  gain=TP_LIMIT-source_tp
+
+              # Iterate against EBU R128 after MP3 encoding, always re-encoding
+              # from the original source so there is only one lossy generation.
+              for _ in range(4):
+                  subprocess.run([
+                      'ffmpeg','-y','-hide_banner','-loglevel','error',
+                      '-i',str(src),'-af',f'volume={gain:.4f}dB',
+                      '-map_metadata','-1','-write_xing','0',
+                      '-c:a','libmp3lame','-b:a','320k',str(out)
+                  ],check=True)
+                  final_i, final_tp=measure(out)
+                  delta=TARGET-final_i
+                  if abs(delta) <= 0.05:
+                      break
+                  proposed=gain+delta
+                  if final_tp+delta > TP_LIMIT:
+                      proposed=gain+(TP_LIMIT-final_tp)
+                  gain=proposed
+
+              final_i, final_tp=measure(out)
+              report[label]={
+                  'source_lufs':source_i,
+                  'source_true_peak_dbtp':source_tp,
+                  'applied_gain_db':round(gain,4),
+                  'final_lufs':final_i,
+                  'final_true_peak_dbtp':final_tp,
+                  'sha256':hashlib.sha256(out.read_bytes()).hexdigest(),
+              }
+
+          mapping_bytes=pathlib.Path('blind/round2/MAPPING.json').read_bytes()
+          commitment=hashlib.sha256(mapping_bytes).hexdigest()
+          pathlib.Path('blind-build/NORMALIZATION.json').write_text(
+              json.dumps({'target_lufs':TARGET,'true_peak_limit_dbtp':TP_LIMIT,
+                          'files':report,'mapping_commitment_sha256':commitment},
+                         indent=2)+'\n'
+          )
+          pathlib.Path('blind-build/MAPPING_COMMITMENT.txt').write_text(commitment+'\n')
+          print(json.dumps({'files':report,'mapping_commitment_sha256':commitment},indent=2))
+          PY
+
+      - name: Strip-check and validate blind outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in blind-build/A.mp3 blind-build/B.mp3 blind-build/C.mp3; do
+            ffprobe -v error -show_entries format=duration:stream=codec_name,sample_rate,channels -of default=nw=1 "$f"
+            if ffprobe -v error -show_entries format_tags -of json "$f" | grep -Eqi 'astra|opus|haiku|claude|gpt|soft teeth|next door|idle hymn|glass garage|swing arm'; then
+              echo "Identity metadata found in $f"
+              exit 1
+            fi
+          done
+
+      - name: Build anonymous ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp blind/round2/SCORECARD.md blind-build/SCORECARD.md
+          (
+            cd blind-build
+            zip -9 ../daemonv12-round2-blind.zip A.mp3 B.mp3 C.mp3 SCORECARD.md NORMALIZATION.json MAPPING_COMMITMENT.txt
+          )
+          unzip -l daemonv12-round2-blind.zip
+          if unzip -Z1 daemonv12-round2-blind.zip | grep -qi mapping.json; then
+            echo "Private mapping leaked into ZIP"
+            exit 1
+          fi
+          sha256sum daemonv12-round2-blind.zip
+
+      - name: Upload blind listening package
+        uses: actions/upload-artifact@v4
+        with:
+          name: daemonv12-round2-blind
+          path: daemonv12-round2-blind.zip
+          if-no-files-found: error
+          retention-days: 30
