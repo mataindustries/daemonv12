@@ -12,8 +12,8 @@ feedback, measured evidence, score-based inference and unavailable checks.
 ## MUSICAL THESIS
 
 Hook:
-Rhythmic identity:
-Low-end role:
+Rhythmic identity or pacing:
+Low-end role (or deliberate absence):
 Contrast idea:
 Payoff:
 Ending:
@@ -50,6 +50,10 @@ First 5 seconds — continuity into groove/pacing; trim/shift evidence:
 Setup → arrival: low end, attacks, register, presence, top, stereo content,
 density, negative space, consequence. Evidence / uncertainty / decision:
 
+## FINAL 3 SECONDS
+
+Final gesture / tail / ending-to-opening relationship / whole-arc recheck:
+
 ## TRANSLATION ROBUSTNESS PROXY
 
 Mono / useful midrange identity / attacks / kick-bass / width reliance:
@@ -73,10 +77,6 @@ Repeat for each proposed version after V3, including a rendered risk test.
 - Keep/revert criterion:
 - Result / comparison / decision:
 - Beyond V5 only: unusually strong reason or user override:
-
-## FINAL 3 SECONDS
-
-Final gesture / tail / ending-to-opening relationship / whole-arc recheck:
 
 ## STOP DECISION
 

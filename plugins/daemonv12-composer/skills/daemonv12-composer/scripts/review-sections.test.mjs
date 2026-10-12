@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
-import { mkdtemp, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, writeFile, rm, symlink } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { test, after } from 'node:test';
 import { reviewSections } from './review-sections.mjs';
 
@@ -247,4 +247,37 @@ test('CLI emits JSON on success, clear errors on failure and a small help messag
   assert.match(failure.stderr, /review-sections: Cannot read section JSON/);
   assert.equal(run(path).status, 1);
   assert.equal(run('--help').status, 0);
+});
+
+test('CLI runs through relative paths and symlinks while library imports stay silent', async t => {
+  const { path } = await fixture({ frames: 4800 });
+  const sectionPath = join(directory, 'symlink-sections.json');
+  const input = definition({ name: 'x', start: 0, end: 0.1 });
+  await writeFile(sectionPath, JSON.stringify(input));
+  const script = fileURLToPath(new URL('./review-sections.mjs', import.meta.url));
+  const expected = await reviewSections(path, input);
+  const relative = spawnSync(process.execPath, ['./review-sections.mjs', path, sectionPath], { cwd: dirname(script), encoding: 'utf8' });
+  assert.equal(relative.status, 0, relative.stderr);
+  assert.deepEqual(JSON.parse(relative.stdout), expected);
+  const link = join(directory, 'review-sections-link.mjs');
+  try {
+    await symlink(script, link, 'file');
+  } catch (error) {
+    if (!['EPERM', 'EACCES', 'ENOSYS', 'ENOTSUP'].includes(error.code)) throw error;
+    t.skip(`File symlinks unavailable: ${error.code}`);
+    return;
+  }
+  for (const flags of [[], ['--preserve-symlinks-main']]) {
+    const success = spawnSync(process.execPath, [...flags, link, path, sectionPath], { encoding: 'utf8' });
+    assert.equal(success.status, 0, success.stderr);
+    assert.deepEqual(JSON.parse(success.stdout), expected);
+  }
+  const importer = join(directory, 'import-review-sections.mjs');
+  await writeFile(importer, `import ${JSON.stringify(pathToFileURL(link).href)};\n`);
+  for (const args of [[importer], ['--input-type=module', '--eval', `import ${JSON.stringify(pathToFileURL(link).href)};`, 'missing-entry.mjs']]) {
+    const imported = spawnSync(process.execPath, args, { encoding: 'utf8' });
+    assert.equal(imported.status, 0, imported.stderr);
+    assert.equal(imported.stdout, '');
+    assert.equal(imported.stderr, '');
+  }
 });

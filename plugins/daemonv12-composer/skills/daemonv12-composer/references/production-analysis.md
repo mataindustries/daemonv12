@@ -193,10 +193,19 @@ Wholly unavailable bands and their relative dB differences are `null`, rather
 than measured zero energy. Partially available bands cover only their reported
 range; compare versions with equivalent methods/sample rates.
 
-Activity counts rises over 6 dB between roughly 10 ms RMS blocks when the new
-block is above −60 dBFS. This is an envelope activity proxy, not a count of musical
-attacks, a loudness target or a grade for groove. Sustained bright material and
-sharp attacks can differ without the proxy explaining why.
+`activity.rmsRisesPerSecond` counts rises over 6 dB in whole-mix RMS between
+roughly 10 ms blocks when the new block is above −60 dBFS. Use it as one rough
+activity/contrast clue, not a musical onset counter or a target. Short attacks
+can be masked by sustained material in this measurement, even when their peaks
+exceed the sustain. An attack exactly at a section boundary can be missed because
+the first block has no previous comparison block; marginal detections also depend
+somewhat on block alignment. Zero or lower rises/s does not prove that rhythmic
+attacks disappeared.
+
+When rhythm matters, cross-check score/project events, percussion or rhythmic
+stems, relevant spectral-band changes, and waveform/transient evidence. Do not
+remove pads or sustains merely because this proxy drops. Keep it as evidence
+alongside the arrangement and other measurements, never a grade for groove.
 
 For stereo, `midRms`/`sideRms` use `(L+R)/2` and `(L-R)/2`;
 `sideEnergyFraction` is side energy divided by mid-plus-side energy. Correlation
@@ -222,8 +231,9 @@ edit, one render or existing analysis suffices before building anything.
 revisions produce only marginal improvement, compare them, keep the stronger
 one and stop speculative iteration. Complete the required review/Risk Pass and
 address a demonstrated technical defect before claiming a clean lock. Any repair
-still needs a bounded hypothesis and the applicable version-budget exception;
-disclose a defect that cannot be resolved within user constraints.
+still needs a bounded hypothesis and, beyond V5, an unusually strong reason
+recorded before work or a user override; disclose a defect that cannot be resolved
+within user constraints.
 The default five-version budget and exceptions live in [SKILL.md](../SKILL.md);
 it is a workflow budget, not an engine limit.
 

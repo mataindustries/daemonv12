@@ -14,7 +14,9 @@ that frozen revision. All implementation changes are within
   SHA-256: `0a4aad95ce337878ad38802ebf0daa3fde76abe3f65400c86bcbb1ec0b3ab883`.
 - YAML frontmatter, skill name/description, local links, UTF-8, final newlines,
   trailing whitespace, balanced fences, eval-fixture integrity and Composer-only
-  tracked diff: passed. Six package mutation tests passed, with no skips.
+  tracked diff: passed. Six package mutation tests and one CLI symlink regression
+  passed: **7 tests, zero failed or skipped**. Full package validation also passed
+  through a symlink with and without `--preserve-symlinks-main`.
 - The skill-creator Python quick validator could not import PyYAML in this
   environment. The standards YAML parser and frontmatter mutation checks in the
   package validator passed; no repository dependency was added for that check.
@@ -29,11 +31,13 @@ that frozen revision. All implementation changes are within
 - New JavaScript syntax checks and `git diff --check`: passed. The repository
   has no separate lint command; typecheck and package text checks are recorded
   rather than claiming an unrun linter.
-- Section helper: **13 deterministic synthetic tests passed, zero failed or
+- Section helper: **14 deterministic synthetic and CLI tests passed, zero failed or
   skipped**. Coverage includes sample boundaries, mono/stereo, silence, louder,
   bass/low-mid/bright sections, activity, differing/anti-phase/balance-only stereo,
   formats, malformed input, nonfinite values, CLI errors, block/section-edge
-  impulses and unavailable bands at low sample rates. No contestant audio was used.
+  impulses and unavailable bands at low sample rates. The symlink regression
+  covers relative invocation, both symlink modes and silent library imports.
+  No contestant audio was used.
 
 Temporary Ajv/YAML test dependencies live under `/tmp`; the root manifest,
 lockfile and engine dependencies are unchanged. Reproduction commands are in
@@ -65,7 +69,7 @@ routing reliability result.
 | Review a DaemonV12 pull request. | Ignore / Ignore |
 | Change the sampler implementation. | Ignore / Ignore |
 | How does FluidSynth work? | Ignore / Ignore |
-| Make a beat in Ableton Live. | Ignore / Ignore |
+| Make this Ableton Live mix hit harder; DaemonV12 is not part of this project. | Ignore / Ignore |
 
 ## New scenarios: independent reasoning audit
 
@@ -115,13 +119,21 @@ The ten requested challenges were reviewed independently and by the author.
 - Low-rate WAVs initially reported misleading band bounds/zero unmeasurable
   high energy. Explicit effective band availability addresses the ambiguity.
 
-Plain numbered decisions and a compact log support smaller-model use. A run
-with a smaller model has not been performed, so this remains a design review.
+Plain numbered decisions and a compact log support smaller-model use.
+
+## Completed small-model smoke test
+
+A real Haiku 5.5 small-model smoke test completed successfully. The V1/V2/V3
+workflow completed, and one Risk Pass was tested as V4. V4 was retained based on
+evidence; compute discipline stopped before V5. The final result passed human
+listening, and the deterministic rerender matched. The engine and skill remained
+unchanged during the smoke test.
 
 ## Outstanding scope
 
-Preserved B01–B10 and expanded B11–B18 remain a plan for full observed behavioral
-runs. The eight reasoning audits above are only diagnosis checks; B06's actual
-three-version composition workflow was not run. Installed-host activation,
-cross-model execution, actual cross-device listening and human blind judgments
-of musical improvement remain unperformed. No benchmark was initiated.
+The full B01–B18 matrix remains a plan for observed behavioral runs. The eight
+reasoning audits above are only diagnosis checks; the completed smoke test
+exercises B06's actual three-version composition workflow. Installed-host
+activation, broader cross-model evaluation, actual cross-device listening and
+human blind judgments of musical improvement remain unperformed. No benchmark
+was initiated.

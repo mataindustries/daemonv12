@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import test from 'node:test';
@@ -79,5 +80,28 @@ test('engine isolation rejects all tracked paths outside Composer', () => {
   checkIsolation(['plugins/daemonv12-composer/plugin.json', 'plugins/daemonv12-composer/evals/README.md']);
   for (const path of ['src/render/production.ts', 'tests/engine.test.ts', 'README.md', 'package.json', 'plugins/other/plugin.json']) {
     assert.throws(() => checkIsolation([path]), /Changes outside Composer/);
+  }
+});
+
+test('package validator CLI executes through symlinks', t => {
+  const directory = mkdtempSync(join(tmpdir(), 'composer-validator-cli-'));
+  try {
+    const script = fileURLToPath(new URL('./validate-package.mjs', import.meta.url));
+    const link = join(directory, 'validate-package-link.mjs');
+    try {
+      symlinkSync(script, link, 'file');
+    } catch (error) {
+      if (!['EPERM', 'EACCES', 'ENOSYS', 'ENOTSUP'].includes(error.code)) throw error;
+      t.skip(`File symlinks unavailable: ${error.code}`);
+      return;
+    }
+    for (const flags of [[], ['--preserve-symlinks-main']]) {
+      const result = spawnSync(process.execPath, [...flags, link, '--invalid'], { encoding: 'utf8' });
+      assert.equal(result.status, 1);
+      assert.equal(result.stdout, '');
+      assert.match(result.stderr, /Composer package validation failed: Usage:/);
+    }
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
   }
 });

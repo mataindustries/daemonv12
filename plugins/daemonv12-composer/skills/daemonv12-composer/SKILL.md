@@ -26,18 +26,19 @@ MCP installation. This skill provides process, not a quality guarantee.
    intended route; use documented `init` for a new workspace. Diagnose actual
    failures and disclose blocked capabilities. Consult [headless audio](references/headless-audio.md)
    only for an audio-device initialization problem; do not apply its wrapper automatically.
-2. **Write a six-line musical thesis:** hook; rhythmic identity; low-end role;
-   contrast idea; payoff; ending. For an existing piece, infer and preserve its
-   thesis unless the brief asks for a new direction. Read [short-form composition](references/short-form-composition.md)
+2. **Write a six-line musical thesis:** hook; rhythmic identity or pacing;
+   low-end role (or deliberate absence); contrast idea; payoff; ending.
+   For an existing piece, infer and preserve its thesis unless the brief asks
+   for a new direction. Read [short-form composition](references/short-form-composition.md)
    for arc, continuity, development and replay decisions; no fixed structure,
    key, BPM or palette is required.
 3. **Choose an intentional palette.** Give each sound a job. Check tuning,
    source length, transformed tails and kick/bass overlap. More layers do not
    automatically create richness. Use supported timing/source preparation for
    bass monophony where useful; do not invent sampler choke or note-off controls.
-4. **Render complete V1 quickly.** Include the ending and identity within roughly
-   3–5 seconds. Establish repetition, then change its consequence. Leave space
-   for the central idea before polishing details.
+4. **Render complete V1 quickly.** Include a complete ending; establish identity
+   within roughly the first 3–5 seconds. Establish repetition, then change its
+   consequence. Leave space for the central idea before polishing details.
 
 ## 5–9. Evidence and three serious versions
 
@@ -139,9 +140,10 @@ reject a risk before rendering another complete version.
 If two consecutive revisions yield only marginal improvements, compare them,
 keep the stronger one and stop speculative iteration. Complete the required
 review/Risk Pass and address a demonstrated technical defect before claiming a
-clean lock. A necessary repair still needs a bounded hypothesis and the version
-budget exception when applicable; disclose a defect that cannot be resolved
-within user constraints. Do not create analysis software unless **all three** hold:
+clean lock. A necessary repair still needs a bounded hypothesis and, beyond V5,
+an unusually strong reason recorded before work or a user override; disclose a
+defect that cannot be resolved within user constraints. Do not create analysis
+software unless **all three** hold:
 there is a specific unresolved musical question; existing DaemonV12/FFmpeg/tools
 cannot answer it; and its answer could plausibly change a musical decision.
 “I want more metrics” is insufficient. Prefer composition over tooling.

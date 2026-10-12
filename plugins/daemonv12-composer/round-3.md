@@ -21,6 +21,13 @@ layering, rhythm, effects and automation. Apply any drums/sub support constraint
 identically. This proposal aims to isolate composition and sound-design judgment
 more cleanly than Open Class; it does not establish a winning musical formula.
 
+DaemonV12 sampler voices play through the remaining source material rather than
+having an arbitrary note-off/choke. Before Round 3, the organizer must define
+source length, whether contestants may create pre-trimmed slices, whether
+reversed/preprocessed derivatives are allowed, and whether all transforms must
+begin from the same exact source file. A short source of roughly 1–2 seconds is
+recommended so transformed-render budget trivia does not dominate the benchmark.
+
 Before starting, the organizer should settle the source and its tuning/license,
 brief/duration, exact allowed transformations/source preparation, support-sound
 limits, common tool/time budget and handling of V4/V5. Require complete V1–V3;

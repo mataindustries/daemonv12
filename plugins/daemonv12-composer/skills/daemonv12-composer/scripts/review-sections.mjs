@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Section evidence only: these measurements do not rank musical quality.
 import { open, readFile } from 'node:fs/promises';
-import { pathToFileURL } from 'node:url';
+import { realpathSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 const FFT_SIZE = 2048;
 const FFT_HOP = FFT_SIZE / 2;
@@ -304,7 +305,15 @@ export async function reviewSections(wavPath, definition) {
   }
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+function isMainModule() {
+  try {
+    return Boolean(process.argv[1]) && realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));
+  } catch {
+    return false;
+  }
+}
+
+if (isMainModule()) {
   try {
     const args = process.argv.slice(2);
     if (args.length === 1 && ['--help', '-h'].includes(args[0])) console.log(USAGE);

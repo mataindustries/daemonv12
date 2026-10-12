@@ -2,12 +2,13 @@
 // Package integrity only: no musical-quality score or simulated host activation.
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { readdirSync, readFileSync, existsSync } from 'node:fs';
+import { readdirSync, readFileSync, existsSync, realpathSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, isAbsolute, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const evalDir = dirname(fileURLToPath(import.meta.url));
+const modulePath = realpathSync(fileURLToPath(import.meta.url));
+const evalDir = dirname(modulePath);
 export const frozenBase = '56dbdff62bf78e70e898f0dbb49f8044cd561655';
 export const pluginPrefix = 'plugins/daemonv12-composer/';
 
@@ -135,7 +136,15 @@ export function validatePackage({ validatorsDir, base = frozenBase } = {}) {
   return { manifestSchema: schema.$id, version: manifest.version, packageFiles: files.length, activationFixtures: activationIds.size, behavioralCases: plannedIds.length, changedTrackedFiles: changed, engineIsolation: 'Composer-only tracked diff', base, limitations: 'Static package checks; no host activation, rendered behavior or human listening test.' };
 }
 
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+function isMainModule() {
+  try {
+    return Boolean(process.argv[1]) && realpathSync(process.argv[1]) === modulePath;
+  } catch {
+    return false;
+  }
+}
+
+if (isMainModule()) {
   try {
     const options = {};
     for (let i = 2; i < process.argv.length; i += 2) {
