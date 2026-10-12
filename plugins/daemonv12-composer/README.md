@@ -1,124 +1,142 @@
-# DaemonV12 Composer · 0.1.0
+# DaemonV12 Composer · 0.2.0
 
-A reusable composition and production workflow for agents using DaemonV12.
-It turns a brief into a musical thesis, intentional palette, complete first
-render, at least three meaningful versions, and a documented final lock.
-The default short-record focus is 25–30 seconds; the principles also support
-20–45 second cues and other user-specified durations and genres.
+A reusable plugin/skill for composing and improving music with DaemonV12.
+v0.2 moves from avoiding production failures toward memorable musical decisions.
+It incorporates human blind-listening findings from internal benchmark rounds:
+immediate identity can still feel awkward, polished music can remain too safe,
+and originality or greater loudness can coexist with weak physical impact.
+These observations guide questions, not a fixed genre or a universal quality claim.
 
-## What Round 1 taught us
+v0.1 stays frozen at `56dbdff62bf78e70e898f0dbb49f8044cd561655`.
+v0.2 is a new revision of the same `daemonv12-composer` plugin. The engine
+implementation, project format and render behavior are unchanged.
 
-Round 1 paired raw models with DaemonV12 and no composer skill. All contestants
-used engine commit `ed75e9e2a0172266e56b292886ad7c1500677862`. Human blind results:
+## What changed
 
-| Track | Score | Useful lesson |
-| --- | --- | --- |
-| Next Door | 95/100 | Strongest hook, production, originality, engine showcase and effective drop; an odd ending reduced replayability. |
-| SOFT TEETH | 90/100 | Good groove; the beginning needed a stronger identity. |
-| Idle Hymn | 88/100 | Trippy development after about 17 seconds; perceived size needed work. |
+- **Opening Continuity:** first 1 second for deliberate impression, 3 seconds
+  for identity, 5 seconds for connection into the piece. Distinctive does not
+  necessarily mean coherent; trimming or shifting may help more than volume.
+- **Impact Test:** compare the setup and arrival across low end, attacks,
+  register, presence, top end, stereo content, density, negative space and
+  musical consequence. A louder payoff can feel smaller; an intimate arrival
+  can still change the piece's meaning.
+- **Risk Pass:** after competent V3, propose one high-upside musical decision,
+  upside/downside, a cheap test and keep/revert evidence. Random strangeness is
+  not the goal. A failed risk may be reverted; a clearly stronger existing
+  version can stay.
+- **Compute Discipline:** every version after V3 states an audible hypothesis,
+  minimum evidence, cost and keep/revert criterion. Default maximum is five
+  serious versions; beyond V5 needs an unusually strong reason, and the user
+  can override it. Two marginal revisions trigger comparison and stopping.
+  New software needs an unresolved musical question that existing tools cannot
+  answer and whose answer could change a decision.
+- **Translation Robustness:** mono, midrange identity, attacks, kick/bass and
+  width-dependence checks provide proxy evidence. Human phone/car/headphone
+  listening remains the judge.
+- **Stop Criteria:** lock when the thesis, opening, hook, movement, payoff and
+  replay ending work with no obvious technical defect. Speculative ideas do
+  not justify endless analysis.
 
-All three were considered replayable. This is a small set of human observations,
-not a universal ranking formula. The skill extracts early hooks, groove,
-consequential development, perceived size beyond loudness, and replay-friendly
-endings. It includes no contestant score files, custom samples, prescribed keys,
-tempos, harmonies, or song structures.
+The effective V1–V3 critique/render workflow remains. Core instructions are
+shorter; deeper analysis and musical examples live in references. Notes now
+explain useful versus crowded 120–500 Hz energy and stereo arrangement versus
+the engine's balance pan.
 
 ## Install and use
 
-Keep an existing DaemonV12 checkout and its normal CLI/audio tools. This plugin
-does not install the engine. From this repository root, a direct local Codex
-skill install is:
+Keep an existing DaemonV12 checkout and its documented CLI/audio tools. From
+this repository root, install the skill to a fresh local destination:
 
 ```sh
 mkdir -p .agents/skills
 cp -R plugins/daemonv12-composer/skills/daemonv12-composer .agents/skills/
 ```
 
-Use a fresh destination; if that skill is already installed, update it
-deliberately rather than creating a nested copy. Restart the client if discovery
-has not refreshed. Invoke explicitly in Codex:
+Update an existing copy deliberately rather than nesting another copy. Refresh
+host discovery as needed. Invoke explicitly:
 
 ```text
-$daemonv12-composer Make a replayable 30-second DaemonV12 boss cue.
+$daemonv12-composer Make a replayable 30-second DaemonV12 cue.
 ```
 
-Or tell any agent with file access:
+Or give an agent with file access this instruction:
 
 ```text
 Read plugins/daemonv12-composer/skills/daemonv12-composer/SKILL.md and follow it
 to improve this DaemonV12 composition. Load its linked references as needed.
 ```
 
-For plugin distribution, package **this directory** with `plugin.json` and
-`skills/` at the archive root. The portable manifest uses the current
-[OpenAI plugin format](https://developers.openai.com/plugins/build/plugins).
-Add the folder through the host's supported local marketplace or plugin import;
-for a repository marketplace, merge this entry into
-`.agents/plugins/marketplace.json` (do not overwrite an existing catalog):
+Package this directory with `plugin.json` and `skills/` at the archive root for
+a host's supported plugin import. The manifest follows the
+[Agent Plugins 1.0 schema](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json).
+Avoid installing both plugin and direct skill copies. No MCP server, connection,
+credentials, hook or automatic setup script is required.
+
+## review-sections helper
+
+Native DaemonV12 reports remain the source for whole-file peak, RMS, clipping,
+LUFS, LRA and true peak. The new dependency-free Node helper answers a narrower,
+repeated question: **how are named sections physically different?** It reports
+bounded-section duration, RMS/peak, approximate band energy, activity, stereo
+evidence and differences relative to the first listed section.
+
+Create `sections.json` with boundaries from the actual arrangement:
 
 ```json
 {
-  "name": "daemonv12-local",
-  "plugins": [{
-    "name": "daemonv12-composer",
-    "source": {"source": "local", "path": "./plugins/daemonv12-composer"},
-    "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
-    "category": "Productivity"
-  }]
+  "sections": [
+    {"name": "opening", "start": 0, "end": 5},
+    {"name": "groove", "start": 5, "end": 14},
+    {"name": "payoff", "start": 18, "end": 24},
+    {"name": "ending", "start": 24, "end": 28}
+  ]
 }
 ```
 
-The source path resolves from the repository root. Enable the plugin in the
-host; avoid installing both copies of the same skill. Other hosts can load the
-unchanged skill folder or read its files explicitly. No MCP server, app
-connection, credentials, hook, or automatic setup script is required.
+```sh
+node plugins/daemonv12-composer/skills/daemonv12-composer/scripts/review-sections.mjs /path/to/master.wav sections.json
+```
 
-Packaging and skill discovery were checked against the official
-[skill authoring guide](https://developers.openai.com/plugins/build/skills) and
-[local skill discovery guide](https://learn.chatgpt.com/docs/build-skills) on
-2026-10-12. The root manifest follows the
-[Agent Plugins 1.0 schema](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json);
-fixed `skills/` discovery needs no legacy `skills` manifest field.
+Use sections that fit the WAV, not the example times as a composition template.
+The helper supports mono/stereo PCM or floating-point RIFF WAV, reads bounded
+blocks, and adds no package dependency. Its approximate FFT bands and envelope
+rise proxy are neither EQ targets nor listening results. Side energy can rise
+from balance alone; correlation/content and mono behavior must also be examined.
+It does not rank musical quality, replace native analysis or create dashboards.
+See [production analysis](skills/daemonv12-composer/references/production-analysis.md)
+for method, format limits and interpreting undefined values.
 
 ## Workflow and resources
 
-Verify environment → define six-line thesis → choose palette → complete V1 →
-render/analyze → identify three musical weaknesses → revise → repeat through at
-least V3 → inspect first 5 seconds, payoff and final 3 seconds → lock artifacts.
+Verify → six-line thesis → palette → complete V1 → analysis/three weaknesses →
+V2 → analysis/three weaknesses → V3 → opening continuity → impact → final
+3-second replay check → translation proxy → risk → optional justified V4/V5 →
+stop decision → deterministic lock. Adapt genre/duration and explicit user
+constraints; ordinary composition should keep a compact log.
 
-- [SKILL.md](skills/daemonv12-composer/SKILL.md): workflow, decision heuristics,
-  engine verification and optional Benchmark Mode.
+- [SKILL.md](skills/daemonv12-composer/SKILL.md): core workflow and critical decisions.
 - [Short-form composition](skills/daemonv12-composer/references/short-form-composition.md):
-  identity, repetition with consequence, space, contrast, payoff and endings.
+  continuity, consequential repetition, impact, risk and ending/restart.
 - [Production analysis](skills/daemonv12-composer/references/production-analysis.md):
-  evidence-led metric interpretation and existing analysis tools.
-- [DaemonV12 production notes](skills/daemonv12-composer/references/daemonv12-production-notes.md):
-  source-grounded automation, sampler, routing, effect, duration and stem traps.
-- [Headless audio](skills/daemonv12-composer/references/headless-audio.md): an
-  opt-in workaround only when device initialization actually fails.
-- [Production log](skills/daemonv12-composer/assets/production-log.md): reusable
-  thesis, critique, revision and provenance template.
-- [Eval plan](evals/README.md) and [activation cases](evals/activation-cases.json):
-  ten activation prompts and ten behavioral scenarios with observable criteria.
-- [V0.1 validation](evals/validation.md): executed checks and their limits.
-- [Round 2 handoff](round-2.md): distribute the same frozen skill to Astra,
-  Opus and Haiku without changing the engine pin.
+  section evidence, low-mid buildup, stereo, translation and when to stop analyzing.
+- [Engine production notes](skills/daemonv12-composer/references/daemonv12-production-notes.md):
+  verified automation, pan, samples, effects, routing and resource constraints.
+- [Headless audio](skills/daemonv12-composer/references/headless-audio.md):
+  optional guidance only for a reproduced audio-device initialization problem.
+- [Production log](skills/daemonv12-composer/assets/production-log.md): compact v0.2 template.
+- [Evals](evals/README.md), [activation cases](evals/activation-cases.json) and
+  [validation record](evals/validation.md): tests, observations and limits.
+- [Round 3 proposal](round-3.md): future one-sound challenge; no contest started.
+  [Round 2 handoff](round-2.md) remains historical v0.1 documentation.
 
-No new `scripts/` helper is shipped. Native `render`/`analyze` already expose
-duration, peak, RMS, LUFS, LRA, clipping and stems; an existing repository
-inspection helper covers section, spectral and stereo evidence with documented
-limits. Reusing these avoids maintaining a duplicate analyzer.
+## Normal composition and optional Benchmark Mode
 
-## Normal composition and Benchmark Mode
+Normal composition uses the available verified engine, musical iteration and
+a compact log. Explicit Benchmark Mode adds organizer-chosen engine/skill pins,
+contestant isolation, equal constraints, blind submission and mandatory
+deterministic final WAV/stem verification. Loading Composer does not enable that
+mode or start a round. The normal workflow supports ambient, cinematic,
+non-drop music and user-specified genres without borrowing a contestant's song.
 
-Both modes require musical critique and at least three serious versions. Normal
-composition uses the available verified engine and keeps a compact production
-log. Benchmark Mode additionally freezes engine and skill revisions, isolates
-contestants, forbids competitor inspection, fixes equal constraints, requires a
-deterministic second render, logs metrics and preserves a clean blind submission.
-Loading this plugin does not enable Benchmark Mode or start Round 2.
-
-This is an instruction layer. It does not change rendering, add effects or
-sampler features, impose a genre, guarantee musical quality, replace human
-listening, or score compositions by loudness or complexity. DaemonV12 remains
-the instrument; the agent still makes musical decisions.
+This is an instruction layer. Human listening remains the test of musical
+improvement and replayability.

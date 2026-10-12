@@ -1,159 +1,251 @@
 # Production analysis: evidence for musical decisions
 
-Use analysis to test a musical hypothesis, then revise the composition or mix.
-A clean measurement does not prove that a hook is memorable, a groove works, or a
-payoff feels large. Do not present analytical inspection as human listening.
-When listening feedback is available, preserve it alongside the measurements.
+Analysis tests a musical hypothesis. A clean measurement cannot prove that a
+hook is memorable, a groove works or a payoff feels large. Preserve human
+feedback alongside measurements; never present analytical inspection as human
+listening. Metrics are evidence, not targets.
 
-## Start with the existing analyzer
+## Reuse native evidence first
 
-From the DaemonV12 checkout, use the native workflow:
-
-```sh
-npx --no-install daemonv12 render path/to/project.json --stems --format wav --out-dir path/to/version-output --json
-npx --no-install daemonv12 analyze path/to/version-output/project.wav --json
-```
-
-Use the actual master path returned by `render`; do not assume its basename.
-Production renders already write an `.analysis.json` report for the master and
-requested stems. Reuse that report before running another analysis. Explicit
-`--format wav` also enables analysis for legacy projects. FFmpeg is required.
-Analyze the canonical WAV, not an MP3 delivery copy. Preserve each serious
-version in its own output directory so a later render cannot replace its evidence.
-
-Native fields include duration, frames, sample rate, channels, sample peak, RMS,
-full-scale sample count, clipping flag, integrated LUFS, LRA and true peak. Native
-analysis does **not** provide a general spectral, per-section or stereo-correlation
-report. Use optional read-only external analysis only when it answers an actual
-production question. Record tool/version, channel handling, window length, band
-definitions and section boundaries. If a check cannot be measured, mark it as
-unmeasured; do not invent a result.
-
-### Optional existing spectral/section proxy
-
-The repository's `scripts/inspect-orbital-foundry.ts` exports a read-only
-`inspect(path)` function. If that file is present in the selected checkout,
-reuse the export for a verified **44,100 Hz PCM16 WAV** when band energy,
-per-second RMS or stereo correlation will answer the current question:
+From the engine checkout:
 
 ```sh
-node --input-type=module -e 'import { inspect } from "./scripts/inspect-orbital-foundry.ts"; console.log(JSON.stringify(inspect(process.argv[1]), null, 2));' path/to/master.wav
+node bin/daemonv12.js render path/to/project.json --stems --format wav --out-dir path/to/version-output --json
+node bin/daemonv12.js analyze path/to/version-output/project.wav --json
 ```
 
-Run from the repo root with the supported Node version. Read the function before
-use: it hardcodes 44,100 Hz, uses 8192-point Hann FFT windows with 50% overlap,
-sums independent-channel power and includes fades/silence. Its direct script
-entrypoint also inspects a particular pack catalog; importing the function avoids
-that unrelated work. Its bands are descriptive, and its per-second windows are
-not musical sections. Silent band shares or correlation can serialize as `null`;
-treat them as undefined. If the helper is absent or the input differs, use an
-appropriate external analyzer and document the method. Do not copy its constants
-into a new engine feature or mistake this helper for a supported CLI contract.
+Use the master path returned by render. Production and explicit-format renders
+already write `.analysis.json` for the master and requested stems; read it before
+running another analysis. Analyze the canonical WAV, preserve separate version
+outputs and keep routing consistent across comparisons. FFmpeg is required for
+these production/analysis commands.
 
-## Interpret measurements
+Native analysis supplies duration, frames, sample rate, channels, sample peak,
+RMS, full-scale count, clipping, integrated LUFS, LRA and true peak. It does not
+supply general per-section bands or stereo correlation. Do not rebuild reliable
+native metrics. Use the section helper below only when a local comparison can
+change the next musical decision.
 
-| Evidence | What it can tell you | Musical use and limits |
-| --- | --- | --- |
-| Integrated LUFS (`integratedLufs`) | Frequency-weighted, gated loudness over the complete file. | Helps compare versions and spot broad level changes. A short intro or ending can disappear from the story told by a single whole-file number. It cannot establish impact, size or quality; never pursue a universal LUFS target. |
-| Sample peak (`peakDbfs`) | Largest stored PCM sample magnitude. | Helps identify scarce headroom. A large isolated transient can set the peak while the hook remains buried. |
-| True peak (`truePeakDbfs`) | FFmpeg's estimate of reconstructed intersample peaks; conventionally described in dBTP despite the field name. | Inspect independently of sample peak. Peaks at or above full scale require attention to playback/encoding overload; allow appropriate delivery headroom without imposing a universal mastering number. |
-| Clipping | `clipping` flags exact full-scale PCM samples; `fullScaleSamples` counts them. Production provenance also records `clippedSamples` and `preClipPeakDbfs`. | Full-scale samples are conservative evidence of possible clipping, not proof of its history. Production overload counts reveal saturation at individual stages. Fix unintended overload where it occurs; master attenuation cannot repair an already clipped track. |
-| Loudness range (`loudnessRangeLu`, LRA) | Distribution of measured loudness variation. | Supports a contrast diagnosis, but can be zero or uninformative on short/static cues. It does not grade groove, transient movement or whether the payoff arrives convincingly. |
-| RMS (`rmsDbfs`) | Average waveform power, without perceptual frequency weighting. | Compare like-for-like windows to locate sustained energy, weak sections or accumulating bass. Bass can raise RMS while obscuring the hook. Silence and long tails lower whole-file RMS. |
-| Spectral balance | Estimated energy by frequency band over stated windows. | Helps locate low-end buildup, absent presence, excessive brightness or masking. Band shares are relative and unweighted; raising one band reduces the others' percentages without changing their audio. They are not a desired EQ curve. |
-| Section energy | Comparable RMS/loudness, peaks, band behavior and transient activity over musical sections. | Tests whether the payoff changes in the intended way. Compare both complete sections and equal-duration excerpts when lengths differ. Energy alone cannot distinguish an effective sparse section from an empty one. |
-| Stem balance | Each role's activity, peak, loudness and spectrum at the same timeline positions. | Localize collisions and identify which role disappears. Whole-file stem LUFS includes different amounts of activity and silence, so compare shared active windows. Stem loudness values do not add arithmetically to master loudness. |
-| Stereo correlation | Similarity of left/right waveforms within a stated window, normally from −1 to +1. | Strong positive correlation can be intentional focus; low correlation can represent useful width or unstable phase. Negative correlation warrants a mono check, not an automatic rejection. Correlation is undefined for silence/zero channel power. There is no ideal universal value. |
+| Evidence | Musical use and limits |
+| --- | --- |
+| Integrated LUFS (`integratedLufs`) | Whole-file frequency-weighted, gated loudness. Useful for broad level comparisons; a short entrance or ending may disappear from its account. It cannot establish impact or quality, and there is no universal target. |
+| Sample peak (`peakDbfs`) | Largest stored sample. One isolated attack can set it while the hook remains buried. |
+| True peak (`truePeakDbfs`) | FFmpeg's intersample estimate, conventionally described in dBTP. Inspect separately from sample peak and allow delivery headroom appropriate to the brief. |
+| Clipping / `fullScaleSamples` | Exact full-scale PCM values are a warning, not proof of clipping history. Production `clippedSamples` and `preClipPeakDbfs` locate actual stage overload. Master attenuation cannot repair a clipped track. |
+| LRA (`loudnessRangeLu`) | Measured loudness variation. Short/static cues can yield zero or uninformative LRA; it does not grade groove or arrival. |
+| RMS (`rmsDbfs`) | Average waveform power. Sustained bass can raise it while masking attacks; silence and long tails lower whole-file RMS. Compare like-for-like windows. |
+| Band evidence | Approximate energy in stated frequency ranges can locate accumulation, absent presence or competing sources. These are descriptive partitions, not an EQ curve to pursue. |
+| Stem balance | Compare roles at shared active timeline positions to locate collisions. Whole-file stem loudness includes different amounts of silence; stem LUFS values do not add arithmetically. |
+| Stereo evidence | Correlation and mid/side energy describe waveform relationships. They do not grade width, prove mono safety or distinguish a useful image from phase instability on their own. |
 
-Exact silence may yield `null` peak, RMS, LUFS and true peak. Treat that as
-undefined or negative infinity according to context, not zero loudness or a tool
-failure. An absent metric is different from a measured zero.
+Exact silence can yield `null` peak, RMS, LUFS and true peak. Treat undefined
+measurements as undefined, not zero loudness or a failure. An absent metric is
+different from a measured zero.
 
-## Diagnose size and low end
+## Compare musical sections
 
-When a payoff feels small, inspect the actual payoff window against the preceding
-section. Check bass authority, transient impact, midrange presence, top-end
-activity, register, stereo contrast, harmonic density and the space reserved for
-the arrival. Inspect automation before adding master gain. More simultaneous
-notes can reduce apparent size by blurring attacks and masking the hook.
+Choose boundaries from the score: opening, establishment, development,
+approach, payoff and ending as applicable. The functions may overlap; ambient or
+cinematic arrivals do not require a drop. Record actual timestamps per version,
+especially after shifting an entrance. A disruption can be intentionally quiet
+in context even when its excerpt alone looks empty.
 
-For low end, inspect kick and bass stems separately, together and in the master:
+Compare the complete sections and equal-duration excerpts when lengths differ.
+Include the approach and first attacks of an arrival, not just its loudest
+sustained moment. Read RMS, peaks, bands, attack activity and stereo evidence
+together with note placement, register, source tails and automation. Ask what
+physically changed and whether that change supports the thesis.
 
-1. Mark coincident attacks and each sound's decay. Look for a useful handoff or a
-   collision where sustained bass covers the kick's onset.
-2. Check bass-note overlap, source tails and transformed voices. A new trigger may
-   arrive while the previous low note still rings. Use monophonic behavior where
-   musically appropriate, after verifying what the selected instrument supports.
-3. Compare the low band's energy before, during and after dense passages. Rising
-   sustained energy can indicate accumulation rather than useful weight.
-4. Inspect mono behavior and low-register pitch relationships. Phase interaction
-   depends on waveform and timing; do not assume every overlap needs phase inversion.
-5. Try a purposeful change in note spacing, duration, register, source choice,
-   gain or verified processing. Reduce masking before globally brightening the mix.
+When human audition is available, compare documented, reasonably matched playback
+levels so added gain does not masquerade as an arrangement improvement. Preserve
+canonical files unchanged. Analytical level matching cannot certify equal
+perceived loudness or replace human listening.
 
-Check transformed samples for tuning, rate/pitch relationships, glides, source
-offsets, hard chop boundaries and overlapping tails. A surprising spectral or
-peak change may be a playback mistake. Consult
-[engine production notes](daemonv12-production-notes.md) before correcting it.
+## Impact Test
 
-## Compare versions and inspect boundaries
+A payoff/drop/arrival may measure louder and still feel smaller. Evaluate each
+relevant dimension against the approach and established material:
 
-Record the same musical windows for each serious version: first five seconds,
-establishment, development/disruption, payoff and final three seconds. Use
-actual timestamps from that version when the arrangement changes. Inspect both
-the whole arc and the excerpt; a disruption's low energy may be intentional only
-in context. Whole-file averages must not conceal a weak entrance or ending.
+| Dimension | Musical questions and useful evidence |
+| --- | --- |
+| **Low end** | Is there sub authority, a clear kick relationship and useful bass-note shape? Does low-end entry timing support the arrival? Compare coincident attacks, envelopes, overlap and stems. |
+| **Transients** | What is attack density and contrast? Have important attacks been softened by overlap or processing? Examine note onsets, peaks and short-window activity; a higher activity count is not automatically better. |
+| **Register** | Does vertical pitch range change? Does the arrival occupy more useful spectrum, or stack more parts in one register? Band energy cannot identify pitches or harmonic function; inspect the score. |
+| **Presence** | Is the important hook visible in useful mid/upper-mid material? What competing role masks its outline? |
+| **Top end** | Do hats, noise, air, metal or percussive brightness contribute where stylistically appropriate? Brightness is optional, not a requirement for scale. |
+| **Stereo** | Is there side energy and width contrast? Does new width come from differing content or only balance-panning? Read channel relationships and source/arrangement evidence together. |
+| **Density** | Is the increase or decrease meaningful? Does overcrowding blur attacks or weaken hierarchy? Subtraction can make an arrival consequential. |
+| **Negative space** | Does silence or reduced activity immediately before impact create anticipation? Check whether the preceding section leaves room for the arrival. |
+| **Musical consequence** | Is the payoff a transformation of established material, or merely more layers? Does it change expectation, meaning or physicality in the way the thesis intends? |
 
-For the first five seconds, identify the audible role expected to carry identity
-and the event that should create curiosity. Check its onset, register, masking
-and activity. A quiet opening can work when that role is clear.
+For a deliberately intimate arrival, assess the intended focused contrast rather
+than demanding maximum width, sub or brightness. Do not solve impact only by
+increasing master gain. Originality and technical cleanliness do not establish
+perceived scale; keep this evaluation explicit.
 
-For the final three seconds, inspect the final gesture, tail, silence and output
-boundary. Check for an accidental collapse, a chopped release, a click, or a long
-empty extension. For a loop, inspect end-to-start timing and sample continuity as
-well as harmonic/rhythmic compatibility. A technically smooth seam alone does not
-make the return compelling. Fixed duration does not create an automatic fade.
+## Low end and low-mid buildup
 
-When comparing listening copies, use a documented matched playback level where
-possible so added gain does not masquerade as a better arrangement. Preserve the
-canonical files unchanged. An analytical proxy cannot certify equal perceived
-loudness or replace human feedback.
+Inspect kick and bass separately, together and in the master. Mark their attacks
+and decays: sustained bass may cover the kick's onset, or an early-ending bass
+voice may leave the main impact unsupported. Check slowed samples and repeated
+triggers for accumulating tails. Samples have no automatic mono/choke behavior;
+consult [engine notes](daemonv12-production-notes.md).
 
-## Turn evidence into a revision
+Energy around **120–500 Hz** can create weight, warmth and body. It is not a
+universal bad-frequency region. Excessively overlapping bass calls, pads,
+distorted samples and tails can also make a section boxy, crowded, smaller or
+less punchy. A rising low-mid band is a clue only when it accompanies a musical
+problem.
 
-Use a compact record for each of the three weakest musical issues:
+When buildup is suspected, first examine overlapping parts, register, source
+length, arrangement and effect tails. Test a spacing change, shorter source,
+later offset, different register, reduced redundant layer or carefully supported
+filtering. A highpass/lowpass is a broad filter, not a guessed parametric EQ.
+DaemonV12 exposes no conventional multiband/parametric EQ; never invent one.
+Phase interaction depends on waveform and timing, so overlap alone does not
+justify phase inversion or another unsupported control.
 
-> At [time/section], [musical problem] is supported by [arrangement and/or measured
-> evidence]. Change [specific role or event]. On the next render, check [intended
-> audible consequence] and [possible tradeoff].
+## Stereo width evidence
 
-Examples:
+Current production pan is linear stereo **balance**, not a decorrelation effect.
+Mono sample inputs are duplicated to both channels before balance. Panning a
+mono phrase changes placement and level; it does not generate different
+waveforms. Panning a stereo source can attenuate or discard one existing channel
+rather than move its complete image. Verify the selected engine's implementation
+before relying on these claims; see [engine notes](daemonv12-production-notes.md).
 
-- “The payoff loses weight because the bass tail ends before the main impact and
-  the next note enters late. Move the bass entrance into the arrival; recheck
-  kick masking and track overload.”
-- “The hook is obscured when hats enter. Simplify their competing accents and
-  test the hook's upper-mid presence in that window.”
-- “The ending spends its final seconds on an unrelated effect tail. Shorten the
-  gesture or connect it to the opening; verify the new boundary and replay.”
+Build useful section contrast with genuinely different left/right material,
+call-and-response placement, octave or timbral doubles, or verified stereo source
+and effect behavior. Identical mono copies separated only by pan remain the same
+information. Different parts can create a broader arrangement while retaining a
+stable identity in the center; compare their musical interaction rather than
+maximizing width everywhere.
 
-Do not label “low LUFS,” “few events,” “few tracks,” “little 5 kHz energy,” or “not
-enough effects” as musical weaknesses by themselves. Event, track, effect and
-automation counts describe construction, not quality. Retain a revision only
-when its musical consequence improves the brief; revert regressions explicitly.
+Read correlation with mid/side energy and score/source evidence. Side energy can
+rise from unequal channel gains alone, even when both channels carry the same
+waveform. Strong positive correlation can be intentional focus; low correlation
+may reflect useful width or unstable phase. Negative correlation warrants a mono
+check, not automatic rejection. Silence or a channel with no variance can make
+correlation undefined. There is no ideal universal value.
+
+## Translation robustness proxy
+
+An agent cannot claim human phone, car-speaker or headphone listening without
+such feedback. Use these as **proxy evidence**; human cross-device listening
+remains the judge.
+
+Check whether identity depends excessively on sub-bass only, extreme width,
+ultra-high frequencies or barely audible ambience. Does important musical
+information also exist in useful midrange? Inspect the hook's midrange identity,
+transient readability, kick/bass relationship and phase-dependent width.
+
+A mono sum or existing FFmpeg band-limited diagnostic can help expose disappearing
+material, but it is not a model of a particular phone or car. Inspect whether
+important gestures survive summing and whether the anchor remains readable.
+Preserve intentional sub, width and air when they serve the piece; the aim is a
+robust identity, not identical sound on every playback system. Record the proxy
+used and remaining uncertainty.
+
+## Use review-sections.mjs
+
+This lightweight, read-only Node helper answers **“How are these sections
+physically different?”**, not **“Which section is better?”** It adds local
+comparisons missing from native analysis; native reports remain authoritative
+for delivery loudness, true peak and overload evidence. It requires no new
+heavyweight dependency.
+
+From the plugin repository checkout:
+
+```sh
+node plugins/daemonv12-composer/skills/daemonv12-composer/scripts/review-sections.mjs path/to/master.wav path/to/sections.json
+```
+
+From an installed plugin, use the corresponding script path. Example section
+file; replace boundaries with valid times in the actual WAV:
+
+```json
+{
+  "sections": [
+    {"name":"opening","start":0,"end":5},
+    {"name":"groove","start":5,"end":14},
+    {"name":"payoff","start":18,"end":24},
+    {"name":"ending","start":24,"end":28}
+  ]
+}
+```
+
+Boundaries round to the nearest sample, with start inclusive and end exclusive;
+the output reports their aligned times. The concise JSON includes section
+duration, linear full-scale RMS/peak and dBFS,
+approximate `bandRms`, `activity.rmsRisesPerSecond`, and stereo evidence for
+stereo input. The first input section is the comparison reference;
+`relativeToFirst` reports RMS/peak/band dB differences against it. Put the intended
+reference first or read the sections directly to compare an approach and payoff.
+
+Band partitions are sub 20–120 Hz, low-mid 120–500 Hz, mid 500–2000 Hz,
+upper-mid 2000–6000 Hz, and high 6000 Hz to Nyquist. The 2048-frame FFT uses a
+square-root periodic Hann window with 1024-frame overlap and padded boundaries;
+each sample's squared window weights sum to one, including edge impulses.
+Energy remains coarse: taper leakage and short sections limit precise source
+isolation, EQ or low-frequency diagnosis. No partition includes energy below
+20 Hz. Read `method.bands` for effective bounds clipped to Nyquist and `available`.
+Wholly unavailable bands and their relative dB differences are `null`, rather
+than measured zero energy. Partially available bands cover only their reported
+range; compare versions with equivalent methods/sample rates.
+
+Activity counts rises over 6 dB between roughly 10 ms RMS blocks when the new
+block is above −60 dBFS. This is an envelope activity proxy, not a count of musical
+attacks, a loudness target or a grade for groove. Sustained bright material and
+sharp attacks can differ without the proxy explaining why.
+
+For stereo, `midRms`/`sideRms` use `(L+R)/2` and `(L-R)/2`;
+`sideEnergyFraction` is side energy divided by mid-plus-side energy. Correlation
+is a channel-relationship proxy. Use the balance caveat above: side energy alone
+does not prove differing content. Mono input has no stereo measurement.
+Silence has zero linear energy, `null` dBFS, undefined correlation and zero side
+fraction; relative dB comparisons involving zero energy are `null`. Do not turn
+those into NaN/Infinity or infer a finite gain difference from silence.
+
+## When not to analyze more
+
+Prefer composition over tooling. Create new analysis software only when all
+three conditions hold: a specific musical question remains unresolved; existing
+DaemonV12/FFmpeg/tools cannot answer it; and the answer could plausibly change a
+musical decision. “I want more metrics” is insufficient. “Did the arrival gain
+stereo contrast or only level, and should I change its arrangement?” is a useful
+question, but this helper and source inspection should usually already answer it.
+
+After V3, each additional version needs an exact audible musical hypothesis,
+minimum evidence needed, cost and keep/revert criterion. Ask whether one score
+edit, one render or existing analysis suffices before building anything.
+**ANALYSIS TIME MUST NOT GROW FASTER THAN MUSICAL IMPROVEMENT.** If two consecutive
+revisions produce only marginal improvement, compare them, keep the stronger
+one and stop speculative iteration. Complete the required review/Risk Pass and
+address a demonstrated technical defect before claiming a clean lock. Any repair
+still needs a bounded hypothesis and the applicable version-budget exception;
+disclose a defect that cannot be resolved within user constraints.
+The default five-version budget and exceptions live in [SKILL.md](../SKILL.md);
+it is a workflow budget, not an engine limit.
+
+Turn evidence into a concise revision:
+
+> At [section/time], [musical problem] is supported by [score, measured or human
+> evidence]. Change [role/event]. Check [audible consequence] and [tradeoff].
+
+“Low LUFS,” “few events,” “few tracks” or “little high-band energy” are not musical
+weaknesses by themselves. Keep a revision only when its consequence improves the
+brief. A finished strong track is better than an endlessly analyzed track.
 
 ## Engine grounding
 
-Read these paths in the actual engine checkout; this portable plugin does not
-replace their current contracts:
+Read these paths in the selected engine checkout:
 
-- `docs/V0_3_AUDIO.md`, “Clipping and analysis” and “Export and provenance.”
-- `docs/V0_5_TIMELINE_DYNAMICS.md`, “Signal flow and production stems” and duration/tail rules.
-- `src/render/analysis.ts` for PCM measurement semantics.
-- `src/render/production.ts` for quantization overload reporting.
+- `docs/V0_3_AUDIO.md`: clipping/analysis and export/provenance, supplemented by
+  `docs/V0_5_TIMELINE_DYNAMICS.md` for current routing and duration/tails.
+- `src/render/analysis.ts`: native PCM and FFmpeg measurement semantics.
+- `src/render/production.ts`: `quantize`, `balance`, `automatedGainPan`.
+- `src/render/dynamics.ts`: supported reverb and saturation behavior.
 
 Production stems include track automation/effects and exclude master
-gain/effects/ducking. Legacy GM stems are not guaranteed to sum identically to
-the full-score master. Identify the route before treating a stem/master
-difference as an error. Repository pack-inspection scripts are examples with
-their own assumptions, not a general analyzer API.
+gain/effects/ducking. Legacy GM stems need not sum identically to the full-score
+master. Identify the route before diagnosing a stem/master difference as an error.

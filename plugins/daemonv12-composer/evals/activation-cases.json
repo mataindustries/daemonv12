@@ -4,6 +4,24 @@
   "status": "planned",
   "cases": [
     {
+      "id": "activate-beat-exact",
+      "prompt": "Make a DaemonV12 beat.",
+      "shouldActivate": true,
+      "reason": "Explicit DaemonV12 composition request."
+    },
+    {
+      "id": "activate-cue-exact",
+      "prompt": "Produce a 30-second cue in DaemonV12.",
+      "shouldActivate": true,
+      "reason": "Explicit DaemonV12 cue production request."
+    },
+    {
+      "id": "activate-song-exact",
+      "prompt": "Improve this DaemonV12 song.",
+      "shouldActivate": true,
+      "reason": "Explicit DaemonV12 musical improvement request."
+    },
+    {
       "id": "activate-beat",
       "prompt": "Make me a DaemonV12 beat.",
       "shouldActivate": true,
@@ -34,6 +52,18 @@
       "reason": "Music production through DaemonV12, including loops."
     },
     {
+      "id": "activate-impact",
+      "prompt": "Make this DaemonV12 drop hit harder.",
+      "shouldActivate": true,
+      "reason": "Musical impact revision through DaemonV12."
+    },
+    {
+      "id": "activate-risk",
+      "prompt": "This DaemonV12 track sounds too safe.",
+      "shouldActivate": true,
+      "reason": "A request for more memorable musical decisions in an established DaemonV12 composition."
+    },
+    {
       "id": "ignore-explanation",
       "prompt": "Explain what DaemonV12 is.",
       "shouldActivate": false,
@@ -62,6 +92,12 @@
       "prompt": "How does FluidSynth work?",
       "shouldActivate": false,
       "reason": "General audio-tool explanation does not request DaemonV12 composition."
+    },
+    {
+      "id": "ignore-unrelated-audio",
+      "prompt": "Make this Ableton Live mix hit harder; DaemonV12 is not part of this project.",
+      "shouldActivate": false,
+      "reason": "Non-DaemonV12 audio production without DaemonV12 established as the engine."
     }
   ]
 }

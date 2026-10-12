@@ -1,9 +1,10 @@
 # DaemonV12 production notes
 
 Verified against engine **0.6.0**, project `formatVersion: 1`, repository commit
-`ed75e9e2a0172266e56b292886ad7c1500677862` (the Round 1 engine lock). Paths below
-are relative to the **engine repository root**, not this portable plugin. For a
-different engine revision, read its current docs and implementation before relying
+`ed75e9e2a0172266e56b292886ad7c1500677862`. Rechecked for Composer v0.2 against
+current source files matching that base. Paths are relative to the **engine
+repository root**, not this portable plugin. For a different engine revision,
+read its current docs and implementation before relying
 on these contracts. Do not change rendering behavior to fit the workflow.
 
 Read the specs cumulatively: `docs/V0_SPEC.md` supplies the GM baseline;
@@ -92,9 +93,38 @@ Pan is linear **stereo balance**, with unity center. Hard-left keeps the source'
 left channel and silences its right; it does not move the whole stereo image left.
 This can discard useful content from a stereo source.
 
+For `pan = p`, the channel multipliers are `L = 1-max(0,p)` and
+`R = 1+min(0,p)`. Mono samples are duplicated to both channels before balance.
+Panning a mono source changes placement and channel levels; it creates no
+decorrelated information. Side energy can increase just from unequal balance,
+so it does not prove different left/right content.
+
 Sources: `docs/V0_5_TIMELINE_DYNAMICS.md` (Gain and pan automation),
-`src/render/production.ts` (`automatedGainPan`, `balance`),
+`docs/V0_3_AUDIO.md` (Gain and pan),
+`src/render/production.ts` (`automatedGainPan`, `balance`, `sumFloat`),
 `tests/v05-timeline-automation.test.ts`.
+
+## Stereo as arrangement
+
+Use genuinely different left/right parts, call-and-response placement, octave
+or timbral doubles, or contrast between focused and broad sections. Identical
+mono copies panned apart still carry the same waveform; panning alone is not
+decorrelation. Different rhythms, registers or timbres provide different content
+through ordinary tracks and supported sample performance, subject to the same
+track/voice constraints.
+
+The current built-in reverb has different per-channel comb/allpass delay lengths,
+which can decorrelate its room response. That verified behavior is an option,
+not evidence that every wet sound becomes usefully wider. Reverb may also soften
+attacks, mask a hook, extend tails or raise level. The single-tap delay applies
+the same delay to both channels; it is not a configurable ping-pong or independent
+left/right delay. Check mono compatibility and section contrast with source and
+arrangement evidence, not a target correlation or side-energy value.
+
+Sources: `src/render/production.ts` (`sumFloat`, `balance`),
+`src/render/dynamics.ts` (`builtinEffect`),
+`src/render/ffmpeg.ts` (`effectFilters`), `docs/V0_3_AUDIO.md`,
+`docs/V0_5_TIMELINE_DYNAMICS.md` (Ordered production effects).
 
 ## Sampler rate, glide, offsets and overlap
 
@@ -102,7 +132,7 @@ Sources: `docs/V0_5_TIMELINE_DYNAMICS.md` (Gain and pan automation),
 |---|---|
 | `playbackRate` | 0.25–4, default 1. Pitch and duration change together. For a shift of `n` semitones use `2^(n/12)`; confirm the source's tuning first. No independent time stretch or formant preservation. |
 | `glide` | `{"to": rate, "duration": "N/D"}` starts at note onset, moves linearly in **rate**, then holds destination. It is not linear in semitones and cannot reach rate zero. Destination must differ from starting rate. Source exhaustion may end the voice before the glide completes. |
-| `offsetSeconds` | Source position, not timeline delay. Nonnegative with at most six decimal places; rounded to nearest 44.1 kHz source frame, ties later. Must resolve before source end. Check the transient/tuning at the new start, not just the original file. |
+| `offsetSeconds` | Source position, not timeline delay. 0–600 seconds with at most six decimal places; rounded to nearest 44.1 kHz source frame, ties later. Must resolve before source end. Check the transient/tuning at the new start, not just the original file. |
 | Voice duration | At constant rate: `ceil((sourceFrames - offsetFrames) / rate)` output frames. There is no per-note duration, end offset, release, fade, loop or note-off. Source exhaustion ends playback; render boundaries can cut it earlier. |
 | Chops | Offsets add no fade. Prefer nearby zero crossings when appropriate; inspect start/end discontinuities and very short chops. Track gain automation affects every overlapping voice on that track, not one chop independently. |
 | Overlapping transformations | Every trigger is an independent voice. Slowing a source lengthens its tail; inspect simultaneous voices, sub accumulation, masking and summed peaks before adding another transformed layer. |
@@ -113,15 +143,27 @@ Compilation checks transformed-voice work/memory budgets. If diagnostics reject
 cost, simplify overlapping voices, shorten sources/use later offsets, move rates
 closer to 1, or deliberately limit the rendered duration. Do not bypass validation.
 
-Sources: `docs/V0_6_SAMPLE_PERFORMANCE.md`, `src/render/playback.ts`,
+Current preflight limits are **1,000,000,000 interpolation kernel taps per
+project** and **128 MiB per performed-voice buffer**. The budget accounts for
+production boundaries; rate 1 without a glide reads source frames directly and
+has no interpolation charge. These are rendering resource limits, separate from
+Composer's revision/analysis budget. A project can pass resource validation and
+still have musically overcrowded voices.
+
+Sources: `docs/V0_6_SAMPLE_PERFORMANCE.md`,
+`src/render/playback.ts` (`voiceFrames`, `voiceCost`, playback limit constants),
+`src/sample-render.ts` (`sampleTriggers`, `playbackBudget`),
 `src/pipeline.ts` (offset and playback-budget validation).
 
 ## Effects, duration and signal flow
 
 Current ordered track/master effects are `highpass`, `lowpass`, `delay`,
 `compressor`, `reverb`, `saturation`; at most eight per array. Read exact parameter
-names/ranges in `src/audio-types.ts`. Delay is one tap with unity dry plus a wet
-copy, no feedback. Reverb uses a finite decay horizon; delay/reverb can extend the
+names/ranges in `src/audio-types.ts`. The filters use `frequencyHz` (20–20000);
+they are broad highpass/lowpass filters, not conventional parametric or multiband
+EQ. There is no arbitrary effect/filtergraph field. Delay is one tap with unity
+dry plus a wet copy, no feedback. Reverb uses a finite decay horizon;
+delay/reverb can extend the
 container even at zero wet. Compressor makeup is explicit; saturation has no
 automatic output compensation. There is no implicit limiter or normalization.
 Master voiceover ducking uses a reference WAV's activity; it does not mix that
@@ -149,7 +191,8 @@ no automatic fade/crossfade hides boundary discontinuities.
 
 Sources: `docs/V0_3_AUDIO.md` read with `docs/V0_5_TIMELINE_DYNAMICS.md`,
 `src/audio-types.ts`, `src/pipeline.ts` (`productionRoute`),
-`src/sample-render.ts`, `src/timing/render-plan.ts`.
+`src/sample-render.ts`, `src/render/dynamics.ts` (`builtinEffect`),
+`src/timing/render-plan.ts` (`renderPlan`, `automationFrames`).
 
 ## Render, analyze and preserve useful artifacts
 

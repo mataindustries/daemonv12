@@ -1,141 +1,132 @@
 # Short-form composition: make the return desirable
 
-For 20–45 seconds of music, every section spends a large share of the listener's
-attention. The default Round 2 brief is a replayable 25–30 second record, but
-follow the user's requested length and purpose. A loop, boss cue, ambient piece
-and beat can organize attention differently. DaemonV12 is the instrument; these
-principles do not prescribe a genre, tempo, key or instrument list.
+In a short piece, every gesture spends a large share of the listener's attention.
+Follow the user's length and purpose: a beat, boss cue, ambient piece and loop can
+organize attention differently. These questions prescribe no genre, tempo, key,
+source or fixed section map. Use the core workflow and six-line thesis in
+[SKILL.md](../SKILL.md); this reference develops the musical decisions.
 
-## State a thesis, then compose
+## Opening Continuity Check
 
-Before writing project JSON, write one short line for each decision:
+**Distinctive ≠ coherent.** A hook at second zero can establish identity while
+still feeling awkward or disconnected from the groove. Check the opening in
+three windows, then check the transition in the context of the whole piece:
 
-- **Hook:** What recognizable motif, rhythm, texture, timbre or gesture gives this
-  piece its identity?
-- **Rhythmic identity:** What makes its movement distinctive? In ambient work,
-  this may be the pacing of swells, pulses or changes rather than a drum groove.
-- **Low-end role:** Does it anchor, propel, punctuate, threaten, or intentionally
-  leave space? Which role owns the bottom at each important moment?
-- **Contrast idea:** What changes the listener's expectation?
-- **Payoff:** What return or transformation makes that expectation worthwhile?
-- **Ending:** Why should the listener welcome the next play?
+| Window | Question |
+| --- | --- |
+| First 1 second | Does the first sound feel deliberate? Does the first beat imply a clear gesture, or cause unintended rhythmic confusion? |
+| First 3 seconds | What gives the piece identity: motif, rhythm, texture, timbre, interaction or meaningful silence? Is it readable? |
+| First 5 seconds | Does that identity lead naturally into the record? What rhythmic, harmonic or contextual information has the opening promised, and does the next section honor or deliberately transform it? |
 
-Choose enough to begin. Render a complete first arc quickly; do not spend the
-session planning a perfect opening while the ending remains unwritten. Assign
-each palette choice a job, such as pulse, hook, weight, answer, atmosphere or
-transition. A role can move between sounds. Add a layer only when its musical
-job is missing, not because more tracks appear more sophisticated.
+Ask whether the hook arrives naturally or feels abruptly pasted in. Does the
+first gesture resolve into, answer or interact with the groove? Is there a
+confusing first beat/bar? Would trimming the opening, shifting its first event or
+changing the handoff improve flow? In a slowly evolving cue, examine the motion
+established in these windows and its later continuation; five seconds need not
+contain a complete new section.
 
-## Immediate identity
+A partial motif, texture, rhythmic exchange or quiet gesture can create identity
+and curiosity. A generic setup spends attention without a reason to continue.
+Inspect the opening's timing, register and masking before making a level change.
+The goal is to make the opening make musical sense, not to make it louder.
+Label score/measurement judgments as proxies when human listening is unavailable.
 
-The opening three to five seconds deserve a deliberate idea. An early hook need
-not be the full chorus or the loudest moment: a partial motif, distinctive
-texture, compelling rhythmic exchange or meaningful silence can create identity
-and curiosity. A generic count-in or long setup spends attention without giving
-the listener a reason to continue.
-
-Check the first five seconds in isolation. Name the exact event or role that
-carries the idea and inspect whether another part masks it. If the opening is
-quieter than the payoff, do not automatically increase volume. First decide
-whether the identity is perceptually clear and whether the opening promises
-something the rest of the piece delivers.
-
-## Repetition with consequence
+## Repetition with escalation and consequence
 
 Repeat enough for recognition, then change what the recurring idea means. Alter
 its register, harmony, accent, timing, answer, orchestration, surrounding silence
-or verified sample transformation. Preserve some recognizable relationship.
-Changing every part at once can erase the hook; identical repeats can spend the
+or verified sample transformation. Preserve a recognizable relationship.
+Changing every part at once can erase the hook; identical repeats can use the
 whole duration establishing an idea without developing it.
 
-A useful revision question is: “What is different because this hook has returned?”
-The answer can be as small as a new bass implication or an answering gap. More
-notes and effects are not required.
+Ask: “What is different because this hook has returned?” A new bass implication,
+an answering gap or a suddenly exposed timbre can supply the consequence.
+Escalation may mean stronger expectation, greater vulnerability or clearer focus;
+it need not mean more notes, more effects or constant increases in energy.
 
 ## Contrast and negative space
 
-Think in functions rather than a compulsory bar map:
+Think in functions rather than compulsory bars: identity, establishment,
+development, disruption, payoff and replayable exit. These can overlap, recur,
+change order or be compressed. A sparse cue can establish and develop in the
+same gesture; a loop can imply its payoff across the boundary.
 
-**Hook → groove/establishment → development → disruption → payoff → replayable exit.**
+Make contrast legible through purposeful changes: activity and space, low and
+high register, focused and broad image, dry and diffuse texture, stable and
+unstable harmony, regular and displaced accents. Hold another element steady
+when it helps the listener perceive the change. Each layer needs a musical job.
 
-These functions can overlap, recur, change order or be compressed. A sparse cue
-may establish and develop in the same gesture; a seamless loop may imply its
-payoff across the boundary. The framework prompts intentional movement, not six
-mandatory sections.
+Negative space can expose a hook, let an attack land, make a bass entrance matter
+or create expectation. A brief removal can enlarge the next event more
+effectively than another layer. Distinguish chosen space from missing notes,
+automation errors or a sample ending too soon.
 
-Make contrast legible through one or more purposeful changes: activity versus
-space, low versus high register, narrow versus broad image, dry versus diffuse
-texture, stable versus unstable harmony, or regular versus displaced accents.
-Hold another element steady when it helps the listener perceive the change.
+## Impact: earn the payoff
 
-Use negative space to expose a hook, let a transient land, make a bass entrance
-matter or create expectation. A brief removal can enlarge the next event more
-effectively than adding another layer. Distinguish chosen space from a hole
-caused by missing notes, an automation error or a sample ending too soon.
+The payoff should fulfill or productively redirect the piece's promise. It must
+change meaning or physicality, rather than merely add tracks. A transformed
+return can feel larger, clearer, more resolved, more unstable or suddenly
+intimate, depending on the thesis. Ambient/cinematic work may arrive through a
+register reveal, harmony change or exposed texture instead of a drop.
 
-## Earn the payoff
+For an intended expansion, use the [Impact Test](production-analysis.md#impact-test).
+Compare the approach, arrival and established payoff. What does the preceding
+section leave available to expand? If every role already occupies its maximum
+density and range, make room before the arrival. A measured loudness increase can
+coincide with softened attacks, reduced useful register or lost width contrast.
 
-The payoff should fulfil or productively redirect the piece's promise. It can
-feel larger, clearer, more resolved, more unstable or suddenly intimate,
-depending on the thesis. It needs a perceptible consequence, not necessarily a
-louder master or a maximal stack of sounds.
+For crowding, restore hierarchy: choose the leading role, move its response out
+of the attack, shorten competing tails or remove a redundant layer. For bass
+masking, address kick/bass timing and overlap before brightening every role.
+These are hypotheses to compare, not universal arrangement prescriptions.
 
-If the intended expansion feels small, inspect bass weight, transient impact,
-register, upper-mid presence, top-end activity, stereo contrast, harmonic density
-and timing. Check what the preceding section leaves available to expand. If all
-roles are already at maximum density, make room before the arrival.
+## Risk after competence
 
-If the payoff is crowded, restore hierarchy: decide which role leads and which
-supports it, move a response out of the hook's attack, shorten competing tails,
-or remove a redundant layer. If bass dominates, address kick/bass timing and
-masking before brightening every other role. Use measurements to find the
-collision, not to grade the composition.
+Once V3 is technically clean, coherent, balanced and structurally complete,
+perform the **Risk Pass**. Ask: “What one high-upside musical decision could make
+this significantly more memorable without destroying coherence?”
 
-## Design a replayable exit
+Propose **ONE risk** and record five brief points:
+
+1. The specific change and its relationship to the established idea.
+2. Why it could improve memorability.
+3. What could go wrong, including lost groove, identity, impact or replay value.
+4. The cheapest adequate test, usually one score edit and one comparison render.
+5. The musical evidence that decides keep or revert.
+
+Possible directions include an unexpected silence, rhythmic interruption,
+register jump, transformed hook return, ugly/beautiful contrast, aggressive
+answer, unusual bass response, temporary harmonic destabilization, asymmetric
+phrase, stronger negative space, orchestration subtraction, texture mutation,
+stereo event, controlled distortion, sudden intimacy or impact, or a delayed
+expected downbeat. These illustrate options; they are not a checklist or a
+required sound palette. Choose what the thesis can support.
+
+Risk is purposeful experimentation, not random strangeness or an obligation to
+damage a strong record. Compare the changed moment and the full arc. Revert a
+failed risk; the test is still useful. A clearly stronger existing record can
+remain unchanged when there is concrete musical evidence against the proposal.
+Do not assume being clean and balanced alone proves that no worthwhile risk exists.
+Apply the revision budget and stop rules in [SKILL.md](../SKILL.md).
+
+## Ending and restart relationship
 
 Treat the ending as part of the hook's memory. Useful exits include a concise
-final hit, a decisive resolution, an intentional unresolved loop-back, a callback
-to the opening, or a final gesture with a controlled tail. Choose according to
-the brief rather than attaching a default fade or dramatic effect.
+final hit, decisive resolution, intentional unresolved loop-back, opening
+callback or final gesture with a controlled tail. Choose according to the brief.
 
 A tape stop, pitch dive, long decay or abrupt cut can work when it follows the
-piece's logic. Evaluate its contribution; do not ban the technique or assume
-that novelty improves replay. An unrelated gimmick can make a strong record
-less inviting on its second play.
+piece's logic. Novelty alone does not improve replay. When an interesting exit
+weakens the return, compare a concise hit, shorter tail or opening-related
+alternative at comparable playback level when audition is available.
 
-Inspect the last three seconds alone, then the ending followed by the opening.
-Look for accidental energy collapse, unearned harmonic movement, cut-off tails,
-clicks, dead air or a decay that outlasts its interest. For a loop, check the
-musical return and PCM boundary. For a resolved ending, check that the final
-gesture actually finishes inside the requested duration. The render boundary
-must not be the only reason the music stops.
+Inspect the **final 3 seconds**, then the ending followed by the opening. Look
+for accidental energy collapse, unearned harmonic movement, cut tails, clicks,
+dead air or a decay that outlasts its interest. For a loop, check musical return
+and PCM continuity; a technically smooth seam need not be inviting. For a
+resolved ending, fit the final gesture inside the requested duration. The render
+boundary must not be the only reason the music stops.
 
-## Make three meaningful versions
-
-Complete and render at least V1, V2 and V3. Each revision begins by identifying
-the current version's three weakest musical features, with time/section and
-evidence. Make targeted edits, render again, and state what improved, what
-regressed and what remains uncertain. Saving the same project under a new name,
-adding arbitrary events or making a level-only change without a musical reason
-does not count as a serious version.
-
-V1 should reveal the full idea. Later versions should respond to evidence, not
-a preset “add drums, add bass, add effects” sequence. Give the first five
-seconds, payoff and last three seconds explicit attention before lock. Continue
-past the minimum when a concrete weakness has a worthwhile fix. Stop when no
-remaining change is likely to improve the brief meaningfully, and record any
-remaining uncertainty. If a user constraint prevents the minimum, report the
-work as incomplete rather than claiming a fully reviewed final.
-
-## What Round 1 supports
-
-The blind human findings favored a memorable early identity, groove, original
-production choices, effective development and a convincing payoff. They also
-identified a weak opening, a small perceived scale, and an ending whose novelty
-reduced replayability. Those are production lessons from a small comparison,
-not universal proof or formulas taken from the entries. Reuse the questions;
-do not imitate a contestant's structure, harmony, instruments or samples.
-
-Read [production analysis](production-analysis.md) when testing a musical
-hypothesis. Ground every proposed engine technique in
+Read [production analysis](production-analysis.md) to test a musical hypothesis.
+Ground every engine technique in
 [DaemonV12 production notes](daemonv12-production-notes.md) and the current repo.

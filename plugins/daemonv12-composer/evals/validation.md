@@ -1,88 +1,127 @@
-# V0.1 validation record
+# V0.2 validation record
 
-Validated on 2026-10-12 against engine source at
-`ed75e9e2a0172266e56b292886ad7c1500677862`, Node 24.19.0 and FFmpeg 6.1.1.
-Changes are confined to `plugins/daemonv12-composer/`. No Round 2 composition
-was started and no engine implementation or rendering behavior was changed.
+Validated on 2026-10-12 from frozen Composer v0.1
+`56dbdff62bf78e70e898f0dbb49f8044cd561655`, with unchanged engine files matching
+`ed75e9e2a0172266e56b292886ad7c1500677862`. v0.1's validation record remains in
+that frozen revision. All implementation changes are within
+`plugins/daemonv12-composer/`; no Round 3 composition was started.
 
-## Package and guidance checks
+## Executed package and engine checks
 
-- Root `plugin.json` validated with Python `jsonschema.Draft202012Validator`
-  against the official Agent Plugins 1.0 schema retrieved from
-  `https://agent-plugins.org/schemas/1.0.0/plugin.schema.json`.
-- `SKILL.md` front matter parsed with PyYAML; required name/description are
-  strings, the name matches the directory, and the description is under 1024
-  characters. All local Markdown links resolve within the packaged files.
-- UTF-8, final newlines, trailing whitespace, balanced code fences and Git
-  whitespace checks passed. No MCP manifest, hook or dependency was added.
-- Independent source review found no actionable contradictions in engine
-  semantics, install guidance, inspector usage or Round 2 pin separation.
-- Existing engine tests passed (two test files, no failures or skips):
+- Official Agent Plugins 1.0 schema validation: passed with Ajv's Draft 2020-12
+  validator, strict mode. Bundled schema is unchanged from its
+  [canonical source](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json).
+  SHA-256: `0a4aad95ce337878ad38802ebf0daa3fde76abe3f65400c86bcbb1ec0b3ab883`.
+- YAML frontmatter, skill name/description, local links, UTF-8, final newlines,
+  trailing whitespace, balanced fences, eval-fixture integrity and Composer-only
+  tracked diff: passed. Six package mutation tests passed, with no skips.
+- The skill-creator Python quick validator could not import PyYAML in this
+  environment. The standards YAML parser and frontmatter mutation checks in the
+  package validator passed; no repository dependency was added for that check.
+- Root `npm run typecheck`: passed. Root `npm test`: **261 passed, zero failed,
+  zero skipped**, including real audio, compatibility, deterministic rendering,
+  automation, pan, sampler performance and resource checks.
+- Doctor: all intended readiness flags passed on recheck, using Node 22.23.3,
+  FFmpeg 6.1.1-3ubuntu5, FluidSynth 2.3.4 and the existing FluidR3_GM SoundFont
+  (`74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0`).
+  Initial audio-tool probes timed out; direct executable checks, real
+  integrations and the recheck succeeded without an engine/configuration edit.
+- New JavaScript syntax checks and `git diff --check`: passed. The repository
+  has no separate lint command; typecheck and package text checks are recorded
+  rather than claiming an unrun linter.
+- Section helper: **13 deterministic synthetic tests passed, zero failed or
+  skipped**. Coverage includes sample boundaries, mono/stereo, silence, louder,
+  bass/low-mid/bright sections, activity, differing/anti-phase/balance-only stereo,
+  formats, malformed input, nonfinite values, CLI errors, block/section-edge
+  impulses and unavailable bands at low sample rates. No contestant audio was used.
 
-```sh
-node --test tests/v05-timeline-automation.test.ts tests/v06-sample-performance.test.ts
-```
+Temporary Ajv/YAML test dependencies live under `/tmp`; the root manifest,
+lockfile and engine dependencies are unchanged. Reproduction commands are in
+[the eval plan](README.md).
 
-These tests support the cited automation and sampler contracts; they are not
-tests of musical quality. No new engine test or analyzer was introduced.
+## Activation: metadata-only audit
 
-## Activation audit
+An independent agent received only the skill's exact name/description and
+requests with expected labels hidden. The original thirteen requests were
+evaluated together in one fresh context; three exact request forms were audited
+in a supplemental turn. These were **16/16 matches**, ten positive and six
+negative. This is neither fresh per-prompt host activation nor a cross-model
+routing reliability result.
 
-An independent model context received only the skill name, exact description
-and the ten requests, without expected labels. It returned these decisions:
+| Request | Expected / observed |
+| --- | --- |
+| Make a DaemonV12 beat. | Activate / Activate |
+| Produce a 30-second cue in DaemonV12. | Activate / Activate |
+| Improve this DaemonV12 song. | Activate / Activate |
+| Make me a DaemonV12 beat. | Activate / Activate |
+| Compose a 30-second boss cue with DaemonV12. | Activate / Activate |
+| Improve this DaemonV12 track. | Activate / Activate |
+| Use DaemonV12 to make a garage song. | Activate / Activate |
+| Produce a new music loop through DaemonV12. | Activate / Activate |
+| Make this DaemonV12 drop hit harder. | Activate / Activate |
+| This DaemonV12 track sounds too safe. | Activate / Activate |
+| Explain what DaemonV12 is. | Ignore / Ignore |
+| Fix the DaemonV12 README. | Ignore / Ignore |
+| Review a DaemonV12 pull request. | Ignore / Ignore |
+| Change the sampler implementation. | Ignore / Ignore |
+| How does FluidSynth work? | Ignore / Ignore |
+| Make a beat in Ableton Live. | Ignore / Ignore |
 
-| Request | Expected | Observed |
+## New scenarios: independent reasoning audit
+
+A separate fresh agent read the skill/references and raw hypothetical
+observations, with eval acceptance criteria hidden. It generated no audio,
+built no tooling and claimed no measurements or listening. All eight
+diagnosis/action choices matched the intended behavior in this limited scope:
+
+| Case | Supplied observations | Observed diagnosis and next action |
 | --- | --- | --- |
-| Make me a DaemonV12 beat. | Activate | Activate |
-| Compose a 30-second boss cue with DaemonV12. | Activate | Activate |
-| Improve this DaemonV12 track. | Activate | Activate |
-| Use DaemonV12 to make a garage song. | Activate | Activate |
-| Produce a new music loop through DaemonV12. | Activate | Activate |
-| Explain what DaemonV12 is. | Ignore | Ignore |
-| Fix the DaemonV12 README. | Ignore | Ignore |
-| Review a DaemonV12 pull request. | Ignore | Ignore |
-| Change the sampler implementation. | Ignore | Ignore |
-| How does FluidSynth work? | Ignore | Ignore |
+| A / B11 | Hook at zero; first note/downbeat and groove emphasis disconnected. | Diagnose opening continuity; shift/rephrase the gesture or handoff, compare first 5 seconds, preserve identity. |
+| B / B12 | V3 clean, coherent, balanced, complete; supplied human “too safe.” | One thesis-related pre-return gap risk; anticipation upside versus lost-momentum downside; cheap edit/excerpt test and keep/revert criterion. |
+| C / B13 | Payoff +2 LU but softened attacks, contracted register, similar channels. | Impact Test; inspect masking, processing, register and differing content; restore a leading attack/register before gain. |
+| D / B14 | Strong V4, two tiny revisions, proposed analyzer for uncertain 300 Hz detail. | Reject tooling without a musical decision; compare existing versions, keep stronger and stop speculative iteration. |
+| E / B15 | Bass, pad and distorted tails overlap 120–500 Hz; supplied “boxy.” | Restore role hierarchy through spacing/register/source/tail changes; preserve body and avoid blanket EQ. |
+| F / B16 | Identical mono doubles hard panned; supplied correlation 1. | Verify balance/source duplication; test differing answers/register/timbre if expansion is intended; correlation alone is not a defect. |
+| G / B17 | Valid exciting pitch dive; supplied restart disconnect. | Compare shorter gesture or opening-related callback via final 3 seconds plus restart and whole arc. |
+| H / B18 | Strong V4; V5 asks for metrics/layers without an audible expectation. | Reject V5 and lock strong V4 after required reviews/Risk Pass and technical checks; unused budget is not a reason to render. |
 
-Result: **10/10 in a metadata-only routing audit**. The cases were supplied
-together in one independent evaluation context. This is not a live installed-host
-activation test, a cross-model result, or a measure of routing reliability over
-repeated runs. Fresh per-prompt host activation runs remain a follow-up in the
-[eval plan](README.md).
+The agent cited `src/render/production.ts` for balance/mono duplication,
+`src/audio-types.ts` for supported filters/effects and `src/render/playback.ts`
+plus `docs/V0_2_SAMPLES.md` for source-ended sample duration. These outcomes do
+not prove rendered improvement, perceived scale or memorability.
 
-## CLI and determinism smoke check
+## Adversarial review and fixes
 
-Doctor reported all intended capabilities available. Ran the documented CLI
-workflow on the existing `examples/sample-only-demo.json` fixture, twice into
-fresh temporary directories (no composed benchmark entry):
+The ten requested challenges were reviewed independently and by the author.
 
-```sh
-node bin/daemonv12.js doctor --json
-node bin/daemonv12.js render examples/sample-only-demo.json --out-dir /tmp/daemonv12-composer-smoke-a --stems --format wav --json
-node bin/daemonv12.js render examples/sample-only-demo.json --out-dir /tmp/daemonv12-composer-smoke-b --stems --format wav --json
-node bin/daemonv12.js analyze /tmp/daemonv12-composer-smoke-a/sample-only-demo.wav --json
-node --input-type=module -e 'import { inspect } from "./scripts/inspect-orbital-foundry.ts"; console.log(JSON.stringify(inspect(process.argv[1]), null, 2));' /tmp/daemonv12-composer-smoke-a/sample-only-demo.wav
-```
+- No fixed genre, song, source, key, BPM or winning structure is encoded.
+  Ambient/cinematic pacing and intimate arrivals are explicit alternatives.
+- Risk has one thesis-related hypothesis, upside/downside, cheap comparison,
+  revert and evidence-based keep-original paths; it does not reward random novelty.
+- The stop wording initially conflicted with necessary defect repair in a
+  reference. Core/reference now agree: end speculative marginal polishing,
+  complete required review/Risk Pass and address demonstrated defects before
+  claiming a clean lock; repairs retain hypothesis/budget requirements.
+- Bands remain descriptive evidence; no frequency share, loudness, event count,
+  correlation or side-energy quality target is prescribed.
+- Native reports own whole-file delivery metrics. The helper adds arbitrary
+  local sections and comparisons, without engine imports, dependencies or dashboards.
+- Core SKILL is shorter than v0.1 and keeps detail in references. Benchmark
+  ceremony is opt-in at the end; historical handoffs stay outside normal use.
+- Human observations are generalized into musical questions, without entry
+  identities or a universal improvement claim.
+- The helper's initial disjoint Hann windows could omit block-edge impulses.
+  Overlapping coverage and a boundary-impulse regression address the defect.
+- Low-rate WAVs initially reported misleading band bounds/zero unmeasurable
+  high energy. Explicit effective band availability addresses the ambiguity.
 
-Both renders succeeded. All eight artifacts were byte-identical: master, four
-stems, MIDI, analysis and provenance. Master/stems were aligned at 882,000
-frames, 20 seconds, 44,100 Hz, stereo PCM16. Master SHA-256:
+Plain numbered decisions and a compact log support smaller-model use. A run
+with a smaller model has not been performed, so this remains a design review.
 
-```text
-6f0e2ded2d3cff99673e5d2285937b39e2424656911064193c0e1b55b52f8bce
-```
+## Outstanding scope
 
-Native analysis returned −24.08 LUFS, 2.4 LU LRA, −5.72 dBTP, −6.002065 dBFS
-sample peak and no full-scale/clipped samples. These are fixture observations,
-not production targets. The optional existing inspector returned band shares,
-20 per-second RMS values and stereo correlation without running its pack-catalog
-entrypoint. Its presence and limits justify omitting a duplicate helper.
-
-## Outstanding evaluation
-
-Behavioral B01–B10 runs and human blind listening are **planned, not executed**.
-The source tests and smoke render do not prove three meaningful composition
-iterations, hook improvement, replayability, or any autonomous quality guarantee.
-The optional headless wrapper was documented, not activated or validated on this
-fixture: sample-only rendering does not exercise FluidSynth. A live plugin-host
-import/discovery test remains separate from schema and package validation.
+Preserved B01–B10 and expanded B11–B18 remain a plan for full observed behavioral
+runs. The eight reasoning audits above are only diagnosis checks; B06's actual
+three-version composition workflow was not run. Installed-host activation,
+cross-model execution, actual cross-device listening and human blind judgments
+of musical improvement remain unperformed. No benchmark was initiated.
