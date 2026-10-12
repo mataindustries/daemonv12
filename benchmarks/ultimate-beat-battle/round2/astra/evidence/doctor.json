@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "command": "doctor",
+  "engineVersion": "0.6.0",
+  "installation": {
+    "mode": "source",
+    "root": "/workspaces/daemonv12"
+  },
+  "ok": true,
+  "platform": "linux",
+  "architecture": "x64",
+  "node": {
+    "version": "v22.23.3",
+    "required": ">=22.18.0",
+    "supported": true,
+    "path": "/usr/local/share/nvm/versions/node/v22.23.3/bin/node"
+  },
+  "npm": {
+    "command": "npm",
+    "path": "/usr/local/share/nvm/versions/node/v22.23.3/bin/npm",
+    "version": "10.9.9",
+    "available": true,
+    "error": null
+  },
+  "fluidsynth": {
+    "command": "fluidsynth",
+    "path": "/usr/bin/fluidsynth",
+    "version": "2.3.4",
+    "available": true,
+    "error": null
+  },
+  "soundfont": {
+    "selection": "default",
+    "path": "/usr/share/sounds/sf2/FluidR3_GM.sf2",
+    "readable": true,
+    "valid": true,
+    "bytes": 148398306,
+    "sha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
+    "error": null
+  },
+  "ffmpeg": {
+    "command": "ffmpeg",
+    "path": "/usr/bin/ffmpeg",
+    "version": "6.1.1-3ubuntu5",
+    "available": true,
+    "capabilities": {
+      "effects": true,
+      "mp3": true,
+      "loudnessAnalysis": true
+    },
+    "diagnostic": null
+  },
+  "dependencies": {
+    "engineRuntime": {
+      "count": 0
+    },
+    "development": {
+      "available": true,
+      "packages": [
+        {
+          "name": "@modelcontextprotocol/client",
+          "requiredVersion": "2.3.1",
+          "version": "2.3.1",
+          "present": true,
+          "matches": true
+        },
+        {
+          "name": "@tonejs/midi",
+          "requiredVersion": "2.0.28",
+          "version": "2.0.28",
+          "present": true,
+          "matches": true
+        },
+        {
+          "name": "@types/node",
+          "requiredVersion": "22.20.5",
+          "version": "22.20.5",
+          "present": true,
+          "matches": true
+        },
+        {
+          "name": "typescript",
+          "requiredVersion": "7.0.2",
+          "version": "7.0.2",
+          "present": true,
+          "matches": true
+        }
+      ]
+    },
+    "mcp": {
+      "available": true,
+      "packages": [
+        {
+          "name": "@modelcontextprotocol/server",
+          "requiredVersion": "2.3.1",
+          "version": "2.3.1",
+          "present": true,
+          "matches": true
+        },
+        {
+          "name": "zod",
+          "requiredVersion": "4.6.5",
+          "version": "4.6.5",
+          "present": true,
+          "matches": true
+        }
+      ]
+    }
+  },
+  "readiness": {
+    "generalMidi": true,
+    "sampleOnly": true,
+    "productionEffects": true,
+    "mp3": true,
+    "loudnessAnalysis": true,
+    "mcp": true
+  },
+  "fixes": []
+}

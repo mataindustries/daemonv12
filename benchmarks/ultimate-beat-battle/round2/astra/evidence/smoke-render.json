@@ -1,0 +1,328 @@
+{
+  "ok": true,
+  "command": "render",
+  "engineVersion": "0.6.0",
+  "project": "benchmarks/ultimate-beat-battle/round2/astra/smoke.json",
+  "errors": [],
+  "warnings": [],
+  "summary": {
+    "title": "Local route smoke",
+    "bars": 1,
+    "timeSignature": "4/4",
+    "bpm": 138,
+    "key": null,
+    "tracks": 1,
+    "notes": 2,
+    "durationTicks": 3840,
+    "durationSeconds": 1.739132
+  },
+  "artifacts": {
+    "midi": "benchmarks/ultimate-beat-battle/round2/astra/renders/smoke/smoke.mid",
+    "wav": "benchmarks/ultimate-beat-battle/round2/astra/renders/smoke/smoke.wav",
+    "manifest": "benchmarks/ultimate-beat-battle/round2/astra/renders/smoke/smoke.render.json",
+    "stems": [
+      {
+        "trackId": "latch",
+        "wav": "benchmarks/ultimate-beat-battle/round2/astra/renders/smoke/smoke.stems/latch.wav"
+      }
+    ],
+    "analysis": "benchmarks/ultimate-beat-battle/round2/astra/renders/smoke/smoke.analysis.json"
+  },
+  "manifest": {
+    "engine": {
+      "name": "daemonv12",
+      "version": "0.6.0"
+    },
+    "project": {
+      "file": "smoke.json",
+      "sha256": "166a8ac02647e0d29b0acc24258292ec057be04c93caf35785f5fbe4c5fc7221",
+      "formatVersion": 1,
+      "seed": 0
+    },
+    "midi": {
+      "file": "smoke.mid",
+      "sha256": "12823f488e4527727384219b0022aaa323c0d6278f6e1c082e30fcd8f65f1e4b",
+      "bytes": 63,
+      "ppq": 960,
+      "durationTicks": 3840,
+      "durationSeconds": 1.739132,
+      "notes": 0
+    },
+    "renderer": {
+      "name": "daemonv12-production",
+      "version": "2",
+      "settings": {
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "panLaw": "linear stereo balance; unity center",
+        "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+        "normalization": false,
+        "dither": false,
+        "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+        "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+        "saturation": "tanh-v1; no output compensation",
+        "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+      }
+    },
+    "gmRenderer": null,
+    "gmSource": null,
+    "soundfont": null,
+    "samples": {
+      "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+      "assets": [
+        {
+          "file": "assets/latch-fs.wav",
+          "sha256": "8745b13bf17d399c22c95937d687c52e52ad1a618e31ace4a6883b3a85545b8f",
+          "bytes": 42380,
+          "frames": 21168,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        }
+      ],
+      "tracks": [
+        {
+          "trackId": "latch",
+          "trackIndex": 0,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/latch-fs.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/latch-fs.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 0.8
+            },
+            {
+              "file": "assets/latch-fs.wav",
+              "tick": 1920,
+              "frame": 38348,
+              "velocity": 0.6,
+              "playback": {
+                "rate": 1.122462,
+                "glide": {
+                  "to": 1,
+                  "duration": "1/8",
+                  "frames": 9587
+                },
+                "voiceFrames": 20581
+              }
+            }
+          ],
+          "clippedSamples": 0
+        }
+      ],
+      "playback": {
+        "name": "daemonv12-playback",
+        "version": "1",
+        "settings": {
+          "rate": "0.25 through 4; pitch and duration change together; no time-stretching",
+          "interpolation": "band-limited Kaiser-windowed sinc, 32 zero crossings per side, beta 8.5, 512 table steps per crossing with linear table interpolation; cutoff 0.92 x min(1, 1/rate) of source Nyquist; weights normalized to unity DC gain; silence outside the source; kernel from IEEE-754 basic arithmetic",
+          "glide": "rate linear in output frames from playbackRate to glide.to over the glide frames, then held; read position is the closed-form integral per frame",
+          "offset": "whole source frame: offsetSeconds as microseconds * 44100 / 1000000, nearest frame, ties later",
+          "exactPath": "rate 1 without glide copies source frames from the offset; no interpolation",
+          "end": "voice stops at the first output frame whose read position reaches the source length; no fades",
+          "velocity": "round(value * velocity) per voice sample, as for unperformed voices"
+        }
+      }
+    },
+    "timeline": {
+      "authoredDurationTicks": 3840,
+      "authoredFrames": 76696,
+      "duration": {
+        "bars": 1
+      },
+      "tail": "none",
+      "requestedFinalFrames": 76696,
+      "audioEndFrames": 76696,
+      "resultingFrames": 76696,
+      "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+    },
+    "production": {
+      "processor": {
+        "name": "ffmpeg",
+        "version": "6.1.1-3ubuntu5"
+      },
+      "runtime": {
+        "name": "node",
+        "version": "v22.23.3"
+      },
+      "tracks": [
+        {
+          "trackId": "latch",
+          "gainDb": 0,
+          "pan": 0,
+          "effects": [
+            {
+              "type": "highpass",
+              "frequencyHz": 260
+            }
+          ],
+          "clippedSamples": 0,
+          "preClipPeakDbfs": -6.331914
+        }
+      ],
+      "master": {
+        "gainDb": -6,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -12.33201
+      },
+      "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+    },
+    "mix": {
+      "clippedSamples": 0,
+      "gm": "sum processed independent tracks",
+      "samples": "sum exported track PCM"
+    },
+    "wav": {
+      "file": "smoke.wav",
+      "sha256": "d7c690844b59a64f6fd8ae7a072a6ea59bca25bbc3deb3031cec1d9206074e6c",
+      "bytes": 306828,
+      "frames": 76696,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "durationSeconds": 1.739138
+    },
+    "stems": [
+      {
+        "trackId": "latch",
+        "trackIndex": 0,
+        "sample": {
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/latch-fs.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/latch-fs.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 0.8
+            },
+            {
+              "file": "assets/latch-fs.wav",
+              "tick": 1920,
+              "frame": 38348,
+              "velocity": 0.6,
+              "playback": {
+                "rate": 1.122462,
+                "glide": {
+                  "to": 1,
+                  "duration": "1/8",
+                  "frames": 9587
+                },
+                "voiceFrames": 20581
+              }
+            }
+          ],
+          "clippedSamples": 0
+        },
+        "renderer": {
+          "name": "daemonv12-pcm",
+          "version": "1",
+          "settings": {
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "velocity": "round(sample * velocity)",
+            "mix": "integer sum, saturate s16",
+            "resampling": false
+          }
+        },
+        "wav": {
+          "file": "smoke.stems/latch.wav",
+          "sha256": "9cad85709878dadd947d63c019e02836c35cb3d0d008fb9eeb9c8aa7573539e4",
+          "bytes": 306828,
+          "frames": 76696,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "durationSeconds": 1.739138
+        }
+      }
+    ],
+    "audioTool": {
+      "name": "ffmpeg",
+      "version": "6.1.1-3ubuntu5"
+    },
+    "analysis": {
+      "master": {
+        "durationSeconds": 1.739138,
+        "frames": 76696,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "format": "pcm_s16le",
+        "peakDbfs": -12.332302,
+        "rmsDbfs": -34.36431,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "integratedLufs": -30.22,
+        "loudnessRangeLu": 0,
+        "truePeakDbfs": -12.33
+      },
+      "tracks": [
+        {
+          "trackId": "latch",
+          "analysis": {
+            "durationSeconds": 1.739138,
+            "frames": 76696,
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "format": "pcm_s16le",
+            "peakDbfs": -6.33201,
+            "rmsDbfs": -28.364342,
+            "fullScaleSamples": 0,
+            "clipping": false,
+            "integratedLufs": -24.22,
+            "loudnessRangeLu": 0,
+            "truePeakDbfs": -6.33
+          }
+        }
+      ]
+    }
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 1.739138,
+      "frames": 76696,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -12.332302,
+      "rmsDbfs": -34.36431,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -30.22,
+      "loudnessRangeLu": 0,
+      "truePeakDbfs": -12.33
+    },
+    "tracks": [
+      {
+        "trackId": "latch",
+        "analysis": {
+          "durationSeconds": 1.739138,
+          "frames": 76696,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -6.33201,
+          "rmsDbfs": -28.364342,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -24.22,
+          "loudnessRangeLu": 0,
+          "truePeakDbfs": -6.33
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,6441 @@
+{
+  "method": {
+    "kind": "Read-only listening proxies; no auditory judgment or quality score",
+    "node": "v22.23.3",
+    "sampleRate": 44100,
+    "bitsPerSample": 16,
+    "bpm": 138,
+    "spectrum": "Existing inspect(): 8192-point Hann FFT, 50% overlap, summed independent-channel power, unweighted bands, includes fades and silence",
+    "transientProxy": "10 ms windows; energy increase >5 dB against previous up to 50 ms, current RMS >-45 dBFS, minimum separation 40 ms. Not a perceptual onset detector.",
+    "activeEnergy": "20 ms windows above -60 dBFS RMS; active RMS excludes lower windows",
+    "lowBand": "Causal fourth-order Butterworth low-pass at 120 Hz (Q 0.541196, 1.306563); applied from beginning before sections",
+    "mono": "Mono=(L+R)/2, reference stereo power=(L²+R²)/2. Relative RMS energy delta includes expected reduction for decorrelated stereo.",
+    "automation": "Manifest-resolved sample frames; absolute values replace static parameters; outgoing linear dB/pan segments, default step, final hold",
+    "loudness": "Reuse native .analysis.json; LUFS and true peak are deliberately not reimplemented",
+    "limitations": "Spectral/energy/waveform evidence is not human audition. Stems are post-track and pre-master; nonlinear master processing prevents exact stem summation."
+  },
+  "masterFile": "/workspaces/daemonv12/benchmarks/ultimate-beat-battle/round2/astra/renders/v1/project-v1.wav",
+  "projectFile": "/workspaces/daemonv12/benchmarks/ultimate-beat-battle/round2/astra/project-v1.json",
+  "durationSeconds": 27.826122,
+  "whole": {
+    "startSeconds": 0,
+    "endSeconds": 27.826122,
+    "rmsDbfs": -24.485671,
+    "peakDbfs": -6.665272,
+    "crestDb": 17.820399,
+    "stereoCorrelation": 0.9953,
+    "midRmsDbfs": -24.496136,
+    "sideRmsDbfs": -50.671271,
+    "monoFoldDownDeltaDb": -0.010465,
+    "dc": -0.0000023,
+    "activeRmsDbfs": -24.365413,
+    "activeFraction": 0.9727,
+    "active20msWindows": 1354
+  },
+  "wholeBandPowerPercent": {
+    "0-30 Hz": 0.41,
+    "30-120 Hz": 78.04,
+    "120-500 Hz": 11.1,
+    "500-2000 Hz": 6.54,
+    "2000-6000 Hz": 1.1,
+    "6000-12000 Hz": 0.99,
+    "12000-22050 Hz": 1.81
+  },
+  "low120HzWhole": {
+    "startSeconds": 0,
+    "endSeconds": 27.826122,
+    "rmsDbfs": -25.592038,
+    "peakDbfs": -11.415314,
+    "crestDb": 14.176724,
+    "stereoCorrelation": 1,
+    "midRmsDbfs": -25.592058,
+    "sideRmsDbfs": -79.005661,
+    "monoFoldDownDeltaDb": -0.00002,
+    "dc": -0.00000502,
+    "activeRmsDbfs": -23.990982,
+    "activeFraction": 0.6917,
+    "active20msWindows": 963
+  },
+  "sections": {
+    "first5": {
+      "startSeconds": 0,
+      "endSeconds": 5,
+      "rmsDbfs": -24.390419,
+      "peakDbfs": -7.742952,
+      "crestDb": 16.647467,
+      "stereoCorrelation": 0.9979,
+      "midRmsDbfs": -24.395136,
+      "sideRmsDbfs": -54.034474,
+      "monoFoldDownDeltaDb": -0.004716,
+      "dc": 1.3e-7,
+      "activeRmsDbfs": -24.302687,
+      "activeFraction": 0.98,
+      "active20msWindows": 245,
+      "transients": {
+        "energyRiseAttacks": 25,
+        "attacksPerSecond": 5,
+        "attackTimes": [
+          {
+            "seconds": 0.24,
+            "riseDb": 12.3
+          },
+          {
+            "seconds": 0.65,
+            "riseDb": 8.57
+          },
+          {
+            "seconds": 0.69,
+            "riseDb": 16.67
+          },
+          {
+            "seconds": 0.76,
+            "riseDb": 6.34
+          },
+          {
+            "seconds": 0.92,
+            "riseDb": 10.24
+          },
+          {
+            "seconds": 1.09,
+            "riseDb": 6.45
+          },
+          {
+            "seconds": 1.3,
+            "riseDb": 10.62
+          },
+          {
+            "seconds": 1.41,
+            "riseDb": 9.64
+          },
+          {
+            "seconds": 1.56,
+            "riseDb": 14.19
+          },
+          {
+            "seconds": 1.73,
+            "riseDb": 33.16
+          },
+          {
+            "seconds": 1.98,
+            "riseDb": 17.81
+          },
+          {
+            "seconds": 2.17,
+            "riseDb": 6.76
+          },
+          {
+            "seconds": 2.39,
+            "riseDb": 34.26
+          },
+          {
+            "seconds": 2.65,
+            "riseDb": 19.88
+          },
+          {
+            "seconds": 2.89,
+            "riseDb": 9.79
+          },
+          {
+            "seconds": 3.04,
+            "riseDb": 6.77
+          },
+          {
+            "seconds": 3.21,
+            "riseDb": 6.01
+          },
+          {
+            "seconds": 3.47,
+            "riseDb": 14.35
+          },
+          {
+            "seconds": 3.72,
+            "riseDb": 17.27
+          },
+          {
+            "seconds": 4.13,
+            "riseDb": 9.39
+          },
+          {
+            "seconds": 4.17,
+            "riseDb": 19.16
+          },
+          {
+            "seconds": 4.24,
+            "riseDb": 8.02
+          },
+          {
+            "seconds": 4.39,
+            "riseDb": 6.95
+          },
+          {
+            "seconds": 4.56,
+            "riseDb": 5.22
+          },
+          {
+            "seconds": 4.78,
+            "riseDb": 13.39
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207336,
+        "maxAdjacentSampleJumpDbfs": -13.666488,
+        "maxAdjacentSampleJumpSeconds": 4.808186
+      },
+      "low120Hz": {
+        "startSeconds": 0,
+        "endSeconds": 5,
+        "rmsDbfs": -25.629484,
+        "peakDbfs": -12.349633,
+        "crestDb": 13.279851,
+        "stereoCorrelation": 1,
+        "midRmsDbfs": -25.62949,
+        "sideRmsDbfs": -84.504365,
+        "monoFoldDownDeltaDb": -0.000006,
+        "dc": 3e-8,
+        "activeRmsDbfs": -23.928976,
+        "activeFraction": 0.676,
+        "active20msWindows": 169
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0.14,
+        "30-120 Hz": 76.05,
+        "120-500 Hz": 12.56,
+        "500-2000 Hz": 7.79,
+        "2000-6000 Hz": 1.17,
+        "6000-12000 Hz": 0.82,
+        "12000-22050 Hz": 1.47
+      }
+    },
+    "establishment": {
+      "startSeconds": 3.478254,
+      "endSeconds": 10.434785,
+      "rmsDbfs": -23.611844,
+      "peakDbfs": -7.912668,
+      "crestDb": 15.699176,
+      "stereoCorrelation": 0.9977,
+      "midRmsDbfs": -23.617116,
+      "sideRmsDbfs": -52.772288,
+      "monoFoldDownDeltaDb": -0.005272,
+      "dc": -0.0000298,
+      "activeRmsDbfs": -23.599343,
+      "activeFraction": 0.9971,
+      "active20msWindows": 347,
+      "transients": {
+        "energyRiseAttacks": 34,
+        "attacksPerSecond": 4.887,
+        "attackTimes": [
+          {
+            "seconds": 3.7183,
+            "riseDb": 15.77
+          },
+          {
+            "seconds": 4.1283,
+            "riseDb": 8.05
+          },
+          {
+            "seconds": 4.1683,
+            "riseDb": 16.84
+          },
+          {
+            "seconds": 4.2383,
+            "riseDb": 6.46
+          },
+          {
+            "seconds": 4.3883,
+            "riseDb": 6.38
+          },
+          {
+            "seconds": 4.5683,
+            "riseDb": 6.54
+          },
+          {
+            "seconds": 4.7783,
+            "riseDb": 11.93
+          },
+          {
+            "seconds": 4.9983,
+            "riseDb": 20.84
+          },
+          {
+            "seconds": 5.2183,
+            "riseDb": 11.92
+          },
+          {
+            "seconds": 5.4083,
+            "riseDb": 8.71
+          },
+          {
+            "seconds": 5.6483,
+            "riseDb": 7.85
+          },
+          {
+            "seconds": 5.8683,
+            "riseDb": 33.69
+          },
+          {
+            "seconds": 5.9483,
+            "riseDb": 5.83
+          },
+          {
+            "seconds": 6.3483,
+            "riseDb": 24.57
+          },
+          {
+            "seconds": 6.5183,
+            "riseDb": 6.9
+          },
+          {
+            "seconds": 6.7183,
+            "riseDb": 11.05
+          },
+          {
+            "seconds": 6.9483,
+            "riseDb": 6
+          },
+          {
+            "seconds": 7.1983,
+            "riseDb": 15.19
+          },
+          {
+            "seconds": 7.6083,
+            "riseDb": 9.39
+          },
+          {
+            "seconds": 7.6483,
+            "riseDb": 19.17
+          },
+          {
+            "seconds": 7.7183,
+            "riseDb": 8.19
+          },
+          {
+            "seconds": 7.8683,
+            "riseDb": 6.53
+          },
+          {
+            "seconds": 8.0483,
+            "riseDb": 5.73
+          },
+          {
+            "seconds": 8.2583,
+            "riseDb": 11.77
+          },
+          {
+            "seconds": 8.4783,
+            "riseDb": 20.71
+          },
+          {
+            "seconds": 8.6983,
+            "riseDb": 7.73
+          },
+          {
+            "seconds": 8.8883,
+            "riseDb": 10.18
+          },
+          {
+            "seconds": 9.0283,
+            "riseDb": 6.65
+          },
+          {
+            "seconds": 9.3483,
+            "riseDb": 34.43
+          },
+          {
+            "seconds": 9.4383,
+            "riseDb": 8.74
+          },
+          {
+            "seconds": 9.8183,
+            "riseDb": 16.25
+          },
+          {
+            "seconds": 9.9983,
+            "riseDb": 7.81
+          },
+          {
+            "seconds": 10.1683,
+            "riseDb": 5.35
+          },
+          {
+            "seconds": 10.2083,
+            "riseDb": 9.97
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207336,
+        "maxAdjacentSampleJumpDbfs": -13.666488,
+        "maxAdjacentSampleJumpSeconds": 4.808186
+      },
+      "low120Hz": {
+        "startSeconds": 3.478254,
+        "endSeconds": 10.434785,
+        "rmsDbfs": -24.578068,
+        "peakDbfs": -11.462239,
+        "crestDb": 13.115829,
+        "stereoCorrelation": 1,
+        "midRmsDbfs": -24.578073,
+        "sideRmsDbfs": -83.738418,
+        "monoFoldDownDeltaDb": -0.000005,
+        "dc": -0.00001416,
+        "activeRmsDbfs": -23.694994,
+        "activeFraction": 0.816,
+        "active20msWindows": 284
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0.72,
+        "30-120 Hz": 80.41,
+        "120-500 Hz": 9.88,
+        "500-2000 Hz": 5.22,
+        "2000-6000 Hz": 0.97,
+        "6000-12000 Hz": 0.99,
+        "12000-22050 Hz": 1.81
+      }
+    },
+    "development": {
+      "startSeconds": 10.434785,
+      "endSeconds": 13.913061,
+      "rmsDbfs": -24.163694,
+      "peakDbfs": -6.675556,
+      "crestDb": 17.488138,
+      "stereoCorrelation": 0.9939,
+      "midRmsDbfs": -24.177513,
+      "sideRmsDbfs": -49.14362,
+      "monoFoldDownDeltaDb": -0.013819,
+      "dc": 0.00005929,
+      "activeRmsDbfs": -24.163694,
+      "activeFraction": 1,
+      "active20msWindows": 174,
+      "transients": {
+        "energyRiseAttacks": 16,
+        "attacksPerSecond": 4.6,
+        "attackTimes": [
+          {
+            "seconds": 10.6748,
+            "riseDb": 16.02
+          },
+          {
+            "seconds": 11.0848,
+            "riseDb": 8.29
+          },
+          {
+            "seconds": 11.1248,
+            "riseDb": 16.66
+          },
+          {
+            "seconds": 11.1948,
+            "riseDb": 6.81
+          },
+          {
+            "seconds": 11.3448,
+            "riseDb": 6.27
+          },
+          {
+            "seconds": 11.5248,
+            "riseDb": 6.39
+          },
+          {
+            "seconds": 11.7348,
+            "riseDb": 10.22
+          },
+          {
+            "seconds": 11.9548,
+            "riseDb": 12.79
+          },
+          {
+            "seconds": 12.1748,
+            "riseDb": 11.81
+          },
+          {
+            "seconds": 12.3648,
+            "riseDb": 9.76
+          },
+          {
+            "seconds": 12.8248,
+            "riseDb": 27.49
+          },
+          {
+            "seconds": 12.8948,
+            "riseDb": 6.64
+          },
+          {
+            "seconds": 13.1448,
+            "riseDb": 22.44
+          },
+          {
+            "seconds": 13.3048,
+            "riseDb": 24.84
+          },
+          {
+            "seconds": 13.4748,
+            "riseDb": 7.07
+          },
+          {
+            "seconds": 13.6748,
+            "riseDb": 14.6
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207886,
+        "maxAdjacentSampleJumpDbfs": -13.643506,
+        "maxAdjacentSampleJumpSeconds": 11.764717
+      },
+      "low120Hz": {
+        "startSeconds": 10.434785,
+        "endSeconds": 13.913061,
+        "rmsDbfs": -25.294333,
+        "peakDbfs": -11.876748,
+        "crestDb": 13.417585,
+        "stereoCorrelation": 1,
+        "midRmsDbfs": -25.294338,
+        "sideRmsDbfs": -84.912974,
+        "monoFoldDownDeltaDb": -0.000005,
+        "dc": 0.00002831,
+        "activeRmsDbfs": -24.096749,
+        "activeFraction": 0.759,
+        "active20msWindows": 132
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0.17,
+        "30-120 Hz": 78.19,
+        "120-500 Hz": 10.87,
+        "500-2000 Hz": 6.45,
+        "2000-6000 Hz": 1.08,
+        "6000-12000 Hz": 1.15,
+        "12000-22050 Hz": 2.09
+      }
+    },
+    "disruption": {
+      "startSeconds": 13.913061,
+      "endSeconds": 17.391315,
+      "rmsDbfs": -37.451316,
+      "peakDbfs": -12.353159,
+      "crestDb": 25.098157,
+      "stereoCorrelation": 0.9179,
+      "midRmsDbfs": -37.676947,
+      "sideRmsDbfs": -50.407501,
+      "monoFoldDownDeltaDb": -0.225631,
+      "dc": -6e-8,
+      "activeRmsDbfs": -36.629763,
+      "activeFraction": 0.8275,
+      "active20msWindows": 144,
+      "transients": {
+        "energyRiseAttacks": 4,
+        "attacksPerSecond": 1.15,
+        "attackTimes": [
+          {
+            "seconds": 15.0431,
+            "riseDb": 11.22
+          },
+          {
+            "seconds": 15.8731,
+            "riseDb": 6.18
+          },
+          {
+            "seconds": 16.7831,
+            "riseDb": 34.37
+          },
+          {
+            "seconds": 17.1731,
+            "riseDb": 27.03
+          }
+        ],
+        "maxAdjacentSampleJump": 0.097565,
+        "maxAdjacentSampleJumpDbfs": -20.214146,
+        "maxAdjacentSampleJumpSeconds": 16.785692
+      },
+      "low120Hz": {
+        "startSeconds": 13.913061,
+        "endSeconds": 17.391315,
+        "rmsDbfs": -62.139651,
+        "peakDbfs": -43.284315,
+        "crestDb": 18.855336,
+        "stereoCorrelation": 0.9989,
+        "midRmsDbfs": -62.209107,
+        "sideRmsDbfs": -80.13511,
+        "monoFoldDownDeltaDb": -0.069455,
+        "dc": 0,
+        "activeRmsDbfs": -51.399393,
+        "activeFraction": 0.0805,
+        "active20msWindows": 14
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0,
+        "120-500 Hz": 48.6,
+        "500-2000 Hz": 46.72,
+        "2000-6000 Hz": 2.82,
+        "6000-12000 Hz": 0.54,
+        "12000-22050 Hz": 1.31
+      }
+    },
+    "payoff": {
+      "startSeconds": 17.391315,
+      "endSeconds": 24.347846,
+      "rmsDbfs": -23.912761,
+      "peakDbfs": -6.665272,
+      "crestDb": 17.247489,
+      "stereoCorrelation": 0.9931,
+      "midRmsDbfs": -23.927967,
+      "sideRmsDbfs": -48.478252,
+      "monoFoldDownDeltaDb": -0.015205,
+      "dc": 2.3e-7,
+      "activeRmsDbfs": -23.912761,
+      "activeFraction": 1,
+      "active20msWindows": 348,
+      "transients": {
+        "energyRiseAttacks": 32,
+        "attacksPerSecond": 4.6,
+        "attackTimes": [
+          {
+            "seconds": 17.6313,
+            "riseDb": 15.66
+          },
+          {
+            "seconds": 18.0813,
+            "riseDb": 15.46
+          },
+          {
+            "seconds": 18.1513,
+            "riseDb": 6.57
+          },
+          {
+            "seconds": 18.3013,
+            "riseDb": 6.38
+          },
+          {
+            "seconds": 18.4813,
+            "riseDb": 6.52
+          },
+          {
+            "seconds": 18.6913,
+            "riseDb": 9.04
+          },
+          {
+            "seconds": 18.9113,
+            "riseDb": 17.4
+          },
+          {
+            "seconds": 19.1313,
+            "riseDb": 11.92
+          },
+          {
+            "seconds": 19.3213,
+            "riseDb": 5.24
+          },
+          {
+            "seconds": 19.4613,
+            "riseDb": 5.73
+          },
+          {
+            "seconds": 19.7813,
+            "riseDb": 21.8
+          },
+          {
+            "seconds": 19.8713,
+            "riseDb": 8.79
+          },
+          {
+            "seconds": 20.2613,
+            "riseDb": 23.62
+          },
+          {
+            "seconds": 20.4313,
+            "riseDb": 7.11
+          },
+          {
+            "seconds": 20.6313,
+            "riseDb": 10.14
+          },
+          {
+            "seconds": 20.8713,
+            "riseDb": 12
+          },
+          {
+            "seconds": 21.1113,
+            "riseDb": 18.83
+          },
+          {
+            "seconds": 21.5213,
+            "riseDb": 6.57
+          },
+          {
+            "seconds": 21.5613,
+            "riseDb": 18.54
+          },
+          {
+            "seconds": 21.6313,
+            "riseDb": 7.95
+          },
+          {
+            "seconds": 21.7813,
+            "riseDb": 6.8
+          },
+          {
+            "seconds": 21.9513,
+            "riseDb": 6.66
+          },
+          {
+            "seconds": 22.1713,
+            "riseDb": 10.45
+          },
+          {
+            "seconds": 22.3913,
+            "riseDb": 16.01
+          },
+          {
+            "seconds": 22.6013,
+            "riseDb": 6.72
+          },
+          {
+            "seconds": 22.8013,
+            "riseDb": 10.18
+          },
+          {
+            "seconds": 23.2613,
+            "riseDb": 22.2
+          },
+          {
+            "seconds": 23.3313,
+            "riseDb": 5.48
+          },
+          {
+            "seconds": 23.5813,
+            "riseDb": 21.25
+          },
+          {
+            "seconds": 23.7313,
+            "riseDb": 15.97
+          },
+          {
+            "seconds": 23.9113,
+            "riseDb": 7.7
+          },
+          {
+            "seconds": 24.1113,
+            "riseDb": 14.79
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207886,
+        "maxAdjacentSampleJumpDbfs": -13.643506,
+        "maxAdjacentSampleJumpSeconds": 22.199501
+      },
+      "low120Hz": {
+        "startSeconds": 17.391315,
+        "endSeconds": 24.347846,
+        "rmsDbfs": -25.048046,
+        "peakDbfs": -11.415314,
+        "crestDb": 13.632732,
+        "stereoCorrelation": 1,
+        "midRmsDbfs": -25.048092,
+        "sideRmsDbfs": -74.775025,
+        "monoFoldDownDeltaDb": -0.000046,
+        "dc": 0,
+        "activeRmsDbfs": -24.05927,
+        "activeFraction": 0.7964,
+        "active20msWindows": 277
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0.46,
+        "30-120 Hz": 77.6,
+        "120-500 Hz": 11.51,
+        "500-2000 Hz": 6.35,
+        "2000-6000 Hz": 1.06,
+        "6000-12000 Hz": 1.07,
+        "12000-22050 Hz": 1.95
+      }
+    },
+    "final3": {
+      "startSeconds": 24.826122,
+      "endSeconds": 27.826122,
+      "rmsDbfs": -24.176197,
+      "peakDbfs": -7.935109,
+      "crestDb": 16.241088,
+      "stereoCorrelation": 0.9983,
+      "midRmsDbfs": -24.17994,
+      "sideRmsDbfs": -54.82454,
+      "monoFoldDownDeltaDb": -0.003742,
+      "dc": -0.00000337,
+      "activeRmsDbfs": -24.176197,
+      "activeFraction": 1,
+      "active20msWindows": 150,
+      "transients": {
+        "energyRiseAttacks": 15,
+        "attacksPerSecond": 5,
+        "attackTimes": [
+          {
+            "seconds": 25.0061,
+            "riseDb": 5.28
+          },
+          {
+            "seconds": 25.0461,
+            "riseDb": 13.93
+          },
+          {
+            "seconds": 25.1161,
+            "riseDb": 5.79
+          },
+          {
+            "seconds": 25.2661,
+            "riseDb": 10.04
+          },
+          {
+            "seconds": 25.4361,
+            "riseDb": 8.24
+          },
+          {
+            "seconds": 25.6461,
+            "riseDb": 9.91
+          },
+          {
+            "seconds": 25.8661,
+            "riseDb": 19.45
+          },
+          {
+            "seconds": 26.0861,
+            "riseDb": 11.29
+          },
+          {
+            "seconds": 26.2861,
+            "riseDb": 15
+          },
+          {
+            "seconds": 26.5161,
+            "riseDb": 5.6
+          },
+          {
+            "seconds": 26.7361,
+            "riseDb": 20.14
+          },
+          {
+            "seconds": 26.8261,
+            "riseDb": 7.38
+          },
+          {
+            "seconds": 27.2161,
+            "riseDb": 22.89
+          },
+          {
+            "seconds": 27.3961,
+            "riseDb": 8
+          },
+          {
+            "seconds": 27.5861,
+            "riseDb": 21.97
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207336,
+        "maxAdjacentSampleJumpDbfs": -13.666488,
+        "maxAdjacentSampleJumpSeconds": 25.677778
+      },
+      "low120Hz": {
+        "startSeconds": 24.826122,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -25.183963,
+        "peakDbfs": -12.956902,
+        "crestDb": 12.227061,
+        "stereoCorrelation": 1,
+        "midRmsDbfs": -25.183972,
+        "sideRmsDbfs": -82.31932,
+        "monoFoldDownDeltaDb": -0.000008,
+        "dc": 0.00000671,
+        "activeRmsDbfs": -24.067663,
+        "activeFraction": 0.7733,
+        "active20msWindows": 116
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0.19,
+        "30-120 Hz": 80.8,
+        "120-500 Hz": 9.55,
+        "500-2000 Hz": 5.05,
+        "2000-6000 Hz": 1.34,
+        "6000-12000 Hz": 1.09,
+        "12000-22050 Hz": 1.98
+      }
+    }
+  },
+  "bars": [
+    {
+      "bar": 1,
+      "startSeconds": 0,
+      "endSeconds": 1.739138,
+      "rmsDbfs": -24.397221,
+      "peakDbfs": -7.742952,
+      "crestDb": 16.654269,
+      "stereoCorrelation": 0.9993,
+      "midRmsDbfs": -24.399171,
+      "sideRmsDbfs": -57.876115,
+      "monoFoldDownDeltaDb": -0.00195,
+      "dc": 0,
+      "activeRmsDbfs": -24.089049,
+      "activeFraction": 0.9315,
+      "active20msWindows": 81,
+      "transients": {
+        "energyRiseAttacks": 9,
+        "attacksPerSecond": 5.175,
+        "attackTimes": [
+          {
+            "seconds": 0.24,
+            "riseDb": 12.3
+          },
+          {
+            "seconds": 0.65,
+            "riseDb": 8.57
+          },
+          {
+            "seconds": 0.69,
+            "riseDb": 16.67
+          },
+          {
+            "seconds": 0.76,
+            "riseDb": 6.34
+          },
+          {
+            "seconds": 0.92,
+            "riseDb": 10.24
+          },
+          {
+            "seconds": 1.09,
+            "riseDb": 6.45
+          },
+          {
+            "seconds": 1.3,
+            "riseDb": 10.62
+          },
+          {
+            "seconds": 1.41,
+            "riseDb": 9.64
+          },
+          {
+            "seconds": 1.56,
+            "riseDb": 14.19
+          }
+        ],
+        "maxAdjacentSampleJump": 0.126709,
+        "maxAdjacentSampleJumpDbfs": -17.943852,
+        "maxAdjacentSampleJumpSeconds": 0.263764
+      }
+    },
+    {
+      "bar": 2,
+      "startSeconds": 1.739138,
+      "endSeconds": 3.478254,
+      "rmsDbfs": -25.192652,
+      "peakDbfs": -9.820927,
+      "crestDb": 15.371725,
+      "stereoCorrelation": 0.9962,
+      "midRmsDbfs": -25.200972,
+      "sideRmsDbfs": -52.373273,
+      "monoFoldDownDeltaDb": -0.00832,
+      "dc": -5.3e-7,
+      "activeRmsDbfs": -25.192652,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 7,
+        "attacksPerSecond": 4.025,
+        "attackTimes": [
+          {
+            "seconds": 1.9791,
+            "riseDb": 16.27
+          },
+          {
+            "seconds": 2.1691,
+            "riseDb": 5.63
+          },
+          {
+            "seconds": 2.3891,
+            "riseDb": 33.65
+          },
+          {
+            "seconds": 2.6491,
+            "riseDb": 19.51
+          },
+          {
+            "seconds": 2.8891,
+            "riseDb": 9.1
+          },
+          {
+            "seconds": 3.0391,
+            "riseDb": 5.67
+          },
+          {
+            "seconds": 3.2091,
+            "riseDb": 6.71
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207062,
+        "maxAdjacentSampleJumpDbfs": -13.678002,
+        "maxAdjacentSampleJumpSeconds": 3.06907
+      }
+    },
+    {
+      "bar": 3,
+      "startSeconds": 3.478254,
+      "endSeconds": 5.217392,
+      "rmsDbfs": -23.48342,
+      "peakDbfs": -8.005445,
+      "crestDb": 15.477975,
+      "stereoCorrelation": 0.9985,
+      "midRmsDbfs": -23.487247,
+      "sideRmsDbfs": -54.034588,
+      "monoFoldDownDeltaDb": -0.003827,
+      "dc": -0.0000454,
+      "activeRmsDbfs": -23.48342,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 8,
+        "attacksPerSecond": 4.6,
+        "attackTimes": [
+          {
+            "seconds": 3.7183,
+            "riseDb": 15.77
+          },
+          {
+            "seconds": 4.1283,
+            "riseDb": 8.05
+          },
+          {
+            "seconds": 4.1683,
+            "riseDb": 16.84
+          },
+          {
+            "seconds": 4.2383,
+            "riseDb": 6.46
+          },
+          {
+            "seconds": 4.3883,
+            "riseDb": 6.38
+          },
+          {
+            "seconds": 4.5683,
+            "riseDb": 6.54
+          },
+          {
+            "seconds": 4.7783,
+            "riseDb": 11.93
+          },
+          {
+            "seconds": 4.9983,
+            "riseDb": 20.84
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207336,
+        "maxAdjacentSampleJumpDbfs": -13.666488,
+        "maxAdjacentSampleJumpSeconds": 4.808186
+      }
+    },
+    {
+      "bar": 4,
+      "startSeconds": 5.217392,
+      "endSeconds": 6.956531,
+      "rmsDbfs": -24.126738,
+      "peakDbfs": -10.930005,
+      "crestDb": 13.196733,
+      "stereoCorrelation": 0.9972,
+      "midRmsDbfs": -24.132916,
+      "sideRmsDbfs": -52.599155,
+      "monoFoldDownDeltaDb": -0.006178,
+      "dc": 0.00000898,
+      "activeRmsDbfs": -24.126738,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 7,
+        "attacksPerSecond": 4.025,
+        "attackTimes": [
+          {
+            "seconds": 5.4174,
+            "riseDb": 15.05
+          },
+          {
+            "seconds": 5.6474,
+            "riseDb": 6.29
+          },
+          {
+            "seconds": 5.8674,
+            "riseDb": 33.11
+          },
+          {
+            "seconds": 5.9474,
+            "riseDb": 5.3
+          },
+          {
+            "seconds": 6.3474,
+            "riseDb": 24.72
+          },
+          {
+            "seconds": 6.5174,
+            "riseDb": 5.77
+          },
+          {
+            "seconds": 6.7174,
+            "riseDb": 10.2
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207031,
+        "maxAdjacentSampleJumpDbfs": -13.679282,
+        "maxAdjacentSampleJumpSeconds": 6.547324
+      }
+    },
+    {
+      "bar": 5,
+      "startSeconds": 6.956531,
+      "endSeconds": 8.695669,
+      "rmsDbfs": -23.217618,
+      "peakDbfs": -7.912668,
+      "crestDb": 15.30495,
+      "stereoCorrelation": 0.9976,
+      "midRmsDbfs": -23.223605,
+      "sideRmsDbfs": -51.826598,
+      "monoFoldDownDeltaDb": -0.005987,
+      "dc": -0.00006019,
+      "activeRmsDbfs": -23.217618,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 8,
+        "attacksPerSecond": 4.6,
+        "attackTimes": [
+          {
+            "seconds": 7.1965,
+            "riseDb": 14.62
+          },
+          {
+            "seconds": 7.6065,
+            "riseDb": 7.98
+          },
+          {
+            "seconds": 7.6465,
+            "riseDb": 16.85
+          },
+          {
+            "seconds": 7.7165,
+            "riseDb": 6.67
+          },
+          {
+            "seconds": 7.8665,
+            "riseDb": 5.65
+          },
+          {
+            "seconds": 8.0465,
+            "riseDb": 8.77
+          },
+          {
+            "seconds": 8.2565,
+            "riseDb": 10.14
+          },
+          {
+            "seconds": 8.4765,
+            "riseDb": 20.18
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207306,
+        "maxAdjacentSampleJumpDbfs": -13.667766,
+        "maxAdjacentSampleJumpSeconds": 8.286463
+      }
+    },
+    {
+      "bar": 6,
+      "startSeconds": 8.695669,
+      "endSeconds": 10.434785,
+      "rmsDbfs": -23.669698,
+      "peakDbfs": -9.350268,
+      "crestDb": 14.31943,
+      "stereoCorrelation": 0.9976,
+      "midRmsDbfs": -23.674872,
+      "sideRmsDbfs": -52.9123,
+      "monoFoldDownDeltaDb": -0.005173,
+      "dc": -0.00002258,
+      "activeRmsDbfs": -23.669698,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 8,
+        "attacksPerSecond": 4.6,
+        "attackTimes": [
+          {
+            "seconds": 8.8957,
+            "riseDb": 12.96
+          },
+          {
+            "seconds": 9.0257,
+            "riseDb": 5.78
+          },
+          {
+            "seconds": 9.1357,
+            "riseDb": 6.11
+          },
+          {
+            "seconds": 9.3457,
+            "riseDb": 32.96
+          },
+          {
+            "seconds": 9.4257,
+            "riseDb": 6.15
+          },
+          {
+            "seconds": 9.8257,
+            "riseDb": 24.77
+          },
+          {
+            "seconds": 9.9957,
+            "riseDb": 5.91
+          },
+          {
+            "seconds": 10.1957,
+            "riseDb": 9.44
+          }
+        ],
+        "maxAdjacentSampleJump": 0.20694,
+        "maxAdjacentSampleJumpDbfs": -13.683124,
+        "maxAdjacentSampleJumpSeconds": 10.025578
+      }
+    },
+    {
+      "bar": 7,
+      "startSeconds": 10.434785,
+      "endSeconds": 12.173923,
+      "rmsDbfs": -23.435494,
+      "peakDbfs": -6.675556,
+      "crestDb": 16.759938,
+      "stereoCorrelation": 0.9938,
+      "midRmsDbfs": -23.450222,
+      "sideRmsDbfs": -48.139098,
+      "monoFoldDownDeltaDb": -0.014729,
+      "dc": 0.00007439,
+      "activeRmsDbfs": -23.435494,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 8,
+        "attacksPerSecond": 4.6,
+        "attackTimes": [
+          {
+            "seconds": 10.6748,
+            "riseDb": 16.02
+          },
+          {
+            "seconds": 11.0848,
+            "riseDb": 8.29
+          },
+          {
+            "seconds": 11.1248,
+            "riseDb": 16.66
+          },
+          {
+            "seconds": 11.1948,
+            "riseDb": 6.81
+          },
+          {
+            "seconds": 11.3448,
+            "riseDb": 6.27
+          },
+          {
+            "seconds": 11.5248,
+            "riseDb": 6.39
+          },
+          {
+            "seconds": 11.7348,
+            "riseDb": 10.22
+          },
+          {
+            "seconds": 11.9548,
+            "riseDb": 12.79
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207886,
+        "maxAdjacentSampleJumpDbfs": -13.643506,
+        "maxAdjacentSampleJumpSeconds": 11.764717
+      }
+    },
+    {
+      "bar": 8,
+      "startSeconds": 12.173923,
+      "endSeconds": 13.913061,
+      "rmsDbfs": -25.03909,
+      "peakDbfs": -10.977717,
+      "crestDb": 14.061373,
+      "stereoCorrelation": 0.9943,
+      "midRmsDbfs": -25.051594,
+      "sideRmsDbfs": -50.452694,
+      "monoFoldDownDeltaDb": -0.012504,
+      "dc": 0.00004419,
+      "activeRmsDbfs": -25.03909,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 7,
+        "attacksPerSecond": 4.025,
+        "attackTimes": [
+          {
+            "seconds": 12.3639,
+            "riseDb": 8.04
+          },
+          {
+            "seconds": 12.8239,
+            "riseDb": 27.08
+          },
+          {
+            "seconds": 12.8939,
+            "riseDb": 6.28
+          },
+          {
+            "seconds": 13.1439,
+            "riseDb": 19.23
+          },
+          {
+            "seconds": 13.3039,
+            "riseDb": 25.04
+          },
+          {
+            "seconds": 13.4739,
+            "riseDb": 5.9
+          },
+          {
+            "seconds": 13.6739,
+            "riseDb": 14.34
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207062,
+        "maxAdjacentSampleJumpDbfs": -13.678002,
+        "maxAdjacentSampleJumpSeconds": 13.503855
+      }
+    },
+    {
+      "bar": 9,
+      "startSeconds": 13.913061,
+      "endSeconds": 15.652177,
+      "rmsDbfs": -35.012748,
+      "peakDbfs": -12.353159,
+      "crestDb": 22.659589,
+      "stereoCorrelation": 0.9176,
+      "midRmsDbfs": -35.243443,
+      "sideRmsDbfs": -47.875047,
+      "monoFoldDownDeltaDb": -0.230695,
+      "dc": 0.00000105,
+      "activeRmsDbfs": -35.012748,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 1,
+        "attacksPerSecond": 0.575,
+        "attackTimes": [
+          {
+            "seconds": 15.0431,
+            "riseDb": 11.22
+          }
+        ],
+        "maxAdjacentSampleJump": 0.067505,
+        "maxAdjacentSampleJumpDbfs": -23.413296,
+        "maxAdjacentSampleJumpSeconds": 15.045125
+      }
+    },
+    {
+      "bar": 10,
+      "startSeconds": 15.652177,
+      "endSeconds": 17.391315,
+      "rmsDbfs": -43.529494,
+      "peakDbfs": -19.407807,
+      "crestDb": 24.121687,
+      "stereoCorrelation": 0.9229,
+      "midRmsDbfs": -43.719305,
+      "sideRmsDbfs": -57.218686,
+      "monoFoldDownDeltaDb": -0.189811,
+      "dc": -0.00000118,
+      "activeRmsDbfs": -41.698185,
+      "activeFraction": 0.655,
+      "active20msWindows": 57,
+      "transients": {
+        "energyRiseAttacks": 3,
+        "attacksPerSecond": 1.725,
+        "attackTimes": [
+          {
+            "seconds": 15.8722,
+            "riseDb": 6.14
+          },
+          {
+            "seconds": 16.7822,
+            "riseDb": 65.06
+          },
+          {
+            "seconds": 17.1722,
+            "riseDb": 26.86
+          }
+        ],
+        "maxAdjacentSampleJump": 0.097565,
+        "maxAdjacentSampleJumpDbfs": -20.214146,
+        "maxAdjacentSampleJumpSeconds": 16.785692
+      }
+    },
+    {
+      "bar": 11,
+      "startSeconds": 17.391315,
+      "endSeconds": 19.130454,
+      "rmsDbfs": -23.44868,
+      "peakDbfs": -8.139051,
+      "crestDb": 15.309629,
+      "stereoCorrelation": 0.9927,
+      "midRmsDbfs": -23.465289,
+      "sideRmsDbfs": -47.631475,
+      "monoFoldDownDeltaDb": -0.016609,
+      "dc": -0.00004461,
+      "activeRmsDbfs": -23.44868,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 7,
+        "attacksPerSecond": 4.025,
+        "attackTimes": [
+          {
+            "seconds": 17.6313,
+            "riseDb": 15.66
+          },
+          {
+            "seconds": 18.0813,
+            "riseDb": 15.46
+          },
+          {
+            "seconds": 18.1513,
+            "riseDb": 6.57
+          },
+          {
+            "seconds": 18.3013,
+            "riseDb": 6.38
+          },
+          {
+            "seconds": 18.4813,
+            "riseDb": 6.52
+          },
+          {
+            "seconds": 18.6913,
+            "riseDb": 9.04
+          },
+          {
+            "seconds": 18.9113,
+            "riseDb": 17.4
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207001,
+        "maxAdjacentSampleJumpDbfs": -13.680562,
+        "maxAdjacentSampleJumpSeconds": 18.721247
+      }
+    },
+    {
+      "bar": 12,
+      "startSeconds": 19.130454,
+      "endSeconds": 20.869592,
+      "rmsDbfs": -23.658644,
+      "peakDbfs": -10.20453,
+      "crestDb": 13.454114,
+      "stereoCorrelation": 0.9942,
+      "midRmsDbfs": -23.671289,
+      "sideRmsDbfs": -49.023564,
+      "monoFoldDownDeltaDb": -0.012645,
+      "dc": -0.00007411,
+      "activeRmsDbfs": -23.658644,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 8,
+        "attacksPerSecond": 4.6,
+        "attackTimes": [
+          {
+            "seconds": 19.3305,
+            "riseDb": 12.96
+          },
+          {
+            "seconds": 19.4605,
+            "riseDb": 5.77
+          },
+          {
+            "seconds": 19.5705,
+            "riseDb": 5.92
+          },
+          {
+            "seconds": 19.7805,
+            "riseDb": 21.38
+          },
+          {
+            "seconds": 19.8605,
+            "riseDb": 5.94
+          },
+          {
+            "seconds": 20.2605,
+            "riseDb": 23.72
+          },
+          {
+            "seconds": 20.4305,
+            "riseDb": 5.62
+          },
+          {
+            "seconds": 20.6305,
+            "riseDb": 9.87
+          }
+        ],
+        "maxAdjacentSampleJump": 0.206879,
+        "maxAdjacentSampleJumpDbfs": -13.685686,
+        "maxAdjacentSampleJumpSeconds": 20.460385
+      }
+    },
+    {
+      "bar": 13,
+      "startSeconds": 20.869592,
+      "endSeconds": 22.608707,
+      "rmsDbfs": -23.763596,
+      "peakDbfs": -6.665272,
+      "crestDb": 17.098324,
+      "stereoCorrelation": 0.9946,
+      "midRmsDbfs": -23.775646,
+      "sideRmsDbfs": -49.337648,
+      "monoFoldDownDeltaDb": -0.01205,
+      "dc": 0.0001187,
+      "activeRmsDbfs": -23.763596,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 8,
+        "attacksPerSecond": 4.6,
+        "attackTimes": [
+          {
+            "seconds": 21.1096,
+            "riseDb": 18.01
+          },
+          {
+            "seconds": 21.5196,
+            "riseDb": 5.38
+          },
+          {
+            "seconds": 21.5596,
+            "riseDb": 16.23
+          },
+          {
+            "seconds": 21.6296,
+            "riseDb": 6.44
+          },
+          {
+            "seconds": 21.7796,
+            "riseDb": 6.12
+          },
+          {
+            "seconds": 21.9596,
+            "riseDb": 11.26
+          },
+          {
+            "seconds": 22.1696,
+            "riseDb": 8.95
+          },
+          {
+            "seconds": 22.3896,
+            "riseDb": 13.61
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207886,
+        "maxAdjacentSampleJumpDbfs": -13.643506,
+        "maxAdjacentSampleJumpSeconds": 22.199501
+      }
+    },
+    {
+      "bar": 14,
+      "startSeconds": 22.608707,
+      "endSeconds": 24.347846,
+      "rmsDbfs": -24.92539,
+      "peakDbfs": -11.019092,
+      "crestDb": 13.906298,
+      "stereoCorrelation": 0.9904,
+      "midRmsDbfs": -24.94618,
+      "sideRmsDbfs": -48.134982,
+      "monoFoldDownDeltaDb": -0.02079,
+      "dc": 9.6e-7,
+      "activeRmsDbfs": -24.92539,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 7,
+        "attacksPerSecond": 4.025,
+        "attackTimes": [
+          {
+            "seconds": 22.7987,
+            "riseDb": 8.04
+          },
+          {
+            "seconds": 23.2587,
+            "riseDb": 20.54
+          },
+          {
+            "seconds": 23.3287,
+            "riseDb": 5.72
+          },
+          {
+            "seconds": 23.5787,
+            "riseDb": 15.49
+          },
+          {
+            "seconds": 23.7387,
+            "riseDb": 23.71
+          },
+          {
+            "seconds": 23.9087,
+            "riseDb": 5.51
+          },
+          {
+            "seconds": 24.1087,
+            "riseDb": 13.38
+          }
+        ],
+        "maxAdjacentSampleJump": 0.206848,
+        "maxAdjacentSampleJumpDbfs": -13.686967,
+        "maxAdjacentSampleJumpSeconds": 23.938639
+      }
+    },
+    {
+      "bar": 15,
+      "startSeconds": 24.347846,
+      "endSeconds": 26.086984,
+      "rmsDbfs": -23.3996,
+      "peakDbfs": -7.801976,
+      "crestDb": 15.597624,
+      "stereoCorrelation": 0.9968,
+      "midRmsDbfs": -23.406806,
+      "sideRmsDbfs": -51.203997,
+      "monoFoldDownDeltaDb": -0.007206,
+      "dc": -0.00004564,
+      "activeRmsDbfs": -23.3996,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 7,
+        "attacksPerSecond": 4.025,
+        "attackTimes": [
+          {
+            "seconds": 24.5878,
+            "riseDb": 15.56
+          },
+          {
+            "seconds": 25.0378,
+            "riseDb": 15.92
+          },
+          {
+            "seconds": 25.1078,
+            "riseDb": 6.32
+          },
+          {
+            "seconds": 25.2578,
+            "riseDb": 6.37
+          },
+          {
+            "seconds": 25.4378,
+            "riseDb": 6.6
+          },
+          {
+            "seconds": 25.6478,
+            "riseDb": 11.82
+          },
+          {
+            "seconds": 25.8678,
+            "riseDb": 20.61
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207336,
+        "maxAdjacentSampleJumpDbfs": -13.666488,
+        "maxAdjacentSampleJumpSeconds": 25.677778
+      }
+    },
+    {
+      "bar": 16,
+      "startSeconds": 26.086984,
+      "endSeconds": 27.826122,
+      "rmsDbfs": -23.935663,
+      "peakDbfs": -7.935109,
+      "crestDb": 16.000554,
+      "stereoCorrelation": 0.9992,
+      "midRmsDbfs": -23.93739,
+      "sideRmsDbfs": -57.941483,
+      "monoFoldDownDeltaDb": -0.001727,
+      "dc": 0.00000911,
+      "activeRmsDbfs": -23.935663,
+      "activeFraction": 1,
+      "active20msWindows": 87,
+      "transients": {
+        "energyRiseAttacks": 7,
+        "attacksPerSecond": 4.025,
+        "attackTimes": [
+          {
+            "seconds": 26.287,
+            "riseDb": 15.05
+          },
+          {
+            "seconds": 26.517,
+            "riseDb": 6.32
+          },
+          {
+            "seconds": 26.737,
+            "riseDb": 20.74
+          },
+          {
+            "seconds": 26.827,
+            "riseDb": 6.85
+          },
+          {
+            "seconds": 27.217,
+            "riseDb": 23.41
+          },
+          {
+            "seconds": 27.387,
+            "riseDb": 5.94
+          },
+          {
+            "seconds": 27.587,
+            "riseDb": 22.39
+          }
+        ],
+        "maxAdjacentSampleJump": 0.207214,
+        "maxAdjacentSampleJumpDbfs": -13.671603,
+        "maxAdjacentSampleJumpSeconds": 27.416916
+      }
+    }
+  ],
+  "stems": [
+    {
+      "trackId": "piston",
+      "file": "project-v1.stems/piston.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -27.401298,
+        "peakDbfs": -9.73107,
+        "crestDb": 17.670228,
+        "stereoCorrelation": 1,
+        "midRmsDbfs": -27.401298,
+        "sideRmsDbfs": null,
+        "monoFoldDownDeltaDb": 0,
+        "dc": -3e-8,
+        "activeRmsDbfs": -23.386474,
+        "activeFraction": 0.3967,
+        "active20msWindows": 552
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": -26.636538,
+          "peakDbfs": -9.73107,
+          "crestDb": 16.905468,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -26.636538,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": -4e-8,
+          "activeRmsDbfs": -23.448953,
+          "activeFraction": 0.48,
+          "active20msWindows": 120
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": -26.821378,
+          "peakDbfs": -9.73107,
+          "crestDb": 17.090308,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -26.821378,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": -4e-8,
+          "activeRmsDbfs": -23.448953,
+          "activeFraction": 0.46,
+          "active20msWindows": 160
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -26.821392,
+          "peakDbfs": -9.73107,
+          "crestDb": 17.090322,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -26.821392,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": -4e-8,
+          "activeRmsDbfs": -23.394325,
+          "activeFraction": 0.4542,
+          "active20msWindows": 79
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": null,
+          "peakDbfs": null,
+          "crestDb": null,
+          "stereoCorrelation": null,
+          "midRmsDbfs": null,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": null,
+          "dc": 0,
+          "activeRmsDbfs": null,
+          "activeFraction": 0,
+          "active20msWindows": 0
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -26.821378,
+          "peakDbfs": -9.73107,
+          "crestDb": 17.090308,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -26.821378,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": -4e-8,
+          "activeRmsDbfs": -23.448953,
+          "activeFraction": 0.46,
+          "active20msWindows": 160
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": -27.246699,
+          "peakDbfs": -9.73107,
+          "crestDb": 17.515629,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -27.246699,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": -4e-8,
+          "activeRmsDbfs": -23.614925,
+          "activeFraction": 0.4333,
+          "active20msWindows": 65
+        }
+      }
+    },
+    {
+      "trackId": "clamp",
+      "file": "project-v1.stems/clamp.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -36.37055,
+        "peakDbfs": -12.767334,
+        "crestDb": 23.603216,
+        "stereoCorrelation": 0.9982,
+        "midRmsDbfs": -36.374527,
+        "sideRmsDbfs": -66.754313,
+        "monoFoldDownDeltaDb": -0.003977,
+        "dc": 0,
+        "activeRmsDbfs": -29.345668,
+        "activeFraction": 0.1984,
+        "active20msWindows": 276
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": -36.899175,
+          "peakDbfs": -12.767334,
+          "crestDb": 24.131841,
+          "stereoCorrelation": 0.9982,
+          "midRmsDbfs": -36.903125,
+          "sideRmsDbfs": -67.313616,
+          "monoFoldDownDeltaDb": -0.003949,
+          "dc": -7e-8,
+          "activeRmsDbfs": -29.547615,
+          "activeFraction": 0.184,
+          "active20msWindows": 46
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": -35.495806,
+          "peakDbfs": -12.767334,
+          "crestDb": 22.728472,
+          "stereoCorrelation": 0.9982,
+          "midRmsDbfs": -35.499788,
+          "sideRmsDbfs": -65.874325,
+          "monoFoldDownDeltaDb": -0.003982,
+          "dc": 0,
+          "activeRmsDbfs": -29.325204,
+          "activeFraction": 0.2415,
+          "active20msWindows": 84
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -35.49582,
+          "peakDbfs": -12.767334,
+          "crestDb": 22.728486,
+          "stereoCorrelation": 0.9982,
+          "midRmsDbfs": -35.499802,
+          "sideRmsDbfs": -65.874339,
+          "monoFoldDownDeltaDb": -0.003982,
+          "dc": 0,
+          "activeRmsDbfs": -29.325219,
+          "activeFraction": 0.2415,
+          "active20msWindows": 42
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": null,
+          "peakDbfs": null,
+          "crestDb": null,
+          "stereoCorrelation": null,
+          "midRmsDbfs": null,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": null,
+          "dc": 0,
+          "activeRmsDbfs": null,
+          "activeFraction": 0,
+          "active20msWindows": 0
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -35.495806,
+          "peakDbfs": -12.767334,
+          "crestDb": 22.728472,
+          "stereoCorrelation": 0.9982,
+          "midRmsDbfs": -35.499788,
+          "sideRmsDbfs": -65.874325,
+          "monoFoldDownDeltaDb": -0.003982,
+          "dc": 0,
+          "activeRmsDbfs": -29.325204,
+          "activeFraction": 0.2415,
+          "active20msWindows": 84
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": -35.786121,
+          "peakDbfs": -12.767334,
+          "crestDb": 23.018787,
+          "stereoCorrelation": 0.9978,
+          "midRmsDbfs": -35.790931,
+          "sideRmsDbfs": -65.345426,
+          "monoFoldDownDeltaDb": -0.004809,
+          "dc": -0.00000561,
+          "activeRmsDbfs": -29.936201,
+          "activeFraction": 0.26,
+          "active20msWindows": 39
+        }
+      }
+    },
+    {
+      "trackId": "dust-clock",
+      "file": "project-v1.stems/dust-clock.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -45.037379,
+        "peakDbfs": -19.67176,
+        "crestDb": 25.365619,
+        "stereoCorrelation": 1,
+        "midRmsDbfs": -45.070087,
+        "sideRmsDbfs": -66.284975,
+        "monoFoldDownDeltaDb": -0.032708,
+        "dc": -2e-8,
+        "activeRmsDbfs": -40.171242,
+        "activeFraction": 0.3258,
+        "active20msWindows": 454
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": -46.255999,
+          "peakDbfs": -19.67176,
+          "crestDb": 26.584239,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -46.288707,
+          "sideRmsDbfs": -67.503718,
+          "monoFoldDownDeltaDb": -0.032707,
+          "dc": -1e-8,
+          "activeRmsDbfs": -39.685105,
+          "activeFraction": 0.22,
+          "active20msWindows": 55
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": -44.181986,
+          "peakDbfs": -19.67176,
+          "crestDb": 24.510226,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -44.214694,
+          "sideRmsDbfs": -65.429598,
+          "monoFoldDownDeltaDb": -0.032708,
+          "dc": -2e-8,
+          "activeRmsDbfs": -40.259458,
+          "activeFraction": 0.4049,
+          "active20msWindows": 141
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -44.181999,
+          "peakDbfs": -19.67176,
+          "crestDb": 24.510239,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -44.214707,
+          "sideRmsDbfs": -65.42961,
+          "monoFoldDownDeltaDb": -0.032708,
+          "dc": -3e-8,
+          "activeRmsDbfs": -40.289712,
+          "activeFraction": 0.4078,
+          "active20msWindows": 71
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": -53.715542,
+          "peakDbfs": -22.433986,
+          "crestDb": 31.281556,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -53.748259,
+          "sideRmsDbfs": -74.961961,
+          "monoFoldDownDeltaDb": -0.032717,
+          "dc": 0,
+          "activeRmsDbfs": -39.101798,
+          "activeFraction": 0.0345,
+          "active20msWindows": 6
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -44.18242,
+          "peakDbfs": -19.67176,
+          "crestDb": 24.51066,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -44.215128,
+          "sideRmsDbfs": -65.430038,
+          "monoFoldDownDeltaDb": -0.032708,
+          "dc": -2e-8,
+          "activeRmsDbfs": -40.259453,
+          "activeFraction": 0.4049,
+          "active20msWindows": 141
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": -44.302931,
+          "peakDbfs": -19.67176,
+          "crestDb": 24.631171,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -44.335639,
+          "sideRmsDbfs": -65.550531,
+          "monoFoldDownDeltaDb": -0.032708,
+          "dc": -2e-8,
+          "activeRmsDbfs": -40.468835,
+          "activeFraction": 0.4133,
+          "active20msWindows": 62
+        }
+      }
+    },
+    {
+      "trackId": "crossbar",
+      "file": "project-v1.stems/crossbar.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -50.960377,
+        "peakDbfs": -17.527241,
+        "crestDb": 33.433136,
+        "stereoCorrelation": 1,
+        "midRmsDbfs": -51.026213,
+        "sideRmsDbfs": -69.186457,
+        "monoFoldDownDeltaDb": -0.065836,
+        "dc": 0,
+        "activeRmsDbfs": -36.933039,
+        "activeFraction": 0.0395,
+        "active20msWindows": 55
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": -54.08935,
+          "peakDbfs": -17.527241,
+          "crestDb": 36.562109,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -54.155185,
+          "sideRmsDbfs": -72.315459,
+          "monoFoldDownDeltaDb": -0.065836,
+          "dc": 0,
+          "activeRmsDbfs": -36.13762,
+          "activeFraction": 0.016,
+          "active20msWindows": 4
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": -51.044435,
+          "peakDbfs": -17.527241,
+          "crestDb": 33.517194,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -51.110271,
+          "sideRmsDbfs": -69.27053,
+          "monoFoldDownDeltaDb": -0.065836,
+          "dc": 0,
+          "activeRmsDbfs": -36.049388,
+          "activeFraction": 0.0316,
+          "active20msWindows": 11
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -49.929484,
+          "peakDbfs": -17.527241,
+          "crestDb": 32.402243,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -49.995321,
+          "sideRmsDbfs": -68.155531,
+          "monoFoldDownDeltaDb": -0.065837,
+          "dc": 1e-8,
+          "activeRmsDbfs": -37.073455,
+          "activeFraction": 0.0517,
+          "active20msWindows": 9
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": -49.506988,
+          "peakDbfs": -17.527241,
+          "crestDb": 31.979747,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -49.572824,
+          "sideRmsDbfs": -67.733057,
+          "monoFoldDownDeltaDb": -0.065836,
+          "dc": 0,
+          "activeRmsDbfs": -37.105395,
+          "activeFraction": 0.0575,
+          "active20msWindows": 10
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -51.02913,
+          "peakDbfs": -17.527241,
+          "crestDb": 33.501889,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -51.094966,
+          "sideRmsDbfs": -69.255227,
+          "monoFoldDownDeltaDb": -0.065836,
+          "dc": 0,
+          "activeRmsDbfs": -36.759653,
+          "activeFraction": 0.0374,
+          "active20msWindows": 13
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": -51.870862,
+          "peakDbfs": -17.527241,
+          "crestDb": 34.343621,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -51.936698,
+          "sideRmsDbfs": -70.096971,
+          "monoFoldDownDeltaDb": -0.065836,
+          "dc": 0,
+          "activeRmsDbfs": -37.104011,
+          "activeFraction": 0.0333,
+          "active20msWindows": 5
+        }
+      }
+    },
+    {
+      "trackId": "latch",
+      "file": "project-v1.stems/latch.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -32.043446,
+        "peakDbfs": -9.933325,
+        "crestDb": 22.110121,
+        "stereoCorrelation": 0.9984,
+        "midRmsDbfs": -32.070645,
+        "sideRmsDbfs": -54.089229,
+        "monoFoldDownDeltaDb": -0.0272,
+        "dc": 0,
+        "activeRmsDbfs": -29.63485,
+        "activeFraction": 0.5743,
+        "active20msWindows": 799
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": -30.515586,
+          "peakDbfs": -10.117431,
+          "crestDb": 20.398155,
+          "stereoCorrelation": 0.9997,
+          "midRmsDbfs": -30.530066,
+          "sideRmsDbfs": -55.292981,
+          "monoFoldDownDeltaDb": -0.01448,
+          "dc": 1.7e-7,
+          "activeRmsDbfs": -29.136999,
+          "activeFraction": 0.728,
+          "active20msWindows": 182
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": -31.859953,
+          "peakDbfs": -10.117431,
+          "crestDb": 21.742522,
+          "stereoCorrelation": 0.9996,
+          "midRmsDbfs": -31.890188,
+          "sideRmsDbfs": -53.44776,
+          "monoFoldDownDeltaDb": -0.030235,
+          "dc": 0,
+          "activeRmsDbfs": -29.689329,
+          "activeFraction": 0.6066,
+          "active20msWindows": 211
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -32.132205,
+          "peakDbfs": -10.117431,
+          "crestDb": 22.014774,
+          "stereoCorrelation": 0.9999,
+          "midRmsDbfs": -32.195797,
+          "sideRmsDbfs": -50.507745,
+          "monoFoldDownDeltaDb": -0.063593,
+          "dc": 0,
+          "activeRmsDbfs": -29.940938,
+          "activeFraction": 0.6037,
+          "active20msWindows": 105
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": -36.81537,
+          "peakDbfs": -9.933325,
+          "crestDb": 26.882045,
+          "stereoCorrelation": 0.9996,
+          "midRmsDbfs": -36.889616,
+          "sideRmsDbfs": -54.523513,
+          "monoFoldDownDeltaDb": -0.074247,
+          "dc": 0,
+          "activeRmsDbfs": -30.094439,
+          "activeFraction": 0.2128,
+          "active20msWindows": 37
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -31.769379,
+          "peakDbfs": -10.117431,
+          "crestDb": 21.651948,
+          "stereoCorrelation": 0.9997,
+          "midRmsDbfs": -31.791453,
+          "sideRmsDbfs": -54.719406,
+          "monoFoldDownDeltaDb": -0.022074,
+          "dc": -1e-8,
+          "activeRmsDbfs": -29.59876,
+          "activeFraction": 0.6066,
+          "active20msWindows": 211
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": -32.331419,
+          "peakDbfs": -10.57446,
+          "crestDb": 21.756959,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -32.338953,
+          "sideRmsDbfs": -59.942956,
+          "monoFoldDownDeltaDb": -0.007534,
+          "dc": -3.7e-7,
+          "activeRmsDbfs": -30.613931,
+          "activeFraction": 0.6733,
+          "active20msWindows": 101
+        }
+      }
+    },
+    {
+      "trackId": "wire-answer",
+      "file": "project-v1.stems/wire-answer.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -45.720277,
+        "peakDbfs": -23.512023,
+        "crestDb": 22.208254,
+        "stereoCorrelation": 0.9693,
+        "midRmsDbfs": -45.917588,
+        "sideRmsDbfs": -59.244896,
+        "monoFoldDownDeltaDb": -0.197311,
+        "dc": -3e-8,
+        "activeRmsDbfs": -39.018667,
+        "activeFraction": 0.2135,
+        "active20msWindows": 297
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": -46.582051,
+          "peakDbfs": -23.512023,
+          "crestDb": 23.070028,
+          "stereoCorrelation": 0.9885,
+          "midRmsDbfs": -46.758396,
+          "sideRmsDbfs": -60.58415,
+          "monoFoldDownDeltaDb": -0.176344,
+          "dc": -3e-8,
+          "activeRmsDbfs": -38.735133,
+          "activeFraction": 0.164,
+          "active20msWindows": 41
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": -45.005978,
+          "peakDbfs": -23.512023,
+          "crestDb": 21.493955,
+          "stereoCorrelation": 0.9885,
+          "midRmsDbfs": -45.182323,
+          "sideRmsDbfs": -59.008077,
+          "monoFoldDownDeltaDb": -0.176344,
+          "dc": -5e-8,
+          "activeRmsDbfs": -38.72607,
+          "activeFraction": 0.2353,
+          "active20msWindows": 82
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -45.005992,
+          "peakDbfs": -23.512023,
+          "crestDb": 21.493969,
+          "stereoCorrelation": 0.9885,
+          "midRmsDbfs": -45.182337,
+          "sideRmsDbfs": -59.008091,
+          "monoFoldDownDeltaDb": -0.176344,
+          "dc": -5e-8,
+          "activeRmsDbfs": -38.726035,
+          "activeFraction": 0.2353,
+          "active20msWindows": 41
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": -47.988387,
+          "peakDbfs": -26.463226,
+          "crestDb": 21.525161,
+          "stereoCorrelation": 0.9619,
+          "midRmsDbfs": -48.138113,
+          "sideRmsDbfs": -62.687901,
+          "monoFoldDownDeltaDb": -0.149726,
+          "dc": 1.8e-7,
+          "activeRmsDbfs": -41.160416,
+          "activeFraction": 0.207,
+          "active20msWindows": 36
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -45.275428,
+          "peakDbfs": -23.512023,
+          "crestDb": 21.763405,
+          "stereoCorrelation": 0.986,
+          "midRmsDbfs": -45.538304,
+          "sideRmsDbfs": -57.586551,
+          "monoFoldDownDeltaDb": -0.262875,
+          "dc": -1.3e-7,
+          "activeRmsDbfs": -38.488079,
+          "activeFraction": 0.2094,
+          "active20msWindows": 73
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": -48.301633,
+          "peakDbfs": -26.107982,
+          "crestDb": 22.193651,
+          "stereoCorrelation": 0.9892,
+          "midRmsDbfs": -48.464005,
+          "sideRmsDbfs": -62.655312,
+          "monoFoldDownDeltaDb": -0.162371,
+          "dc": 5e-8,
+          "activeRmsDbfs": -40.349006,
+          "activeFraction": 0.16,
+          "active20msWindows": 24
+        }
+      }
+    },
+    {
+      "trackId": "floor",
+      "file": "project-v1.stems/floor.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -24.9089,
+        "peakDbfs": -11.503651,
+        "crestDb": 13.405249,
+        "stereoCorrelation": 1,
+        "midRmsDbfs": -24.9089,
+        "sideRmsDbfs": null,
+        "monoFoldDownDeltaDb": 0,
+        "dc": 6e-8,
+        "activeRmsDbfs": -21.118724,
+        "activeFraction": 0.4178,
+        "active20msWindows": 582
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": -25.446186,
+          "peakDbfs": -11.520611,
+          "crestDb": 13.925575,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -25.446186,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": 0.00000602,
+          "activeRmsDbfs": -20.911616,
+          "activeFraction": 0.352,
+          "active20msWindows": 88
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": -23.557182,
+          "peakDbfs": -11.503651,
+          "crestDb": 12.053531,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -23.557182,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": 0.00000241,
+          "activeRmsDbfs": -21.017688,
+          "activeFraction": 0.5573,
+          "active20msWindows": 194
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -24.913695,
+          "peakDbfs": -11.520611,
+          "crestDb": 13.393084,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -24.913695,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": 0.00002118,
+          "activeRmsDbfs": -21.541256,
+          "activeFraction": 0.46,
+          "active20msWindows": 80
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": null,
+          "peakDbfs": null,
+          "crestDb": null,
+          "stereoCorrelation": null,
+          "midRmsDbfs": null,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": null,
+          "dc": 0,
+          "activeRmsDbfs": null,
+          "activeFraction": 0,
+          "active20msWindows": 0
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -24.46628,
+          "peakDbfs": -11.503651,
+          "crestDb": 12.962629,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -24.46628,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": 0.00000773,
+          "activeRmsDbfs": -21.201097,
+          "activeFraction": 0.4715,
+          "active20msWindows": 164
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": -24.396481,
+          "peakDbfs": -11.520611,
+          "crestDb": 12.87587,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -24.396481,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": 0.00001766,
+          "activeRmsDbfs": -21.268802,
+          "activeFraction": 0.4867,
+          "active20msWindows": 73
+        }
+      }
+    },
+    {
+      "trackId": "throat",
+      "file": "project-v1.stems/throat.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -40.38099,
+        "peakDbfs": -18.888805,
+        "crestDb": 21.492185,
+        "stereoCorrelation": 1,
+        "midRmsDbfs": -40.38099,
+        "sideRmsDbfs": null,
+        "monoFoldDownDeltaDb": 0,
+        "dc": 1.4e-7,
+        "activeRmsDbfs": -35.558585,
+        "activeFraction": 0.3294,
+        "active20msWindows": 459
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": -44.958042,
+          "peakDbfs": -19.692203,
+          "crestDb": 25.265839,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -44.958042,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": -1e-8,
+          "activeRmsDbfs": -35.128908,
+          "activeFraction": 0.104,
+          "active20msWindows": 26
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": -38.657686,
+          "peakDbfs": -19.692203,
+          "crestDb": 18.965483,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -38.657686,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": -7.3e-7,
+          "activeRmsDbfs": -35.569883,
+          "activeFraction": 0.4911,
+          "active20msWindows": 171
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -39.747337,
+          "peakDbfs": -18.888805,
+          "crestDb": 20.858532,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -39.747337,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": 0.00000142,
+          "activeRmsDbfs": -35.732925,
+          "activeFraction": 0.3967,
+          "active20msWindows": 69
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": null,
+          "peakDbfs": null,
+          "crestDb": null,
+          "stereoCorrelation": null,
+          "midRmsDbfs": null,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": null,
+          "dc": 0,
+          "activeRmsDbfs": null,
+          "activeFraction": 0,
+          "active20msWindows": 0
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -39.37731,
+          "peakDbfs": -18.888805,
+          "crestDb": 20.488505,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -39.37731,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": 0,
+          "activeRmsDbfs": -35.487071,
+          "activeFraction": 0.4082,
+          "active20msWindows": 142
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": -39.647627,
+          "peakDbfs": -19.692203,
+          "crestDb": 19.955424,
+          "stereoCorrelation": 1,
+          "midRmsDbfs": -39.647627,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": 0,
+          "dc": -5.4e-7,
+          "activeRmsDbfs": -36.016225,
+          "activeFraction": 0.4333,
+          "active20msWindows": 65
+        }
+      }
+    },
+    {
+      "trackId": "reed-room",
+      "file": "project-v1.stems/reed-room.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -46.740652,
+        "peakDbfs": -22.260332,
+        "crestDb": 24.48032,
+        "stereoCorrelation": 0.5268,
+        "midRmsDbfs": -47.913616,
+        "sideRmsDbfs": -52.998939,
+        "monoFoldDownDeltaDb": -1.172964,
+        "dc": 1e-8,
+        "activeRmsDbfs": -42.198892,
+        "activeFraction": 0.3507,
+        "active20msWindows": 488
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": -50.96306,
+          "peakDbfs": -25.996247,
+          "crestDb": 24.966813,
+          "stereoCorrelation": 0.5141,
+          "midRmsDbfs": -52.173495,
+          "sideRmsDbfs": -57.102659,
+          "monoFoldDownDeltaDb": -1.210435,
+          "dc": 0,
+          "activeRmsDbfs": -42.794386,
+          "activeFraction": 0.152,
+          "active20msWindows": 38
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": -51.253253,
+          "peakDbfs": -26.998177,
+          "crestDb": 24.255076,
+          "stereoCorrelation": 0.5204,
+          "midRmsDbfs": -52.444385,
+          "sideRmsDbfs": -57.453459,
+          "monoFoldDownDeltaDb": -1.191132,
+          "dc": -9e-8,
+          "activeRmsDbfs": -44.485267,
+          "activeFraction": 0.2094,
+          "active20msWindows": 73
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -52.388069,
+          "peakDbfs": -28.997404,
+          "crestDb": 23.390665,
+          "stereoCorrelation": 0.5138,
+          "midRmsDbfs": -53.599185,
+          "sideRmsDbfs": -58.525548,
+          "monoFoldDownDeltaDb": -1.211116,
+          "dc": 1.5e-7,
+          "activeRmsDbfs": -45.186281,
+          "activeFraction": 0.1893,
+          "active20msWindows": 33
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": -72.669848,
+          "peakDbfs": -49.640524,
+          "crestDb": 23.029324,
+          "stereoCorrelation": 0.0921,
+          "midRmsDbfs": -75.299739,
+          "sideRmsDbfs": -76.097105,
+          "monoFoldDownDeltaDb": -2.629891,
+          "dc": -1.4e-7,
+          "activeRmsDbfs": -59.094998,
+          "activeFraction": 0.0173,
+          "active20msWindows": 3
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -42.303922,
+          "peakDbfs": -22.260332,
+          "crestDb": 20.04359,
+          "stereoCorrelation": 0.5299,
+          "midRmsDbfs": -43.467881,
+          "sideRmsDbfs": -48.591376,
+          "monoFoldDownDeltaDb": -1.163959,
+          "dc": 3e-8,
+          "activeRmsDbfs": -41.620573,
+          "activeFraction": 0.8534,
+          "active20msWindows": 297
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": -53.726179,
+          "peakDbfs": -32.400548,
+          "crestDb": 21.325631,
+          "stereoCorrelation": -0.3984,
+          "midRmsDbfs": -58.931275,
+          "sideRmsDbfs": -55.285392,
+          "monoFoldDownDeltaDb": -5.205096,
+          "dc": -0.00000139,
+          "activeRmsDbfs": -46.631317,
+          "activeFraction": 0.1933,
+          "active20msWindows": 29
+        }
+      }
+    },
+    {
+      "trackId": "suspended-steel",
+      "file": "project-v1.stems/suspended-steel.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -49.230861,
+        "peakDbfs": -29.885213,
+        "crestDb": 19.345648,
+        "stereoCorrelation": 0.5123,
+        "midRmsDbfs": -50.444891,
+        "sideRmsDbfs": -55.359295,
+        "monoFoldDownDeltaDb": -1.21403,
+        "dc": 0,
+        "activeRmsDbfs": -42.423618,
+        "activeFraction": 0.2084,
+        "active20msWindows": 290
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": null,
+          "peakDbfs": null,
+          "crestDb": null,
+          "stereoCorrelation": null,
+          "midRmsDbfs": null,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": null,
+          "dc": 0,
+          "activeRmsDbfs": null,
+          "activeFraction": 0,
+          "active20msWindows": 0
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": null,
+          "peakDbfs": null,
+          "crestDb": null,
+          "stereoCorrelation": null,
+          "midRmsDbfs": null,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": null,
+          "dc": 0,
+          "activeRmsDbfs": null,
+          "activeFraction": 0,
+          "active20msWindows": 0
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -45.276453,
+          "peakDbfs": -31.311445,
+          "crestDb": 13.965008,
+          "stereoCorrelation": 0.5123,
+          "midRmsDbfs": -46.490504,
+          "sideRmsDbfs": -51.404823,
+          "monoFoldDownDeltaDb": -1.21405,
+          "dc": 3e-8,
+          "activeRmsDbfs": -42.69962,
+          "activeFraction": 0.552,
+          "active20msWindows": 96
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": -43.849272,
+          "peakDbfs": -29.885213,
+          "crestDb": 13.964059,
+          "stereoCorrelation": 0.5123,
+          "midRmsDbfs": -45.063293,
+          "sideRmsDbfs": -49.977732,
+          "monoFoldDownDeltaDb": -1.214021,
+          "dc": 1e-8,
+          "activeRmsDbfs": -41.403866,
+          "activeFraction": 0.5693,
+          "active20msWindows": 99
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -49.099016,
+          "peakDbfs": -32.128582,
+          "crestDb": 16.970434,
+          "stereoCorrelation": 0.5123,
+          "midRmsDbfs": -50.313036,
+          "sideRmsDbfs": -55.227483,
+          "monoFoldDownDeltaDb": -1.214019,
+          "dc": 0,
+          "activeRmsDbfs": -43.511915,
+          "activeFraction": 0.276,
+          "active20msWindows": 96
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": null,
+          "peakDbfs": null,
+          "crestDb": null,
+          "stereoCorrelation": null,
+          "midRmsDbfs": null,
+          "sideRmsDbfs": null,
+          "monoFoldDownDeltaDb": null,
+          "dc": 0,
+          "activeRmsDbfs": null,
+          "activeFraction": 0,
+          "active20msWindows": 0
+        }
+      }
+    },
+    {
+      "trackId": "intake",
+      "file": "project-v1.stems/intake.wav",
+      "aligned": true,
+      "whole": {
+        "startSeconds": 0,
+        "endSeconds": 27.826122,
+        "rmsDbfs": -52.13932,
+        "peakDbfs": -19.13003,
+        "crestDb": 33.00929,
+        "stereoCorrelation": 0.9954,
+        "midRmsDbfs": -52.149688,
+        "sideRmsDbfs": -78.365346,
+        "monoFoldDownDeltaDb": -0.010368,
+        "dc": 0,
+        "activeRmsDbfs": -39.284725,
+        "activeFraction": 0.0517,
+        "active20msWindows": 72
+      },
+      "sections": {
+        "first5": {
+          "startSeconds": 0,
+          "endSeconds": 5,
+          "rmsDbfs": -52.207499,
+          "peakDbfs": -22.86918,
+          "crestDb": 29.338319,
+          "stereoCorrelation": 0.9958,
+          "midRmsDbfs": -52.216841,
+          "sideRmsDbfs": -78.885485,
+          "monoFoldDownDeltaDb": -0.009342,
+          "dc": 1e-8,
+          "activeRmsDbfs": -40.790794,
+          "activeFraction": 0.072,
+          "active20msWindows": 18
+        },
+        "establishment": {
+          "startSeconds": 3.478254,
+          "endSeconds": 10.434785,
+          "rmsDbfs": -55.383686,
+          "peakDbfs": -22.86918,
+          "crestDb": 32.514506,
+          "stereoCorrelation": 0.9943,
+          "midRmsDbfs": -55.396439,
+          "sideRmsDbfs": -80.711552,
+          "monoFoldDownDeltaDb": -0.012754,
+          "dc": 7e-8,
+          "activeRmsDbfs": -36.96534,
+          "activeFraction": 0.0144,
+          "active20msWindows": 5
+        },
+        "development": {
+          "startSeconds": 10.434785,
+          "endSeconds": 13.913061,
+          "rmsDbfs": -53.903568,
+          "peakDbfs": -27.159863,
+          "crestDb": 26.743705,
+          "stereoCorrelation": 0.999,
+          "midRmsDbfs": -53.906,
+          "sideRmsDbfs": -86.423431,
+          "monoFoldDownDeltaDb": -0.002432,
+          "dc": -3.9e-7,
+          "activeRmsDbfs": -42.947893,
+          "activeFraction": 0.08,
+          "active20msWindows": 14
+        },
+        "disruption": {
+          "startSeconds": 13.913061,
+          "endSeconds": 17.391315,
+          "rmsDbfs": -48.239415,
+          "peakDbfs": -21.34415,
+          "crestDb": 26.895265,
+          "stereoCorrelation": 0.9964,
+          "midRmsDbfs": -48.247508,
+          "sideRmsDbfs": -75.540584,
+          "monoFoldDownDeltaDb": -0.008092,
+          "dc": -1.2e-7,
+          "activeRmsDbfs": -38.834461,
+          "activeFraction": 0.1145,
+          "active20msWindows": 20
+        },
+        "payoff": {
+          "startSeconds": 17.391315,
+          "endSeconds": 24.347846,
+          "rmsDbfs": -51.646612,
+          "peakDbfs": -19.13003,
+          "crestDb": 32.516582,
+          "stereoCorrelation": 0.9942,
+          "midRmsDbfs": -51.65938,
+          "sideRmsDbfs": -76.969656,
+          "monoFoldDownDeltaDb": -0.012768,
+          "dc": 2.5e-7,
+          "activeRmsDbfs": -34.017242,
+          "activeFraction": 0.0172,
+          "active20msWindows": 6
+        },
+        "final3": {
+          "startSeconds": 24.826122,
+          "endSeconds": 27.826122,
+          "rmsDbfs": -50.619743,
+          "peakDbfs": -22.522132,
+          "crestDb": 28.097611,
+          "stereoCorrelation": 0.9938,
+          "midRmsDbfs": -50.635799,
+          "sideRmsDbfs": -74.94915,
+          "monoFoldDownDeltaDb": -0.016056,
+          "dc": -3e-8,
+          "activeRmsDbfs": -40.005476,
+          "activeFraction": 0.0867,
+          "active20msWindows": 13
+        }
+      }
+    }
+  ],
+  "discontinuityRisk": {
+    "firstSample": [
+      0,
+      0
+    ],
+    "lastSample": [
+      0.037322998046875,
+      0.038604736328125
+    ],
+    "endToStartJump": [
+      -0.037323,
+      -0.03860474
+    ],
+    "firstNonzeroSeconds": 0.000023,
+    "trailingNearSilenceSeconds": 0,
+    "last50ms": {
+      "startSeconds": 27.776122,
+      "endSeconds": 27.826122,
+      "rmsDbfs": -29.56289,
+      "peakDbfs": -23.926878,
+      "crestDb": 5.636012,
+      "stereoCorrelation": 0.9993,
+      "midRmsDbfs": -29.564476,
+      "sideRmsDbfs": -63.939439,
+      "monoFoldDownDeltaDb": -0.001586,
+      "dc": 0.0011708,
+      "activeRmsDbfs": -29.56289,
+      "activeFraction": 1,
+      "active20msWindows": 3
+    },
+    "largestAdjacentSampleJumps": [
+      {
+        "seconds": 11.764717,
+        "jump": 0.207886,
+        "jumpDbfs": -13.643506
+      },
+      {
+        "seconds": 22.199501,
+        "jump": 0.207886,
+        "jumpDbfs": -13.643506
+      },
+      {
+        "seconds": 4.808186,
+        "jump": 0.207336,
+        "jumpDbfs": -13.666488
+      },
+      {
+        "seconds": 25.677778,
+        "jump": 0.207336,
+        "jumpDbfs": -13.666488
+      },
+      {
+        "seconds": 8.286463,
+        "jump": 0.207306,
+        "jumpDbfs": -13.667766
+      },
+      {
+        "seconds": 27.416916,
+        "jump": 0.207214,
+        "jumpDbfs": -13.671603
+      },
+      {
+        "seconds": 3.06907,
+        "jump": 0.207062,
+        "jumpDbfs": -13.678002
+      },
+      {
+        "seconds": 13.503855,
+        "jump": 0.207062,
+        "jumpDbfs": -13.678002
+      },
+      {
+        "seconds": 6.547324,
+        "jump": 0.207031,
+        "jumpDbfs": -13.679282
+      },
+      {
+        "seconds": 18.721247,
+        "jump": 0.207001,
+        "jumpDbfs": -13.680562
+      },
+      {
+        "seconds": 10.025578,
+        "jump": 0.20694,
+        "jumpDbfs": -13.683124
+      },
+      {
+        "seconds": 20.460385,
+        "jump": 0.206879,
+        "jumpDbfs": -13.685686
+      }
+    ],
+    "interpretation": "Large adjacent-sample differences may be intentional transients; this proxy cannot certify click audibility."
+  },
+  "automation": [
+    {
+      "trackId": "piston",
+      "staticGainDb": -4,
+      "staticPan": 0,
+      "points": {},
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 5,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ]
+      },
+      "boundaries": {}
+    },
+    {
+      "trackId": "clamp",
+      "staticGainDb": -4,
+      "staticPan": 0,
+      "points": {},
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 5,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ]
+      },
+      "boundaries": {}
+    },
+    {
+      "trackId": "dust-clock",
+      "staticGainDb": -5,
+      "staticPan": 0.16,
+      "points": {},
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 5,
+            "gainDb": -5,
+            "pan": 0.16
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -5,
+            "pan": 0.16
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -5,
+            "pan": 0.16
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -5,
+            "pan": 0.16
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -5,
+            "pan": 0.16
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -5,
+            "pan": 0.16
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -5,
+            "pan": 0.16
+          }
+        ]
+      },
+      "boundaries": {}
+    },
+    {
+      "trackId": "crossbar",
+      "staticGainDb": -5,
+      "staticPan": -0.22,
+      "points": {},
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 5,
+            "gainDb": -5,
+            "pan": -0.22
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -5,
+            "pan": -0.22
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -5,
+            "pan": -0.22
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -5,
+            "pan": -0.22
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -5,
+            "pan": -0.22
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -5,
+            "pan": -0.22
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -5,
+            "pan": -0.22
+          }
+        ]
+      },
+      "boundaries": {}
+    },
+    {
+      "trackId": "latch",
+      "staticGainDb": -4,
+      "staticPan": -0.08,
+      "points": {
+        "pan": [
+          {
+            "frame": 0,
+            "value": -0.08,
+            "transition": "linear"
+          },
+          {
+            "frame": 613566,
+            "value": -0.25,
+            "transition": "linear"
+          },
+          {
+            "frame": 690261,
+            "value": 0.3,
+            "transition": "linear"
+          },
+          {
+            "frame": 766957,
+            "value": -0.16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1073740,
+            "value": -0.08,
+            "transition": "linear"
+          }
+        ]
+      },
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -4,
+            "pan": -0.08
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -4,
+            "pan": -0.110547
+          },
+          {
+            "seconds": 5,
+            "gainDb": -4,
+            "pan": -0.141094
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -4,
+            "pan": -0.1225
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -4,
+            "pan": -0.165
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -4,
+            "pan": -0.2075
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -4,
+            "pan": -0.2075
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -4,
+            "pan": -0.22875
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -4,
+            "pan": -0.25
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -4,
+            "pan": -0.25
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -4,
+            "pan": 0.3
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -4,
+            "pan": -0.16
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -4,
+            "pan": -0.16
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -4,
+            "pan": -0.12
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -4,
+            "pan": -0.08
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -4,
+            "pan": -0.08
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -4,
+            "pan": -0.08
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -4,
+            "pan": -0.08
+          }
+        ]
+      },
+      "boundaries": {
+        "pan": [
+          {
+            "seconds": 0,
+            "transition": "linear",
+            "immediatelyBefore": -0.08,
+            "atPoint": -0.08,
+            "immediatelyAfter": -0.08
+          },
+          {
+            "seconds": 13.913061,
+            "transition": "linear",
+            "immediatelyBefore": -0.25,
+            "atPoint": -0.25,
+            "immediatelyAfter": -0.249993
+          },
+          {
+            "seconds": 15.652177,
+            "transition": "linear",
+            "immediatelyBefore": 0.299993,
+            "atPoint": 0.3,
+            "immediatelyAfter": 0.299994
+          },
+          {
+            "seconds": 17.391315,
+            "transition": "linear",
+            "immediatelyBefore": -0.159994,
+            "atPoint": -0.16,
+            "immediatelyAfter": -0.16
+          },
+          {
+            "seconds": 24.347846,
+            "transition": "linear",
+            "immediatelyBefore": -0.08,
+            "atPoint": -0.08,
+            "immediatelyAfter": -0.08
+          }
+        ]
+      }
+    },
+    {
+      "trackId": "wire-answer",
+      "staticGainDb": -8,
+      "staticPan": 0.26,
+      "points": {
+        "pan": [
+          {
+            "frame": 0,
+            "value": 0.26,
+            "transition": "linear"
+          },
+          {
+            "frame": 613566,
+            "value": 0.26,
+            "transition": "linear"
+          },
+          {
+            "frame": 690261,
+            "value": -0.4,
+            "transition": "linear"
+          },
+          {
+            "frame": 766957,
+            "value": 0.44,
+            "transition": "linear"
+          },
+          {
+            "frame": 1073740,
+            "value": 0.26,
+            "transition": "linear"
+          }
+        ]
+      },
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -8,
+            "pan": 0.26
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -8,
+            "pan": 0.26
+          },
+          {
+            "seconds": 5,
+            "gainDb": -8,
+            "pan": 0.26
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -8,
+            "pan": 0.26
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -8,
+            "pan": 0.26
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -8,
+            "pan": 0.26
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -8,
+            "pan": 0.26
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -8,
+            "pan": 0.26
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -8,
+            "pan": 0.26
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -8,
+            "pan": 0.26
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -8,
+            "pan": -0.4
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -8,
+            "pan": 0.44
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -8,
+            "pan": 0.44
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -8,
+            "pan": 0.35
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -8,
+            "pan": 0.26
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -8,
+            "pan": 0.26
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -8,
+            "pan": 0.26
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -8,
+            "pan": 0.26
+          }
+        ]
+      },
+      "boundaries": {
+        "pan": [
+          {
+            "seconds": 0,
+            "transition": "linear",
+            "immediatelyBefore": 0.26,
+            "atPoint": 0.26,
+            "immediatelyAfter": 0.26
+          },
+          {
+            "seconds": 13.913061,
+            "transition": "linear",
+            "immediatelyBefore": 0.26,
+            "atPoint": 0.26,
+            "immediatelyAfter": 0.259991
+          },
+          {
+            "seconds": 15.652177,
+            "transition": "linear",
+            "immediatelyBefore": -0.399991,
+            "atPoint": -0.4,
+            "immediatelyAfter": -0.399989
+          },
+          {
+            "seconds": 17.391315,
+            "transition": "linear",
+            "immediatelyBefore": 0.439989,
+            "atPoint": 0.44,
+            "immediatelyAfter": 0.439999
+          },
+          {
+            "seconds": 24.347846,
+            "transition": "linear",
+            "immediatelyBefore": 0.260001,
+            "atPoint": 0.26,
+            "immediatelyAfter": 0.26
+          }
+        ]
+      }
+    },
+    {
+      "trackId": "floor",
+      "staticGainDb": -4,
+      "staticPan": 0,
+      "points": {},
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 5,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ]
+      },
+      "boundaries": {}
+    },
+    {
+      "trackId": "throat",
+      "staticGainDb": -9,
+      "staticPan": 0,
+      "points": {},
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 5,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ]
+      },
+      "boundaries": {}
+    },
+    {
+      "trackId": "reed-room",
+      "staticGainDb": -4,
+      "staticPan": 0,
+      "points": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -4,
+            "transition": "linear"
+          },
+          {
+            "frame": 613566,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 747783,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 766957,
+            "value": -4,
+            "transition": "linear"
+          },
+          {
+            "frame": 1073740,
+            "value": -5,
+            "transition": "linear"
+          },
+          {
+            "frame": 1150436,
+            "value": -7,
+            "transition": "linear"
+          }
+        ]
+      },
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -4.718749,
+            "pan": 0
+          },
+          {
+            "seconds": 5,
+            "gainDb": -5.437498,
+            "pan": 0
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -4.999997,
+            "pan": 0
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -6,
+            "pan": 0
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -6.999997,
+            "pan": 0
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -6.999997,
+            "pan": 0
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -7.499998,
+            "pan": 0
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -8,
+            "pan": 0
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -8,
+            "pan": 0
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -8,
+            "pan": 0
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -4,
+            "pan": 0
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -4,
+            "pan": 0
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -4.500002,
+            "pan": 0
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -5,
+            "pan": 0
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -5.550016,
+            "pan": 0
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -7,
+            "pan": 0
+          }
+        ]
+      },
+      "boundaries": {
+        "gainDb": [
+          {
+            "seconds": 0,
+            "transition": "linear",
+            "immediatelyBefore": -4,
+            "atPoint": -4,
+            "immediatelyAfter": -4.000007
+          },
+          {
+            "seconds": 13.913061,
+            "transition": "linear",
+            "immediatelyBefore": -7.999993,
+            "atPoint": -8,
+            "immediatelyAfter": -8
+          },
+          {
+            "seconds": 16.956531,
+            "transition": "linear",
+            "immediatelyBefore": -8,
+            "atPoint": -8,
+            "immediatelyAfter": -7.999791
+          },
+          {
+            "seconds": 17.391315,
+            "transition": "linear",
+            "immediatelyBefore": -4.000209,
+            "atPoint": -4,
+            "immediatelyAfter": -4.000003
+          },
+          {
+            "seconds": 24.347846,
+            "transition": "linear",
+            "immediatelyBefore": -4.999997,
+            "atPoint": -5,
+            "immediatelyAfter": -5.000026
+          },
+          {
+            "seconds": 26.086984,
+            "transition": "linear",
+            "immediatelyBefore": -6.999974,
+            "atPoint": -7,
+            "immediatelyAfter": -7
+          }
+        ]
+      }
+    },
+    {
+      "trackId": "suspended-steel",
+      "staticGainDb": -9,
+      "staticPan": 0,
+      "points": {},
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 5,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -9,
+            "pan": 0
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -9,
+            "pan": 0
+          }
+        ]
+      },
+      "boundaries": {}
+    },
+    {
+      "trackId": "intake",
+      "staticGainDb": -7,
+      "staticPan": 0,
+      "points": {},
+      "sectionValues": {
+        "first5": [
+          {
+            "seconds": 0,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 2.5,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 5,
+            "gainDb": -7,
+            "pan": 0
+          }
+        ],
+        "establishment": [
+          {
+            "seconds": 3.478264,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 6.956528,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 10.434792,
+            "gainDb": -7,
+            "pan": 0
+          }
+        ],
+        "development": [
+          {
+            "seconds": 10.434792,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 12.173924,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 13.913056,
+            "gainDb": -7,
+            "pan": 0
+          }
+        ],
+        "disruption": [
+          {
+            "seconds": 13.913056,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 15.652188,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 17.39132,
+            "gainDb": -7,
+            "pan": 0
+          }
+        ],
+        "payoff": [
+          {
+            "seconds": 17.39132,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 20.869584,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 24.347848,
+            "gainDb": -7,
+            "pan": 0
+          }
+        ],
+        "final3": [
+          {
+            "seconds": 24.826122,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 26.326122,
+            "gainDb": -7,
+            "pan": 0
+          },
+          {
+            "seconds": 27.826122,
+            "gainDb": -7,
+            "pan": 0
+          }
+        ]
+      },
+      "boundaries": {}
+    }
+  ],
+  "sampleTransforms": [
+    {
+      "trackId": "piston",
+      "triggers": 42,
+      "transformedTriggers": []
+    },
+    {
+      "trackId": "clamp",
+      "triggers": 27,
+      "transformedTriggers": []
+    },
+    {
+      "trackId": "dust-clock",
+      "triggers": 103,
+      "transformedTriggers": []
+    },
+    {
+      "trackId": "crossbar",
+      "triggers": 12,
+      "transformedTriggers": []
+    },
+    {
+      "trackId": "latch",
+      "triggers": 37,
+      "transformedTriggers": [
+        {
+          "seconds": 0.695646,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 1.086961,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.122462048,
+          "glide": {
+            "to": 1,
+            "duration": "1/8",
+            "frames": 9587
+          },
+          "voiceFrames": 20581
+        },
+        {
+          "seconds": 2.391315,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 4.173923,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 4.565215,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.122462048,
+          "glide": {
+            "to": 1,
+            "duration": "1/8",
+            "frames": 9587
+          },
+          "voiceFrames": 20581
+        },
+        {
+          "seconds": 5.869569,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 7.652177,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 8.043492,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.122462048,
+          "glide": {
+            "to": 1,
+            "duration": "1/8",
+            "frames": 9587
+          },
+          "voiceFrames": 20581
+        },
+        {
+          "seconds": 9.347846,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 11.130454,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 11.521746,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.122462048,
+          "glide": {
+            "to": 1,
+            "duration": "1/8",
+            "frames": 9587
+          },
+          "voiceFrames": 20581
+        },
+        {
+          "seconds": 12.8261,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 13.913061,
+          "file": "assets/latch-fs.wav",
+          "rate": 0.5,
+          "glide": {
+            "to": 0.749153538,
+            "duration": "1/2",
+            "frames": 38348
+          },
+          "voiceFrames": 34571
+        },
+        {
+          "seconds": 18.086984,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 18.478277,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.122462048,
+          "glide": {
+            "to": 1,
+            "duration": "1/8",
+            "frames": 9587
+          },
+          "voiceFrames": 20581
+        },
+        {
+          "seconds": 19.78263,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 21.565238,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 21.956531,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.122462048,
+          "glide": {
+            "to": 1,
+            "duration": "1/8",
+            "frames": 9587
+          },
+          "voiceFrames": 20581
+        },
+        {
+          "seconds": 23.260884,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 25.043492,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        },
+        {
+          "seconds": 25.434807,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.122462048,
+          "glide": {
+            "to": 1,
+            "duration": "1/8",
+            "frames": 9587
+          },
+          "voiceFrames": 20581
+        },
+        {
+          "seconds": 26.347846,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 14128
+        },
+        {
+          "seconds": 26.739161,
+          "file": "assets/latch-fs.wav",
+          "rate": 1.189207115,
+          "voiceFrames": 17801
+        }
+      ]
+    },
+    {
+      "trackId": "wire-answer",
+      "triggers": 14,
+      "transformedTriggers": [
+        {
+          "seconds": 2,
+          "file": "assets/wire-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 25019
+        },
+        {
+          "seconds": 5.478277,
+          "file": "assets/wire-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 25019
+        },
+        {
+          "seconds": 8.956531,
+          "file": "assets/wire-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 25019
+        },
+        {
+          "seconds": 12.434785,
+          "file": "assets/wire-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 25019
+        },
+        {
+          "seconds": 15.869569,
+          "file": "assets/wire-fs.wav",
+          "rate": 0.749153538,
+          "glide": {
+            "to": 1.122462048,
+            "duration": "1/4",
+            "frames": 19174
+          },
+          "voiceFrames": 36584
+        },
+        {
+          "seconds": 19.391315,
+          "file": "assets/wire-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 25019
+        },
+        {
+          "seconds": 22.869592,
+          "file": "assets/wire-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 25019
+        }
+      ]
+    },
+    {
+      "trackId": "floor",
+      "triggers": 40,
+      "transformedTriggers": [
+        {
+          "seconds": 7.195669,
+          "file": "assets/sub-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 15835
+        },
+        {
+          "seconds": 7.869569,
+          "file": "assets/sub-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 15835
+        },
+        {
+          "seconds": 8.478277,
+          "file": "assets/sub-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 15835
+        },
+        {
+          "seconds": 8.891315,
+          "file": "assets/sub-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 15835
+        },
+        {
+          "seconds": 9.413061,
+          "file": "assets/sub-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 15835
+        },
+        {
+          "seconds": 10.195669,
+          "file": "assets/sub-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 15835
+        },
+        {
+          "seconds": 12.369569,
+          "file": "assets/sub-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 8389
+        },
+        {
+          "seconds": 12.891315,
+          "file": "assets/sub-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 8389
+        },
+        {
+          "seconds": 13.673923,
+          "file": "assets/sub-fs.wav",
+          "rate": 1.681792831,
+          "voiceFrames": 7473
+        },
+        {
+          "seconds": 19.3261,
+          "file": "assets/sub-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 15835
+        },
+        {
+          "seconds": 19.847846,
+          "file": "assets/sub-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 15835
+        },
+        {
+          "seconds": 20.630454,
+          "file": "assets/sub-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 15835
+        },
+        {
+          "seconds": 21.108707,
+          "file": "assets/sub-fs.wav",
+          "rate": 1.334839854,
+          "voiceFrames": 9416
+        },
+        {
+          "seconds": 21.78263,
+          "file": "assets/sub-fs.wav",
+          "rate": 1.334839854,
+          "voiceFrames": 9416
+        },
+        {
+          "seconds": 22.391315,
+          "file": "assets/sub-fs.wav",
+          "rate": 1.334839854,
+          "voiceFrames": 9416
+        },
+        {
+          "seconds": 22.804376,
+          "file": "assets/sub-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 8389
+        },
+        {
+          "seconds": 23.3261,
+          "file": "assets/sub-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 8389
+        },
+        {
+          "seconds": 24.108707,
+          "file": "assets/sub-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 8389
+        }
+      ]
+    },
+    {
+      "trackId": "throat",
+      "triggers": 36,
+      "transformedTriggers": [
+        {
+          "seconds": 7.195669,
+          "file": "assets/throat-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 14170
+        },
+        {
+          "seconds": 7.869569,
+          "file": "assets/throat-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 14170
+        },
+        {
+          "seconds": 8.478277,
+          "file": "assets/throat-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 14170
+        },
+        {
+          "seconds": 8.891315,
+          "file": "assets/throat-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 14170
+        },
+        {
+          "seconds": 9.413061,
+          "file": "assets/throat-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 14170
+        },
+        {
+          "seconds": 10.195669,
+          "file": "assets/throat-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 14170
+        },
+        {
+          "seconds": 12.369569,
+          "file": "assets/throat-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 7506
+        },
+        {
+          "seconds": 12.891315,
+          "file": "assets/throat-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 7506
+        },
+        {
+          "seconds": 13.673923,
+          "file": "assets/throat-fs.wav",
+          "rate": 1.681792831,
+          "voiceFrames": 6687
+        },
+        {
+          "seconds": 19.3261,
+          "file": "assets/throat-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 14170
+        },
+        {
+          "seconds": 19.847846,
+          "file": "assets/throat-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 14170
+        },
+        {
+          "seconds": 20.630454,
+          "file": "assets/throat-fs.wav",
+          "rate": 0.793700526,
+          "voiceFrames": 14170
+        },
+        {
+          "seconds": 21.108707,
+          "file": "assets/throat-fs.wav",
+          "rate": 1.334839854,
+          "voiceFrames": 8425
+        },
+        {
+          "seconds": 21.78263,
+          "file": "assets/throat-fs.wav",
+          "rate": 1.334839854,
+          "voiceFrames": 8425
+        },
+        {
+          "seconds": 22.391315,
+          "file": "assets/throat-fs.wav",
+          "rate": 1.334839854,
+          "voiceFrames": 8425
+        },
+        {
+          "seconds": 22.804376,
+          "file": "assets/throat-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 7506
+        },
+        {
+          "seconds": 23.3261,
+          "file": "assets/throat-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 7506
+        },
+        {
+          "seconds": 24.108707,
+          "file": "assets/throat-fs.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 7506
+        }
+      ]
+    },
+    {
+      "trackId": "reed-room",
+      "triggers": 13,
+      "transformedTriggers": []
+    },
+    {
+      "trackId": "suspended-steel",
+      "triggers": 3,
+      "transformedTriggers": []
+    },
+    {
+      "trackId": "intake",
+      "triggers": 4,
+      "transformedTriggers": [
+        {
+          "seconds": 27.434807,
+          "file": "assets/latch-inhale.wav",
+          "rate": 1.498307077,
+          "voiceFrames": 14128
+        }
+      ]
+    }
+  ],
+  "sourceVoiceActivity": {
+    "method": "Manifest trigger frames and transformed voiceFrames (or source asset frames), capped at master boundary; excludes track effect tails and amplitude envelopes.",
+    "tracks": [
+      {
+        "trackId": "piston",
+        "maxSimultaneousSourceVoices": 1,
+        "pairOverlapSeconds": 0,
+        "sourceVoices": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.25
+          },
+          {
+            "startSeconds": 0.760862,
+            "endSeconds": 1.010862
+          },
+          {
+            "startSeconds": 1.086961,
+            "endSeconds": 1.336961
+          },
+          {
+            "startSeconds": 1.739138,
+            "endSeconds": 1.989138
+          },
+          {
+            "startSeconds": 2.065215,
+            "endSeconds": 2.315215
+          },
+          {
+            "startSeconds": 2.891315,
+            "endSeconds": 3.141315
+          },
+          {
+            "startSeconds": 3.478254,
+            "endSeconds": 3.728254
+          },
+          {
+            "startSeconds": 4.239138,
+            "endSeconds": 4.489138
+          },
+          {
+            "startSeconds": 4.565215,
+            "endSeconds": 4.815215
+          },
+          {
+            "startSeconds": 5.217392,
+            "endSeconds": 5.467392
+          },
+          {
+            "startSeconds": 5.543492,
+            "endSeconds": 5.793492
+          },
+          {
+            "startSeconds": 6.369569,
+            "endSeconds": 6.619569
+          },
+          {
+            "startSeconds": 6.956531,
+            "endSeconds": 7.206531
+          },
+          {
+            "startSeconds": 7.717392,
+            "endSeconds": 7.967392
+          },
+          {
+            "startSeconds": 8.043492,
+            "endSeconds": 8.293492
+          },
+          {
+            "startSeconds": 8.695669,
+            "endSeconds": 8.945669
+          },
+          {
+            "startSeconds": 9.021746,
+            "endSeconds": 9.271746
+          },
+          {
+            "startSeconds": 9.847846,
+            "endSeconds": 10.097846
+          },
+          {
+            "startSeconds": 10.434785,
+            "endSeconds": 10.684785
+          },
+          {
+            "startSeconds": 11.195669,
+            "endSeconds": 11.445669
+          },
+          {
+            "startSeconds": 11.521746,
+            "endSeconds": 11.771746
+          },
+          {
+            "startSeconds": 12.173923,
+            "endSeconds": 12.423923
+          },
+          {
+            "startSeconds": 12.5,
+            "endSeconds": 12.75
+          },
+          {
+            "startSeconds": 13.3261,
+            "endSeconds": 13.5761
+          },
+          {
+            "startSeconds": 17.391315,
+            "endSeconds": 17.641315
+          },
+          {
+            "startSeconds": 18.1522,
+            "endSeconds": 18.4022
+          },
+          {
+            "startSeconds": 18.478277,
+            "endSeconds": 18.728277
+          },
+          {
+            "startSeconds": 19.130454,
+            "endSeconds": 19.380454
+          },
+          {
+            "startSeconds": 19.456531,
+            "endSeconds": 19.706531
+          },
+          {
+            "startSeconds": 20.28263,
+            "endSeconds": 20.53263
+          },
+          {
+            "startSeconds": 20.869592,
+            "endSeconds": 21.119592
+          },
+          {
+            "startSeconds": 21.630454,
+            "endSeconds": 21.880454
+          },
+          {
+            "startSeconds": 21.956531,
+            "endSeconds": 22.206531
+          },
+          {
+            "startSeconds": 22.608707,
+            "endSeconds": 22.858707
+          },
+          {
+            "startSeconds": 22.934807,
+            "endSeconds": 23.184807
+          },
+          {
+            "startSeconds": 23.760884,
+            "endSeconds": 24.010884
+          },
+          {
+            "startSeconds": 24.347846,
+            "endSeconds": 24.597846
+          },
+          {
+            "startSeconds": 25.108707,
+            "endSeconds": 25.358707
+          },
+          {
+            "startSeconds": 25.434807,
+            "endSeconds": 25.684807
+          },
+          {
+            "startSeconds": 26.086984,
+            "endSeconds": 26.336984
+          },
+          {
+            "startSeconds": 26.413061,
+            "endSeconds": 26.663061
+          },
+          {
+            "startSeconds": 27.239161,
+            "endSeconds": 27.489161
+          }
+        ]
+      },
+      {
+        "trackId": "clamp",
+        "maxSimultaneousSourceVoices": 1,
+        "pairOverlapSeconds": 0,
+        "sourceVoices": [
+          {
+            "startSeconds": 1.304354,
+            "endSeconds": 1.409365
+          },
+          {
+            "startSeconds": 2.173923,
+            "endSeconds": 2.403923
+          },
+          {
+            "startSeconds": 3.043492,
+            "endSeconds": 3.273492
+          },
+          {
+            "startSeconds": 3.913039,
+            "endSeconds": 4.143039
+          },
+          {
+            "startSeconds": 4.782608,
+            "endSeconds": 5.012608
+          },
+          {
+            "startSeconds": 5.652177,
+            "endSeconds": 5.882177
+          },
+          {
+            "startSeconds": 6.521746,
+            "endSeconds": 6.751746
+          },
+          {
+            "startSeconds": 7.391315,
+            "endSeconds": 7.621315
+          },
+          {
+            "startSeconds": 8.260884,
+            "endSeconds": 8.490884
+          },
+          {
+            "startSeconds": 9.130454,
+            "endSeconds": 9.360454
+          },
+          {
+            "startSeconds": 10,
+            "endSeconds": 10.23
+          },
+          {
+            "startSeconds": 10.869569,
+            "endSeconds": 11.099569
+          },
+          {
+            "startSeconds": 11.739138,
+            "endSeconds": 11.969138
+          },
+          {
+            "startSeconds": 12.608707,
+            "endSeconds": 12.838707
+          },
+          {
+            "startSeconds": 13.478277,
+            "endSeconds": 13.708277
+          },
+          {
+            "startSeconds": 17.8261,
+            "endSeconds": 18.0561
+          },
+          {
+            "startSeconds": 18.695669,
+            "endSeconds": 18.925669
+          },
+          {
+            "startSeconds": 19.565238,
+            "endSeconds": 19.795238
+          },
+          {
+            "startSeconds": 20.434807,
+            "endSeconds": 20.664807
+          },
+          {
+            "startSeconds": 21.304376,
+            "endSeconds": 21.534376
+          },
+          {
+            "startSeconds": 22.173923,
+            "endSeconds": 22.403923
+          },
+          {
+            "startSeconds": 23.043492,
+            "endSeconds": 23.273492
+          },
+          {
+            "startSeconds": 23.913061,
+            "endSeconds": 24.143061
+          },
+          {
+            "startSeconds": 24.78263,
+            "endSeconds": 25.01263
+          },
+          {
+            "startSeconds": 25.6522,
+            "endSeconds": 25.8822
+          },
+          {
+            "startSeconds": 26.521769,
+            "endSeconds": 26.751769
+          },
+          {
+            "startSeconds": 27.391338,
+            "endSeconds": 27.621338
+          }
+        ]
+      },
+      {
+        "trackId": "dust-clock",
+        "maxSimultaneousSourceVoices": 1,
+        "pairOverlapSeconds": 0,
+        "sourceVoices": [
+          {
+            "startSeconds": 0.260862,
+            "endSeconds": 0.345873
+          },
+          {
+            "startSeconds": 1.130431,
+            "endSeconds": 1.215442
+          },
+          {
+            "startSeconds": 1.565215,
+            "endSeconds": 1.650227
+          },
+          {
+            "startSeconds": 2,
+            "endSeconds": 2.085011
+          },
+          {
+            "startSeconds": 2.869569,
+            "endSeconds": 2.95458
+          },
+          {
+            "startSeconds": 3.304354,
+            "endSeconds": 3.534354
+          },
+          {
+            "startSeconds": 3.586961,
+            "endSeconds": 3.706961
+          },
+          {
+            "startSeconds": 3.739138,
+            "endSeconds": 3.82415
+          },
+          {
+            "startSeconds": 4.021746,
+            "endSeconds": 4.106757
+          },
+          {
+            "startSeconds": 4.173923,
+            "endSeconds": 4.258934
+          },
+          {
+            "startSeconds": 4.456531,
+            "endSeconds": 4.576531
+          },
+          {
+            "startSeconds": 4.608707,
+            "endSeconds": 4.693719
+          },
+          {
+            "startSeconds": 4.891315,
+            "endSeconds": 4.976327
+          },
+          {
+            "startSeconds": 5.043492,
+            "endSeconds": 5.128503
+          },
+          {
+            "startSeconds": 5.3261,
+            "endSeconds": 5.4461
+          },
+          {
+            "startSeconds": 5.478277,
+            "endSeconds": 5.563288
+          },
+          {
+            "startSeconds": 5.760884,
+            "endSeconds": 5.845896
+          },
+          {
+            "startSeconds": 5.913039,
+            "endSeconds": 5.99805
+          },
+          {
+            "startSeconds": 6.195669,
+            "endSeconds": 6.315669
+          },
+          {
+            "startSeconds": 6.347823,
+            "endSeconds": 6.432834
+          },
+          {
+            "startSeconds": 6.630431,
+            "endSeconds": 6.715442
+          },
+          {
+            "startSeconds": 6.782608,
+            "endSeconds": 7.012608
+          },
+          {
+            "startSeconds": 7.065215,
+            "endSeconds": 7.185215
+          },
+          {
+            "startSeconds": 7.217392,
+            "endSeconds": 7.302404
+          },
+          {
+            "startSeconds": 7.5,
+            "endSeconds": 7.585011
+          },
+          {
+            "startSeconds": 7.652177,
+            "endSeconds": 7.737188
+          },
+          {
+            "startSeconds": 7.934785,
+            "endSeconds": 8.054785
+          },
+          {
+            "startSeconds": 8.086961,
+            "endSeconds": 8.171973
+          },
+          {
+            "startSeconds": 8.369569,
+            "endSeconds": 8.45458
+          },
+          {
+            "startSeconds": 8.521746,
+            "endSeconds": 8.606757
+          },
+          {
+            "startSeconds": 8.804354,
+            "endSeconds": 8.924354
+          },
+          {
+            "startSeconds": 8.956531,
+            "endSeconds": 9.041542
+          },
+          {
+            "startSeconds": 9.239138,
+            "endSeconds": 9.32415
+          },
+          {
+            "startSeconds": 9.391315,
+            "endSeconds": 9.476327
+          },
+          {
+            "startSeconds": 9.673923,
+            "endSeconds": 9.793923
+          },
+          {
+            "startSeconds": 9.8261,
+            "endSeconds": 9.911111
+          },
+          {
+            "startSeconds": 10.108707,
+            "endSeconds": 10.193719
+          },
+          {
+            "startSeconds": 10.260884,
+            "endSeconds": 10.490884
+          },
+          {
+            "startSeconds": 10.543492,
+            "endSeconds": 10.663492
+          },
+          {
+            "startSeconds": 10.695669,
+            "endSeconds": 10.78068
+          },
+          {
+            "startSeconds": 10.978277,
+            "endSeconds": 11.063288
+          },
+          {
+            "startSeconds": 11.130454,
+            "endSeconds": 11.215465
+          },
+          {
+            "startSeconds": 11.413061,
+            "endSeconds": 11.533061
+          },
+          {
+            "startSeconds": 11.565238,
+            "endSeconds": 11.650249
+          },
+          {
+            "startSeconds": 11.847846,
+            "endSeconds": 11.932857
+          },
+          {
+            "startSeconds": 12,
+            "endSeconds": 12.085011
+          },
+          {
+            "startSeconds": 12.28263,
+            "endSeconds": 12.40263
+          },
+          {
+            "startSeconds": 12.434785,
+            "endSeconds": 12.519796
+          },
+          {
+            "startSeconds": 12.717392,
+            "endSeconds": 12.802404
+          },
+          {
+            "startSeconds": 12.869569,
+            "endSeconds": 12.95458
+          },
+          {
+            "startSeconds": 13.152177,
+            "endSeconds": 13.272177
+          },
+          {
+            "startSeconds": 13.304354,
+            "endSeconds": 13.389365
+          },
+          {
+            "startSeconds": 13.586961,
+            "endSeconds": 13.671973
+          },
+          {
+            "startSeconds": 13.739138,
+            "endSeconds": 13.969138
+          },
+          {
+            "startSeconds": 16.78263,
+            "endSeconds": 16.90263
+          },
+          {
+            "startSeconds": 17.500023,
+            "endSeconds": 17.620023
+          },
+          {
+            "startSeconds": 17.6522,
+            "endSeconds": 17.737211
+          },
+          {
+            "startSeconds": 17.934807,
+            "endSeconds": 18.019819
+          },
+          {
+            "startSeconds": 18.086984,
+            "endSeconds": 18.171995
+          },
+          {
+            "startSeconds": 18.369592,
+            "endSeconds": 18.489592
+          },
+          {
+            "startSeconds": 18.521746,
+            "endSeconds": 18.606757
+          },
+          {
+            "startSeconds": 18.804354,
+            "endSeconds": 18.889365
+          },
+          {
+            "startSeconds": 18.956531,
+            "endSeconds": 19.041542
+          },
+          {
+            "startSeconds": 19.239138,
+            "endSeconds": 19.359138
+          },
+          {
+            "startSeconds": 19.391315,
+            "endSeconds": 19.476327
+          },
+          {
+            "startSeconds": 19.673923,
+            "endSeconds": 19.758934
+          },
+          {
+            "startSeconds": 19.8261,
+            "endSeconds": 19.911111
+          },
+          {
+            "startSeconds": 20.108707,
+            "endSeconds": 20.228707
+          },
+          {
+            "startSeconds": 20.260884,
+            "endSeconds": 20.345896
+          },
+          {
+            "startSeconds": 20.543492,
+            "endSeconds": 20.628503
+          },
+          {
+            "startSeconds": 20.695669,
+            "endSeconds": 20.925669
+          },
+          {
+            "startSeconds": 20.978277,
+            "endSeconds": 21.098277
+          },
+          {
+            "startSeconds": 21.130454,
+            "endSeconds": 21.215465
+          },
+          {
+            "startSeconds": 21.413061,
+            "endSeconds": 21.498073
+          },
+          {
+            "startSeconds": 21.565238,
+            "endSeconds": 21.650249
+          },
+          {
+            "startSeconds": 21.847846,
+            "endSeconds": 21.967846
+          },
+          {
+            "startSeconds": 22.000023,
+            "endSeconds": 22.085034
+          },
+          {
+            "startSeconds": 22.28263,
+            "endSeconds": 22.367642
+          },
+          {
+            "startSeconds": 22.434807,
+            "endSeconds": 22.519819
+          },
+          {
+            "startSeconds": 22.717415,
+            "endSeconds": 22.837415
+          },
+          {
+            "startSeconds": 22.869592,
+            "endSeconds": 22.954603
+          },
+          {
+            "startSeconds": 23.1522,
+            "endSeconds": 23.237211
+          },
+          {
+            "startSeconds": 23.304376,
+            "endSeconds": 23.389388
+          },
+          {
+            "startSeconds": 23.586984,
+            "endSeconds": 23.706984
+          },
+          {
+            "startSeconds": 23.739161,
+            "endSeconds": 23.824172
+          },
+          {
+            "startSeconds": 24.021769,
+            "endSeconds": 24.10678
+          },
+          {
+            "startSeconds": 24.173946,
+            "endSeconds": 24.403946
+          },
+          {
+            "startSeconds": 24.456553,
+            "endSeconds": 24.576553
+          },
+          {
+            "startSeconds": 24.608707,
+            "endSeconds": 24.693719
+          },
+          {
+            "startSeconds": 24.891338,
+            "endSeconds": 24.976349
+          },
+          {
+            "startSeconds": 25.043492,
+            "endSeconds": 25.128503
+          },
+          {
+            "startSeconds": 25.3261,
+            "endSeconds": 25.4461
+          },
+          {
+            "startSeconds": 25.478277,
+            "endSeconds": 25.563288
+          },
+          {
+            "startSeconds": 25.760884,
+            "endSeconds": 25.845896
+          },
+          {
+            "startSeconds": 25.913061,
+            "endSeconds": 25.998073
+          },
+          {
+            "startSeconds": 26.195669,
+            "endSeconds": 26.315669
+          },
+          {
+            "startSeconds": 26.347846,
+            "endSeconds": 26.432857
+          },
+          {
+            "startSeconds": 26.630454,
+            "endSeconds": 26.715465
+          },
+          {
+            "startSeconds": 26.78263,
+            "endSeconds": 26.867642
+          },
+          {
+            "startSeconds": 27.065238,
+            "endSeconds": 27.185238
+          },
+          {
+            "startSeconds": 27.217415,
+            "endSeconds": 27.302426
+          },
+          {
+            "startSeconds": 27.500023,
+            "endSeconds": 27.585034
+          },
+          {
+            "startSeconds": 27.6522,
+            "endSeconds": 27.826122
+          }
+        ]
+      },
+      {
+        "trackId": "crossbar",
+        "maxSimultaneousSourceVoices": 1,
+        "pairOverlapSeconds": 0,
+        "sourceVoices": [
+          {
+            "startSeconds": 2.717392,
+            "endSeconds": 2.822404
+          },
+          {
+            "startSeconds": 6.195669,
+            "endSeconds": 6.30068
+          },
+          {
+            "startSeconds": 9.673923,
+            "endSeconds": 9.778934
+          },
+          {
+            "startSeconds": 10.3261,
+            "endSeconds": 10.431111
+          },
+          {
+            "startSeconds": 13.152177,
+            "endSeconds": 13.257188
+          },
+          {
+            "startSeconds": 13.804354,
+            "endSeconds": 13.909365
+          },
+          {
+            "startSeconds": 15.043492,
+            "endSeconds": 15.148503
+          },
+          {
+            "startSeconds": 17.173923,
+            "endSeconds": 17.278934
+          },
+          {
+            "startSeconds": 20.108707,
+            "endSeconds": 20.213719
+          },
+          {
+            "startSeconds": 23.586984,
+            "endSeconds": 23.691995
+          },
+          {
+            "startSeconds": 24.239161,
+            "endSeconds": 24.344172
+          },
+          {
+            "startSeconds": 27.065238,
+            "endSeconds": 27.170249
+          }
+        ]
+      },
+      {
+        "trackId": "latch",
+        "maxSimultaneousSourceVoices": 2,
+        "pairOverlapSeconds": 1.936848,
+        "sourceVoices": [
+          {
+            "startSeconds": 0,
+            "endSeconds": 0.48
+          },
+          {
+            "startSeconds": 0.326077,
+            "endSeconds": 0.806077
+          },
+          {
+            "startSeconds": 0.695646,
+            "endSeconds": 1.099297
+          },
+          {
+            "startSeconds": 1.086961,
+            "endSeconds": 1.553651
+          },
+          {
+            "startSeconds": 2.391315,
+            "endSeconds": 2.794966
+          },
+          {
+            "startSeconds": 3.478254,
+            "endSeconds": 3.958254
+          },
+          {
+            "startSeconds": 3.804354,
+            "endSeconds": 4.284354
+          },
+          {
+            "startSeconds": 4.173923,
+            "endSeconds": 4.577574
+          },
+          {
+            "startSeconds": 4.565215,
+            "endSeconds": 5.031905
+          },
+          {
+            "startSeconds": 5.869569,
+            "endSeconds": 6.27322
+          },
+          {
+            "startSeconds": 6.956531,
+            "endSeconds": 7.436531
+          },
+          {
+            "startSeconds": 7.282608,
+            "endSeconds": 7.762608
+          },
+          {
+            "startSeconds": 7.652177,
+            "endSeconds": 8.055828
+          },
+          {
+            "startSeconds": 8.043492,
+            "endSeconds": 8.510181
+          },
+          {
+            "startSeconds": 9.347846,
+            "endSeconds": 9.751497
+          },
+          {
+            "startSeconds": 10.434785,
+            "endSeconds": 10.914785
+          },
+          {
+            "startSeconds": 10.760884,
+            "endSeconds": 11.240884
+          },
+          {
+            "startSeconds": 11.130454,
+            "endSeconds": 11.534104
+          },
+          {
+            "startSeconds": 11.521746,
+            "endSeconds": 11.988435
+          },
+          {
+            "startSeconds": 12.8261,
+            "endSeconds": 13.229751
+          },
+          {
+            "startSeconds": 13.913061,
+            "endSeconds": 14.696984
+          },
+          {
+            "startSeconds": 17.391315,
+            "endSeconds": 17.871315
+          },
+          {
+            "startSeconds": 17.717415,
+            "endSeconds": 18.197415
+          },
+          {
+            "startSeconds": 18.086984,
+            "endSeconds": 18.490635
+          },
+          {
+            "startSeconds": 18.478277,
+            "endSeconds": 18.944966
+          },
+          {
+            "startSeconds": 19.78263,
+            "endSeconds": 20.186281
+          },
+          {
+            "startSeconds": 20.869592,
+            "endSeconds": 21.349592
+          },
+          {
+            "startSeconds": 21.195669,
+            "endSeconds": 21.675669
+          },
+          {
+            "startSeconds": 21.565238,
+            "endSeconds": 21.968889
+          },
+          {
+            "startSeconds": 21.956531,
+            "endSeconds": 22.42322
+          },
+          {
+            "startSeconds": 23.260884,
+            "endSeconds": 23.664535
+          },
+          {
+            "startSeconds": 24.347846,
+            "endSeconds": 24.827846
+          },
+          {
+            "startSeconds": 24.673946,
+            "endSeconds": 25.153946
+          },
+          {
+            "startSeconds": 25.043492,
+            "endSeconds": 25.447143
+          },
+          {
+            "startSeconds": 25.434807,
+            "endSeconds": 25.901497
+          },
+          {
+            "startSeconds": 26.347846,
+            "endSeconds": 26.668209
+          },
+          {
+            "startSeconds": 26.739161,
+            "endSeconds": 27.142812
+          }
+        ]
+      },
+      {
+        "trackId": "wire-answer",
+        "maxSimultaneousSourceVoices": 1,
+        "pairOverlapSeconds": 0,
+        "sourceVoices": [
+          {
+            "startSeconds": 2,
+            "endSeconds": 2.567324
+          },
+          {
+            "startSeconds": 3.195646,
+            "endSeconds": 4.045646
+          },
+          {
+            "startSeconds": 5.478277,
+            "endSeconds": 6.045601
+          },
+          {
+            "startSeconds": 6.673923,
+            "endSeconds": 7.523923
+          },
+          {
+            "startSeconds": 8.956531,
+            "endSeconds": 9.523855
+          },
+          {
+            "startSeconds": 10.152177,
+            "endSeconds": 11.002177
+          },
+          {
+            "startSeconds": 12.434785,
+            "endSeconds": 13.002109
+          },
+          {
+            "startSeconds": 13.630454,
+            "endSeconds": 14.480454
+          },
+          {
+            "startSeconds": 15.869569,
+            "endSeconds": 16.699138
+          },
+          {
+            "startSeconds": 19.391315,
+            "endSeconds": 19.958639
+          },
+          {
+            "startSeconds": 20.586984,
+            "endSeconds": 21.436984
+          },
+          {
+            "startSeconds": 22.869592,
+            "endSeconds": 23.436916
+          },
+          {
+            "startSeconds": 24.065238,
+            "endSeconds": 24.915238
+          },
+          {
+            "startSeconds": 27.217415,
+            "endSeconds": 27.826122
+          }
+        ]
+      },
+      {
+        "trackId": "floor",
+        "maxSimultaneousSourceVoices": 1,
+        "pairOverlapSeconds": 0,
+        "sourceVoices": [
+          {
+            "startSeconds": 0.239138,
+            "endSeconds": 0.524127
+          },
+          {
+            "startSeconds": 0.913039,
+            "endSeconds": 1.198027
+          },
+          {
+            "startSeconds": 1.978254,
+            "endSeconds": 2.263243
+          },
+          {
+            "startSeconds": 2.652177,
+            "endSeconds": 2.937166
+          },
+          {
+            "startSeconds": 3.717392,
+            "endSeconds": 4.002381
+          },
+          {
+            "startSeconds": 4.391315,
+            "endSeconds": 4.676304
+          },
+          {
+            "startSeconds": 5,
+            "endSeconds": 5.284989
+          },
+          {
+            "startSeconds": 5.413039,
+            "endSeconds": 5.698027
+          },
+          {
+            "startSeconds": 5.934785,
+            "endSeconds": 6.219773
+          },
+          {
+            "startSeconds": 6.717392,
+            "endSeconds": 7.002381
+          },
+          {
+            "startSeconds": 7.195669,
+            "endSeconds": 7.554739
+          },
+          {
+            "startSeconds": 7.869569,
+            "endSeconds": 8.228639
+          },
+          {
+            "startSeconds": 8.478277,
+            "endSeconds": 8.837347
+          },
+          {
+            "startSeconds": 8.891315,
+            "endSeconds": 9.250385
+          },
+          {
+            "startSeconds": 9.413061,
+            "endSeconds": 9.772132
+          },
+          {
+            "startSeconds": 10.195669,
+            "endSeconds": 10.554739
+          },
+          {
+            "startSeconds": 10.673923,
+            "endSeconds": 10.958912
+          },
+          {
+            "startSeconds": 11.347846,
+            "endSeconds": 11.632834
+          },
+          {
+            "startSeconds": 11.956531,
+            "endSeconds": 12.241519
+          },
+          {
+            "startSeconds": 12.369569,
+            "endSeconds": 12.559796
+          },
+          {
+            "startSeconds": 12.891315,
+            "endSeconds": 13.081542
+          },
+          {
+            "startSeconds": 13.673923,
+            "endSeconds": 13.843379
+          },
+          {
+            "startSeconds": 17.630454,
+            "endSeconds": 17.915442
+          },
+          {
+            "startSeconds": 18.304354,
+            "endSeconds": 18.589342
+          },
+          {
+            "startSeconds": 18.913061,
+            "endSeconds": 19.19805
+          },
+          {
+            "startSeconds": 19.3261,
+            "endSeconds": 19.68517
+          },
+          {
+            "startSeconds": 19.847846,
+            "endSeconds": 20.206916
+          },
+          {
+            "startSeconds": 20.630454,
+            "endSeconds": 20.989524
+          },
+          {
+            "startSeconds": 21.108707,
+            "endSeconds": 21.322222
+          },
+          {
+            "startSeconds": 21.78263,
+            "endSeconds": 21.996145
+          },
+          {
+            "startSeconds": 22.391315,
+            "endSeconds": 22.60483
+          },
+          {
+            "startSeconds": 22.804376,
+            "endSeconds": 22.994603
+          },
+          {
+            "startSeconds": 23.3261,
+            "endSeconds": 23.516327
+          },
+          {
+            "startSeconds": 24.108707,
+            "endSeconds": 24.298934
+          },
+          {
+            "startSeconds": 24.586984,
+            "endSeconds": 24.871973
+          },
+          {
+            "startSeconds": 25.260884,
+            "endSeconds": 25.545873
+          },
+          {
+            "startSeconds": 25.869592,
+            "endSeconds": 26.15458
+          },
+          {
+            "startSeconds": 26.28263,
+            "endSeconds": 26.567619
+          },
+          {
+            "startSeconds": 26.804376,
+            "endSeconds": 27.089365
+          },
+          {
+            "startSeconds": 27.586984,
+            "endSeconds": 27.826122
+          }
+        ]
+      },
+      {
+        "trackId": "throat",
+        "maxSimultaneousSourceVoices": 1,
+        "pairOverlapSeconds": 0,
+        "sourceVoices": [
+          {
+            "startSeconds": 3.717392,
+            "endSeconds": 3.972404
+          },
+          {
+            "startSeconds": 4.391315,
+            "endSeconds": 4.646327
+          },
+          {
+            "startSeconds": 5,
+            "endSeconds": 5.255011
+          },
+          {
+            "startSeconds": 5.413039,
+            "endSeconds": 5.66805
+          },
+          {
+            "startSeconds": 5.934785,
+            "endSeconds": 6.189796
+          },
+          {
+            "startSeconds": 6.717392,
+            "endSeconds": 6.972404
+          },
+          {
+            "startSeconds": 7.195669,
+            "endSeconds": 7.516984
+          },
+          {
+            "startSeconds": 7.869569,
+            "endSeconds": 8.190884
+          },
+          {
+            "startSeconds": 8.478277,
+            "endSeconds": 8.799592
+          },
+          {
+            "startSeconds": 8.891315,
+            "endSeconds": 9.21263
+          },
+          {
+            "startSeconds": 9.413061,
+            "endSeconds": 9.734376
+          },
+          {
+            "startSeconds": 10.195669,
+            "endSeconds": 10.516984
+          },
+          {
+            "startSeconds": 10.673923,
+            "endSeconds": 10.928934
+          },
+          {
+            "startSeconds": 11.347846,
+            "endSeconds": 11.602857
+          },
+          {
+            "startSeconds": 11.956531,
+            "endSeconds": 12.211542
+          },
+          {
+            "startSeconds": 12.369569,
+            "endSeconds": 12.539773
+          },
+          {
+            "startSeconds": 12.891315,
+            "endSeconds": 13.061519
+          },
+          {
+            "startSeconds": 13.673923,
+            "endSeconds": 13.825556
+          },
+          {
+            "startSeconds": 17.630454,
+            "endSeconds": 17.885465
+          },
+          {
+            "startSeconds": 18.304354,
+            "endSeconds": 18.559365
+          },
+          {
+            "startSeconds": 18.913061,
+            "endSeconds": 19.168073
+          },
+          {
+            "startSeconds": 19.3261,
+            "endSeconds": 19.647415
+          },
+          {
+            "startSeconds": 19.847846,
+            "endSeconds": 20.169161
+          },
+          {
+            "startSeconds": 20.630454,
+            "endSeconds": 20.951769
+          },
+          {
+            "startSeconds": 21.108707,
+            "endSeconds": 21.299751
+          },
+          {
+            "startSeconds": 21.78263,
+            "endSeconds": 21.973673
+          },
+          {
+            "startSeconds": 22.391315,
+            "endSeconds": 22.582358
+          },
+          {
+            "startSeconds": 22.804376,
+            "endSeconds": 22.97458
+          },
+          {
+            "startSeconds": 23.3261,
+            "endSeconds": 23.496304
+          },
+          {
+            "startSeconds": 24.108707,
+            "endSeconds": 24.278912
+          },
+          {
+            "startSeconds": 24.586984,
+            "endSeconds": 24.841995
+          },
+          {
+            "startSeconds": 25.260884,
+            "endSeconds": 25.515896
+          },
+          {
+            "startSeconds": 25.869592,
+            "endSeconds": 26.124603
+          },
+          {
+            "startSeconds": 26.28263,
+            "endSeconds": 26.537642
+          },
+          {
+            "startSeconds": 26.804376,
+            "endSeconds": 27.059388
+          },
+          {
+            "startSeconds": 27.586984,
+            "endSeconds": 27.826122
+          }
+        ]
+      },
+      {
+        "trackId": "reed-room",
+        "maxSimultaneousSourceVoices": 2,
+        "pairOverlapSeconds": 3.843492,
+        "sourceVoices": [
+          {
+            "startSeconds": 2.869569,
+            "endSeconds": 4.219569
+          },
+          {
+            "startSeconds": 6.347823,
+            "endSeconds": 7.697823
+          },
+          {
+            "startSeconds": 9.8261,
+            "endSeconds": 11.1761
+          },
+          {
+            "startSeconds": 13.304354,
+            "endSeconds": 14.654354
+          },
+          {
+            "startSeconds": 17.6522,
+            "endSeconds": 19.0022
+          },
+          {
+            "startSeconds": 18.565238,
+            "endSeconds": 19.915238
+          },
+          {
+            "startSeconds": 19.391315,
+            "endSeconds": 20.741315
+          },
+          {
+            "startSeconds": 20.304376,
+            "endSeconds": 21.654376
+          },
+          {
+            "startSeconds": 21.130454,
+            "endSeconds": 22.480454
+          },
+          {
+            "startSeconds": 22.043492,
+            "endSeconds": 23.393492
+          },
+          {
+            "startSeconds": 22.869592,
+            "endSeconds": 24.219592
+          },
+          {
+            "startSeconds": 23.78263,
+            "endSeconds": 25.13263
+          },
+          {
+            "startSeconds": 24.608707,
+            "endSeconds": 25.958707
+          }
+        ]
+      },
+      {
+        "trackId": "suspended-steel",
+        "maxSimultaneousSourceVoices": 1,
+        "pairOverlapSeconds": 0,
+        "sourceVoices": [
+          {
+            "startSeconds": 10.869569,
+            "endSeconds": 13.069569
+          },
+          {
+            "startSeconds": 14.021746,
+            "endSeconds": 16.221746
+          },
+          {
+            "startSeconds": 21.304376,
+            "endSeconds": 23.504376
+          }
+        ]
+      },
+      {
+        "trackId": "intake",
+        "maxSimultaneousSourceVoices": 1,
+        "pairOverlapSeconds": 0,
+        "sourceVoices": [
+          {
+            "startSeconds": 3.043492,
+            "endSeconds": 3.523492
+          },
+          {
+            "startSeconds": 13.478277,
+            "endSeconds": 13.958277
+          },
+          {
+            "startSeconds": 16.956531,
+            "endSeconds": 17.436531
+          },
+          {
+            "startSeconds": 27.434807,
+            "endSeconds": 27.75517
+          }
+        ]
+      }
+    ]
+  },
+  "productionOverloads": {
+    "master": {
+      "gainDb": -2,
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 25
+        }
+      ],
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -6.665239
+    },
+    "tracks": [
+      {
+        "trackId": "piston",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -9.730939
+      },
+      {
+        "trackId": "clamp",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -12.767108
+      },
+      {
+        "trackId": "dust-clock",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -19.671547
+      },
+      {
+        "trackId": "crossbar",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -17.526411
+      },
+      {
+        "trackId": "latch",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -9.933445
+      },
+      {
+        "trackId": "wire-answer",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -23.510523
+      },
+      {
+        "trackId": "floor",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -11.504043
+      },
+      {
+        "trackId": "throat",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -18.887919
+      },
+      {
+        "trackId": "reed-room",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -22.260685
+      },
+      {
+        "trackId": "suspended-steel",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -29.886963
+      },
+      {
+        "trackId": "intake",
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -19.130106
+      }
+    ]
+  }
+}
