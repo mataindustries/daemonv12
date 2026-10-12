@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "skill": "daemonv12-composer",
+  "status": "planned",
+  "cases": [
+    {
+      "id": "activate-beat",
+      "prompt": "Make me a DaemonV12 beat.",
+      "shouldActivate": true,
+      "reason": "Composing music through DaemonV12."
+    },
+    {
+      "id": "activate-cue",
+      "prompt": "Compose a 30-second boss cue with DaemonV12.",
+      "shouldActivate": true,
+      "reason": "A short-form DaemonV12 composition request."
+    },
+    {
+      "id": "activate-improvement",
+      "prompt": "Improve this DaemonV12 track.",
+      "shouldActivate": true,
+      "reason": "Production iteration on an existing DaemonV12 composition."
+    },
+    {
+      "id": "activate-garage",
+      "prompt": "Use DaemonV12 to make a garage song.",
+      "shouldActivate": true,
+      "reason": "Genre-specific composition through DaemonV12."
+    },
+    {
+      "id": "activate-loop",
+      "prompt": "Produce a new music loop through DaemonV12.",
+      "shouldActivate": true,
+      "reason": "Music production through DaemonV12, including loops."
+    },
+    {
+      "id": "ignore-explanation",
+      "prompt": "Explain what DaemonV12 is.",
+      "shouldActivate": false,
+      "reason": "Product explanation does not request composition or production."
+    },
+    {
+      "id": "ignore-readme",
+      "prompt": "Fix the DaemonV12 README.",
+      "shouldActivate": false,
+      "reason": "Documentation maintenance is outside this composition workflow."
+    },
+    {
+      "id": "ignore-pr",
+      "prompt": "Review a DaemonV12 pull request.",
+      "shouldActivate": false,
+      "reason": "Repository review does not request musical production."
+    },
+    {
+      "id": "ignore-sampler",
+      "prompt": "Change the sampler implementation.",
+      "shouldActivate": false,
+      "reason": "Engine implementation is outside the skill's scope."
+    },
+    {
+      "id": "ignore-fluidsynth",
+      "prompt": "How does FluidSynth work?",
+      "shouldActivate": false,
+      "reason": "General audio-tool explanation does not request DaemonV12 composition."
+    }
+  ]
+}
