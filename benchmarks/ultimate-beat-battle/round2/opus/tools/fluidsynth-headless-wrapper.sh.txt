@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+
+export SDL_AUDIODRIVER=dummy
+
+REAL="/root/.local/share/daemonv12/audio-tools/runtime/bin/fluidsynth"
+
+if [[ "${1:-}" == "--version" ]]; then
+  exec "$REAL" --version
+fi
+
+exec "$REAL"   -a file   -o player.timing-source=sample   "$@"

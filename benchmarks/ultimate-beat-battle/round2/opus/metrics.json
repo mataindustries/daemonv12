@@ -1,0 +1,76 @@
+{
+ "benchmark": "DaemonV12 Ultimate Beat Battle, Round 2 (frozen Composer Skill)",
+ "submissionDirectory": "benchmarks/ultimate-beat-battle/round2/opus/",
+ "frozenEngineCommit": "ed75e9e2a0172266e56b292886ad7c1500677862",
+ "frozenComposerSkillCommit": "56dbdff62bf78e70e898f0dbb49f8044cd561655",
+ "skillUnchangedCheck": "git diff --exit-code 56dbdff..HEAD -- plugins/daemonv12-composer: no changes",
+ "engineVersion": "0.6.0",
+ "title": "SWING ARM",
+ "bpm": 134,
+ "timeSignature": "4/4",
+ "key": "G minor (Phrygian A-flat colour; bVI and bII answer chords)",
+ "swing": "even sixteenths +60 ticks at 960 PPQ (62.5%)",
+ "authoredBars": 16,
+ "durationSeconds": 28.656712,
+ "durationNote": "render.duration = 16 bars exactly; tails decay inside the container (boundary -93 dBFS, last sample 0)",
+ "seriousIterations": 4,
+ "iterationNote": "V1, V2, V3, V4 are serious rendered versions with critiques; V5a/V5b (sidechain duck) were rendered, measured and reverted; the lock is V4's arrangement plus a -1 dB master trim for true-peak headroom (not counted as an iteration).",
+ "tracks": 12,
+ "stems": 12,
+ "events": 576,
+ "sampleTriggers": 576,
+ "generalMidiNotes": 0,
+ "distinctSourceWavsTriggered": 26,
+ "customGeneratedAssets": 32,
+ "packAssetsCopied": 7,
+ "performedVoices": 196,
+ "distinctPlaybackRatesInclGlideTargets": 17,
+ "glides": {
+  "total": 45,
+  "up": 11,
+  "down": 34
+ },
+ "sourceOffsets": 0,
+ "automation": {
+  "lanes": 4,
+  "points": 11,
+  "detail": "voice pan (2), hats pan (2), openhat pan (2), halo gainDb (5)"
+ },
+ "productionEffects": {
+  "total": 19,
+  "byType": {
+   "highpass": 9,
+   "lowpass": 2,
+   "delay": 1,
+   "reverb": 5,
+   "saturation": 1,
+   "compressor": 1
+  }
+ },
+ "master": {
+  "samplePeakDbfs": -2.377689,
+  "truePeakDbtp": -2.24,
+  "integratedLufs": -17.8,
+  "loudnessRangeLu": 3.8,
+  "rmsDbfs": -19.542815,
+  "fullScaleSamples": 0,
+  "clipping": false,
+  "trackOrMasterClippedSamples": 0
+ },
+ "sectionEvidence": "analysis/final-report.json, analysis/final-checks.json",
+ "projectJsonBytes": 79504,
+ "projectJsonSha256": "8f5d6da858f96908048bbdd45760c92c7e29e127019d2fb11f47c130cde03a74",
+ "finalMasterWavSha256": "2f2bfc0375c430f3f4562a46e37d37b98395a1baaf4cc5a5aba491088cf84116",
+ "listeningCopyMp3Sha256": "ca5f130c87e0ebb5118fb5cc69ec3c40b773cbca3bdf8440b4af6344e1fad028",
+ "approximateRenderSeconds": 31.3,
+ "renderCommand": "node bin/daemonv12.js render benchmarks/ultimate-beat-battle/round2/opus/project.json --out-dir <dir> --stems --format wav,mp3 --json",
+ "determinism": "two independent renders: master WAV, MIDI, manifest, analysis, MP3 and 12 stems byte-identical (analysis/determinism.json)",
+ "environment": {
+  "node": "v22.22.0",
+  "ffmpeg": "6.1.1 (pinned rootless bootstrap)",
+  "fluidsynth": "2.3.7 via headless wrapper (present, not used: sample-only project)",
+  "soundfont": "FluidR3_GM.sf2 sha256 74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0 (not used)",
+  "assetGenerator": "Python 3.13.16, numpy 2.5.3",
+  "analysisTools": "numpy 2.5.3, scipy 1.18.1, matplotlib (read-only)"
+ }
+}
