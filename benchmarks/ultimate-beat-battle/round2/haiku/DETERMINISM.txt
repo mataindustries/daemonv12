@@ -1,0 +1,21 @@
+DETERMINISM CHECK — two independent renders of the locked project (fresh output dirs)
+Command: node bin/daemonv12.js render project.json --out-dir <dir> --stems --format wav,mp3 --json
+
+RESULT   final-a              final-b              ARTIFACT
+SAME     f337f22aa1b7d632   f337f22aa1b7d632   project.wav
+SAME     63df7cccddfa4146   63df7cccddfa4146   project.mid
+SAME     2e4f5110e4a7ef65   2e4f5110e4a7ef65   project.analysis.json
+SAME     cd0821bed29ec89c   cd0821bed29ec89c   project.render.json
+SAME     e326b851a3f10063   e326b851a3f10063   project.stems/clap.wav
+SAME     d87cfa0bf1d91ed5   d87cfa0bf1d91ed5   project.stems/glass.wav
+SAME     f05394bcdce775fb   f05394bcdce775fb   project.stems/hats.wav
+SAME     464e1483c4680caf   464e1483c4680caf   project.stems/impact.wav
+SAME     d55bf0d074eaccfe   d55bf0d074eaccfe   project.stems/kick.wav
+SAME     cabb62feb3b94cbe   cabb62feb3b94cbe   project.stems/low.wav
+SAME     44f22e667521d853   44f22e667521d853   project.stems/prism.wav
+SAME     f7a6f49ca15e610e   f7a6f49ca15e610e   project.stems/reverse.wav
+SAME     1a1861cba409a402   1a1861cba409a402   project.stems/snare.wav
+SAME     ef0b4d518be699b8   ef0b4d518be699b8   project.stems/vox.wav
+
+MP3 (listening copy, outside the byte-determinism contract): 85eb8595bef995d1 vs 85eb8595bef995d1 -> identical in this environment
+Verdict: all canonical artifacts repeat byte-for-byte in this environment.
