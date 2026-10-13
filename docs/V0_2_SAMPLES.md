@@ -8,6 +8,11 @@ V0.6 lets sample notes perform their sample: optional playback rate, rate glides
 and source offsets. Without those fields everything below is unchanged. See
 [V0_6_SAMPLE_PERFORMANCE.md](V0_6_SAMPLE_PERFORMANCE.md).
 
+V0.7 adds opt-in source ends, musical gates, per-voice envelopes and track-local
+choke groups. Notes without these fields retain this historical one-shot
+behavior. See [V0_7_SAMPLER_ARTICULATION.md](V0_7_SAMPLER_ARTICULATION.md) for the
+normative additions; the no-fade/no-choke statements below describe V0.2 notes.
+
 ## Authoring
 
 Keep the existing track → patterns → notes and clips structure. Add either:

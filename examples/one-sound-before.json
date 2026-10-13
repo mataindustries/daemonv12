@@ -1,0 +1,203 @@
+{
+  "formatVersion": 1,
+  "title": "ONE SOUND \u2014 Before",
+  "description": "V0.7 articulation comparison. One unmodified original Orbital Foundry low-boom.wav is heard alone, then becomes percussion and low-end voices using V0.6 playback controls. Full sample tails overlap; no gates, envelopes or source ends are added. Exact eight-second WAV, three aligned stems; no effects.",
+  "bpm": 120,
+  "timeSignature": "4/4",
+  "key": "C minor",
+  "bars": 4,
+  "seed": 7,
+  "render": {
+    "duration": {
+      "seconds": 8
+    },
+    "tail": "none"
+  },
+  "tracks": [
+    {
+      "id": "original",
+      "description": "The original 2.4-second low-boom source is exposed alone at the same velocity in both versions.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/06-low-boom.wav"
+      },
+      "patterns": [
+        {
+          "id": "original",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.6
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "original"
+        }
+      ]
+    },
+    {
+      "id": "percussion",
+      "description": "The same low-boom sound becomes fast, offset percussion. Onsets, rates and velocities match between versions.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/06-low-boom.wav"
+      },
+      "patterns": [
+        {
+          "id": "groove",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.28,
+              "playbackRate": 4
+            },
+            {
+              "start": "1:2",
+              "velocity": 0.21,
+              "playbackRate": 2,
+              "offsetSeconds": 0.025
+            },
+            {
+              "start": "1:2+1/8",
+              "velocity": 0.17,
+              "playbackRate": 4,
+              "offsetSeconds": 0.08
+            },
+            {
+              "start": "1:3",
+              "velocity": 0.28,
+              "playbackRate": 4
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.21,
+              "playbackRate": 2,
+              "offsetSeconds": 0.025
+            },
+            {
+              "start": "1:4+1/8",
+              "velocity": 0.15,
+              "playbackRate": 4,
+              "offsetSeconds": 0.08
+            },
+            {
+              "start": "2:1",
+              "velocity": 0.28,
+              "playbackRate": 4
+            },
+            {
+              "start": "2:2",
+              "velocity": 0.2,
+              "playbackRate": 2,
+              "offsetSeconds": 0.025
+            },
+            {
+              "start": "2:2+1/8",
+              "velocity": 0.17,
+              "playbackRate": 4,
+              "offsetSeconds": 0.08
+            },
+            {
+              "start": "2:3",
+              "velocity": 0.28,
+              "playbackRate": 4
+            },
+            {
+              "start": "2:4",
+              "velocity": 0.21,
+              "playbackRate": 2,
+              "offsetSeconds": 0.025
+            },
+            {
+              "start": "2:4+1/8",
+              "velocity": 0.15,
+              "playbackRate": 4,
+              "offsetSeconds": 0.08,
+              "glide": {
+                "to": 2,
+                "duration": "1/8"
+              }
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 3,
+          "pattern": "groove"
+        }
+      ]
+    },
+    {
+      "id": "low-end",
+      "description": "The same low-boom sound becomes low bass at slower rates, with two rate dives/rises. Onsets, rates and velocities match between versions.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/06-low-boom.wav"
+      },
+      "patterns": [
+        {
+          "id": "bass",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.48,
+              "playbackRate": 0.5
+            },
+            {
+              "start": "1:2+1/8",
+              "velocity": 0.4,
+              "playbackRate": 0.75,
+              "offsetSeconds": 0.02
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.42,
+              "glide": {
+                "to": 0.5,
+                "duration": "1/2"
+              }
+            },
+            {
+              "start": "2:1",
+              "velocity": 0.48,
+              "playbackRate": 0.5
+            },
+            {
+              "start": "2:1+1/8",
+              "velocity": 0.38,
+              "playbackRate": 0.75,
+              "offsetSeconds": 0.02
+            },
+            {
+              "start": "2:3",
+              "velocity": 0.42,
+              "playbackRate": 0.5,
+              "glide": {
+                "to": 1,
+                "duration": "1/4"
+              }
+            },
+            {
+              "start": "2:4",
+              "velocity": 0.4
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 3,
+          "pattern": "bass"
+        }
+      ]
+    }
+  ]
+}

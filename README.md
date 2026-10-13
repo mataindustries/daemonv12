@@ -5,7 +5,7 @@ as a JSON project, directly or through nine MCP tools, and DaemonV12 renders it
 offline to MIDI, WAV, MP3 and per-track stems, with loudness analysis and a
 SHA-256 provenance manifest. No DAW, GUI, audio device or API key.
 
-> **Public beta, version 0.6.** Works today from a GitHub clone or a packed
+> **Public beta, version 0.7.** Works today from a GitHub clone or a packed
 > release tarball. Not yet published to npm, and the code license is still an
 > open owner decision (see [status](#status-and-limitations)).
 
@@ -39,6 +39,9 @@ calling tools. DaemonV12 gives them a music format built for that:
   (pitch and duration change together), glide between rates for tape stops,
   risers and dives, and start from inside its WAV, so one sound becomes many
   pitched chops.
+- **Sample articulation:** source endpoints make playable slices; musical gates,
+  per-voice attack/release envelopes and track-local choke groups tighten
+  percussion and control bass tails without writing new audio files.
 - **Production:** track gain/pan and their automation; high-pass, low-pass,
   delay, compressor, reverb and saturation; master gain; voice-over ducking.
 - **Timing:** exact output durations in bars, musical time or seconds, with
@@ -52,6 +55,7 @@ Measured examples (Linux; Ubuntu's FluidSynth 2.3.4, FluidR3_GM and FFmpeg 6.1.1
 | `orbital-foundry-audition.json` | All twelve Orbital Foundry sounds | 30.0 s, −17.4 LUFS; WAV SHA-256 `c1dd6439…`, byte-identical to the [earlier recorded render](docs/ORBITAL_FOUNDRY_VERIFICATION.md) made with a different Node version |
 | `glasshouse-audition.json` | All ten GLASSHOUSE sounds at 140 BPM in C# minor | 25.6 s, −17.7 LUFS, −2.2 dBTP, no clipping ([verification](docs/GLASSHOUSE_VERIFICATION.md)) |
 | `ghost-shift.json` | GHOST//SHIFT: one 0.95-second vocal sample performed into a pitched, chopped hook, risers, bass dives and a tape stop | exactly 12.0 s, −15.7 LUFS, −2.1 dBTP, no clipping ([sample performance](docs/V0_6_SAMPLE_PERFORMANCE.md#ghostshift)) |
+| `one-sound-before.json` / `one-sound-after.json` | ONE SOUND: the same original low boom, before and after source slices, gates, envelopes and chokes | exactly 8.0 s each, three aligned stems, no clipping; [articulation contract](docs/V0_7_SAMPLER_ARTICULATION.md#one-sound-before-and-after), `npm run demo:one-sound` |
 | `v05-loop-demo.json` | Four-bar game loop at 100 BPM | exactly 423,360 frames (9.6 s) with aligned stems |
 | `sample-only-demo.json` | Drum kit and impact, Node only | 20.0 s in about 0.2 s |
 
@@ -117,10 +121,10 @@ play it locally. `npx --no-install daemonv12 doctor` shows what is installed.
 commands above. TypeScript runs directly; there is no build step to remember.
 
 **B. Package tarball (the future npm path):** `npm pack` in a clone produces
-`daemonv12-0.6.0.tgz`, which installs anywhere without the clone:
+`daemonv12-0.7.0.tgz`, which installs anywhere without the clone:
 
 ```sh
-npm install -g ./daemonv12-0.6.0.tgz     # once published: npm install -g daemonv12
+npm install -g ./daemonv12-0.7.0.tgz     # once published: npm install -g daemonv12
 daemonv12 doctor
 daemonv12 init ~/daemonv12-music && cd ~/daemonv12-music
 daemonv12 render sample-only-demo.json   # renders/sample-only-demo.wav, Node only
@@ -173,11 +177,12 @@ is untested.
 
 ## Examples
 
-Start with the eight curated projects in [examples/README.md](examples/README.md):
+Start with the curated projects in [examples/README.md](examples/README.md):
 Node-only samples, Orbital Foundry, GLASSHOUSE, the GHOST//SHIFT sample-performance
 demo, an exact game loop, a narrated-video cue with ducking, a production mix and
 the agent-composed score. Other files in `examples/` are historical fixtures kept
-for tests.
+for tests. The ONE SOUND before/after pair demonstrates
+[sampler articulation](docs/V0_7_SAMPLER_ARTICULATION.md) with one original asset.
 
 ## Commands
 

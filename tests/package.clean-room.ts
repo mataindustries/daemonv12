@@ -162,6 +162,24 @@ test('packed tarball installs and works from an empty directory without the sour
     const checkout = await runCommand('render', join(workspace, 'performance-check.json'), { outDir: join(root, 'reference-performance'), env: HIDDEN_AUDIO });
     assert.equal(performedHash, (checkout.result.manifest!.wav as { sha256: string }).sha256, 'compiled sample performance must match the checkout');
     assert.equal(performedHash, '5aab74d37b6292895f0270f316da44156e1a9f06a5b5833264cb8d2b8978664c', 'performed voices must be identical on every platform');
+    // Articulated voices use the same compiled Node-only renderer: source slices,
+    // musical gates, release envelopes and track-local chokes also match the checkout.
+    writeFileSync(join(workspace, 'articulation-check.json'), JSON.stringify({ formatVersion: 1, title: 'Articulation check', bpm: 140, timeSignature: '4/4', bars: 1, tracks: [
+      vox([{ start: '1:1', velocity: 0.6, playbackRate: 0.5, offsetSeconds: 0.3, endSeconds: 0.8, glide: { to: 0.25, duration: '1/4' }, gate: '1/16', envelope: { attackSeconds: 0.003, releaseSeconds: 0.02 }, chokeGroup: 'vox' },
+        { start: '1:1+1/16', velocity: 0.6, offsetSeconds: 0.15, endSeconds: 0.5, gate: '1/8', chokeGroup: 'vox' },
+        { start: '1:3', playbackRate: 2, endSeconds: 0.42, gate: '1/4', envelope: {} }]),
+      { id: 'kit', instrument: { type: 'drumkit', kit: 'assets/glasshouse/kit.json' }, clips: [{ bar: 1, pattern: 'p' }], patterns: [{ id: 'p', bars: 1, notes: [{ start: '1:2', pitch: 'chrome-clap', playbackRate: 0.890899, endSeconds: 0.09, gate: '1/32', envelope: { releaseSeconds: 0.01 } }] }] }] }));
+    const articulated = cli(['render', 'articulation-check.json', '--json', '--stems'], workspace);
+    assert.equal(articulated.status, 0, articulated.stdout + articulated.stderr);
+    const articulatedResult = JSON.parse(articulated.stdout);
+    const articulatedReference = await runCommand('render', join(workspace, 'articulation-check.json'), { outDir: join(root, 'reference-articulation'), stems: true, env: HIDDEN_AUDIO });
+    assert.equal(articulatedReference.exitCode, 0, JSON.stringify(articulatedReference.result.errors));
+    assert.equal(articulatedResult.manifest.wav.sha256, (articulatedReference.result.manifest!.wav as { sha256: string }).sha256, 'compiled articulation must match the checkout');
+    assert.deepEqual(articulatedResult.manifest.stems.map((stem: { wav: { sha256: string } }) => stem.wav.sha256),
+      (articulatedReference.result.manifest!.stems as { wav: { sha256: string } }[]).map(stem => stem.wav.sha256), 'compiled articulated stems must match the checkout');
+    assert.ok(articulatedResult.manifest.samples.articulation, 'installed manifest includes the articulation algorithm');
+    for (const path of [articulatedResult.artifacts.wav, ...articulatedResult.artifacts.stems.map((stem: { wav: string }) => stem.wav)])
+      assert.equal(decodePcm(readFileSync(join(workspace, path))).pcm!.frames, 75_600, 'articulated master and stems have exact aligned lengths');
     // Without FFmpeg, production projects fail clearly instead of producing partial output.
     const production = cli(['render', 'v05-loop-demo.json', '--json'], workspace);
     assert.equal(production.status, 3); assert.equal(JSON.parse(production.stdout).errors[0].code, 'AUDIO_TOOL_NOT_FOUND');

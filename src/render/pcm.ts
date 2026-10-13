@@ -1,5 +1,5 @@
 import { readWavInfo } from './wav.ts';
-import { voiceFrames, voiceSamples, type VoicePlayback } from './playback.ts';
+import { voiceFrames, voiceSamples, voiceGain, type VoicePlayback, type VoiceArticulation } from './playback.ts';
 
 export const PCM_RATE = 44100;
 export interface Pcm { frames: number; channels: number; samples: Int16Array }
@@ -22,19 +22,19 @@ export function encodePcm(samples: Int16Array): Buffer {
   for(let i=0;i<samples.length;i++) bytes.writeInt16LE(samples[i]!,44+i*2);
   return bytes;
 }
-export interface PcmTrigger { frame: number; velocity: number; pcm: Pcm; playback?: VoicePlayback }
+export interface PcmTrigger { frame: number; velocity: number; pcm: Pcm; playback?: VoicePlayback; articulation?: VoiceArticulation }
 // Integer per-voice quantization makes addition order-independent. Saturate once per output.
 // Explicit resource limit keeps large valid musical timelines from exhausting the process.
 export const MAX_PCM_FRAMES = PCM_RATE * 600;
 export function mixPcm(triggers: PcmTrigger[], minimumFrames: number): { bytes: Buffer; frames: number; clippedSamples: number } {
-  const frames = triggers.reduce((end,t)=>Math.max(end,t.frame+voiceFrames(t.pcm,t.playback)),minimumFrames);
+  const frames = triggers.reduce((end,t)=>Math.max(end,t.frame+voiceFrames(t.pcm,t.playback,t.articulation)),minimumFrames);
   if (!Number.isSafeInteger(frames) || frames < 1 || frames > MAX_PCM_FRAMES) throw new RangeError('Sample rendering supports at most 600 seconds including tails.');
   const sum = new Float64Array(frames*2);
   for(const trigger of triggers) {
-    const {pcm,frame,velocity} = trigger, voice = voiceSamples(pcm,trigger.playback);
+    const {pcm,frame,velocity} = trigger, voice = voiceSamples(pcm,trigger.playback,Infinity,trigger.articulation);
     for(let i=0;i<voice.length/pcm.channels;i++) for(let c=0;c<2;c++) {
       const sample=voice[i*pcm.channels+(pcm.channels===1?0:c)]!;
-      sum[(frame+i)*2+c]! += Math.round(sample*velocity);
+      sum[(frame+i)*2+c]! += Math.round(sample*velocity*voiceGain(trigger.articulation,i,voice.length/pcm.channels));
     }
   }
   let clippedSamples=0;

@@ -15,6 +15,11 @@ Projects without the new fields render byte-identical audio to 0.5.0 (see
 ([V0_5_TIMELINE_DYNAMICS.md](V0_5_TIMELINE_DYNAMICS.md)) remain normative for
 everything else; this document is normative for the additions.
 
+V0.7 adds optional source endpoints, gates, envelopes and choke groups in
+[V0_7_SAMPLER_ARTICULATION.md](V0_7_SAMPLER_ARTICULATION.md). Without those fields,
+all V0.6 semantics and bytes below remain unchanged. In particular, V0.6 offsets
+alone still add no fade or slice tap restriction.
+
 ## Authoring
 
 ```json
@@ -114,8 +119,9 @@ rate 2 → 20,948 frames; rate 0.5 → 83,790; rate 1.25 from frame 10,584 → 2
 The engine solves for `N` analytically and then confirms it against the exact
 position function, so the length always matches the frames actually read.
 
-There is no fade, loop, release or note-off: a voice ends at the natural end of its
-source. Performed voices extend track timelines exactly like other sample tails.
+Without V0.7 articulation there is no fade, loop, release or note-off: a voice ends
+at the natural end of its source. Performed voices extend track timelines exactly
+like other sample tails.
 `render.duration` and `render.tail` cut them at the permitted boundary like any
 other audio, and the 600-second limit includes them.
 
@@ -322,7 +328,8 @@ listening session is claimed.
 
 ## Deferred
 
+V0.7 implements source endpoints, gates, envelopes and chokes; see its contract.
 Independent pitch/time stretching, formant preservation, granular synthesis,
-reverse playback, end offsets, slicing grids, loop points, resampling to new
+reverse playback, slicing grids, loop points, resampling to new
 assets, warp markers, exponential or multi-point glides, LFOs, a modulation matrix,
 real-time streaming, plugin hosting and new MCP tools.

@@ -37,6 +37,13 @@ const note = z.strictObject({
   velocity: z.number().gt(0).max(1).optional(),
   playbackRate: playbackRate.optional().describe('Sampler/drum-kit notes only. Speed multiplier, default 1: pitch and duration change together (2 = one octave up at half length; n semitones = 2^(n/12)). Not time-stretching.'),
   offsetSeconds: z.number().min(0).max(600).optional().describe('Sampler/drum-kit notes only. Start this many seconds into the source WAV (at most six decimals); must land before its last frame. Default 0.'),
+  endSeconds: seconds.optional().describe('Sampler/drum-kit notes only. Exclusive source endpoint, in seconds (at most six decimals); must resolve after offsetSeconds and no later than the WAV end. Playback rate and glide change when this endpoint is reached.'),
+  gate: z.string().optional().describe('Sampler/drum-kit notes only. Positive whole-note fraction N/D on the 960-PPQ grid, e.g. 1/16. Release begins this long after the note onset in output time; playbackRate and glide do not change the gate.'),
+  envelope: z.strictObject({
+    attackSeconds: z.number().min(0).max(10).optional().describe('Output-time attack, at most six decimal places. Default 0.001 seconds for articulated notes; 0 explicitly requests a hard edge. Positive times must resolve to at least one output frame (at least 0.000012 seconds).'),
+    releaseSeconds: z.number().min(0).max(10).optional().describe('Output-time release, at most six decimal places. Default 0.005 seconds for articulated notes; 0 explicitly requests a hard edge. Positive times must resolve to at least one output frame (at least 0.000012 seconds).'),
+  }).optional().describe('Sampler/drum-kit notes only. Per-voice linear attack/release. Any endSeconds, gate, envelope or chokeGroup opts into the default envelope. Releases are bounded by the source and permitted output end.'),
+  chokeGroup: id.optional().describe('Sampler/drum-kit notes only. Track-local voice group: a later onset releases earlier voices in this group; simultaneous output-frame onsets sound together. Uses each stopped voice\'s release envelope without restarting a release already in progress.'),
   glide: z.strictObject({to: playbackRate.describe('Destination playbackRate; must differ from the starting rate.'),
     duration: z.string().describe('Whole-note fraction, e.g. 1/8: time from the note start to reach `to`; the rate then holds.')})
     .optional().describe('Sampler/drum-kit notes only. Rate moves linearly from playbackRate to `to`, with a continuous read position.'),
