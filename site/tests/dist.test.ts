@@ -33,10 +33,10 @@ test('every new-tab link is https with noopener noreferrer', opts, () => {
   }
 });
 
-test('empty support/request URLs render pending states, never links', opts, () => {
-  if (config.supportUrl === '') assert.match(html, /<span class="btn btn--pending" role="link" aria-disabled="true" data-pending="support">/);
+test('configured support/request URLs render active links; empty URLs stay pending', opts, () => {
+  if (config.supportUrl.trim().length === 0) assert.match(html, /<span class="btn btn--pending" role="link" aria-disabled="true" data-pending="support">/);
   else assert.match(html, /data-outbound="support"/);
-  if (config.requestPackUrl === '') assert.match(html, /data-pending="request-pack"/);
+  if (config.requestPackUrl.trim().length === 0) assert.match(html, /data-pending="request-pack"/);
   else assert.match(html, /data-outbound="request-pack"/);
   assert.ok(!/js\.stripe\.com|stripe\.js/i.test(html), 'no Stripe SDK');
 });

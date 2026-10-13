@@ -18,13 +18,16 @@ export const config = {
    * SUPPORT DEVELOPMENT: paste a Stripe Payment Link here
    * (https://buy.stripe.com/...). Opens in a new tab. No Stripe SDK is loaded.
    */
-  supportUrl: '',
+  supportUrl: 'https://buy.stripe.com/8x2bJ3bYDgs7arR1Zt3F600',
 
   /**
    * REQUEST A PACK: any https:// form URL (Tally, Typeform, Google Forms, a GitHub
    * issue template, ...) or a mailto: address. No payment is taken on this page.
    */
-  requestPackUrl: '',
+  requestPackUrl: 'https://tally.so/r/yPKRAp',
+
+  /** Public Google Analytics 4 measurement ID; leave empty to disable GA4. */
+  analyticsMeasurementId: 'G-PXEFNWG7H3',
 
   /**
    * V0.6 SAMPLE PERFORMANCE visibility. Keep false while V0.6 is in final review:

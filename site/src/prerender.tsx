@@ -22,6 +22,8 @@ const esc = (v: string) => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').repl
 const abs = (path: string) => (origin ? `${origin}${path}` : path);
 
 export const headTags = ({promoAvailable, displayFontHref}: RenderOptions): string => {
+  const analyticsId = config.analyticsMeasurementId;
+  if (analyticsId && !/^G-[A-Z0-9]+$/.test(analyticsId)) throw new Error('Invalid GA4 measurement ID in src/config.ts');
   const tags = [
     `<title>${esc(TITLE)}</title>`,
     `<meta name="description" content="${esc(DESCRIPTION)}">`,
@@ -42,6 +44,8 @@ export const headTags = ({promoAvailable, displayFontHref}: RenderOptions): stri
     `<meta name="twitter:description" content="${esc(DESCRIPTION)}">`,
     `<meta name="twitter:image" content="${esc(abs('/og.png'))}">`,
     displayFontHref ? `<link rel="preload" href="${esc(displayFontHref)}" as="font" type="font/woff2" crossorigin>` : '',
+    analyticsId ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${analyticsId}"></script>` : '',
+    analyticsId ? `<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${analyticsId}');</script>` : '',
     `<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
