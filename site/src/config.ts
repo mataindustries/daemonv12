@@ -27,7 +27,7 @@ export const config = {
   requestPackUrl: 'https://tally.so/r/yPKRAp',
 
   /** Public Google Analytics 4 measurement ID; leave empty to disable GA4. */
-  analyticsMeasurementId: 'G-PXEFNWG7H3',
+  analyticsMeasurementId: 'G-PXEFNNG7H3',
 
   /**
    * V0.6 SAMPLE PERFORMANCE visibility. Keep false while V0.6 is in final review:
