@@ -47,15 +47,22 @@ requests).
 | `siteUrl` | The production origin, e.g. `https://daemonv12.pages.dev` | No canonical link or sitemap; social images use relative URLs |
 | `supportUrl` | A **Stripe Payment Link** (`https://buy.stripe.com/...`) | SUPPORT DEVELOPMENT renders as a dashed "Opening soon" state, not a link |
 | `requestPackUrl` | Any `https://` form (Tally, Typeform, Google Forms, a GitHub issue template) or a `mailto:` address | REQUEST A PACK renders as "Requests open soon" |
+| `analyticsMeasurementId` | Google Analytics 4 measurement ID (`G-...`) | No Google tag or custom CTA events |
 | `v06Released` | `true` once V0.6 is merged into `main` | The V0.6 section is labelled **V0.6 · FINAL REVIEW** |
 | `v06PreviewRef` | Branch the V0.6 links use before release | — |
 
 **Payments.** The page has no Stripe SDK, no keys, no checkout and no payment code. The
 support button is a plain link to an external Payment Link that opens in a new tab with
 `rel="noopener noreferrer"`. Custom sound packs take no payment here: the request comes
-first, and pricing follows once the scope is understood. There is no analytics
-infrastructure, so outbound clicks are not tracked; the buttons carry `data-outbound`
-attributes if a privacy-respecting counter is added later.
+first, and pricing follows once the scope is understood.
+
+**Analytics.** The static HTML head loads Google's `gtag.js` asynchronously using
+`analyticsMeasurementId`. The client enhancement script sends a
+`daemonv12_cta_click` event with `cta_name` (`support` or `request-pack`) and
+`link_url` when a configured call-to-action is clicked. It does not collect form
+answers or payment information. Verify GA4 Realtime and the event report after
+deploying. Assess applicable consent requirements before targeting visitors in
+jurisdictions where they apply. The Google tag is an external third-party request.
 
 **V0.6 release flip.** With `v06Released: false` the sample-performance section reads as a
 preview ("In final review, not yet released"), its links point at the review branch, and
