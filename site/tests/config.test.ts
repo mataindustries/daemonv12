@@ -11,6 +11,13 @@ test('configured URLs pass the outbound policy', () => {
   assert.doesNotThrow(() => siteOrigin(config.siteUrl));
 });
 
+test('support, pack requests and analytics are configured for production', () => {
+  assert.equal(new URL(config.supportUrl).hostname, 'buy.stripe.com');
+  assert.equal(new URL(config.requestPackUrl).hostname, 'tally.so');
+  assert.equal(config.analyticsMeasurementId, 'G-PXEFNWG7H3');
+  assert.match(config.analyticsMeasurementId, /^G-[A-Z0-9]+$/);
+});
+
 test('the repository is the real one', () => {
   assert.equal(config.repoUrl, 'https://github.com/mataindustries/daemonv12');
 });
