@@ -6,6 +6,16 @@
 //  - "Watch GLASS//FIRE" plays from the top with sound: the click is the user gesture.
 import './styles.css';
 
+// Track the two configured conversion CTAs without delaying outbound navigation.
+// The inline gtag stub queues the event even if gtag.js is still loading.
+const analytics = window as Window & {gtag?: (...args: unknown[]) => void};
+document.querySelectorAll<HTMLAnchorElement>('a[data-outbound]').forEach(link => {
+  link.addEventListener('click', () => {
+    const cta = link.dataset.outbound;
+    if (cta) analytics.gtag?.('event', 'daemonv12_cta_click', {cta_name: cta, link_url: link.href});
+  });
+});
+
 const video = document.querySelector<HTMLVideoElement>('video[data-promo]');
 const playButton = document.querySelector<HTMLButtonElement>('[data-promo-play]');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
