@@ -8,10 +8,29 @@
     "VOTING_OPEN": "false",
     "ALLOWED_ORIGIN": "https://daemonv12.pages.dev"
   },
-  "d1_databases": [{
-    "binding": "VOTES_DB",
-    "database_name": "one-sound-local",
-    "database_id": "00000000-0000-0000-0000-000000000000",
-    "migrations_dir": "migrations"
-  }]
+  "d1_databases": [
+    {
+      "binding": "VOTES_DB",
+      "database_name": "one-sound-local",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "env": {
+    "preview": {
+      "vars": {
+        "EXPERIMENT_ID": "one-sound-001",
+        "VOTING_OPEN": "false",
+        "ALLOWED_ORIGIN": "https://daemonv12.pages.dev"
+      },
+      "d1_databases": [
+        {
+          "binding": "VOTES_DB",
+          "database_name": "daemonv12-one-sound-preview",
+          "database_id": "efc38961-a754-44d2-8fce-b39e7113bfb7",
+          "migrations_dir": "migrations"
+        }
+      ]
+    }
+  }
 }
