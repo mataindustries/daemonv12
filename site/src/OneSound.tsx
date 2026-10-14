@@ -80,6 +80,11 @@ export const OneSound = () => (
           </fieldset>
           <p id="vote-note" role="status" aria-live="polite">Checking voting availability… JavaScript is required to vote.</p>
           <p>Voting uses a secure cookie for up to 90 days to remember your vote. Cookie restrictions cannot fully prevent repeat voting across browsers or devices. This is an informal listening experiment.</p>
+          <div className="os-verification" hidden>
+            <p id="verification-note" role="status" aria-live="polite" />
+            <div id="vote-verification" aria-describedby="verification-note" />
+            <button type="button" className="os-recover" data-verification-retry hidden>Retry verification</button>
+          </div>
           <button type="button" className="os-vote-button" disabled aria-describedby="vote-note">Vote &amp; Reveal</button>
           <button type="button" className="os-recover" data-vote-recover hidden>Check voting status</button>
           <p className="os-sealed">Identities and results unlock only after a saved vote.</p>

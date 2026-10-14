@@ -146,10 +146,12 @@ can also be throttled. This remains an informal experiment, not a verified elect
 
 Optional Turnstile verification checks success, hostname, action and timestamp via
 Siteverify; the provider enforces token expiration/replay. Exact persisted retries
-skip a new challenge. The current UI does not include a Turnstile widget: **leave
-TURNSTILE_SECRET_KEY unset** unless implementing and reviewing that UI first.
-If set accidentally, new votes fail closed with a verification-required message.
-Do not represent Turnstile as active protection when it is not configured.
+skip a new challenge. The UI now integrates the official Managed widget with the public site key and
+`one-sound-vote` action. See [Turnstile preview testing](ONE_SOUND_TURNSTILE.md).
+Configure the matching TURNSTILE_SECRET_KEY only in the server runtime secret store
+before enabling voting; without it the existing backend treats Turnstile as optional.
+No secret was installed by this change. Recovery of persisted votes skips challenges.
+
 
 ## Validation and known limits
 

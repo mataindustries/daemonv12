@@ -1,3 +1,4 @@
+import {verification} from './turnstile.ts';
 // Progressive enhancement only. Identity strings arrive from an authorized server
 // response and are inserted as text, never HTML. No vote/session browser storage.
 const ballot = document.querySelector<HTMLElement>('.os-ballot');
@@ -11,14 +12,16 @@ if (ballot) {
   let votingOpen = false;
   let complete = false;
   let busy = false;
-  let attempt: {trackId: string; requestId: string} | undefined;
+  let attempt: {trackId: string; requestId: string; turnstileToken: string} | undefined;
+  let uncertain = false;
+  const challenge = verification(document.getElementById('vote-verification')!, document.getElementById('verification-note')!, document.querySelector<HTMLButtonElement>('[data-verification-retry]')!, update);
   class ApiError extends Error {
     code: string;
     constructor(code: string) { super(code); this.code = code; }
   }
   const selected = () => ballot.querySelector<HTMLInputElement>('input[name="favorite"]:checked')?.value;
   function update() {
-    button.disabled = busy || complete || !votingOpen || !selected();
+    button.disabled = busy || complete || !votingOpen || !selected() || (!challenge.token() && !uncertain);
     button.textContent = busy ? 'Please wait…' : complete ? 'Vote recorded' : votingOpen ? 'Vote & Reveal' : 'Voting is closed';
     fieldset.disabled = busy || complete;
     ballot!.setAttribute('aria-busy', String(busy));
@@ -54,19 +57,21 @@ if (ballot) {
     ballot!.querySelector('.os-sealed')!.textContent = 'Your vote is final. You can refresh the community results at any time.';
     document.querySelectorAll('.os-anonymous').forEach(label => { label.textContent = 'Revealed below'; });
     results.hidden = false;
-    complete = true;
+    complete = true; uncertain = false; challenge.stop();
     status.textContent = 'Your vote is recorded. The models and community results are revealed below.';
     retryButton.hidden = false;
     retryButton.textContent = 'Refresh results';
   }
   function showError(error: unknown) {
     const code = error instanceof ApiError ? error.code : 'network';
-    if (code === 'voting_closed' || code === 'challenge_required') votingOpen = false;
+    if (code === 'voting_closed') { votingOpen = false; challenge.stop(); }
+    if (code === 'challenge_required' || code === 'challenge_failed') { uncertain = false; challenge.reset(); }
     const messages: Record<string, string> = {
       invalid_session: 'Your voting cookie is invalid or expired. This browser cannot recover its vote. Please contact the organizer if you need help.',
       throttled: 'Too many voting requests from this session or network. Please wait ten minutes before trying again.',
       voting_closed: 'Voting is currently closed. You can still listen to all three tracks.',
-      challenge_required: 'Additional verification is required. Voting is unavailable in this interface until verification is configured.',
+      challenge_required: 'Complete browser verification, then retry your vote.',
+      challenge_failed: 'Browser verification was rejected or expired. Complete the new verification, then retry your vote.',
       invalid_csrf: 'Your session has changed. Use Check voting status before trying again.',
     };
     status.textContent = messages[code] ?? 'We could not confirm the vote or load results. Check voting status, or retry your selection. A retry will not count the same vote twice.';
@@ -82,7 +87,11 @@ if (ballot) {
       csrfToken = state.csrfToken;
       votingOpen = state.votingOpen;
       if (state.hasVoted) showResults(await api('reveal'));
-      else status.textContent = votingOpen ? 'Choose your favorite, then vote to reveal the models. Your vote is final.' : 'Voting is currently closed. Listen now and return when voting opens.';
+      else {
+        uncertain = false;
+        status.textContent = votingOpen ? 'Choose your favorite, then vote to reveal the models. Your vote is final.' : 'Voting is currently closed. Listen now and return when voting opens.';
+        if (votingOpen) void challenge.start(); else challenge.stop();
+      }
     } catch (error) { votingOpen = false; showError(error); }
     finally { busy = false; update(); }
   }
@@ -90,13 +99,19 @@ if (ballot) {
   retryButton.addEventListener('click', () => void loadSession());
   button.addEventListener('click', async () => {
     const trackId = selected();
-    if (!trackId || busy || complete || !votingOpen) return;
-    if (!attempt || attempt.trackId !== trackId) attempt = {trackId, requestId: crypto.randomUUID()};
+    if (!trackId || busy || complete || !votingOpen || (!challenge.token() && !uncertain)) return;
+    const turnstileToken = challenge.token() || (uncertain ? attempt?.turnstileToken : '') || '';
+    if (!attempt || attempt.trackId !== trackId) attempt = {trackId, requestId: crypto.randomUUID(), turnstileToken};
+    else attempt.turnstileToken = turnstileToken;
+    challenge.consume();
     busy = true; update(); status.textContent = 'Saving your vote…';
     try {
       showResults(await api('vote', {experimentId: 'one-sound-001', ...attempt, csrfToken}));
       results.focus();
     } catch (error) {
+      // Keep UUID and submitted token after uncertain outcomes. The server checks
+      // persisted votes before Siteverify; an exact retry needs no fresh challenge.
+      uncertain = true;
       if (error instanceof ApiError && error.code === 'already_voted') {
         try { showResults(await api('reveal')); } catch (recoveryError) { showError(recoveryError); }
       } else showError(error);
