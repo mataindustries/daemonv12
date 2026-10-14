@@ -74,13 +74,25 @@ function prefix(raw: string | null): string {
   if (parts.length !== 8 || parts.some(p => !/^[\da-f]{1,4}$/i.test(p))) return fail(503, 'unavailable');
   return parts.slice(0, 3).map(p => parseInt(p, 16).toString(16)).join(':') + ':' + (parseInt(parts[3]!, 16) & 0xff00).toString(16) + '::/56';
 }
-async function limit(db: D1DatabaseSession, env: Env, request: Request, action: string, now: number) {
+// A bounded isolate-local rejection cache avoids SQL for known exhausted buckets.
+// D1 remains the cross-isolate authority; cache eviction never grants an allowance.
+const exhausted = new Map<string, number>();
+async function limit(db: D1DatabaseSession, env: Env, identity: string, action: string, cap: number, now: number) {
   const window = Math.floor(now / 600);
-  const key = await mac(env.RATE_LIMIT_SECRET!, `rate:${Math.floor(now / 86400)}:${prefix(request.headers.get('CF-Connecting-IP'))}:${action}:${window}`);
-  const cap = action === 'session' ? 60 : 120;
-  await db.prepare('DELETE FROM rate_limits WHERE expires_at <= ?').bind(now).run();
-  const row = await db.prepare('INSERT INTO rate_limits(key, attempts, expires_at) VALUES (?, 1, ?) ON CONFLICT(key) DO UPDATE SET attempts = attempts + 1 RETURNING attempts').bind(key, (window + 1) * 600).first<{attempts: number}>();
-  if (!row || row.attempts > cap) fail(429, 'throttled');
+  const key = await mac(env.RATE_LIMIT_SECRET!, `rate:${Math.floor(now / 86400)}:${identity}:${action}:${window}`);
+  for (const [cached, expiry] of exhausted) if (expiry <= now) exhausted.delete(cached);
+  if (exhausted.has(key)) fail(429, 'throttled');
+  const remember = () => {
+    if (exhausted.size >= 1024) exhausted.delete(exhausted.keys().next().value!);
+    exhausted.set(key, (window + 1) * 600);
+  };
+  // This read keeps already-throttled traffic from executing a write statement.
+  const existing = await db.prepare('SELECT attempts FROM rate_limits WHERE key = ?').bind(key).first<{attempts: number}>();
+  if (existing && existing.attempts >= cap) { remember(); return fail(429, 'throttled'); }
+  // The WHERE clause enforces the cap even if multiple requests pass the read.
+  const row = await db.prepare('INSERT INTO rate_limits(key, attempts, expires_at) VALUES (?, 1, ?) ON CONFLICT(key) DO UPDATE SET attempts = attempts + 1 WHERE attempts < ? RETURNING attempts').bind(key, (window + 1) * 600, cap).first<{attempts: number}>();
+  if (!row || row.attempts >= cap) remember();
+  if (!row) fail(429, 'throttled');
 }
 async function session(request: Request, env: Env, now: number): Promise<{id: string; token: string} | null> {
   const cookies = (request.headers.get('Cookie') ?? '').split(';').map(s => s.trim()).filter(s => s.startsWith(`${COOKIE}=`));
@@ -114,9 +126,11 @@ async function parseBody(request: Request): Promise<Record<string, unknown>> {
   } catch { return fail(400, 'invalid_input'); }
 }
 async function reveal(db: D1DatabaseSession, mapping: Mapping, vote: Vote) {
-  const {results: rows} = await db.prepare('SELECT track_id, COUNT(*) AS count FROM votes WHERE experiment_id = ? GROUP BY track_id').bind(EXPERIMENT).all<{track_id: Track; count: number}>();
+  const {results: rows} = await db.prepare('SELECT track_id, count FROM vote_totals WHERE experiment_id = ?').bind(EXPERIMENT).all<{track_id: Track; count: number}>();
+  if (rows.length !== 3 || tracks.some(t => !rows.some(row => row.track_id === t)) || rows.some(row => !Number.isSafeInteger(row.count) || row.count < 0)) fail(503, 'unavailable');
   const counts = {A: 0, B: 0, C: 0, total: 0};
   for (const row of rows) { counts[row.track_id] = row.count; counts.total += row.count; }
+  if (!Number.isSafeInteger(counts.total) || counts[vote.track_id] < 1) fail(503, 'unavailable');
   return {experimentId: EXPERIMENT, selectedTrack: vote.track_id, reveal: mapping, results: counts};
 }
 export async function handle(request: Request, env: Env): Promise<Response> {
@@ -128,8 +142,14 @@ export async function handle(request: Request, env: Env): Promise<Response> {
     const {db, mapping, origin} = configuration(env);
     if (new URL(request.url).origin !== origin.origin || request.headers.get('Sec-Fetch-Site') === 'cross-site' || (request.headers.has('Origin') && request.headers.get('Origin') !== origin.origin) || (action === 'vote' && request.headers.get('Origin') !== origin.origin)) return fail(403, 'invalid_origin');
     const now = Math.floor(Date.now() / 1000);
-    await limit(db, env, request, action, now);
+    const network = prefix(request.headers.get('CF-Connecting-IP'));
     let auth = await session(request, env, now);
+    if (!auth && action !== 'session') return fail(403, 'session_required');
+    const fresh = !auth;
+    // A closed preview neither writes D1 nor mints unlimited reusable voting
+    // credentials. Existing signed sessions still have authenticated recovery.
+    if (fresh && env.VOTING_OPEN === 'false') return response(200, {experimentId: EXPERIMENT, votingOpen: false, hasVoted: false, csrfToken: ''});
+    if (action === 'session') await limit(db, env, network, 'session', 60, now);
     let cookie: string | undefined;
     if (!auth && action === 'session') {
       const id = hex(crypto.getRandomValues(new Uint8Array(32)));
@@ -141,8 +161,16 @@ export async function handle(request: Request, env: Env): Promise<Response> {
     const voter = await mac(env.VOTER_HASH_SECRET!, `voter:${EXPERIMENT}:${auth.id}`);
     const csrf = await mac(env.VOTE_COOKIE_SECRET!, `csrf:${auth.token}`);
     const findVote = () => db.prepare('SELECT track_id, request_id FROM votes WHERE experiment_id = ? AND voter_hash = ?').bind(EXPERIMENT, voter).first<Vote>();
-    if (action === 'session') return response(200, {experimentId: EXPERIMENT, votingOpen: env.VOTING_OPEN === 'true', hasVoted: !!await findVote(), csrfToken: csrf}, cookie);
+    // A newly generated identity cannot have a vote.
+    if (action === 'session') return response(200, {experimentId: EXPERIMENT, votingOpen: env.VOTING_OPEN === 'true', hasVoted: fresh ? false : !!await findVote(), csrfToken: csrf}, cookie);
+    const resultLimit = async () => {
+      // Shared across vote/reveal and independent of client IP, so replaying a
+      // voted cookie from many networks cannot multiply its result allowance.
+      await limit(db, env, `voter:${voter}`, 'results', 30, now);
+      await limit(db, env, network, action, 120, now);
+    };
     if (action === 'reveal') {
+      await resultLimit();
       const vote = await findVote();
       if (!vote) return fail(403, 'vote_required');
       return response(200, await reveal(db, mapping, vote));
@@ -150,6 +178,7 @@ export async function handle(request: Request, env: Env): Promise<Response> {
     const body = await parseBody(request);
     if (Object.keys(body).some(k => !['experimentId', 'trackId', 'requestId', 'csrfToken', 'turnstileToken'].includes(k)) || body.experimentId !== EXPERIMENT || !tracks.includes(body.trackId as Track) || typeof body.requestId !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(body.requestId) || (body.turnstileToken !== undefined && typeof body.turnstileToken !== 'string')) return fail(400, 'invalid_input');
     if (typeof body.csrfToken !== 'string' || !equal(body.csrfToken, csrf)) return fail(403, 'invalid_csrf');
+    await resultLimit();
     const retry = async (existing: Vote) => {
       if (existing.request_id !== body.requestId || existing.track_id !== body.trackId) return fail(409, 'already_voted');
       return response(200, await reveal(db, mapping, existing));

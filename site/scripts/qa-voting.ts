@@ -4,11 +4,12 @@ import {readFileSync, existsSync, statSync, mkdirSync, readdirSync} from 'node:f
 import {resolve, extname, sep} from 'node:path';
 import {Miniflare, Response as WorkerResponse, Request as WorkerRequest} from 'miniflare';
 import {chromium, devices} from 'playwright-core';
+import {applyVotingMigrations} from './lib/voting-migrations.ts';
 const base = 'http://localhost:8789';
 const dist = resolve('dist');
 const mime: Record<string, string> = {'.html': 'text/html', '.js': 'text/javascript', '.woff2': 'font/woff2', '.png': 'image/png', '.svg': 'image/svg+xml', '.wav': 'audio/wav', '.mp3': 'audio/mpeg'};
 const mapping = {A: 'Synthetic Alpha', B: 'Synthetic Beta', C: 'Synthetic Gamma'};
-const mf = new Miniflare({
+const options = {
   modules: true, scriptPath: '.wrangler/functions-build/index.js', compatibilityDate: '2026-07-30', host: '127.0.0.1', port: 8789,
   d1Databases: ['VOTES_DB'], bindings: {
     ALLOWED_ORIGIN: base, EXPERIMENT_ID: 'one-sound-001', VOTING_OPEN: 'true', MODEL_TRACK_MAP: JSON.stringify(mapping),
@@ -21,12 +22,13 @@ const mf = new Miniflare({
     if (!existsSync(path)) return new WorkerResponse('', {status: 404});
     return new WorkerResponse(readFileSync(path), {headers: {'Content-Type': mime[extname(path)] ?? 'application/octet-stream'}});
   }},
-});
+};
+const mf = new Miniflare(options);
 const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH ?? '/usr/bin/chromium', args: ['--no-sandbox']});
 try {
   await mf.ready;
-  const db = await mf.getD1Database('VOTES_DB');
-  for (const sql of readFileSync('migrations/0001_one_sound.sql', 'utf8').replace(/--[^\n]*/g, '').split(';').filter(s => s.trim())) await db.prepare(sql).run();
+  let db = await mf.getD1Database('VOTES_DB');
+  await applyVotingMigrations(db);
   mkdirSync('qa-output', {recursive: true});
   for (const width of [360, 390, 1440]) {
     const context = await browser.newContext({...width < 768 ? devices['Pixel 7'] : {}, viewport: {width, height: 900}});
@@ -77,6 +79,62 @@ try {
   await page.locator('#vote-results').waitFor({state: 'visible'});
   assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM votes').first<{n: number}>())!.n, 4);
   await fresh.close();
+  let expectedVotes = 4;
+  // Close the actual compiled worker after the browser has loaded an open ballot.
+  const closing = await browser.newContext();
+  await closing.route('https://**/*', route => route.fulfill({status: 200, body: ''}));
+  const closingPage = await closing.newPage();
+  await closingPage.goto(`${base}/one-sound/`);
+  await closingPage.waitForFunction(() => document.querySelector('#vote-note')?.textContent?.includes('Choose your favorite'));
+  await closingPage.getByRole('radio', {name: 'Track A', exact: true}).check();
+  await mf.setOptions({...options, bindings: {...options.bindings, VOTING_OPEN: 'false'}});
+  db = await mf.getD1Database('VOTES_DB');
+  await closingPage.locator('.os-vote-button').click();
+  await closingPage.waitForFunction(() => document.querySelector('#vote-note')?.textContent?.includes('Voting is currently closed'));
+  assert.ok(await closingPage.locator('.os-vote-button').isDisabled());
+  assert.equal(await closingPage.locator('.os-vote-button').textContent(), 'Voting is closed');
+  assert.ok(await closingPage.locator('#vote-results').isHidden());
+  assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM votes').first<{n: number}>())!.n, expectedVotes);
+  await mf.setOptions(options);
+  db = await mf.getD1Database('VOTES_DB');
+  await closingPage.getByRole('button', {name: 'Check voting status'}).click();
+  await closingPage.waitForFunction(() => document.querySelector('#vote-note')?.textContent?.includes('Choose your favorite'));
+  assert.ok(await closingPage.locator('.os-vote-button').isEnabled());
+  await closing.close();
+  console.log('PASS real server closure disables ballot; explicit status recheck recovers after reopening');
+
+  for (const recovery of ['changed-selection', 'failed-reveal']) {
+    const context = await browser.newContext();
+    await context.route('https://**/*', route => route.fulfill({status: 200, body: ''}));
+    const recoveryPage = await context.newPage();
+    await recoveryPage.goto(`${base}/one-sound/`);
+    await recoveryPage.waitForFunction(() => document.querySelector('#vote-note')?.textContent?.includes('Choose your favorite'));
+    let lost = false;
+    await recoveryPage.route('**/api/one-sound/vote', async route => {
+      const response = await route.fetch();
+      if (!lost) { lost = true; assert.equal(response.status(), 201); await route.abort(); }
+      else await route.fulfill({response});
+    });
+    await recoveryPage.getByRole('radio', {name: 'Track C', exact: true}).check();
+    await recoveryPage.locator('.os-vote-button').click();
+    await recoveryPage.waitForFunction(() => document.querySelector('#vote-note')?.textContent?.includes('could not confirm'));
+    if (recovery === 'changed-selection') {
+      await recoveryPage.getByRole('radio', {name: 'Track A', exact: true}).check();
+      await recoveryPage.locator('.os-vote-button').click();
+    } else {
+      await recoveryPage.route('**/api/one-sound/reveal', route => route.abort(), {times: 1});
+      await recoveryPage.getByRole('button', {name: 'Check voting status'}).click();
+      await recoveryPage.waitForFunction(() => document.querySelector('#vote-note')?.textContent?.includes('could not confirm'));
+      assert.ok(await recoveryPage.locator('.os-vote-button').isDisabled());
+      await recoveryPage.getByRole('button', {name: 'Check voting status'}).click();
+    }
+    await recoveryPage.locator('#vote-results').waitFor({state: 'visible'});
+    assert.ok(await recoveryPage.getByRole('radio', {name: 'Track C', exact: true}).isChecked());
+    assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM votes').first<{n: number}>())!.n, ++expectedVotes);
+    assert.equal((await db.prepare('SELECT SUM(count) AS n FROM vote_totals').first<{n: number}>())!.n, expectedVotes);
+    await context.close();
+    console.log(`PASS ${recovery}: committed selection and counters recovered without an extra vote`);
+  }
   const walk = (dir: string): string[] => readdirSync(dir).flatMap(name => statSync(resolve(dir, name)).isDirectory() ? walk(resolve(dir, name)) : [resolve(dir, name)]);
   for (const path of walk(dist)) {
     const bytes = readFileSync(path);

@@ -6,8 +6,8 @@ Pages Functions route `/api/one-sound/*` to the server-only voting module. The
 session/vote/reveal contract in `ONE_SOUND_PHASE_2.md` is implemented. D1 unique
 constraints enforce one vote per signed session and one use of each request UUID.
 Retries compare both UUID and track; primary-consistent reads authorize reveal and
-compute totals. Auth failures, database failures and missing configuration fail
-closed with private/no-store JSON. No unauthenticated endpoint returns identities
+read three transactionally maintained totals. Auth failures, database failures
+and missing configuration fail closed with private/no-store JSON. No unauthenticated endpoint returns identities
 or totals. No application request/secret logging is present.
 
 The ballot obtains a session, submits a final choice, and shows server results.
@@ -21,10 +21,13 @@ page views; votes and identities are never sent as custom analytics events.
 - `functions/_lib/voting.ts`: validation, cookies/CSRF, privacy rate limits, D1 and reveal.
 - `functions/api/one-sound/[[path]].ts`: Pages router entry.
 - `migrations/0001_one_sound.sql`: votes and temporary rate-limit tables.
+- `migrations/0002_vote_totals.sql`: backfilled counters and atomic insert/delete triggers; votes cannot be updated.
 - `wrangler.jsonc`, `public/_routes.json`: closed-by-default local scaffold and API scope.
 - `src/voting.ts`, `src/OneSound.tsx`, `src/one-sound.css`: ballot and results UI.
 - `tests/voting.test.ts`: workerd/Miniflare D1 security and concurrency tests.
 - `scripts/qa-voting.ts`: compiled Pages worker + D1 + Chromium full-flow QA.
+- `docs/ONE_SOUND_SECURITY_REMEDIATION.md`: complete independent findings,
+  remediation evidence, residual limits and preview decision.
 
 ## Local verification (no Cloudflare account required)
 
@@ -87,7 +90,7 @@ The Wrangler database ID is deliberately a non-production placeholder.
    production. Root is `site`, output is `dist`, build is `npm ci && npm run build`.
    Pin Node 24 LTS. Keep Functions under `site/functions`; `_routes.json` limits
    invocation to the API. The Wrangler compatibility date is pinned to 2026-07-30.
-3. With the intended database selected, apply `0001_one_sound.sql` explicitly:
+3. With the intended database selected and voting closed, apply all migrations (`0001_one_sound.sql` and `0002_vote_totals.sql`) explicitly:
    `npx wrangler d1 migrations apply VOTES_DB --remote` for the configured binding.
    Confirm the target ID before running. Verify the resulting schema/indexes.
 4. Set the required server variables and encrypted secrets in Pages runtime
@@ -102,10 +105,12 @@ The Wrangler database ID is deliberately a non-production placeholder.
    limiter protects the application but is not a volumetric DDoS defense.
 7. Arrange scheduled retention maintenance (Pages Functions have no cron trigger).
    At least daily, run `DELETE FROM rate_limits WHERE expires_at <= unixepoch()`
-   through a private scheduled Worker/job with the correct D1 binding. Each API
-   request also deletes expired buckets; inactive sites still need this schedule
-   to meet the 24-hour physical retention bound. Never expose cleanup via a public
-   unauthenticated endpoint.
+   through a private scheduled Worker/job with the correct D1 binding. Requests
+   never perform cleanup: this prevents unauthenticated traffic from triggering
+   deletion work. This schedule is required to meet the 24-hour physical retention
+   bound and prevent expired buckets accumulating. Never expose cleanup via a
+   public unauthenticated endpoint. Keep a preview restricted and short-lived
+   until maintenance is configured; discard its synthetic database after use.
 8. Agree on a results-finalization date and 90-day vote retention window. After
    finalization export anonymous aggregate counts if desired, then delete per-voter
    rows at expiry and close voting. Cookie expiry alone does not delete D1 rows.
@@ -120,6 +125,19 @@ The Wrangler database ID is deliberately a non-production placeholder.
 
 The D1 limiter permits 60 session requests or 120 vote/reveal requests per ten-minute
 bucket per coarse network prefix (IPv4 /24, IPv6 /56). These are separate buckets.
+Additionally, one voter has a shared allowance of 30 vote/reveal requests per
+ten-minute window across all networks, including exact retries. A 429 does not
+invalidate a persisted vote; retry after the window resets. Counters saturate
+atomically at the cap. Already-exhausted buckets do not execute mutation SQL;
+a bounded 1024-entry isolate cache rejects known exhausted keys without D1.
+Invalid cookies, missing-cookie vote/reveal calls, invalid bodies and invalid CSRF
+fail before SQL. Fresh anonymous sessions while voting is closed also need no D1
+and issue no cookie (the closed status has an empty CSRF token). Rechecking after
+opening issues a normal rate-limited session; closed previews cannot stockpile
+unlimited signed voting credentials.
+Authenticated recovery while closed remains available within the same limits.
+Edge limits/restricted access are still required: a cold isolate may do a point
+read to discover saturation, and distributed identities can reach separate buckets.
 Only HMAC keys incorporating day and window are stored, not raw IPs or prefixes.
 Cloudflare supplies CF-Connecting-IP; missing/malformed addresses fail closed. An
 invalid cookie is rejected, never silently replaced. Inform users that clearing

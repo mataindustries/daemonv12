@@ -61,9 +61,10 @@ if (ballot) {
   }
   function showError(error: unknown) {
     const code = error instanceof ApiError ? error.code : 'network';
+    if (code === 'voting_closed' || code === 'challenge_required') votingOpen = false;
     const messages: Record<string, string> = {
       invalid_session: 'Your voting cookie is invalid or expired. This browser cannot recover its vote. Please contact the organizer if you need help.',
-      throttled: 'Too many requests from this network. Please wait ten minutes before trying again.',
+      throttled: 'Too many voting requests from this session or network. Please wait ten minutes before trying again.',
       voting_closed: 'Voting is currently closed. You can still listen to all three tracks.',
       challenge_required: 'Additional verification is required. Voting is unavailable in this interface until verification is configured.',
       invalid_csrf: 'Your session has changed. Use Check voting status before trying again.',

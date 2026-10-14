@@ -1,6 +1,10 @@
 # ONE SOUND: Phase 2 handoff
 
-The original contract below is preserved. See [implementation and operator setup](ONE_SOUND_OPERATIONS.md) for the completed Phase 2 implementation and remaining release gates.
+The original contract below is preserved as historical design context. See
+[implementation and operator setup](ONE_SOUND_OPERATIONS.md) and
+[security remediation](ONE_SOUND_SECURITY_REMEDIATION.md) for the current behavior:
+totals now use atomic counters, result requests have a shared per-voter budget,
+and a fresh closed-session check returns status without issuing a cookie.
 
 ## Checkpoint and preview
 
