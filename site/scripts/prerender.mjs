@@ -5,7 +5,7 @@
 // Plain JavaScript (type-checked through JSDoc) so the Cloudflare build needs nothing
 // newer than Vite itself does.
 // @ts-check
-import {existsSync, readFileSync, readdirSync, rmSync, statSync, unlinkSync, writeFileSync} from 'node:fs';
+import {existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, unlinkSync, writeFileSync} from 'node:fs';
 import {dirname, join, relative} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 
@@ -51,6 +51,8 @@ template = template.replace(/<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.
 
 const html = renderPage(template, {promoAvailable, displayFontHref: font});
 writeFileSync(join(dist, 'index.html'), html);
+mkdirSync(join(dist, 'one-sound'), {recursive: true});
+writeFileSync(join(dist, 'one-sound/index.html'), renderPage(template, {promoAvailable: false, displayFontHref: font, path: '/one-sound/'}));
 
 // 3. Crawlers.
 const {robots, sitemap} = crawlFiles();

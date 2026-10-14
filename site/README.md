@@ -157,3 +157,11 @@ scripts/make-promo-web.sh, og.ts, extract-*.ts, qa.ts
 tests/                node:test unit tests (dist checks run after a build)
 public/               favicon, icons, OG image; media/ for the promo web cut
 ```
+
+## ONE SOUND showcase (Phase 1)
+
+`/one-sound/` is prerendered alongside the homepage. It uses the four verified public
+listening files with native players and exclusive playback, and previews a disabled
+ballot. No votes or identities are stored in the frontend. Run `npm run qa:one-sound`
+after building (`CHROMIUM_PATH` selects an installed Chromium).
+See [the Phase 2 contract and deployment handoff](docs/ONE_SOUND_PHASE_2.md).
