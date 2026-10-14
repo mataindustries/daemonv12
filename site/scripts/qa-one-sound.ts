@@ -23,7 +23,7 @@ try {
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(() => document.activeElement?.className), 'skip');
     await page.getByRole('radio', {name: 'Track B', exact: true}).check();
-    assert.ok(await page.getByRole('button', {name: /Vote & reveal/}).isDisabled());
+    assert.ok(await page.locator('.os-vote-button').isDisabled());
     assert.equal(await page.evaluate(() => localStorage.length + sessionStorage.length), 0);
     assert.equal((await context.cookies()).length, 0);
     for (const id of ['source', 'A', 'B', 'C', 'A']) {
@@ -50,7 +50,7 @@ try {
   await staticPage.goto(`${base}/one-sound/`);
   assert.equal(await staticPage.locator('audio[controls]').count(), 4);
   assert.ok(await staticPage.locator('noscript p').isVisible());
-  assert.ok(await staticPage.getByRole('button', {name: /Vote & reveal/}).isDisabled());
+  assert.ok(await staticPage.locator('.os-vote-button').isDisabled());
   await noJS.close();
   const failure = await browser.newContext();
   await failure.route('https://**/*', route => route.fulfill({status: 200, body: ''}));

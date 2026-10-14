@@ -20,7 +20,7 @@ export const OneSound = () => (
     </header>
     <main id="one-sound-main" className="wrap">
       <section className="os-hero" aria-labelledby="os-title">
-        <p className="os-eyebrow">Experiment 001 <span>Blind listening / Phase 1</span></p>
+        <p className="os-eyebrow">Experiment 001 <span>Blind listening / Experiment 001</span></p>
         <h1 id="os-title">ONE SOUND.<br /><span>THREE MINDS.</span></h1>
         <div className="os-intro">
           <p>One metallic hit. Three AI coding models. Three ways to make it move.</p>
@@ -69,7 +69,7 @@ export const OneSound = () => (
         <div>
           <p className="os-eyebrow">03 / Your verdict</p>
           <h2 id="vote-title">Which one stays<br />with you?</h2>
-          <p>Choose your favorite below to preview the ballot. Voting opens in Phase 2. Then, a successful vote will unlock the model identities and results.</p>
+          <p>Listen to all three, then choose your favorite. After your vote is saved, discover the models behind the music and see the community results.</p>
         </div>
         <div className="os-ballot">
           <fieldset aria-describedby="vote-note">
@@ -78,9 +78,24 @@ export const OneSound = () => (
               {tracks.map(track => <label key={track}><input type="radio" name="favorite" value={track} /><span>Track {track}</span></label>)}
             </div>
           </fieldset>
-          <p id="vote-note">Preview only. Your choice is not sent or saved. No votes have been collected on this page.</p>
-          <button type="button" className="os-vote-button" disabled aria-describedby="vote-note">Vote &amp; reveal <span>Opens in Phase 2</span></button>
-          <p className="os-sealed">A, B, C. The names stay sealed for now.</p>
+          <p id="vote-note" role="status" aria-live="polite">Checking voting availability… JavaScript is required to vote.</p>
+          <p>Voting uses a secure cookie for up to 90 days to remember your vote. Cookie restrictions cannot fully prevent repeat voting across browsers or devices. This is an informal listening experiment.</p>
+          <button type="button" className="os-vote-button" disabled aria-describedby="vote-note">Vote &amp; Reveal</button>
+          <button type="button" className="os-recover" data-vote-recover hidden>Check voting status</button>
+          <p className="os-sealed">Identities and results unlock only after a saved vote.</p>
+        </div>
+      </section>
+      <section id="vote-results" className="os-section os-results" aria-labelledby="results-title" tabIndex={-1} hidden>
+        <p className="os-eyebrow">04 / Behind the sound</p>
+        <h2 id="results-title">The minds behind the music.</h2>
+        <p data-total />
+        <div className="os-results-grid">
+          {tracks.map(track => <article key={track} data-result={track}>
+            <p className="os-eyebrow">Track {track} <span data-your-vote /></p>
+            <h3 data-model />
+            <meter min="0" max="100" value="0" aria-label={`Track ${track} vote percentage`} />
+            <p data-count />
+          </article>)}
         </div>
       </section>
       <section className="os-outro" aria-labelledby="os-try">

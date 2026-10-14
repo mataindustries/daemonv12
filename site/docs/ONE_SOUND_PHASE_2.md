@@ -1,5 +1,7 @@
 # ONE SOUND: Phase 2 handoff
 
+The original contract below is preserved. See [implementation and operator setup](ONE_SOUND_OPERATIONS.md) for the completed Phase 2 implementation and remaining release gates.
+
 ## Checkpoint and preview
 
 Phase 1 is a static, prerendered `/one-sound/` page. React runs only at build time;

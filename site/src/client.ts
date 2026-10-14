@@ -6,6 +6,7 @@
 //  - "Watch GLASS//FIRE" plays from the top with sound: the click is the user gesture.
 import './styles.css';
 import './one-sound.css';
+import './voting.ts';
 
 // Native controls retain seeking, volume and keyboard support. No audio is preloaded.
 const soundPlayers = document.querySelectorAll<HTMLAudioElement>('audio[data-one-sound]');

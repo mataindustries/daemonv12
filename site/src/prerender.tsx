@@ -26,7 +26,7 @@ const abs = (path: string) => (origin ? `${origin}${path}` : path);
 export const headTags = ({promoAvailable, displayFontHref, path = '/'}: RenderOptions): string => {
   const showcase = path === '/one-sound/';
   const title = showcase ? 'ONE SOUND. THREE MINDS. — DaemonV12' : TITLE;
-  const description = showcase ? 'One 1.5-second metallic sample. Three AI coding models. Listen to three anonymous 30-second beats made with DaemonV12. Voting and the reveal open in Phase 2.' : DESCRIPTION;
+  const description = showcase ? 'One 1.5-second metallic sample. Three AI coding models. Listen to three anonymous 30-second beats made with DaemonV12. Vote for your favorite to reveal the models and community results.' : DESCRIPTION;
   const analyticsId = config.analyticsMeasurementId;
   if (analyticsId && !/^G-[A-Z0-9]+$/.test(analyticsId)) throw new Error('Invalid GA4 measurement ID in src/config.ts');
   const tags = [
