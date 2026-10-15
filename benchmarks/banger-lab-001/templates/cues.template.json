@@ -1,0 +1,40 @@
+{
+  "schema": "banger-lab-001.cues/1",
+  "note": "Replace every <...> value. Positions are project-absolute BAR:BEAT(+N/D). Resolve tick/frame/seconds/videoFrame with the BRIEF.md engine command; never compute them from 60/bpm. Delete this note.",
+  "project": { "file": "<bl001-a.json>", "sha256": "<sha256 of the locked project bytes>" },
+  "engine": { "version": "0.7.0", "commit": "02438eda48506a94d10ad2756c6aafff8c5a9469" },
+  "tempo": { "bpm": "<number>", "usPerQuarter": "<timeline.usPerQuarter>", "timeSignature": "<N/D>", "key": "<or null>" },
+  "audio": { "sampleRate": 44100, "frames": 3307500, "seconds": 75 },
+  "video": { "fps": 60, "frames": 4500, "audioFramesPerVideoFrame": 735, "rule": "videoFrame = floor(audioFrame / 735)" },
+  "sections": [
+    {
+      "name": "<opening>",
+      "function": "<identity | establishment | development | disruption | build | payoff | exit>",
+      "start": { "position": "1:1", "tick": 0, "frame": 0, "seconds": 0, "videoFrame": 0 },
+      "intent": "<one line: what the listener should feel here>"
+    }
+  ],
+  "end": { "frame": 3307500, "seconds": 75, "videoFrame": 4500, "rule": "last section ends at the container end, not the authored end" },
+  "hits": [
+    { "name": "<drop-1>", "position": "<17:1>", "tick": "<int>", "frame": "<int>", "seconds": "<6 decimals>", "videoFrame": "<int>", "track": "<track id>" }
+  ],
+  "promo15": {
+    "start": { "position": "<bar line, e.g. 17:1>", "tick": "<int>", "frame": "<int>", "seconds": "<6 decimals>", "videoFrame": "<int>" },
+    "frames": 661500,
+    "videoFrames": 900,
+    "contains": ["<signature hook>", "<strongest payoff moment>"],
+    "endingIdea": "<how an engine-native 15 s edit would end on a composed button>",
+    "rationale": "<why these 15 seconds sell the track>"
+  },
+  "roles": {
+    "kick": ["<track ids>"],
+    "bass": ["<track ids>"],
+    "hook": ["<track ids>"],
+    "perc": ["<track ids>"],
+    "fx": ["<track ids>"],
+    "atmos": ["<track ids>"]
+  },
+  "outsideContainer": [
+    { "name": "<authored cue at or after frame 3307500, kept for intent only>", "position": "<pos>", "frame": "<int>" }
+  ]
+}
