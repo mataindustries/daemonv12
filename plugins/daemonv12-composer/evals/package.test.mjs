@@ -5,11 +5,11 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { checkFixtureCases, checkIsolation, checkLinks, checkText, loadValidators, parseFrontmatter } from './validate-package.mjs';
+import { checkFixtureCases, checkIsolation, checkLinks, checkText, frozenBase, loadValidators, parseFrontmatter, validatePackage } from './validate-package.mjs';
 
 const { Ajv, YAML } = loadValidators(process.env.COMPOSER_VALIDATORS_DIR);
 const schema = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'fixtures/plugin.schema.json'), 'utf8'));
-const validManifest = { $schema: schema.$id, name: 'daemonv12-composer', version: '0.2.0' };
+const validManifest = { $schema: schema.$id, name: 'daemonv12-composer', version: '0.3.0' };
 const validate = new Ajv({ strict: true, allErrors: true }).compile(schema);
 
 test('official schema accepts the manifest and rejects malformed nested fields', () => {
@@ -32,6 +32,8 @@ test('YAML frontmatter accepts scalar and folded descriptions; rejects invalid m
   for (const text of [
     'No frontmatter\n',
     '---\nname: daemonv12-composer\ndescription: Unclosed\n',
+    '---\nname: daemonv12-composer\ndescription: "   "\n---\n',
+    '---\nname: daemonv12-composer\ndescription: "   "\n',
     '---\nname: other\ndescription: Compose.\n---\n',
     '---\nname: daemonv12-composer\ndescription: 42\n---\n',
     '---\nname: daemonv12-composer\nname: duplicate\ndescription: Compose.\n---\n',
@@ -104,4 +106,15 @@ test('package validator CLI executes through symlinks', t => {
   } finally {
     rmSync(directory, { recursive: true, force: true });
   }
+});
+
+test('v0.3 release instructions validate this branch against its engine base', () => {
+  const instructions = readFileSync(new URL('./README.md', import.meta.url), 'utf8');
+  const command = /^node plugins\/daemonv12-composer\/evals\/validate-package\.mjs --validators-dir \/tmp\/daemonv12-composer-validation-tools --base ([a-f0-9]{40})$/m.exec(instructions);
+  assert(command, 'Document the complete release command with an explicit base.');
+  assert.equal(command[1], '02438eda48506a94d10ad2756c6aafff8c5a9469');
+  assert.equal(frozenBase, '56dbdff62bf78e70e898f0dbb49f8044cd561655');
+  const result = validatePackage({ validatorsDir: process.env.COMPOSER_VALIDATORS_DIR, base: command[1] });
+  assert.equal(result.base, command[1]);
+  assert.equal(result.engineIsolation, 'Composer-only tracked diff');
 });

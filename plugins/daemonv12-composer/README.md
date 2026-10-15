@@ -1,4 +1,22 @@
-# DaemonV12 Composer · 0.2.0
+# DaemonV12 Composer · 0.3.0
+
+Composer v0.3 targets engine v0.7.0 at
+`02438eda48506a94d10ad2756c6aafff8c5a9469`. It teaches source ends, musical gates,
+output-time envelopes and track-local choke groups without inventing MIDI
+note-off. It adds [validated electronic recipes](skills/daemonv12-composer/references/electronic-production.md)
+and an exact [music-to-video handoff](skills/daemonv12-composer/references/music-to-video.md).
+The musical workflow, critique, Risk Pass and compute discipline still apply.
+
+See [current evaluation plan](evals/README.md) and [v0.3 validation](evals/validation-v03.md)
+for executed checks and limits. This upgrade changes only the plugin/workflow;
+it starts no benchmark or BANGER LAB composition. Existing projects and Round 3
+materials are preserved. Round 3's older engine assumptions are historical;
+new production uses the v0.7 contract in the linked engine notes.
+
+The v0.2 overview below, [v0.2 validation](evals/validation.md), and
+[v0.2 evaluation plan](evals/README-v02.md) remain historical records.
+
+## Historical v0.2.0 overview
 
 A reusable plugin/skill for composing and improving music with DaemonV12.
 v0.2 moves from avoiding production failures toward memorable musical decisions.

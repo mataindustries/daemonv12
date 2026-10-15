@@ -111,10 +111,10 @@ export function validatePackage({ validatorsDir, base = frozenBase } = {}) {
   const validate = new Ajv({ strict: true, allErrors: true }).compile(schema);
   assert(validate(manifest), `Official schema: ${JSON.stringify(validate.errors)}`);
   assert.equal(manifest.name, 'daemonv12-composer');
-  assert.equal(manifest.version, '0.2.0');
+  assert.equal(manifest.version, '0.3.0');
   const files = filesUnder(packageDir);
   for (const file of files) {
-    if (!/\.(?:md|json|mjs)$/.test(file)) continue;
+    if (!/\.(?:md|json|mjs|py)$/.test(file)) continue;
     const text = checkText(readFileSync(file), file);
     if (file.endsWith('.md')) checkLinks(text, file, packageDir);
     if (file.endsWith('/SKILL.md')) parseFrontmatter(text, YAML);
