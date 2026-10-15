@@ -144,12 +144,13 @@ invalid cookie is rejected, never silently replaced. Inform users that clearing
 cookies or switching devices/networks can bypass deduplication; shared networks
 can also be throttled. This remains an informal experiment, not a verified election.
 
-Optional Turnstile verification checks success, hostname, action and timestamp via
+Mandatory Turnstile verification for new votes checks boolean success, hostname, action and timestamp via
 Siteverify; the provider enforces token expiration/replay. Exact persisted retries
 skip a new challenge. The UI now integrates the official Managed widget with the public site key and
 `one-sound-vote` action. See [Turnstile preview testing](ONE_SOUND_TURNSTILE.md).
 Configure the matching TURNSTILE_SECRET_KEY only in the server runtime secret store
-before enabling voting; without it the existing backend treats Turnstile as optional.
+before enabling voting; missing/blank credentials fail closed, and invalid credentials
+must pass Siteverify before any new vote can be inserted.
 No secret was installed by this change. Recovery of persisted votes skips challenges.
 
 

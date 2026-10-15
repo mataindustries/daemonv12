@@ -52,12 +52,18 @@ export default {async fetch(request, env) {
   return response;
 }};`;
 const bindings: Record<string, string> = {
+  TURNSTILE_SECRET_KEY: 'synthetic-test-key',
   EXPERIMENT_ID: 'one-sound-001', VOTING_OPEN: 'true', ALLOWED_ORIGIN: 'https://example.test',
   MODEL_TRACK_MAP: JSON.stringify({A: 'Synthetic Alpha', B: 'Synthetic Beta', C: 'Synthetic Gamma'}),
   VOTE_COOKIE_SECRET: 'cookie-test-'.repeat(4), VOTER_HASH_SECRET: 'voter-test-'.repeat(4), RATE_LIMIT_SECRET: 'rate-test-'.repeat(4),
 };
-async function setup(overrides: Record<string, string> = {}, database = true, provider?: () => WorkerResponse | Promise<WorkerResponse>, migrations?: string[]) {
-  const options = {outboundService: provider, modules: true, script, compatibilityDate: '2026-07-30', bindings: {...bindings, ...overrides}, d1Databases: database ? ['VOTES_DB'] : []};
+async function setup(overrides: Record<string, string | undefined> = {}, database = true, provider?: () => WorkerResponse | Promise<WorkerResponse>, migrations?: string[]) {
+  const configured = {...bindings};
+  for (const [key, value] of Object.entries(overrides)) {
+    if (value === undefined) delete configured[key];
+    else configured[key] = value;
+  }
+  const options = {outboundService: provider ?? (() => WorkerResponse.json({success: true, hostname: 'example.test', action: 'one-sound-vote', challenge_ts: new Date().toISOString()})), modules: true, script, compatibilityDate: '2026-07-30', bindings: configured, d1Databases: database ? ['VOTES_DB'] : []};
   const mf = new Miniflare(options);
   let db = database ? await mf.getD1Database('VOTES_DB') : null;
   if (db) {
@@ -81,7 +87,7 @@ async function setup(overrides: Record<string, string> = {}, database = true, pr
     assert.ok(!setCookie.includes('Domain='));
     assert.equal(body.hasVoted, false);
     assert.ok(!('reveal' in body) && !('results' in body));
-    return {cookie: setCookie.split(';')[0]!, body: {experimentId: 'one-sound-001', trackId: 'B', requestId: crypto.randomUUID(), csrfToken: body.csrfToken}};
+    return {cookie: setCookie.split(';')[0]!, body: {experimentId: 'one-sound-001', trackId: 'B', requestId: crypto.randomUUID(), csrfToken: body.csrfToken, turnstileToken: 'synthetic-token'}};
   };
   const vote = (s: Awaited<ReturnType<typeof session>>, change = {}, headers = {}) => request('vote', {method: 'POST', headers: {'Content-Type': 'application/json', Origin: bindings.ALLOWED_ORIGIN!, Cookie: s.cookie, ...headers}, body: JSON.stringify({...s.body, ...change})});
   const setVotingOpen = async (open: boolean) => {
@@ -154,7 +160,7 @@ test('authorization and strict request validation never leak the mapping', async
       const text = await res.text();
       assert.ok(!text.includes('Synthetic') && !text.includes('results'));
     }
-    for (const [body, expected] of [['{', 400], ['[]', 400], [' '.repeat(2049), 413]] as const) {
+    for (const [body, expected] of [['{', 400], ['[]', 400], [' '.repeat(16385), 413]] as const) {
       assert.equal((await h.request('vote', {method: 'POST', headers: {Cookie: s.cookie, Origin: bindings.ALLOWED_ORIGIN!, 'Content-Type': 'application/json'}, body})).status, expected);
     }
     assert.equal((await h.vote(s, {}, {'Content-Type': 'text/plain'})).status, 415);
@@ -181,7 +187,7 @@ test('missing configuration, database, tables and closed voting fail closed', as
   } finally { await closed.mf.dispose(); }
 });
 
-test('rate limits use temporary hashed keys and optional challenge fails closed', async () => {
+test('rate limits use temporary hashed keys and mandatory challenge fails closed', async () => {
   const h = await setup();
   try {
     for (let i = 0; i < 60; i++) assert.equal((await h.request('session')).status, 200);
@@ -202,17 +208,17 @@ test('rate limits use temporary hashed keys and optional challenge fails closed'
   } finally { await h.mf.dispose(); }
   const challenged = await setup({TURNSTILE_SECRET_KEY: 'synthetic-test-key'});
   try {
-    assert.equal((await challenged.vote(await challenged.session())).status, 403);
+    assert.equal((await challenged.vote(await challenged.session(), {turnstileToken: undefined})).status, 403);
   } finally { await challenged.mf.dispose(); }
 });
 
 
-test('optional challenge validates provider success, hostname, action, age and rejects replay/failure', async () => {
+test('mandatory challenge validates provider success, hostname, action, age and rejects replay/failure', async () => {
   let result: Record<string, unknown> = {success: false};
   const h = await setup({TURNSTILE_SECRET_KEY: 'synthetic-test-key'}, true, () => WorkerResponse.json(result));
   try {
     const good = {success: true, hostname: 'example.test', action: 'one-sound-vote', challenge_ts: new Date().toISOString()};
-    for (const invalid of [{success: false}, {...good, hostname: 'evil.test'}, {...good, action: 'other'}, {...good, challenge_ts: 'invalid'}, {...good, challenge_ts: new Date(0).toISOString()}]) {
+    for (const invalid of [{success: false}, {...good, success: 'true'}, {...good, success: 1}, {...good, hostname: 'evil.test'}, {...good, action: 'other'}, {...good, challenge_ts: 'invalid'}, {...good, challenge_ts: new Date(0).toISOString()}]) {
       result = invalid;
       assert.equal((await h.vote(await h.session(), {turnstileToken: 'synthetic-token'})).status, 403);
     }
@@ -361,7 +367,7 @@ test('streamed oversized and malformed UTF-8 vote bodies fail before SQL', async
   try {
     const s = await h.session();
     const stream = new ReadableStream<Uint8Array>({start(controller) {
-      controller.enqueue(new Uint8Array(2048).fill(32));
+      controller.enqueue(new Uint8Array(16384).fill(32));
       controller.enqueue(new Uint8Array([32]));
       controller.close();
     }});
@@ -453,5 +459,79 @@ test('challenge provider timeout fails closed without recording a vote', async (
     assert.equal(res.status, 503);
     assert.deepEqual(await res.json(), {error: 'unavailable'});
     assert.equal((await h.db!.prepare('SELECT COUNT(*) AS n FROM votes').first<{n: number}>())!.n, 0);
+  } finally { await h.mf.dispose(); }
+});
+
+test('invalid verification configuration denies new votes but preserves recovery and closed sessions', async () => {
+  for (const secret of [undefined, '', '   ', 'synthetic-invalid-key']) {
+    let calls = 0;
+    const h = await setup({TURNSTILE_SECRET_KEY: secret}, true, () => {
+      calls++;
+      return WorkerResponse.json({success: false, 'error-codes': ['invalid-input-secret']});
+    });
+    try {
+      const s = await h.session();
+      assert.equal((await h.vote(s)).status, secret?.trim() ? 403 : 503);
+      assert.equal(calls, secret?.trim() ? 1 : 0);
+      assert.equal((await h.db!.prepare('SELECT COUNT(*) AS n FROM votes').first<{n: number}>())!.n, 0);
+      const id = s.cookie.split('=')[1]!.split('.')[0]!;
+      const voter = createHmac('sha256', bindings.VOTER_HASH_SECRET!).update(`voter:one-sound-001:${id}`).digest('hex');
+      await h.db!.prepare('INSERT INTO votes(experiment_id, voter_hash, track_id, request_id) VALUES (?, ?, ?, ?)').bind('one-sound-001', voter, 'B', s.body.requestId).run();
+      for (const open of [true, false]) {
+        await h.setVotingOpen(open);
+        assert.equal((await h.vote(s, {turnstileToken: undefined})).status, 200);
+        assert.equal((await h.request('reveal', {headers: {Cookie: s.cookie}})).status, 200);
+      }
+      const closed = await h.request('session');
+      assert.equal(closed.status, 200);
+      assert.equal(closed.headers.get('Set-Cookie'), null);
+      assert.equal(calls, secret?.trim() ? 1 : 0);
+    } finally { await h.mf.dispose(); }
+  }
+});
+
+test('missing, empty and malformed challenges cannot insert votes', async () => {
+  let calls = 0;
+  const h = await setup({}, true, () => { calls++; return WorkerResponse.json({success: false}); });
+  try {
+    const s = await h.session();
+    for (const [turnstileToken, status] of [[undefined, 403], ['', 403], [null, 400], [123, 400], [{}, 400]] as const) {
+      assert.equal((await h.vote(s, {turnstileToken})).status, status);
+    }
+    assert.equal(calls, 0);
+    assert.equal((await h.db!.prepare('SELECT COUNT(*) AS n FROM votes').first<{n: number}>())!.n, 0);
+  } finally { await h.mf.dispose(); }
+});
+
+
+test('maximum supported tokens including JSON escapes fit the bounded body; excessive tokens fail before SQL', async () => {
+  let calls = 0;
+  const h = await setup({}, true, () => {
+    calls++;
+    return WorkerResponse.json({success: true, hostname: 'example.test', action: 'one-sound-vote', challenge_ts: new Date().toISOString()});
+  });
+  try {
+    for (const escaped of [false, true]) {
+      const s = await h.session();
+      const token = 'x'.repeat(2048);
+      let body = JSON.stringify({...s.body, turnstileToken: token});
+      if (escaped) body = body.replace(token, String.raw`\u0078`.repeat(2048));
+      assert.ok(Buffer.byteLength(body) > 2048);
+      // The exact byte ceiling is accepted (JSON trailing whitespace is legal).
+      body = body.padEnd(16384, ' ');
+      const res = await h.request('vote', {method: 'POST', headers: {Cookie: s.cookie, Origin: bindings.ALLOWED_ORIGIN!, 'Content-Type': 'application/json'}, body});
+      assert.equal(res.status, 201);
+    }
+    const s = await h.session();
+    for (const token of ['x'.repeat(2049), 'é'.repeat(2049)]) {
+      const res = await h.vote(s, {turnstileToken: token});
+      assert.equal(res.status, 400);
+      assert.equal(res.headers.get('X-Test-Queries'), '0');
+    }
+    const malformed = await h.request('vote', {method: 'POST', headers: {Cookie: s.cookie, Origin: bindings.ALLOWED_ORIGIN!, 'Content-Type': 'application/json'}, body: '{'.padEnd(16384, ' ')});
+    assert.equal(malformed.status, 400);
+    assert.equal(malformed.headers.get('X-Test-Queries'), '0');
+    assert.equal(calls, 2);
+    assert.equal((await h.db!.prepare('SELECT COUNT(*) AS n FROM votes').first<{n: number}>())!.n, 2);
   } finally { await h.mf.dispose(); }
 });

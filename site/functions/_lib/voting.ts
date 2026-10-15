@@ -14,6 +14,10 @@ export interface Env {
 const EXPERIMENT = 'one-sound-001';
 const COOKIE = '__Host-one-sound';
 const LIFE = 90 * 86400;
+const MAX_TURNSTILE_TOKEN = 2048;
+// A token can occupy 6 bytes per character as JSON Unicode escapes (12 KiB).
+// Leave 4 KiB for normal vote fields/framing, while bounding streamed input.
+const MAX_VOTE_BODY_BYTES = 16 * 1024;
 const tracks = ['A', 'B', 'C'] as const;
 type Track = typeof tracks[number];
 type Mapping = Record<Track, string>;
@@ -113,7 +117,7 @@ async function parseBody(request: Request): Promise<Record<string, unknown>> {
     const {value, done} = await reader.read();
     if (done) break;
     size += value.length;
-    if (size > 2048) { await reader.cancel(); return fail(413, 'body_too_large'); }
+    if (size > MAX_VOTE_BODY_BYTES) { await reader.cancel(); return fail(413, 'body_too_large'); }
     chunks.push(value);
   }
   const all = new Uint8Array(size);
@@ -176,7 +180,7 @@ export async function handle(request: Request, env: Env): Promise<Response> {
       return response(200, await reveal(db, mapping, vote));
     }
     const body = await parseBody(request);
-    if (Object.keys(body).some(k => !['experimentId', 'trackId', 'requestId', 'csrfToken', 'turnstileToken'].includes(k)) || body.experimentId !== EXPERIMENT || !tracks.includes(body.trackId as Track) || typeof body.requestId !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(body.requestId) || (body.turnstileToken !== undefined && typeof body.turnstileToken !== 'string')) return fail(400, 'invalid_input');
+    if (Object.keys(body).some(k => !['experimentId', 'trackId', 'requestId', 'csrfToken', 'turnstileToken'].includes(k)) || body.experimentId !== EXPERIMENT || !tracks.includes(body.trackId as Track) || typeof body.requestId !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(body.requestId) || (body.turnstileToken !== undefined && (typeof body.turnstileToken !== 'string' || body.turnstileToken.length > MAX_TURNSTILE_TOKEN))) return fail(400, 'invalid_input');
     if (typeof body.csrfToken !== 'string' || !equal(body.csrfToken, csrf)) return fail(403, 'invalid_csrf');
     await resultLimit();
     const retry = async (existing: Vote) => {
@@ -186,13 +190,15 @@ export async function handle(request: Request, env: Env): Promise<Response> {
     const existing = await findVote();
     if (existing) return await retry(existing);
     if (env.VOTING_OPEN !== 'true') return fail(503, 'voting_closed');
-    if (env.TURNSTILE_SECRET_KEY) {
+    // Recovery above remains available even when verification is misconfigured.
+    if (!env.TURNSTILE_SECRET_KEY?.trim()) return fail(503, 'unavailable');
+    {
       if (typeof body.turnstileToken !== 'string' || !body.turnstileToken) return fail(403, 'challenge_required');
       const validation = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {method: 'POST', body: new URLSearchParams({secret: env.TURNSTILE_SECRET_KEY, response: body.turnstileToken}), signal: AbortSignal.timeout(5000)});
       if (!validation.ok) return fail(503, 'unavailable');
       const check = await validation.json() as {success?: boolean; hostname?: string; action?: string; challenge_ts?: string};
       const age = now - Date.parse(check.challenge_ts ?? '') / 1000;
-      if (!check.success || check.hostname !== origin.hostname || check.action !== 'one-sound-vote' || !Number.isFinite(age) || age < -30 || age > 300) return fail(403, 'challenge_failed');
+      if (check.success !== true || check.hostname !== origin.hostname || check.action !== 'one-sound-vote' || !Number.isFinite(age) || age < -30 || age > 300) return fail(403, 'challenge_failed');
     }
     // The unique constraint, not the preceding read, is the concurrency boundary.
     const inserted = await db.prepare('INSERT INTO votes(experiment_id, voter_hash, track_id, request_id) VALUES (?, ?, ?, ?) ON CONFLICT DO NOTHING').bind(EXPERIMENT, voter, body.trackId, body.requestId).run();

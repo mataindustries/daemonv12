@@ -202,4 +202,55 @@ try {
     for (const value of [...Object.values(mapping), 'MODEL_TRACK_MAP', 'VOTE_COOKIE_SECRET', 'VOTER_HASH_SECRET', 'RATE_LIMIT_SECRET']) assert.ok(!bytes.includes(value), `server data leaked to ${path}`);
   }
   console.log('PASS dropped-response idempotent retry; public-artifact secret/synthetic identity scan');
+  // Diagnostic for the deliberately unresolved bootstrap design issue. Opt in:
+  // node scripts/qa-voting.ts --reproduce-cookie-race
+  if (process.argv.includes('--reproduce-cookie-race')) {
+    const context = await browser.newContext();
+    await mockTurnstile(context);
+    const first = await context.newPage(), second = await context.newPage();
+    const before = (await db.prepare('SELECT COUNT(*) AS n FROM votes').first<{n: number}>())!.n;
+    let issued = 0;
+    let bothIssued!: () => void, releaseSecond!: () => void;
+    const both = new Promise<void>(resolve => { bothIssued = resolve; });
+    const delayed = new Promise<void>(resolve => { releaseSecond = resolve; });
+    const tokens: string[] = [];
+    await context.route('**/api/one-sound/session', async route => {
+      if (issued >= 2) { await route.continue(); return; }
+      const index = issued++;
+      assert.ok(!route.request().headers().cookie, 'both requests must leave fresh tabs without cookies');
+      // Dispatch to the real worker without Playwright APIRequestContext, which
+      // would apply Set-Cookie to its shared cookie jar before fulfillment.
+      const response = await mf.dispatchFetch(route.request().url(), {headers: {...route.request().headers(), 'CF-Connecting-IP': '192.0.2.1'}});
+      assert.equal(response.status, 200);
+      tokens[index] = response.headers.get('set-cookie')!.split(';')[0]!;
+      const body = await response.text();
+      if (index === 1) bothIssued();
+      await both;
+      if (index === 1) await delayed;
+      await route.fulfill({status: response.status, headers: Object.fromEntries(response.headers), body});
+    });
+    await first.goto(`${base}/one-sound/`);
+    await second.goto(`${base}/one-sound/`);
+    await first.waitForFunction(() => document.querySelector('#vote-note')?.textContent?.includes('Choose your favorite'));
+    assert.notEqual(tokens[0], tokens[1]);
+    await first.getByRole('radio', {name: 'Track A', exact: true}).check();
+    await first.locator('.os-vote-button').click();
+    await first.locator('#vote-results').waitFor({state: 'visible'});
+    assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM votes').first<{n: number}>())!.n, before + 1);
+    releaseSecond();
+    await second.waitForFunction(() => document.querySelector('#vote-note')?.textContent?.includes('Choose your favorite'));
+    const cookie = (await context.cookies()).find(c => c.name === '__Host-one-sound')!;
+    assert.equal(`__Host-one-sound=${cookie.value}`, tokens[1]);
+    await first.reload();
+    await first.waitForFunction(() => document.querySelector('#vote-note')?.textContent?.includes('Choose your favorite'));
+    assert.ok(await first.locator('#vote-results').isHidden(), 'replacement cookie loses first vote recovery');
+    await second.getByRole('radio', {name: 'Track C', exact: true}).check();
+    await second.locator('.os-vote-button').click();
+    await second.locator('#vote-results').waitFor({state: 'visible'});
+    assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM votes').first<{n: number}>())!.n, before + 2);
+    assert.equal(await second.evaluate(() => localStorage.length + sessionStorage.length), 0);
+    await context.close();
+    console.log('CONFIRMED OPEN VULNERABILITY: delayed fresh-tab cookie overwrites voted identity, loses recovery and permits a second vote; design correction required');
+  }
+
 } finally { await browser.close(); await mf.dispose(); }
