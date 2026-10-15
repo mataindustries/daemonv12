@@ -1,0 +1,408 @@
+{
+  "schema": "banger-lab-001.palette/1",
+  "status": "APPROVED for BANGER LAB 001 (see AUDIT.md, Phase 2)",
+  "engineCommit": "02438eda48506a94d10ad2756c6aafff8c5a9469",
+  "rule": "Every sample asset listed in a submission manifest (samples.assets[].file and .sha256) must match a sound or kit entry here exactly (path and SHA-256), and the manifest must show no General MIDI rendering (gmRenderer and soundfont are null). Paths are project-relative after copying the pack directory into the project workspace assets/ directory.",
+  "excluded": [
+    {
+      "source": "General MIDI programs via FluidR3_GM.sf2",
+      "reason": "Sample-level provenance unverifiable (\"constructed in part from samples found in the public domain\", Debian copyright notice); not in repository; GM instrument type therefore not allowed."
+    },
+    {
+      "source": "examples/assets/pulse-kit",
+      "reason": "CC0 development fixture; rights acceptable but not a production palette."
+    },
+    {
+      "source": "examples/assets/v05/synthetic-vo.wav",
+      "reason": "CC0 ducking test reference, not musical material."
+    },
+    {
+      "source": "Any other WAV (user, downloaded, previous renders, derived bounces)",
+      "reason": "No verified clearance; palette is frozen at launch."
+    }
+  ],
+  "packs": [
+    {
+      "pack": "ORBITAL FOUNDRY",
+      "catalogVersion": 1,
+      "license": "CC0-1.0",
+      "licenseFile": "examples/assets/orbital-foundry/LICENSE",
+      "licenseSha256": "4be9f2012ba0e0cb6053b8dd0c74c9a404d4a13846f1315e9dd2d1abd65e26aa",
+      "provenance": "All assets are generated in this repository. No third-party sample material is incorporated.",
+      "generator": "scripts/generate-orbital-foundry.ts",
+      "kit": {
+        "file": "assets/orbital-foundry/kit.json",
+        "sha256": "aa3a8052fa23217a0ef4d24451060bb8b47ffcbc60cf5651d4dfeabf63a942f5"
+      },
+      "sounds": [
+        {
+          "id": "sub-pulse",
+          "file": "assets/orbital-foundry/01-sub-pulse.wav",
+          "sha256": "b72d3dd7ef57e8e5e50a41b0ab20205f0be13b92ecba4bfb12f6c0981f35e216",
+          "bytes": 26504,
+          "frames": 13230,
+          "seconds": 0.3,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": {
+            "name": "sub-pulse",
+            "pitch": 35
+          },
+          "role": "49 Hz propulsion with 98/147 Hz translation; short recovery."
+        },
+        {
+          "id": "mechanical-kick",
+          "file": "assets/orbital-foundry/02-mechanical-kick.wav",
+          "sha256": "19b350b860aac8864d5e5710f1fdfef59120bd3ccb38b0feb51acd0b7bcb9eb6",
+          "bytes": 37088,
+          "frames": 18522,
+          "seconds": 0.42,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": {
+            "name": "mechanical-kick",
+            "pitch": 36
+          },
+          "role": "68 Hz body, 150–900 Hz mechanism and 2–5 kHz contact."
+        },
+        {
+          "id": "metallic-strike",
+          "file": "assets/orbital-foundry/03-metallic-strike.wav",
+          "sha256": "03a660ea5e3c00dc4d0ebc9831483910d4f83f844e38092ee133c196b378d54a",
+          "bytes": 145574,
+          "frames": 72765,
+          "seconds": 1.65,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": {
+            "name": "metallic-strike",
+            "pitch": 43
+          },
+          "role": "Steel presence from 1–6 kHz with a 437 Hz support mode."
+        },
+        {
+          "id": "machine-tick",
+          "file": "assets/orbital-foundry/04-machine-tick.wav",
+          "sha256": "76f29351c8c7e257a985e195158db933fc7117e564af6c84a110ae8f6e60e1a2",
+          "bytes": 7542,
+          "frames": 3749,
+          "seconds": 0.085011,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": {
+            "name": "machine-tick",
+            "pitch": 42
+          },
+          "role": "Crisp 2–9 kHz detail; negligible low-frequency energy."
+        },
+        {
+          "id": "industrial-snare",
+          "file": "assets/orbital-foundry/05-industrial-snare.wav",
+          "sha256": "9067d0eaf903a0fc949ace114869502d5a6fab6f0d01ad5a7f2535492d2dd0ac",
+          "bytes": 33560,
+          "frames": 16758,
+          "seconds": 0.38,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": {
+            "name": "industrial-snare",
+            "pitch": 38
+          },
+          "role": "Hard 600 Hz–5 kHz piston/clamp accent, no acoustic snare model."
+        },
+        {
+          "id": "low-boom",
+          "file": "assets/orbital-foundry/06-low-boom.wav",
+          "sha256": "37decaa1b61b4afe42c0dd0a1b00e6cd1685eeb651d521849e47f9ff877d73a8",
+          "bytes": 211724,
+          "frames": 105840,
+          "seconds": 2.4,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": {
+            "name": "low-boom",
+            "pitch": 41
+          },
+          "role": "41–95 Hz weight with 170–600 Hz pressure; rolled-off infrasonics."
+        },
+        {
+          "id": "cinematic-impact",
+          "file": "assets/orbital-foundry/07-cinematic-impact.wav",
+          "sha256": "8867476d527289a237221f9a4674e050855a7e5a209ef8547cf8637074d22951",
+          "bytes": 635084,
+          "frames": 158760,
+          "seconds": 3.6,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": {
+            "name": "cinematic-impact",
+            "pitch": 49
+          },
+          "role": "Broadband transient, 62 Hz mass, 400 Hz–6 kHz debris and spatial tail."
+        },
+        {
+          "id": "tension-riser",
+          "file": "assets/orbital-foundry/08-tension-riser.wav",
+          "sha256": "fc7dc6370e311a1b37b824d49f676ff858bc89a21a3957560b26a6a2c43ecfe0",
+          "bytes": 705644,
+          "frames": 176400,
+          "seconds": 4,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": null,
+          "role": "Rising 220–1760 Hz pressure and opening 500 Hz–8 kHz air."
+        },
+        {
+          "id": "reverse-swell",
+          "file": "assets/orbital-foundry/09-reverse-swell.wav",
+          "sha256": "d4a56cf02bbcd27da2e021bc374b098d4239f467c0e7b762da0200cea52a4033",
+          "bytes": 352844,
+          "frames": 88200,
+          "seconds": 2,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": null,
+          "role": "Mid/high suction with restrained 190 Hz support, complementary to bass impacts."
+        },
+        {
+          "id": "dark-drone",
+          "file": "assets/orbital-foundry/10-dark-drone.wav",
+          "sha256": "d77f3be6222f38b382d19e480361eef9a80f7619cd9ea2664373d35c13a21c81",
+          "bytes": 1411244,
+          "frames": 352800,
+          "seconds": 8,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": null,
+          "role": "110–900 Hz orbital machinery with restrained 2 kHz friction, not pure sub."
+        },
+        {
+          "id": "air-texture",
+          "file": "assets/orbital-foundry/11-air-texture.wav",
+          "sha256": "c103c24ffe274a10d3d1a5aa157f24c16d6542a3835aaf6246009231860ceb1a",
+          "bytes": 1411244,
+          "frames": 352800,
+          "seconds": 8,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": null,
+          "role": "Soft 900 Hz–7 kHz atmosphere and width, low end removed."
+        },
+        {
+          "id": "alarm-energy-pulse",
+          "file": "assets/orbital-foundry/12-alarm-energy-pulse.wav",
+          "sha256": "64c3850860bf20e9349ddbde84f07d11c0b967fcf8ecc749937d0facbc7e532d",
+          "bytes": 70604,
+          "frames": 35280,
+          "seconds": 0.8,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": null,
+          "role": "D4/A-flat4 tension with 1–3 kHz motor harmonics; no laser sweep."
+        }
+      ]
+    },
+    {
+      "pack": "GLASSHOUSE",
+      "catalogVersion": 1,
+      "license": "CC0-1.0",
+      "licenseFile": "examples/assets/glasshouse/LICENSE",
+      "licenseSha256": "0280b3f4c5912888b42eb60dc3a57eafdb167262328686e2a6801ddd2c3b8226",
+      "provenance": "All assets are generated in this repository. No third-party sample material is incorporated.",
+      "generator": "scripts/generate-glasshouse.ts",
+      "kit": {
+        "file": "assets/glasshouse/kit.json",
+        "sha256": "c12670d0c879eaaf0928a861213603ca4870225dc1df05b7fb76cf1b108a3646"
+      },
+      "key": "C# minor",
+      "tuningReference": "A4 = 440 Hz, equal temperament",
+      "sounds": [
+        {
+          "id": "glass-hit",
+          "file": "assets/glasshouse/01-glass-hit.wav",
+          "sha256": "96ddb71c7aea630fdff30c9e79bfa24f6873547adc0fbf6febff95aff3cdba77",
+          "bytes": 88244,
+          "frames": 44100,
+          "seconds": 1,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": "C#5 (554.365 Hz)",
+          "kitHit": {
+            "name": "glass-hit",
+            "pitch": 81
+          },
+          "role": "Parent identity: bright tuned glass transient, sparkling 1.5–10 kHz halo over a pure C#5."
+        },
+        {
+          "id": "glass-reverse",
+          "file": "assets/glasshouse/02-glass-reverse.wav",
+          "sha256": "b92602c126642c6caf44d50a4611d1a35444cf8d9b1c5ebf619c0b341abbe6fd",
+          "bytes": 151244,
+          "frames": 37800,
+          "seconds": 0.857143,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": "C#5 (554.365 Hz)",
+          "kitHit": null,
+          "role": "Suction into a boundary: the same glass, bloomed through stereo diffusion, then reversed."
+        },
+        {
+          "id": "glass-crush",
+          "file": "assets/glasshouse/03-glass-crush.wav",
+          "sha256": "1999c5ce34e7ad0a776c53b163564ea7e1fddeb1b171a6fdb2714e430fd3e827",
+          "bytes": 37088,
+          "frames": 18522,
+          "seconds": 0.42,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": "C#3 (138.591 Hz)",
+          "kitHit": {
+            "name": "glass-crush",
+            "pitch": 41
+          },
+          "role": "The glass two octaves down, saturated and crushed into a dark tonal bass-call."
+        },
+        {
+          "id": "ghost-vox",
+          "file": "assets/glasshouse/04-ghost-vox.wav",
+          "sha256": "2c003a699d010082e64cb070e7dffd6adcd3189c22ee6f914bf3c7dfe537da68",
+          "bytes": 83834,
+          "frames": 41895,
+          "seconds": 0.95,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": "C#4 (277.183 Hz)",
+          "kitHit": null,
+          "role": "Synthetic airy \"oh-ah\" vowel; vocal character without a singer."
+        },
+        {
+          "id": "vox-chip",
+          "file": "assets/glasshouse/05-vox-chip.wav",
+          "sha256": "04d7fc9831862a66bcf43063323afefafbe2ef70b8d354c52d2846a835ff1dff",
+          "bytes": 7542,
+          "frames": 3749,
+          "seconds": 0.085011,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": "C#4 (277.183 Hz)",
+          "kitHit": {
+            "name": "vox-chip",
+            "pitch": 78
+          },
+          "role": "An 85 ms slice of the ghost-vox \"ah\" with a consonant-like attack."
+        },
+        {
+          "id": "bass-punch-cs",
+          "file": "assets/glasshouse/06-bass-punch-cs.wav",
+          "sha256": "dc34e7d7bd87d916575c7547dac4843dc7694d8a67d237b77ec5a76c02bd3cd2",
+          "bytes": 28268,
+          "frames": 14112,
+          "seconds": 0.32,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": "C#2 (69.296 Hz)",
+          "kitHit": {
+            "name": "bass-punch-cs",
+            "pitch": 36
+          },
+          "role": "Upper-bass attack: 277→69 Hz drop, C#2 harmonics through 1 kHz for small speakers, short body."
+        },
+        {
+          "id": "sub-cs",
+          "file": "assets/glasshouse/07-sub-cs.wav",
+          "sha256": "0f768b79c549204342f9489626d0f8e08c7c39dd4d15393970d692b49570fb28",
+          "bytes": 75644,
+          "frames": 37800,
+          "seconds": 0.857143,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": "C#2 (69.296 Hz)",
+          "kitHit": {
+            "name": "sub-cs",
+            "pitch": 35
+          },
+          "role": "Clean, stable 69.30 Hz sine body with controlled decay; no stereo or harmonics."
+        },
+        {
+          "id": "chrome-clap",
+          "file": "assets/glasshouse/08-chrome-clap.wav",
+          "sha256": "e0a5a42c4cfcd1d9d59f56e38fb762a8a19b8033304599ba15bc787481544eff",
+          "bytes": 63548,
+          "frames": 15876,
+          "seconds": 0.36,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": {
+            "name": "chrome-clap",
+            "pitch": 39
+          },
+          "role": "Clap/snare hybrid: four uneven centered bursts, G#3 body, faint C#6 glass ring, mid/side tail."
+        },
+        {
+          "id": "pixel-hat",
+          "file": "assets/glasshouse/09-pixel-hat.wav",
+          "sha256": "19451e5b4592e54d61f4555cfaec19d277b7e8499a49651b58b934ad6622f491",
+          "bytes": 4896,
+          "frames": 2426,
+          "seconds": 0.055011,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": null,
+          "kitHit": {
+            "name": "pixel-hat",
+            "pitch": 42
+          },
+          "role": "Tight 6–12 kHz tick: high glass modes plus resonant noise; nothing below 2 kHz."
+        },
+        {
+          "id": "prism-impact",
+          "file": "assets/glasshouse/10-prism-impact.wav",
+          "sha256": "7dbf1a42c8bf8251ba73ba166d5c957c324bf539b03a80861f3decdc85df7ea7",
+          "bytes": 317564,
+          "frames": 79380,
+          "seconds": 1.8,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16,
+          "tuning": "C#m",
+          "kitHit": null,
+          "role": "Payoff: the glass refracted into a spread C# minor chord over a centered C#2 drop and soft air."
+        }
+      ]
+    }
+  ]
+}

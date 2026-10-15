@@ -1,0 +1,27 @@
+{
+  "schema": "banger-lab-001.submission/1",
+  "note": "Fill every <...> value from real command output. Unknown or unperformed means null plus an entry in deviations. Delete this note.",
+  "role": "<A-lead-composer | B-hook-lab | B-controlled-arm | E-task-E1..E7>",
+  "agent": { "name": "<e.g. Sonnet 5.5>", "modelId": "<exact model ID as configured>", "settings": "<as configured by the organizer>" },
+  "engine": { "version": "0.7.0", "commit": "<git rev-parse HEAD>", "dirty": "<true if git status --porcelain is non-empty>" },
+  "composer": { "version": "0.3.0", "sourceCommit": "f913226e99496eca43b9da0fbcea68516bf9bbb8", "packageHashList": "<sha256 of composer-package.sha256>" },
+  "environment": { "os": "<uname -sm>", "node": "<node --version>", "ffmpeg": "<doctor ffmpeg.version>", "doctorReadiness": "<doctor readiness object>" },
+  "palette": { "file": "approved-palette.json", "sha256": "<sha256>" },
+  "final": {
+    "project": "<bl001-a.json>",
+    "projectSha256": "<sha256>",
+    "chosenVersion": "<v3>",
+    "wav": { "file": "<renders/final/bl001-a.wav>", "sha256": "<sha256>", "frames": "<3307500 | 661500>" },
+    "stems": [ { "trackId": "<id>", "sha256": "<sha256>" } ],
+    "analysis": { "integratedLufs": "<n>", "truePeakDbfs": "<n>", "loudnessRangeLu": "<n>", "fullScaleSamples": 0 },
+    "endBoundaryPeakDbfs": "<final 441 frames peak>"
+  },
+  "determinism": { "repeatDir": "<renders/final-repeat>", "identical": ["wav", "stems", "analysis", "manifest", "midi"], "mp3Identical": "<true | false | null>" },
+  "versions": [
+    { "id": "v1", "project": "<bl001-a-v1.json>", "sha256": "<sha256>", "wavSha256": "<sha256>", "musicalChange": "<one line>" }
+  ],
+  "renderCount": { "fullVersions": "<n>", "excerptOrTest": "<n>", "repeat": "<n>" },
+  "parents": [ { "path": "<archive path of any input project>", "sha256": "<sha256>" } ],
+  "deviations": [],
+  "blockers": []
+}

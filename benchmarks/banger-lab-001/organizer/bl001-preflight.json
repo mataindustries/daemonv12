@@ -1,0 +1,65 @@
+{
+  "formatVersion": 1,
+  "title": "BANGER LAB 001 preflight probe",
+  "description": "Organizer-only technical probe. Not music, not an entry, not a template. Exercises the locked 75-second production container: fixed seconds duration, natural tails cropped at the boundary, performed and articulated voices, gain automation, FFmpeg and built-in effects, aligned stems.",
+  "bpm": 128,
+  "timeSignature": "4/4",
+  "bars": 41,
+  "seed": 1,
+  "render": { "duration": { "seconds": 75 }, "tail": "auto" },
+  "master": { "gainDb": -1, "effects": [ { "type": "saturation", "driveDb": 2, "mix": 0.15 } ] },
+  "tracks": [
+    {
+      "id": "kick",
+      "instrument": { "type": "drumkit", "kit": "assets/orbital-foundry/kit.json" },
+      "mix": { "gainDb": -3 },
+      "effects": [ { "type": "highpass", "frequencyHz": 30 } ],
+      "clips": [ { "bar": 1, "pattern": "four" }, { "bar": 17, "pattern": "four" }, { "bar": 40, "pattern": "four" } ],
+      "patterns": [
+        { "id": "four", "bars": 1, "notes": [
+          { "start": "1:1", "pitch": "mechanical-kick", "velocity": 0.8, "gate": "1/8", "chokeGroup": "kick" },
+          { "start": "1:2", "pitch": "mechanical-kick", "velocity": 0.8, "gate": "1/8", "chokeGroup": "kick" },
+          { "start": "1:3", "pitch": "mechanical-kick", "velocity": 0.8, "gate": "1/8", "chokeGroup": "kick" },
+          { "start": "1:4", "pitch": "mechanical-kick", "velocity": 0.8, "gate": "1/8", "chokeGroup": "kick" }
+        ] }
+      ]
+    },
+    {
+      "id": "sub",
+      "instrument": { "type": "sampler", "sample": "assets/glasshouse/07-sub-cs.wav" },
+      "mix": { "gainDb": -6 },
+      "automation": { "gainDb": [
+        { "at": { "musical": "17:1" }, "value": -24, "transition": "linear" },
+        { "at": { "musical": "17:1+1/8" }, "value": -6 }
+      ] },
+      "clips": [ { "bar": 17, "pattern": "line" } ],
+      "patterns": [
+        { "id": "line", "bars": 1, "notes": [
+          { "start": "1:1+1/16", "velocity": 0.8, "gate": "1/8", "envelope": { "attackSeconds": 0.002, "releaseSeconds": 0.012 }, "chokeGroup": "bass" },
+          { "start": "1:3+1/16", "velocity": 0.8, "playbackRate": 1.189207, "gate": "1/8", "chokeGroup": "bass" }
+        ] }
+      ]
+    },
+    {
+      "id": "vox",
+      "instrument": { "type": "sampler", "sample": "assets/glasshouse/04-ghost-vox.wav" },
+      "effects": [ { "type": "reverb", "roomSize": 0.5, "decaySeconds": 1.5, "wet": 0.2 }, { "type": "compressor", "thresholdDb": -24, "ratio": 3, "attackMs": 5, "releaseMs": 120 } ],
+      "clips": [ { "bar": 9, "pattern": "chop" }, { "bar": 33, "pattern": "chop" } ],
+      "patterns": [
+        { "id": "chop", "bars": 1, "notes": [
+          { "start": "1:1", "velocity": 0.7, "offsetSeconds": 0.1, "endSeconds": 0.4, "gate": "1/8" },
+          { "start": "1:2+1/8", "velocity": 0.7, "playbackRate": 1.498307, "offsetSeconds": 0.1, "endSeconds": 0.4 },
+          { "start": "1:4", "velocity": 0.6, "glide": { "to": 0.5, "duration": "1/4" } }
+        ] }
+      ]
+    },
+    {
+      "id": "drone",
+      "description": "Second bed starts at bar 39 (71.25 s); its 8-second source is still sounding at 75 s, so the container hard-cuts it. The probe therefore FAILS the end-boundary gate on purpose.",
+      "instrument": { "type": "sampler", "sample": "assets/orbital-foundry/10-dark-drone.wav" },
+      "mix": { "gainDb": -8 },
+      "clips": [ { "bar": 1, "pattern": "bed" }, { "bar": 39, "pattern": "bed" } ],
+      "patterns": [ { "id": "bed", "bars": 1, "notes": [ { "start": "1:1", "velocity": 0.6 } ] } ]
+    }
+  ]
+}
