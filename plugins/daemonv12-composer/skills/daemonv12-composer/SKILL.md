@@ -34,8 +34,11 @@ MCP installation. This skill provides process, not a quality guarantee.
    key, BPM or palette is required.
 3. **Choose an intentional palette.** Give each sound a job. Check tuning,
    source length, transformed tails and kick/bass overlap. More layers do not
-   automatically create richness. Use supported timing/source preparation for
-   bass monophony where useful; do not invent sampler choke or note-off controls.
+   automatically create richness. Use v0.7 `gate`, `endSeconds`, per-voice
+   `envelope` and track-local `chokeGroup` for sampled-note shape and spacing. Gates/chokes release sampled
+   voices; they are not generic MIDI note-off. Read the
+   [electronic-production recipes](references/electronic-production.md) when
+   writing electronic parts; validate against the selected engine and assets.
 4. **Render complete V1 quickly.** Include a complete ending; establish identity
    within roughly the first 3–5 seconds. Establish repetition, then change its
    consequence. Leave space for the central idea before polishing details.
@@ -156,6 +159,9 @@ obvious technical defect remains. Stop when remaining ideas are speculative or
 two recent revisions have not materially improved the piece; do not invent
 more edits to spend the remaining version budget. A finished strong track is
 better than an endlessly analyzed track.
+
+For video delivery, follow the [music-to-video handoff](references/music-to-video.md):
+explicit fixed duration, deliberate tail policy and engine-resolved cue frames.
 
 Preserve final project/assets, WAV, aligned stems, analysis, log and `.render.json`
 provenance. Record asset origins/licenses, engine commit, Node/audio-tool versions,

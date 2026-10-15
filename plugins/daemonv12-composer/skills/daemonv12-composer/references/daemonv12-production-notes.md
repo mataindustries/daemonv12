@@ -1,15 +1,17 @@
 # DaemonV12 production notes
 
-Verified against engine **0.6.0**, project `formatVersion: 1`, repository commit
-`ed75e9e2a0172266e56b292886ad7c1500677862`. Rechecked for Composer v0.2 against
-current source files matching that base. Paths are relative to the **engine
+Verified for Composer **0.3.0** against engine **0.7.0**, project
+`formatVersion: 1`, repository commit
+`02438eda48506a94d10ad2756c6aafff8c5a9469`. Paths are relative to the **engine
 repository root**, not this portable plugin. For a different engine revision,
 read its current docs and implementation before relying
 on these contracts. Do not change rendering behavior to fit the workflow.
 
 Read the specs cumulatively: `docs/V0_SPEC.md` supplies the GM baseline;
 `docs/V0_2_SAMPLES.md`, `docs/V0_3_AUDIO.md`,
-`docs/V0_5_TIMELINE_DYNAMICS.md` and `docs/V0_6_SAMPLE_PERFORMANCE.md` extend it.
+`docs/V0_5_TIMELINE_DYNAMICS.md`, `docs/V0_6_SAMPLE_PERFORMANCE.md` and
+`docs/V0_7_SAMPLER_ARTICULATION.md` extend it. The v0.7 contract supersedes older
+sample-end/release/choke statements; read `docs/V0_7_REVIEW_HANDOFF.md` for review evidence.
 Old “not supported/deferred” statements and pack README comments can describe an
 earlier release. In particular, the current engine **does** support rate-based
 sample repitching, gain/pan automation, compression, reverb and saturation.
@@ -59,9 +61,9 @@ Sources: `README.md` (Commands, Install paths), `docs/DEVELOPER_SETUP.md`,
   can overlap, so intentional bass monophony still needs an arrangement check.
 - Sampler notes have `start`, optional `velocity` and performance fields below;
   no note `pitch` or `duration`. Drum-kit notes require mapped `pitch` and also
-  reject `duration`. Sample voices may overlap freely; there is no automatic
-  choke group or monophonic mode. Space triggers or prepare appropriate source
-  lengths when sustained sub tails would accumulate.
+  reject `duration`; use `gate`. Voices overlap unless explicitly grouped.
+  `chokeGroup` is track-local and permits release overlap; it is not a strict
+  monophonic mode or arbitrary MIDI note-off. Space kicks and bass across tracks.
 - Assets resolve relative to the project JSON, under its `assets/`, not the shell's
   current directory. Kit WAV paths resolve relative to kit JSON. Inputs must be
   nonempty RIFF PCM16, 44,100 Hz, mono/stereo WAV. No implicit format conversion.
@@ -133,20 +135,21 @@ Sources: `src/render/production.ts` (`sumFloat`, `balance`),
 | `playbackRate` | 0.25–4, default 1. Pitch and duration change together. For a shift of `n` semitones use `2^(n/12)`; confirm the source's tuning first. No independent time stretch or formant preservation. |
 | `glide` | `{"to": rate, "duration": "N/D"}` starts at note onset, moves linearly in **rate**, then holds destination. It is not linear in semitones and cannot reach rate zero. Destination must differ from starting rate. Source exhaustion may end the voice before the glide completes. |
 | `offsetSeconds` | Source position, not timeline delay. 0–600 seconds with at most six decimal places; rounded to nearest 44.1 kHz source frame, ties later. Must resolve before source end. Check the transient/tuning at the new start, not just the original file. |
-| Voice duration | At constant rate: `ceil((sourceFrames - offsetFrames) / rate)` output frames. There is no per-note duration, end offset, release, fade, loop or note-off. Source exhaustion ends playback; render boundaries can cut it earlier. |
-| Chops | Offsets add no fade. Prefer nearby zero crossings when appropriate; inspect start/end discontinuities and very short chops. Track gain automation affects every overlapping voice on that track, not one chop independently. |
+| Voice duration | Without articulation, the remaining source plays through. With articulation, use the slice/gate/envelope/choke rules below. No loop or arbitrary MIDI note-off is added. |
+| Chops | Offsets alone add no fade. Prefer nearby zero crossings when appropriate; inspect start/end discontinuities and very short chops. Track gain automation affects every overlapping voice on that track, not one chop independently. |
 | Overlapping transformations | Every trigger is an independent voice. Slowing a source lengthens its tail; inspect simultaneous voices, sub accumulation, masking and summed peaks before adding another transformed layer. |
 
 Performance fields work on sampler/drum-kit notes, not GM notes. Reverse playback,
 exponential/multipoint glides and automatic sample tuning are not provided.
 Compilation checks transformed-voice work/memory budgets. If diagnostics reject
 cost, simplify overlapping voices, shorten sources/use later offsets, move rates
-closer to 1, or deliberately limit the rendered duration. Do not bypass validation.
+closer to 1, use `gate`/`endSeconds`, or deliberately limit the rendered duration.
+Do not bypass validation.
 
 Current preflight limits are **1,000,000,000 interpolation kernel taps per
 project** and **128 MiB per performed-voice buffer**. The budget accounts for
-production boundaries; rate 1 without a glide reads source frames directly and
-has no interpolation charge. These are rendering resource limits, separate from
+slices, gates, chokes and production boundaries; rate 1 without a glide reads
+source frames directly and has no interpolation charge. These are rendering resource limits, separate from
 Composer's revision/analysis budget. A project can pass resource validation and
 still have musically overcrowded voices.
 
@@ -154,6 +157,63 @@ Sources: `docs/V0_6_SAMPLE_PERFORMANCE.md`,
 `src/render/playback.ts` (`voiceFrames`, `voiceCost`, playback limit constants),
 `src/sample-render.ts` (`sampleTriggers`, `playbackBudget`),
 `src/pipeline.ts` (offset and playback-budget validation).
+
+## V0.7 sampled-note articulation
+
+All four controls apply to sampler and drum-kit notes only; GM articulation
+fields fail validation. Kit `pitch` selects a source mapping, not a repitch.
+No sample `duration`, sampler `pitch`, `noteOff`, `sustain`, `loop`, `attackMs`,
+`releaseMs`, `endOffset` or `choke` alias is accepted as a note control.
+
+| Control | Range/default and behavior |
+| --- | --- |
+| `endSeconds` | Absolute exclusive source endpoint, 0–600 s, at most six decimals. Default is WAV frame count. Together with `offsetSeconds` (default 0), requires `0 <= O < F <= sourceFrames` after rounding. A one-frame slice is legal. |
+| `gate` | Positive whole-note fraction on the 960-PPQ grid, such as `1/16` or `1/12`. Default: no scheduled gate release. Relative release frame is `frame(onsetTick + gateTicks) - frame(onsetTick)`, never independently rounded gate seconds. Can outlast pattern/project/source; cannot extend the source. |
+| `envelope.attackSeconds` / `envelope.releaseSeconds` | Each 0–10 output seconds with at most six decimals. Any articulation field enables defaults of 0.001 / 0.005 s; `envelope: {}` enables both. Omitted members keep defaults. Zero disables that ramp. Positive values must resolve to at least one frame: 0.000012 s works; 0.000011 s fails. |
+| `chokeGroup` | Lowercase ID starting with a letter, then letters/digits/hyphens, at most 32 characters. Default: ungrouped. A later distinct output-frame onset releases older same-group voices on this track, across patterns/clips/kit mappings, using each older voice's own release. Other tracks are independent. |
+
+Seconds resolve as exact decimal microseconds `u`, then source/output frame
+`floor((u*44100 + 500000)/1000000)` (integer arithmetic, ties later).
+Distinct seconds can round to the same frame; asset-aware validation rejects
+empty/out-of-source slices. Musical ticks resolve with the quantized engine tempo;
+see [music-to-video](music-to-video.md). Equal output-frame grouped onsets
+coexist. Note order chooses no winner.
+Earliest gate/choke release wins; subsequent onsets never restart/extend release.
+Default release can overlap a new attack, so grouped voices can still overload.
+Zero release avoids that release overlap but risks clicks.
+
+For slice `[O,F)` at constant rate `r`, natural length is `N=ceil((F-O)/r)`
+output frames. A glide keeps its continuous read position/rate through release;
+it neither freezes nor resets. Rate changes pitch and slice length together;
+gate and envelopes remain in output time. `offsetSeconds` is source position,
+never score delay. Explicit `endSeconds` silences interpolation taps outside
+`[O,F)` without renormalizing only the remaining taps. Offset-only voices keep
+v0.6 whole-WAV tap bounds, even with gate/envelope/choke. Rate/offset/glide alone
+add no fade; omission of all articulation preserves the historical one-shot path.
+
+With earliest release `T`, release length `R`, and remaining output cap `C`,
+exclusive audible endpoint is `E=min(N,T+R,C)`. No padded source tail is created.
+Release moves earlier to finish at source/output boundaries. Attack is linear
+amplitude from zero; release freezes the attack level at its start and reaches
+exact zero on the last rendered frame. When source/cap truncates overlapping
+ramps, they compress proportionally with an interior peak, never boosting above
+the authored attack or delaying the requested stop. One/two-frame voices with
+both ramps enabled are silent; set both ramps to zero for a hard one-frame slice.
+Zero release makes no click-free promise. Articulation gain precedes per-voice
+velocity rounding and summation. Effects can still ring after a voice stops.
+
+Manifest `articulation` records resolved source end, gate, envelope, group,
+effective choke, `voiceFrames` and capped `renderedFrames`. Existing
+`playback.voiceFrames` means natural full-WAV length before articulation, not
+actual audible length. `samples.articulation` identifies the algorithm.
+Use full provenance for timing; original asset hashes remain unchanged.
+Pure `compileProjectText` cannot certify WAV bounds: use CLI `validate` or
+`compileProjectFile` / `compileProjectTextWithAssets`.
+
+Sources: `docs/V0_7_SAMPLER_ARTICULATION.md`, `src/project/validate.ts`,
+`src/pipeline.ts` (asset bounds), `src/sample-render.ts` (`sampleTriggers`),
+`src/render/playback.ts` (`voiceFrames`, `voiceGain`, `interpolate`, `voiceCost`),
+`src/render/pcm.ts`, `src/render/production.ts`.
 
 ## Effects, duration and signal flow
 

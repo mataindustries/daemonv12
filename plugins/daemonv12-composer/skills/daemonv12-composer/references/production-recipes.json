@@ -1,0 +1,743 @@
+{
+  "engineCommit": "02438eda48506a94d10ad2756c6aafff8c5a9469",
+  "recipes": [
+    {
+      "id": "tight-gated-bass",
+      "project": {
+        "formatVersion": 1,
+        "title": "tight-gated-bass",
+        "bpm": 140,
+        "timeSignature": "4/4",
+        "bars": 1,
+        "render": {
+          "duration": {
+            "bars": 1
+          },
+          "tail": "none"
+        },
+        "tracks": [
+          {
+            "id": "bass",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/glasshouse/07-sub-cs.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1+1/16",
+                    "velocity": 0.6,
+                    "gate": "1/16",
+                    "endSeconds": 0.6,
+                    "envelope": {
+                      "attackSeconds": 0.002,
+                      "releaseSeconds": 0.012
+                    },
+                    "chokeGroup": "bass"
+                  },
+                  {
+                    "start": "1:2+1/16",
+                    "velocity": 0.6,
+                    "gate": "1/16",
+                    "playbackRate": 0.5,
+                    "chokeGroup": "bass"
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "kick-bass-spacing",
+      "project": {
+        "formatVersion": 1,
+        "title": "kick-bass-spacing",
+        "bpm": 140,
+        "timeSignature": "4/4",
+        "bars": 1,
+        "render": {
+          "duration": {
+            "bars": 1
+          },
+          "tail": "none"
+        },
+        "tracks": [
+          {
+            "id": "kick",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/orbital-foundry/02-mechanical-kick.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.6,
+                    "gate": "1/16"
+                  },
+                  {
+                    "start": "1:2",
+                    "velocity": 0.6,
+                    "gate": "1/16"
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            }
+          },
+          {
+            "id": "bass",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/glasshouse/07-sub-cs.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1+1/16",
+                    "velocity": 0.6,
+                    "gate": "1/16",
+                    "endSeconds": 0.6,
+                    "envelope": {
+                      "attackSeconds": 0.002,
+                      "releaseSeconds": 0.012
+                    },
+                    "chokeGroup": "bass"
+                  },
+                  {
+                    "start": "1:2+1/16",
+                    "velocity": 0.6,
+                    "gate": "1/16",
+                    "playbackRate": 0.5,
+                    "chokeGroup": "bass"
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "hat-percussion-chokes",
+      "project": {
+        "formatVersion": 1,
+        "title": "hat-percussion-chokes",
+        "bpm": 140,
+        "timeSignature": "4/4",
+        "bars": 1,
+        "render": {
+          "duration": {
+            "bars": 1
+          },
+          "tail": "none"
+        },
+        "tracks": [
+          {
+            "id": "hats",
+            "instrument": {
+              "type": "drumkit",
+              "kit": "assets/glasshouse/kit.json"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.6,
+                    "pitch": "pixel-hat",
+                    "playbackRate": 0.25,
+                    "chokeGroup": "hats",
+                    "envelope": {
+                      "attackSeconds": 0.001,
+                      "releaseSeconds": 0.008
+                    }
+                  },
+                  {
+                    "start": "1:1+1/16",
+                    "velocity": 0.6,
+                    "pitch": "pixel-hat",
+                    "chokeGroup": "hats"
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            }
+          },
+          {
+            "id": "percussion",
+            "instrument": {
+              "type": "drumkit",
+              "kit": "assets/orbital-foundry/kit.json"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.6,
+                    "pitch": "metallic-strike",
+                    "chokeGroup": "metal"
+                  },
+                  {
+                    "start": "1:1+1/8",
+                    "velocity": 0.6,
+                    "pitch": "machine-tick",
+                    "chokeGroup": "metal"
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "pitched-sliced-hook",
+      "project": {
+        "formatVersion": 1,
+        "title": "pitched-sliced-hook",
+        "bpm": 140,
+        "timeSignature": "4/4",
+        "bars": 1,
+        "render": {
+          "duration": {
+            "bars": 1
+          },
+          "tail": "none"
+        },
+        "tracks": [
+          {
+            "id": "hook",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/glasshouse/04-ghost-vox.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.6,
+                    "offsetSeconds": 0.12,
+                    "endSeconds": 0.36,
+                    "gate": "1/16"
+                  },
+                  {
+                    "start": "1:2",
+                    "velocity": 0.6,
+                    "offsetSeconds": 0.24,
+                    "endSeconds": 0.55,
+                    "playbackRate": 1.498307,
+                    "gate": "1/8"
+                  },
+                  {
+                    "start": "1:3",
+                    "velocity": 0.6,
+                    "offsetSeconds": 0.3,
+                    "endSeconds": 0.75,
+                    "playbackRate": 2,
+                    "gate": "1/16"
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "swing-offsets",
+      "project": {
+        "formatVersion": 1,
+        "title": "swing-offsets",
+        "bpm": 140,
+        "timeSignature": "4/4",
+        "bars": 1,
+        "render": {
+          "duration": {
+            "bars": 1
+          },
+          "tail": "none"
+        },
+        "tracks": [
+          {
+            "id": "swing",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/glasshouse/09-pixel-hat.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.65
+                  },
+                  {
+                    "start": "1:1+1/6",
+                    "velocity": 0.35
+                  },
+                  {
+                    "start": "1:2",
+                    "velocity": 0.65
+                  },
+                  {
+                    "start": "1:2+1/6",
+                    "velocity": 0.35
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "gain-pumping",
+      "project": {
+        "formatVersion": 1,
+        "title": "gain-pumping",
+        "bpm": 140,
+        "timeSignature": "4/4",
+        "bars": 1,
+        "render": {
+          "duration": {
+            "bars": 1
+          },
+          "tail": "none"
+        },
+        "tracks": [
+          {
+            "id": "bass",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/glasshouse/07-sub-cs.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.6,
+                    "gate": "1/2"
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            },
+            "automation": {
+              "gainDb": [
+                {
+                  "at": {
+                    "musical": "1:1"
+                  },
+                  "value": -24,
+                  "transition": "linear"
+                },
+                {
+                  "at": {
+                    "musical": "1:1+1/8"
+                  },
+                  "value": -9
+                },
+                {
+                  "at": {
+                    "musical": "1:2"
+                  },
+                  "value": -24,
+                  "transition": "linear"
+                },
+                {
+                  "at": {
+                    "musical": "1:2+1/8"
+                  },
+                  "value": -9
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "glide-riser",
+      "project": {
+        "formatVersion": 1,
+        "title": "glide-riser",
+        "bpm": 140,
+        "timeSignature": "4/4",
+        "bars": 1,
+        "render": {
+          "duration": {
+            "bars": 1
+          },
+          "tail": "none"
+        },
+        "tracks": [
+          {
+            "id": "riser",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/glasshouse/04-ghost-vox.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.6,
+                    "playbackRate": 0.25,
+                    "glide": {
+                      "to": 1,
+                      "duration": "1/4"
+                    },
+                    "gate": "1/4",
+                    "envelope": {
+                      "attackSeconds": 0.02,
+                      "releaseSeconds": 0.02
+                    }
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "glide-tape-stop",
+      "project": {
+        "formatVersion": 1,
+        "title": "glide-tape-stop",
+        "bpm": 140,
+        "timeSignature": "4/4",
+        "bars": 1,
+        "render": {
+          "duration": {
+            "bars": 1
+          },
+          "tail": "none"
+        },
+        "tracks": [
+          {
+            "id": "stop",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/glasshouse/04-ghost-vox.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.6,
+                    "glide": {
+                      "to": 0.25,
+                      "duration": "1/4"
+                    },
+                    "gate": "1/4",
+                    "envelope": {
+                      "releaseSeconds": 0.03
+                    }
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "filter-transition",
+      "project": {
+        "formatVersion": 1,
+        "title": "filter-transition",
+        "bpm": 140,
+        "timeSignature": "4/4",
+        "bars": 1,
+        "render": {
+          "duration": {
+            "bars": 1
+          },
+          "tail": "none"
+        },
+        "tracks": [
+          {
+            "id": "filtered",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/glasshouse/04-ghost-vox.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.6,
+                    "gate": "1/2"
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            },
+            "effects": [
+              {
+                "type": "lowpass",
+                "frequencyHz": 600
+              }
+            ],
+            "automation": {
+              "gainDb": [
+                {
+                  "at": {
+                    "musical": "1:1"
+                  },
+                  "value": -9,
+                  "transition": "linear"
+                },
+                {
+                  "at": {
+                    "musical": "1:2"
+                  },
+                  "value": -60
+                }
+              ]
+            }
+          },
+          {
+            "id": "bright",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/glasshouse/04-ghost-vox.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.6,
+                    "gate": "1/2"
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            },
+            "effects": [
+              {
+                "type": "highpass",
+                "frequencyHz": 600
+              }
+            ],
+            "automation": {
+              "gainDb": [
+                {
+                  "at": {
+                    "musical": "1:1"
+                  },
+                  "value": -60,
+                  "transition": "linear"
+                },
+                {
+                  "at": {
+                    "musical": "1:2"
+                  },
+                  "value": -9
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "master-saturation",
+      "project": {
+        "formatVersion": 1,
+        "title": "master-saturation",
+        "bpm": 140,
+        "timeSignature": "4/4",
+        "bars": 1,
+        "render": {
+          "duration": {
+            "bars": 1
+          },
+          "tail": "none"
+        },
+        "tracks": [
+          {
+            "id": "hook",
+            "instrument": {
+              "type": "sampler",
+              "sample": "assets/glasshouse/04-ghost-vox.wav"
+            },
+            "patterns": [
+              {
+                "id": "phrase",
+                "bars": 1,
+                "notes": [
+                  {
+                    "start": "1:1",
+                    "velocity": 0.6,
+                    "gate": "1/4"
+                  }
+                ]
+              }
+            ],
+            "clips": [
+              {
+                "bar": 1,
+                "pattern": "phrase"
+              }
+            ],
+            "mix": {
+              "gainDb": -9
+            }
+          }
+        ],
+        "master": {
+          "gainDb": -3,
+          "effects": [
+            {
+              "type": "saturation",
+              "driveDb": 3,
+              "mix": 0.2
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

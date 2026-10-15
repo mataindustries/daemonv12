@@ -88,7 +88,8 @@ perceived scale; keep this evaluation explicit.
 Inspect kick and bass separately, together and in the master. Mark their attacks
 and decays: sustained bass may cover the kick's onset, or an early-ending bass
 voice may leave the main impact unsupported. Check slowed samples and repeated
-triggers for accumulating tails. Samples have no automatic mono/choke behavior;
+triggers for accumulating tails. Use authored gates, slices, envelopes and
+track-local choke groups to control sampled tails; grouped releases can overlap and do not choke other tracks;
 consult [engine notes](daemonv12-production-notes.md).
 
 Energy around **120–500 Hz** can create weight, warmth and body. It is not a

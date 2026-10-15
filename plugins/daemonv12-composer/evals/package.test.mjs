@@ -9,7 +9,7 @@ import { checkFixtureCases, checkIsolation, checkLinks, checkText, loadValidator
 
 const { Ajv, YAML } = loadValidators(process.env.COMPOSER_VALIDATORS_DIR);
 const schema = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'fixtures/plugin.schema.json'), 'utf8'));
-const validManifest = { $schema: schema.$id, name: 'daemonv12-composer', version: '0.2.0' };
+const validManifest = { $schema: schema.$id, name: 'daemonv12-composer', version: '0.3.0' };
 const validate = new Ajv({ strict: true, allErrors: true }).compile(schema);
 
 test('official schema accepts the manifest and rejects malformed nested fields', () => {
