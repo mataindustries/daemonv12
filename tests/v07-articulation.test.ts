@@ -289,3 +289,45 @@ test('V0.7 overlapping voices: per-voice quantization and addition remain indepe
   // At frame 2, the newly attacking voice is silent; the first voice has reached unity.
   assert.equal(floating[4], Math.round(977 * 0.51));
 });
+
+// Performance guard without wall-clock assertions: gain work is counted, not timed.
+test('V0.7 mixer cost: articulated voices evaluate gain once per output frame, independent of source channels', () => {
+  const reads = (shape: VoiceArticulation) => {
+    let count = 0;
+    const counted = new Proxy(shape, { get(target, key, receiver) { if (key === 'release') count++; return Reflect.get(target, key, receiver); } });
+    return { counted, count: () => count };
+  };
+  const shape = articulation({ attack: 3, release: 4 });
+  const single = reads(shape); voiceGain(single.counted, 5, 40);
+  const perCall = single.count();
+  assert.ok(perCall >= 1, 'voiceGain reads the release field on every evaluation');
+  // Fixed per-voice validation reads are independent of length, so the difference between two
+  // lengths isolates the per-frame gain work exactly.
+  const total = (mix: (trigger: PcmTrigger) => unknown, frames: number, channels: 1 | 2) => {
+    const counter = reads(shape);
+    mix({ frame: 0, pcm: dc(frames, channels), velocity: 0.5, articulation: counter.counted });
+    return counter.count();
+  };
+  for (const channels of [1, 2] as const) {
+    assert.equal(total(t => mixPcm([t], 80), 80, channels) - total(t => mixPcm([t], 40), 40, channels), perCall * 40, `mixPcm ${channels}-channel source: one evaluation per frame, not per channel`);
+    assert.equal(total(t => sumFloat([t], 80), 80, channels) - total(t => sumFloat([t], 40), 40, channels), perCall * 40, `sumFloat ${channels}-channel source: one evaluation per frame, not per channel`);
+  }
+});
+
+test('V0.7 compatibility: unarticulated voices keep the historical per-voice rounding in both mixers, with and without performance', () => {
+  const values = Array.from({ length: 64 }, (_, i) => Math.round(20000 * Math.sin(i * 0.37)) - (i % 3) * 7);
+  const naive = (voice: ArrayLike<number>, channels: 1 | 2, velocity: number, frames: number, at: number, total: number) => {
+    const out = new Float64Array(total * 2);
+    for (let i = 0; i < frames; i++) for (let c = 0; c < 2; c++) out[(at + i) * 2 + c] += Math.round(voice[i * channels + (channels === 1 ? 0 : c)]! * velocity);
+    return out;
+  };
+  for (const channels of [1, 2] as const) for (const velocity of [0.37, 1, 0.8]) for (const playback of [undefined, { rate: 1.5, offset: 3 }] as (VoicePlayback | undefined)[]) {
+    const pcm = pcmOf(channels === 1 ? values : [...values, ...values.slice().reverse()], channels);
+    const voice = voiceSamples(pcm, playback), frames = voice.length / channels, at = 5, total = at + frames + 4;
+    const expected = naive(voice, channels, velocity, frames, at, total);
+    const trigger: PcmTrigger = { frame: at, pcm, velocity, ...(playback ? { playback } : {}) };
+    assert.deepEqual(Array.from(sumFloat([trigger], total)), Array.from(expected), `sumFloat ${channels}ch v=${velocity} ${playback ? 'performed' : 'plain'}`);
+    const mixed = decodePcm(mixPcm([trigger], total).bytes).pcm!;
+    assert.deepEqual(Array.from(mixed.samples), Array.from(expected, v => Math.max(-32768, Math.min(32767, v))), `mixPcm ${channels}ch v=${velocity} ${playback ? 'performed' : 'plain'}`);
+  }
+});

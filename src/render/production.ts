@@ -21,8 +21,10 @@ export function sumFloat(triggers: PcmTrigger[], minimumFrames: number, maximumF
   for (const { pcm, frame, velocity, playback, articulation } of triggers) {
     // A performed voice is only computed up to the permitted boundary.
     const voice = voiceSamples(pcm, playback, frames - frame, articulation);
-    for (let i = 0; i < Math.min(voice.length / pcm.channels, frames-frame); i++) for (let c = 0; c < 2; c++) {
-      sum[(frame + i) * 2 + c]! += Math.round(voice[i * pcm.channels + (pcm.channels === 1 ? 0 : c)]! * velocity * voiceGain(articulation,i,voice.length/pcm.channels));
+    const count = voice.length / pcm.channels;
+    for (let i = 0; i < Math.min(count, frames-frame); i++) {
+      const gain = articulation ? voiceGain(articulation, i, count) : 1;
+      for (let c = 0; c < 2; c++) sum[(frame + i) * 2 + c]! += Math.round(voice[i * pcm.channels + (pcm.channels === 1 ? 0 : c)]! * velocity * gain);
     }
   }
   return sum;

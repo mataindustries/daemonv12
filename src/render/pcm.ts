@@ -31,10 +31,13 @@ export function mixPcm(triggers: PcmTrigger[], minimumFrames: number): { bytes: 
   if (!Number.isSafeInteger(frames) || frames < 1 || frames > MAX_PCM_FRAMES) throw new RangeError('Sample rendering supports at most 600 seconds including tails.');
   const sum = new Float64Array(frames*2);
   for(const trigger of triggers) {
-    const {pcm,frame,velocity} = trigger, voice = voiceSamples(pcm,trigger.playback,Infinity,trigger.articulation);
-    for(let i=0;i<voice.length/pcm.channels;i++) for(let c=0;c<2;c++) {
-      const sample=voice[i*pcm.channels+(pcm.channels===1?0:c)]!;
-      sum[(frame+i)*2+c]! += Math.round(sample*velocity*voiceGain(trigger.articulation,i,voice.length/pcm.channels));
+    const {pcm,frame,velocity,articulation} = trigger, voice = voiceSamples(pcm,trigger.playback,Infinity,articulation), count = voice.length/pcm.channels;
+    for(let i=0;i<count;i++) {
+      const gain = articulation ? voiceGain(articulation,i,count) : 1;
+      for(let c=0;c<2;c++) {
+        const sample=voice[i*pcm.channels+(pcm.channels===1?0:c)]!;
+        sum[(frame+i)*2+c]! += Math.round(sample*velocity*gain);
+      }
     }
   }
   let clippedSamples=0;
