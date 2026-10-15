@@ -2,7 +2,7 @@
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, renameSync, mkdirSync, rmSync, rmdirSync } from 'node:fs';
 import { basename, join } from 'node:path';
-import { decodePcm, mixPcm, pcmRenderer, PCM_RATE, MAX_PCM_FRAMES, type AudioProcessor, gainPan, automatedGainPan, fitFloat, applyDucking, sumFloat, quantize, padPcm, productionRenderer, dynamicsRenderer, voiceFrames, voiceCost, playbackRenderer, PLAYBACK_WORK_LIMIT, PLAYBACK_VOICE_BYTES_LIMIT, type PcmTrigger, type AudioRenderer, type Soundfont } from './render/index.ts';
+import { decodePcm, mixPcm, pcmRenderer, PCM_RATE, MAX_PCM_FRAMES, type AudioProcessor, gainPan, automatedGainPan, fitFloat, applyDucking, sumFloat, quantize, padPcm, productionRenderer, dynamicsRenderer, voiceFrames, voiceCost, playbackRenderer, articulationRenderer, PLAYBACK_WORK_LIMIT, PLAYBACK_VOICE_BYTES_LIMIT, type PcmTrigger, type AudioRenderer, type Soundfont } from './render/index.ts';
 import { formatDuration, ticksToFrames, ticksToSeconds } from './timing/musical-time.ts';
 import { secondsToFrames } from './timing/wall-time.ts';
 import { renderPlan, automationFrames } from './timing/render-plan.ts';
@@ -24,19 +24,50 @@ function wavIdentity(file:string,bytes:Buffer,frames:number) {
   return {file,sha256:hash(bytes),bytes:bytes.length,frames,sampleRate:PCM_RATE,channels:2,bitsPerSample:16,durationSeconds:Number((frames/PCM_RATE).toFixed(6))};
 }
 // A sample track's triggers: absolute frames and, for performed notes, playback and provenance.
-function sampleTriggers(c:Compilation,track:TimelineTrack) {
+function sampleTriggers(c:Compilation,track:TimelineTrack,cap=Infinity) {
   const instrument=track.instrument as Exclude<TimelineTrack['instrument'],{type:'gm'}>,timeline=c.timeline!;
-  return track.notes.map(note=>{
+  const triggers=track.notes.map(note=>{
     const file=instrument.type==='sampler'?instrument.sample:c.kits!.get(instrument.kit)!.find(e=>e.pitch===note.pitch)!.sample;
     const frame=ticksToFrames(note.tick,timeline.usPerQuarter),pcm=c.assets!.get(file)!.pcm!,authored=note.playback;
-    if(!authored)return {file,tick:note.tick,frame,velocity:note.velocity,pcm};
     // A glide ends on the absolute frame of its musical end, like every other musical boundary.
-    const glide=authored.glide&&{to:authored.glide.to,frames:ticksToFrames(note.tick+authored.glide.durationTicks,timeline.usPerQuarter)-frame};
-    const playback={rate:authored.rate,offset:secondsToFrames(authored.offsetSeconds),...(glide?{glide}:{})};
-    return {file,tick:note.tick,frame,velocity:note.velocity,pcm,playback,record:{rate:authored.rate,
-      ...(authored.offsetSeconds?{offset:{seconds:authored.offsetSeconds,frames:playback.offset}}:{}),
-      ...(glide?{glide:{to:glide.to,duration:formatDuration(authored.glide!.durationTicks),frames:glide.frames}}:{}),voiceFrames:voiceFrames(pcm,playback)}};
+    const glide=authored?.glide&&{to:authored.glide.to,frames:ticksToFrames(note.tick+authored.glide.durationTicks,timeline.usPerQuarter)-frame};
+    const playback=authored?{rate:authored.rate,offset:secondsToFrames(authored.offsetSeconds),...(glide?{glide}:{})}:undefined;
+    const a=note.articulation,gate=a?.gateTicks===undefined?undefined:ticksToFrames(note.tick+a.gateTicks,timeline.usPerQuarter)-frame;
+    const articulation=a?{attack:secondsToFrames(a.attackSeconds),release:secondsToFrames(a.releaseSeconds),
+      ...(a.endSeconds===undefined?{}:{end:secondsToFrames(a.endSeconds)}),...(gate===undefined?{}:{stop:gate})}:undefined;
+    const articulationRecord:Record<string,unknown>|undefined=a?{
+      ...(a.endSeconds===undefined?{}:{sourceEnd:{seconds:a.endSeconds,frames:articulation!.end}}),
+      ...(gate===undefined?{}:{gate:{duration:formatDuration(a.gateTicks!),frames:gate}}),
+      envelope:{attackSeconds:a.attackSeconds,attackFrames:articulation!.attack,releaseSeconds:a.releaseSeconds,releaseFrames:articulation!.release},
+      ...(a.chokeGroup?{chokeGroup:a.chokeGroup}:{}),
+    }:undefined;
+    return {file,tick:note.tick,frame,velocity:note.velocity,pcm,playback,articulation,articulationRecord,chokeGroup:a?.chokeGroup,
+      record:authored?{rate:authored.rate,
+        ...(authored.offsetSeconds?{offset:{seconds:authored.offsetSeconds,frames:playback!.offset}}:{}),
+        ...(glide?{glide:{to:glide.to,duration:formatDuration(authored.glide!.durationTicks),frames:glide.frames}}:{}),voiceFrames:voiceFrames(pcm,playback)}:undefined};
   });
+  // Reverse batches keep equal-frame onsets together and find the first later group
+  // onset in O(notes), using only metadata. Budget and audio share this exact plan.
+  const next=new Map<string,number>();
+  for(let last=triggers.length-1;last>=0;) {
+    let first=last;while(first>0 && triggers[first-1]!.frame===triggers[last]!.frame)first--;
+    for(let i=first;i<=last;i++) {
+      const t=triggers[i]!,future=t.chokeGroup?next.get(t.chokeGroup):undefined;
+      if(future!==undefined && t.articulation) {
+        const stop=future-t.frame;
+        if(stop<(t.articulation.stop??Infinity) && stop<voiceFrames(t.pcm,t.playback,t.articulation)) {
+          t.articulation.stop=stop;t.articulationRecord!.choke={frame:future,frames:stop};
+        }
+      }
+    }
+    for(let i=first;i<=last;i++)if(triggers[i]!.chokeGroup)next.set(triggers[i]!.chokeGroup!,triggers[i]!.frame);
+    last=first-1;
+  }
+  for(const t of triggers)if(t.articulationRecord) {
+    const frames=voiceFrames(t.pcm,t.playback,t.articulation);
+    t.articulationRecord.voiceFrames=frames;t.articulationRecord.renderedFrames=Math.max(0,Math.min(frames,cap-t.frame));
+  }
+  return triggers;
 }
 // Sample-performance render budget from project and WAV metadata alone, checked at compilation
 // so validate, render and MCP reject a pathological project before any audio work. It charges
@@ -50,12 +81,12 @@ export function playbackBudget(c:Compilation,production:boolean,limits={work:PLA
   let taps=0;
   for(const track of c.timeline!.tracks) {
     if(track.instrument.type==='gm')continue;
-    for(const t of sampleTriggers(c,track)) {
-      const cost=voiceCost(t.pcm,t.playback,cap-t.frame);
+    for(const t of sampleTriggers(c,track,cap)) {
+      const cost=voiceCost(t.pcm,t.playback,cap-t.frame,t.articulation);
       if(cost.bytes>limits.bytes)return fail(`tracks[${track.index}]`,'performedVoiceBytes',{bytes:cost.bytes,limit:limits.bytes,tick:t.tick,file:t.file},
         `The project exceeds the sample-performance render budget: one performed voice of ${t.file} would need a ${Math.ceil(cost.bytes/1048576)} MiB buffer; the limit is ${limits.bytes/1048576} MiB per voice.`,
         `performed voices of at most ${limits.bytes/1048576} MiB each (frames x channels x 8 bytes)`,
-        'Shorten the voice: use a less extreme slow playbackRate, a later offsetSeconds, a shorter or mono source, or render.duration to end it sooner.');
+        'Shorten the voice: use gate, endSeconds, a less extreme slow playbackRate, a later offsetSeconds, a shorter or mono source, or render.duration to end it sooner.');
       taps+=cost.work;
       if(taps>limits.work)return fail(`tracks[${track.index}]`,'interpolationTaps',{taps:`more than ${limits.work}`,limit:limits.work},
         `The project exceeds the sample-performance render budget: its transformed sample voices need more than ${limits.work.toLocaleString('en-US')} interpolation steps in total (the limit was crossed in this track).`,
@@ -98,7 +129,7 @@ export async function renderSampledProject(request:Request):Promise<{manifest?:R
     return output;
   }
   const sampleTracks:Record<string,unknown>[]=[];
-  let performed=false;
+  let performed=false,articulated=false;
   for(const track of timeline.tracks) {
     const file=request.stemFileName(track.id),wavPath=join(stemDir,file);
     if(track.instrument.type==='gm') {
@@ -118,15 +149,16 @@ export async function renderSampledProject(request:Request):Promise<{manifest?:R
       stems.push({trackId:track.id,trackIndex:track.index,midi:{sha256:hash(stemMidi),bytes:stemMidi.length,notes:track.notes.length},renderer:rendered.renderer,wav:wavIdentity(`${basename(stemDir)}/${file}`,bytes,frames)});
       rmSync(midiPath);continue;
     }
-    const instrument=track.instrument,triggers=sampleTriggers(c,track);
-    if(triggers.some(t=>Math.min(t.frame+voiceFrames(t.pcm,t.playback),cap??Infinity)>MAX_PCM_FRAMES))return {diagnostics:[diagnostic('RENDERER_FAILED',`tracks[${track.index}]`,undefined,'sample render of at most 600 seconds including tails')]};
+    const instrument=track.instrument,triggers=sampleTriggers(c,track,cap??Infinity);
+    if(triggers.some(t=>Math.min(t.frame+voiceFrames(t.pcm,t.playback,t.articulation),cap??Infinity)>MAX_PCM_FRAMES))return {diagnostics:[diagnostic('RENDERER_FAILED',`tracks[${track.index}]`,undefined,'sample render of at most 600 seconds including tails')]};
     performed||=triggers.some(t=>t.playback);
+    articulated||=triggers.some(t=>t.articulation);
     const mixed=production?await processTrack(sumFloat(triggers,minimumFrames,cap),track.index):mixPcm(triggers,minimumFrames);
     if(!mixed)return {diagnostics};
     // The master sums the same quantized track PCM exported as stems. GM remains one
     // full-score FluidSynth render, preserving the V0.1 master/stem relationship.
     if(!production)master.push({frame:0,velocity:1,pcm:decodePcm(mixed.bytes).pcm!});
-    const source={instrument,triggers:triggers.map(({file,tick,frame,velocity,record})=>({file,tick,frame,velocity,...(record?{playback:record}:{})})),clippedSamples:mixed.clippedSamples};
+    const source={instrument,triggers:triggers.map(({file,tick,frame,velocity,record,articulationRecord})=>({file,tick,frame,velocity,...(record?{playback:record}:{}),...(articulationRecord?{articulation:articulationRecord}:{})})),clippedSamples:mixed.clippedSamples};
     sampleTracks.push({trackId:track.id,trackIndex:track.index,...source});
     if(request.stems || production) {
       write(wavPath,mixed.bytes);
@@ -166,7 +198,7 @@ export async function renderSampledProject(request:Request):Promise<{manifest?:R
     soundfont:soundfont?{file:soundfont.file,sha256:soundfont.sha256,bytes:soundfont.bytes}:null,
     samples:{timing:dynamics?'nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000':'nearest frame, ties later; ceil project end; absolute tick * usPerQuarter * 44100 / 960000000',
       assets:Array.from(c.assets!).sort(([a],[b])=>a<b?-1:a>b?1:0).map(([file,asset])=>({file,sha256:hash(asset.bytes),bytes:asset.bytes.length,...(asset.pcm?{frames:asset.pcm.frames,channels:asset.pcm.channels,sampleRate:PCM_RATE,bitsPerSample:16}:{kind:'drumkit'})})),tracks:sampleTracks,
-      ...(performed?{playback:playbackRenderer}:{})},
+      ...(performed?{playback:playbackRenderer}:{}),...(articulated?{articulation:articulationRenderer}:{})},
     ...(dynamics?{timeline:{authoredDurationTicks:timeline.endTick,authoredFrames:plan.authoredFrames,duration:project.render?.duration??'auto',tail:project.render?.tail??'auto',requestedFinalFrames:plan.outputFrames,audioEndFrames:plan.audioEndFrames,resultingFrames:mixed.frames,rounding:'nearest sample frame; ties later; combined musical timeline + explicit tail rounded once'}}:{}),
     ...(production?{production:{processor:request.processor!.identity,...(dynamics?{runtime:{name:'node',version:process.version}}:{}),tracks:processedTracks,master:{gainDb:c.project!.master?.gainDb??0,effects:c.project!.master?.effects??[],...(duckingProvenance?{ducking:duckingProvenance}:{}),clippedSamples:mixed.clippedSamples,preClipPeakDbfs:'preClipPeakDbfs' in mixed?mixed.preClipPeakDbfs:null},stemAlignment:dynamics?'trim/pad to master frames; post-track, pre-master gain/effects/ducking':'zero-padded to master frames; post-track, pre-master processing'}}:{}),
     mix:{clippedSamples:mixed.clippedSamples,gm:production?'sum processed independent tracks':'full-score render',samples:'sum exported track PCM'},

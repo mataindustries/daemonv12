@@ -1,3 +1,5 @@
+import type { SamplePlayback, SampleArticulation } from '../project/types.ts';
+
 export interface Timeline {
   title: string; ppq: 960; bpm: number; usPerQuarter: number;
   timeSignature: { numerator: number; denominator: number };
@@ -6,4 +8,4 @@ export interface Timeline {
 }
 export interface TimelineTrack { id: string; index: number; instrument: { type: 'gm'; program: number } | { type: 'sampler'; sample: string } | { type: 'drumkit'; kit: string }; notes: TimelineNote[] }
 export interface TimelineNote { tick: number; durationTicks: number; pitch: number; velocity: number;
-  playback?: { rate: number; offsetSeconds: number; glide?: { to: number; durationTicks: number } } }
+  playback?: SamplePlayback; articulation?: SampleArticulation }

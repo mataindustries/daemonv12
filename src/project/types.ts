@@ -27,4 +27,9 @@ export type Instrument = { type: 'gm'; program: number; programName: string }
 export interface Pattern { id: string; description: string | null; bars: number; notes: Note[] }
 // Present only when a sampler/drum-kit note departs from rate 1, offset 0 and no glide.
 export interface SamplePlayback { rate: number; offsetSeconds: number; glide?: { to: number; durationTicks: number } }
-export interface Note { startTicks: number; durationTicks: number; pitches: number[]; velocity: number; playback?: SamplePlayback }
+// Present only when a sampler/drum-kit note explicitly requests articulation.
+export interface SampleArticulation {
+  endSeconds?: number; gateTicks?: number; attackSeconds: number; releaseSeconds: number; chokeGroup?: string;
+}
+export interface Note { startTicks: number; durationTicks: number; pitches: number[]; velocity: number;
+  playback?: SamplePlayback; articulation?: SampleArticulation }

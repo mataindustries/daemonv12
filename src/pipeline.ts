@@ -57,20 +57,34 @@ function compileWithAssets(loaded: LoadResult, path: string): Compilation {
       }
     }
   }
-  // A sample offset must start inside the WAV that its note actually plays. An offset at or past
-  // the end would be a silent event, so it is a project error rather than an empty voice.
+  // Source bounds are checked for every authored note, including unused patterns, against the
+  // WAV its hit actually plays. End is exclusive; rounded-empty slices are project errors.
   for (const [i,track] of compilation.project.tracks.entries()) {
     const instrument=track.instrument;
     if(instrument.type==='gm')continue;
     track.patterns.forEach((pattern,j)=>pattern.notes.forEach((note,k)=>{
-      if(!note.playback?.offsetSeconds)return;
+      if(!note.playback?.offsetSeconds && note.articulation?.endSeconds===undefined)return;
       const file=instrument.type==='sampler'?instrument.sample:kitData.kits.get(instrument.kit)!.find(e=>e.pitch===note.pitches[0])!.sample;
-      const pcm=assets.get(file)?.pcm,frame=secondsToFrames(note.playback.offsetSeconds);
-      if(!pcm || frame<pcm.frames)return;
-      // Largest microsecond offset that still rounds (ties later) to the final source frame.
-      const latest=Number((BigInt(2*pcm.frames-1)*1000000n-1n)/88200n)/1e6;
-      compilation.diagnostics.push(diagnostic('OUT_OF_RANGE',`tracks[${i}].patterns[${j}].notes[${k}].offsetSeconds`,note.playback.offsetSeconds,
-        `an offset before the end of ${file} (${pcm.frames} frames, ${(pcm.frames/44100).toFixed(6)} s); this one resolves to frame ${frame}`,`Use at most ${latest} seconds.`));
+      const pcm=assets.get(file)?.pcm,offsetSeconds=note.playback?.offsetSeconds??0,frame=secondsToFrames(offsetSeconds);
+      if(!pcm)return;
+      const at=`tracks[${i}].patterns[${j}].notes[${k}]`;
+      if(frame>=pcm.frames) {
+        // Largest microsecond offset that still rounds (ties later) to the final source frame.
+        const latest=Number((BigInt(2*pcm.frames-1)*1000000n-1n)/88200n)/1e6;
+        compilation.diagnostics.push(diagnostic('OUT_OF_RANGE',`${at}.offsetSeconds`,offsetSeconds,
+          `an offset before the end of ${file} (${pcm.frames} frames, ${(pcm.frames/44100).toFixed(6)} s); this one resolves to frame ${frame}`,`Use at most ${latest} seconds.`));
+      }
+      const endSeconds=note.articulation?.endSeconds;
+      if(endSeconds===undefined)return;
+      const end=secondsToFrames(endSeconds);
+      if(end>frame && end<=pcm.frames)return;
+      // Endpoints may name frame F, unlike offsets. The next frame's half-way tie is excluded.
+      const latest=Math.min(600,Number((BigInt(2*pcm.frames+1)*1000000n-1n)/88200n)/1e6);
+      const earliest=Number((BigInt(2*frame+1)*1000000n+88199n)/88200n)/1e6;
+      const hint=earliest<=latest?`Use endSeconds from ${earliest} through ${latest} seconds; it must resolve after offsetSeconds.`
+        :'Reduce offsetSeconds to start inside the source, then choose endSeconds after it and no later than the source end.';
+      compilation.diagnostics.push(diagnostic('OUT_OF_RANGE',`${at}.endSeconds`,endSeconds,
+        `an exclusive source end after offset frame ${frame} and at or before the end of ${file} (${pcm.frames} frames, ${(pcm.frames/44100).toFixed(6)} s); this one resolves to frame ${end}`,hint));
     }));
   }
   const ducking=compilation.project.master?.ducking;

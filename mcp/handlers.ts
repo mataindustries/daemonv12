@@ -176,7 +176,7 @@ export class DaemonTools {
 }
 function compactManifest(manifest: Record<string, unknown>) {
   const {samples, stems, ...rest} = manifest;
-  const {assets, playback} = (samples ?? {}) as {assets?: unknown; playback?: unknown};
-  return {...rest, ...(samples ? {samples: {assets, ...(playback ? {playback} : {})}} : {}),
+  const {assets, playback, articulation} = (samples ?? {}) as {assets?: unknown; playback?: unknown; articulation?: unknown};
+  return {...rest, ...(samples ? {samples: {assets, ...(playback ? {playback} : {}), ...(articulation ? {articulation} : {})}} : {}),
     ...(Array.isArray(stems) ? {stems: stems.map(({sample: _, ...stem}) => stem)} : {})};
 }

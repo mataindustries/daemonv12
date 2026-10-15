@@ -16,6 +16,7 @@ export function resolve(project: Project): { timeline: Timeline | null; diagnost
         pattern.notes.forEach((note, ni) => note.pitches.forEach((pitch, member) => notes.push({
           tick: (clip.bar - 1) * barTicks + note.startTicks, durationTicks: note.durationTicks, pitch, velocity: note.velocity,
           ...(note.playback ? { playback: note.playback } : {}),
+          ...(note.articulation ? { articulation: note.articulation } : {}),
           path: `tracks[${index}].patterns[${pi}].notes[${ni}]`, clip: ci, pattern: pi, note: ni, member,
         })));
       });
@@ -33,7 +34,8 @@ export function resolve(project: Project): { timeline: Timeline | null; diagnost
         if (!prev || note.tick + note.durationTicks > prev.tick + prev.durationTicks) previous.set(note.pitch, note);
       }
       return { id: track.id, index, instrument: track.instrument.type === 'gm' ? { type: 'gm' as const, program: track.instrument.program } : track.instrument,
-        notes: notes.map(({ tick, durationTicks, pitch, velocity, playback }) => ({ tick, durationTicks, pitch, velocity, ...(playback ? { playback } : {}) })) };
+        notes: notes.map(({ tick, durationTicks, pitch, velocity, playback, articulation }) => ({ tick, durationTicks, pitch, velocity,
+          ...(playback ? { playback } : {}), ...(articulation ? { articulation } : {}) })) };
     }),
   };
   return { timeline: diagnostics.length ? null : timeline, diagnostics };

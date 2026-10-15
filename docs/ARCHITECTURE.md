@@ -3,9 +3,22 @@
 > **DaemonV12: 12 instruments for agents.** A headless, deterministic music engine. AI agents drive it
 > through project files, a CLI and stdio MCP tools. It needs no DAW, GUI, browser or MIDI hardware.
 
-Status: V0.6 implemented, engine `0.6.0`, project `formatVersion: 1`.
+Status: V0.7 implemented, engine `0.7.0`, project `formatVersion: 1`.
 Normative details: [V0_SPEC.md](V0_SPEC.md). Phase plan: [ROADMAP.md](ROADMAP.md).
 Implementation steps: [CODEX_HANDOFF.md](CODEX_HANDOFF.md).
+
+V0.7 adds optional `endSeconds`, musical `gate`, per-voice `envelope` and
+track-local `chokeGroup` at the same note/PCM boundary. Asset-aware validation
+checks exclusive source ends after frame rounding. `sample-render.ts` resolves
+gate frames from absolute musical boundaries and plans chokes in equal-frame
+batches; budget checks and audio consume the same resolved stops. Playback keeps
+the V0.6 position and interpolation functions, restricts explicitly sliced taps
+to `[offset,end)`, and computes only the frames permitted by slice, stop and
+output boundary. The mixers apply linear attack/release gain before velocity
+rounding, without allocating an envelope buffer or changing untouched triggers.
+The production order, exact-duration alignment and nine MCP tools are unchanged.
+[V0_7_SAMPLER_ARTICULATION.md](V0_7_SAMPLER_ARTICULATION.md) defines defaults,
+endpoint fades, tiny-slice behavior and rounding.
 
 V0.6 adds sample performance at the existing seams. Validation accepts optional
 `playbackRate`, `offsetSeconds` and a closed `glide` on sampler/drum-kit notes and

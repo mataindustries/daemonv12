@@ -1,6 +1,6 @@
 {
   "name": "daemonv12",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Headless, deterministic music engine for AI agents: JSON projects to MIDI, WAV, MP3 and stems, with a nine-tool stdio MCP server.",
   "private": true,
   "keywords": [
@@ -28,7 +28,9 @@
     "url": "git+https://github.com/mataindustries/daemonv12.git"
   },
   "homepage": "https://github.com/mataindustries/daemonv12#readme",
-  "bugs": { "url": "https://github.com/mataindustries/daemonv12/issues" },
+  "bugs": {
+    "url": "https://github.com/mataindustries/daemonv12/issues"
+  },
   "type": "module",
   "bin": {
     "daemonv12": "bin/daemonv12.js",
@@ -61,7 +63,10 @@
     "scripts/bootstrap-audio-tools.sh",
     "scripts/audio-tools-linux-64.lock",
     "CHANGELOG.md",
-    "SECURITY.md"
+    "SECURITY.md",
+    "docs/V0_7_SAMPLER_ARTICULATION.md",
+    "examples/one-sound-before.json",
+    "examples/one-sound-after.json"
   ],
   "engines": {
     "node": ">=22.18.0"
@@ -93,7 +98,9 @@
     "fixtures:glasshouse": "node scripts/generate-glasshouse.ts && node scripts/create-glasshouse-audition.ts",
     "demo:glasshouse": "node bin/daemonv12.js render examples/glasshouse-audition.json --out-dir renders/glasshouse --stems --format wav,mp3",
     "demo:ghost-shift": "node bin/daemonv12.js render examples/ghost-shift.json --out-dir renders/ghost-shift --stems --format wav,mp3",
-    "test:v06": "node --test \"tests/v06*.test.ts\""
+    "test:v06": "node --test \"tests/v06*.test.ts\"",
+    "test:v07": "node --test \"tests/v07*.test.ts\"",
+    "demo:one-sound": "node scripts/verify-v07.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.3.1",

@@ -4,6 +4,29 @@ Notable changes to DaemonV12. Every release reads project `formatVersion: 1`, an
 existing projects keep their rendered output unless an entry says otherwise. No
 version has been tagged or published to npm yet.
 
+## 0.7.0: sampler articulation (2026-10-13)
+
+Sampler and drum-kit notes gain four optional controls. Projects without them
+retain their historical audio bytes under the same pinned toolchain; V0.6
+playback rate, glide, offset and interpolation are unchanged.
+
+- **Source slices.** `endSeconds` names an exclusive endpoint in the original WAV.
+  Slice taps read silence outside the selected region; no derivative WAV is made.
+- **Musical stops.** `gate` uses the existing whole-note duration grammar.
+  Track-local `chokeGroup` releases older grouped voices; same-frame hits coexist.
+- **Envelopes.** Any articulation field enables a per-voice 1 ms attack and 5 ms
+  release by default. `envelope` sets output-time ramps, with explicit zero for a
+  hard edge. Natural source and output boundaries finish the opted-in release.
+- **Bounded work and provenance.** Render budgets use actually rendered frames
+  after source ends, gates, chokes and output boundaries. The tap and memory limits
+  stay fixed. Manifests report authored and resolved articulation boundaries;
+  strict validation and the same nine MCP tools expose the controls.
+- **ONE SOUND.** Before/after eight-second projects use one unchanged original
+  low-boom sound for tighter percussion and controlled low-end tails. Two fresh
+  renders per version verify master/stem hashes, alignment, no clipping and gaps.
+  `npm run demo:one-sound`, `npm run test:v07`.
+- [V0_7_SAMPLER_ARTICULATION.md](docs/V0_7_SAMPLER_ARTICULATION.md) is the contract.
+
 ## 0.6.0: sample performance (2026-10-11)
 
 The last engine milestone before distribution. Projects without the new fields
