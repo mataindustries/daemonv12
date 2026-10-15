@@ -13,7 +13,7 @@ const devPrerender = (): Plugin => ({
       if (!ctx.server) return html;
       const mod = (await ctx.server.ssrLoadModule('/src/prerender.tsx')) as typeof import('./src/prerender.tsx');
       const video = fileURLToPath(new URL(`./public${mod.config.promo.video}`, import.meta.url));
-      return mod.renderPage(html, {promoAvailable: existsSync(video)});
+      return mod.renderPage(html, {promoAvailable: existsSync(video), path: /^\/one-sound\/?$/.test((ctx.originalUrl ?? ctx.path).split('?')[0] ?? '') ? '/one-sound/' : '/'});
     },
   },
 });

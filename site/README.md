@@ -157,3 +157,12 @@ scripts/make-promo-web.sh, og.ts, extract-*.ts, qa.ts
 tests/                node:test unit tests (dist checks run after a build)
 public/               favicon, icons, OG image; media/ for the promo web cut
 ```
+
+## ONE SOUND showcase
+
+`/one-sound/` is prerendered alongside the homepage with four verified anonymous
+native audio players. Cloudflare Pages Functions and D1 back the vote-and-reveal
+ballot; production voting defaults to closed. Static preview alone cannot accept votes.
+
+See [local validation, Cloudflare setup and release gates](docs/ONE_SOUND_OPERATIONS.md)
+and the [original security contract](docs/ONE_SOUND_PHASE_2.md).

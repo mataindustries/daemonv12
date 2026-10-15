@@ -1,0 +1,36 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "daemonv12",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-07-30",
+  "vars": {
+    "EXPERIMENT_ID": "one-sound-001",
+    "VOTING_OPEN": "false",
+    "ALLOWED_ORIGIN": "https://daemonv12.pages.dev"
+  },
+  "env": {
+    "preview": {
+      "vars": {
+        "EXPERIMENT_ID": "one-sound-001",
+        "VOTING_OPEN": "false",
+        "ALLOWED_ORIGIN": "https://feature-one-sound-showcase.daemonv12.pages.dev"
+      },
+      "d1_databases": [
+        {
+          "binding": "VOTES_DB",
+          "database_name": "daemonv12-one-sound-preview",
+          "database_id": "efc38961-a754-44d2-8fce-b39e7113bfb7",
+          "migrations_dir": "migrations"
+        }
+      ]
+    }
+  },
+  "d1_databases": [
+    {
+      "binding": "VOTES_DB",
+      "database_name": "daemonv12-one-sound-production",
+      "database_id": "59a7e7a8-d9d2-45e4-9d28-832e24c3abdb",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

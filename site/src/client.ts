@@ -5,6 +5,19 @@
 //    MP4 off the network until then; playback streams it progressively (faststart).
 //  - "Watch GLASS//FIRE" plays from the top with sound: the click is the user gesture.
 import './styles.css';
+import './one-sound.css';
+import './voting.ts';
+
+// Native controls retain seeking, volume and keyboard support. No audio is preloaded.
+const soundPlayers = document.querySelectorAll<HTMLAudioElement>('audio[data-one-sound]');
+soundPlayers.forEach(player => {
+  player.addEventListener('play', () => {
+    soundPlayers.forEach(other => { if (other !== player) other.pause(); });
+  });
+  const error = document.getElementById(`${player.id}-error`);
+  player.addEventListener('error', () => { if (error) error.hidden = false; });
+  player.addEventListener('playing', () => { if (error) error.hidden = true; });
+});
 
 // Track the two configured conversion CTAs without delaying outbound navigation.
 // The inline gtag stub queues the event even if gtag.js is still loading.
