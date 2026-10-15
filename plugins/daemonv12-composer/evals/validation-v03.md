@@ -11,7 +11,7 @@ Round 2/3 materials, original benchmark assets and audio projects are preserved.
 No BANGER LAB entry, PR #22 change, merge, deployment or engine DSP build is part
 of this work.
 
-## Executed checks
+## Initial v0.3 verification (reviewed commit `8f421ac`)
 
 - Recipe contract/production suite: **15 passed, 0 failed, 0 skipped**, including
   ten asset-aware and real CLI validations/renders, valid controls/defaults,
@@ -117,7 +117,7 @@ B04/B08 now accept correct v0.7 articulation and reject invented fields.
 Automated contract tests exercise those fields; they do not prove an agent
 follows the behavioral matrix. B01–B18 observed model runs, fresh installed-host
 activation and human listening remain separate and unperformed in this upgrade.
-No independent reviewer has yet reviewed v0.3. Saturation does not guarantee a
+At this initial verification stage, no independent reviewer had reviewed v0.3. Saturation does not guarantee a
 true-peak ceiling; filter transitions and pumping are authored approximations.
 No required engine change was found.
 
@@ -131,3 +131,81 @@ suite with `COMPOSER_RENDER_RECIPES=1`. Do not interpret blocked checks as passe
 Composer v0.3 is ready for independent review with these environment limitations
 visible; merge/release readiness requires the outstanding checks. No deployment,
 PR #22 modification or BANGER LAB composition was performed.
+
+## Sol Ultra audit remediation
+
+Sol Ultra independently reviewed `8f421ac77e6cfd7bc2c4c60b7c945d75dc9e1dbc`
+and returned NO-GO with two P2 validator findings. This patch addresses exactly
+those findings; it makes no engine, creative-workflow or recipe changes.
+
+1. Offline frontmatter now uses the original JS validator's anchored closing
+   delimiter grammar and requires a mapping and a nonblank string description
+   of at most 1024 characters. Duplicate-key rejection is retained.
+2. Current release instructions explicitly select v0.3 engine base
+   `02438eda48506a94d10ad2756c6aafff8c5a9469` for both original and offline
+   validation. The historical default and v0.1/v0.2 freeze records are unchanged.
+   Comparing this branch with v0.1 includes **41 non-Composer paths**; comparing
+   with the v0.3 engine base includes **zero**. No engine files were changed.
+
+### Regression evidence
+
+Before the parser fix, the temporary-copy mutation suite produced the three
+expected test failures: the reviewed validator returned successful validation
+for a missing closing delimiter, a whitespace-only description, and both
+combined. Duplicate-key rejection and valid-header controls already passed.
+After the fix, the expanded suite has **7 tests passed, 0 failed, 0 skipped**:
+all three bad-header probes and duplicate keys reject, valid scalar/folded
+headers and the copied real package pass, and documented baseline checks pass.
+Every header mutation runs the real offline CLI inside a disposable plugin/Git
+copy. The original `SKILL.md` is never written, and its SHA-256 is checked before
+and after. A further original Ajv/YAML regression covers the same blank-header
+probes and validates the documented release command against this actual branch
+while asserting the historical default remains unchanged.
+
+### Remediation verification
+
+- Fixed offline validator with the explicit v0.3 base: **passed on the actual
+  branch**, including shared schema, frontmatter, text/link/fixture and isolation
+  checks. The corrected original command was also executed, but remains
+  **BLOCKED** before validation because `ajv/dist/2020.js` is unavailable.
+  It is not claimed passed. Existing installed packages and npm cache were
+  checked; no registry installation retry or network configuration edit occurred.
+- Original Ajv/YAML package/mutation suite, including its added release-command
+  regression: **BLOCKED** by the same missing dependency. Rerun with the tools
+  from the documented temporary validation-tools directory.
+- All recipe/control/timing/production tests: **15 passed, 0 failed, 0 skipped**.
+  All ten unchanged recipe projects rendered through the real v0.7 engine.
+- Existing section helper: **12 passed, 2 failed, 0 skipped**. Both failures are
+  the existing CLI capture cases (`Unexpected end of JSON input`). The tests
+  remain unchanged and these failures are not counted as passes.
+- `npm run check`: typecheck **passed**; the unmodified default test command
+  completed with **33 passed, 12 failed, 0 skipped file-level tasks (45 total)**.
+  This is a failed run, not a claim that all 295 engine tests passed. The failures
+  are CLI, demo-share, doctor, init, MCP integration, production-pipeline,
+  render-adapter, samples, smoke, stems, v0.5 MCP and v0.6 demo. No engine tests
+  were filtered, suppressed or rewritten. Node captured-child EPERM/empty-output
+  behavior remains reproducible; the full engine suite still needs external
+  verification, and no unrelated engine fix is included.
+- JS/Python syntax and `git diff --check`: **passed**. Remediation changes remain
+  under `plugins/daemonv12-composer/`; engine, creative workflow, recipe JSON and
+  historical records are unchanged from the reviewed commit.
+
+Commands (engine checkout root):
+
+```sh
+COMPOSER_VALIDATORS_DIR=/tmp/daemonv12-composer-validation-tools node --test --test-isolation=none plugins/daemonv12-composer/evals/package.test.mjs
+node plugins/daemonv12-composer/evals/validate-package.mjs --validators-dir /tmp/daemonv12-composer-validation-tools --base 02438eda48506a94d10ad2756c6aafff8c5a9469
+python plugins/daemonv12-composer/evals/validate-package-offline.py 02438eda48506a94d10ad2756c6aafff8c5a9469
+python plugins/daemonv12-composer/evals/offline-package.test.py
+COMPOSER_RENDER_RECIPES=1 node --test --test-isolation=none plugins/daemonv12-composer/evals/production-recipes.test.mjs
+node --test --test-isolation=none plugins/daemonv12-composer/skills/daemonv12-composer/scripts/review-sections.test.mjs
+npm run check
+git diff --check
+```
+
+Remaining gates: original Ajv/YAML validation and the unresolved helper/full
+engine checks need an environment with dependencies and working subprocess
+capture. The two findings are remediated with passing offline regressions;
+release readiness is not asserted while these checks are outstanding. No
+unrelated failing tests were suppressed or rewritten, and no merge, deployment,
+PR #22 change or BANGER LAB activity occurred.

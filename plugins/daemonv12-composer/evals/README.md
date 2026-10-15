@@ -48,19 +48,19 @@ Run the same matrix after changes to the skill or relevant engine semantics. Inc
 
 ## Repeatable package checks
 
-The validator uses temporary standards libraries, not repository dependencies. It validates the manifest against the bundled unmodified [Agent Plugins 1.0 schema](fixtures/plugin.schema.json), parses YAML frontmatter, checks package-local links and text hygiene, checks evaluation-fixture integrity, and compares tracked changes against frozen V0.1. The schema was retrieved from its [canonical source](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json) on 2026-10-12. These are package checks; they do not simulate skill selection or grade musical quality.
+The validator uses temporary standards libraries, not repository dependencies. It validates the manifest against the bundled unmodified [Agent Plugins 1.0 schema](fixtures/plugin.schema.json), parses YAML frontmatter, checks package-local links and text hygiene, checks evaluation-fixture integrity, and compares tracked changes against an explicit release baseline. For v0.3, that baseline is engine commit `02438eda48506a94d10ad2756c6aafff8c5a9469`. The schema was retrieved from its [canonical source](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json) on 2026-10-12. These are package checks; they do not simulate skill selection or grade musical quality.
 
 ```sh
 npm install --prefix /tmp/daemonv12-composer-validation-tools --ignore-scripts --no-audit --no-fund ajv@8.17.1 yaml@2.8.1
 COMPOSER_VALIDATORS_DIR=/tmp/daemonv12-composer-validation-tools node --test plugins/daemonv12-composer/evals/package.test.mjs
-node plugins/daemonv12-composer/evals/validate-package.mjs --validators-dir /tmp/daemonv12-composer-validation-tools
+node plugins/daemonv12-composer/evals/validate-package.mjs --validators-dir /tmp/daemonv12-composer-validation-tools --base 02438eda48506a94d10ad2756c6aafff8c5a9469
 node --test plugins/daemonv12-composer/evals/production-recipes.test.mjs
 node --test plugins/daemonv12-composer/skills/daemonv12-composer/scripts/review-sections.test.mjs
 npm run check
 git diff --check
 ```
 
-`--base <commit>` changes the comparison base; the default is frozen V0.1 `56dbdff62bf78e70e898f0dbb49f8044cd561655`. The validator checks tracked HEAD/index/worktree changes, so run it again after committing. Pre-existing unrelated untracked user files are outside that comparison. Mutation tests verify that invalid manifest fields, frontmatter, links, encoding, fences, fixture records and engine paths are rejected. The separate helper tests use generated deterministic synthetic audio, never benchmark entries.
+The v0.3 release command above must retain its explicit `--base`; omitting it compares against historical v0.1 and incorrectly includes legitimate later engine changes. `--base <commit>` changes the comparison base; the historical default remains frozen V0.1 `56dbdff62bf78e70e898f0dbb49f8044cd561655`. The validator checks tracked HEAD/index/worktree changes, so run it again after committing. Pre-existing unrelated untracked user files are outside that comparison. Mutation tests verify that invalid manifest fields, frontmatter, links, encoding, fences, fixture records and engine paths are rejected. The separate helper tests use generated deterministic synthetic audio, never benchmark entries.
 
 Store v0.3 executed checks and their exact limits in [validation-v03.md](validation-v03.md).
 [validation.md](validation.md) and [README-v02.md](README-v02.md) preserve v0.2 evidence.
@@ -76,7 +76,8 @@ jsonschema, this supported offline alternative checks the same bundled schema,
 unique-key frontmatter and shared JS text/link/fixture/isolation functions:
 
 ```sh
-python plugins/daemonv12-composer/evals/validate-package-offline.py
+python plugins/daemonv12-composer/evals/validate-package-offline.py 02438eda48506a94d10ad2756c6aafff8c5a9469
+python plugins/daemonv12-composer/evals/offline-package.test.py
 COMPOSER_RENDER_RECIPES=1 node --test --test-isolation=none plugins/daemonv12-composer/evals/production-recipes.test.mjs
 ```
 
@@ -88,3 +89,8 @@ Without `COMPOSER_RENDER_RECIPES=1`, the render check is explicitly skipped.
 `--test-isolation=none` is useful on Node 24 when sandbox subprocess capture blocks
 the test runner; omit it on older Node versions that do not provide the option.
 The Ajv/YAML suite still needs its own run; record it as BLOCKED if unavailable.
+
+The offline frontmatter mutations run the real validator on temporary plugin/Git
+copies. They reject unclosed headers, blank descriptions, their combination and
+duplicate YAML keys, while accepting valid scalar/folded descriptions. The real
+`SKILL.md` is never edited, and its hash is checked after the suite.

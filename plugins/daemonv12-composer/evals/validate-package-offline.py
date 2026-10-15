@@ -4,6 +4,7 @@ Does not replace the Ajv/YAML mutation suite or claim observed agent behavior.
 """
 import json
 from pathlib import Path
+import re
 import subprocess
 import sys
 
@@ -35,10 +36,14 @@ def mapping(loader, node):
 
 UniqueLoader.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, mapping)
 skill = (package / 'skills/daemonv12-composer/SKILL.md').read_text()
-assert skill.startswith('---\n')
-frontmatter = yaml.load(skill.split('---\n', 2)[1], Loader=UniqueLoader)
+match = re.match(r'^---\n([\s\S]*?)\n---(?:\n|$)', skill)
+assert match, 'Skill must start with closed YAML frontmatter.'
+frontmatter = yaml.load(match[1], Loader=UniqueLoader)
+assert isinstance(frontmatter, dict), 'Frontmatter must be a mapping.'
 assert frontmatter['name'] == manifest['name']
-assert isinstance(frontmatter['description'], str) and 0 < len(frontmatter['description']) <= 1024
+description = frontmatter['description']
+assert isinstance(description, str), 'Description must be a string.'
+assert description.strip() and len(description) <= 1024, 'Description must contain 1–1024 characters.'
 try:
     yaml.load('name: first\nname: second\n', Loader=UniqueLoader)
     raise AssertionError('Duplicate YAML accepted')
