@@ -318,7 +318,7 @@ test('V0.7 compatibility: unarticulated voices keep the historical per-voice rou
   const values = Array.from({ length: 64 }, (_, i) => Math.round(20000 * Math.sin(i * 0.37)) - (i % 3) * 7);
   const naive = (voice: ArrayLike<number>, channels: 1 | 2, velocity: number, frames: number, at: number, total: number) => {
     const out = new Float64Array(total * 2);
-    for (let i = 0; i < frames; i++) for (let c = 0; c < 2; c++) out[(at + i) * 2 + c] += Math.round(voice[i * channels + (channels === 1 ? 0 : c)]! * velocity);
+    for (let i = 0; i < frames; i++) for (let c = 0; c < 2; c++) out[(at + i) * 2 + c]! += Math.round(voice[i * channels + (channels === 1 ? 0 : c)]! * velocity);
     return out;
   };
   for (const channels of [1, 2] as const) for (const velocity of [0.37, 1, 0.8]) for (const playback of [undefined, { rate: 1.5, offset: 3 }] as (VoicePlayback | undefined)[]) {
