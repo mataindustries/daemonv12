@@ -100,7 +100,9 @@
     "demo:ghost-shift": "node bin/daemonv12.js render examples/ghost-shift.json --out-dir renders/ghost-shift --stems --format wav,mp3",
     "test:v06": "node --test \"tests/v06*.test.ts\"",
     "test:v07": "node --test \"tests/v07*.test.ts\"",
-    "demo:one-sound": "node scripts/verify-v07.ts"
+    "demo:one-sound": "node scripts/verify-v07.ts",
+    "test:signal-lab": "node --test tests/signal-lab.test.ts",
+    "pack:signal-lab": "npm pack ./packs/signal-lab/0.2.0"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.3.1",
