@@ -72,6 +72,7 @@ test('packed tarball installs and works from an empty directory without the sour
       'scripts/bootstrap-audio-tools.sh', 'scripts/audio-tools-linux-64.lock', 'docs/MCP_CLIENTS.md', 'docs/V0_SPEC.md'];
     for (const path of required) assert.ok(packed.includes(path), `tarball is missing ${path}`);
     for (const path of packed) assert.doesNotMatch(path, /\.ts$|\.tgz$|^(src|mcp|tests|reports|renders|node_modules|\.github|\.devcontainer)\/|\.daemonv12-renders|package-lock\.json/, `tarball must not contain ${path}`);
+    for (const path of packed) assert.doesNotMatch(path, /(^packs\/|signal-lab)/, 'optional SIGNAL pack must remain outside the core tarball');
     // dist/ mirrors the runtime sources exactly: nothing stale, nothing missing, no development demo.
     const compiled = packed.filter(path => path.startsWith('dist/')).sort();
     const sources = [...files(join(repo, 'src')).map(file => `dist/src/${file}`), ...readdirSync(join(repo, 'mcp')).filter(file => file.endsWith('.ts') && file !== 'demo.ts').map(file => `dist/mcp/${file}`)];

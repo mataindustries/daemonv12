@@ -1,0 +1,907 @@
+{
+  "schema": "signal-lab.catalog/1",
+  "name": "SIGNAL instrument prototype",
+  "generator": "generate-signal-instruments.mjs",
+  "generatorVersion": "0.2.0",
+  "sampleRate": 44100,
+  "format": "RIFF PCM16 little-endian",
+  "tuning": "A4 = 440 Hz, 12-TET",
+  "provenance": "Generated entirely by this script with deterministic float64 additive synthesis and explicit xorshift32 seeds. No recordings, downloaded samples, loops, SoundFonts, impulse responses, pretrained-model audio, third-party audio or existing melodies contribute to these files.",
+  "rights": {
+    "status": "PENDING OWNER REVIEW",
+    "note": "No licence is granted or implied by this prototype. Commercial-use authorization and any dedication (for example CC0) are decisions for the repository owner, pending review."
+  },
+  "determinism": "Byte-identical on repeated runs with the same Node build. Floating-point transcendental differences across Node/CPU implementations could change least-significant bits; cross-environment byte identity is not promised.",
+  "assets": [
+    {
+      "id": "pad-csm",
+      "family": "pad",
+      "file": "pad/pad-csm.wav",
+      "kitPitch": 49,
+      "seed": 1369555166,
+      "chord": "C# minor (opens sus2: C# D# G#; E arrives 1.4-2.4 s)",
+      "voicing": [
+        "C#3",
+        "G#3",
+        "C#4",
+        "D#4",
+        "E4",
+        "G#4"
+      ],
+      "synthesis": {
+        "recipe": "PAD",
+        "params": {
+          "seconds": 8,
+          "peakDbfs": -8,
+          "attack": 1,
+          "releaseStart": 6,
+          "thirdCrossfade": [
+            1.4,
+            2.4
+          ],
+          "lowpassHz": 8500,
+          "tilt": [
+            [
+              0,
+              1.45
+            ],
+            [
+              3.6,
+              0.9
+            ],
+            [
+              8,
+              1.15
+            ]
+          ],
+          "vowels": [
+            [
+              0,
+              350,
+              820
+            ],
+            [
+              3,
+              720,
+              1150
+            ],
+            [
+              5.5,
+              520,
+              1700
+            ],
+            [
+              8,
+              380,
+              900
+            ]
+          ],
+          "formantGains": [
+            2.4,
+            1.6
+          ],
+          "formantBw": [
+            140,
+            260
+          ],
+          "shimmerDepth": 0.3,
+          "shimmerHz": [
+            0.15,
+            0.55
+          ]
+        },
+        "ensemble": {
+          "detuneCents": [
+            -7,
+            0,
+            6.5
+          ],
+          "driftCents": 2.5,
+          "driftHz": 0.25,
+          "pans": [
+            [
+              1,
+              0.32
+            ],
+            [
+              0.8,
+              0.8
+            ],
+            [
+              0.32,
+              1
+            ]
+          ],
+          "monoBelowHz": 200
+        }
+      },
+      "channels": 2,
+      "sha256": "fd7f7ddd1634aeb61aa05060ec2afaeaf504fd17061556f5d02e56910b5a7306",
+      "measured": {
+        "frames": 352800,
+        "seconds": 8,
+        "peakDbfs": -8,
+        "rmsDbfs": -21.4,
+        "sideEnergyPercent": 11.3,
+        "monoSumMinusStereoRmsDb": -0.6,
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      }
+    },
+    {
+      "id": "pad-cs",
+      "family": "pad",
+      "file": "pad/pad-cs.wav",
+      "kitPitch": 50,
+      "seed": 1369555167,
+      "chord": "C# major (opens sus2: C# D# G#; E# arrives 1.4-2.4 s)",
+      "voicing": [
+        "C#3",
+        "G#3",
+        "C#4",
+        "D#4",
+        "E#4",
+        "G#4"
+      ],
+      "synthesis": {
+        "recipe": "PAD",
+        "params": {
+          "seconds": 8,
+          "peakDbfs": -8,
+          "attack": 1,
+          "releaseStart": 6,
+          "thirdCrossfade": [
+            1.4,
+            2.4
+          ],
+          "lowpassHz": 8500,
+          "tilt": [
+            [
+              0,
+              1.45
+            ],
+            [
+              3.6,
+              0.9
+            ],
+            [
+              8,
+              1.15
+            ]
+          ],
+          "vowels": [
+            [
+              0,
+              350,
+              820
+            ],
+            [
+              3,
+              720,
+              1150
+            ],
+            [
+              5.5,
+              520,
+              1700
+            ],
+            [
+              8,
+              380,
+              900
+            ]
+          ],
+          "formantGains": [
+            2.4,
+            1.6
+          ],
+          "formantBw": [
+            140,
+            260
+          ],
+          "shimmerDepth": 0.3,
+          "shimmerHz": [
+            0.15,
+            0.55
+          ]
+        },
+        "ensemble": {
+          "detuneCents": [
+            -7,
+            0,
+            6.5
+          ],
+          "driftCents": 2.5,
+          "driftHz": 0.25,
+          "pans": [
+            [
+              1,
+              0.32
+            ],
+            [
+              0.8,
+              0.8
+            ],
+            [
+              0.32,
+              1
+            ]
+          ],
+          "monoBelowHz": 200
+        }
+      },
+      "channels": 2,
+      "sha256": "21db2557e32fc1b2d57507c2680ba1bd68a09770ea6ec129c25552896a4937fe",
+      "measured": {
+        "frames": 352800,
+        "seconds": 8,
+        "peakDbfs": -8,
+        "rmsDbfs": -21.3,
+        "sideEnergyPercent": 11.5,
+        "monoSumMinusStereoRmsDb": -0.5,
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      }
+    },
+    {
+      "id": "lead-cs4",
+      "family": "lead",
+      "file": "lead/lead-cs4.wav",
+      "kitPitch": 61,
+      "seed": 514654208,
+      "pitch": "C#4",
+      "hz": 277.183,
+      "synthesis": {
+        "recipe": "LEAD",
+        "params": {
+          "seconds": 4,
+          "sustainRmsDbfs": -14,
+          "peakCeilingDbfs": -3,
+          "releaseStart": 3.35,
+          "scoopCents": -20,
+          "scoopTau": 0.025,
+          "biteGain": 0.25,
+          "biteTau": 0.06,
+          "vibratoDelay": [
+            0.3,
+            1.1
+          ],
+          "vibratoCents": 14,
+          "vibratoHz": 5.3,
+          "vibratoHzSpread": 0.4,
+          "formants": [
+            [
+              600,
+              2,
+              220
+            ],
+            [
+              1400,
+              2.6,
+              380
+            ],
+            [
+              3000,
+              1.8,
+              700
+            ]
+          ],
+          "slope": 0.95,
+          "evenGain": 0.82,
+          "brightnessHz": [
+            2600,
+            5200
+          ],
+          "sheenRatios": [
+            2.756,
+            5.404,
+            8.933
+          ],
+          "sheenAmps": [
+            0.3,
+            0.14,
+            0.06
+          ],
+          "sheenTau": [
+            0.3,
+            0.18,
+            0.1
+          ],
+          "noiseCenterHz": 2600,
+          "noiseQ": 1.2,
+          "noiseAttackDb": -18,
+          "noiseSustainDb": -32
+        }
+      },
+      "channels": 1,
+      "sha256": "ea07174554e58648ffe206ca2cb60307a999775f09036f2a285cc16c264c0788",
+      "measured": {
+        "frames": 176400,
+        "seconds": 4,
+        "peakDbfs": -6.8,
+        "rmsDbfs": -14.7,
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      }
+    },
+    {
+      "id": "lead-e4",
+      "family": "lead",
+      "file": "lead/lead-e4.wav",
+      "kitPitch": 64,
+      "seed": 514654209,
+      "pitch": "E4",
+      "hz": 329.628,
+      "synthesis": {
+        "recipe": "LEAD",
+        "params": {
+          "seconds": 4,
+          "sustainRmsDbfs": -14,
+          "peakCeilingDbfs": -3,
+          "releaseStart": 3.35,
+          "scoopCents": -20,
+          "scoopTau": 0.025,
+          "biteGain": 0.25,
+          "biteTau": 0.06,
+          "vibratoDelay": [
+            0.3,
+            1.1
+          ],
+          "vibratoCents": 14,
+          "vibratoHz": 5.3,
+          "vibratoHzSpread": 0.4,
+          "formants": [
+            [
+              600,
+              2,
+              220
+            ],
+            [
+              1400,
+              2.6,
+              380
+            ],
+            [
+              3000,
+              1.8,
+              700
+            ]
+          ],
+          "slope": 0.95,
+          "evenGain": 0.82,
+          "brightnessHz": [
+            2600,
+            5200
+          ],
+          "sheenRatios": [
+            2.756,
+            5.404,
+            8.933
+          ],
+          "sheenAmps": [
+            0.3,
+            0.14,
+            0.06
+          ],
+          "sheenTau": [
+            0.3,
+            0.18,
+            0.1
+          ],
+          "noiseCenterHz": 2600,
+          "noiseQ": 1.2,
+          "noiseAttackDb": -18,
+          "noiseSustainDb": -32
+        }
+      },
+      "channels": 1,
+      "sha256": "e32d6da409d7ba01d5d0a930f9aea37880b9fd2157d32eb133dd5be3cd3568b8",
+      "measured": {
+        "frames": 176400,
+        "seconds": 4,
+        "peakDbfs": -8.3,
+        "rmsDbfs": -14.7,
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      }
+    },
+    {
+      "id": "lead-es4",
+      "family": "lead",
+      "file": "lead/lead-es4.wav",
+      "kitPitch": 65,
+      "seed": 514654210,
+      "pitch": "E#4",
+      "hz": 349.228,
+      "synthesis": {
+        "recipe": "LEAD",
+        "params": {
+          "seconds": 4,
+          "sustainRmsDbfs": -14,
+          "peakCeilingDbfs": -3,
+          "releaseStart": 3.35,
+          "scoopCents": -20,
+          "scoopTau": 0.025,
+          "biteGain": 0.25,
+          "biteTau": 0.06,
+          "vibratoDelay": [
+            0.3,
+            1.1
+          ],
+          "vibratoCents": 14,
+          "vibratoHz": 5.3,
+          "vibratoHzSpread": 0.4,
+          "formants": [
+            [
+              600,
+              2,
+              220
+            ],
+            [
+              1400,
+              2.6,
+              380
+            ],
+            [
+              3000,
+              1.8,
+              700
+            ]
+          ],
+          "slope": 0.95,
+          "evenGain": 0.82,
+          "brightnessHz": [
+            2600,
+            5200
+          ],
+          "sheenRatios": [
+            2.756,
+            5.404,
+            8.933
+          ],
+          "sheenAmps": [
+            0.3,
+            0.14,
+            0.06
+          ],
+          "sheenTau": [
+            0.3,
+            0.18,
+            0.1
+          ],
+          "noiseCenterHz": 2600,
+          "noiseQ": 1.2,
+          "noiseAttackDb": -18,
+          "noiseSustainDb": -32
+        }
+      },
+      "channels": 1,
+      "sha256": "78d4d1109e2bd98a797c9f88cb06f1cddcecd273c76f15c03cad172ae111999f",
+      "measured": {
+        "frames": 176400,
+        "seconds": 4,
+        "peakDbfs": -4.3,
+        "rmsDbfs": -14.7,
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      }
+    },
+    {
+      "id": "lead-gs4",
+      "family": "lead",
+      "file": "lead/lead-gs4.wav",
+      "kitPitch": 68,
+      "seed": 514654211,
+      "pitch": "G#4",
+      "hz": 415.305,
+      "synthesis": {
+        "recipe": "LEAD",
+        "params": {
+          "seconds": 4,
+          "sustainRmsDbfs": -14,
+          "peakCeilingDbfs": -3,
+          "releaseStart": 3.35,
+          "scoopCents": -20,
+          "scoopTau": 0.025,
+          "biteGain": 0.25,
+          "biteTau": 0.06,
+          "vibratoDelay": [
+            0.3,
+            1.1
+          ],
+          "vibratoCents": 14,
+          "vibratoHz": 5.3,
+          "vibratoHzSpread": 0.4,
+          "formants": [
+            [
+              600,
+              2,
+              220
+            ],
+            [
+              1400,
+              2.6,
+              380
+            ],
+            [
+              3000,
+              1.8,
+              700
+            ]
+          ],
+          "slope": 0.95,
+          "evenGain": 0.82,
+          "brightnessHz": [
+            2600,
+            5200
+          ],
+          "sheenRatios": [
+            2.756,
+            5.404,
+            8.933
+          ],
+          "sheenAmps": [
+            0.3,
+            0.14,
+            0.06
+          ],
+          "sheenTau": [
+            0.3,
+            0.18,
+            0.1
+          ],
+          "noiseCenterHz": 2600,
+          "noiseQ": 1.2,
+          "noiseAttackDb": -18,
+          "noiseSustainDb": -32
+        }
+      },
+      "channels": 1,
+      "sha256": "ca24b76fdb4480a5264269d30ba2dc586f8b02daa3a1425ab4575fa53dbde64c",
+      "measured": {
+        "frames": 176400,
+        "seconds": 4,
+        "peakDbfs": -8.1,
+        "rmsDbfs": -14.7,
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      }
+    },
+    {
+      "id": "lead-a4",
+      "family": "lead",
+      "file": "lead/lead-a4.wav",
+      "kitPitch": 69,
+      "seed": 514654212,
+      "pitch": "A4",
+      "hz": 440,
+      "synthesis": {
+        "recipe": "LEAD",
+        "params": {
+          "seconds": 4,
+          "sustainRmsDbfs": -14,
+          "peakCeilingDbfs": -3,
+          "releaseStart": 3.35,
+          "scoopCents": -20,
+          "scoopTau": 0.025,
+          "biteGain": 0.25,
+          "biteTau": 0.06,
+          "vibratoDelay": [
+            0.3,
+            1.1
+          ],
+          "vibratoCents": 14,
+          "vibratoHz": 5.3,
+          "vibratoHzSpread": 0.4,
+          "formants": [
+            [
+              600,
+              2,
+              220
+            ],
+            [
+              1400,
+              2.6,
+              380
+            ],
+            [
+              3000,
+              1.8,
+              700
+            ]
+          ],
+          "slope": 0.95,
+          "evenGain": 0.82,
+          "brightnessHz": [
+            2600,
+            5200
+          ],
+          "sheenRatios": [
+            2.756,
+            5.404,
+            8.933
+          ],
+          "sheenAmps": [
+            0.3,
+            0.14,
+            0.06
+          ],
+          "sheenTau": [
+            0.3,
+            0.18,
+            0.1
+          ],
+          "noiseCenterHz": 2600,
+          "noiseQ": 1.2,
+          "noiseAttackDb": -18,
+          "noiseSustainDb": -32
+        }
+      },
+      "channels": 1,
+      "sha256": "a0744411354819959257bcd9af2d0363e121a035a5c7f13f40cddcc861f3ff35",
+      "measured": {
+        "frames": 176400,
+        "seconds": 4,
+        "peakDbfs": -7.5,
+        "rmsDbfs": -14.7,
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      }
+    },
+    {
+      "id": "swell-dark",
+      "family": "swell",
+      "file": "swell/swell-dark.wav",
+      "kitPitch": 56,
+      "seed": 1578228348,
+      "chord": "G#5 -> G#7sus4 -> G#7b9 (dominant of C# minor)",
+      "voices": [
+        {
+          "midi": 56,
+          "t0": 0,
+          "t1": 4,
+          "gain": 0.9
+        },
+        {
+          "midi": 63,
+          "t0": 0,
+          "t1": 4,
+          "gain": 0.7
+        },
+        {
+          "midi": 66,
+          "t0": 1.2,
+          "t1": 4,
+          "gain": 0.6
+        },
+        {
+          "midi": 73,
+          "t0": 1.2,
+          "t1": 4,
+          "gain": 0.62,
+          "glides": [
+            {
+              "at": 2.6,
+              "to": 72,
+              "dur": 0.18
+            }
+          ]
+        },
+        {
+          "midi": 69,
+          "t0": 2.6,
+          "t1": 4,
+          "gain": 0.58
+        }
+      ],
+      "synthesis": {
+        "recipe": "SWELL",
+        "params": {
+          "seconds": 4,
+          "peakDbfs": -6,
+          "startDb": -24,
+          "curve": 1.7,
+          "tilt": [
+            2.1,
+            0.95
+          ],
+          "endTaper": 0.012,
+          "lowpassHz": 9000
+        },
+        "tremolo": {
+          "fromHz": 3,
+          "toHz": 11,
+          "maxDepth": 0.4
+        },
+        "ensemble": {
+          "detuneCents": [
+            -7,
+            0,
+            6.5
+          ],
+          "driftCents": 2.5,
+          "driftHz": 0.25,
+          "pans": [
+            [
+              1,
+              0.32
+            ],
+            [
+              0.8,
+              0.8
+            ],
+            [
+              0.32,
+              1
+            ]
+          ],
+          "monoBelowHz": 200
+        }
+      },
+      "channels": 2,
+      "sha256": "5f95c36b9fb335ef2ae1019937ae0bbee3047fca96722ac49344dfd46959f4e8",
+      "measured": {
+        "frames": 176400,
+        "seconds": 4,
+        "peakDbfs": -6,
+        "rmsDbfs": -26.4,
+        "sideEnergyPercent": 14.7,
+        "monoSumMinusStereoRmsDb": -0.7,
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      }
+    },
+    {
+      "id": "swell-bright",
+      "family": "swell",
+      "file": "swell/swell-bright.wav",
+      "kitPitch": 57,
+      "seed": 1578218519,
+      "chord": "A(add9) -> B major (bVI -> bVII of C#), top climbs B4 -> C#5 -> D#5",
+      "voices": [
+        {
+          "midi": 52,
+          "t0": 0,
+          "t1": 4,
+          "gain": 0.8,
+          "glides": [
+            {
+              "at": 1,
+              "to": 54,
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "midi": 57,
+          "t0": 0,
+          "t1": 4,
+          "gain": 0.75,
+          "glides": [
+            {
+              "at": 1,
+              "to": 59,
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "midi": 61,
+          "t0": 0,
+          "t1": 4,
+          "gain": 0.7,
+          "glides": [
+            {
+              "at": 1,
+              "to": 63,
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "midi": 64,
+          "t0": 0,
+          "t1": 4,
+          "gain": 0.65,
+          "glides": [
+            {
+              "at": 1,
+              "to": 66,
+              "dur": 0.15
+            }
+          ]
+        },
+        {
+          "midi": 71,
+          "t0": 0,
+          "t1": 4,
+          "gain": 0.6,
+          "glides": [
+            {
+              "at": 1,
+              "to": 73,
+              "dur": 0.15
+            },
+            {
+              "at": 2,
+              "to": 75,
+              "dur": 0.15
+            }
+          ]
+        }
+      ],
+      "synthesis": {
+        "recipe": "SWELL",
+        "params": {
+          "seconds": 4,
+          "peakDbfs": -6,
+          "startDb": -24,
+          "curve": 1.7,
+          "tilt": [
+            2.1,
+            0.95
+          ],
+          "endTaper": 0.012,
+          "lowpassHz": 9000
+        },
+        "vibrato": {
+          "hz": 5.6,
+          "maxCents": 12
+        },
+        "ensemble": {
+          "detuneCents": [
+            -7,
+            0,
+            6.5
+          ],
+          "driftCents": 2.5,
+          "driftHz": 0.25,
+          "pans": [
+            [
+              1,
+              0.32
+            ],
+            [
+              0.8,
+              0.8
+            ],
+            [
+              0.32,
+              1
+            ]
+          ],
+          "monoBelowHz": 200
+        }
+      },
+      "channels": 2,
+      "sha256": "86b373caec71ea6eaf43808a71632614b8a61a6301c1a69b7ff2e32dfa5b55d8",
+      "measured": {
+        "frames": 176400,
+        "seconds": 4,
+        "peakDbfs": -6.2,
+        "rmsDbfs": -26,
+        "sideEnergyPercent": 8.9,
+        "monoSumMinusStereoRmsDb": -0.4,
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      }
+    }
+  ],
+  "kits": [
+    {
+      "family": "pad",
+      "file": "pad/kit.json",
+      "sha256": "51e202499cbcbda2003a19248cf8227773afb96c6448b2d78f3f782fa862e5dc"
+    },
+    {
+      "family": "lead",
+      "file": "lead/kit.json",
+      "sha256": "b0a4eff116ef32ed7f60585c88901eed201ec570585a463bf1176b2d0893bda5"
+    },
+    {
+      "family": "swell",
+      "file": "swell/kit.json",
+      "sha256": "f55dc617825e9529c13f57e912e6ffa2b0f0efe5a69fbdaff1d9455f908d062d"
+    }
+  ]
+}

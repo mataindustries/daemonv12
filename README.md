@@ -9,6 +9,10 @@ SHA-256 provenance manifest. No DAW, GUI, audio device or API key.
 > release tarball. Not yet published to npm, and the code license is still an
 > open owner decision (see [status](#status-and-limitations)).
 
+Optional sound pack: [SIGNAL Lab 0.2.0](packs/signal-lab/0.2.0/INSTALL.md)
+provides nine sustained WAVs and three kits for the existing discovery tools.
+It is packaged separately and installed explicitly. Rights: **PENDING OWNER REVIEW**.
+
 ## Why would an agent need it?
 
 Agents can't drive a DAW, but they are good at writing structured data and
