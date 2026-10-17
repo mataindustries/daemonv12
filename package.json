@@ -72,6 +72,8 @@
     "node": ">=22.18.0"
   },
   "scripts": {
+    "agent-lab": "node agent-lab/cli.mjs",
+    "test:agent-lab": "node --test agent-lab/runner.test.mjs",
     "typecheck": "tsc -p tsconfig.json",
     "test": "node --test \"tests/**/*.test.ts\"",
     "check": "npm run typecheck && npm test",
