@@ -1,0 +1,43 @@
+{
+  "name": "ignition-002-infinite-reactor",
+  "version": "0.1.0",
+  "description": "IGNITION 002: THE INFINITE REACTOR. A 15-second, 1080×1920, 60 fps seamless-loop music video for IGNITION 002: SECOND WIND. Deterministic Remotion motion system, isolated from the DaemonV12 package.",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint src",
+    "test": "node --test \"tests/**/*.test.ts\"",
+    "check": "npm run typecheck && npm run lint && npm test",
+    "analyze": "node scripts/analyze.ts",
+    "analyze:grid": "node scripts/analyze.ts --grid",
+    "render:preview": "node scripts/render.ts preview",
+    "render:master": "node scripts/render.ts master",
+    "verify": "node scripts/verify.ts"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "5.3.0",
+    "@fontsource-variable/jetbrains-mono": "5.3.0",
+    "@remotion/cli": "4.0.534",
+    "@remotion/fonts": "4.0.534",
+    "@remotion/media": "4.0.534",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.534"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "4.0.534",
+    "@remotion/eslint-config-flat": "4.0.534",
+    "@remotion/renderer": "4.0.534",
+    "@types/node": "22.20.5",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "9.39.5",
+    "typescript": "5.9.3"
+  }
+}

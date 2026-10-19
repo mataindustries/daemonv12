@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Renders, QA frames, bundles and the 3× loop are reproducible; never commit video.
+out
+
+# The approved master WAV is placed by hand and never committed.
+public/audio/*
+!public/audio/README.md
