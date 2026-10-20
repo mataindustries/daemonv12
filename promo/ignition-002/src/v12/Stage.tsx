@@ -196,12 +196,12 @@ export const CameraRig: React.FC<{s: V12State}> = ({s}) => {
 
 /** Guard before bloom: a single NaN or infinite pixel would otherwise be blurred over the whole frame. */
 const SANITIZE = {
-  uniforms: {tDiffuse: {value: null}},
+  uniforms: {tDiffuse: {value: null}, uMax: {value: 64}},
   vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
-  fragmentShader: `uniform sampler2D tDiffuse; varying vec2 vUv;
+  fragmentShader: `uniform sampler2D tDiffuse; uniform float uMax; varying vec2 vUv;
     void main(){ vec4 c = texture2D(tDiffuse, vUv);
       bool bad = isnan(c.r) || isnan(c.g) || isnan(c.b) || isinf(c.r) || isinf(c.g) || isinf(c.b);
-      gl_FragColor = bad ? vec4(0.0, 0.0, 0.0, 1.0) : vec4(clamp(c.rgb, 0.0, 64.0), c.a); }`,
+      gl_FragColor = bad ? vec4(0.0, 0.0, 0.0, 1.0) : vec4(clamp(c.rgb, 0.0, uMax), c.a); }`,
 };
 
 
@@ -209,7 +209,7 @@ const SANITIZE = {
  * Studio environment, tone mapping and the post chain. The composer renders once per Remotion
  * frame when @remotion/three advances R3F; it reads the state set by this frame and animates nothing.
  */
-export const Post: React.FC<{s: V12State; fog?: boolean; post?: boolean; msaa?: boolean; bloom?: boolean; shadows?: boolean; stats?: boolean}> = ({s, fog = true, post = true, msaa = true, bloom: useBloom = true, shadows = true, stats = false}) => {
+export const Post: React.FC<{s: V12State; fog?: boolean; post?: boolean; msaa?: boolean; bloom?: boolean; shadows?: boolean; stats?: boolean; hdrMax?: number}> = ({s, fog = true, post = true, msaa = true, bloom: useBloom = true, shadows = true, stats = false, hdrMax = 64}) => {
   const {gl, scene, camera, size} = useThree();
   const {composer, bloom} = useMemo(() => {
     // No MSAA: under software WebGL it cost ~45 % of every frame; FXAA after tone mapping instead.
@@ -218,7 +218,9 @@ export const Post: React.FC<{s: V12State; fog?: boolean; post?: boolean; msaa?: 
     const target = new THREE.WebGLRenderTarget(Math.round(size.width * dpr), Math.round(size.height * dpr), {type: THREE.HalfFloatType, samples: 0});
     const composer = new EffectComposer(gl, target);
     composer.addPass(new RenderPass(scene, camera));
-    composer.addPass(new ShaderPass(SANITIZE));
+    const sanitize = new ShaderPass(SANITIZE);
+    sanitize.uniforms.uMax!.value = hdrMax;
+    composer.addPass(sanitize);
     // Bloom at half resolution: it is a wide blur, and its passes are a large share of a software-rendered frame.
     const bloom = new UnrealBloomPass(new THREE.Vector2(size.width / 2, size.height / 2), 0.45, 0.5, 0.92);
     if (useBloom) composer.addPass(bloom);
@@ -229,7 +231,7 @@ export const Post: React.FC<{s: V12State; fog?: boolean; post?: boolean; msaa?: 
       composer.addPass(fxaa);
     }
     return {composer, bloom};
-  }, [gl, scene, camera, size.width, size.height, msaa, useBloom]);
+  }, [gl, scene, camera, size.width, size.height, msaa, useBloom, hdrMax]);
   useLayoutEffect(() => {
     const pm = new THREE.PMREMGenerator(gl);
     scene.environment = pm.fromScene(studioScene(), 0.02).texture;

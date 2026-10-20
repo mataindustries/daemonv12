@@ -37,7 +37,7 @@ const Scene: React.FC<{s: V12State; debug: readonly string[]}> = ({s, debug}) =>
       {on('hall') ? <EngineHall s={s} m={m} /> : null}
       {on('embers') ? <Embers s={s} /> : null}
       {on('flames') ? <Flames s={s} /> : null}
-      <Post s={s} fog={on('fog')} post={on('post')} msaa={on('msaa')} bloom={on('bloom')} shadows={on('shadow')} stats={!on('stats')} />
+      <Post s={s} fog={on('fog')} post={on('post')} msaa={on('msaa')} bloom={on('bloom')} shadows={on('shadow')} stats={!on('stats')} hdrMax={Number(debug.find(d => d.startsWith('hdr:'))?.slice(4) ?? 64)} />
     </>
   );
 };
