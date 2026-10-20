@@ -1,6 +1,7 @@
 // Validates a rendered master and writes the QA evidence to out/qa/.
 //
 //   node scripts/verify.ts [--video out/IGNITION-002-INFINITE-REACTOR-15S-1080x1920.mp4]
+//   node scripts/verify.ts --film v12        # V12 OVERDRIVE in out/v12
 //
 // Technical: H.264 High / yuv420p / 1080×1920 / 60 fps / exactly 900 frames and 15.000 s, AAC
 // stereo, faststart (moov before mdat), size under 32 MiB.
@@ -17,27 +18,27 @@ import {existsSync, mkdirSync, openSync, readFileSync, readSync, closeSync, stat
 import {dirname, join, resolve, basename} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {parseArgs} from 'node:util';
-import type {SyncData} from '../src/sync/contract.ts';
 import {SAFE} from '../src/layout.ts';
 import {BAR, DURATION_IN_FRAMES, FPS, HEIGHT, LOOP, WIDTH} from '../src/timeline.ts';
 import {APPROVED_SHA256, approvedWavPath} from './lib/approved.ts';
 import {seamReport} from './lib/analyze.ts';
 import {decodeWav, mixdown} from './lib/wav.ts';
-import {MASTER, MASTER_PICTURE_ONLY, POSTER} from './lib/deliverables.ts';
+import {filmOf} from './lib/deliverables.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const out = join(root, 'out');
+const {values} = parseArgs({options: {video: {type: 'string'}, film: {type: 'string', default: 'reactor'}}});
+const film = filmOf(values.film);
+const out = join(root, film.outDir);
 const qa = join(out, 'qa');
 mkdirSync(qa, {recursive: true});
-const {values} = parseArgs({options: {video: {type: 'string'}}});
-const video = resolve(values.video ?? (existsSync(join(out, MASTER)) ? join(out, MASTER) : join(out, MASTER_PICTURE_ONLY)));
+const video = resolve(values.video ?? (existsSync(join(out, film.master)) ? join(out, film.master) : join(out, film.masterPictureOnly)));
 if (!existsSync(video)) {
   console.error(`missing ${video}; run node scripts/render.ts master first`);
   process.exit(1);
 }
 const WAV = approvedWavPath(root);
 const haveWav = existsSync(WAV) && createHash('sha256').update(readFileSync(WAV)).digest('hex') === APPROVED_SHA256;
-const sync = JSON.parse(readFileSync(join(root, 'src', 'sync', 'sync.json'), 'utf8')) as SyncData;
+const sync = JSON.parse(readFileSync(join(root, film.sync), 'utf8')) as {source: string; kick: {t: number; s: number}[]};
 
 const sh = (cmd: string, args: string[], binary = false) => {
   const r = spawnSync(cmd, args, {cwd: root, maxBuffer: 1 << 30, encoding: binary ? 'buffer' : 'utf8'});
@@ -184,14 +185,13 @@ const flashReport = regions.map(([name, fx0, fy0, fx1, fy1]) => {
 });
 check('no hazardous flashing (≤ 3 flashes in any second, any quadrant)', flashReport.every(r => Number.isFinite(r.meanY) && r.worstPerSecond <= 3), flashReport.map(r => `${r.region} ${r.worstPerSecond}/s`).join(', '));
 
-// Visual response to the driving hits: the reactor core brightens on each kick.
+// Visual response to the driving hits: the film's response region brightens on each kick.
+const [rx0, ry0, rx1, ry1] = film.responseRegion.map((v, i) => Math.round(v * (i % 2 === 0 ? w : h))) as [number, number, number, number];
 const core = Array.from({length: n}, (_, i) => {
   const f = frame(i);
   let s = 0;
   let c = 0;
-  const cx = Math.round((540 / WIDTH) * w);
-  const cy = Math.round((975 / HEIGHT) * h);
-  for (let y = cy - 30; y <= cy + 30; y++) for (let x = cx - 30; x <= cx + 30; x++, c++) s += f[y * w + x]!;
+  for (let y = ry0; y < ry1; y++) for (let x = rx0; x < rx1; x++, c++) s += f[y * w + x]!;
   return s / c;
 });
 const lags = sync.kick.map(k => {
@@ -209,31 +209,27 @@ const lags = sync.kick.map(k => {
 });
 const lagSorted = sorted(lags);
 const medianLag = lagSorted[Math.floor(lagSorted.length / 2)]!;
-check('core responds on the kick frame (median lag ≤ 1 frame)', Math.abs(medianLag) <= 1, `median ${medianLag} frames; ${lags.filter(l => Math.abs(l) <= 1).length}/${lags.length} kicks within ±1 frame (sync source: ${sync.source})`);
+check('picture responds on the kick frame (median lag ≤ 1 frame)', Math.abs(medianLag) <= 1, `median ${medianLag} frames; ${lags.filter(l => Math.abs(l) <= 1).length}/${lags.length} kicks within ±1 frame (sync source: ${sync.source})`);
 
 // --- Virtual frame 900 == frame 0 (rendered, before compression) -----------------------------
-const bundle = join(out, 'bundle');
+const bundle = join(root, 'out', 'bundle');
+const still = (path: string, frameNo: number, props?: Record<string, unknown>) => sh('npx', ['remotion', 'still', bundle, film.composition, path, `--frame=${frameNo}`, '--image-format=png', ...film.remotionFlags, ...(props ? [`--props=${JSON.stringify(props)}`] : [])]);
 const stillGray = (path: string) => sh('ffmpeg', ['-v', 'error', '-i', path, '-vf', 'format=gray', '-f', 'rawvideo', '-'], true) as Buffer;
 let virtualCheck = 'skipped (no bundle)';
 if (existsSync(bundle)) {
   const s0 = join(qa, 'render-frame-0000.png');
   const s900 = join(qa, 'render-virtual-frame-0900.png');
-  sh('npx', ['remotion', 'still', bundle, 'InfiniteReactor', s0, '--frame=0', '--image-format=png']);
-  sh('npx', ['remotion', 'still', bundle, 'InfiniteReactor', s900, '--frame=899', '--image-format=png', `--props=${JSON.stringify({audio: false, timeOffset: 1 / FPS})}`]);
+  still(s0, 0);
+  still(s900, 899, {audio: false, timeOffset: 1 / FPS});
   const d = mad(stillGray(s0), stillGray(s900));
   virtualCheck = `mean |Δ| = ${d.toFixed(4)} levels`;
   check('virtual frame 900 renders identical to frame 0', d < 0.01, virtualCheck);
 
   // Copy alone (every renderer layer off), measured against the platform-safe box.
   const copyPng = join(qa, 'copy-only.png');
-  const layers = ['tunnel', 'haze', 'machinery', 'field', 'core', 'glare', 'jets', 'arcs', 'shocks', 'bloom', 'foreground', 'grade'];
-  sh('npx', ['remotion', 'still', bundle, 'InfiniteReactor', copyPng, '--frame=0', '--image-format=png', `--props=${JSON.stringify({audio: false, skip: layers})}`]);
+  still(copyPng, 0, film.copyOnlyProps);
   const g = stillGray(copyPng);
-  const lines: [string, number, number, number][] = [
-    ['IGNITION', 300, 450, 120],
-    ['SECOND WIND', 450, 520, 90],
-    ['DAEMONV12', 1380, 1470, 90],
-  ];
+  const lines = film.copyLines;
   const boxes = lines.map(([name, ya, yb, th]) => {
     let x0 = WIDTH;
     let x1 = 0;
@@ -271,7 +267,7 @@ const seamFiles = seamFrames.map(f => {
 });
 sh('ffmpeg', ['-v', 'error', '-y', ...seamFiles.flatMap(p => ['-i', p]), '-filter_complex', `hstack=inputs=${seamFiles.length}`, join(qa, 'seam-strip-897-898-899-0-1-2.png')]);
 
-const loop3 = join(qa, 'IGNITION-002-loop-3x.mp4');
+const loop3 = join(qa, film.key === 'reactor' ? 'IGNITION-002-loop-3x.mp4' : film.master.replace(/\.mp4$/, '-loop-3x.mp4'));
 const audioIn = haveWav ? ['-stream_loop', '2', '-i', WAV] : [];
 const audioMap = haveWav ? ['-map', '1:a:0', '-c:a', 'aac', '-b:a', '320k', '-ac', '2'] : [];
 sh('ffmpeg', ['-v', 'error', '-y', '-stream_loop', '2', '-i', video, ...audioIn, '-map', '0:v:0', ...audioMap, '-c:v', 'copy', '-t', String(3 * LOOP), '-movflags', '+faststart', loop3]);
@@ -312,7 +308,7 @@ if (haveWav && a) {
 }
 
 // --- Checksums, report ----------------------------------------------------------------------
-const files = [video, join(out, POSTER), loop3, ...(haveWav ? [WAV] : [])].filter(existsSync);
+const files = [video, join(out, film.poster), loop3, ...(haveWav ? [WAV] : [])].filter(existsSync);
 const sums = files.map(f => `${sha(f)}  ${basename(f)}`).join('\n') + '\n';
 writeFileSync(join(out, 'SHA256SUMS.txt'), sums);
 const report = {

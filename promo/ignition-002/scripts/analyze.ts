@@ -3,6 +3,7 @@
 //   node scripts/analyze.ts                       # analyse public/audio/ignition-002-second-wind.wav
 //   node scripts/analyze.ts --wav path/to/file.wav
 //   node scripts/analyze.ts --grid                # labelled 128 BPM grid stand-in (no audio)
+//   node scripts/analyze.ts --out src/v12/sync.json  # write another composition's sync data
 //
 // The WAV must match the approved SHA-256. A summary of the music's structure is printed and
 // saved to out/audio-analysis.json for the quality report.
@@ -18,13 +19,14 @@ import {APPROVED_SHA256, approvedWavPath} from './lib/approved.ts';
 import {decodeWav, mixdown} from './lib/wav.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const syncPath = join(root, 'src', 'sync', 'sync.json');
 const {values} = parseArgs({
   options: {
     wav: {type: 'string', default: approvedWavPath(root)},
     grid: {type: 'boolean', default: false},
+    out: {type: 'string', default: join(root, 'src', 'sync', 'sync.json')},
   },
 });
+const syncPath = resolve(values.out!);
 
 const write = (data: SyncData) => writeFileSync(syncPath, JSON.stringify(assertSync(data)) + '\n');
 
