@@ -7,7 +7,7 @@ import '../fonts.ts';
 import {makeV12Choreo, type V12State} from './choreo.ts';
 import {Engine} from './Engine.tsx';
 import {makeMaterials} from './materials.ts';
-import {CameraRig, Embers, EngineHall, Flames, Lights, Post} from './Stage.tsx';
+import {CameraRig, Embers, EngineHall, Flames, HDR_MAX, Lights, Post} from './Stage.tsx';
 import {assertV12Sync, type V12Sync} from './sync.ts';
 import syncJson from './sync.json';
 import {TitlesV12} from './TitlesV12.tsx';
@@ -37,7 +37,7 @@ const Scene: React.FC<{s: V12State; debug: readonly string[]}> = ({s, debug}) =>
       {on('hall') ? <EngineHall s={s} m={m} /> : null}
       {on('embers') ? <Embers s={s} /> : null}
       {on('flames') ? <Flames s={s} /> : null}
-      <Post s={s} fog={on('fog')} post={on('post')} msaa={on('msaa')} bloom={on('bloom')} shadows={on('shadow')} stats={!on('stats')} hdrMax={Number(debug.find(d => d.startsWith('hdr:'))?.slice(4) ?? 64)} />
+      <Post s={s} fog={on('fog')} post={on('post')} msaa={on('msaa')} bloom={on('bloom')} shadows={on('shadow')} stats={!on('stats')} hdrMax={Number(debug.find(d => d.startsWith('hdr:'))?.slice(4) ?? HDR_MAX)} />
     </>
   );
 };

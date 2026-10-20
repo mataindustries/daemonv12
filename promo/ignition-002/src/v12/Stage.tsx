@@ -194,9 +194,14 @@ export const CameraRig: React.FC<{s: V12State}> = ({s}) => {
   return null;
 };
 
-/** Guard before bloom: a single NaN or infinite pixel would otherwise be blurred over the whole frame. */
+/**
+ * Guard before bloom: a single NaN or infinite pixel would otherwise be blurred over the whole frame.
+ * It also clamps fireflies: specular glints of the spot lights on polished metal reach > 16 in
+ * HDR and bloomed into a grey haze over the low shots of bar 5. The emissive glows peak near 4.
+ */
+export const HDR_MAX = 6;
 const SANITIZE = {
-  uniforms: {tDiffuse: {value: null}, uMax: {value: 64}},
+  uniforms: {tDiffuse: {value: null}, uMax: {value: HDR_MAX}},
   vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
   fragmentShader: `uniform sampler2D tDiffuse; uniform float uMax; varying vec2 vUv;
     void main(){ vec4 c = texture2D(tDiffuse, vUv);
@@ -209,7 +214,7 @@ const SANITIZE = {
  * Studio environment, tone mapping and the post chain. The composer renders once per Remotion
  * frame when @remotion/three advances R3F; it reads the state set by this frame and animates nothing.
  */
-export const Post: React.FC<{s: V12State; fog?: boolean; post?: boolean; msaa?: boolean; bloom?: boolean; shadows?: boolean; stats?: boolean; hdrMax?: number}> = ({s, fog = true, post = true, msaa = true, bloom: useBloom = true, shadows = true, stats = false, hdrMax = 64}) => {
+export const Post: React.FC<{s: V12State; fog?: boolean; post?: boolean; msaa?: boolean; bloom?: boolean; shadows?: boolean; stats?: boolean; hdrMax?: number}> = ({s, fog = true, post = true, msaa = true, bloom: useBloom = true, shadows = true, stats = false, hdrMax = HDR_MAX}) => {
   const {gl, scene, camera, size} = useThree();
   const {composer, bloom} = useMemo(() => {
     // No MSAA: under software WebGL it cost ~45 % of every frame; FXAA after tone mapping instead.
