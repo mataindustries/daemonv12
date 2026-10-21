@@ -4,6 +4,14 @@ Notable changes to DaemonV12. Every release reads project `formatVersion: 1`, an
 existing projects keep their rendered output unless an entry says otherwise. No
 version has been tagged or published to npm yet.
 
+## Unreleased
+
+- Add optional SIGNAL Lab pack v0.2.0: nine unchanged supplied WAVs, three kits,
+  catalog and deterministic generator. Separate local packaging and explicit
+  installation use existing instrument discovery; default assets and engine DSP
+  are unchanged. Add source SHA-256, regeneration, WAV format, kit discovery,
+  packaging and deterministic playback checks. Rights remain PENDING OWNER REVIEW.
+
 ## 0.7.0: sampler articulation (2026-10-13)
 
 Sampler and drum-kit notes gain four optional controls. Projects without them
