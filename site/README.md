@@ -2,7 +2,7 @@
 
 The public landing page for DaemonV12: a single static page built with Vite, React and
 TypeScript, prerendered to HTML at build time. The browser receives HTML, one inlined
-stylesheet, two self-hosted fonts and a ~1 kB script. React never runs in the browser.
+stylesheet, two self-hosted fonts and a small progressive enhancement script. React never runs in the browser.
 
 The site is **isolated from the DaemonV12 package**. It has its own `package.json` and
 lockfile; the root package never builds, tests, type-checks or publishes `site/`, and does
@@ -48,8 +48,10 @@ requests).
 | `supportUrl` | A **Stripe Payment Link** (`https://buy.stripe.com/...`) | SUPPORT DEVELOPMENT renders as a dashed "Opening soon" state, not a link |
 | `requestPackUrl` | Any `https://` form (Tally, Typeform, Google Forms, a GitHub issue template) or a `mailto:` address | REQUEST A PACK renders as "Requests open soon" |
 | `analyticsMeasurementId` | Google Analytics 4 measurement ID (`G-...`) | No Google tag or custom CTA events |
-| `v06Released` | `true` once V0.6 is merged into `main` | The V0.6 section is labelled **V0.6 · FINAL REVIEW** |
-| `v06PreviewRef` | Branch the V0.6 links use before release | — |
+| `engineVersion` | Merged production engine (`0.7.0`) | Must match the root package; tested |
+| `contactUrl` | Sergio’s verified public email, with a paid-project subject | Contact button renders pending |
+| `portfolioUrl` | ENM Ventures portfolio at `https://ziggurat.pages.dev/` | Portfolio button renders pending |
+| `ignition.videoUrl` | Owner-supplied public YouTube Short | Showcase button renders pending |
 
 **Payments.** The page has no Stripe SDK, no keys, no checkout and no payment code. The
 support button is a plain link to an external Payment Link that opens in a new tab with
@@ -58,18 +60,38 @@ first, and pricing follows once the scope is understood.
 
 **Analytics.** The static HTML head loads Google's `gtag.js` asynchronously using
 `analyticsMeasurementId`. The client enhancement script sends a
-`daemonv12_cta_click` event with `cta_name` (`support` or `request-pack`) and
+`daemonv12_cta_click` event with `cta_name` (`support`, `request-pack`, `ignition-video`, `contact`, `portfolio` or `github`) and
 `link_url` when a configured call-to-action is clicked. It does not collect form
 answers or payment information. Verify GA4 Realtime and the event report after
 deploying. Assess applicable consent requirements before targeting visitors in
 jurisdictions where they apply. The Google tag is an external third-party request.
 
-**V0.6 release flip.** With `v06Released: false` the sample-performance section reads as a
-preview ("In final review, not yet released"), its links point at the review branch, and
-nothing else on the page claims V0.6: the status line says v0.5, the capability strip and
-install snippet stay as they are. Setting it to `true` changes all of that at once: the
-status becomes v0.6, a SAMPLE PERFORMANCE capability appears, links move to `main` and the
-section offers `npm run demo:ghost-shift`.
+**Release consistency.** `engineVersion` drives the visible v0.7 status and the full
+`softwareVersion: 0.7.0` in structured data. Tests compare it with the root package;
+the production site still builds independently from `site/`. The sampler section
+introduces source slices, musical gates, attack/release envelopes and track-local
+choke groups from `docs/V0_7_SAMPLER_ARTICULATION.md`. GHOST//SHIFT continues to show
+the V0.6 playback controls; ONE SOUND links to the V0.7 before/after comparison.
+
+## IGNITION 002 — V12 OVERDRIVE and paid-work paths
+
+The complementary showcase links to the owner-supplied public video:
+https://youtube.com/shorts/8_sCK9_PhbE. It loads no YouTube iframe, script, thumbnail
+or video at page load, and no master is added to the repository. The owner-provided
+specifications are 128 BPM, a 15-second loop, procedural V12 animation, Remotion /
+Three.js, 1080 × 1920 at 60 fps and 900 frames. DaemonV12 supplies composition and
+audio rendering; Remotion supplies the frame sequence/render and Three.js the
+procedural scene/animation. The site does not claim DaemonV12 renders the picture.
+
+The hero links to the showcase, custom-pack form and paid-work section. Existing
+GitHub, Tally request-pack and Stripe support destinations are preserved. The new
+paid-work section offers creative coding, audio tooling and interactive prototypes
+without fixed prices or delivery promises. Sergio’s public email was verified in
+[mataindustries/digital-ziggurat](https://github.com/mataindustries/digital-ziggurat/blob/25838be66e7ca8c55ddbfdf97191e45e2f2232ed/src/data/projects.js).
+The ENM Ventures portfolio path is https://ziggurat.pages.dev/.
+
+GLASS//FIRE retains its player, sound/tempo/duration data, stem visuals and technical
+explanation. No public link for the new Short has been verified, so none is added.
 
 ## GLASS//FIRE video
 
@@ -110,14 +132,17 @@ npm run dev          # http://localhost:5173, prerendered on each request
 npm run build        # dist/
 npm run preview      # serve dist/ on :4173
 npm run check        # typecheck + lint + unit tests
-npm run qa           # browser QA of dist/ (desktop + 430/390/360 px, reduced motion)
+npm run qa           # browser QA of dist/ (desktop, tablet + 430/390/360 px, reduced motion)
 ```
 
 `npm run qa` serves `dist/` and drives Chromium through `playwright-core` (no browser
 download; it uses `CHROMIUM_PATH` or `/opt/pw-browsers/chromium`). It checks horizontal
 overflow, minimum text size, console errors, link security, the pending config states,
-landmarks and keyboard entry, and, when the video exists, muted autoplay, reduced motion,
-refused autoplay and the Watch button. Screenshots go to `qa-output/` (git-ignored).
+landmarks, keyboard entry, metadata and CTA event payloads without duplicate page-view
+configuration. GA4 requests are intercepted locally so QA sends no live events. When
+the video exists it also checks muted autoplay, reduced motion, Save-Data, slow
+connections, refused autoplay, offscreen pause and the Watch button. Showcase and
+contact section screenshots are captured alongside the existing page screenshots. Screenshots go to `qa-output/` (git-ignored).
 
 ### Generated assets
 
@@ -132,7 +157,7 @@ These are committed, so the build never reads outside `site/`:
 ## Facts on the page
 
 Every number comes from the repository: `README.md`, `CHANGELOG.md`, `docs/`,
-`examples/`, `reports/shoot-the-moon/REPORT.md` and `promo/glass-fire/`. When those
+`examples/`, `reports/shoot-the-moon/REPORT.md` and `promo/glass-fire/`. IGNITION facts additionally come from the owner’s showcase brief. When those
 change, update `src/Page.tsx`. The adaptive game audio case describes what the engine
 provides (bar-exact loop layers with aligned stems, per `docs/V0_5_TIMELINE_DYNAMICS.md`
 and `examples/v05-loop-demo.json`); the switching between layers happens in the game.
@@ -142,7 +167,7 @@ and `examples/v05-loop-demo.json`); the switching between layers happens in the 
 ```
 index.html            template with <!--app-head--> / <!--app-html--> placeholders
 vite.config.ts        build settings; dev server prerenders per request
-src/config.ts         owner settings (URLs, V0.6 flag, promo paths)
+src/config.ts         owner settings (URLs, engine version, promo paths)
 src/site.ts           values derived from config (status line, links)
 src/links.ts          outbound URL policy
 src/Page.tsx          the page

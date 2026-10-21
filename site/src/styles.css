@@ -225,6 +225,7 @@ ol {
 
 .section {
   padding: var(--section) 0 0;
+  scroll-margin-top: 80px;
 }
 
 .section__lede {
@@ -263,6 +264,69 @@ a:hover .arrow {
   text-decoration: none;
   white-space: nowrap;
   transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+/* New showcase and work paths use the existing type, hairlines and buttons. */
+.hero__paths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-top: 24px;
+  font: 500 13px/1.6 var(--mono);
+}
+
+.ignition__grid,
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 32px clamp(32px, 6vw, 88px);
+  padding-top: 32px;
+  border-top: var(--hair);
+}
+
+.ignition__title {
+  max-width: none;
+}
+
+.ignition__body,
+.contact__body,
+.contact__portfolio > p {
+  max-width: 48ch;
+  margin-top: 20px;
+  color: var(--g7);
+  font-size: 17px;
+}
+
+.ignition__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 28px;
+  margin-top: 28px;
+  font: 500 13px/1.6 var(--mono);
+}
+
+.ignition__stats {
+  margin-top: 0;
+}
+
+.ignition__credits {
+  margin-top: 24px;
+}
+
+.contact__portfolio {
+  align-self: end;
+}
+
+.contact__portfolio .btn {
+  margin-top: 28px;
+}
+
+@media (max-width: 860px) {
+  .ignition__grid,
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .btn--primary {
@@ -1072,6 +1136,26 @@ a:hover .arrow {
   font-size: 15.5px;
   line-height: 1.45;
   color: var(--g7);
+}
+
+.perf__fields--articulation {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.perf__fields--articulation b {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media (min-width: 761px) and (max-width: 1080px) {
+  .perf__fields--articulation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .perf__fields--articulation li:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
 }
 
 .perf__truth {

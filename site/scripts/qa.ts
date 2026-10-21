@@ -1,6 +1,6 @@
 // Browser QA against the production build: serves dist/ and checks layout, links, the
 // pending config states, the film's autoplay/reduced-motion behavior and console errors
-// at desktop and phone widths. Screenshots go to qa-output/ (git-ignored).
+// at desktop, tablet and phone widths. Screenshots go to qa-output/ (git-ignored).
 //
 //   npm run build && npm run qa
 //
@@ -11,7 +11,8 @@ import {createServer} from 'node:http';
 import type {AddressInfo} from 'node:net';
 import {extname, join, normalize} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {chromium, type Page} from 'playwright-core';
+import {chromium, type BrowserContextOptions, type Page} from 'playwright-core';
+import {config} from '../src/config.ts';
 
 const site = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(site, 'dist');
@@ -56,6 +57,20 @@ const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}/`;
 const executablePath = process.env.CHROMIUM_PATH ?? (existsSync('/opt/pw-browsers/chromium') ? '/opt/pw-browsers/chromium' : undefined);
 const browser = await chromium.launch({executablePath, args: ['--autoplay-policy=no-user-gesture-required']});
 
+// Exercise the real inline GA4 queue without sending QA traffic to Google or loading
+// any other external resource. Outbound link tests prevent navigation before clicking.
+const newContext = async (options: BrowserContextOptions = {}) => {
+  const context = await browser.newContext(options);
+  await context.route('**/*', route => {
+    const url = route.request().url();
+    if (url.startsWith(base)) return route.continue();
+    if (url === `https://www.googletagmanager.com/gtag/js?id=${config.analyticsMeasurementId}`)
+      return route.fulfill({contentType: 'text/javascript', body: ''});
+    return route.abort('blockedbyclient');
+  });
+  return context;
+};
+
 const failures: string[] = [];
 const check = (ok: boolean, message: string) => {
   console.log(`${ok ? 'ok  ' : 'FAIL'} ${message}`);
@@ -65,6 +80,7 @@ const check = (ok: boolean, message: string) => {
 const VIEWPORTS = [
   {name: 'desktop-1440', width: 1440, height: 900},
   {name: 'laptop-1024', width: 1024, height: 768},
+  {name: 'tablet-768', width: 768, height: 1024},
   {name: 'phone-430', width: 430, height: 932},
   {name: 'phone-390', width: 390, height: 844},
   {name: 'phone-360', width: 360, height: 780},
@@ -84,7 +100,7 @@ const overflowers = (page: Page) =>
 
 for (const vp of VIEWPORTS) {
   for (const motion of ['no-preference', 'reduce'] as const) {
-    const context = await browser.newContext({viewport: {width: vp.width, height: vp.height}, reducedMotion: motion, deviceScaleFactor: vp.width < 500 ? 2 : 1});
+    const context = await newContext({viewport: {width: vp.width, height: vp.height}, reducedMotion: motion, deviceScaleFactor: vp.width < 500 ? 2 : 1});
     const page = await context.newPage();
     const errors: string[] = [];
     page.on('console', m => m.type() === 'error' && errors.push(m.text()));
@@ -94,7 +110,7 @@ for (const vp of VIEWPORTS) {
     const tag = `${vp.name}/${motion}`;
 
     const o = await overflowers(page);
-    check(o.scroll <= o.client, `${tag}: no horizontal overflow (scrollWidth ${o.scroll}, viewport ${o.client})${o.bad.length ? ' ' + o.bad.join(', ') : ''}`);
+    check(o.scroll <= o.client && o.bad.length === 0, `${tag}: no horizontal overflow (scrollWidth ${o.scroll}, viewport ${o.client})${o.bad.length ? ' ' + o.bad.join(', ') : ''}`);
     check(errors.length === 0, `${tag}: no console errors ${errors.join(' | ')}`);
 
     // Smallest rendered text (ignores visually hidden text and SVG figure labels).
@@ -115,6 +131,10 @@ for (const vp of VIEWPORTS) {
     if (motion === 'no-preference') {
       await page.screenshot({path: join(out, `${vp.name}-fold.png`)});
       await page.screenshot({path: join(out, `${vp.name}-full.png`), fullPage: true});
+      for (const id of ['ignition', 'contact']) {
+        const section = page.locator(`#${id}`);
+        await section.screenshot({path: join(out, `${vp.name}-${id}.png`)});
+      }
     }
 
     const hasVideo = (await page.locator('video[data-promo]').count()) > 0;
@@ -126,7 +146,12 @@ for (const vp of VIEWPORTS) {
         return {paused: v.paused, muted: v.muted, button: !(document.querySelector('[data-promo-play]') as HTMLElement).hidden};
       });
       if (motion === 'reduce') check(state.paused && state.button, `${tag}: film does not autoplay under reduced motion; play button shown`);
-      else check(!state.paused && state.muted, `${tag}: film autoplays muted in view`);
+      else {
+        check(!state.paused && state.muted, `${tag}: film autoplays muted in view`);
+        await page.locator('#contact').scrollIntoViewIfNeeded();
+        await page.waitForTimeout(200);
+        check(await page.locator('video[data-promo]').evaluate(v => (v as HTMLVideoElement).paused), `${tag}: film pauses when it leaves view`);
+      }
     } else {
       check((await page.locator('.film__pending').count()) === 1, `${tag}: GLASS//FIRE placeholder frame rendered (no video file)`);
     }
@@ -134,10 +159,23 @@ for (const vp of VIEWPORTS) {
   }
 }
 
+// The new commercial paths and both showcases remain usable without JavaScript.
+{
+  const context = await newContext({javaScriptEnabled: false, viewport: {width: 360, height: 780}});
+  const page = await context.newPage();
+  await page.goto(base, {waitUntil: 'networkidle'});
+  check(await page.locator('a[data-outbound="ignition-video"]').isVisible(), 'no JavaScript: public IGNITION video link is usable');
+  check(await page.locator('a[data-outbound="contact"]').first().isVisible(), 'no JavaScript: Sergio contact link is usable');
+  check(await page.locator('a[data-outbound="request-pack"]').first().isVisible(), 'no JavaScript: sound-pack request link is usable');
+  if (existsSync(join(dist, 'media', 'glass-fire-720p60.mp4')))
+    check(await page.locator('video[data-promo][controls][preload="none"]').count() === 1, 'no JavaScript: GLASS//FIRE retains native controls and lazy loading');
+  await context.close();
+}
+
 // Film interactions (only when the web cut exists).
 if (existsSync(join(dist, 'media', 'glass-fire-720p60.mp4'))) {
   // Autoplay refused by the browser: the play button must appear and controls stay usable.
-  const refused = await browser.newContext({viewport: {width: 390, height: 844}});
+  const refused = await newContext({viewport: {width: 390, height: 844}});
   await refused.addInitScript(() => {
     HTMLMediaElement.prototype.play = function () {
       return Promise.reject(new DOMException('blocked', 'NotAllowedError'));
@@ -152,7 +190,7 @@ if (existsSync(join(dist, 'media', 'glass-fire-720p60.mp4'))) {
   await refused.close();
 
   // "Watch GLASS//FIRE" plays from the start with sound (the click is the gesture).
-  const watch = await browser.newContext({viewport: {width: 1440, height: 900}});
+  const watch = await newContext({viewport: {width: 1440, height: 900}});
   page = await watch.newPage();
   await page.goto(base, {waitUntil: 'networkidle'});
   await page.click('a[data-watch]');
@@ -165,18 +203,37 @@ if (existsSync(join(dist, 'media', 'glass-fire-720p60.mp4'))) {
   await watch.close();
 
   // Nothing fetches the MP4 before the page has loaded.
-  const lazy = await browser.newContext({viewport: {width: 1440, height: 900}, reducedMotion: 'reduce'});
+  const lazy = await newContext({viewport: {width: 1440, height: 900}, reducedMotion: 'reduce'});
   page = await lazy.newPage();
   const fetched: string[] = [];
   page.on('request', r => r.url().endsWith('.mp4') && fetched.push(r.url()));
   await page.goto(base, {waitUntil: 'networkidle'});
   check(fetched.length === 0, 'reduced motion: the MP4 is not requested until the viewer presses play');
   await lazy.close();
+
+  // The existing network-saving fallbacks must still keep the film off the wire.
+  for (const mode of ['save-data', '3g']) {
+    const constrained = await newContext({viewport: {width: 390, height: 844}});
+    await constrained.addInitScript(mode => {
+      Object.defineProperty(navigator, 'connection', {value: {saveData: mode === 'save-data', effectiveType: mode === '3g' ? '3g' : '4g'}});
+    }, mode);
+    const page = await constrained.newPage();
+    const fetched: string[] = [];
+    page.on('request', r => r.url().endsWith('.mp4') && fetched.push(r.url()));
+    await page.goto(base, {waitUntil: 'networkidle'});
+    await page.locator('video[data-promo]').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+    check(await page.locator('video[data-promo]').evaluate(v => (v as HTMLVideoElement).paused), `${mode}: GLASS//FIRE does not autoplay`);
+    check(await page.locator('[data-promo-play]').isVisible(), `${mode}: play button remains available`);
+    check(fetched.length === 0, `${mode}: no MP4 request before explicit playback`);
+    await constrained.close();
+  }
 }
 
 // Static checks on one load.
 {
-  const page = await browser.newPage();
+  const context = await newContext();
+  const page = await context.newPage();
   await page.goto(base);
   const links = await page.$$eval('a[target="_blank"]', as => as.map(a => ({href: a.getAttribute('href'), rel: a.getAttribute('rel') ?? ''})));
   check(links.length > 0 && links.every(l => /\bnoopener\b/.test(l.rel) && /\bnoreferrer\b/.test(l.rel)), `all ${links.length} new-tab links carry rel="noopener noreferrer"`);
@@ -187,14 +244,64 @@ if (existsSync(join(dist, 'media', 'glass-fire-720p60.mp4'))) {
   for (const p of pending)
     check(p.tag === 'SPAN' && !p.href && p.role === 'link' && p.disabled === 'true' && p.tab < 0, `empty ${p.id} URL renders a disabled, non-focusable pending state (no href)`);
   const scripts = await page.$$eval('script[src]', s => s.map(x => x.getAttribute('src')));
-  check(scripts.every(s => s?.startsWith('/assets/')), `only first-party scripts (${scripts.join(', ')})`);
+  const gaScript = `https://www.googletagmanager.com/gtag/js?id=${config.analyticsMeasurementId}`;
+  check(scripts.every(s => s?.startsWith('/assets/') || s === gaScript), `only first-party scripts and configured GA4 (${scripts.join(', ')})`);
+  check(scripts.filter(s => s === gaScript).length === (config.analyticsMeasurementId ? 1 : 0), 'exactly one configured GA4 script');
+  const metadata = await page.evaluate(() => ({
+    version: JSON.parse(document.querySelector('script[type="application/ld+json"]')!.textContent!).softwareVersion,
+    canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href'),
+    description: document.querySelector('meta[name="description"]')?.getAttribute('content'),
+  }));
+  check(metadata.version === config.engineVersion, 'structured data identifies the merged v0.7.0 engine');
+  check(metadata.canonical === `${config.siteUrl}/` && !!metadata.description, 'canonical URL and description are present');
+  check(await page.locator('iframe').count() === 0, 'IGNITION external link adds no embedded player or media load');
+  check(await page.locator('a[data-outbound="ignition-video"]').getAttribute('href') === config.ignition.videoUrl, 'IGNITION links to the supplied public Short');
+  const unnamed = await page.$$eval('a', links => links.filter(a => !a.textContent?.trim() && !a.getAttribute('aria-label')).length);
+  check(unnamed === 0, 'all links have accessible text or a label');
   check(!(await page.content()).toLowerCase().includes('stripe.com/v3'), 'no Stripe SDK');
   const landmarks = await page.evaluate(() => ({header: !!document.querySelector('header'), main: !!document.querySelector('main'), footer: !!document.querySelector('footer'), h1: document.querySelectorAll('h1').length}));
   check(landmarks.header && landmarks.main && landmarks.footer && landmarks.h1 === 1, 'landmarks: header, main, footer, one h1');
   // Keyboard: first Tab reaches the skip link.
   await page.keyboard.press('Tab');
   check((await page.evaluate(() => document.activeElement?.className)) === 'skip', 'first Tab focuses the skip link');
-  await page.close();
+  await context.close();
+}
+
+// Every conversion path queues exactly one event per click; navigation is prevented
+// only in QA so no payment, form, email, video or portfolio destination is opened.
+if (config.analyticsMeasurementId) {
+  const context = await newContext({viewport: {width: 390, height: 844}, reducedMotion: 'reduce'});
+  await context.addInitScript(() => {
+    document.addEventListener('click', event => {
+      if ((event.target as Element).closest('a[data-outbound]')) event.preventDefault();
+    }, true);
+  });
+  const page = await context.newPage();
+  await page.goto(base, {waitUntil: 'networkidle'});
+  const commands = () => page.evaluate(() => ((window as Window & {dataLayer?: ArrayLike<unknown>[]}).dataLayer ?? []).map(entry => Array.from(entry)));
+  const initial = await commands();
+  check(initial.filter(c => c[0] === 'js').length === 1, 'GA4 initializes once');
+  check(initial.filter(c => c[0] === 'config' && c[1] === config.analyticsMeasurementId).length === 1, 'GA4 config sends a single automatic page view');
+  check(initial.filter(c => c[0] === 'event' && c[1] === 'page_view').length === 0, 'no duplicate manual page_view');
+  for (const name of ['ignition-video', 'contact', 'portfolio', 'github', 'support', 'request-pack']) {
+    const links = page.locator(`a[data-outbound="${name}"]`);
+    check(await links.count() > 0, `${name}: tracked conversion link exists`);
+    for (const link of await links.all()) {
+      const href = await link.evaluate(a => (a as HTMLAnchorElement).href);
+      const before = await commands();
+      await link.click();
+      const after = await commands();
+      const added = after.slice(before.length);
+      const event = added[0];
+      const payload = event?.[2] as {cta_name?: string; link_url?: string} | undefined;
+      check(added.length === 1 && event?.[0] === 'event' && event[1] === 'daemonv12_cta_click' && payload?.cta_name === name && payload.link_url === href,
+        `${name}: one CTA event with the correct URL per click`);
+    }
+  }
+  const final = await commands();
+  check(final.filter(c => c[0] === 'config').length === 1 && final.filter(c => c[0] === 'event' && c[1] === 'page_view').length === 0,
+    'outbound interactions do not create additional page views');
+  await context.close();
 }
 
 await browser.close();
