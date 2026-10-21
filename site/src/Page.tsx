@@ -1,6 +1,7 @@
 // The whole landing page. Rendered to static HTML at build time (src/prerender.tsx);
 // no React runs in the browser. Every number on this page is taken from the repository:
-// README.md, CHANGELOG.md, docs/, examples/ and reports/shoot-the-moon/REPORT.md.
+// README.md, CHANGELOG.md, docs/, examples/, reports/shoot-the-moon/REPORT.md,
+// and the owner-supplied IGNITION 002 showcase brief.
 import type {ReactNode} from 'react';
 import {config} from './config.ts';
 import type {Outbound} from './links.ts';

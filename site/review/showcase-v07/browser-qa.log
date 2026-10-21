@@ -1,0 +1,105 @@
+
+> daemonv12-site@0.1.0 qa
+> node scripts/qa.ts
+
+ok   desktop-1440/no-preference: no horizontal overflow (scrollWidth 1440, viewport 1440)
+ok   desktop-1440/no-preference: no console errors 
+ok   desktop-1440/no-preference: smallest text 11.5px (perf__axis perf__axis--top)
+ok   desktop-1440/no-preference: film autoplays muted in view
+ok   desktop-1440/no-preference: film pauses when it leaves view
+ok   desktop-1440/reduce: no horizontal overflow (scrollWidth 1440, viewport 1440)
+ok   desktop-1440/reduce: no console errors 
+ok   desktop-1440/reduce: smallest text 11.5px (perf__axis perf__axis--top)
+ok   desktop-1440/reduce: film does not autoplay under reduced motion; play button shown
+ok   laptop-1024/no-preference: no horizontal overflow (scrollWidth 1024, viewport 1024)
+ok   laptop-1024/no-preference: no console errors 
+ok   laptop-1024/no-preference: smallest text 11.5px (perf__axis perf__axis--top)
+ok   laptop-1024/no-preference: film autoplays muted in view
+ok   laptop-1024/no-preference: film pauses when it leaves view
+ok   laptop-1024/reduce: no horizontal overflow (scrollWidth 1024, viewport 1024)
+ok   laptop-1024/reduce: no console errors 
+ok   laptop-1024/reduce: smallest text 11.5px (perf__axis perf__axis--top)
+ok   laptop-1024/reduce: film does not autoplay under reduced motion; play button shown
+ok   tablet-768/no-preference: no horizontal overflow (scrollWidth 768, viewport 768)
+ok   tablet-768/no-preference: no console errors 
+ok   tablet-768/no-preference: smallest text 11.5px (perf__axis perf__axis--top)
+ok   tablet-768/no-preference: film autoplays muted in view
+ok   tablet-768/no-preference: film pauses when it leaves view
+ok   tablet-768/reduce: no horizontal overflow (scrollWidth 768, viewport 768)
+ok   tablet-768/reduce: no console errors 
+ok   tablet-768/reduce: smallest text 11.5px (perf__axis perf__axis--top)
+ok   tablet-768/reduce: film does not autoplay under reduced motion; play button shown
+ok   phone-430/no-preference: no horizontal overflow (scrollWidth 430, viewport 430)
+ok   phone-430/no-preference: no console errors 
+ok   phone-430/no-preference: smallest text 11.5px (perf__axis perf__axis--top)
+ok   phone-430/no-preference: film autoplays muted in view
+ok   phone-430/no-preference: film pauses when it leaves view
+ok   phone-430/reduce: no horizontal overflow (scrollWidth 430, viewport 430)
+ok   phone-430/reduce: no console errors 
+ok   phone-430/reduce: smallest text 11.5px (perf__axis perf__axis--top)
+ok   phone-430/reduce: film does not autoplay under reduced motion; play button shown
+ok   phone-390/no-preference: no horizontal overflow (scrollWidth 390, viewport 390)
+ok   phone-390/no-preference: no console errors 
+ok   phone-390/no-preference: smallest text 11.5px (perf__axis perf__axis--top)
+ok   phone-390/no-preference: film autoplays muted in view
+ok   phone-390/no-preference: film pauses when it leaves view
+ok   phone-390/reduce: no horizontal overflow (scrollWidth 390, viewport 390)
+ok   phone-390/reduce: no console errors 
+ok   phone-390/reduce: smallest text 11.5px (perf__axis perf__axis--top)
+ok   phone-390/reduce: film does not autoplay under reduced motion; play button shown
+ok   phone-360/no-preference: no horizontal overflow (scrollWidth 360, viewport 360)
+ok   phone-360/no-preference: no console errors 
+ok   phone-360/no-preference: smallest text 11.5px (perf__axis perf__axis--top)
+ok   phone-360/no-preference: film autoplays muted in view
+ok   phone-360/no-preference: film pauses when it leaves view
+ok   phone-360/reduce: no horizontal overflow (scrollWidth 360, viewport 360)
+ok   phone-360/reduce: no console errors 
+ok   phone-360/reduce: smallest text 11.5px (perf__axis perf__axis--top)
+ok   phone-360/reduce: film does not autoplay under reduced motion; play button shown
+ok   no JavaScript: public IGNITION video link is usable
+ok   no JavaScript: Sergio contact link is usable
+ok   no JavaScript: sound-pack request link is usable
+ok   no JavaScript: GLASS//FIRE retains native controls and lazy loading
+ok   autoplay refused: play button shown over the poster
+ok   autoplay refused: native controls remain
+ok   Watch GLASS//FIRE starts playback with sound (paused=false, muted=false)
+ok   reduced motion: the MP4 is not requested until the viewer presses play
+ok   save-data: GLASS//FIRE does not autoplay
+ok   save-data: play button remains available
+ok   save-data: no MP4 request before explicit playback
+ok   3g: GLASS//FIRE does not autoplay
+ok   3g: play button remains available
+ok   3g: no MP4 request before explicit playback
+ok   all 24 new-tab links carry rel="noopener noreferrer"
+ok   all new-tab links are https
+ok   only first-party scripts and configured GA4 (https://www.googletagmanager.com/gtag/js?id=G-PXEFNNG7H3, /assets/index-chJOis5P.js)
+ok   exactly one configured GA4 script
+ok   structured data identifies the merged v0.7.0 engine
+ok   canonical URL and description are present
+ok   IGNITION external link adds no embedded player or media load
+ok   IGNITION links to the supplied public Short
+ok   all links have accessible text or a label
+ok   no Stripe SDK
+ok   landmarks: header, main, footer, one h1
+ok   first Tab focuses the skip link
+ok   GA4 initializes once
+ok   GA4 config sends a single automatic page view
+ok   no duplicate manual page_view
+ok   ignition-video: tracked conversion link exists
+ok   ignition-video: one CTA event with the correct URL per click
+ok   contact: tracked conversion link exists
+ok   contact: one CTA event with the correct URL per click
+ok   portfolio: tracked conversion link exists
+ok   portfolio: one CTA event with the correct URL per click
+ok   github: tracked conversion link exists
+ok   github: one CTA event with the correct URL per click
+ok   github: one CTA event with the correct URL per click
+ok   github: one CTA event with the correct URL per click
+ok   github: one CTA event with the correct URL per click
+ok   support: tracked conversion link exists
+ok   support: one CTA event with the correct URL per click
+ok   request-pack: tracked conversion link exists
+ok   request-pack: one CTA event with the correct URL per click
+ok   outbound interactions do not create additional page views
+
+all QA checks passed · screenshots in qa-output/
