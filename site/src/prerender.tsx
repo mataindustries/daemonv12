@@ -4,7 +4,7 @@
 import {renderToStaticMarkup} from 'react-dom/server';
 import {config} from './config.ts';
 import {Page} from './Page.tsx';
-import {origin, released06} from './site.ts';
+import {engineVersion, origin, version} from './site.ts';
 
 export {config};
 
@@ -16,7 +16,7 @@ export type RenderOptions = {
 
 const TITLE = 'DaemonV12: give agents instruments';
 const DESCRIPTION =
-  'A headless, deterministic music engine for coding agents. Nine MCP tools compose, process, render and analyze music: WAV, MP3, MIDI and stems, no DAW.';
+  `DaemonV12 v${version}: a headless, deterministic music engine for coding agents. Nine MCP tools render WAV, MP3, MIDI and stems, with source slices, musical gates, attack/release envelopes and track-local choke groups.`;
 
 const esc = (v: string) => v.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const abs = (path: string) => (origin ? `${origin}${path}` : path);
@@ -52,7 +52,7 @@ export const headTags = ({promoAvailable, displayFontHref}: RenderOptions): stri
       name: 'DaemonV12',
       applicationCategory: 'MultimediaApplication',
       operatingSystem: 'Linux, macOS',
-      softwareVersion: released06 ? '0.6' : '0.5',
+      softwareVersion: engineVersion,
       description: DESCRIPTION,
       codeRepository: config.repoUrl,
       ...(origin ? {url: `${origin}/`} : {}),

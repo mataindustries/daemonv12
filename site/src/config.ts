@@ -14,6 +14,18 @@ export const config = {
   /** Public repository. */
   repoUrl: 'https://github.com/mataindustries/daemonv12',
 
+  /** Merged production engine; keep in sync with the root package and changelog. */
+  engineVersion: '0.7.0',
+
+  /** Public contact verified in mataindustries/digital-ziggurat/src/data/projects.js. */
+  contactUrl: 'mailto:matasergio741@gmail.com?subject=Paid%20creative%20project%20with%20Sergio',
+  portfolioUrl: 'https://ziggurat.pages.dev/',
+
+  /** Owner-supplied public Short. Keep the full-resolution master out of this site. */
+  ignition: {
+    videoUrl: 'https://youtube.com/shorts/8_sCK9_PhbE',
+  },
+
   /**
    * SUPPORT DEVELOPMENT: paste a Stripe Payment Link here
    * (https://buy.stripe.com/...). Opens in a new tab. No Stripe SDK is loaded.
@@ -28,17 +40,6 @@ export const config = {
 
   /** Public Google Analytics 4 measurement ID; leave empty to disable GA4. */
   analyticsMeasurementId: 'G-PXEFNNG7H3',
-
-  /**
-   * V0.6 SAMPLE PERFORMANCE visibility. Keep false while V0.6 is in final review:
-   * the section shows as "V0.6 · FINAL REVIEW", links point at `v06PreviewRef`, and
-   * nothing else on the page (status line, capability strip, install snippet) claims it.
-   * Flip to true once V0.6 is merged into main. That is the only change needed.
-   */
-  v06Released: true,
-
-  /** Branch the V0.6 links use while v06Released is false. */
-  v06PreviewRef: 'v06-sample-performance',
 
   /**
    * GLASS//FIRE web cut. Files live in public/media/ and are produced by

@@ -41,17 +41,37 @@ test('configured support/request URLs render active links; empty URLs stay pendi
   assert.ok(!/js\.stripe\.com|stripe\.js/i.test(html), 'no Stripe SDK');
 });
 
-test('V0.6 is presented according to the release flag', opts, () => {
-  if (config.v06Released) {
-    assert.match(html, /Public beta · v0\.6/);
-    assert.ok(!/Final review/.test(html));
-  } else {
-    assert.match(html, /V0\.6 · Final review/);
-    assert.match(html, /In final review, not yet released/);
-    assert.match(html, /Public beta · v0\.5/);
-    assert.ok(!html.includes('class="cap cap--new"'), 'capability strip does not claim V0.6');
-    assert.ok(!html.includes('demo:ghost-shift'), 'no V0.6 command offered before release');
+test('visible release and structured data match the production engine', opts, () => {
+  assert.match(html, /Public beta · v0\.7/);
+  assert.ok(!/Public beta · v0\.[56]|Final review|not yet released/.test(html));
+  const json = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)![1]!);
+  assert.equal(json.softwareVersion, config.engineVersion);
+  for (const feature of ['source slices', 'musical gates', 'attack/release envelopes', 'track-local choke groups']) {
+    assert.ok(json.description.includes(feature), feature);
+    assert.ok(html.toLowerCase().includes(feature), feature);
   }
+  assert.match(html, /\/blob\/main\/docs\/V0_7_SAMPLER_ARTICULATION.md/);
+  assert.match(html, /demo:one-sound/);
+  assert.match(html, /demo:ghost-shift/);
+});
+
+test('IGNITION complements GLASS//FIRE with an external video and factual credits', opts, () => {
+  assert.match(html, /IGNITION 002 — /);
+  assert.match(html, /V12 OVERDRIVE/);
+  for (const fact of ['128 BPM', '15-second loop', '1080 × 1920', '60 fps · 900 frames', 'Three.js', 'Remotion']) assert.ok(html.includes(fact), fact);
+  assert.match(html, /href="https:\/\/youtube.com\/shorts\/8_sCK9_PhbE"[^>]*data-outbound="ignition-video"/);
+  assert.ok(!html.includes('<iframe'), 'no third-party video loads on page view');
+  assert.match(html, /GLASS\/\/FIRE<\/b> · 24\.000 s · 160 BPM · 16 bars/);
+  assert.match(html, /Motion synced to the real stems · Remotion · 60 fps/);
+});
+
+test('commercial paths are instrumented and GA4 initializes only once', opts, () => {
+  for (const name of ['ignition-video', 'contact', 'portfolio', 'github', 'support', 'request-pack']) assert.ok(html.includes(`data-outbound="${name}"`), name);
+  assert.ok(html.includes(config.contactUrl));
+  assert.ok(html.includes(config.portfolioUrl));
+  assert.equal(html.match(/googletagmanager\.com\/gtag\/js\?id=/g)?.length, 1);
+  assert.equal(html.match(/gtag\('config',/g)?.length, 1);
+  assert.ok(!html.includes("gtag('event', 'page_view'"), 'no extra page view');
 });
 
 test('the film is a real player only when the web cut exists', opts, () => {

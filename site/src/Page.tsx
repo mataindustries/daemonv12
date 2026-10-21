@@ -1,10 +1,11 @@
 // The whole landing page. Rendered to static HTML at build time (src/prerender.tsx);
 // no React runs in the browser. Every number on this page is taken from the repository:
-// README.md, CHANGELOG.md, docs/, examples/ and reports/shoot-the-moon/REPORT.md.
+// README.md, CHANGELOG.md, docs/, examples/, reports/shoot-the-moon/REPORT.md,
+// and the owner-supplied IGNITION 002 showcase brief.
 import type {ReactNode} from 'react';
 import {config} from './config.ts';
 import type {Outbound} from './links.ts';
-import {github, released06, repo, repo06, requestPack, status, support} from './site.ts';
+import {contact, github, ignitionVideo, portfolio, repo, requestPack, status, support} from './site.ts';
 import {ACTS, ActRuler, ghostCounts, ghostSourceSeconds, IrisDefs, LoopLayers, PitchTrace, Registration, SyncMap, Wave, type SoundId} from './visuals.tsx';
 
 export type PageProps = {
@@ -12,8 +13,8 @@ export type PageProps = {
   promoAvailable: boolean;
 };
 
-const Ext = ({href, children, className}: {href: string; children: ReactNode; className?: string}) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+const Ext = ({href, children, className, track}: {href: string; children: ReactNode; className?: string; track?: string}) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className={className} data-outbound={track}>
     {children}
     <span className="sr-only"> (opens in a new tab)</span>
   </a>
@@ -63,10 +64,10 @@ const Header = () => (
       <nav className="top__nav" aria-label="Sections">
         <a href="#proof">Proof</a>
         <a href="#how">How it works</a>
-        <a href="#try">Try it</a>
+        <a href="#contact">Work with Sergio</a>
       </nav>
       <span className="top__status">{status}</span>
-      <Ext href={config.repoUrl} className="top__gh">
+      <Ext href={config.repoUrl} className="top__gh" track="github">
         GitHub
         <Arrow />
       </Ext>
@@ -145,14 +146,62 @@ const Hero = ({promoAvailable}: PageProps) => (
           <a className="btn btn--primary" href="#glass-fire" data-watch>
             Watch GLASS//FIRE
           </a>
-          <a className="btn btn--ghost" href={github.href} target={github.target} rel={github.rel}>
+          <a className="btn btn--ghost" href={github.href} target={github.target} rel={github.rel} data-outbound="github">
             View GitHub
             <Arrow />
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </div>
       </div>
+      <p className="hero__paths">
+        <a href="#ignition">Watch V12 Overdrive</a>
+        <a href="#request">Request a custom pack</a>
+        <a href="#contact">Work with Sergio <Arrow /></a>
+      </p>
       <PromoFrame available={promoAvailable} />
+    </div>
+  </section>
+);
+
+// ——————————————————————————————————————————————————————————————— synchronized motion
+
+const Ignition = () => (
+  <section className="section ignition" id="ignition" aria-labelledby="ignition-title">
+    <div className="wrap">
+      <SectionHead index="002" label="Ignition · Music for motion" />
+      <div className="ignition__grid">
+        <div>
+          <h2 className="fund__title ignition__title" id="ignition-title">
+            <span className="sr-only">IGNITION 002 — </span>V12 OVERDRIVE
+          </h2>
+          <p className="ignition__body">
+            An original DaemonV12 soundtrack for a procedural V12 animation. A 15-second loop at 128 BPM shows a different use case:
+            repeatable, exact-duration music for synchronized motion.
+          </p>
+          <div className="ignition__actions">
+            <ConfigButton link={ignitionVideo} label="Watch on YouTube" pending="Video coming soon" track="ignition-video" />
+            <a href="#contact">Discuss a project <Arrow /></a>
+          </div>
+        </div>
+        <div>
+          <ul className="case__stats ignition__stats" aria-label="V12 Overdrive specifications">
+            <li>128 BPM</li>
+            <li>15-second loop</li>
+            <li>1080 × 1920</li>
+            <li>60 fps · 900 frames</li>
+          </ul>
+          <dl className="facts ignition__credits">
+            <div>
+              <dt>DaemonV12 · soundtrack</dt>
+              <dd>Composition and audio rendering for the original, exact-duration music loop.</dd>
+            </div>
+            <div>
+              <dt>Remotion / Three.js · picture</dt>
+              <dd>Remotion sequences and renders the video frames. Three.js supplies the procedural V12 scene and animation.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
     </div>
   </section>
 );
@@ -218,13 +267,16 @@ const Capabilities = () => (
             <span className="cap__note">{c.note}</span>
           </li>
         ))}
-        {released06 ? (
           <li className="cap cap--new">
             <span className="cap__value">0.25–4×</span>
             <span className="cap__label">Sample performance</span>
             <span className="cap__note">per-note rate · glides · source offsets</span>
           </li>
-        ) : null}
+          <li className="cap cap--new">
+            <span className="cap__value">SLICE/GATE</span>
+            <span className="cap__label">Sampler articulation</span>
+            <span className="cap__note">attack / release · track-local choke groups</span>
+          </li>
       </ul>
     </div>
   </section>
@@ -340,28 +392,34 @@ const Proof = () => (
   </section>
 );
 
-// ——————————————————————————————————————————————————————————————— V0.6
+// ——————————————————————————————————————————————————————————————— sampler controls
 
 const SamplePerformance = () => (
-  <section className={`section perf${released06 ? '' : ' perf--review'}`} id="sample-performance" aria-labelledby="perf-title">
+  <section className="section perf" id="sample-performance" aria-labelledby="perf-title">
     <div className="wrap">
-      <SectionHead index="03" label={released06 ? 'V0.6 · Sample performance' : 'V0.6 · Final review'} />
+      <SectionHead index="03" label="V0.7 · Sampler articulation" />
       <div className="perf__head">
         <h2 className="statement" id="perf-title">
           <span>One sample.</span>
           <span className="statement__dim">Performed.</span>
         </h2>
-        {released06 ? null : (
-          <p className="perf__badge">
-            <span className="perf__dot" aria-hidden="true" />
-            In final review, not yet released
-          </p>
-        )}
       </div>
       <p className="section__lede">
-        {released06 ? 'Sampler and drum-kit notes' : 'In V0.6, sampler and drum-kit notes'} can play faster or slower, glide between speeds
-        and start from inside the WAV. One source becomes pitched chops, risers, dives and tape stops, with no pre-rendered derived assets.
+        V0.7 adds source slices, musical gates, attack/release envelopes and track-local choke groups to sampler and drum-kit notes.
+        Shape a voice and leave space between hits, using the original WAV.
       </p>
+      <ul className="perf__fields perf__fields--articulation">
+        <li><b>Source slices</b><span>Select a region with source offsets and endpoints, without creating another asset.</span></li>
+        <li><b>Musical gates</b><span>Request release in note fractions, independently of playback speed.</span></li>
+        <li><b>Attack/release envelopes</b><span>Shape each voice with amplitude ramps measured in output seconds.</span></li>
+        <li><b>Track-local choke groups</b><span>New grouped hits release older voices on the same track. Simultaneous hits coexist.</span></li>
+      </ul>
+      <p className="case__links">
+        <Ext href={repo('docs/V0_7_SAMPLER_ARTICULATION.md')}>V0.7 articulation contract <Arrow /></Ext>
+        <Ext href={repo('examples/one-sound-after.json')}>ONE SOUND project <Arrow /></Ext>
+      </p>
+      <p className="perf__foot">Try the before/after comparison: <code>npm run demo:one-sound</code>.</p>
+      <p className="perf__foot">Alongside the sample-performance controls introduced in V0.6:</p>
       <ul className="perf__fields">
         <li>
           <code>playbackRate</code>
@@ -425,21 +483,16 @@ const SamplePerformance = () => (
         </li>
       </ul>
       <p className="perf__foot">
-        Bit-exact on every platform. Each performed trigger records its rate, glide, offset and voice length in the render manifest. Still
-        nine MCP tools. Projects without the new fields render byte-identical audio to 0.5.0.
-        {released06 ? (
-          <>
-            {' '}
-            Try it: <code>npm run demo:ghost-shift</code>.
-          </>
-        ) : null}
+        GHOST//SHIFT demonstrates the V0.6 rate, glide and offset controls. Each performed trigger records them and its voice length in
+        the render manifest. V0.7 adds articulation provenance through the same nine MCP tools. Existing projects without articulation
+        keep their historical audio bytes with the same pinned toolchain. Try it: <code>npm run demo:ghost-shift</code>.
       </p>
       <p className="case__links">
-        <Ext href={repo06('docs/V0_6_SAMPLE_PERFORMANCE.md')}>
-          {released06 ? 'Sample performance contract' : 'Read the V0.6 contract (review branch)'}
+        <Ext href={repo('docs/V0_6_SAMPLE_PERFORMANCE.md')}>
+          Sample performance contract
           <Arrow />
         </Ext>
-        <Ext href={repo06('examples/ghost-shift.json')}>
+        <Ext href={repo('examples/ghost-shift.json')}>
           GHOST//SHIFT project
           <Arrow />
         </Ext>
@@ -700,7 +753,7 @@ const Try = () => (
             Codex CLI and other MCP clients: <Ext href={repo('docs/MCP_CLIENTS.md')}>MCP client guide</Ext>.
           </li>
         </ul>
-        <a className="btn btn--primary" href={github.href} target={github.target} rel={github.rel}>
+        <a className="btn btn--primary" href={github.href} target={github.target} rel={github.rel} data-outbound="github">
           View GitHub
           <Arrow />
           <span className="sr-only"> (opens in a new tab)</span>
@@ -714,6 +767,29 @@ const Try = () => (
         <pre tabIndex={0} aria-label="Install and connect commands">
           <code>{INSTALL}</code>
         </pre>
+      </div>
+    </div>
+  </section>
+);
+
+const Contact = () => (
+  <section className="section contact" id="contact" aria-labelledby="contact-title">
+    <div className="wrap contact__grid">
+      <div>
+        <SectionHead index="10" label="Paid creative work" />
+        <h2 className="fund__title" id="contact-title">Build something with Sergio.</h2>
+        <p className="contact__body">
+          Creative coding, audio tooling and interactive prototypes. Send Sergio the idea, constraints and intended use to discuss a paid
+          project. Scope and pricing are agreed together.
+        </p>
+        <div className="ignition__actions">
+          <ConfigButton link={contact} label="Contact Sergio" pending="Contact coming soon" track="contact" />
+        </div>
+      </div>
+      <div className="contact__portfolio">
+        <h3 className="case__kind">ENM Ventures portfolio</h3>
+        <p>Explore Sergio’s work across creative tools, games and interactive products.</p>
+        <ConfigButton link={portfolio} label="Explore the portfolio" pending="Portfolio coming soon" track="portfolio" />
       </div>
     </div>
   </section>
@@ -755,7 +831,7 @@ const Footer = () => (
       <p className="foot__line">Give agents instruments.</p>
       <ul className="foot__links">
         <li>
-          <Ext href={config.repoUrl}>GitHub</Ext>
+          <Ext href={config.repoUrl} track="github">GitHub</Ext>
         </li>
         <li>
           <Ext href={repo('README.md')}>README</Ext>
@@ -783,6 +859,7 @@ export const Page = ({promoAvailable}: PageProps) => (
     <Header />
     <main id="main" tabIndex={-1}>
       <Hero promoAvailable={promoAvailable} />
+      <Ignition />
       <WhatItIs />
       <Capabilities />
       <Proof />
@@ -792,6 +869,7 @@ export const Page = ({promoAvailable}: PageProps) => (
       <Example />
       <Try />
       <Fund />
+      <Contact />
     </main>
     <Footer />
   </>

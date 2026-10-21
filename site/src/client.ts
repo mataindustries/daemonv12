@@ -6,7 +6,7 @@
 //  - "Watch GLASS//FIRE" plays from the top with sound: the click is the user gesture.
 import './styles.css';
 
-// Track the two configured conversion CTAs without delaying outbound navigation.
+// Track showcase, technology and conversion links without delaying navigation.
 // The inline gtag stub queues the event even if gtag.js is still loading.
 const analytics = window as Window & {gtag?: (...args: unknown[]) => void};
 document.querySelectorAll<HTMLAnchorElement>('a[data-outbound]').forEach(link => {

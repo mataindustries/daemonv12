@@ -1,13 +1,17 @@
 // The owner-facing configuration stays valid and honest.
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {test} from 'node:test';
 import {config} from '../src/config.ts';
 import {outbound, siteOrigin} from '../src/links.ts';
-import {released06, repo06, status, version} from '../src/site.ts';
+import {engineVersion, repo, status, version} from '../src/site.ts';
 
 test('configured URLs pass the outbound policy', () => {
   assert.doesNotThrow(() => outbound(config.supportUrl));
   assert.doesNotThrow(() => outbound(config.requestPackUrl, {allowMailto: true}));
+  assert.doesNotThrow(() => outbound(config.contactUrl, {allowMailto: true}));
+  assert.doesNotThrow(() => outbound(config.portfolioUrl));
+  assert.doesNotThrow(() => outbound(config.ignition.videoUrl));
   assert.doesNotThrow(() => siteOrigin(config.siteUrl));
 });
 
@@ -22,11 +26,19 @@ test('the repository is the real one', () => {
   assert.equal(config.repoUrl, 'https://github.com/mataindustries/daemonv12');
 });
 
-test('the V0.6 flag drives the status line and V0.6 links together', () => {
-  assert.equal(typeof config.v06Released, 'boolean');
-  assert.equal(version, released06 ? '0.6' : '0.5');
+test('site release matches the merged engine and all contracts link to main', () => {
+  const pkg = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
+  assert.equal(engineVersion, pkg.version);
+  assert.equal(engineVersion, '0.7.0');
+  assert.equal(version, '0.7');
   assert.equal(status, `Public beta · v${version}`);
-  assert.match(repo06('docs/V0_6_SAMPLE_PERFORMANCE.md'), released06 ? /\/blob\/main\// : new RegExp(`/blob/${config.v06PreviewRef}/`));
+  assert.match(repo('docs/V0_7_SAMPLER_ARTICULATION.md'), /\/blob\/main\//);
+});
+
+test('showcase and commercial paths use the verified destinations', () => {
+  assert.equal(config.ignition.videoUrl, 'https://youtube.com/shorts/8_sCK9_PhbE');
+  assert.equal(config.portfolioUrl, 'https://ziggurat.pages.dev/');
+  assert.equal(new URL(config.contactUrl).pathname, 'matasergio741@gmail.com');
 });
 
 test('promo media paths are site-relative under /media/', () => {
