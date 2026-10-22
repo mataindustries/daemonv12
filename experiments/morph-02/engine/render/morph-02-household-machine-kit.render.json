@@ -1,0 +1,4818 @@
+{
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "morph-02-household-machine-kit.json",
+    "sha256": "cc951275c376788b0f021455c743adcda3fb78b7ce27468bd41366aa28701214",
+    "formatVersion": 1,
+    "seed": 20261022
+  },
+  "midi": {
+    "file": "morph-02-household-machine-kit.mid",
+    "sha256": "8b192eb2972f75be38ffd5ec08fdec8d8d465a60dfe5901c38b8b3c1d67d840f",
+    "bytes": 85,
+    "ppq": 960,
+    "durationTicks": 19200,
+    "durationSeconds": 10,
+    "notes": 0
+  },
+  "renderer": {
+    "name": "daemonv12-production",
+    "version": "2",
+    "settings": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "panLaw": "linear stereo balance; unity center",
+      "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+      "normalization": false,
+      "dither": false,
+      "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+      "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+      "saturation": "tanh-v1; no output compensation",
+      "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+    }
+  },
+  "gmRenderer": null,
+  "gmSource": null,
+  "soundfont": null,
+  "samples": {
+    "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+    "assets": [
+      {
+        "file": "assets/beep-b.wav",
+        "sha256": "054ff40d4c04d742fa8bd52d9d5b4d1e0fd2850f4372962e1def52954b71169e",
+        "bytes": 31796,
+        "frames": 7938,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/beep-e.wav",
+        "sha256": "d68b474e7215c22947b4a5a3268e5152acfd80d2bf99a676c3cc3a387c2ae602",
+        "bytes": 17464,
+        "frames": 4355,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/beep-f.wav",
+        "sha256": "b20ec185cf1c68a0713a23e8adc82f3dc54c8cd8a7f551575fcc0638e7bafc08",
+        "bytes": 40616,
+        "frames": 10143,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/beep-g.wav",
+        "sha256": "2910dd05d0845404d318d80ec479e9aeb6914666132da7f2d71fe3dd2afdfaa2",
+        "bytes": 40616,
+        "frames": 10143,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bell-a.wav",
+        "sha256": "4defa44b16072de53b522ccdb610c3f031f08d686a8c17af480aa1644e49ac28",
+        "bytes": 79424,
+        "frames": 19845,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bell-b.wav",
+        "sha256": "20b01d8622af910bb3a36eeabee842fdb66a5db620ede4eef5f0091d151e017f",
+        "bytes": 79424,
+        "frames": 19845,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/household-machine-kit.json",
+        "sha256": "cd4fd397b564da303dabbd973815c1f2aeb9e3fbbfda01eae96af4ae59f0b7eb",
+        "bytes": 1019,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/kitchen-tick.wav",
+        "sha256": "0de91b83f20e88219b91b2d8b191c8508c69a8adf9c4b6fd914baa77fcd84cb6",
+        "bytes": 10628,
+        "frames": 2646,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/machine-voice.wav",
+        "sha256": "ddb47249d0c00cb81577420a1abe59c10cae5e7c594152fb78a1a55d0bd8932c",
+        "bytes": 2116844,
+        "frames": 529200,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/microwave-ding.wav",
+        "sha256": "047941cbfc61b75c94c177ab22a40592dbc75c440fabb3ac85aae4ed17d7b852",
+        "bytes": 282284,
+        "frames": 70560,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/press-clank.wav",
+        "sha256": "f9d772e83a6429bacfa1267de3b479543f6c5112388addd9e1cedcb661770657",
+        "bytes": 158804,
+        "frames": 39690,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/tempo-string-strike.wav",
+        "sha256": "b3c2717a99e1ea7360833c8a103d1773ed8882a3a1fd5673ea7a2fa7f3d9203c",
+        "bytes": 529244,
+        "frames": 132300,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/toaster-snare.wav",
+        "sha256": "183840b8446a077cddd05eef3564922405ca25856feaa4d610d16c2b39b78b19",
+        "bytes": 105884,
+        "frames": 26460,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/washer-kick.wav",
+        "sha256": "0ef1326243f02343eccfc782255bac723822bd7da10ef37c33777d7034efd77e",
+        "bytes": 105884,
+        "frames": 26460,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      }
+    ],
+    "tracks": [
+      {
+        "trackId": "alarm-hook",
+        "trackIndex": 0,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/household-machine-kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 240,
+            "frame": 5513,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 720,
+            "frame": 16538,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 1440,
+            "frame": 33075,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 1680,
+            "frame": 38588,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 2160,
+            "frame": 49613,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-g.wav",
+            "tick": 2880,
+            "frame": 66150,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-f.wav",
+            "tick": 3360,
+            "frame": 77175,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 3840,
+            "frame": 88200,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 4080,
+            "frame": 93713,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 4560,
+            "frame": 104738,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 5280,
+            "frame": 121275,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 5520,
+            "frame": 126788,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 6000,
+            "frame": 137813,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-g.wav",
+            "tick": 6720,
+            "frame": 154350,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-f.wav",
+            "tick": 7200,
+            "frame": 165375,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 7920,
+            "frame": 181913,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 8400,
+            "frame": 192938,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 9120,
+            "frame": 209475,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 9360,
+            "frame": 214988,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 9840,
+            "frame": 226013,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-g.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-f.wav",
+            "tick": 11040,
+            "frame": 253575,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 11760,
+            "frame": 270113,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 12240,
+            "frame": 281138,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 12960,
+            "frame": 297675,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 13200,
+            "frame": 303188,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 13680,
+            "frame": 314213,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-g.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-f.wav",
+            "tick": 14880,
+            "frame": 341775,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "drums",
+        "trackIndex": 1,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/household-machine-kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 480,
+            "frame": 11025,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 960,
+            "frame": 22050,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 1440,
+            "frame": 33075,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 1920,
+            "frame": 44100,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 2400,
+            "frame": 55125,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 2880,
+            "frame": 66150,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 3360,
+            "frame": 77175,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 3840,
+            "frame": 88200,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 4320,
+            "frame": 99225,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 4800,
+            "frame": 110250,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 5280,
+            "frame": 121275,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 5760,
+            "frame": 132300,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 6240,
+            "frame": 143325,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 6720,
+            "frame": 154350,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 7200,
+            "frame": 165375,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 8640,
+            "frame": 198450,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/toaster-snare.wav",
+            "tick": 8640,
+            "frame": 198450,
+            "velocity": 0.7,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 26460,
+              "renderedFrames": 26460
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 9600,
+            "frame": 220500,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/toaster-snare.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 0.7,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 26460,
+              "renderedFrames": 26460
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 12480,
+            "frame": 286650,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/toaster-snare.wav",
+            "tick": 12480,
+            "frame": 286650,
+            "velocity": 0.7,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 26460,
+              "renderedFrames": 26460
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 13440,
+            "frame": 308700,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/toaster-snare.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 0.7,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 26460,
+              "renderedFrames": 26460
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 26460,
+              "renderedFrames": 26460
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "bells",
+        "trackIndex": 2,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/household-machine-kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 181913,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 7920,
+            "frame": 181913,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 187425,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 8160,
+            "frame": 187425,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 192938,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 8400,
+            "frame": 192938,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 198450,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 8640,
+            "frame": 198450,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 203963,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 8880,
+            "frame": 203963,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 209475,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 9120,
+            "frame": 209475,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 214988,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 9360,
+            "frame": 214988,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 220500,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 9600,
+            "frame": 220500,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 226013,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 9840,
+            "frame": 226013,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 231525,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 10080,
+            "frame": 231525,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 237038,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 10320,
+            "frame": 237038,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 242550,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 248063,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 10800,
+            "frame": 248063,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 253575,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 11040,
+            "frame": 253575,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 259088,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 11280,
+            "frame": 259088,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 264600,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 270113,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 11760,
+            "frame": 270113,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 275625,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 12000,
+            "frame": 275625,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 281138,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 12240,
+            "frame": 281138,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 286650,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 12480,
+            "frame": 286650,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 292163,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 12720,
+            "frame": 292163,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 297675,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 12960,
+            "frame": 297675,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 303188,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 13200,
+            "frame": 303188,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 308700,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 13440,
+            "frame": 308700,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 314213,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 13680,
+            "frame": 314213,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 319725,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 13920,
+            "frame": 319725,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 325238,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 14160,
+            "frame": 325238,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 330750,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 336263,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 14640,
+            "frame": 336263,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 341775,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 14880,
+            "frame": 341775,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 347288,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 15120,
+            "frame": 347288,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "voiceFrames": 11025,
+              "renderedFrames": 11025
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "press",
+        "trackIndex": 3,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/household-machine-kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 3840,
+            "frame": 88200,
+            "velocity": 0.75,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 5280,
+            "frame": 121275,
+            "velocity": 0.75,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 6720,
+            "frame": 154350,
+            "velocity": 0.75,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 9120,
+            "frame": 209475,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 12960,
+            "frame": 297675,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "ding",
+        "trackIndex": 4,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/household-machine-kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/microwave-ding.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 0.9
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "tempo-string",
+        "trackIndex": 5,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/tempo-string-strike.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/tempo-string-strike.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.9
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "machine-voice",
+        "trackIndex": 6,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/machine-voice.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/machine-voice.wav",
+            "tick": 3840,
+            "frame": 88200,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 1.3,
+                "frames": 57330
+              },
+              "voiceFrames": 471870
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 2.55,
+                "frames": 112455
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.08,
+                "releaseFrames": 3528
+              },
+              "voiceFrames": 55125,
+              "renderedFrames": 55125
+            }
+          },
+          {
+            "file": "assets/machine-voice.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 7.95,
+                "frames": 350595
+              },
+              "voiceFrames": 178605
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 9.62,
+                "frames": 424242
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.06,
+                "releaseFrames": 2646
+              },
+              "voiceFrames": 73647,
+              "renderedFrames": 73647
+            }
+          }
+        ],
+        "clippedSamples": 0
+      }
+    ],
+    "playback": {
+      "name": "daemonv12-playback",
+      "version": "1",
+      "settings": {
+        "rate": "0.25 through 4; pitch and duration change together; no time-stretching",
+        "interpolation": "band-limited Kaiser-windowed sinc, 32 zero crossings per side, beta 8.5, 512 table steps per crossing with linear table interpolation; cutoff 0.92 x min(1, 1/rate) of source Nyquist; weights normalized to unity DC gain; silence outside the source; kernel from IEEE-754 basic arithmetic",
+        "glide": "rate linear in output frames from playbackRate to glide.to over the glide frames, then held; read position is the closed-form integral per frame",
+        "offset": "whole source frame: offsetSeconds as microseconds * 44100 / 1000000, nearest frame, ties later",
+        "exactPath": "rate 1 without glide copies source frames from the offset; no interpolation",
+        "end": "voice stops at the first output frame whose read position reaches the source length; no fades",
+        "velocity": "round(value * velocity) per voice sample, as for unperformed voices"
+      }
+    },
+    "articulation": {
+      "name": "daemonv12-articulation",
+      "version": "1",
+      "settings": {
+        "source": "exclusive source end; explicit slice silences interpolation taps outside [offset,end); V0.6 interpolation unchanged otherwise",
+        "envelope": "linear output-frame attack from zero; a scheduled gate/choke release freezes attack gain at its onset; source/output exhaustion compresses overlapping fades proportionally, retaining the authored attack level at the peak and never delaying a gate; last rendered frame reaches zero; defaults 1ms attack, 5ms release; explicit zero disables a fade",
+        "stop": "gate or earliest later same-track choke onset starts release; stop + release capped by source exhaustion and permitted audio boundary; no source extension",
+        "choke": "track-local group; equal output-frame onsets coexist; each older voice uses its own release; a release already started is never restarted",
+        "rounding": "seconds to exact microseconds then nearest frame, ties later; gate via difference of rounded absolute musical boundaries"
+      }
+    }
+  },
+  "timeline": {
+    "authoredDurationTicks": 19200,
+    "authoredFrames": 441000,
+    "duration": {
+      "seconds": 10
+    },
+    "tail": "none",
+    "requestedFinalFrames": 441000,
+    "audioEndFrames": 441000,
+    "resultingFrames": 441000,
+    "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+  },
+  "production": {
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1-3ubuntu5"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v22.22.0"
+    },
+    "tracks": [
+      {
+        "trackId": "alarm-hook",
+        "gainDb": -6,
+        "pan": 0.15,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -8.950704
+      },
+      {
+        "trackId": "drums",
+        "gainDb": -6,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -2.263663
+      },
+      {
+        "trackId": "bells",
+        "gainDb": -10,
+        "pan": 0.3,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -13.511229
+      },
+      {
+        "trackId": "press",
+        "gainDb": -9,
+        "pan": -0.2,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -12.5021
+      },
+      {
+        "trackId": "ding",
+        "gainDb": -6,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -7.927405
+      },
+      {
+        "trackId": "tempo-string",
+        "gainDb": -8,
+        "pan": -0.3,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -10.853704
+      },
+      {
+        "trackId": "machine-voice",
+        "gainDb": -4,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -8.04178
+      }
+    ],
+    "master": {
+      "gainDb": -3,
+      "effects": [],
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -2.663851
+    },
+    "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+  },
+  "mix": {
+    "clippedSamples": 0,
+    "gm": "sum processed independent tracks",
+    "samples": "sum exported track PCM"
+  },
+  "wav": {
+    "file": "morph-02-household-machine-kit.wav",
+    "sha256": "8c8253bbdbf88452611f97789abd1de4cdbe8508a35569dc9740726e6e75707a",
+    "bytes": 1764044,
+    "frames": 441000,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 16,
+    "durationSeconds": 10
+  },
+  "stems": [
+    {
+      "trackId": "alarm-hook",
+      "trackIndex": 0,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/household-machine-kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 240,
+            "frame": 5513,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 720,
+            "frame": 16538,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 1440,
+            "frame": 33075,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 1680,
+            "frame": 38588,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 2160,
+            "frame": 49613,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-g.wav",
+            "tick": 2880,
+            "frame": 66150,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-f.wav",
+            "tick": 3360,
+            "frame": 77175,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 3840,
+            "frame": 88200,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 4080,
+            "frame": 93713,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 4560,
+            "frame": 104738,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 5280,
+            "frame": 121275,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 5520,
+            "frame": 126788,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 6000,
+            "frame": 137813,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-g.wav",
+            "tick": 6720,
+            "frame": 154350,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-f.wav",
+            "tick": 7200,
+            "frame": 165375,
+            "velocity": 0.8,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 7920,
+            "frame": 181913,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 8400,
+            "frame": 192938,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 9120,
+            "frame": 209475,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 9360,
+            "frame": 214988,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 9840,
+            "frame": 226013,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-g.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-f.wav",
+            "tick": 11040,
+            "frame": 253575,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 11760,
+            "frame": 270113,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 12240,
+            "frame": 281138,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 12960,
+            "frame": 297675,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-e.wav",
+            "tick": 13200,
+            "frame": 303188,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 4355,
+              "renderedFrames": 4355
+            }
+          },
+          {
+            "file": "assets/beep-b.wav",
+            "tick": 13680,
+            "frame": 314213,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 7938,
+              "renderedFrames": 7938
+            }
+          },
+          {
+            "file": "assets/beep-g.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          },
+          {
+            "file": "assets/beep-f.wav",
+            "tick": 14880,
+            "frame": 341775,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 10143,
+              "renderedFrames": 10143
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "morph-02-household-machine-kit.stems/alarm-hook.wav",
+        "sha256": "a752a49874ed87e0845b3a78106675362ece723e53a9c310cf5bd59f398636f4",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "drums",
+      "trackIndex": 1,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/household-machine-kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 480,
+            "frame": 11025,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 960,
+            "frame": 22050,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 1440,
+            "frame": 33075,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 1920,
+            "frame": 44100,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 2400,
+            "frame": 55125,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 2880,
+            "frame": 66150,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 3360,
+            "frame": 77175,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 3840,
+            "frame": 88200,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 4320,
+            "frame": 99225,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 4800,
+            "frame": 110250,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 5280,
+            "frame": 121275,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 5760,
+            "frame": 132300,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 6240,
+            "frame": 143325,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 6720,
+            "frame": 154350,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/kitchen-tick.wav",
+            "tick": 7200,
+            "frame": 165375,
+            "velocity": 0.45,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.004,
+                "releaseFrames": 176
+              },
+              "voiceFrames": 2646,
+              "renderedFrames": 2646
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 8640,
+            "frame": 198450,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/toaster-snare.wav",
+            "tick": 8640,
+            "frame": 198450,
+            "velocity": 0.7,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 26460,
+              "renderedFrames": 26460
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 9600,
+            "frame": 220500,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/toaster-snare.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 0.7,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 26460,
+              "renderedFrames": 26460
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 12480,
+            "frame": 286650,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/toaster-snare.wav",
+            "tick": 12480,
+            "frame": 286650,
+            "velocity": 0.7,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 26460,
+              "renderedFrames": 26460
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 13440,
+            "frame": 308700,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 0.95,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 22050
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "chokeGroup": "kick",
+              "voiceFrames": 22932,
+              "renderedFrames": 22932
+            }
+          },
+          {
+            "file": "assets/toaster-snare.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 0.7,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 26460,
+              "renderedFrames": 26460
+            }
+          },
+          {
+            "file": "assets/washer-kick.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 26460,
+              "renderedFrames": 26460
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "morph-02-household-machine-kit.stems/drums.wav",
+        "sha256": "8e13749329b1e3aaa288f9b408d3ff4983da64174963a3f1f96cafd57ba7db66",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "bells",
+      "trackIndex": 2,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/household-machine-kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 181913,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 7920,
+            "frame": 181913,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 187425,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 8160,
+            "frame": 187425,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 192938,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 8400,
+            "frame": 192938,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 198450,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 8640,
+            "frame": 198450,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 203963,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 8880,
+            "frame": 203963,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 209475,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 9120,
+            "frame": 209475,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 214988,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 9360,
+            "frame": 214988,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 220500,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 9600,
+            "frame": 220500,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 226013,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 9840,
+            "frame": 226013,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 231525,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 10080,
+            "frame": 231525,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 237038,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 10320,
+            "frame": 237038,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 242550,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 248063,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 10800,
+            "frame": 248063,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 253575,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 11040,
+            "frame": 253575,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 259088,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 11280,
+            "frame": 259088,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 264600,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 270113,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 11760,
+            "frame": 270113,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 275625,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 12000,
+            "frame": 275625,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 281138,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 12240,
+            "frame": 281138,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 286650,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 12480,
+            "frame": 286650,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 292163,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 12720,
+            "frame": 292163,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 297675,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 12960,
+            "frame": 297675,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 303188,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 13200,
+            "frame": 303188,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 308700,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 13440,
+            "frame": 308700,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 314213,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 13680,
+            "frame": 314213,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 319725,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 13920,
+            "frame": 319725,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 325238,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 14160,
+            "frame": 325238,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 330750,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 336263,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 14640,
+            "frame": 336263,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 341775,
+                "frames": 5512
+              },
+              "voiceFrames": 5777,
+              "renderedFrames": 5777
+            }
+          },
+          {
+            "file": "assets/bell-a.wav",
+            "tick": 14880,
+            "frame": 341775,
+            "velocity": 0.75,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "choke": {
+                "frame": 347288,
+                "frames": 5513
+              },
+              "voiceFrames": 5778,
+              "renderedFrames": 5778
+            }
+          },
+          {
+            "file": "assets/bell-b.wav",
+            "tick": 15120,
+            "frame": 347288,
+            "velocity": 0.4,
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.25,
+                "frames": 11025
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.006,
+                "releaseFrames": 265
+              },
+              "chokeGroup": "bells",
+              "voiceFrames": 11025,
+              "renderedFrames": 11025
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "morph-02-household-machine-kit.stems/bells.wav",
+        "sha256": "994285ed832b40445fe28c0617239e8729b04a1a7f396dcb0c52741141cfc2b9",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "press",
+      "trackIndex": 3,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/household-machine-kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 3840,
+            "frame": 88200,
+            "velocity": 0.75,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 5280,
+            "frame": 121275,
+            "velocity": 0.75,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 6720,
+            "frame": 154350,
+            "velocity": 0.75,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 9120,
+            "frame": 209475,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 12960,
+            "frame": 297675,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          },
+          {
+            "file": "assets/press-clank.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 0.55,
+            "articulation": {
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 39690,
+              "renderedFrames": 39690
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "morph-02-household-machine-kit.stems/press.wav",
+        "sha256": "4c7128bc1ba08fb3b3539bc5cc04fa2779b193477522391492849204759a1b2f",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "ding",
+      "trackIndex": 4,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/household-machine-kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/microwave-ding.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 0.9
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "morph-02-household-machine-kit.stems/ding.wav",
+        "sha256": "4628eee7073282367b7ad4113795a2c4ed8cc82d11d048cd250ec60393698cad",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "tempo-string",
+      "trackIndex": 5,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/tempo-string-strike.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/tempo-string-strike.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.9
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "morph-02-household-machine-kit.stems/tempo-string.wav",
+        "sha256": "309a8f3024de907136233f2c4dc997da392ac919a0715d3828936f53cbc5ad45",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "machine-voice",
+      "trackIndex": 6,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/machine-voice.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/machine-voice.wav",
+            "tick": 3840,
+            "frame": 88200,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 1.3,
+                "frames": 57330
+              },
+              "voiceFrames": 471870
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 2.55,
+                "frames": 112455
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.08,
+                "releaseFrames": 3528
+              },
+              "voiceFrames": 55125,
+              "renderedFrames": 55125
+            }
+          },
+          {
+            "file": "assets/machine-voice.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 7.95,
+                "frames": 350595
+              },
+              "voiceFrames": 178605
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 9.62,
+                "frames": 424242
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.06,
+                "releaseFrames": 2646
+              },
+              "voiceFrames": 73647,
+              "renderedFrames": 73647
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "morph-02-household-machine-kit.stems/machine-voice.wav",
+        "sha256": "dc94728237967bbfafad2df4d593fa0e7c3098da5470acb4a6a75a25bc6d8afb",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    }
+  ],
+  "audioTool": {
+    "name": "ffmpeg",
+    "version": "6.1.1-3ubuntu5"
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 10,
+      "frames": 441000,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -2.663974,
+      "rmsDbfs": -18.570337,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -15.85,
+      "loudnessRangeLu": 3.2,
+      "truePeakDbfs": -2.53
+    },
+    "tracks": [
+      {
+        "trackId": "alarm-hook",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -8.95048,
+          "rmsDbfs": -21.698599,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -15.73,
+          "loudnessRangeLu": 7.9,
+          "truePeakDbfs": -8.78
+        }
+      },
+      {
+        "trackId": "drums",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -2.263771,
+          "rmsDbfs": -17.528475,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -14.77,
+          "loudnessRangeLu": 19,
+          "truePeakDbfs": -2.24
+        }
+      },
+      {
+        "trackId": "bells",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -13.510643,
+          "rmsDbfs": -40.851099,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -30.93,
+          "loudnessRangeLu": 5.1,
+          "truePeakDbfs": -13.41
+        }
+      },
+      {
+        "trackId": "press",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -12.501696,
+          "rmsDbfs": -29.022376,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -25.87,
+          "loudnessRangeLu": 8.7,
+          "truePeakDbfs": -12.5
+        }
+      },
+      {
+        "trackId": "ding",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -7.927182,
+          "rmsDbfs": -31.279426,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -22.26,
+          "loudnessRangeLu": 1.7,
+          "truePeakDbfs": -7.92
+        }
+      },
+      {
+        "trackId": "tempo-string",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -10.853837,
+          "rmsDbfs": -38.798509,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -30.57,
+          "loudnessRangeLu": 8.1,
+          "truePeakDbfs": -10.85
+        }
+      },
+      {
+        "trackId": "machine-voice",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -8.041498,
+          "rmsDbfs": -29.614607,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -21.92,
+          "loudnessRangeLu": 5.2,
+          "truePeakDbfs": -8.04
+        }
+      }
+    ]
+  }
+}
