@@ -1,0 +1,215 @@
+{
+ "title": "CABLE//BEAST",
+ "experiment": "MORPH//05",
+ "format": {
+  "sampleRate": 44100,
+  "channels": 2,
+  "masterBits": 24,
+  "bpm": 120,
+  "meter": "4/4",
+  "bars": 14,
+  "seconds": 28,
+  "frames": 1234800,
+  "fps": 60,
+  "pictureFrames": 1680
+ },
+ "baseCommit": "34e694f0c87a1bb3390ae868411a150f0d104f2f",
+ "tools": {
+  "node": "v22.22.0",
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "python": "Python 3.13.16",
+  "daemonv12": {
+   "name": "daemonv12",
+   "version": "0.7.0"
+  }
+ },
+ "reproduce": [
+  "npm ci   # installs dev tools and builds dist/ (DaemonV12 CLI and timing functions)",
+  "node experiments/morph-05/build.mjs v1 v2 && node experiments/morph-05/build.mjs v3 --stems",
+  "pip install numpy scipy matplotlib && python3 experiments/morph-05/checks.py experiments/morph-05/audio/v3 experiments/morph-05/audio/v3/cable-beast-v3.checks.json --png experiments/morph-05/audio/spectrograms",
+  "node experiments/morph-05/daemonv12/export.mjs experiments/morph-05/daemonv12/project",
+  "node bin/daemonv12.js render experiments/morph-05/daemonv12/project/cable-beast.daemonv12.json --out-dir OUT --stems --format wav --json",
+  "python3 experiments/morph-05/daemonv12/nulltest.py experiments/morph-05/daemonv12/project OUT experiments/morph-05/daemonv12/results/null-test.json"
+ ],
+ "determinism": {
+  "external": "v3 rendered twice into fresh directories on this runtime: master WAV and all 14 FLAC stems byte-identical; v1 and v2 re-rendered with identical master hashes",
+  "daemonv12": "project rendered twice into fresh directories: master WAV and all 13 stems byte-identical"
+ },
+ "sources": {
+  "experiments/morph-05/record.mjs": "732c74244336b409d17a05c799a79a4f9314d273cdeccdc1e6051adf805999d8",
+  "experiments/morph-05/beast.mjs": "1e11ae8dabc08e6809d3177c75db69dae7407177ef1bdfd9a953baea3ce8f722",
+  "experiments/morph-05/v1.mjs": "09886d6c655335ffc53d4d01c46d5f26ea2260ee00ec7114d65c0cd4c32527d2",
+  "experiments/morph-05/v2.mjs": "dbb31edb714aac3a6119baa1a72a581796d4fda3fc5d936c9d297b903ac01dd9",
+  "experiments/morph-05/v3.mjs": "68acd7089b87b9a9080dc41b90ff3fbbcb693b8ba0d3377eba8fc8af32600d40",
+  "experiments/morph-05/build.mjs": "842401f76b6185a0ef5c0bfbbf261662dada44d6631d2a1b2390b8b16d153a9f",
+  "experiments/morph-05/checks.py": "499659fbb640ea85d66cc09857be7b4108c585f5c004ee1f091e8a27cd5bf9d5",
+  "experiments/morph-05/manifest.mjs": "7f07948438f602466625e7dd776355f266e4eb8b0a12a6c29e457138172c39c8",
+  "experiments/morph-05/daemonv12/export.mjs": "7f19b0ea601d19da3201241d2ed6e213e78c6413bc9ed5d9ad1e97de4ece41d1",
+  "experiments/morph-05/daemonv12/nulltest.py": "9fd4d471267a83856d54c86691dbd8ccc896c843c3c043e6f601aed2d8e8763c",
+  "experiments/morph-03/cable.mjs": "591ae70a37b96a99ed57bc73819f61d314f84e5512f83c9084a1291219c7fa19",
+  "experiments/morph-03/dsp.mjs": "d219f8cd93748889636fbb8037940c52d3b6651ffe1aeff1a07fc59c3a115258",
+  "experiments/morph-03/throat.mjs": "9755cccacfa6bb163f96c298c20456c197929b33f03ce0ede29b715132a550c9",
+  "experiments/morph-03/household.mjs": "5c800ca2c3dcdcb3add7579b08207a1e3037c38b445b3b1a998cc55a5e5e84f7",
+  "experiments/morph-03/analyze.py": "137a313dd2d5c88d40e52fdbbdb546d77ce636454abb1e260295df9acf944c8c",
+  "experiments/morph-04/kit.mjs": "6301ba16bcae32070a084ac61eb17bfe40505c762b8f6759a3942cb0e3d81cfa",
+  "experiments/morph-04/perform.mjs": "727ca9556c112ec12be56e4a9d6e0f154671bd1eb37cf25bf4a1902a1826b123",
+  "experiments/morph-04/events.mjs": "3e754354dd54a40089f039c3d06e541914a838c3dcd4235cbcd5f15f9e5dac4c"
+ },
+ "versions": {
+  "v1": {
+   "masterWav24Sha256": "98b83dd053b36d687c6f71ae43e39349adbe41473f68f855c5ab6d532982f4e4",
+   "masterWavCommitted": false,
+   "frames": 1234800,
+   "files": {
+    "experiments/morph-05/audio/v1/cable-beast-v1.automation.json": "971231cb0d9f81fe2d18ee6927d349b65dec45b6c5a530d32b81e34eda41a450",
+    "experiments/morph-05/audio/v1/cable-beast-v1.checks.json": "f9c3a78f5ba01401376a4c9adcf2d30237696564e15da5cf0ec4651ca3980850",
+    "experiments/morph-05/audio/v1/cable-beast-v1.events.json": "89a9d16a8541144123a9223204f4243fdf20700d121608fedc6de96c0406c589",
+    "experiments/morph-05/audio/v1/cable-beast-v1.events.md": "770096fd6e5688b21593d71237aee3eed58ae4ad9e4dbda41020ff7901047b09",
+    "experiments/morph-05/audio/v1/cable-beast-v1.meta.json": "e3e761d1e2e0724801d5f0356e25852d78d9a41a53a93c6441b6e025ad647b89",
+    "experiments/morph-05/audio/v1/cable-beast-v1.mp3": "89422a62327092f4396b874d241fb91e274cffd583b78f3d873c13ec11371875"
+   }
+  },
+  "v2": {
+   "masterWav24Sha256": "5fb2fdbeef3401b2ad9128d2a97aa789e961289c9de6cf11eab14be1b35d1f38",
+   "masterWavCommitted": false,
+   "frames": 1234800,
+   "files": {
+    "experiments/morph-05/audio/v2/cable-beast-v2.automation.json": "299287387b35f77f0a76925632d7209bab28f4845678eb16d01aa0c6e0c239dc",
+    "experiments/morph-05/audio/v2/cable-beast-v2.checks.json": "8d48fd2b838a68ab220df51ef54868ae379dca5f8db0abb5646bacd6c61db201",
+    "experiments/morph-05/audio/v2/cable-beast-v2.events.json": "ece842c66ea7ebfd8fa2e83a69b95790d57c5f18924d1bbb797512945a14b269",
+    "experiments/morph-05/audio/v2/cable-beast-v2.events.md": "87f3873fbea9105db14db36f0d361bad5053a64b29a9050373995d72cbbfbbad",
+    "experiments/morph-05/audio/v2/cable-beast-v2.meta.json": "a6951a2c94b96385cb265fd3f7461030a5e0705d2d7a89abc266746802e67a6c",
+    "experiments/morph-05/audio/v2/cable-beast-v2.mp3": "222cdc8dedb3035b97b2f18d1f160dd81705bd1a3d78fbeed9721208750619e5"
+   }
+  },
+  "v3": {
+   "masterWav24Sha256": "a1c07efb6fe01b1309ef19af564bea2bbf09bb8e6a907612818afdca54bacab1",
+   "masterWavCommitted": true,
+   "frames": 1234800,
+   "files": {
+    "experiments/morph-05/audio/v3/cable-beast-v3.automation.json": "c3cdcf809c1c90fb2074e4cfa2b5735acfd39f7399dc089ddafec67f935f98ac",
+    "experiments/morph-05/audio/v3/cable-beast-v3.checks.json": "e191fd1dc6fbcfd24e6c4cbbe1af713ab350d58373c4bc7373879d3bf779472d",
+    "experiments/morph-05/audio/v3/cable-beast-v3.events.json": "142a18c2bce9c6eed90b238618e104ae06cb98c84002ee2ca25ac8f0643787b7",
+    "experiments/morph-05/audio/v3/cable-beast-v3.events.md": "ab16d79d94718c9d23ea36f5b3cf33d17a3f0b3b9b5452407bb2a8d3edb58de5",
+    "experiments/morph-05/audio/v3/cable-beast-v3.meta.json": "52388d577c69d57b096fe275e0007cfe5e5a97515c0ca0168f01afe89b8182ce",
+    "experiments/morph-05/audio/v3/cable-beast-v3.mp3": "04e1526b7bcc00dc09b6c7a8cfdb45428a3a7b2adc9fbad144590f44f0c88876",
+    "experiments/morph-05/audio/v3/cable-beast-v3.wav": "a1c07efb6fe01b1309ef19af564bea2bbf09bb8e6a907612818afdca54bacab1",
+    "experiments/morph-05/audio/v3/stems/beast.flac": "a2f7061cbbfd609c83e99f6f477d68a18d61d7410d3daf522dd45806c00c55ab",
+    "experiments/morph-05/audio/v3/stems/cable.flac": "bf384a3175a79f4ccfae74bf7ad4832ab16f5bf9c7b089b4899da0f2f281ebd0",
+    "experiments/morph-05/audio/v3/stems/cablePartner.flac": "71cca9816ef795b0be2c986699c0e37a936ebf11416e583956cac20d0c45a57e",
+    "experiments/morph-05/audio/v3/stems/echo.flac": "48c4941477bfff2c630a90374935138e623e1163c05aaff71daee228b45254d8",
+    "experiments/morph-05/audio/v3/stems/garage.flac": "8a0b49898046d93f4d73b45cb90b01a2f0c294c526ebdde1136fe51d86674bab",
+    "experiments/morph-05/audio/v3/stems/kick.flac": "8ee2fb86e3c0824fe610c713d89bf71f6944cc8e9987dfa524e5f5aedcc5af57",
+    "experiments/morph-05/audio/v3/stems/kitchen.flac": "7df3bab91668421cf74aba4c9b18071ef5f09bd88cacb910f5d768a6d42f3bc9",
+    "experiments/morph-05/audio/v3/stems/metal.flac": "55b9fb3c7970d5e046c3e74dbcc8b94ca26a66605489736fa32ef6af8b3d42f9",
+    "experiments/morph-05/audio/v3/stems/premaster.flac": "711892c82c0d55c567b63a72ea87117bda3d6cdd53f65bc19190b038354790ed",
+    "experiments/morph-05/audio/v3/stems/ratchet.flac": "900f4bf8ab706d2f542fa2b0420ed53607ec92befacf5d5022b3a586f1b1c60a",
+    "experiments/morph-05/audio/v3/stems/room.flac": "47488f2abfa0be73e4339d61eb49a561157065d88b340dbd5cec6dc71277ddea",
+    "experiments/morph-05/audio/v3/stems/snare.flac": "425bef38c96c6d9af347e79a46ab50f6b2b9b423a587c8e6e6ae5ffb161fad5e",
+    "experiments/morph-05/audio/v3/stems/stems.json": "4d9ccd8c3217240263da11fbf4022dee6be44556a32497357b33ca224cf98c62",
+    "experiments/morph-05/audio/v3/stems/ticks.flac": "9766803a4f31934737619b7400d625bb85a910c5f48ada27c5bf097c0ce627c7",
+    "experiments/morph-05/audio/v3/stems/toms.flac": "46f62ed65351b77fb4ab819248bf2d89881d56c5aa87e368d11b9eafddd0f16c"
+   }
+  }
+ },
+ "daemonv12": {
+  "project": {
+   "file": "experiments/morph-05/daemonv12/project/cable-beast.daemonv12.json",
+   "sha256": "d925656ea219acc1dabb8645fecb6188f1c00b97b4ed6649e92ea4e7467a6b9d"
+  },
+  "kits": {
+   "experiments/morph-05/daemonv12/project/assets/kick/kick-b.wav": "1ef55300a6be70d4a7fb5ccd07545edc078b494aae881ef8db4a1d304b9a3c99",
+   "experiments/morph-05/daemonv12/project/assets/kick/kick-g.wav": "3ba5654bdf7873e2636ae43ca9cd7a4a6c66af9a423803eb668c456a0365ea97",
+   "experiments/morph-05/daemonv12/project/assets/kick/kick-h.wav": "8689cd2952ff7a35c23100a887e71f81aa64eeb5a6cb9e5a962a7eb4558d4cca",
+   "experiments/morph-05/daemonv12/project/assets/kick/kit.json": "632a6bac74f8a3f9e5864aea917cba2a6be74830a3054f5f4f43fa7c32dcd50a",
+   "experiments/morph-05/daemonv12/project/assets/metal/bell-step-160-5.wav": "59ec63ba02323a03d86d8cf948d06e8d38c397a229888d2152e89229c86393bd",
+   "experiments/morph-05/daemonv12/project/assets/metal/bell-step-192-5.wav": "ecb5ba7986bd8bb1c4e77feae6137adf60fd7aaae2d4c8f2d17a50d592761e12",
+   "experiments/morph-05/daemonv12/project/assets/metal/bell-step-78.wav": "3373ca79b7eba03a6eb79f249f7ce4f06f06e72f3e5aaf5ac3f3a4bec0133c72",
+   "experiments/morph-05/daemonv12/project/assets/metal/clank.wav": "385ef7b3b1068fb73c33bec2d359568954d23f94c63179428f05085e5c9593f2",
+   "experiments/morph-05/daemonv12/project/assets/metal/kit.json": "316d569cb2a7e9d78667bf8a4caee7c256d1b39bf9ad7971e2a5db56cb5ef619",
+   "experiments/morph-05/daemonv12/project/assets/snare/kit.json": "b578f5735e4f9b88dfc017bfacb2a4a9a60da255e624d5b03a8767f0245d4f0a",
+   "experiments/morph-05/daemonv12/project/assets/snare/snare-b.wav": "1af803cee864995179e8f9fa879f348d455fb1e4da0948c67585299f985a2f3d",
+   "experiments/morph-05/daemonv12/project/assets/snare/snare-big-x110.wav": "2c71a8aba91895245f019a84642171ad21153e29bad1a32fa29816a48d00c3f9",
+   "experiments/morph-05/daemonv12/project/assets/snare/snare-g.wav": "fec11aec05cde3e391c6d425f2572ac1a5f41d33f20ff7249909b0c89d48db38",
+   "experiments/morph-05/daemonv12/project/assets/snare/snare-h.wav": "5c5f59ec3f8a427bfb6f67e44a3ddadec9c7b68cbd9e5650aa505b86f264bd37",
+   "experiments/morph-05/daemonv12/project/assets/snare/spring.wav": "232fb636a05627a8211bc99de107ceafec52a723d36f7565a5396ad697f6b824",
+   "experiments/morph-05/daemonv12/project/assets/ticks/kit.json": "5148ed43362e79329c5668c0600bb90737cb72bdaef94357c8fa365e12b081c8",
+   "experiments/morph-05/daemonv12/project/assets/ticks/tick-0.wav": "02681aed5c1680267118fb08834ada356319312473426376240ac2ddac5e3f23",
+   "experiments/morph-05/daemonv12/project/assets/ticks/tick-1.wav": "79405a481b5d5b9be8afe04dd75251a1d0415b246c833a828b7c2d3d2effafe7",
+   "experiments/morph-05/daemonv12/project/assets/ticks/tick-2.wav": "ab5f1d041f572e92e72add0dbe0155aef9b4bec32b3c15e4a45e0eee47a7d3df",
+   "experiments/morph-05/daemonv12/project/assets/ticks/tick-3.wav": "d85b8812dfa146b031c111d9b6508400fc260f1dd2cec87f350165c68d0b2b50",
+   "experiments/morph-05/daemonv12/project/assets/ticks/tick-4.wav": "f19fc4248cf21bbe3fd1e858480e461fae529e26555b32f820568d072b9b89eb",
+   "experiments/morph-05/daemonv12/project/assets/ticks/tick-5.wav": "5fde7a8d0a43094e3ee2bffecb314c431bd62ebf7ea0f95b375aee09e4989164",
+   "experiments/morph-05/daemonv12/project/assets/ticks/tick-6.wav": "57116d3cc6948f112e1cf155fb3cecf41133010c770ef993eac3efc6cea52b87",
+   "experiments/morph-05/daemonv12/project/assets/ticks/tick-7.wav": "9dd02f983d23e81681c832d5cbb8d4d0b09870193b0fb4117f162a02ca5c3a35",
+   "experiments/morph-05/daemonv12/project/assets/toms/kit.json": "0514e21fb8ae940fea9a77b24f8033525b6cf008319a6176845c4435ec9796dc",
+   "experiments/morph-05/daemonv12/project/assets/toms/tom-41.wav": "d9e84b74a9ecc018cfe86a9c80bd4635c08c18ba74307a5ecd762c8cfd9c809a",
+   "experiments/morph-05/daemonv12/project/assets/toms/tom-43.wav": "c8cf599917e8d976e1d94e946a892fe40e332760ce23ea3586b1493f20365ba9",
+   "experiments/morph-05/daemonv12/project/assets/toms/tom-45.wav": "d9c44f52855eedd487370e6c4a3e555de8c14fc6c8a1633d119ac4164aff4bc9",
+   "experiments/morph-05/daemonv12/project/assets/toms/tom-47.wav": "6a47e1a6def8c487df3bfd3648cb33ff3baf845b4bfa4a5e0c75ceea108fac52",
+   "experiments/morph-05/daemonv12/project/assets/toms/tom-48.wav": "ada2c84194ce52caaf260d6709f7936b90dc354a1592b7253c1b66cfb278d03a",
+   "experiments/morph-05/daemonv12/project/assets/toms/tom-50.wav": "480fc66dfc3ba4dd18689fa1a89088d78bd36720b01371675f51d1e47b4a2bd5",
+   "experiments/morph-05/daemonv12/project/assets/toms/tom-52.wav": "88445dede6b503a560db6cd6e30b403ceed6f7545571baa2cdfe83abbd563e2f"
+  },
+  "externalStemsNotCommitted": "assets/external/*.wav are regenerated by export.mjs (deterministic); their hashes are in results/cable-beast.daemonv12.render.json",
+  "renderWavSha256": "014b989240f736a6b9c2479883a7fe271042a31c857e6419c2641f0f5258bf1a",
+  "renderFrames": 1234800,
+  "nullTest": {
+   "premaster": {
+    "frames": [
+     1234800,
+     1234800
+    ],
+    "residualVsSignalDb": -50.3,
+    "residualPeakDbfs": -19.9,
+    "signalPeakDbfs": -0.2,
+    "outsideChokeFades": {
+     "residualVsSignalDb": -61.3,
+     "residualPeakDbfs": -68.7
+    }
+   },
+   "triggers": {
+    "kick": {
+     "count": [
+      31,
+      31
+     ],
+     "allFramesEqual": true,
+     "maxFrameDifference": 0
+    },
+    "snare": {
+     "count": [
+      39,
+      39
+     ],
+     "allFramesEqual": true,
+     "maxFrameDifference": 0
+    },
+    "toms": {
+     "count": [
+      7,
+      7
+     ],
+     "allFramesEqual": true,
+     "maxFrameDifference": 0
+    },
+    "ticks": {
+     "count": [
+      100,
+      100
+     ],
+     "allFramesEqual": true,
+     "maxFrameDifference": 0
+    },
+    "metal": {
+     "count": [
+      5,
+      5
+     ],
+     "allFramesEqual": true,
+     "maxFrameDifference": 0
+    }
+   }
+  }
+ }
+}
