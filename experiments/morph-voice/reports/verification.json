@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "instrument": "MORPH//01",
+  "runtime": "v24.19.0",
+  "platform": "linux",
+  "architecture": "x64",
+  "checks": {
+    "determinism": {
+      "passed": true,
+      "runtime": "v24.19.0",
+      "platform": "linux",
+      "architecture": "x64",
+      "sha256": "826ed91276a2bf19e8e84a4c0cfe49d05acaee8dbd1ee3d9ac5c89d5dc4f2ac9",
+      "repeatedSha256": "826ed91276a2bf19e8e84a4c0cfe49d05acaee8dbd1ee3d9ac5c89d5dc4f2ac9"
+    },
+    "pitchAndTimbre": {
+      "passed": true,
+      "estimator": "Hann-windowed first-harmonic projection, 0.25 Hz search steps",
+      "morphPitch": [
+        {
+          "morph": 0,
+          "hz": 277.1826309768721,
+          "cents": 0,
+          "magnitude": 0.10247449314310578
+        },
+        {
+          "morph": 0.5,
+          "hz": 277.1826309768721,
+          "cents": 0,
+          "magnitude": 0.058207408085058684
+        },
+        {
+          "morph": 1,
+          "hz": 277.1826309768721,
+          "cents": 0,
+          "magnitude": 0.09140309796609639
+        }
+      ],
+      "morphSpectralDistances": [
+        0.7703829753549825,
+        0.5823275771323121
+      ],
+      "vowelPitch": [
+        {
+          "vowel": 0,
+          "hz": 277.1826309768721,
+          "cents": 0,
+          "magnitude": 0.09196365373184728
+        },
+        {
+          "vowel": 1,
+          "hz": 277.1826309768721,
+          "cents": 0,
+          "magnitude": 0.10250311508516924
+        }
+      ],
+      "vowelSpectralDistance": 0.40751622739554755,
+      "lowerOctavePitch": {
+        "hz": 138.59131548843604,
+        "cents": 0,
+        "magnitude": 0.06370682355724795
+      },
+      "limitation": "F0 presence and relative harmonic spectra are numerical evidence; these checks do not prove vowel intelligibility or perceived identity."
+    },
+    "transitions": {
+      "passed": true,
+      "rapid": {
+        "frames": 92610,
+        "mean": -2.5692500179303363e-7,
+        "rms": 0.0732487993254596,
+        "rmsDbfs": -22.703989795067816,
+        "peak": 0.17194947490945753,
+        "peakDbfs": -15.291982921325925,
+        "maxFirstDifference": 0.10901587178504626,
+        "maxSecondDifference": 0.07043186195258502,
+        "nonFinite": 0
+      },
+      "rapidCurvature999": 0.06569413941892335,
+      "slow": {
+        "frames": 154350,
+        "mean": -2.981855920520527e-8,
+        "rms": 0.07402229819306862,
+        "rmsDbfs": -22.612748707143496,
+        "peak": 0.17167670792113612,
+        "peakDbfs": -15.305772466904607,
+        "maxFirstDifference": 0.1087507642189194,
+        "maxSecondDifference": 0.07059364213817598,
+        "nonFinite": 0
+      },
+      "maximumKnotCurvature": 0.0636120724153377,
+      "rapidKnotCount": 50,
+      "interpretation": "No oversized sample-step or curvature impulse was found in these normal/rapid control probes. Human listening remains required for clicks, zipper noise and musical smoothness."
+    },
+    "amplitudeAndWav": {
+      "passed": true,
+      "levels": [
+        {
+          "morph": 0,
+          "frames": 35280,
+          "mean": -0.00002138977554848346,
+          "rms": 0.07585843807898647,
+          "rmsDbfs": -22.399922072807126,
+          "peak": 0.14064885004810945,
+          "peakDbfs": -17.03727628594463,
+          "maxFirstDifference": 0.023954871478990798,
+          "maxSecondDifference": 0.007244440994519333,
+          "nonFinite": 0
+        },
+        {
+          "morph": 0.1,
+          "frames": 35280,
+          "mean": -0.000021600242638248574,
+          "rms": 0.07601818178408078,
+          "rmsDbfs": -22.38165044277299,
+          "peak": 0.14085812220372745,
+          "peakDbfs": -17.024362110723125,
+          "maxFirstDifference": 0.03173149390506033,
+          "maxSecondDifference": 0.00818531345998786,
+          "nonFinite": 0
+        },
+        {
+          "morph": 0.2,
+          "frames": 35280,
+          "mean": -0.00003031640511113307,
+          "rms": 0.07566174061867208,
+          "rmsDbfs": -22.4224734373421,
+          "peak": 0.1544704709250236,
+          "peakDbfs": -16.22309058886171,
+          "maxFirstDifference": 0.04329166018484019,
+          "maxSecondDifference": 0.010631797812125823,
+          "nonFinite": 0
+        },
+        {
+          "morph": 0.3,
+          "frames": 35280,
+          "mean": -0.000027239822644635512,
+          "rms": 0.07588256262529011,
+          "rmsDbfs": -22.397160220077083,
+          "peak": 0.16591497216330586,
+          "peakDbfs": -15.602288429662021,
+          "maxFirstDifference": 0.050276011695956954,
+          "maxSecondDifference": 0.012239477179974867,
+          "nonFinite": 0
+        },
+        {
+          "morph": 0.4,
+          "frames": 35280,
+          "mean": -0.000020168929495354902,
+          "rms": 0.07627345240743673,
+          "rmsDbfs": -22.35253190910383,
+          "peak": 0.17080280521880456,
+          "peakDbfs": -15.350100017080454,
+          "maxFirstDifference": 0.053669269346365525,
+          "maxSecondDifference": 0.013068657667968619,
+          "nonFinite": 0
+        },
+        {
+          "morph": 0.5,
+          "frames": 35280,
+          "mean": -0.00002030546361667432,
+          "rms": 0.07647498385575772,
+          "rmsDbfs": -22.329612120499167,
+          "peak": 0.17278741239966008,
+          "peakDbfs": -15.24975798303247,
+          "maxFirstDifference": 0.05518799706200629,
+          "maxSecondDifference": 0.013494338907157705,
+          "nonFinite": 0
+        },
+        {
+          "morph": 0.6,
+          "frames": 35280,
+          "mean": -0.000020151749329757078,
+          "rms": 0.07651768591612726,
+          "rmsDbfs": -22.324763451685527,
+          "peak": 0.17255895937455815,
+          "peakDbfs": -15.261249738644516,
+          "maxFirstDifference": 0.05980505937862009,
+          "maxSecondDifference": 0.017731965503257605,
+          "nonFinite": 0
+        },
+        {
+          "morph": 0.7,
+          "frames": 35280,
+          "mean": -0.000021868455275201475,
+          "rms": 0.07685312610430263,
+          "rmsDbfs": -22.2867692458518,
+          "peak": 0.17415581488125448,
+          "peakDbfs": -15.18124040646557,
+          "maxFirstDifference": 0.07289546668721118,
+          "maxSecondDifference": 0.030071178759455156,
+          "nonFinite": 0
+        },
+        {
+          "morph": 0.8,
+          "frames": 35280,
+          "mean": -0.00002109300198938239,
+          "rms": 0.07771646906502323,
+          "rmsDbfs": -22.189738783269917,
+          "peak": 0.17157131871490833,
+          "peakDbfs": -15.311106213770241,
+          "maxFirstDifference": 0.09120176247705496,
+          "maxSecondDifference": 0.04814668709550228,
+          "nonFinite": 0
+        },
+        {
+          "morph": 0.9,
+          "frames": 35280,
+          "mean": -0.00000885612678615329,
+          "rms": 0.07878494506941369,
+          "rmsDbfs": -22.071135268974146,
+          "peak": 0.16731082187794283,
+          "peakDbfs": -15.529519348131195,
+          "maxFirstDifference": 0.10675264876861307,
+          "maxSecondDifference": 0.06402308330944033,
+          "nonFinite": 0
+        },
+        {
+          "morph": 1,
+          "frames": 35280,
+          "mean": -0.000027232876723771655,
+          "rms": 0.0793984124670701,
+          "rmsDbfs": -22.003763619892315,
+          "peak": 0.16197613716860967,
+          "peakDbfs": -15.810979247338647,
+          "maxFirstDifference": 0.11016973678207613,
+          "maxSecondDifference": 0.07107285641505551,
+          "nonFinite": 0
+        }
+      ],
+      "sustainedRmsSpanDb": 0.4187098174497841,
+      "velocityDynamicRangeDb": 12.041199826559247,
+      "format": {
+        "encoding": "PCM signed16 little endian",
+        "sampleRate": 44100,
+        "channels": 1,
+        "endpointZero": true
+      }
+    },
+    "validation": {
+      "passed": true,
+      "invalidCases": 19,
+      "configuredBounds": {
+        "maximumSeconds": 30,
+        "maximumNotes": 128,
+        "maximumConcurrentVoicesIncludingRelease": 8
+      }
+    },
+    "resources": {
+      "passed": true,
+      "seconds": 30,
+      "concurrentVoices": 8,
+      "frames": 1323000,
+      "wallSeconds": 12.113264150000001,
+      "cpuSeconds": 12.100283,
+      "maximumRssBytes": 77983744,
+      "peak": 0.3715343134874773,
+      "pcmSha256": "046f57fba5544a7dcdf38e02d3c41871c2658658b7df509b6ad958eed7345f03",
+      "enforcedChildHeapMiB": 128,
+      "childWallTimeoutSeconds": 60,
+      "measuredRssBudgetMiB": 384,
+      "limitation": "Elapsed time and RSS are host measurements, not a realtime or cross-platform performance guarantee."
+    }
+  },
+  "listeningRequired": true,
+  "perceptualClaim": "No automated result establishes perceptual smoothness, vocal realism or musical quality."
+}

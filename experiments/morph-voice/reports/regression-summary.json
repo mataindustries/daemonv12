@@ -1,0 +1,39 @@
+{
+  "runtime": "Node v24.19.0 / Linux x64",
+  "command": "PATH=/workspace/.daemonv12-audio/runtime/bin:$PATH npm run check",
+  "executionContext": "Read-only test commands were run with permitted nested child processes. Initial sandbox-only attempts failed at nested Node spawn; the successful baseline and final use the same permitted execution context.",
+  "baseline": {
+    "typecheck": "passed",
+    "tests": 295,
+    "passed": 293,
+    "failed": 0,
+    "skipped": 2,
+    "durationSeconds": 213.774940733
+  },
+  "final": {
+    "typecheck": "passed",
+    "tests": 295,
+    "passed": 293,
+    "failed": 0,
+    "skipped": 2,
+    "durationSeconds": 202.94
+  },
+  "skips": [
+    {
+      "test": "Gate D: GLASSHOUSE historical byte identity",
+      "reason": "Requires FFmpeg 6.1.1-3ubuntu5; available 6.1.1"
+    },
+    {
+      "test": "Gate E: GLASS//FIRE historical byte identity",
+      "reason": "Requires FFmpeg 6.1.1-3ubuntu5; available 6.1.1"
+    }
+  ],
+  "prototype": {
+    "command": "node --test experiments/morph-voice/verify.test.mjs",
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  },
+  "noHistoricalExpectedHashChanged": true,
+  "scope": "Only experiments/morph-voice; no package/release audit, merge, push, publication or deployment."
+}
