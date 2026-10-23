@@ -3,6 +3,7 @@
 Status: PASS. Measurements concern the rendered file `the-circuit.mp4`.
 
 - H.264/AAC MP4, 1080 × 1920, 60 fps, 480 decoded picture frames, exactly 8.000 s. Both streams begin at presentation time 0.
+- The MP4 has one fast-start MOOV box and a complete top-level box layout through the exact end of file. FFprobe reports no container warnings.
 - The stereo 44.1 kHz, 24-bit PCM reference has 352,800 sample frames. Its payload is byte-identical to source sample frames 882,000–1,234,799, i.e. 20.000–28.000 s of the approved B WAV. No gain, limiting, recomposition or time stretching was applied.
 - All 361 original events in the crop are retained in the mapping; sample offsets and zero-based 60 fps picture buckets match independently. 180 entries drive selected visual systems. One picture interval is 735 audio sample frames.
 - Source cutoff 27.600 s maps to excerpt 7.600 s / sample 335,160 / picture 456. Picture 455 remains visible. Every RGB channel of every pixel in pictures 456–479 is exactly zero. The corresponding 17,640 PCM sample frames are exactly silent.

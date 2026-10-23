@@ -62,6 +62,48 @@ def read_exact(pipe, n):
     return b''.join(chunks)
 
 
+
+def verify_mp4_container(video):
+    """Walk top-level ISO BMFF boxes, rejecting duplicate MOOV/truncated layout.
+
+    Decoding alone can tolerate malformed headers that mobile players reject.
+    """
+    file_size = video.stat().st_size
+    offset = 0
+    boxes = []
+    with video.open('rb') as stream:
+        while offset < file_size:
+            stream.seek(offset)
+            header = stream.read(8)
+            require(len(header) == 8, f'Truncated MP4 box header at byte{offset}')
+            size = int.from_bytes(header[:4], 'big')
+            box_type = header[4:].decode('ascii', errors='replace')
+            header_size = 8
+            if size == 1:
+                extended = stream.read(8)
+                require(len(extended) == 8, 'Truncated MP4 extended box header')
+                size = int.from_bytes(extended, 'big')
+                header_size = 16
+            elif size == 0:
+                size = file_size - offset
+            require(size >= header_size and offset + size <= file_size,
+                    f'Invalid MP4 box{box_type!r} at byte{offset}: size{size}')
+            boxes.append({'type': box_type, 'offset': offset, 'size': size})
+            offset += size
+    types = [box['type'] for box in boxes]
+    require(offset == file_size, 'MP4 box layout does not consume exact file size')
+    require(types.count('ftyp') == 1, 'Expected exactly one MP4 FTYP box')
+    require(types.count('moov') == 1, 'Expected exactly one MP4 MOOV box')
+    require(types.count('mdat') >= 1, 'MP4 MDAT box missing')
+    require(types.index('moov') < types.index('mdat'), 'MP4 is missing fast-start metadata order')
+    warning_probe = subprocess.run(['ffprobe', '-v', 'warning', '-show_entries',
+        'format=duration', '-of', 'json', str(video)], capture_output=True, text=True, check=True)
+    require(not warning_probe.stderr.strip(), f'FFprobe container warnings: {warning_probe.stderr.strip()}')
+    return {'top_level_boxes': boxes, 'file_bytes': file_size,
+            'exact_box_walk_to_eof': True, 'single_moov': True, 'faststart': True,
+            'ffprobe_warning_output': warning_probe.stderr.strip()}
+
+
 def measure_video_pixels(video, width, height):
     """Decode every pixel of every frame; black means RGB-equivalent luma zero."""
     command = ['ffmpeg', '-v', 'error', '-threads', '2', '-i', str(video),
@@ -258,6 +300,7 @@ def main():
     args = parser.parse_args()
     video = args.video.resolve()
     require(video.is_file(), f'Rendered MP4 missing: {video}')
+    container = verify_mp4_container(video)
     source = ROOT / 'experiments/morph-06/audio/b/cable-beast-b.wav'
     require(sha(source) == SOURCE_SHA, 'Approved source master hash mismatch')
     source_info, source_pcm = wav_payload(source)
@@ -317,6 +360,7 @@ def main():
                      'declared_duration_decode_sample_frames': len(presented_audio) // 6,
                      'aac_padding_sample_frames_after_presentation': decoded_count - LENGTH,
                      'aac_note': 'AAC uses1024-sample coding blocks. The MP4 presentation duration is exactly8s; unconstrained decoder output may expose trailing encoder padding. PCM reference has no padding.'},
+        'container_verification': container,
         'mapping': mapping, 'animation_onsets': {k: v for k, v in animation.items() if k != 'determinism'}, 'pixel_verification': {**pixels, 'terminal_rgb': rgb},
         'scope': {'tracked_files_outside_experiment_changed': False,
                   'engine_and_existing_scores_unchanged': True},
@@ -331,6 +375,7 @@ def main():
 Status: PASS. Measurements concern the rendered file `{video.name}`.
 
 - H.264/AAC MP4, 1080 × 1920, 60 fps, 480 decoded picture frames, exactly 8.000 s. Both streams begin at presentation time 0.
+- The MP4 has one fast-start MOOV box and a complete top-level box layout through the exact end of file. FFprobe reports no container warnings.
 - The stereo 44.1 kHz, 24-bit PCM reference has 352,800 sample frames. Its payload is byte-identical to source sample frames 882,000–1,234,799, i.e. 20.000–28.000 s of the approved B WAV. No gain, limiting, recomposition or time stretching was applied.
 - All 361 original events in the crop are retained in the mapping; sample offsets and zero-based 60 fps picture buckets match independently. {selected_total} entries drive selected visual systems. One picture interval is 735 audio sample frames.
 - Source cutoff 27.600 s maps to excerpt 7.600 s / sample 335,160 / picture 456. Picture 455 remains visible. Every RGB channel of every pixel in pictures 456–479 is exactly zero. The corresponding 17,640 PCM sample frames are exactly silent.
