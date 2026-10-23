@@ -13,5 +13,11 @@ AAC-encoded for playback). Frames 456–479 are exact black. This is not the mas
 - [Verification](VERIFICATION.md) · [full report and per-event sync audit](verification.json)
 - [Per-frame RGB hashes](the-circuit-v2-motion-proof.frames.json) · [SHA-256 checksums](SHA256SUMS)
 
+Direct links, verified by download (bytes match; pinned to delivery commit `06dbe0f`):
+
+- MP4: https://raw.githubusercontent.com/mataindustries/daemonv12/06dbe0fe3abd554a3ae8d6f00388b6294b45f239/experiments/morph-commercial-02/delivery/the-circuit-v2-motion-proof.mp4
+- Contact sheet: https://raw.githubusercontent.com/mataindustries/daemonv12/06dbe0fe3abd554a3ae8d6f00388b6294b45f239/experiments/morph-commercial-02/delivery/contact-sheet.jpg
+- Evidence: [retrieval-verification.json](retrieval-verification.json)
+
 Why it looks like this: [../DIRECTION.md](../DIRECTION.md). What to judge:
 [../REVIEW.md](../REVIEW.md). No upload, deployment or release was made.
