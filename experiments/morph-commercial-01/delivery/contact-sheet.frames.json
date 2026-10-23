@@ -1,0 +1,169 @@
+{
+  "status": "PASS",
+  "contact_sheet": "contact-sheet.jpg",
+  "contact_sheet_sha256": "436407d29af30826c2960715b57a94dc191569192623c04b63e8a9e2fd8b9ad7",
+  "contact_sheet_dimensions": [
+    1568,
+    1628
+  ],
+  "master_file": "products/the-circuit.mp4",
+  "master_sha256": "8ca86467dd2dd2f03e413a70b03f75f47a95eff2eeda9c9108a291a8e25f9e96",
+  "master_bytes": 8458279,
+  "master_video": {
+    "codec": "h264",
+    "width": 1080,
+    "height": 1920,
+    "frame_count": 480,
+    "fps": "60/1",
+    "presentation_start_seconds": "0.000000",
+    "duration_seconds": "8.000000",
+    "time_base": "1/60000"
+  },
+  "master_audio": {
+    "codec": "aac",
+    "sample_rate": "44100",
+    "channels": 2,
+    "presentation_start_seconds": "0.000000",
+    "duration_seconds": "8.000000",
+    "duration_sample_frames": 352800
+  },
+  "reference_audio": {
+    "file": "audio/circuit-reference.wav",
+    "sha256": "66551bbb73e103116be032e4cd082d66f7659f8dec24bc87d3c365d1d1f894cc",
+    "pcm_sha256": "9f9439928c616aa99fe8aa2f5e07e25708c6ec12c70d4b21260e538253a22b92",
+    "sample_rate": 44100,
+    "channels": 2,
+    "bits": 24,
+    "sample_frames": 352800,
+    "source_crop_sample_frames": [
+      882000,
+      1234800
+    ],
+    "source_crop_interval": "start-inclusive, end-exclusive",
+    "source_crop_seconds": [
+      20,
+      28
+    ],
+    "bit_exact_source_crop": true,
+    "silence_start_sample": 335160,
+    "blackout_picture_index": 456,
+    "source_master_sha256": "1474f0d22e0e939acad1824a01b92d8264cb5b4e758623034e6c92c597c6c890"
+  },
+  "extraction": {
+    "method": "FFmpeg select filter decodes named picture indices from the finished MP4 into full-resolution RGB24 PNGs; Pillow only scales/arranges these decoded pictures.",
+    "ffmpeg_filter": "select=eq(n\\,0)+eq(n\\,30)+eq(n\\,150)+eq(n\\,270)+eq(n\\,360)+eq(n\\,444)+eq(n\\,455)+eq(n\\,456)",
+    "frame_indices_zero_based": [
+      0,
+      30,
+      150,
+      270,
+      360,
+      444,
+      455,
+      456
+    ],
+    "output_pixel_format": "rgb24",
+    "thumbnail_dimensions": [
+      360,
+      640
+    ],
+    "frames": [
+      {
+        "frame_index_zero_based": 0,
+        "presentation_time_rational_seconds": "0",
+        "presentation_time_seconds": 0.0,
+        "source": "finished H.264 MP4 decode",
+        "decoded_pixel_format": "rgb24",
+        "decoded_width": 1080,
+        "decoded_height": 1920,
+        "decoded_rgb_sha256": "c0daec08682ae4ad6e674106e1c7126cbaaf36a21784e77581606515620b99c5",
+        "decoded_png_sha256": "cb2bacb516829f6eb861918110a6b043c789fa63c03145058d73303b7c03661b",
+        "all_rgb_channels_zero": false
+      },
+      {
+        "frame_index_zero_based": 30,
+        "presentation_time_rational_seconds": "1/2",
+        "presentation_time_seconds": 0.5,
+        "source": "finished H.264 MP4 decode",
+        "decoded_pixel_format": "rgb24",
+        "decoded_width": 1080,
+        "decoded_height": 1920,
+        "decoded_rgb_sha256": "15ae0e6b8df53f7ae5456e10431842572bb8a1ec20ba28a692e57b772ea912ea",
+        "decoded_png_sha256": "20ba3e546a682f0524e1f57d3d6c43b382a6a5a3ac927d43168c2cfd0ff3ebf4",
+        "all_rgb_channels_zero": false
+      },
+      {
+        "frame_index_zero_based": 150,
+        "presentation_time_rational_seconds": "5/2",
+        "presentation_time_seconds": 2.5,
+        "source": "finished H.264 MP4 decode",
+        "decoded_pixel_format": "rgb24",
+        "decoded_width": 1080,
+        "decoded_height": 1920,
+        "decoded_rgb_sha256": "37af8e0b57f0cb4c6d0fe13add24b21fbf785db04d1bcdc73a60d29347876b81",
+        "decoded_png_sha256": "8f4545a24791012bda913c3df9698d42cb24d2273d11ff313e48a44e6d940a20",
+        "all_rgb_channels_zero": false
+      },
+      {
+        "frame_index_zero_based": 270,
+        "presentation_time_rational_seconds": "9/2",
+        "presentation_time_seconds": 4.5,
+        "source": "finished H.264 MP4 decode",
+        "decoded_pixel_format": "rgb24",
+        "decoded_width": 1080,
+        "decoded_height": 1920,
+        "decoded_rgb_sha256": "eab69773a64e0b3104cd2e9fddfc4740475b19a271931a16354080d3fc6c4879",
+        "decoded_png_sha256": "fa9bea137ec916dcc29b165796408e7a9a0c5a8926c82d037e9c056b604ae542",
+        "all_rgb_channels_zero": false
+      },
+      {
+        "frame_index_zero_based": 360,
+        "presentation_time_rational_seconds": "6",
+        "presentation_time_seconds": 6.0,
+        "source": "finished H.264 MP4 decode",
+        "decoded_pixel_format": "rgb24",
+        "decoded_width": 1080,
+        "decoded_height": 1920,
+        "decoded_rgb_sha256": "c144c42ac4938b9c4cfc8c34fea9626654f7f55ff50cafb883294a126844b1a2",
+        "decoded_png_sha256": "3450d06ed76cd103c8a54422dd48f09e6503626a996498f6ba18fd3491d421e5",
+        "all_rgb_channels_zero": false
+      },
+      {
+        "frame_index_zero_based": 444,
+        "presentation_time_rational_seconds": "37/5",
+        "presentation_time_seconds": 7.4,
+        "source": "finished H.264 MP4 decode",
+        "decoded_pixel_format": "rgb24",
+        "decoded_width": 1080,
+        "decoded_height": 1920,
+        "decoded_rgb_sha256": "38ba181af8e919d38804e7cc46398f8a7f4c6b8852161f4392840dc68cb15189",
+        "decoded_png_sha256": "c30d1a5b9df3cc494800324729aa8e324a4c87c3a60b216b6d96d7df57a5faca",
+        "all_rgb_channels_zero": false
+      },
+      {
+        "frame_index_zero_based": 455,
+        "presentation_time_rational_seconds": "91/12",
+        "presentation_time_seconds": 7.583333333333333,
+        "source": "finished H.264 MP4 decode",
+        "decoded_pixel_format": "rgb24",
+        "decoded_width": 1080,
+        "decoded_height": 1920,
+        "decoded_rgb_sha256": "3e9ed409552449fec815440b320ee0edb386beaa2c075630537cc3154b246cad",
+        "decoded_png_sha256": "add6c47f925c50a5963122311a8cd572b0d56948a0521f86f7e07feced47efd5",
+        "all_rgb_channels_zero": false
+      },
+      {
+        "frame_index_zero_based": 456,
+        "presentation_time_rational_seconds": "38/5",
+        "presentation_time_seconds": 7.6,
+        "source": "finished H.264 MP4 decode",
+        "decoded_pixel_format": "rgb24",
+        "decoded_width": 1080,
+        "decoded_height": 1920,
+        "decoded_rgb_sha256": "1f56bd4f609fab80a2b9cce7487d5c08de2768476849e1353881ca748d8d3b6a",
+        "decoded_png_sha256": "b59c661a0562aca7aaa7d8737c7e5a3fce76c4b565ad7278e15b4ba6d7d00333",
+        "all_rgb_channels_zero": true
+      }
+    ]
+  }
+}
