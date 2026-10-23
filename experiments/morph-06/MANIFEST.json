@@ -1,0 +1,192 @@
+{
+ "title": "CABLE//BEAST",
+ "experiment": "MORPH//06",
+ "format": {
+  "sampleRate": 44100,
+  "channels": 2,
+  "masterBits": 24,
+  "bpm": 120,
+  "meter": "4/4",
+  "bars": 14,
+  "seconds": 28,
+  "frames": 1234800,
+  "fps": 60,
+  "pictureFrames": 1680
+ },
+ "baseCommit": "56f013be2ffa279bc191ce925451454b775a7e34",
+ "reference": {
+  "note": "MORPH//05 V3, the approved master (the listening page's third version), unchanged on feat/morph-05-first-record",
+  "wav": {
+   "file": "experiments/morph-05/audio/v3/cable-beast-v3.wav",
+   "sha256": "a1c07efb6fe01b1309ef19af564bea2bbf09bb8e6a907612818afdca54bacab1"
+  },
+  "mp3": {
+   "file": "experiments/morph-05/audio/v3/cable-beast-v3.mp3",
+   "sha256": "04e1526b7bcc00dc09b6c7a8cfdb45428a3a7b2adc9fbad144590f44f0c88876"
+  }
+ },
+ "pinnedLevels": {
+  "partner": 0.6428883405345182,
+  "beastSource": 0.34957544194772544,
+  "beastMouth": 6.36527610411205,
+  "beastCrest": 0.1538630339327965,
+  "beastMid": 0.20292623753262637,
+  "beastSub": 0.23402639294336447,
+  "bass": 0.8718065758945048
+ },
+ "tools": {
+  "node": "v22.22.0",
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "python": "Python 3.13.16"
+ },
+ "reproduce": [
+  "npm ci   # builds dist/ (DaemonV12 timing functions used by the event-map check)",
+  "node experiments/morph-06/control.mjs",
+  "node experiments/morph-06/build.mjs a b c --stems",
+  "python3 experiments/morph-06/spectrograms.py",
+  "python3 experiments/morph-06/analyze06.py experiments/morph-06/audio/comparison.json v3=experiments/morph-05/audio/v3 a=experiments/morph-06/audio/a b=experiments/morph-06/audio/b c=experiments/morph-06/audio/c",
+  "python3 experiments/morph-06/event_changes.py experiments/morph-06/audio/EVENT-CHANGES.md experiments/morph-05/audio/v3/cable-beast-v3.events.json a=experiments/morph-06/audio/a/cable-beast-a.events.json b=experiments/morph-06/audio/b/cable-beast-b.events.json c=experiments/morph-06/audio/c/cable-beast-c.events.json",
+  "node experiments/morph-06/manifest.mjs"
+ ],
+ "controlTest": "control.mjs: record.mjs + beast.mjs rendering the unchanged MORPH//05 V3 score reproduce the V3 master WAV bit-identically (the reference sha256 above), both as is and with the levels in v3-levels.json pinned",
+ "determinism": "a, b and c rendered a second time into a fresh directory on this runtime: master WAVs and all 14 FLAC stems of each byte-identical",
+ "sources": {
+  "experiments/morph-06/record.mjs": "d93befe5558870b6c3e24060a6840583a9fa120af2cdda35f9795c19c34dcdd4",
+  "experiments/morph-06/beast.mjs": "fa1b83049efbe2e92ff81ad63f42a8b6f8bf63512629dacca13ee1243f017806",
+  "experiments/morph-06/control.mjs": "b3665cfd54e301f74f7885825bebe8dab237d012d4bc07b374718c7209912278",
+  "experiments/morph-06/v3-levels.json": "d10d141760b51749aee73828a7ed20480b0de0336929161e83903cd222bf9467",
+  "experiments/morph-06/a.mjs": "f3536c9ad04d999f107a8376ad8319c53b2a49720d4a3c9aad33d8a7e94dbb67",
+  "experiments/morph-06/b.mjs": "ea812bf3f90c4e0cf0a7a0fcbd278fc5df295b8f6064ad0fab18bb6e32919ba1",
+  "experiments/morph-06/c.mjs": "8147d5009ecd4ab02999ea362ed051137196e9a5e7d4f58da726a3f0b4cd46c0",
+  "experiments/morph-06/build.mjs": "82d1b7a06cb9bb8833fcdcb08196241290fde4f4f382fca154e23111c037c012",
+  "experiments/morph-06/analyze06.py": "2a2f57fdcc2539486b76c8d0935cac2b4fe65166689d7a3862cc2e213659005f",
+  "experiments/morph-06/event_changes.py": "653c32a60adf0e13ae590085825adfe84678506e37295a08ae8dd523c6aa6053",
+  "experiments/morph-06/spectrograms.py": "edd6487a2e3df6529951ff981fe585ecc3b2ea7c181286c6cf6c2e65458e87dc",
+  "experiments/morph-06/manifest.mjs": "d8b6c11bc3a3ba5957c6ab37aea94ea89a866b1ef6d607ada4ed77ef6fb77229",
+  "experiments/morph-05/v3.mjs": "68acd7089b87b9a9080dc41b90ff3fbbcb693b8ba0d3377eba8fc8af32600d40",
+  "experiments/morph-05/checks.py": "499659fbb640ea85d66cc09857be7b4108c585f5c004ee1f091e8a27cd5bf9d5",
+  "experiments/morph-03/cable.mjs": "591ae70a37b96a99ed57bc73819f61d314f84e5512f83c9084a1291219c7fa19",
+  "experiments/morph-03/dsp.mjs": "d219f8cd93748889636fbb8037940c52d3b6651ffe1aeff1a07fc59c3a115258",
+  "experiments/morph-03/throat.mjs": "9755cccacfa6bb163f96c298c20456c197929b33f03ce0ede29b715132a550c9",
+  "experiments/morph-03/household.mjs": "5c800ca2c3dcdcb3add7579b08207a1e3037c38b445b3b1a998cc55a5e5e84f7",
+  "experiments/morph-03/analyze.py": "137a313dd2d5c88d40e52fdbbdb546d77ce636454abb1e260295df9acf944c8c",
+  "experiments/morph-04/kit.mjs": "6301ba16bcae32070a084ac61eb17bfe40505c762b8f6759a3942cb0e3d81cfa",
+  "experiments/morph-04/perform.mjs": "727ca9556c112ec12be56e4a9d6e0f154671bd1eb37cf25bf4a1902a1826b123",
+  "experiments/morph-04/events.mjs": "3e754354dd54a40089f039c3d06e541914a838c3dcd4235cbcd5f15f9e5dac4c"
+ },
+ "analysis": {
+  "experiments/morph-06/audio/comparison.json": "deb7cd487851d54fec49a11aa882a583e66cb1d6a5b212c0b544753d987699a5",
+  "experiments/morph-06/audio/EVENT-CHANGES.md": "7132f3707af1ed54bc38a1cccd4be35c7e65ecae01bc40992b0e9cc307aa3c02",
+  "experiments/morph-06/audio/spectrograms/cable-beast-a.png": "a2811031602a879e4d2ca97b05cb0bf6a777ca59ec179da5d76d69ddeb64bac1",
+  "experiments/morph-06/audio/spectrograms/cable-beast-b.png": "a9ac89fc73418d860a41a8ca57ce6eafcaa0084985ed19f720265e7967716215",
+  "experiments/morph-06/audio/spectrograms/cable-beast-c.png": "422c10e9bb4f0fe0bfb6c2d1080db6ae0d7fcfbac7dc25413b6b0696eb6fb725",
+  "experiments/morph-06/audio/spectrograms/compare-ending.png": "a0fdb5583d8e916e80b9a00453d97984e2406ce061826e37714e28b6237db97a",
+  "experiments/morph-06/audio/spectrograms/compare-gasp.png": "b5ad76f7b43a3313adb073ef056ce4b3afb41e66bc22f484b097d1aeb88886ae"
+ },
+ "versions": {
+  "a": {
+   "title": "CABLE//BEAST A: the gasp (125 ms)",
+   "masterWav24Sha256": "20347a071cb644963e0eee0134f93b0d8d0cab381e0910a528a46275a0cb8378",
+   "frames": 1234800,
+   "changes": [
+    "Silence: 125 ms before the payoff. Every instrument, room and echo fades out over 4 ms (raised cosine) ending at 19.875 s and is exactly zero until 20.000 s; the payoff downbeat is unchanged (instruments return with a 0.3 ms guard, rooms over 30 ms).",
+    "Wind-up 2 completes at 19.875 s instead of 20.000 s: the same accelerando (dotted eighth to E1) on a curve 12.5% shorter, in 7 drum repeats ending on a 26 ms round trip (V3: 9, the last cut short by the downbeat). Muting V3 as it was would instead have deleted its last 4 repeats, the fastest ones.",
+    "The hand holds the cable through the gasp, so the payoff slap restarts it from rest; the Beast lets go a 32nd before the gasp."
+   ],
+   "files": {
+    "experiments/morph-06/audio/a/cable-beast-a.automation.json": "4429e679c9247336856012b2fd41c8aa8a941ea0f9f85492e91d45e5597d3950",
+    "experiments/morph-06/audio/a/cable-beast-a.events.json": "1bd85963b5977b62eddfe2e380640f862fd9510d0b12eace1ab4836e0109598e",
+    "experiments/morph-06/audio/a/cable-beast-a.events.md": "013726e5d41bf91a017bfce0632190f0eb622b029033522cd6880e2c16ab7013",
+    "experiments/morph-06/audio/a/cable-beast-a.meta.json": "f28ad03cc720f5f7a6528155ed901ee4d5d41f2e4c6261334a2b5a7f1bd698b4",
+    "experiments/morph-06/audio/a/cable-beast-a.mp3": "a5dd3e36952d4502fbe9539d65d926de978d650800a684441bfbebb1d2c6628a",
+    "experiments/morph-06/audio/a/cable-beast-a.wav": "20347a071cb644963e0eee0134f93b0d8d0cab381e0910a528a46275a0cb8378",
+    "experiments/morph-06/audio/a/stems/beast.flac": "df48364371410f5c2f8873420632259b4b0f89be3c4c2a63b7edd414b15a5b1c",
+    "experiments/morph-06/audio/a/stems/cable.flac": "acd2a843be63a92c493f037a07c9d72dded8f0abd478f096ec078dfeea9df8e6",
+    "experiments/morph-06/audio/a/stems/cablePartner.flac": "30d81084f64a93fc7c4ade3c1b39da27d7eb85a10160a605184784a2d685100e",
+    "experiments/morph-06/audio/a/stems/echo.flac": "1dc767a59e72f3b9533a7af3c2670d5b08e26f4eca7defd13c9f332f8ffccc56",
+    "experiments/morph-06/audio/a/stems/garage.flac": "393eafa96db60d06ad5f4019916484425e9da25d05f6c9557ba913ba69566ea7",
+    "experiments/morph-06/audio/a/stems/kick.flac": "b9dccf88140fe69a8eca9d9d657b24719102f2dc116d2d00701b7692c884b87e",
+    "experiments/morph-06/audio/a/stems/kitchen.flac": "2f2b3a5db0dc94d5bfcc00e16e53065795a102cea19ba5321fbc47bac765dcf3",
+    "experiments/morph-06/audio/a/stems/metal.flac": "55b9fb3c7970d5e046c3e74dbcc8b94ca26a66605489736fa32ef6af8b3d42f9",
+    "experiments/morph-06/audio/a/stems/premaster.flac": "d1b46d86024f13b45c25864baf94aedc591d9eeb5e13733861eabc4554cfe22b",
+    "experiments/morph-06/audio/a/stems/ratchet.flac": "f6f564140c650aa236bb6a704b71becf99885b5818759c6a04efad3e7eb3c3be",
+    "experiments/morph-06/audio/a/stems/room.flac": "3baadb11a319f026052d24e3975180d4b2c33603d87341ed12da8cf912005055",
+    "experiments/morph-06/audio/a/stems/snare.flac": "425bef38c96c6d9af347e79a46ab50f6b2b9b423a587c8e6e6ae5ffb161fad5e",
+    "experiments/morph-06/audio/a/stems/stems.json": "e6da703e8643b853126e1618aeda393aca90fc5df149a4b1b665c08be85a1292",
+    "experiments/morph-06/audio/a/stems/ticks.flac": "9766803a4f31934737619b7400d625bb85a910c5f48ada27c5bf097c0ce627c7",
+    "experiments/morph-06/audio/a/stems/toms.flac": "46f62ed65351b77fb4ab819248bf2d89881d56c5aa87e368d11b9eafddd0f16c"
+   }
+  },
+  "b": {
+   "title": "CABLE//BEAST B: the overload",
+   "masterWav24Sha256": "1474f0d22e0e939acad1824a01b92d8264cb5b4e758623034e6c92c597c6c890",
+   "frames": 1234800,
+   "changes": [
+    "Pre-payoff: Experiment A's 125 ms gasp (19.875-20.000 s), unchanged.",
+    "24.0-25.5 s: the unison hook as in V3 (cable and Beast unchanged); from 25.0 s the ticks double to 32nds, a kick at 25.125 s and ghost snares at 25.375 and 25.4375 s lead into the climb.",
+    "25.5-26.0 s: V3's 16th run becomes slap-pop pairs in 32nds climbing E-G-A-B; the Beast answers in triplets and chokes; the snare roll is harder; ticks go to 32nds; the second cable cracks on the right.",
+    "26.0-26.5 s: the hook's head (slap, ghost, pop) with the Beast, as in V3.",
+    "26.5-27.0 s: where V3 snapped, the big snare hits but the cable does not snap: the hook's head again in 8ths climbing E-G against a 16th Beast hocket (ka-YOI); kicks in 8ths.",
+    "27.0-27.6 s: the cable is wound past its note (E1 to E3, re-struck every round trip, brighter and more dispersive), the drums ratchet with it into a rising metallic buzz, the Beast chokes in quintuplets climbing E2-B2 and screams toward E3 until its voice breaks (beat-repeat + crush at 27.525 s); kicks go from quarters to 16ths to 32nds (lighter as they multiply), a 32nd snare roll with break accents, toms walk up F2-A3, alarm bells and clanks; the drums ride down 2-3 dB, the Beast down to -6/-7 dB and the cable up 3.5 dB, so the over-winding cable and the Beast meet as equals at the climax.",
+    "Level: the whole mix is trimmed 2 dB across 26.0-26.5 s and stays there to the cut, so the ending does not push the rest of the record down after loudness matching.",
+    "27.600 s: everything (instruments, rooms, echo) fades out over 4 ms and is exactly zero to 28.000 s."
+   ],
+   "files": {
+    "experiments/morph-06/audio/b/cable-beast-b.automation.json": "7b60c269b8bf986fa9d909a09959772bb1f9c206511c7ee573fd5a1b97ae6427",
+    "experiments/morph-06/audio/b/cable-beast-b.events.json": "de93e3cddf7d7267010da1553e0d295243efeec43f00d4888805ad8aa65e00d4",
+    "experiments/morph-06/audio/b/cable-beast-b.events.md": "8d95eac50d34835103a682facca60cbc3e124ed999dcfb5d94ceb44f83db386f",
+    "experiments/morph-06/audio/b/cable-beast-b.meta.json": "ff7a89d386983169505e4e918d51c429ab39a826dbfa71758fccba6cd621f0fd",
+    "experiments/morph-06/audio/b/cable-beast-b.mp3": "b3e775ecf0cab63d8e5222679d2e4ea897cee5dc6f26d4121516041f89a300ca",
+    "experiments/morph-06/audio/b/cable-beast-b.wav": "1474f0d22e0e939acad1824a01b92d8264cb5b4e758623034e6c92c597c6c890",
+    "experiments/morph-06/audio/b/stems/beast.flac": "2a2d1a8b02ccdfbd571c4d4ab73b2c05f6ef56697eb12e3fbc43ab2421887f45",
+    "experiments/morph-06/audio/b/stems/cable.flac": "9ec050ec3bf442f681c44784b5a452828eaa631dfdca51bc7584099f5ffd9705",
+    "experiments/morph-06/audio/b/stems/cablePartner.flac": "735a9d6714a2c0cc1975b05dfc6b18da711b1759762895e42a80910faecc4534",
+    "experiments/morph-06/audio/b/stems/echo.flac": "3d2c82e42cbce860f5306dc0fd7566a4b5a55783d8f78b8452cf71be9a08a6dc",
+    "experiments/morph-06/audio/b/stems/garage.flac": "8ec290ea22c821b15b15f1acb3f16e7e3148379abba8836f9229bd4ed8c4e603",
+    "experiments/morph-06/audio/b/stems/kick.flac": "a39f0246fba3b504ef6b0793b620ae31a508439442714f8ab45b1584760e760c",
+    "experiments/morph-06/audio/b/stems/kitchen.flac": "20a95691b9d40379f623d98abbef06cada033a8749cbfb16b1d64a812db7013b",
+    "experiments/morph-06/audio/b/stems/metal.flac": "6cf64e305814c39127dd91bb509b9814b449674cdbbbf6bcef349596a6420321",
+    "experiments/morph-06/audio/b/stems/premaster.flac": "ab6dbee498d7a78da27132ac54dbe4a23878cc382d7673a560130feaa45af70d",
+    "experiments/morph-06/audio/b/stems/ratchet.flac": "64bbbbb725ef676afff371f4d5d8eb56fa4923975c9279c1aa32ac497d198adc",
+    "experiments/morph-06/audio/b/stems/room.flac": "962ac86c918c29903eeaaf9e2d5996c0f2810798fb15d1aad1767ac4170fba06",
+    "experiments/morph-06/audio/b/stems/snare.flac": "7748de8097514f2a2e8b2d48f344982533ea13472fc115379a3fe97638dd7bf7",
+    "experiments/morph-06/audio/b/stems/stems.json": "2d53f8e5b6cbdc8402fb5f488d45100ac1eeb946ab5e0b713ddd72b73b94a5dc",
+    "experiments/morph-06/audio/b/stems/ticks.flac": "dacc508414bb24226f4e551ab4f82c99ab2e167225996ae1e78e0cac6b3aa6f0",
+    "experiments/morph-06/audio/b/stems/toms.flac": "e1ba54ca82fa2c8da8f3b55ee719b832d6fc83041abd011597fdce79851e5669"
+   }
+  },
+  "c": {
+   "title": "CABLE//BEAST C: the longer gasp",
+   "masterWav24Sha256": "fc31f9c1d6af94e2c81a484f7d6606dbc3beb86754629a9a093f7a770b859ba0",
+   "frames": 1234800,
+   "changes": [
+    "Silence: 250 ms before the payoff (fade-out ending at 19.750 s, exactly zero until 20.000 s); the payoff downbeat is unchanged.",
+    "Wind-up 2 completes at 19.750 s: the same accelerando on a curve 25% shorter than V3, in 6 drum repeats (the last cut at a 20 ms round trip). Muting V3 as it was would have deleted its last 6 repeats.",
+    "The ending is Experiment B's overload, unchanged (cut at 27.600 s)."
+   ],
+   "files": {
+    "experiments/morph-06/audio/c/cable-beast-c.automation.json": "394a5b18515af9b33deaef471fbb0172e9b6302093b5477bce743c79485e050e",
+    "experiments/morph-06/audio/c/cable-beast-c.events.json": "27514f37b05ab698cca56d4679116097a5a68130ad3bbaeb753943b750681ce9",
+    "experiments/morph-06/audio/c/cable-beast-c.events.md": "44c21edecf0b5202eda4277b79b004a6d649885ce3797a6825018b49732fb38b",
+    "experiments/morph-06/audio/c/cable-beast-c.meta.json": "ab0c00a6d512a74c8968953c4f34345ce3d17c47647ae17be5a7dffb1431ff11",
+    "experiments/morph-06/audio/c/cable-beast-c.mp3": "30e64bd4fb2e378764d042798f54af639f98e9d82aa6721bc3b625067ac39223",
+    "experiments/morph-06/audio/c/cable-beast-c.wav": "fc31f9c1d6af94e2c81a484f7d6606dbc3beb86754629a9a093f7a770b859ba0",
+    "experiments/morph-06/audio/c/stems/beast.flac": "99b6c1216767e7df98ae04e9663b20b685892f4080c4e245bb75f45cf877dadc",
+    "experiments/morph-06/audio/c/stems/cable.flac": "10d8eb5b4779b9903ed7fe6ad84100cd30b5174175825477470860d1f2e795b7",
+    "experiments/morph-06/audio/c/stems/cablePartner.flac": "94dd858a6af5435914aa282d2b494b5e6a30f7fb5254a37fda65d747e55bbda0",
+    "experiments/morph-06/audio/c/stems/echo.flac": "1a2be2c98509be27835669176ee94667d0c517fcc5e99d4eb71c144e2b7bafd0",
+    "experiments/morph-06/audio/c/stems/garage.flac": "99833cc0f7250fd1f963dcd259576b841a13028373ab1474dd9ada258c8ac15f",
+    "experiments/morph-06/audio/c/stems/kick.flac": "9fbadf9760782fffd0b50c21e7248ad37db4d76809c619818d9f83b2dfaa7119",
+    "experiments/morph-06/audio/c/stems/kitchen.flac": "eee524ff55c1fd2a339a8824cba9d67b28d40f52606f1ff980b37fc53bd15d74",
+    "experiments/morph-06/audio/c/stems/metal.flac": "54e2aadec630d3b5eda15f108a0be4f495704627e642e2ef01601cc5d6c22d57",
+    "experiments/morph-06/audio/c/stems/premaster.flac": "4a5a1e835c9b214f9d897ef1b59bf19b53b03ac1e27cf59ef9b0e504793012e4",
+    "experiments/morph-06/audio/c/stems/ratchet.flac": "17ed4915eaa48f1802cc42dede6d8d0c29e95402b3d269770f8000370af4c65b",
+    "experiments/morph-06/audio/c/stems/room.flac": "914544361d65a6e0e1b91192dc1fa733a251af470b03c1a2db44d49f38b9e767",
+    "experiments/morph-06/audio/c/stems/snare.flac": "5cf7a9cc4400e5938486db9f9757b7a742ac0c57c263aac910fcae1d00582c51",
+    "experiments/morph-06/audio/c/stems/stems.json": "31f38f1ac6b8fef483d1729661f705430ed3500965d680447dd07b074eee12c5",
+    "experiments/morph-06/audio/c/stems/ticks.flac": "3bf205e15956f1f1bb762858cc2c32202bdb37a6b6f2dbbd1c1120b920372d08",
+    "experiments/morph-06/audio/c/stems/toms.flac": "550fcc533f673d4ad71bf1aaf52838493b339e3a7bfc38870b3e610acfb1455f"
+   }
+  }
+ }
+}
