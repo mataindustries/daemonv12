@@ -38,15 +38,16 @@ def main(concept, version, png=False):
     meta = json.load(open(glob.glob(os.path.join(base, '*.meta.json'))[0]))
     stems = {os.path.basename(p)[:-4]: rd(p) for p in sorted(glob.glob(os.path.join(base, 'render', '*.stems', '*.wav')))}
     master = rd(os.path.join(base, meta['files']['master']['path'].split('/')[-1]))
-    sections = json.load(open(os.path.join(HERE, 'analysis', f'sections-{concept}.json')))['sections']
+    own = os.path.join(HERE, 'analysis', f'sections-{concept}-{version}.json')  # a version with its own form (the fixed-120 control)
+    sections = json.load(open(own if os.path.exists(own) else os.path.join(HERE, 'analysis', f'sections-{concept}.json')))['sections']
     out = {'concept': concept, 'version': version, 'sections': [], 'hook': [], 'kickSub': None, 'translation': {}}
     # 1. who owns each section (stem RMS, dBFS, before the master stage)
     for s in sections:
         row = {k: db(rms(v, s['start'], s['end'])) for k, v in stems.items()}
         out['sections'].append({'name': s['name'], 'stems': row})
     # 2. hook presence: carrier stem vs everything else, 300 Hz-4 kHz, over each carrier note window
-    carrier = 'lead' if concept == 'a' else 'voice'
-    others = sum(v for k, v in stems.items() if k not in (carrier, f'{carrier}-room', f'{carrier}-harm'))
+    carrier = 'voice' if concept == 'b' else 'lead'
+    others = sum(v for k, v in stems.items() if k not in (carrier, f'{carrier}-room', f'{carrier}-harm', 'room'))
     cb, ob = band(stems[carrier], 300, 4000), band(others, 300, 4000)
     env = np.sqrt(np.convolve(np.mean(cb ** 2, axis=1), np.ones(441) / 441, mode='same'))
     on = env > 10 ** (-40 / 20)

@@ -131,3 +131,79 @@ unmodified engine validates it and renders it (`render --stems --format wav`).
 All audio in this directory was synthesized by the code here, from scratch, for this piece.
 No third-party material is involved. The licence follows the repository's own (an open owner
 decision, per the README).
+
+## Round 2 — P (PROPULSION) and L (LIFT)
+
+Round 2 adds two candidates and a fixed-120 control. It uses the same base, the same
+`lib/` copies (no new MORPH files were copied) and the same tools. As in round 1, every
+sound is synthesized here, and no third-party recording, sample or preset is used.
+
+| What | Where it comes from |
+|---|---|
+| Base | `main` `7dd67f1` (DaemonV12 0.7.0), plus this branch's round 1 (`9fd4d36`) for the pipeline and the A/B material that was reused as ideas, not as audio |
+| A's ideas reused | The 3+3+2 tick rhythm, the press heartbeat, the cable turbine and its ratchet, the breath, and the call 1–5–8 / answer 3–5–6. All are recomposed; no audio is spliced. |
+| B's ideas reused | The spark 1–2–5–6, the Lydian II, the summit, and the ignition recipe. All are recomposed. |
+
+### New and changed files
+
+| File | What it is |
+|---|---|
+| `src/synths.mjs` | **New.** The round-2 palette: textbook subtractive voices (polyBLEP oscillators, TPT state-variable filters, ADSR, 4× oversampled drive) and electronic drums (swept-sine kick with beater click, clap, snare, 808-style hats, shaker, crash). Built only from `lib/dsp.mjs` primitives. |
+| `src/tempo-map.mjs` | **New.** The score-local 120 → 150 BPM tempo map and its translation to a fixed 150 BPM, 2/4 engine grid. It imports the engine's own `ticksToFrames` / `usPerQuarter` / `formatPosition` from `dist/` and verifies every frame ([TEMPO-MAP.md](TEMPO-MAP.md)). |
+| `scores/v3-common.mjs` | **New.** Shared material: the heartbeat, the press alone, the cable ticks, the turbine, and helpers that turn tempo-mapped notes into kit tracks with exact gates. |
+| `scores/p.mjs`, `scores/l.mjs` | **New.** The two scores. V1, V2 and (for P) the fixed-120 control come from the same file, with V2's edits gated by version. |
+| `src/project.mjs` | **Changed, additive:** notes may sit at an engine `tick` (the physics-timed ratchet), and the project's time signature can be set. A and B rebuild byte-identically. |
+| `build.mjs` | **Changed, additive:** event maps (`*.events.md/.json`) from the render manifest, with every on-grid frame re-checked; tempo-map metadata; the tempo line in the cue sheets. A and B rebuild byte-identically. |
+| `analysis/stems.py` | **Changed:** the hook carrier is `lead` for P and L. A shared room stem is not counted as masking. A version can have its own sections file (the control). |
+
+### MORPH models used in round 2
+
+Only where they help the music:
+
+| Model (file in `lib/`) | Used for |
+|---|---|
+| Tempo String, `cable.mjs` (MORPH//03) | Both turbines. P's quiet cable statements under the intro bass. L's machine answer at 1.5 s. |
+| Cable tick, `kit.mjs` (MORPH//04) | The 3+3+2 precision ticks and the turbine ratchet |
+| Press clank, `household.mjs` (MORPH//03) | Inside the heartbeat (with a low-passed electronic kick). P V2's press alone at 3.0 s. |
+| Performance lanes, `perform.mjs` (MORPH//04) | Timing and muting of P's cable statements |
+| DSP kit, `dsp.mjs` (MORPH//03) | Every primitive of the new palette, the FDN rooms' building blocks, the filters |
+
+### What is native and what is external (round 2)
+
+Each version is a real DaemonV12 0.7.0 project, validated and rendered by the unmodified
+engine with stems.
+
+**Native drum-kit tracks (every note a trigger with velocity, v0.7 gate and envelope):**
+
+- **P:** heart (heartbeat, lock and, in V2, press), kick, clap, hats, ticks, crash, bass,
+  lead, blip, stabs, pad and arp: 12 tracks.
+- **L:** heart, kick, clap, hats, ticks, crash, bass, bell, pad and arp; plus `answer` in
+  V2: 10 or 11 tracks.
+- **Physics-timed ticks:** the turbine's ratchet ticks are native triggers at the nearest
+  engine tick (≤ 0.21 ms).
+
+**External, played as one sampler note at `1:1` and labelled `EXTERNAL:`:**
+
+- **P:**
+  - the cable track: the intro statements, high-passed at 140 Hz, and the turbine;
+  - the FDN room.
+- **L:**
+  - the soaring lead, a legato line whose glides, vibrato and filter state carry across
+    notes, which the sampler cannot reproduce note by note;
+  - the cable turbine;
+  - the FDN room.
+
+**Native mix:**
+
+- gain and pan;
+- authored duck lanes for bass and pad;
+- delays and reverbs;
+- master high-pass and glue compressor.
+
+**External final stage (`src/master.mjs`, unchanged from round 1):**
+
+- gain to −14.0 LUFS on the engine's `loudnorm` meter;
+- true-peak limiter at −1.2 dB;
+- P's breath window;
+- PCM16 with TPDF dither;
+- the MP3 copy.

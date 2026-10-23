@@ -43,8 +43,10 @@ export function writeProject(dir, spec) {
       save(`assets/${t.id}.wav`, t.sample);
       instrument = { type: 'sampler', sample: `assets/${t.id}.wav` };
     }
-    const notes = [...t.notes].sort((a, b) => a.pos - b.pos).map(({ pos, hit, vel = 0.8, ...rest }) => {
-      const note = { start: g.position(pos) };
+    // a note sits at a grid position `pos`, or (for physics-timed events such as a ratchet) at an engine `tick`
+    const tickOf = n => (n.tick !== undefined ? n.tick : g.tick(n.pos));
+    const notes = [...t.notes].sort((a, b) => tickOf(a) - tickOf(b)).map(({ pos, tick, hit, vel = 0.8, ...rest }) => {
+      const note = { start: tick !== undefined ? g.positionOfTick(tick) : g.position(pos) };
       if (t.kit) note.pitch = hit;
       note.velocity = r6(Math.min(1, Math.max(0.001, vel)));
       for (const [k, v] of Object.entries(rest)) if (v !== undefined) note[k] = v;
@@ -59,7 +61,7 @@ export function writeProject(dir, spec) {
     return track;
   });
   const project = {
-    formatVersion: 1, title: spec.title, description: spec.description, bpm: spec.bpm, timeSignature: '4/4', key: spec.key, bars: spec.bars, seed: spec.seed ?? 1,
+    formatVersion: 1, title: spec.title, description: spec.description, bpm: spec.bpm, timeSignature: spec.timeSignature ?? '4/4', key: spec.key, bars: spec.bars, seed: spec.seed ?? 1,
     render: { duration: { seconds: 12 }, tail: 'none' }, master: spec.master, tracks,
   };
   const path = join(dir, `${spec.name}.daemonv12.json`);

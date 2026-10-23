@@ -69,14 +69,39 @@ export async function build(concept, version) {
     mastering, analysis: analysis.analysis ?? analysis, cues,
     timings: { synthSeconds: +((tSynth - t0) / 1000).toFixed(1), engineSeconds: +((tRender - tSynth) / 1000).toFixed(1), totalSeconds: +((performance.now() - t0) / 1000).toFixed(1) },
   };
+  if (spec.tempoMap) {
+    meta.tempoMap = { sections: spec.tempoMap, engine: { bpm: spec.bpm, timeSignature: spec.timeSignature, usPerQuarter: spec.grid.engineTempo },
+      note: 'Experimental score-local tempo map carried by a fixed-tempo DaemonV12 project; every authored position is an integer engine tick.' };
+    meta.eventMap = writeEventMap(spec, manifest, join(out, `${spec.name}.events`));
+  }
   writeFileSync(join(out, `${spec.name}.meta.json`), JSON.stringify(meta, null, 2) + '\n');
   writeFileSync(join(out, `${spec.name}.cues.md`), cueTable(spec, cues));
   return meta;
 }
 
+/** Every engine trigger with its sample frame, 60 fps frame and tempo-map position (JSON + Markdown). */
+function writeEventMap(spec, manifest, base) {
+  const M = spec.grid, rows = [];
+  for (const tr of manifest.samples.tracks) for (const e of tr.triggers) {
+    const pos = M.posOfTick(e.tick), onGrid = Math.abs(pos * 4 - Math.round(pos * 4)) < 1e-9;
+    if (onGrid && M.frame(Math.round(pos * 4) / 4) !== e.frame) throw new Error(`event map: ${tr.trackId} tick ${e.tick} frame mismatch`);
+    rows.push({ seconds: +(e.frame / RATE).toFixed(6), sampleFrame: e.frame, frame60: pictureOfFrame(e.frame), track: tr.trackId,
+      sound: e.file.split('/').pop().replace('.wav', ''), velocity: e.velocity, tick: e.tick,
+      position: onGrid ? M.musical(Math.round(pos * 4) / 4) : `physics-timed (${(pos).toFixed(3)} sixteenths)`, bpm: M.bpmAt(Math.min(pos, M.totalSix - 1e-9)) });
+  }
+  rows.sort((a, b) => a.sampleFrame - b.sampleFrame || a.track.localeCompare(b.track));
+  writeFileSync(`${base}.json`, JSON.stringify(rows, null, 1) + '\n');
+  const md = rows.map(r => `| ${r.seconds.toFixed(4)} | ${r.sampleFrame} | ${r.frame60} | ${r.track} | ${r.sound} | ${r.velocity} | ${r.position} |`);
+  writeFileSync(`${base}.md`, `# ${spec.title}: event map\n\nEvery trigger the engine rendered (from the render manifest). Sample frames are DaemonV12's own; the 60 fps frame is floor(sampleFrame × 60 / 44100).\n` +
+    `Positions are in the experimental tempo map (${spec.tempoMap.map(s => `${s.bars} bars at ${s.bpm} BPM`).join(', then ')}); the engine project itself runs at a fixed ${spec.bpm} BPM in ${spec.timeSignature}.\n\n` +
+    `| Seconds | Sample frame | 60 fps | Track | Sound | Velocity | Position |\n|---:|---:|---:|---|---|---:|---|\n${md.join('\n')}\n`);
+  return { events: rows.length, json: `${base.split('/').pop()}.json`, markdown: `${base.split('/').pop()}.md` };
+}
+
 function cueTable(spec, cues) {
   const rows = cues.map(c => `| ${c.cue} | \`${c.position}\` | ${c.tick} | ${c.sampleFrame} | ${c.seconds.toFixed(3)} | ${c.frame60} | ${c.what} |`);
-  return `# ${spec.title}: sync points\n\n${spec.bpm} BPM, 4/4. Sample frames are DaemonV12's own tick → frame resolution (nearest frame, ties later);\n` +
+  const tempo = spec.tempoMap ? `Tempo map: ${spec.tempoMap.map(s => `${s.bars} bars at ${s.bpm} BPM`).join(', then ')} (engine project: fixed ${spec.bpm} BPM in ${spec.timeSignature})` : `${spec.bpm} BPM, 4/4`;
+  return `# ${spec.title}: sync points\n\n${tempo}. Sample frames are DaemonV12's own tick → frame resolution (nearest frame, ties later);\n` +
     `the 60 fps frame is floor(sampleFrame × 60 / 44100). The file is ${FRAMES} frames (720 picture frames).\n\n` +
     `| Cue | Position | Tick | Sample frame | Seconds | 60 fps | What happens |\n|---|---|---:|---:|---:|---:|---|\n${rows.join('\n')}\n`;
 }

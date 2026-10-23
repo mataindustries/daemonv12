@@ -1,18 +1,164 @@
-# STILL HERE — the ignition sequence (two candidate scores)
+# STILL HERE — the ignition sequence
 
-Original 12-second scores for a DaemonV12 aerospace spec film. Two genuinely different
-musical concepts, each rendered as V1 and then revised once (V2).
+Original 12-second scores for a DaemonV12 aerospace spec film, in two rounds:
 
-| Requirement | Delivered |
+- **Round 2, current: the propulsion experiment.** Two new candidates, **P — PROPULSION** and
+  **L — LIFT**, on a 120 → 150 BPM tempo map. Each was rendered as V1 and revised once (V2).
+  A fixed-120 BPM control of P is included.
+- **Round 1, unchanged:** A — PRECISION IGNITION and B — THE HUMAN SPARK, as delivered in
+  `9fd4d36` ([below](#round-1--a-and-b-unchanged-since-9fd4d36)).
+
+| Requirement | Delivered (every file) |
 |---|---|
 | Ignition | audio frame **176,400**, picture frame **240** (4.000 s) |
 | Length | exactly **529,200 frames** (12.000 s, 720 frames at 60 fps) |
 | Loudness | **−14.0 LUFS**, matched on DaemonV12's own meter |
-| Engine | DaemonV12 0.7.0 at `main` `7dd67f1`, sequencing and mixing natively |
+| Engine | DaemonV12 0.7.0 at `main` `7dd67f1`, sequencing and mixing natively, unmodified |
 
 > **Nobody has listened to these.** This environment cannot perceive audio. Everything below
 > is a score reading, a measurement or a design intention, labelled as such
-> ([REVIEW.md](REVIEW.md)). Human listening chooses; I have not picked a winner.
+> ([REVIEW-V3.md](REVIEW-V3.md), [REVIEW.md](REVIEW.md)). Human listening chooses; I have
+> not picked a winner.
+
+# Round 2 — the propulsion experiment (P and L)
+
+## Listen (Android: tap a link)
+
+| Candidate | MP3 (320 kbps) | WAV master (PCM16) | Sync sheet | Event map (60 fps) |
+|---|---|---|---|---|
+| **P — PROPULSION (V2)** | [still-here-p-v2.mp3](https://raw.githubusercontent.com/mataindustries/daemonv12/feat/still-here-ignition-score/experiments/still-here-score/p/v2/still-here-p-v2.mp3) | [wav](https://raw.githubusercontent.com/mataindustries/daemonv12/feat/still-here-ignition-score/experiments/still-here-score/p/v2/still-here-p-v2.wav) | [cues](p/v2/still-here-p-v2.cues.md) | [events](p/v2/still-here-p-v2.events.md) |
+| **L — LIFT (V2)** | [still-here-l-v2.mp3](https://raw.githubusercontent.com/mataindustries/daemonv12/feat/still-here-ignition-score/experiments/still-here-score/l/v2/still-here-l-v2.mp3) | [wav](https://raw.githubusercontent.com/mataindustries/daemonv12/feat/still-here-ignition-score/experiments/still-here-score/l/v2/still-here-l-v2.wav) | [cues](l/v2/still-here-l-v2.cues.md) | [events](l/v2/still-here-l-v2.events.md) |
+| P at a fixed 120 BPM (control, V2 material) | [still-here-p-control120.mp3](https://raw.githubusercontent.com/mataindustries/daemonv12/feat/still-here-ignition-score/experiments/still-here-score/p/control120/still-here-p-control120.mp3) | [wav](https://raw.githubusercontent.com/mataindustries/daemonv12/feat/still-here-ignition-score/experiments/still-here-score/p/control120/still-here-p-control120.wav) | [cues](p/control120/still-here-p-control120.cues.md) | [events](p/control120/still-here-p-control120.events.md) |
+| P, V1 (before the revision) | [still-here-p-v1.mp3](https://raw.githubusercontent.com/mataindustries/daemonv12/feat/still-here-ignition-score/experiments/still-here-score/p/v1/still-here-p-v1.mp3) | [wav](https://raw.githubusercontent.com/mataindustries/daemonv12/feat/still-here-ignition-score/experiments/still-here-score/p/v1/still-here-p-v1.wav) | [cues](p/v1/still-here-p-v1.cues.md) | [events](p/v1/still-here-p-v1.events.md) |
+| L, V1 (before the revision) | [still-here-l-v1.mp3](https://raw.githubusercontent.com/mataindustries/daemonv12/feat/still-here-ignition-score/experiments/still-here-score/l/v1/still-here-l-v1.mp3) | [wav](https://raw.githubusercontent.com/mataindustries/daemonv12/feat/still-here-ignition-score/experiments/still-here-score/l/v1/still-here-l-v1.wav) | [cues](l/v1/still-here-l-v1.cues.md) | [events](l/v1/still-here-l-v1.events.md) |
+
+**Listening notes:**
+
+- **Order:** play P V2 and L V2 first, each at least twice, then on a phone speaker.
+- **The tempo question:** P V2 and the control are identical until 4.000 s. Play them back
+  to back to hear what 150 BPM does after ignition.
+- **Level:** every file sits at −14.0 LUFS, so loudness won't decide the comparison.
+- **MP3s:** they are listening copies. The WAV is the master and the picture clock.
+
+## What changed after your feedback
+
+The full reasoning is in [THESIS-V3.md](THESIS-V3.md).
+
+- **Kept from A:**
+  - the opening: the 3+3+2 precision ticks, the press heartbeat and the cable turbine;
+  - P's breath;
+  - the call 1–5–8 / answer 3–5–6, which became P's hook.
+- **Kept from B:**
+  - the ignition recipe: a melodic arrival on the downbeat, with full harmony and low end,
+    after a quieter build;
+  - the spark 1–2–5–6, which became L's hook;
+  - the Lydian II;
+  - the summit: the hook completed an octave higher.
+- **Dropped:**
+  - both palettes: talkbox, glottal voice, choir, music box, glass, steel plate, brass stab;
+  - the Tempo String as the bass;
+  - both tempos.
+- **New palette:** small analog-style subtractive voices and electronic drums
+  ([`src/synths.mjs`](src/synths.mjs)). MORPH's physical instruments stay only as
+  restrained industrial colour: ticks, press, turbine, the cable's answer.
+
+## P — PROPULSION
+
+*An irresistible groove, in D.*
+
+- **0–4 s:** A's factory on an A pedal. A dark synth bass states A–E–A over 3+3+2 ticks,
+  and robot blips answer. The turbine winds up, then the breath.
+- **4.000 s:** at 150 BPM the whole band plays the call. The lead sounds D5–A5–D6 above
+  bass and stabs, with a big kick and crash; four on the floor starts.
+- **4–8.8 s:** the lead answers F♯–A–B, twice, then over IV, where the arpeggio enters.
+- **8.8–10.4 s:** a ♭VI–♭VII climb with a snare roll.
+- **10.4–12 s:** the band hits the 3+3+2 together, and the answer finally reaches D6 at
+  **11.2 s**.
+
+## L — LIFT
+
+*Melodic beauty and uplift, in E.*
+
+- **0–4 s:** the spark grows in a warm bell over a B pedal, and the machine answers at 1.5 s.
+  The turbine winds into ignition with no breath and no low end.
+- **4.000 s:** the spark completes on E5 as the harmony opens from Bsus4 to **Emaj9**. The
+  sub, a broken beat and the 16th arpeggio arrive at once.
+- **4–10.4 s:** a soaring legato lead (Lydian II at 5.6 s), the spark sung at 7.2 s, then a
+  rising bass with the spark in diminution.
+- **10.4 s:** **E6**, the spark completed an octave above ignition, over Eadd9.
+
+## The tempo map
+
+DaemonV12 0.7 has one tempo per project, and the engine was not changed. A score-local map,
+[`src/tempo-map.mjs`](src/tempo-map.mjs), gives every event an exact time in integer
+microseconds. It then translates the piece into an ordinary **fixed 150 BPM, 2/4** project:
+
+- a 120 BPM sixteenth is exactly 300 ticks and a 150 BPM sixteenth exactly 240;
+- ignition is the engine barline `6:1` = tick 9,600 = frame 176,400.
+
+The engine's frame equals the exact frame for every event; this is checked, not assumed.
+The method, a sync table, the limitations and a one-line check are in
+[TEMPO-MAP.md](TEMPO-MAP.md).
+
+## Native and external (round 2)
+
+| Native DaemonV12 triggers (drum-kit tracks) | External, played as one sampler note at `1:1` |
+|---|---|
+| **P:** heartbeat/press/lock, kick, clap/snare, hats, ticks (with the turbine's physics-timed ratchet), crash, bass, lead, blips, stabs, pad, arpeggio | **P:** the cable (intro statements and turbine); the FDN room |
+| **L:** heartbeat, kick, clap/snare, hats/shaker, ticks, crash, bass, bell, pad, arpeggio, the machine's answer (V2) | **L:** the legato lead (glides and vibrato carry across notes); the cable turbine; the FDN room |
+
+The engine also does natively:
+
+- gates and envelopes;
+- gain, pan and authored duck lanes;
+- delays and reverbs;
+- the master high-pass and glue compressor;
+- stems, the manifest and analysis.
+
+Done outside the engine:
+
+- every one-shot is synthesized by this directory's code;
+- the final −14 LUFS gain and true-peak limiter;
+- P's breath window.
+
+The details are in [PROVENANCE.md](PROVENANCE.md).
+
+## Files (round 2)
+
+```
+THESIS-V3.md  REVIEW-V3.md  TEMPO-MAP.md            plan, critique/revision log, tempo conversion
+scores/p.mjs  scores/l.mjs  scores/v3-common.mjs    the scores (V1, V2 and the control in one file each)
+src/synths.mjs  src/tempo-map.mjs                   the palette and the tempo map
+p/v2/  l/v2/  p/control120/  p/v1/  l/v1/:
+  still-here-*.wav / .mp3        delivered master and listening copy
+  still-here-*.cues.md           sync sheet: musical position, tick, sample frame, 60 fps frame
+  still-here-*.events.md/.json   every rendered trigger with its sample frame and 60 fps frame
+  project/*.daemonv12.json       the DaemonV12 project (V2s keep their assets/)
+  render/*.render.json, *.analysis.json, still-here-*.meta.json, *.stems-analysis.json, *.spectrogram.png
+```
+
+## Reproduce (round 2)
+
+From the repository root, after `npm ci`:
+
+```sh
+node experiments/still-here-score/build.mjs p v2      # also: p v1 | p control120 | l v1 | l v2
+python3 experiments/still-here-score/analysis/stems.py p v2 --png
+node experiments/still-here-score/manifest.mjs
+```
+
+Each build takes about 30 s on this runtime, covering synthesis, the engine render and
+mastering. Rebuilding gives byte-identical files (see [REVIEW-V3.md](REVIEW-V3.md)).
+
+## Not done in round 2, by design
+
+- **No engine tempo map:** the engine is unchanged.
+- **No polishing of the old instruments.**
+- **No video or visual assets.**
+- **No merge or publish.**
+- **No winner picked:** work stops here for your listening.
+
+# Round 1 — A and B (unchanged since 9fd4d36)
 
 ## Listen (Android: tap a link)
 
