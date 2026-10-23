@@ -1,0 +1,230 @@
+{
+ "method": [
+  "    python3 analyze.py --v2 delivery/the-circuit-v2-motion-proof.mp4 [--reference v12.mp4]",
+  "",
+  "Every film is decoded to 270 x 480 grayscale. Per second it reports mean luma, motion",
+  "energy (mean absolute difference between adjacent frames, 0-255) and how far the",
+  "composition travels (correlation of each frame with the film's first frame). It also"
+ ],
+ "films": {
+  "V1 THE CIRCUIT (master, frames 0-455)": {
+   "frames": 456,
+   "meanMotionEnergy": 0.507,
+   "lumaRange": [
+    42.6,
+    46.0
+   ],
+   "minCorrelationWithFirstFrame": 0.743,
+   "perSecond": [
+    {
+     "second": 0,
+     "meanLuma": 43.17,
+     "motionEnergy": 0.442,
+     "correlationWithFirstFrame": 0.816
+    },
+    {
+     "second": 1,
+     "meanLuma": 43.22,
+     "motionEnergy": 0.363,
+     "correlationWithFirstFrame": 0.777
+    },
+    {
+     "second": 2,
+     "meanLuma": 43.51,
+     "motionEnergy": 0.346,
+     "correlationWithFirstFrame": 0.793
+    },
+    {
+     "second": 3,
+     "meanLuma": 43.71,
+     "motionEnergy": 0.381,
+     "correlationWithFirstFrame": 0.793
+    },
+    {
+     "second": 4,
+     "meanLuma": 44.01,
+     "motionEnergy": 0.43,
+     "correlationWithFirstFrame": 0.767
+    },
+    {
+     "second": 5,
+     "meanLuma": 44.62,
+     "motionEnergy": 0.607,
+     "correlationWithFirstFrame": 0.774
+    },
+    {
+     "second": 6,
+     "meanLuma": 44.66,
+     "motionEnergy": 0.593,
+     "correlationWithFirstFrame": 0.765
+    },
+    {
+     "second": 7,
+     "meanLuma": 45.29,
+     "motionEnergy": 1.061,
+     "correlationWithFirstFrame": 0.744
+    }
+   ]
+  },
+  "V2 ring engine (proof, frames 0-455)": {
+   "frames": 456,
+   "meanMotionEnergy": 15.249,
+   "lumaRange": [
+    38.3,
+    112.8
+   ],
+   "minCorrelationWithFirstFrame": 0.041,
+   "perSecond": [
+    {
+     "second": 0,
+     "meanLuma": 54.86,
+     "motionEnergy": 6.365,
+     "correlationWithFirstFrame": 0.442
+    },
+    {
+     "second": 1,
+     "meanLuma": 56.01,
+     "motionEnergy": 7.458,
+     "correlationWithFirstFrame": 0.4
+    },
+    {
+     "second": 2,
+     "meanLuma": 55.33,
+     "motionEnergy": 7.935,
+     "correlationWithFirstFrame": 0.38
+    },
+    {
+     "second": 3,
+     "meanLuma": 62.32,
+     "motionEnergy": 12.931,
+     "correlationWithFirstFrame": 0.473
+    },
+    {
+     "second": 4,
+     "meanLuma": 73.5,
+     "motionEnergy": 14.245,
+     "correlationWithFirstFrame": 0.092
+    },
+    {
+     "second": 5,
+     "meanLuma": 78.28,
+     "motionEnergy": 25.007,
+     "correlationWithFirstFrame": 0.042
+    },
+    {
+     "second": 6,
+     "meanLuma": 46.53,
+     "motionEnergy": 19.037,
+     "correlationWithFirstFrame": 0.356
+    },
+    {
+     "second": 7,
+     "meanLuma": 83.5,
+     "motionEnergy": 35.054,
+     "correlationWithFirstFrame": 0.099
+    }
+   ]
+  },
+  "V12 Overdrive loop (reference, 15 s)": {
+   "frames": 900,
+   "meanMotionEnergy": 3.521,
+   "lumaRange": [
+    7.5,
+    60.1
+   ],
+   "minCorrelationWithFirstFrame": 0.302,
+   "perSecond": [
+    {
+     "second": 0,
+     "meanLuma": 19.0,
+     "motionEnergy": 1.887,
+     "correlationWithFirstFrame": 0.694
+    },
+    {
+     "second": 1,
+     "meanLuma": 19.45,
+     "motionEnergy": 1.901,
+     "correlationWithFirstFrame": 0.716
+    },
+    {
+     "second": 2,
+     "meanLuma": 19.63,
+     "motionEnergy": 1.92,
+     "correlationWithFirstFrame": 0.632
+    },
+    {
+     "second": 3,
+     "meanLuma": 17.14,
+     "motionEnergy": 1.832,
+     "correlationWithFirstFrame": 0.643
+    },
+    {
+     "second": 4,
+     "meanLuma": 25.26,
+     "motionEnergy": 6.019,
+     "correlationWithFirstFrame": 0.371
+    },
+    {
+     "second": 5,
+     "meanLuma": 20.57,
+     "motionEnergy": 2.518,
+     "correlationWithFirstFrame": 0.435
+    },
+    {
+     "second": 6,
+     "meanLuma": 20.55,
+     "motionEnergy": 2.562,
+     "correlationWithFirstFrame": 0.371
+    },
+    {
+     "second": 7,
+     "meanLuma": 25.7,
+     "motionEnergy": 5.371,
+     "correlationWithFirstFrame": 0.394
+    },
+    {
+     "second": 8,
+     "meanLuma": 33.65,
+     "motionEnergy": 4.065,
+     "correlationWithFirstFrame": 0.4
+    },
+    {
+     "second": 9,
+     "meanLuma": 46.5,
+     "motionEnergy": 5.974,
+     "correlationWithFirstFrame": 0.446
+    },
+    {
+     "second": 10,
+     "meanLuma": 44.41,
+     "motionEnergy": 5.095,
+     "correlationWithFirstFrame": 0.338
+    },
+    {
+     "second": 11,
+     "meanLuma": 41.31,
+     "motionEnergy": 6.406,
+     "correlationWithFirstFrame": 0.562
+    },
+    {
+     "second": 12,
+     "meanLuma": 30.94,
+     "motionEnergy": 3.088,
+     "correlationWithFirstFrame": 0.748
+    },
+    {
+     "second": 13,
+     "meanLuma": 24.9,
+     "motionEnergy": 2.158,
+     "correlationWithFirstFrame": 0.73
+    },
+    {
+     "second": 14,
+     "meanLuma": 20.51,
+     "motionEnergy": 1.934,
+     "correlationWithFirstFrame": 0.983
+    }
+   ]
+  }
+ }
+}
