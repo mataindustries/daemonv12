@@ -1,0 +1,2569 @@
+{
+  "formatVersion": 1,
+  "title": "STILL HERE A: PRECISION IGNITION (V2)",
+  "description": "A 12-second aerospace spec score. 120 BPM in A: a Tempo String statement answered by a talkbox in the same 3+3+2 rhythm; the cable spools up, the factory breathes for 125 ms, and ignition lands on 4.000 s (frame 176,400).",
+  "bpm": 120,
+  "timeSignature": "4/4",
+  "key": "A major",
+  "bars": 6,
+  "seed": 1,
+  "render": {
+    "duration": {
+      "seconds": 12
+    },
+    "tail": "none"
+  },
+  "master": {
+    "gainDb": 0,
+    "effects": [
+      {
+        "type": "highpass",
+        "frequencyHz": 24
+      },
+      {
+        "type": "compressor",
+        "thresholdDb": -14,
+        "ratio": 2,
+        "attackMs": 15,
+        "releaseMs": 120
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "press",
+      "description": "The dormant press: MORPH household clank tuned to A2 over a membrane thump; one per second, then the 11.75 s lock.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/press/kit.json"
+      },
+      "mix": {
+        "gainDb": -7
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "press",
+              "velocity": 0.8,
+              "gate": "1/4",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.12
+              }
+            },
+            {
+              "start": "1:3",
+              "pitch": "press",
+              "velocity": 0.85,
+              "gate": "1/4",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.12
+              }
+            },
+            {
+              "start": "2:1",
+              "pitch": "press",
+              "velocity": 0.9,
+              "gate": "1/4",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.12
+              }
+            },
+            {
+              "start": "2:3",
+              "pitch": "press",
+              "velocity": 0.95,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.08
+              }
+            },
+            {
+              "start": "6:4+3/16",
+              "pitch": "lock",
+              "velocity": 0.7
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "kick",
+      "description": "MORPH//04 membrane kick: four on the floor from ignition; bigger hits at 4.0, 10.0 and 11.0 s.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/kick/kit.json"
+      },
+      "mix": {
+        "gainDb": -4
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "3:1",
+              "pitch": "kick-ignite",
+              "velocity": 1
+            },
+            {
+              "start": "3:2",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "3:3",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "3:4",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "4:1",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "4:2",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "4:3",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "4:4",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "5:1",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "5:2",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "5:3",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "5:4",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "5:4+1/8",
+              "pitch": "kick",
+              "velocity": 0.62
+            },
+            {
+              "start": "6:1",
+              "pitch": "kick-ignite",
+              "velocity": 1
+            },
+            {
+              "start": "6:2",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "6:3",
+              "pitch": "kick-ignite",
+              "velocity": 0.95
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "snare",
+      "description": "MORPH//04 membrane snare with a cable crack tuned to A3; the climb roll.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/snare/kit.json"
+      },
+      "mix": {
+        "gainDb": -8
+      },
+      "effects": [
+        {
+          "type": "reverb",
+          "roomSize": 0.35,
+          "decaySeconds": 0.9,
+          "wet": 0.12
+        }
+      ],
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "3:2",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "3:4",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "4:2",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "4:4",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "5:2",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "5:3",
+              "pitch": "snare-roll",
+              "velocity": 0.25
+            },
+            {
+              "start": "5:3+1/16",
+              "pitch": "snare-roll",
+              "velocity": 0.333333
+            },
+            {
+              "start": "5:3+1/8",
+              "pitch": "snare-roll",
+              "velocity": 0.416667
+            },
+            {
+              "start": "5:3+3/16",
+              "pitch": "snare-roll",
+              "velocity": 0.5
+            },
+            {
+              "start": "5:4",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "5:4",
+              "pitch": "snare-roll",
+              "velocity": 0.583333
+            },
+            {
+              "start": "5:4+1/16",
+              "pitch": "snare-roll",
+              "velocity": 0.666667
+            },
+            {
+              "start": "5:4+1/8",
+              "pitch": "snare-roll",
+              "velocity": 0.75
+            },
+            {
+              "start": "6:2",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "6:3",
+              "pitch": "snare-big",
+              "velocity": 0.95
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "ticks",
+      "description": "Cable ticks in 16ths accenting the 3+3+2 hook rhythm; the ratchet follows the spool; cable scrape off-beats.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/ticks/kit.json"
+      },
+      "mix": {
+        "gainDb": -12,
+        "pan": 0.3
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "tick-1",
+              "velocity": 0.85
+            },
+            {
+              "start": "1:1+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "1:1+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.42
+            },
+            {
+              "start": "1:1+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.85
+            },
+            {
+              "start": "1:2",
+              "pitch": "tick-1",
+              "velocity": 0.42
+            },
+            {
+              "start": "1:2+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.85
+            },
+            {
+              "start": "1:2+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.42
+            },
+            {
+              "start": "1:3",
+              "pitch": "tick-1",
+              "velocity": 0.85
+            },
+            {
+              "start": "1:3+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.42
+            },
+            {
+              "start": "1:3+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.85
+            },
+            {
+              "start": "1:4",
+              "pitch": "tick-1",
+              "velocity": 0.42
+            },
+            {
+              "start": "1:4+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.85
+            },
+            {
+              "start": "1:4+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.42
+            },
+            {
+              "start": "2:1",
+              "pitch": "tick-1",
+              "velocity": 0.85
+            },
+            {
+              "start": "2:1+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "2:1+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.42
+            },
+            {
+              "start": "2:1+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.85
+            },
+            {
+              "start": "2:2",
+              "pitch": "tick-1",
+              "velocity": 0.42
+            },
+            {
+              "start": "2:2+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "2:2+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.85
+            },
+            {
+              "start": "2:2+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.42
+            },
+            {
+              "start": "2:3+1/8",
+              "pitch": "tick-2",
+              "velocity": 0.4,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:3+133/640",
+              "pitch": "tick-3",
+              "velocity": 0.45,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:3+95/384",
+              "pitch": "tick-4",
+              "velocity": 0.5,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+7/320",
+              "pitch": "tick-1",
+              "velocity": 0.55,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+151/3840",
+              "pitch": "tick-2",
+              "velocity": 0.6,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+203/3840",
+              "pitch": "tick-3",
+              "velocity": 0.65,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+61/960",
+              "pitch": "tick-4",
+              "velocity": 0.7,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+93/1280",
+              "pitch": "tick-1",
+              "velocity": 0.75,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+157/1920",
+              "pitch": "tick-2",
+              "velocity": 0.8,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+349/3840",
+              "pitch": "tick-3",
+              "velocity": 0.85,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+1/10",
+              "pitch": "tick-4",
+              "velocity": 0.9,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+419/3840",
+              "pitch": "tick-1",
+              "velocity": 0.9,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+227/1920",
+              "pitch": "tick-2",
+              "velocity": 0.9,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+163/1280",
+              "pitch": "tick-3",
+              "velocity": 0.9,
+              "endSeconds": 0.11,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+131/960",
+              "pitch": "tick-4",
+              "velocity": 0.9,
+              "endSeconds": 0.096302,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+559/3840",
+              "pitch": "tick-1",
+              "velocity": 0.9,
+              "endSeconds": 0.07812,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+593/3840",
+              "pitch": "tick-2",
+              "velocity": 0.9,
+              "endSeconds": 0.059938,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+157/960",
+              "pitch": "tick-3",
+              "velocity": 0.9,
+              "endSeconds": 0.041756,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "2:4+221/1280",
+              "pitch": "tick-4",
+              "velocity": 0.9,
+              "endSeconds": 0.023575,
+              "envelope": {
+                "attackSeconds": 0,
+                "releaseSeconds": 0.003
+              }
+            },
+            {
+              "start": "3:1",
+              "pitch": "tick-1",
+              "velocity": 0.85
+            },
+            {
+              "start": "3:1+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "3:1+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.42
+            },
+            {
+              "start": "3:1+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "3:1+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.85
+            },
+            {
+              "start": "3:2",
+              "pitch": "tick-1",
+              "velocity": 0.42
+            },
+            {
+              "start": "3:2+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.85
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "3:2+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.42
+            },
+            {
+              "start": "3:3",
+              "pitch": "tick-1",
+              "velocity": 0.85
+            },
+            {
+              "start": "3:3+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.42
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "3:3+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.85
+            },
+            {
+              "start": "3:4",
+              "pitch": "tick-1",
+              "velocity": 0.42
+            },
+            {
+              "start": "3:4+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "3:4+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.85
+            },
+            {
+              "start": "3:4+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "3:4+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.42
+            },
+            {
+              "start": "4:1",
+              "pitch": "tick-1",
+              "velocity": 0.85
+            },
+            {
+              "start": "4:1+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "4:1+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.42
+            },
+            {
+              "start": "4:1+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.85
+            },
+            {
+              "start": "4:2",
+              "pitch": "tick-1",
+              "velocity": 0.42
+            },
+            {
+              "start": "4:2+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.85
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "4:2+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.42
+            },
+            {
+              "start": "4:3",
+              "pitch": "tick-1",
+              "velocity": 0.85
+            },
+            {
+              "start": "4:3+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "4:3+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.42
+            },
+            {
+              "start": "4:3+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "4:3+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.85
+            },
+            {
+              "start": "4:4",
+              "pitch": "tick-1",
+              "velocity": 0.42
+            },
+            {
+              "start": "4:4+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "4:4+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.85
+            },
+            {
+              "start": "4:4+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "4:4+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.42
+            },
+            {
+              "start": "5:1",
+              "pitch": "tick-1",
+              "velocity": 0.85
+            },
+            {
+              "start": "5:1+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "5:1+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.42
+            },
+            {
+              "start": "5:1+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "5:1+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.85
+            },
+            {
+              "start": "5:2",
+              "pitch": "tick-1",
+              "velocity": 0.42
+            },
+            {
+              "start": "5:2+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.85
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "5:2+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.42
+            },
+            {
+              "start": "5:3",
+              "pitch": "tick-1",
+              "velocity": 0.85
+            },
+            {
+              "start": "5:3+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "5:3+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.42
+            },
+            {
+              "start": "5:3+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "5:3+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.85
+            },
+            {
+              "start": "5:4",
+              "pitch": "tick-1",
+              "velocity": 0.42
+            },
+            {
+              "start": "5:4+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "5:4+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.85
+            },
+            {
+              "start": "5:4+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "5:4+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.42
+            },
+            {
+              "start": "6:1",
+              "pitch": "tick-1",
+              "velocity": 0.85
+            },
+            {
+              "start": "6:1+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "6:1+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.42
+            },
+            {
+              "start": "6:1+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "6:1+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.85
+            },
+            {
+              "start": "6:2",
+              "pitch": "tick-1",
+              "velocity": 0.42
+            },
+            {
+              "start": "6:2+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.42
+            },
+            {
+              "start": "6:2+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.85
+            },
+            {
+              "start": "6:2+1/8",
+              "pitch": "scrape",
+              "velocity": 0.55
+            },
+            {
+              "start": "6:2+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.42
+            },
+            {
+              "start": "6:3",
+              "pitch": "tick-1",
+              "velocity": 0.51
+            },
+            {
+              "start": "6:3+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.2275
+            },
+            {
+              "start": "6:3+1/8",
+              "pitch": "tick-3",
+              "velocity": 0.203
+            },
+            {
+              "start": "6:3+3/16",
+              "pitch": "tick-4",
+              "velocity": 0.36125
+            },
+            {
+              "start": "6:4",
+              "pitch": "tick-1",
+              "velocity": 0.154
+            },
+            {
+              "start": "6:4+1/16",
+              "pitch": "tick-2",
+              "velocity": 0.1295
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "metal",
+      "description": "Cable toms climbing G-A-B-C# into the payoff.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/metal/kit.json"
+      },
+      "mix": {
+        "gainDb": -11
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "5:3",
+              "pitch": "tom-g",
+              "velocity": 0.55
+            },
+            {
+              "start": "5:3+1/8",
+              "pitch": "tom-a",
+              "velocity": 0.65
+            },
+            {
+              "start": "5:4",
+              "pitch": "tom-b",
+              "velocity": 0.75
+            },
+            {
+              "start": "5:4+1/8",
+              "pitch": "tom-cs",
+              "velocity": 0.85
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "crash",
+      "description": "Struck steel plate (stereo: different modes per side) at ignition, payoff and final, on its own track.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/crash/kit.json"
+      },
+      "mix": {
+        "gainDb": -5
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "3:1",
+              "pitch": "crash",
+              "velocity": 0.9
+            },
+            {
+              "start": "6:1",
+              "pitch": "crash",
+              "velocity": 0.85
+            },
+            {
+              "start": "6:3",
+              "pitch": "crash",
+              "velocity": 0.8
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "bass",
+      "description": "EXTERNAL: the Tempo String bass performance above 110 Hz (driven presence + body).",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/bass.wav"
+      },
+      "mix": {
+        "gainDb": -6
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 1
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "bass-sub",
+      "description": "EXTERNAL: the same performance below 110 Hz; authored gain ducks it under every kick.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/bass-sub.wav"
+      },
+      "mix": {
+        "gainDb": -7
+      },
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "seconds": 0
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 3.997
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 4
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 4.12
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 4.497
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 4.5
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 4.62
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 4.997
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 5
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 5.12
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 5.497
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 5.5
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 5.62
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 5.997
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 6
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 6.12
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 6.497
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 6.5
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 6.62
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 6.997
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 7
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 7.12
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 7.497
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 7.5
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 7.62
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 7.997
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8.12
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 8.497
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8.5
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8.62
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 8.997
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9.12
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 9.497
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9.5
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9.62
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 9.747
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9.75
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9.87
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 9.997
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 10
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 10.12
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 10.497
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 10.5
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 10.62
+            },
+            "value": -7
+          },
+          {
+            "at": {
+              "seconds": 10.997
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 11
+            },
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 11.12
+            },
+            "value": -7
+          }
+        ]
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 1
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "spool",
+      "description": "EXTERNAL: a second cable wound from an eighth-note round trip into A1 (3.0-3.875 s), then grabbed to exact silence.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/spool.wav"
+      },
+      "mix": {
+        "gainDb": -8
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 1
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "lead",
+      "description": "EXTERNAL: the talkbox answer, a saw driving the MORPH Kelly-Lochbaum throat (wa-ow-yeah).",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/lead.wav"
+      },
+      "mix": {
+        "gainDb": -4
+      },
+      "effects": [
+        {
+          "type": "delay",
+          "timeMs": 375,
+          "wet": 0.14
+        }
+      ],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "seconds": 0
+            },
+            "value": -2.5
+          },
+          {
+            "at": {
+              "seconds": 7.98
+            },
+            "value": -2.5,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8
+            },
+            "value": -4
+          }
+        ]
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 1
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "lead-harm",
+      "description": "EXTERNAL: the talkbox harmony in the climb and payoff.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/lead-harm.wav"
+      },
+      "mix": {
+        "gainDb": -12
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 1
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "lead-room",
+      "description": "EXTERNAL: MORPH FDN room return of lead + harmony.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/lead-room.wav"
+      },
+      "mix": {
+        "gainDb": -14
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 1
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "stabs",
+      "description": "Saw-ensemble brass stabs: A at ignition, D push, F and G in the climb, A payoff, A(add9) final.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/stabs/kit.json"
+      },
+      "mix": {
+        "gainDb": -13
+      },
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "seconds": 0
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 4.497
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 4.5
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 4.65
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 4.997
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 5
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 5.15
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 5.497
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 5.5
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 5.65
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 5.997
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 6
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 6.15
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 6.497
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 6.5
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 6.65
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 6.997
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 7
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 7.15
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 7.497
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 7.5
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 7.65
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 7.997
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8.15
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 8.497
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8.5
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 8.65
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 8.997
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9.15
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 9.497
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9.5
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9.65
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 9.747
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9.75
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 9.9
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 9.997
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 10
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 10.15
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 10.497
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 10.5
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 10.65
+            },
+            "value": -13
+          },
+          {
+            "at": {
+              "seconds": 10.997
+            },
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 11
+            },
+            "value": -18,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "seconds": 11.15
+            },
+            "value": -13
+          }
+        ]
+      },
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "3:1",
+              "pitch": "a-big",
+              "velocity": 1
+            },
+            {
+              "start": "4:1",
+              "pitch": "d",
+              "velocity": 0.75
+            },
+            {
+              "start": "5:1",
+              "pitch": "f",
+              "velocity": 0.8
+            },
+            {
+              "start": "5:3",
+              "pitch": "g",
+              "velocity": 0.85
+            },
+            {
+              "start": "6:1",
+              "pitch": "a-big",
+              "velocity": 0.95
+            },
+            {
+              "start": "6:3",
+              "pitch": "a-final",
+              "velocity": 0.9
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "arp",
+      "description": "Cable-pluck arpeggio, an octave above the voice (precision components): accents from ignition, 16ths from 6.0 s.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/arp/kit.json"
+      },
+      "mix": {
+        "gainDb": -21,
+        "pan": -0.45
+      },
+      "effects": [
+        {
+          "type": "delay",
+          "timeMs": 250,
+          "wet": 0.2
+        }
+      ],
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "3:1",
+              "pitch": "p81",
+              "velocity": 0.55,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "3:1+3/16",
+              "pitch": "p93",
+              "velocity": 0.55,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "p81",
+              "velocity": 0.55,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "3:3",
+              "pitch": "p88",
+              "velocity": 0.55,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "3:3+3/16",
+              "pitch": "p85",
+              "velocity": 0.55,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "3:4+1/8",
+              "pitch": "p88",
+              "velocity": 0.55,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:1",
+              "pitch": "p74",
+              "velocity": 0.45,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:1+1/16",
+              "pitch": "p78",
+              "velocity": 0.32375,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:1+1/8",
+              "pitch": "p81",
+              "velocity": 0.3325,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "p86",
+              "velocity": 0.4875,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:2",
+              "pitch": "p81",
+              "velocity": 0.35,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:2+1/16",
+              "pitch": "p78",
+              "velocity": 0.35875,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "p74",
+              "velocity": 0.525,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:2+3/16",
+              "pitch": "p78",
+              "velocity": 0.37625,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:3",
+              "pitch": "p81",
+              "velocity": 0.55,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:3+1/16",
+              "pitch": "p86",
+              "velocity": 0.39375,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:3+1/8",
+              "pitch": "p81",
+              "velocity": 0.4025,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:3+3/16",
+              "pitch": "p78",
+              "velocity": 0.5875,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:4",
+              "pitch": "p74",
+              "velocity": 0.42,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:4+1/16",
+              "pitch": "p78",
+              "velocity": 0.42875,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:4+1/8",
+              "pitch": "p81",
+              "velocity": 0.625,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "4:4+3/16",
+              "pitch": "p86",
+              "velocity": 0.44625,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:1",
+              "pitch": "p77",
+              "velocity": 0.6,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:1+1/16",
+              "pitch": "p81",
+              "velocity": 0.433125,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:1+1/8",
+              "pitch": "p84",
+              "velocity": 0.44625,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:1+3/16",
+              "pitch": "p89",
+              "velocity": 0.65625,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:2",
+              "pitch": "p84",
+              "velocity": 0.4725,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:2+1/16",
+              "pitch": "p81",
+              "velocity": 0.485625,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "p77",
+              "velocity": 0.7125,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:2+3/16",
+              "pitch": "p81",
+              "velocity": 0.511875,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:3",
+              "pitch": "p86",
+              "velocity": 0.75,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:3+1/16",
+              "pitch": "p91",
+              "velocity": 0.538125,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:3+1/8",
+              "pitch": "p86",
+              "velocity": 0.55125,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:3+3/16",
+              "pitch": "p83",
+              "velocity": 0.80625,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:4",
+              "pitch": "p79",
+              "velocity": 0.5775,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:4+1/16",
+              "pitch": "p83",
+              "velocity": 0.590625,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:4+1/8",
+              "pitch": "p86",
+              "velocity": 0.8625,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "5:4+3/16",
+              "pitch": "p91",
+              "velocity": 0.616875,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "6:1",
+              "pitch": "p81",
+              "velocity": 0.85,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "6:1+1/16",
+              "pitch": "p85",
+              "velocity": 0.595,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "6:1+1/8",
+              "pitch": "p88",
+              "velocity": 0.595,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "6:1+3/16",
+              "pitch": "p93",
+              "velocity": 0.85,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "6:2",
+              "pitch": "p88",
+              "velocity": 0.595,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "6:2+1/16",
+              "pitch": "p85",
+              "velocity": 0.595,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "6:2+1/8",
+              "pitch": "p81",
+              "velocity": 0.85,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            },
+            {
+              "start": "6:2+3/16",
+              "pitch": "p85",
+              "velocity": 0.595,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.04
+              }
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    },
+    {
+      "id": "glass",
+      "description": "Glass tines: the robot answer at 1.0 s and the final sparkle.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/glass/kit.json"
+      },
+      "mix": {
+        "gainDb": -12,
+        "pan": 0.4
+      },
+      "effects": [
+        {
+          "type": "reverb",
+          "roomSize": 0.7,
+          "decaySeconds": 1.4,
+          "wet": 0.3
+        }
+      ],
+      "patterns": [
+        {
+          "id": "all",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "1:3",
+              "pitch": "g73",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:3+3/16",
+              "pitch": "g76",
+              "velocity": 0.6
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "g78",
+              "velocity": 0.65
+            },
+            {
+              "start": "6:3",
+              "pitch": "g81",
+              "velocity": 0.6
+            },
+            {
+              "start": "6:3",
+              "pitch": "g88",
+              "velocity": 0.45
+            }
+          ]
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "all"
+        }
+      ]
+    }
+  ]
+}
