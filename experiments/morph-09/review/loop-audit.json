@@ -1,0 +1,173 @@
+{
+  "kind": "morph09-state-and-render-audit",
+  "sourceCommit": "dd705942faec535433b3b030c990e247261ce905",
+  "scope": "Visual state, interpolation, event presentation, loop boundary; no engine or approved music changes.",
+  "sourceFidelity": {
+    "sha256MatchesSourceAudit": true,
+    "hashes": {
+      "experiments/morph-08/candidates/overtone.wav": "f771979966ce4b85ff96e44474f3259bf2da3f576a71bf0847af9d37e5b4111c",
+      "experiments/morph-08/candidates/overtone.events.json": "7cf59c782842a090db77056285a4ac1bf737bf5d81dc606403f77b3ca7ed655e",
+      "experiments/morph-07/candidates/hypnotic-motor.telemetry.json": "7d04ad6b5236296b2733ba56fe2b1c8ce82c9b375bfcee9b1459583107c87206"
+    },
+    "telemetrySamplesPreserved": 480,
+    "maximumAngleSampleErrorRevolutions": 0.0,
+    "maximumSpeedSampleErrorRevPerSecond": 1.7763568394002505e-15,
+    "interpolation": "Cubic Hermite in unwrapped revolutions using source endpoint velocities; exact derived mechanics endpoint used only on last interval."
+  },
+  "events": {
+    "count": 205,
+    "trackCounts": {
+      "form": 5,
+      "harmony": 6,
+      "chassis": 10,
+      "commutator": 52,
+      "rotor": 7,
+      "tines": 30,
+      "bass": 16,
+      "kick": 16,
+      "vox": 19,
+      "hat": 28,
+      "clap": 8,
+      "drive": 5,
+      "regime": 2,
+      "voice": 1
+    },
+    "displayPolicy": "Earliest eligible presentation frame for each source event is ceil(n/735). This is timing quantization, not a per-pixel visibility test; form, rotor, regime and duplicated chassis events describe the mechanism rather than each having a separate impulse. Direct envelopes use the authoritative sampleFrame. The event-map floor pictureFrame never triggers an event early. Previous-cycle response tails remain visible at the opening.",
+    "minimumDisplayDelayMs": 0.0,
+    "meanDisplayDelayMs": 10.042475526796084,
+    "maximumDisplayDelayMs": 16.394557823129254,
+    "displayDelayBoundMs": 16.666666666666668,
+    "maximumCommutatorAngularErrorDegrees": 0.008825363522859675,
+    "commutatorContactsChecked": 52,
+    "dedicatedPitchLock": {
+      "track": "voice",
+      "eventId": "note-0-A1",
+      "roles": "harmonic-lock|pitch",
+      "sampleFrame": 286609,
+      "sourceTimeSeconds": 6.49907029478458,
+      "sourceMapPictureFrameFloor": 389,
+      "firstVisibleProofFrame": 390,
+      "firstVisibleTimeSeconds": 6.5,
+      "displayQuantizationMilliseconds": 0.9297052154195011,
+      "contactAlignmentErrorDegrees": ""
+    }
+  },
+  "loop": {
+    "warning": "state(8) wraps to state(0) by definition; it is NOT evidence that raw physical telemetry closes exactly. The unwrapped rotor function is measured independently below.",
+    "rawRenderedRotor": {
+      "beginningRevolutions": -0.000689,
+      "endpointRevolutions": 26.999345690960606,
+      "travelRevolutions": 27.000034690960607,
+      "orientationResidualDegrees": 0.012488745818615143,
+      "beginningSpeedRevPerSecond": 0.48040000000000005,
+      "endpointSpeedRevPerSecond": 0.48078362578198375,
+      "speedResidualRevPerSecond": 0.00038362578198369857,
+      "physicalEndpointExactlyMatchesOpening": false,
+      "conservativeProjectedSeamResidualPixels": 0.02200278173046372,
+      "projectionAssumptions": {
+        "maximumRotorRadiusSceneUnits": 2.45,
+        "orthographicVerticalSpanSceneUnits": 11.65,
+        "proofVerticalPixels": 480,
+        "formula": "radius \u00d7 abs(radians(orientationResidualDegrees)) \u00d7 proofVerticalPixels / orthographicVerticalSpanSceneUnits",
+        "note": "Geometric upper bound on rotor edge displacement only. Camera tilt can reduce projection. Antialiasing and lighting differences are not bounded by this number."
+      },
+      "renderNote": "Sixteen identical contacts and spokes have no unique angular marker. No angle correction or time retiming is applied."
+    },
+    "fullPrecisionSourceMechanics": {
+      "beginning": {
+        "sampleFrame": 0,
+        "angle": -0.0006892718962244188,
+        "speed": 0.4804387086531033,
+        "torque": 0.6211606011268677
+      },
+      "lastLive": {
+        "sampleFrame": 352799,
+        "angle": 26.999334788837572,
+        "speed": 0.48086409686318177,
+        "torque": 0.6167625622447558
+      },
+      "endpointExtension": {
+        "sampleFrame": 352800,
+        "angle": 26.999345690960606,
+        "speed": 0.4807836257819838,
+        "torque": 0.6175154619627168
+      },
+      "travelRevolutions": 27.00003496285683,
+      "travelNearestInteger": 27,
+      "orientationMismatchDegrees": 0.012586628458848281,
+      "speedMismatchRevPerSecond": 0.0003449171288805175,
+      "speedMismatchPercent": 0.07179211888390159,
+      "note": "Raw source mechanics are nearly periodic, not mathematically exact. Frame 479 is not an endpoint. An identical sixteen-contact rotor hides symmetry multiples; endpoint discrepancy is below 0.013 degree. Do not claim raw mechanics have exact closure."
+    },
+    "periodicLightingAndVibration": {
+      "testEpsilonSeconds": 1e-08,
+      "largestLeftLimitStateDifference": 7.615272629157843e-07,
+      "largestWrappedStateDifference": 0.0,
+      "leftLimitDifferenceByChannel": {
+        "blur": 0.0,
+        "brush": 7.2861948280378286e-09,
+        "kick": 8.372224649666471e-10,
+        "clap": 6.063845568249696e-11,
+        "hat": 5.476902216472457e-09,
+        "bass": 1.241965308373949e-08,
+        "vox": 1.521968584494715e-08,
+        "vox_note": 0.0,
+        "load": 0.0,
+        "lock": 0.0,
+        "clamps[0]": 0.0,
+        "clamps[1]": 0.0,
+        "clamps[2]": 0.0,
+        "clamps[3]": 0.0,
+        "clamps[4]": 0.0,
+        "tines[0]": 1.6433510064903234e-10,
+        "tines[1]": 7.967440096567913e-09,
+        "tines[2]": 7.089686147182528e-10,
+        "tines[3]": 3.7143829539898476e-09,
+        "tines[4]": 1.243041166526515e-09,
+        "flex[0]": 5.3392892505280815e-09,
+        "flex[1]": -7.615272629157843e-07,
+        "flex[2]": -7.21386403453473e-08,
+        "flex[3]": -3.895617328372736e-07,
+        "flex[4]": -1.2758801178243406e-07
+      },
+      "openingBrushEmissionEnvelope": 0.03278787328378456,
+      "openingResonatorEnvelopes": [
+        0.0032867019586595102,
+        0.15934879881618905,
+        0.01417937204020639,
+        0.07428765779460648,
+        0.024860822884042205
+      ],
+      "openingVocalEnvelope": 0.4718102568686585,
+      "openingBassEnvelope": 0.29807166849433553,
+      "noBlackout": true,
+      "method": "Deterministic modulo-eight event ages include previous-cycle tails; harmony is Am7 on both sides of the seam. Epsilon test approaches physical end before the modulo reset."
+    }
+  },
+  "checksPassed": [
+    "Approved audio/event map/telemetry hashes unchanged",
+    "All 480 source angle and speed samples preserved",
+    "All 205 event first-visible times quantified without early triggering",
+    "All 52 contact impact angles agree within 0.02 degree",
+    "Lighting, clamps and vibration close within 2e-6 at epsilon=1e-8",
+    "Raw source rotor residual measured independently and disclosed"
+  ],
+  "renderedProof": {
+    "path": "/workspace/daemonv12/experiments/morph-09/review/overtone-proof.mov",
+    "durationSeconds": 8.0,
+    "videoCodec": "h264",
+    "dimensions": [
+      384,
+      480
+    ],
+    "videoFrameRate": "60/1",
+    "videoFrames": 480,
+    "audioCodec": "pcm_s16le",
+    "audioRate": 44100,
+    "audioChannels": 2,
+    "decodedPcmBytes": 1411200,
+    "approvedPcmSha256": "bdf2e3cba94d36d5537a7dec2e5cb008279c10302ec4f789b52614567e86b1d8",
+    "decodedPcmSha256": "bdf2e3cba94d36d5537a7dec2e5cb008279c10302ec4f789b52614567e86b1d8",
+    "decodedPcmExactlyEqualsApproved": true
+  }
+}

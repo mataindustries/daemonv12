@@ -1,0 +1,440 @@
+{
+  "sourceCommit": "dd705942faec535433b3b030c990e247261ce905",
+  "audio": {
+    "path": "experiments/morph-08/candidates/overtone.wav",
+    "sampleRate": 44100,
+    "sampleFrames": 352800,
+    "seconds": 8,
+    "channels": 2,
+    "pcmBits": 16,
+    "sha256": "f771979966ce4b85ff96e44474f3259bf2da3f576a71bf0847af9d37e5b4111c",
+    "expectedSha256": "f771979966ce4b85ff96e44474f3259bf2da3f576a71bf0847af9d37e5b4111c",
+    "hashMatches": true
+  },
+  "hashes": {
+    "experiments/morph-08/candidates/overtone.wav": "f771979966ce4b85ff96e44474f3259bf2da3f576a71bf0847af9d37e5b4111c",
+    "experiments/morph-08/candidates/overtone.events.json": "7cf59c782842a090db77056285a4ac1bf737bf5d81dc606403f77b3ca7ed655e",
+    "experiments/morph-07/candidates/hypnotic-motor.telemetry.json": "7d04ad6b5236296b2733ba56fe2b1c8ce82c9b375bfcee9b1459583107c87206"
+  },
+  "telemetry": {
+    "angleUnits": "revolutions",
+    "speedUnits": "revolutions/second",
+    "fps": 60,
+    "sampleCount": 480,
+    "firstTimeSeconds": 0,
+    "lastTimeSeconds": 7.983333333333333,
+    "containsEightSecondBoundary": false,
+    "maximumSpeed": 55.0119,
+    "minimumSpeed": 0.2018,
+    "sourceRegimeCounts": {
+      "rhythm": 433,
+      "pitch": 47
+    },
+    "reconstructionMaxAbsoluteError": {
+      "angle": 4.989681285927361e-7,
+      "speed": 0.00004948633994045215,
+      "torque": 0.0004956238683971881,
+      "load": 0
+    },
+    "reconstructionNote": "Unmodified Rotor + hypnoticMotor score rerun only for audit; source telemetry not edited."
+  },
+  "seam": {
+    "beginning": {
+      "sampleFrame": 0,
+      "angle": -0.0006892718962244188,
+      "speed": 0.4804387086531033,
+      "torque": 0.6211606011268677
+    },
+    "lastLive": {
+      "sampleFrame": 352799,
+      "angle": 26.999334788837572,
+      "speed": 0.48086409686318177,
+      "torque": 0.6167625622447558
+    },
+    "endpointExtension": {
+      "sampleFrame": 352800,
+      "angle": 26.999345690960606,
+      "speed": 0.4807836257819838,
+      "torque": 0.6175154619627168
+    },
+    "travelRevolutions": 27.00003496285683,
+    "travelNearestInteger": 27,
+    "orientationMismatchDegrees": 0.012586628458848281,
+    "speedMismatchRevPerSecond": 0.0003449171288805175,
+    "speedMismatchPercent": 0.07179211888390159,
+    "note": "Raw source mechanics are nearly periodic, not mathematically exact. Frame 479 is not an endpoint. An identical sixteen-contact rotor hides symmetry multiples; endpoint discrepancy is below 0.013 degree. Do not claim raw mechanics have exact closure."
+  },
+  "events": {
+    "count": 205,
+    "trackCounts": {
+      "form": 5,
+      "harmony": 6,
+      "chassis": 10,
+      "commutator": 52,
+      "rotor": 7,
+      "tines": 30,
+      "bass": 16,
+      "kick": 16,
+      "vox": 19,
+      "hat": 28,
+      "clap": 8,
+      "drive": 5,
+      "regime": 2,
+      "voice": 1
+    },
+    "firstSampleFrame": 0,
+    "lastSampleFrame": 348275,
+    "pictureFrameConvention": "floor(sampleFrame / 735), not the time at which an event should be prematurely fired",
+    "meaningfulTransitions": [
+      {
+        "track": "form",
+        "id": "engage",
+        "sampleFrame": 0,
+        "timeSeconds": 0,
+        "source": {
+          "kind": "form",
+          "score": "hypnotic-motor",
+          "section": "engage"
+        },
+        "roles": [
+          "loop-point",
+          "section"
+        ]
+      },
+      {
+        "track": "harmony",
+        "id": "shift-0-i",
+        "sampleFrame": 0,
+        "timeSeconds": 0,
+        "source": {
+          "chord": "Am7 (just)",
+          "gear": "i",
+          "glideMs": 1,
+          "kind": "harmony",
+          "score": "hypnotic-motor",
+          "tineHz": [
+            110,
+            165,
+            220,
+            264,
+            385
+          ]
+        },
+        "roles": [
+          "harmonic-transition"
+        ]
+      },
+      {
+        "track": "form",
+        "id": "shift",
+        "sampleFrame": 88200,
+        "timeSeconds": 2,
+        "source": {
+          "kind": "form",
+          "score": "hypnotic-motor",
+          "section": "shift"
+        },
+        "roles": [
+          "section"
+        ]
+      },
+      {
+        "track": "harmony",
+        "id": "shift-1-VI",
+        "sampleFrame": 88200,
+        "timeSeconds": 2,
+        "source": {
+          "chord": "Fmaj7 (just)",
+          "gear": "VI",
+          "glideMs": 28,
+          "kind": "harmony",
+          "score": "hypnotic-motor",
+          "tineHz": [
+            88,
+            132,
+            176,
+            220,
+            330
+          ]
+        },
+        "roles": [
+          "harmonic-transition"
+        ]
+      },
+      {
+        "track": "drive",
+        "id": "drag",
+        "sampleFrame": 154350,
+        "timeSeconds": 3.5,
+        "source": {
+          "kind": "drive",
+          "lane": "load",
+          "score": "hypnotic-motor",
+          "value": 1.3
+        },
+        "roles": [
+          "load",
+          "torque"
+        ]
+      },
+      {
+        "track": "drive",
+        "id": "release",
+        "sampleFrame": 165375,
+        "timeSeconds": 3.75,
+        "source": {
+          "kind": "drive",
+          "lane": "load",
+          "score": "hypnotic-motor",
+          "value": 0
+        },
+        "roles": [
+          "release",
+          "torque"
+        ]
+      },
+      {
+        "track": "drive",
+        "id": "half-time",
+        "sampleFrame": 175022,
+        "timeSeconds": 3.96875283446712,
+        "source": {
+          "kind": "drive",
+          "lane": "speed",
+          "score": "hypnotic-motor",
+          "value": 0.5
+        },
+        "roles": [
+          "decelerate",
+          "load",
+          "torque"
+        ]
+      },
+      {
+        "track": "form",
+        "id": "heavy",
+        "sampleFrame": 176400,
+        "timeSeconds": 4,
+        "source": {
+          "kind": "form",
+          "score": "hypnotic-motor",
+          "section": "heavy"
+        },
+        "roles": [
+          "section"
+        ]
+      },
+      {
+        "track": "harmony",
+        "id": "shift-2-iv",
+        "sampleFrame": 176400,
+        "timeSeconds": 4,
+        "source": {
+          "chord": "Dm7 (just)",
+          "gear": "iv",
+          "glideMs": 40,
+          "kind": "harmony",
+          "score": "hypnotic-motor",
+          "tineHz": [
+            73.333,
+            110,
+            146.667,
+            176,
+            264
+          ]
+        },
+        "roles": [
+          "harmonic-transition"
+        ]
+      },
+      {
+        "track": "harmony",
+        "id": "shift-3-V",
+        "sampleFrame": 220500,
+        "timeSeconds": 5,
+        "source": {
+          "chord": "E7 (just)",
+          "gear": "V",
+          "glideMs": 30,
+          "kind": "harmony",
+          "score": "hypnotic-motor",
+          "tineHz": [
+            82.5,
+            123.75,
+            165,
+            206.25,
+            293.333
+          ]
+        },
+        "roles": [
+          "harmonic-transition"
+        ]
+      },
+      {
+        "track": "drive",
+        "id": "spin-up",
+        "sampleFrame": 264600,
+        "timeSeconds": 6,
+        "source": {
+          "kind": "drive",
+          "lane": "speed",
+          "score": "hypnotic-motor",
+          "value": 0.25
+        },
+        "roles": [
+          "accelerate",
+          "torque"
+        ]
+      },
+      {
+        "track": "form",
+        "id": "sing",
+        "sampleFrame": 264600,
+        "timeSeconds": 6,
+        "source": {
+          "kind": "form",
+          "score": "hypnotic-motor",
+          "section": "sing"
+        },
+        "roles": [
+          "climax",
+          "section"
+        ]
+      },
+      {
+        "track": "harmony",
+        "id": "shift-4-lock",
+        "sampleFrame": 264600,
+        "timeSeconds": 6,
+        "source": {
+          "chord": "A overtones 2:3:4:5:7",
+          "gear": "lock",
+          "glideMs": 40,
+          "kind": "harmony",
+          "score": "hypnotic-motor",
+          "tineHz": [
+            110,
+            165,
+            220,
+            275,
+            385
+          ]
+        },
+        "roles": [
+          "harmonic-transition"
+        ]
+      },
+      {
+        "track": "regime",
+        "id": "fusion-274975",
+        "sampleFrame": 274975,
+        "timeSeconds": 6.2352607709750565,
+        "source": {
+          "contactsPerSecond": 34,
+          "kind": "regime",
+          "revolutionsPerSecond": 3.166,
+          "score": "hypnotic-motor"
+        },
+        "roles": [
+          "fusion",
+          "rhythm-to-pitch"
+        ]
+      },
+      {
+        "track": "voice",
+        "id": "note-0-A1",
+        "sampleFrame": 286609,
+        "timeSeconds": 6.49907029478458,
+        "source": {
+          "arrivalFrames": 22009,
+          "hz": 55,
+          "kind": "voice",
+          "note": "A1",
+          "scheduledFrame": 264600,
+          "score": "hypnotic-motor"
+        },
+        "roles": [
+          "harmonic-lock",
+          "pitch"
+        ]
+      },
+      {
+        "track": "drive",
+        "id": "brake",
+        "sampleFrame": 298233,
+        "timeSeconds": 6.76265306122449,
+        "source": {
+          "kind": "drive",
+          "lane": "speed",
+          "score": "hypnotic-motor",
+          "value": 55
+        },
+        "roles": [
+          "brake",
+          "torque"
+        ]
+      },
+      {
+        "track": "form",
+        "id": "return",
+        "sampleFrame": 308700,
+        "timeSeconds": 7,
+        "source": {
+          "kind": "form",
+          "score": "hypnotic-motor",
+          "section": "return"
+        },
+        "roles": [
+          "section"
+        ]
+      },
+      {
+        "track": "harmony",
+        "id": "shift-5-i",
+        "sampleFrame": 308700,
+        "timeSeconds": 7,
+        "source": {
+          "chord": "Am7 (just)",
+          "gear": "i",
+          "glideMs": 30,
+          "kind": "harmony",
+          "score": "hypnotic-motor",
+          "tineHz": [
+            110,
+            165,
+            220,
+            264,
+            385
+          ]
+        },
+        "roles": [
+          "harmonic-transition"
+        ]
+      },
+      {
+        "track": "regime",
+        "id": "separation-309882",
+        "sampleFrame": 309882,
+        "timeSeconds": 7.026802721088435,
+        "source": {
+          "contactsPerSecond": 27.99,
+          "kind": "regime",
+          "revolutionsPerSecond": 0.466,
+          "score": "hypnotic-motor"
+        },
+        "roles": [
+          "pitch-to-rhythm",
+          "separation"
+        ]
+      }
+    ]
+  },
+  "recommendations": [
+    "Interpolate continuous angle with endpoint speeds (cubic Hermite), preserving all supplied 60fps angle samples. Never integrate a decorative speed estimate or retime the music.",
+    "For discrete event response evaluate authoritative sampleFrame/44100, preserving subframe onset. A 60fps rendered proof introduces at most one picture interval (16.667ms) of display quantization.",
+    "Use previous-cycle event tails and deterministic periodic envelope evaluation to make lighting and resonator response loop without blackout.",
+    "Distinguish sung vox (19 events) from motor harmonic-lock voice (1 event); they are separate tracks.",
+    "During fusion use telemetry speed to blend sixteen-contact rotor blur; do not fabricate impact events above the map export limit.",
+    "Keep raw residual seam quantified, or disclose any tiny visual seam correction. Full source audio must remain byte-identical; use PCM audio in MOV for a lossless verification deliverable."
+  ]
+}

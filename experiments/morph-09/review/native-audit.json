@@ -1,0 +1,113 @@
+{
+  "kind": "morph09-native-scene-audit",
+  "sceneFile": "experiments/morph-09/review/resonant-rotor.blend",
+  "sceneFileSha256": "e99a1096366c4491829bae3049e1c4ac7bcd8efd605e9656be267f0979c4b7a7",
+  "blenderVersion": "4.3.2",
+  "openedSuccessfully": true,
+  "renderWasPerformed": false,
+  "frameRange": [
+    1,
+    480
+  ],
+  "framesPerSecond": 60.0,
+  "dimensions": [
+    384,
+    480
+  ],
+  "resolutionPercent": 100,
+  "camera": {
+    "type": "ORTHO",
+    "fixed": true,
+    "verticalSpan": 11.649999618530273,
+    "horizontalSpan": 9.319999694824219
+  },
+  "rotorAnimationCurves": [
+    {
+      "property": "location",
+      "axis": 0,
+      "keys": 480,
+      "firstFrame": 1.0,
+      "lastFrame": 480.0
+    },
+    {
+      "property": "location",
+      "axis": 1,
+      "keys": 480,
+      "firstFrame": 1.0,
+      "lastFrame": 480.0
+    },
+    {
+      "property": "location",
+      "axis": 2,
+      "keys": 480,
+      "firstFrame": 1.0,
+      "lastFrame": 480.0
+    },
+    {
+      "property": "rotation_euler",
+      "axis": 0,
+      "keys": 480,
+      "firstFrame": 1.0,
+      "lastFrame": 480.0
+    },
+    {
+      "property": "rotation_euler",
+      "axis": 1,
+      "keys": 480,
+      "firstFrame": 1.0,
+      "lastFrame": 480.0
+    },
+    {
+      "property": "rotation_euler",
+      "axis": 2,
+      "keys": 480,
+      "firstFrame": 1.0,
+      "lastFrame": 480.0
+    },
+    {
+      "property": "scale",
+      "axis": 0,
+      "keys": 480,
+      "firstFrame": 1.0,
+      "lastFrame": 480.0
+    },
+    {
+      "property": "scale",
+      "axis": 1,
+      "keys": 480,
+      "firstFrame": 1.0,
+      "lastFrame": 480.0
+    },
+    {
+      "property": "scale",
+      "axis": 2,
+      "keys": 480,
+      "firstFrame": 1.0,
+      "lastFrame": 480.0
+    }
+  ],
+  "rotorAnglesRadians": {
+    "frame1": -0.0043291146866977215,
+    "frame480": 169.58834838867188
+  },
+  "packedSounds": [
+    {
+      "name": "OVERTONE \u2014 approved PCM",
+      "frameStart": 1.0,
+      "frameDuration": 480,
+      "packed": true,
+      "packedBytes": 1411244,
+      "packedWavSha256": "f771979966ce4b85ff96e44474f3259bf2da3f576a71bf0847af9d37e5b4111c",
+      "sourceWavSha256": "f771979966ce4b85ff96e44474f3259bf2da3f576a71bf0847af9d37e5b4111c",
+      "packedWavExactlyMatchesApproved": true
+    }
+  ],
+  "checksPassed": [
+    "Scene opens in Blender without rendering",
+    "Frame range 1\u2013480 at 60 fps",
+    "Proof dimensions 384 \u00d7 480 at 100%",
+    "Rotor has 480 editable keys per transform channel",
+    "Camera has no animation",
+    "Approved WAV is packed byte-for-byte and spans all 480 frames"
+  ]
+}
