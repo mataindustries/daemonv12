@@ -1,6 +1,7 @@
 """THE CIRCUIT V2 — bake the choreography into keyframes, then render with CPU Cycles.
 
-    python3.11 render.py --frames 0-455 --width 360 --samples 16
+    python3.11 render.py --frames 0-455 --width 1080 --samples 16            # master
+    python3.11 render.py --variant proof --width 432 --samples 12            # approved proof
     blender -b work/circuit-v2.blend --python render.py -- --frames 0-455
 
 Every moving or glowing part is keyed from choreography.py before rendering, so no Python
@@ -8,7 +9,7 @@ runs while Cycles works. Transforms are keyed at each frame's shutter open, cent
 (Blender frame f + 1 is picture frame f; shutter 0.5 centred = [(f + 0.5) / 60, (f + 1) / 60]
 seconds), lights once per frame at its light time. --save writes the animated scene, which any
 Blender 4.3 can render or scrub. Frames 456-479 are never rendered: finish.py writes them black.
-Output: work/frames/raw-NNN.png (8-bit RGB).
+Output: work/master/raw-NNN.png (8-bit RGB) unless --out is given.
 """
 import argparse
 import json
@@ -52,12 +53,15 @@ def parse():
     argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else sys.argv[1:]
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--frames', default=f'0-{ch.CUT_FRAME - 1}')
-    ap.add_argument('--width', type=int, default=360)
+    ap.add_argument('--width', type=int, default=1080)
     ap.add_argument('--samples', type=int, default=16)
     ap.add_argument('--blend', type=Path, default=HERE / 'work' / 'circuit-v2.blend')
-    ap.add_argument('--out', type=Path, default=HERE / 'work' / 'frames')
+    ap.add_argument('--out', type=Path, default=HERE / 'work' / 'master')
     ap.add_argument('--save', type=Path, help='also save the baked, animated .blend here')
     ap.add_argument('--no-render', action='store_true')
+    ap.add_argument('--variant', choices=ch.VARIANTS, default='master',
+                    help="'proof' reproduces the approved motion proof; 'master' adds the climax clarity pass")
+    ap.add_argument('--resume', action='store_true', help='skip frames whose PNG already exists')
     return ap.parse_args(argv)
 
 
@@ -86,7 +90,7 @@ class Track:
         return sum(len(p[2]) for p in self.keys.values())
 
 
-def bake(score, frames, meta):
+def bake(score, frames, meta, variant):
     obj = bpy.data.objects
     carriers = [[obj[f'carrier r{r} k{k:02d}'] for k in range(len(p))] for r, p in enumerate(ch.RINGS)]
     rails = [obj[n] for n in meta['rails']]          # outer, middle, inner, spine
@@ -100,11 +104,13 @@ def bake(score, frames, meta):
     tilt_max = math.radians(TILT_DEGREES)
     for f in frames:
         fc = ch.core_frame(score, f)
+        cam_shutter = ch.camera_shutter((f + 0.75) / ch.FPS, variant)
         for sub in SUBFRAMES:
             bf = f + 1 + sub
             tx = (f + 0.75 + sub) / ch.FPS
             tx_core = (fc + 0.75 + sub) / ch.FPS
-            c = ch.camera(score, tx)
+            # The camera's keys may span less time than the machinery's: a camera-only shutter.
+            c = ch.camera(score, (f + 0.75 + sub * cam_shutter) / ch.FPS, variant)
             rot = Matrix(((c['right'][0], c['up'][0], -c['forward'][0]),
                           (c['right'][1], c['up'][1], -c['forward'][1]),
                           (c['right'][2], c['up'][2], -c['forward'][2]))).to_quaternion()
@@ -164,9 +170,11 @@ def main():
     S = bpy.context.scene
     score = ch.load_score()
     frames = frame_list(args.frames)
+    if args.resume:
+        frames = [f for f in frames if not (args.out / f'raw-{f:03d}.png').exists()]
     t0 = time.time()
-    keys = bake(score, frames, meta)
-    print(f'BAKED {keys} keys for {len(frames)} frames in {time.time() - t0:.1f}s', flush=True)
+    keys = bake(score, frames, meta, args.variant)
+    print(f'BAKED {keys} keys for {len(frames)} frames ({args.variant}) in {time.time() - t0:.1f}s', flush=True)
     S.frame_start, S.frame_end = 1, ch.CUT_FRAME
     S.render.resolution_x = args.width
     S.render.resolution_y = round(args.width * 16 / 9)
@@ -186,9 +194,11 @@ def main():
     start = time.time()
     for n, f in enumerate(frames):
         S.frame_set(f + 1)
-        S.render.filepath = str(args.out / f'raw-{f:03d}.png')
+        part = args.out / f'.part-raw-{f:03d}.png'
+        S.render.filepath = str(part)
         t1 = time.time()
         bpy.ops.render.render(write_still=True)
+        part.replace(args.out / f'raw-{f:03d}.png')  # complete frames only, so --resume is safe
         print(f'FRAME {f} {time.time() - t1:.2f}s ({n + 1}/{len(frames)})', flush=True)
     print(f'RENDER_DONE {len(frames)} frames in {time.time() - start:.1f}s', flush=True)
 

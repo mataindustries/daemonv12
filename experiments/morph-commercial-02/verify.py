@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Independently verify THE CIRCUIT V2 motion proof.
+"""Independently verify THE CIRCUIT V2 master (default) or the approved motion proof.
 
-    python3 verify.py --video delivery/the-circuit-v2-motion-proof.mp4 [--recheck work/recheck]
+    python3 verify.py --recheck work/master-recheck                 # master/the-circuit-v2-master.mp4
+    python3 verify.py --kind proof --recheck work/recheck           # delivery/the-circuit-v2-motion-proof.mp4
 
 Reuses V1's container, pixel and event-map checks (imported read-only from
 ../morph-commercial-01/verify.py) and adds V2's: the unchanged audio and event map, the
 frame-accurate onset of every visual response, exact black from frame 456, scope, and
-(with --recheck) bit-identical re-renders. Writes delivery/verification.json and .md.
+(with --recheck) bit-identical re-renders. Writes verification.json and VERIFICATION.md beside the video.
 """
 from __future__ import annotations
 
@@ -133,24 +134,74 @@ def verify_recheck(recheck: Path, frames: Path) -> dict:
             'scope': 'Same machine, Blender build, thread count and settings; not a cross-platform claim.'}
 
 
+APPROVED_PROOF_COMMIT = '9b0f7c9645348d1daac3e93f6b22bbc1529c25f4'  # delivery commit of the approved low-resolution proof
+APPROVED_PROOF_SHA256 = 'f4d73ca4d8c4ab1a5d6fa377c4db93eac6dadaa61c145a4ab7b70f914d89dbb7'
+
+
+def verify_no_typography(video: Path, frames: Path) -> dict:
+    """The encoder's input is the raw render plus vignette and grain only: no overlay of any kind.
+
+    Recomputes finished pictures from the raw renders without a lockup and matches them to
+    the per-frame RGB hashes finish.py recorded while encoding.
+    """
+    import finish
+    record = json.loads((video.parent / (video.stem + '.frames.json')).read_text())
+    require(record['lockup'] is False and record['frames'] == ch.FRAMES, 'Master was finished with a lockup')
+    w, h = record['width'], record['height']
+    fin = finish.Finisher(w, h, lockup=False)
+    checked = sorted(set(range(0, ch.CUT_FRAME, 15)) | {420, 444, 453, 455, 456, 479})
+    for f in checked:
+        raw = Image.open(frames / f'raw-{f:03d}.png') if f < ch.CUT_FRAME else None
+        digest = hashlib.sha256(fin.frame(f, raw).tobytes()).hexdigest()
+        require(digest == record['finishedFrameSha256RGB'][str(f)], f'Finished frame {f} is not raw + grade')
+    return {'finished_with_lockup': False, 'frames_recomputed_without_overlay': len(checked),
+            'all_match_encoder_input_hashes': True,
+            'note': 'Diegetic markings that are part of the fictional board geometry (V1 scene.py) remain.'}
+
+
+def verify_approved_proof_preserved() -> dict:
+    changed = git('diff', '--name-only', APPROVED_PROOF_COMMIT, '--', 'experiments/morph-commercial-02/delivery')
+    require(not changed, f'Approved proof delivery changed: {changed}')
+    require(ch.sha256(HERE / 'delivery' / 'the-circuit-v2-motion-proof.mp4') == APPROVED_PROOF_SHA256,
+            'Approved proof MP4 changed')
+    return {'approved_proof_commit': APPROVED_PROOF_COMMIT, 'delivery_files_unchanged': True,
+            'approved_proof_sha256': APPROVED_PROOF_SHA256,
+            'reproduce': 'render.py --variant proof --width 432 --samples 12; finish.py --kind proof --lockup'}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--video', type=Path, default=HERE / 'delivery' / 'the-circuit-v2-motion-proof.mp4')
-    ap.add_argument('--frames', type=Path, default=HERE / 'work' / 'frames')
+    ap.add_argument('--kind', choices=('master', 'proof'), default='master')
+    ap.add_argument('--video', type=Path)
+    ap.add_argument('--frames', type=Path)
     ap.add_argument('--recheck', type=Path)
-    ap.add_argument('--output', type=Path, default=HERE / 'delivery')
+    ap.add_argument('--output', type=Path)
     a = ap.parse_args()
+    master = a.kind == 'master'
+    video = (a.video or HERE / ('master/the-circuit-v2-master.mp4' if master else
+                                'delivery/the-circuit-v2-motion-proof.mp4')).resolve()
+    frames = a.frames or HERE / 'work' / ('master' if master else 'frames')
+    output = a.output or video.parent
     score = ch.load_score()
-    report = {'status': 'PASS', 'sources': verify_sources(), 'scope': verify_scope(),
-              'video': verify_video(a.video.resolve()), 'sync': verify_sync(score)}
+    report = {'status': 'PASS', 'kind': a.kind, 'sources': verify_sources(), 'scope': verify_scope(),
+              'video': verify_video(video), 'sync': verify_sync(score)}
+    if master:
+        require((report['video']['width'], report['video']['height']) == (1080, 1920), 'Master is not 1080 x 1920')
+        report['typography'] = verify_no_typography(video, frames)
+        report['approved_proof'] = verify_approved_proof_preserved()
+        report['climax_clarity'] = {
+            'variant': 'master', 'camera_shutter_share_of_180_degrees': {
+                str(f): round(ch.camera_shutter((f + 0.75) / ch.FPS, 'master'), 3) for f in (390, 400, 410, 420, 444, 455)},
+            'machinery_shutter': '180 degrees throughout (unchanged)',
+            'unchanged_before_frame': 396}
     if a.recheck:
-        report['determinism'] = verify_recheck(a.recheck, a.frames)
-    a.output.mkdir(parents=True, exist_ok=True)
-    (a.output / 'verification.json').write_text(json.dumps(report, indent=1) + '\n')
+        report['determinism'] = verify_recheck(a.recheck, frames)
+    output.mkdir(parents=True, exist_ok=True)
+    (output / 'verification.json').write_text(json.dumps(report, indent=1) + '\n')
     vid, sync = report['video'], report['sync']
     lc = vid['luma_change']
     lines = [
-        '# THE CIRCUIT V2 — motion proof verification', '',
+        f"# THE CIRCUIT V2 — {'final master' if master else 'motion proof'} verification", '',
         f"Status: PASS. Measured on `{vid['file']}` (SHA-256 `{vid['sha256']}`).", '',
         f"- H.264/AAC MP4, {vid['width']} × {vid['height']}, 60 fps, {vid['frames']} decoded frames, exactly 8.000 s; "
         'both streams start at 0; one fast-start MOOV; FFprobe reports no container warnings.',
@@ -160,6 +211,19 @@ def main() -> None:
         f"{sync['with_visual_response']} drive a visual response; each is zero in the frame before its sample's "
         'frame and visible in that frame. The rest are documented as absorbed, coalesced or metadata.',
         '- Frames 456–479: every RGB channel of every pixel is exactly zero; frames 0–455 are not black.',
+    ]
+    if master:
+        t = report['typography']
+        lines += [
+            f"- No typography: finished without any overlay; {t['frames_recomputed_without_overlay']} frames recomputed "
+            'from the raw renders (vignette and grain only) match the encoder input exactly. Engraved markings '
+            'that are part of the fictional board remain.',
+            '- Climax clarity (frames 396–455 only, camera only): the camera\'s share of the 180° shutter closes to '
+            '0.25 by 7.0 s, the final move turns and rolls less, f-stop 3.5 → 5.6, focus tracks the lifting core. '
+            'The machinery keeps its full motion blur; no event timing changed.',
+            f"- The approved proof (`{APPROVED_PROOF_COMMIT}`) is unchanged and reproducible from this source.",
+        ]
+    lines += [
         f"- Largest adjacent mean-luma step outside the blackout: {lc['largest_adjacent_absolute_mean_luma_step']:.2f} / 255; "
         f"at most {100 * lc['maximum_fraction_pixels_with_absolute_luma_change_over_80']:.2f}% of pixels change by "
         'more than 80 / 255 between adjacent frames (descriptive, not a flash-safety certification).',
@@ -167,9 +231,9 @@ def main() -> None:
     ]
     if 'determinism' in report:
         n = len(report['determinism']['raw_rgb_sha256'])
-        lines.append(f'- {n} frames re-rendered from scratch are bit-identical to the proof\'s raw frames '
+        lines.append(f'- {n} frames re-rendered from scratch are bit-identical to the raw frames '
                      '(same machine and settings).')
-    (a.output / 'VERIFICATION.md').write_text('\n'.join(lines) + '\n')
+    (output / 'VERIFICATION.md').write_text('\n'.join(lines) + '\n')
     print(json.dumps({'status': 'PASS', 'video': vid['file'], 'events_with_response': sync['with_visual_response']}))
 
 

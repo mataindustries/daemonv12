@@ -460,6 +460,29 @@ class Score:
 
 SHOTS = [(0, 'A machine'), (210, 'B wind-up'), (240, 'C dial'), (360, 'D overload')]
 
+# Variants: 'proof' is the approved low-resolution motion proof, exactly as reviewed;
+# 'master' adds the approved finishing pass for the last second (camera only, never the
+# music-driven machinery): a calmer final move, a camera-only short shutter, more depth of
+# field and focus that tracks the lifting core.
+VARIANTS = ('proof', 'master')
+CLARITY_START, CLARITY_FULL = 6.6, 7.0
+
+
+def clarity(tau: float, variant: str) -> float:
+    """0 before the climax clarity pass, 1 once it is fully in (master only)."""
+    if variant != 'master':
+        return 0.0
+    return smoothstep((tau - CLARITY_START) / (CLARITY_FULL - CLARITY_START))
+
+
+def camera_shutter(tau: float, variant: str) -> float:
+    """Share of the 180-degree shutter applied to the camera's own motion.
+
+    The machinery always keeps the full shutter; in the master the camera's blur closes to
+    a quarter over the climax so the processor stays legible while the loops smear.
+    """
+    return 1.0 - 0.75 * clarity(tau, variant)
+
 
 def frame_of(tau: float) -> int:
     return max(0, math.ceil(tau * FPS - 1e-9) - 1)
@@ -473,8 +496,9 @@ def shot_of(frame: int) -> str:
     return name
 
 
-def camera(score: Score, tau: float) -> dict:
+def camera(score: Score, tau: float, variant: str = 'master') -> dict:
     """Spherical rig: target, azimuth (0 = from -y), elevation, distance, roll, lens."""
+    assert variant in VARIANTS
     f = frame_of(tau)
     shot = shot_of(f)
     if shot.startswith('A'):
@@ -503,7 +527,11 @@ def camera(score: Score, tau: float) -> dict:
             el = 34 + 38 * smoothstep(w / 0.6)
             dist = 4.0 - 1.5 * smoothstep(w / 0.6)
             lens, roll = 28.0 - 4.0 * (w / 0.6), 14.0 * (w / 0.6) ** 2
-        fstop = 3.5
+            if variant == 'master':  # same path and framing, about a third less turn and roll
+                az = 198 + 50 * w + 30 * w * w
+                el = 34 + 34 * smoothstep(w / 0.6)
+                roll = 6.0 * (w / 0.6) ** 2
+        fstop = 3.5 + 2.1 * clarity(tau, variant)
     dist *= 1.0 - 0.07 * score.punch(tau)
     a, e, q = math.radians(az), math.radians(el), math.radians(roll)
     radial = (math.cos(e) * math.sin(a), -math.cos(e) * math.cos(a), math.sin(e))
@@ -517,8 +545,14 @@ def camera(score: Score, tau: float) -> dict:
         c, s_ = math.cos(q), math.sin(q)
         right, up = (tuple(c * right[i] + s_ * up[i] for i in range(3)),
                      tuple(-s_ * right[i] + c * up[i] for i in range(3)))
+    focus = dist
+    k = clarity(tau, variant)
+    if k:  # track the core's top as it lifts, measured along the lens axis
+        core = (0.0, DIE_Y, TILE_Z + 0.07 + score.lift(tau))
+        track = sum((core[i] - pos[i]) * forward[i] for i in range(3))
+        focus = dist + (track - dist) * k
     return {'shot': shot, 'position': pos, 'right': right, 'up': up, 'forward': forward,
-            'lens': lens, 'fstop': fstop, 'focus': dist, 'target': target}
+            'lens': lens, 'fstop': fstop, 'focus': focus, 'target': target}
 
 
 # ---------------------------------------------------------------------------

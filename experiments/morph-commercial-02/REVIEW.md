@@ -1,5 +1,9 @@
 # THE CIRCUIT V2 — human creative checkpoint
 
+> **Outcome:** approved with two finishing changes — remove all typography, and make the
+> last second clearer. Both are implemented for the master; see [PRODUCTION.md](PRODUCTION.md).
+> This file is the record of the proof review and is otherwise unchanged.
+
 This is a motion proof, stopped here for review. It is the full eight seconds at 432 × 768 and
 60 fps with the approved audio, so rhythm and synchronisation can be judged; it is not the
 1080 × 1920 master, which has not been rendered.
