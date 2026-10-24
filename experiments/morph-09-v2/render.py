@@ -1,11 +1,12 @@
 """MORPH//09 V2 — bake the choreography into keyframes, then render with CPU Cycles.
 
-    /opt/bpyenv/bin/python experiments/morph-09-v2/render.py --frames 0-479 --width 432 --samples 24
+    /opt/bpyenv/bin/python experiments/morph-09-v2/render.py --frames 0-479 --width 432 --samples 16
     blender -b work/morph-09-v2/resonator.blend -P experiments/morph-09-v2/render.py -- --frames 0-479
 
 Picture frame f is Blender frame f + 1. Its 180-degree exposure closes at f / 60 s (shutter
 position END), so transforms are keyed at the shutter's open, centre and close: f - 0.5,
-f - 0.25 and f. Lights and emitters are keyed once per frame at its closing instant. Inside the
+f - 0.25 and f. Lights and emitters hold the state at the closing instant, keyed once per frame
+at the shutter centre, where Cycles reads non-motion data. Inside the
 harmonic-lock strobe window every key of a frame takes the flash instant: the machine and the
 camera are frozen sharp, exactly as a contact-fired xenon strobe would expose them.
 No Python runs while Cycles renders; --save writes the animated scene.
@@ -28,7 +29,7 @@ import choreography as ch  # noqa: E402
 WORK = ROOT / 'work' / 'morph-09-v2'
 TAU = math.tau
 TINE_DEG = 3.2           # visible tine excursion per unit of ring envelope
-ARC_GAIN = 26.0
+ARC_GAIN = 34.0
 COIL_GAIN = 9.0
 STROBE_POWER = 950.0
 STROBE_DIM = 0.10        # continuous studio light that survives under the strobe
@@ -153,10 +154,10 @@ def bake(frames, meta):
                 tr.add(a, 'rotation_euler', 1, bf, -alpha)
             tr.add(sleeve, 'location', 2, bf, gov['sleeveZ'] + gov['sleeveTravel'] * m['governor'])
             b = min(1.2, m['brush'])
-            loc = brush_home + bdir * 0.05 * b
+            loc = brush_home + bdir * 0.07 * b
             for i in range(3):
                 tr.add(brush, 'location', i, bf, loc[i])
-            tr.add(brush, 'rotation_euler', 1, bf, 0.06 * b)
+            tr.add(brush, 'rotation_euler', 1, bf, 0.08 * b)
             tr.add(pallet_o, 'rotation_euler', 2, bf, pallet_home + math.radians(7.5) * m['pallet'])
             for j, home, s in zip(jaws, jaw_home, (-1, 1)):
                 p = home - s * jaw_tan * 0.13 * m['clap']
@@ -181,19 +182,19 @@ def bake(frames, meta):
                 tr.add(rider, 'location', 2, bf, pos)
             for s, pad in zip((-1, 1) * 2, pads):
                 tr.add(pad, 'location', 2, bf, -s * 0.04 * min(1, m['clamp']))
-        # once per frame: lights and emitters, read at the frame's closing instant
-        bf = f + 1
+        # Once per frame: lights and emitters hold the state at the picture's closing instant. Cycles
+        # reads non-motion data at the shutter centre, so the constant key sits there.
+        bf = f + 1 + ch.SUBFRAMES[1]
         m = ch.machine(f / ch.FPS)
         strobe_on = frozen
         dim = STROBE_DIM if strobe_on else 1.0
         for name, (o, base) in lights.items():
             tr.add(o.data, 'energy', 0, bf, base * dim, constant=True)
-        arc_level = min(1.6, m['arc'])
+        arc_level = min(1.6, m['arc']) ** 1.5      # dark between strikes, bright on contact
         warm = (1.0, 0.56, 0.26)
         for i in range(3):
             tr.add(arc, 'color', i, bf, warm[i] * ARC_GAIN * arc_level * (0.35 if strobe_on else 1.0), constant=True)
-        # The seam itself is the light: a point lamp would mirror as a disc in the polished bar.
-        tr.add(arc_light.data, 'energy', 0, bf, 0.0, constant=True)
+        tr.add(arc_light.data, 'energy', 0, bf, 9.0 * arc_level * (0.35 if strobe_on else 1.0), constant=True)
         for i, (coil, light) in enumerate(zip(coils, coil_lights)):
             g = m['coil'][i]
             for k in range(3):

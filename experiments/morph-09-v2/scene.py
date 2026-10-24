@@ -533,13 +533,16 @@ LIGHTS = {
 for n, o in LIGHTS.items():
     META.setdefault('lights', {})[n] = [o.name, o.data.energy]
 
-arc_light = bpy.data.lights.new('Commutation arc light', 'POINT')
-arc_light.shadow_soft_size = 0.14
-arc_light.color = (1.0, 0.55, 0.25)
+# The arc's light: a strip the size of the seam, facing the arriving bars. A point lamp would
+# mirror as a disc in the polished copper; a strip mirrors as the seam itself.
+arc_light = bpy.data.lights.new('Commutation arc light', 'AREA')
+arc_light.shape, arc_light.size, arc_light.size_y = 'RECTANGLE', 0.03, 0.34
+arc_light.color = (1.0, 0.58, 0.28)
 arc_light.energy = 0.0
 ao = bpy.data.objects.new('Commutation arc light', arc_light)
 COLL.objects.link(ao)
-ao.location = polar(ch.DRUM_R + 0.06, ch.BRUSH_AZ - 5.4, BRUSH_Z)
+ao.location = polar(ch.DRUM_R + 0.03, ch.BRUSH_AZ - 4.9, BRUSH_Z)
+ao.rotation_euler = Vector(polar(1, ch.BRUSH_AZ - 75)).to_track_quat('-Z', 'Z').to_euler()
 META['arcLight'] = ao.name
 
 META['strobe'], META['strobeTube'] = [], []
