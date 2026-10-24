@@ -1,0 +1,426 @@
+{
+  "experiment": "MORPH//08 MOTOR GROOVE",
+  "generator": {
+    "experiments/morph-07/motor.ts": "fc16f3e062f043b2a6c479b88acc2c6ea7493632ada6eff3b773db2605046c94",
+    "experiments/morph-07/scores.ts": "850e7aea7eeba42a8e296e0d529cc7894924a254bb8fecebe8183c53feb77ab8",
+    "experiments/morph-08/arrangements.ts": "7396d14e5b916e5242068cfc9b39b3c8cc4cbd00013a004bed4ad21a173ca57d",
+    "experiments/morph-08/mix.ts": "ef4ecffbd4183f36773f2a912d1f17c713e0c148361bf5f88c8adf45cb096cab",
+    "experiments/morph-08/render.ts": "c4113e2fb08cc44afb4ded923bce13769fe69526ea7689b1c067097b6dd86f66"
+  },
+  "sampleRate": 44100,
+  "fps": {
+    "numerator": 60,
+    "denominator": 1
+  },
+  "targetLufs": -12,
+  "candidates": {
+    "lockstep": {
+      "title": "A — LOCKSTEP",
+      "frames": 352800,
+      "seconds": 8,
+      "bpm": 120,
+      "key": "A minor",
+      "loop": true,
+      "wav": {
+        "file": "lockstep.wav",
+        "sha256": "64b159504ec6c6eec12226a223fc1cd0e547a4fcb8b83377f7c7c5e2c514b216",
+        "bytes": 1411244,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "clippedSamples": 0,
+        "peakDbfs": -2.02,
+        "truePeakDbtp": -1.91,
+        "integratedLufs": -12
+      },
+      "master": {
+        "targetLufs": -12,
+        "ceilingDbfs": -1.8,
+        "kneeDbfs": -7,
+        "stemTrimDb": -6,
+        "preGainDb": 9.85,
+        "maxReductionDb": 2.85,
+        "samplesInKneePercent": 5.974
+      },
+      "stems": {
+        "motor": {
+          "file": "lockstep.stems/motor.wav",
+          "sha256": "3f063d0ae655f101564e7c5caf0622c597d4f7d78a40ee5850e219ba9c8df360",
+          "clippedSamples": 0
+        },
+        "kick": {
+          "file": "lockstep.stems/kick.wav",
+          "sha256": "e62dabcca0c1ef0cfc01fde6ddd7ad09d90ff8a0384e1c5b4d85893702828093",
+          "clippedSamples": 0
+        },
+        "bass": {
+          "file": "lockstep.stems/bass.wav",
+          "sha256": "eeac5323c9b5e814811233504851e6a16f696984f6fa50a01dc03d0b9ab1bc5d",
+          "clippedSamples": 0
+        },
+        "lead": {
+          "file": "lockstep.stems/lead.wav",
+          "sha256": "6410711e68bc66abfeca23706aff724b61b0a63bc9dc017476272f5ca9b1927b",
+          "clippedSamples": 0
+        },
+        "perc": {
+          "file": "lockstep.stems/perc.wav",
+          "sha256": "01a25b7fc3051a9d904916c022a1133a4d964b94226990089379408b6e6f07fe",
+          "clippedSamples": 0
+        }
+      },
+      "project": {
+        "file": "lockstep.project.json",
+        "sha256": "08b998fd4cc05f25a314944db4c9b99ec357d2b4c1980f0e5f117c9aa22f3cf1",
+        "assets": [
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "sha256": "96ddb71c7aea630fdff30c9e79bfa24f6873547adc0fbf6febff95aff3cdba77",
+            "bytes": 88244,
+            "frames": 44100,
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16
+          },
+          {
+            "file": "assets/glasshouse/07-sub-cs.wav",
+            "sha256": "0f768b79c549204342f9489626d0f8e08c7c39dd4d15393970d692b49570fb28",
+            "bytes": 75644,
+            "frames": 37800,
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16
+          },
+          {
+            "file": "assets/glasshouse/08-chrome-clap.wav",
+            "sha256": "e0a5a42c4cfcd1d9d59f56e38fb762a8a19b8033304599ba15bc787481544eff",
+            "bytes": 63548,
+            "frames": 15876,
+            "channels": 2,
+            "sampleRate": 44100,
+            "bitsPerSample": 16
+          },
+          {
+            "file": "assets/glasshouse/09-pixel-hat.wav",
+            "sha256": "19451e5b4592e54d61f4555cfaec19d277b7e8499a49651b58b934ad6622f491",
+            "bytes": 4896,
+            "frames": 2426,
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16
+          },
+          {
+            "file": "assets/orbital-foundry/02-mechanical-kick.wav",
+            "sha256": "19b350b860aac8864d5e5710f1fdfef59120bd3ccb38b0feb51acd0b7bcb9eb6",
+            "bytes": 37088,
+            "frames": 18522,
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16
+          }
+        ]
+      },
+      "eventMap": {
+        "file": "lockstep.events.json",
+        "sha256": "323d1f9847d2bdab3945008bb90a2c8f7c76ba0a7654134d7b7a0978762a60a8",
+        "events": 178,
+        "tracks": {
+          "form": 5,
+          "harmony": 6,
+          "chassis": 10,
+          "commutator": 52,
+          "rotor": 7,
+          "tines": 30,
+          "kick": 15,
+          "hat": 16,
+          "sub": 14,
+          "glass": 9,
+          "clap": 6,
+          "drive": 5,
+          "regime": 2,
+          "voice": 1
+        }
+      },
+      "mix": {
+        "motor": {
+          "balance": {
+            "tines": 0,
+            "housing": 1,
+            "chassis": -5,
+            "hum": 2,
+            "room": 0
+          },
+          "level": -12,
+          "duck": true
+        },
+        "duck": {
+          "depthDb": 3,
+          "releaseMs": 140
+        },
+        "parts": [
+          {
+            "id": "kick",
+            "stem": "kick",
+            "gainDb": -5.5,
+            "pan": 0,
+            "sound": "orbital-foundry/02-mechanical-kick.wav"
+          },
+          {
+            "id": "sub",
+            "stem": "bass",
+            "gainDb": -10.5,
+            "pan": 0,
+            "sound": "glasshouse/07-sub-cs.wav"
+          },
+          {
+            "id": "glass",
+            "stem": "lead",
+            "gainDb": -8.5,
+            "pan": 0.15,
+            "sound": "glasshouse/01-glass-hit.wav"
+          },
+          {
+            "id": "clap",
+            "stem": "perc",
+            "gainDb": -5,
+            "pan": -0.1,
+            "sound": "glasshouse/08-chrome-clap.wav"
+          },
+          {
+            "id": "hat",
+            "stem": "perc",
+            "gainDb": -8,
+            "pan": 0.25,
+            "sound": "glasshouse/09-pixel-hat.wav"
+          }
+        ]
+      },
+      "mp3": {
+        "file": "lockstep.mp3",
+        "sha256": "209d8576194d4a53a7d58ea95f05faaea773d2369ff7e9c12ce6edce9cc0ca17",
+        "codec": "libmp3lame",
+        "bitrateKbps": 192,
+        "sampleRate": 44100,
+        "channels": 2,
+        "encoder": "6.1.1-3ubuntu5",
+        "note": "Bytes depend on the FFmpeg/LAME build; the WAV is the reference."
+      },
+      "ffmpegLoudness": {
+        "wav": {
+          "integratedLufs": -11.77,
+          "loudnessRangeLu": 1.8,
+          "truePeakDbfs": -1.92
+        },
+        "mp3": {
+          "integratedLufs": -12.04,
+          "loudnessRangeLu": 1.8,
+          "truePeakDbfs": -1.87
+        },
+        "measuredBy": "ffmpeg loudnorm (input measurements)"
+      }
+    },
+    "overtone": {
+      "title": "B — OVERTONE",
+      "frames": 352800,
+      "seconds": 8,
+      "bpm": 120,
+      "key": "A minor",
+      "loop": true,
+      "wav": {
+        "file": "overtone.wav",
+        "sha256": "f771979966ce4b85ff96e44474f3259bf2da3f576a71bf0847af9d37e5b4111c",
+        "bytes": 1411244,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "clippedSamples": 0,
+        "peakDbfs": -1.81,
+        "truePeakDbtp": -1.24,
+        "integratedLufs": -12
+      },
+      "master": {
+        "targetLufs": -12,
+        "ceilingDbfs": -1.8,
+        "kneeDbfs": -7,
+        "stemTrimDb": -6,
+        "preGainDb": 5.66,
+        "maxReductionDb": 6.69,
+        "samplesInKneePercent": 5.001
+      },
+      "stems": {
+        "motor": {
+          "file": "overtone.stems/motor.wav",
+          "sha256": "1b772cc210d48c41a5d548cc596dc3d051bcb3c0b55a4d290ccf0e446e28083f",
+          "clippedSamples": 0
+        },
+        "kick": {
+          "file": "overtone.stems/kick.wav",
+          "sha256": "e70bcca1765c5b339db1bf75a4b71fe34ee5337b0ce6b6d4734aa04831f59ea4",
+          "clippedSamples": 0
+        },
+        "bass": {
+          "file": "overtone.stems/bass.wav",
+          "sha256": "46192e1cd7d1a7d308ff4eb69d3b8890acb41d56d45c07264bdcfd4287a04904",
+          "clippedSamples": 0
+        },
+        "lead": {
+          "file": "overtone.stems/lead.wav",
+          "sha256": "42c42ca1d1376b91088edbf0ff2c88dae33acc564e6213f2b5b001c15b50911c",
+          "clippedSamples": 0
+        },
+        "perc": {
+          "file": "overtone.stems/perc.wav",
+          "sha256": "ded0e9aa4b6a52f4f19ca2be3008bc402335df56f41eb497c35c492a83fd588b",
+          "clippedSamples": 0
+        }
+      },
+      "project": {
+        "file": "overtone.project.json",
+        "sha256": "8debf6f878fdb865b25d90627482ff9d49da87a329aeac698b9a87278094a322",
+        "assets": [
+          {
+            "file": "assets/glasshouse/04-ghost-vox.wav",
+            "sha256": "2c003a699d010082e64cb070e7dffd6adcd3189c22ee6f914bf3c7dfe537da68",
+            "bytes": 83834,
+            "frames": 41895,
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16
+          },
+          {
+            "file": "assets/glasshouse/08-chrome-clap.wav",
+            "sha256": "e0a5a42c4cfcd1d9d59f56e38fb762a8a19b8033304599ba15bc787481544eff",
+            "bytes": 63548,
+            "frames": 15876,
+            "channels": 2,
+            "sampleRate": 44100,
+            "bitsPerSample": 16
+          },
+          {
+            "file": "assets/glasshouse/09-pixel-hat.wav",
+            "sha256": "19451e5b4592e54d61f4555cfaec19d277b7e8499a49651b58b934ad6622f491",
+            "bytes": 4896,
+            "frames": 2426,
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16
+          },
+          {
+            "file": "assets/morph-v1/cable-pluck.wav",
+            "sha256": "899a5345fa40df54fbadd1e4ee31bf1d9c876d53cbb16501ac7bbd3ea450e48d",
+            "bytes": 57374,
+            "frames": 28665,
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16
+          },
+          {
+            "file": "assets/orbital-foundry/02-mechanical-kick.wav",
+            "sha256": "19b350b860aac8864d5e5710f1fdfef59120bd3ccb38b0feb51acd0b7bcb9eb6",
+            "bytes": 37088,
+            "frames": 18522,
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16
+          }
+        ]
+      },
+      "eventMap": {
+        "file": "overtone.events.json",
+        "sha256": "7cf59c782842a090db77056285a4ac1bf737bf5d81dc606403f77b3ca7ed655e",
+        "events": 205,
+        "tracks": {
+          "form": 5,
+          "harmony": 6,
+          "chassis": 10,
+          "commutator": 52,
+          "rotor": 7,
+          "tines": 30,
+          "bass": 16,
+          "kick": 16,
+          "vox": 19,
+          "hat": 28,
+          "clap": 8,
+          "drive": 5,
+          "regime": 2,
+          "voice": 1
+        }
+      },
+      "mix": {
+        "motor": {
+          "balance": {
+            "tines": -6,
+            "housing": 0,
+            "chassis": -9,
+            "hum": 0,
+            "room": -3
+          },
+          "level": -8,
+          "duck": true
+        },
+        "duck": {
+          "depthDb": 4,
+          "releaseMs": 160
+        },
+        "parts": [
+          {
+            "id": "kick",
+            "stem": "kick",
+            "gainDb": -2,
+            "pan": 0,
+            "sound": "orbital-foundry/02-mechanical-kick.wav"
+          },
+          {
+            "id": "bass",
+            "stem": "bass",
+            "gainDb": 8,
+            "pan": 0,
+            "sound": "morph-v1/cable-pluck.wav"
+          },
+          {
+            "id": "vox",
+            "stem": "lead",
+            "gainDb": -7,
+            "pan": 0,
+            "sound": "glasshouse/04-ghost-vox.wav"
+          },
+          {
+            "id": "clap",
+            "stem": "perc",
+            "gainDb": -3.5,
+            "pan": -0.1,
+            "sound": "glasshouse/08-chrome-clap.wav"
+          },
+          {
+            "id": "hat",
+            "stem": "perc",
+            "gainDb": -6.5,
+            "pan": 0.25,
+            "sound": "glasshouse/09-pixel-hat.wav"
+          }
+        ]
+      },
+      "mp3": {
+        "file": "overtone.mp3",
+        "sha256": "df1ab66c51f0764f510690ef22fa176fcc3c555827fface64ab0942923e6c64d",
+        "codec": "libmp3lame",
+        "bitrateKbps": 192,
+        "sampleRate": 44100,
+        "channels": 2,
+        "encoder": "6.1.1-3ubuntu5",
+        "note": "Bytes depend on the FFmpeg/LAME build; the WAV is the reference."
+      },
+      "ffmpegLoudness": {
+        "wav": {
+          "integratedLufs": -11.92,
+          "loudnessRangeLu": 0.9,
+          "truePeakDbfs": -1.3
+        },
+        "mp3": {
+          "integratedLufs": -12.18,
+          "loudnessRangeLu": 0.9,
+          "truePeakDbfs": -1.43
+        },
+        "measuredBy": "ffmpeg loudnorm (input measurements)"
+      }
+    }
+  }
+}

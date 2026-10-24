@@ -18,6 +18,13 @@ version has been tagged or published to npm yet.
   outside the engine and two listening candidates with WAV, MP3, Sync Pack event maps
   and rotor telemetry, reproducible with Node alone. See
   [experiments/morph-07](experiments/morph-07/README.md). Engine behavior is unchanged.
+- **MORPH//08 MOTOR GROOVE (experiment).** Two loudness-matched, eight-second loops
+  (120 BPM, A minor) built around the unchanged HYPNOTIC MOTOR: a minimal arrangement
+  (A, LOCKSTEP) and a melodic one (B, OVERTONE). Kick, bass, melody and percussion come
+  from existing one-shots played by the engine's sampler. They are locked to the motor's
+  swung contacts and tuned to its just intonation. Deliverables include WAV, MP3, aligned
+  stems and Sync Pack event maps, reproducible with Node alone. See
+  [experiments/morph-08](experiments/morph-08/README.md). Engine behavior is unchanged.
 
 ## 0.7.0: sampler articulation (2026-10-13)
 
