@@ -12,3 +12,12 @@ Status: PASS. Measured on `the-circuit-v2-master.mp4` (SHA-256 `fbc46d118d94928f
 - Largest adjacent mean-luma step outside the blackout: 31.05 / 255; at most 33.44% of pixels change by more than 80 / 255 between adjacent frames (descriptive, not a flash-safety certification).
 - Tracked changes are confined to `experiments/morph-commercial-02/`; V1 files are unchanged.
 - 21 frames re-rendered from scratch are bit-identical to the raw frames (same machine and settings).
+
+Production delivery checks: PASS.
+
+- Frames 0–455 occur exactly once across eight disjoint batches. All seven matrix boundaries and the internal clarity transition have independent RGB recheck evidence in `production.json`.
+- Approved source `61bd2e1f8d28378203586a6a170a791bc9408e1d` remains frozen; only `master/` deliverables differ.
+- CRF 16 master: 37,097,685 bytes. The muxed AAC is byte-identical to an independent encode of the unchanged PCM with the same encoder and settings.
+- Codex reviewed the final contact sheet and frames 420/444/453 against Opus's approved master references. Luma correlations exceed 0.999 and full-resolution sharpness is within 1.4% of the references. See `visual-comparison.json` and `climax-production-comparison.jpg`. The final reference panel clips 10 pixels; matching valid crops were used for that comparison.
+- Anonymous MP4 retrieval returned HTTP 200, matched the committed SHA-256, and passed an independent container/frame-count check. See `retrieval-verification.json`.
+- Final human approval remains pending. No YouTube or portfolio publication was performed.

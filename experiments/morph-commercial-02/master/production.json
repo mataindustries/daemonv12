@@ -5951,6 +5951,7 @@
     "tag": "circuit-v2-production-checkpoints-61bd2e1",
     "type": "DRAFT GitHub release"
   },
+  "creative_source_frozen": true,
   "crf": 16,
   "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
   "finisher_machine": {
@@ -5962,7 +5963,27 @@
     "runner": "GitHub Actions 1000000935",
     "runner_arch": "X64"
   },
-  "human_visual_review": "Pending final contact-sheet and approved climax reference review; no publishing or portfolio deployment.",
+  "human_visual_review": {
+    "approved_reference_frames_reviewed": [
+      420,
+      444,
+      453
+    ],
+    "camera_composition_and_climax_sharpness_match": true,
+    "contact_sheet_reviewed": true,
+    "editorial_picture_overlay_absent": true,
+    "final_human_approval": "PENDING",
+    "numerical_luma_correlations": {
+      "420": 0.9993608506473391,
+      "444": 0.9992344053910579,
+      "453": 0.9990039851138602
+    },
+    "physical_engravings_preserved": true,
+    "reference_limitation": "Opus reference montage clips the rightmost 10 pixels of its final panel; comparison uses the valid 530-pixel width with matching crops. The full production frame is preserved.",
+    "reviewer": "Codex",
+    "source_frozen_at": "61bd2e1f8d28378203586a6a170a791bc9408e1d",
+    "status": "PASS"
+  },
   "mp4_bytes": 37097685,
   "mp4_sha256": "fbc46d118d94928fd8e425c55562d93d74a5651f971049727ed3eaf9bf6d9f8f",
   "primary_frames_exactly_once": [
@@ -6429,6 +6450,12 @@
     444,
     453
   ],
+  "retrieval_verification": {
+    "anonymous_http_status": 200,
+    "report": "retrieval-verification.json",
+    "sha256_matches": true,
+    "status": "PASS"
+  },
   "scene_checkpoint": {
     "circuit-v2.blend": {
       "bytes": 8285176,
