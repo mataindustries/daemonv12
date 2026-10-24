@@ -17,8 +17,9 @@ import signal
 import subprocess
 import sys
 import tarfile
-import tempfile
 import time
+import urllib.parse
+import urllib.request
 
 SOURCE = "61bd2e1f8d28378203586a6a170a791bc9408e1d"
 REPO = "mataindustries/daemonv12"
@@ -63,9 +64,15 @@ def run(args, *, cwd=ROOT, log=None, timeout=3600):
     print("RUN", " ".join(map(str, args)), flush=True)
     if log:
         Path(log).parent.mkdir(parents=True, exist_ok=True)
-        with Path(log).open("ab") as stream:
-            subprocess.run(list(map(str, args)), cwd=cwd, stdout=stream,
-                           stderr=subprocess.STDOUT, check=True, timeout=timeout)
+        try:
+            with Path(log).open("ab") as stream:
+                subprocess.run(list(map(str, args)), cwd=cwd, stdout=stream,
+                               stderr=subprocess.STDOUT, check=True, timeout=timeout)
+        except BaseException:
+            # Blender's useful exception is otherwise hidden in a runner-local log.
+            print(f"FAILED SUBPROCESS LOG TAIL: {log}", flush=True)
+            print(Path(log).read_text(errors="replace")[-16000:], flush=True)
+            raise
     else:
         subprocess.run(list(map(str, args)), cwd=cwd, check=True, timeout=timeout)
 
@@ -79,12 +86,22 @@ def api(endpoint, *args):
 
 
 def release(optional=False):
-    try:
-        result = api(f"repos/{REPO}/releases/tags/{TAG}")
-    except subprocess.CalledProcessError:
+    # /releases/tags/{tag} only resolves published releases. Authenticated list
+    # includes drafts, whose temporary HTML URL can still use an untagged name.
+    matches = []
+    for page in range(1, 20):
+        entries = api(f"repos/{REPO}/releases?per_page=100&page={page}")
+        matches.extend(entry for entry in entries if entry["tag_name"] == TAG)
+        if len(entries) < 100:
+            break
+    else:
+        raise RuntimeError("Unexpectedly many releases while looking up draft checkpoints")
+    require(len(matches) <= 1, "Duplicate checkpoint drafts require investigation")
+    if not matches:
         if optional:
             return None
-        raise
+        raise RuntimeError("Missing draft checkpoint release")
+    result = matches[0]
     require(result["draft"] is True, "Checkpoint release must remain DRAFT")
     require(result["tag_name"] == TAG and result["target_commitish"] == SOURCE,
             "Checkpoint release target differs from the approved source")
@@ -125,8 +142,24 @@ def upload(path, known=None):
     require(path.stat().st_size < 2 * 1024**3, "Release asset exceeds 2 GiB")
     current = known if known is not None else assets()
     require(path.name not in current, f"Refusing to overwrite durable checkpoint {path.name}")
-    release()
-    run(["gh", "release", "upload", TAG, path, "--repo", REPO], timeout=1800)
+    rel = release()
+    # Address the release by ID, never by a draft's unpublished tag. Stream the
+    # file directly to GitHub's documented uploads host; credentials stay in memory.
+    url = (f"https://uploads.github.com/repos/{REPO}/releases/{rel['id']}/assets?name=" +
+           urllib.parse.quote(path.name, safe=""))
+    headers = {"Authorization": "Bearer " + os.environ["GH_TOKEN"],
+               "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28",
+               "Content-Type": "application/octet-stream", "Content-Length": str(path.stat().st_size),
+               "User-Agent": "circuit-v2-production"}
+    with path.open("rb") as stream:
+        request = urllib.request.Request(url, data=stream, headers=headers, method="POST")
+        with urllib.request.urlopen(request, timeout=1800) as response:
+            result = json.load(response)
+    require(result["name"] == path.name and result["size"] == path.stat().st_size and
+            result["state"] == "uploaded", "Checkpoint upload did not finish")
+    if result.get("digest"):
+        require(result["digest"] == "sha256:" + sha(path), "Uploaded checkpoint digest differs")
+    print(f"UPLOADED {path.name} ({path.stat().st_size} bytes)", flush=True)
     release()
 
 
