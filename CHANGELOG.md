@@ -14,6 +14,10 @@ version has been tagged or published to npm yet.
   use the existing sampler/drum-kit format. An eight-second composition, its event
   map, parameters, source hashes and a Node-only reproduction command are documented
   in [MORPH_SYNC_PACK.md](docs/MORPH_SYNC_PACK.md).
+- **MORPH//07 HARMONIC MOTOR (experiment).** An offline rotor/commutator instrument
+  outside the engine and two listening candidates with WAV, MP3, Sync Pack event maps
+  and rotor telemetry, reproducible with Node alone. See
+  [experiments/morph-07](experiments/morph-07/README.md). Engine behavior is unchanged.
 
 ## 0.7.0: sampler articulation (2026-10-13)
 
