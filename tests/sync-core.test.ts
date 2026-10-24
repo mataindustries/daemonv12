@@ -95,3 +95,20 @@ test('JSON map validation catches forged derived timing, ordering, clip leakage 
   assert.ok(validateEventMap({ ...map, extra: true }).some(d => d.code === 'UNKNOWN_FIELD'));
   assert.ok(validateEventMap(null).some(d => d.code === 'WRONG_TYPE'));
 });
+
+test('deep provenance is rejected with diagnostics before validation or serialization exhausts the stack', () => {
+  let source: ScheduledEvent['source'] = { id: 'leaf' };
+  for (let i = 0; i < 10000; i++) source = { nested: source };
+  assert.throws(() => buildEventMap([], { ...options(), source }), EventMapValidationError);
+  assert.throws(() => buildEventMap([{ ...event(0), source }], options()), EventMapValidationError);
+  const map = buildEventMap([event(0)], options());
+  map.events[0]!.source = source;
+  const diagnostics = validateEventMap(map);
+  assert.ok(diagnostics.some(d => d.path.startsWith('events[0].source') && /nesting/.test(d.message)));
+  assert.throws(() => serializeEventMap(map), EventMapValidationError);
+  assert.throws(() => cropEventMap(map, 0, 1), EventMapValidationError);
+  // Ordinary nested provenance remains supported and canonical.
+  source = { id: 'leaf' };
+  for (let i = 0; i < 100; i++) source = { nested: source };
+  assert.deepEqual(JSON.parse(serializeEventMap(buildEventMap([], { ...options(), source }))).source, source);
+});

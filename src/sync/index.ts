@@ -90,6 +90,10 @@ function json(value: unknown, path: string, ds: Diagnostic[], ancestors = new Se
     issue(ds, path, 'Source provenance contains a cycle.', 'Supply an acyclic JSON object.', 'WRONG_TYPE');
     return false;
   }
+  if (ancestors.size >= 128) {
+    issue(ds, path, 'Source provenance nesting exceeds 128 containers.', 'Use at most 128 nested objects or arrays.', 'OUT_OF_RANGE');
+    return false;
+  }
   ancestors.add(value);
   let valid = true;
   for (const [key, child] of Object.entries(value)) valid = json(child, at(path, Array.isArray(value) ? Number(key) : key), ds, ancestors) && valid;

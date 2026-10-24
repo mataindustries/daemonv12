@@ -4,10 +4,32 @@ import { mkdtempSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { compileProjectFile, runCommand } from '../src/pipeline.ts';
+import { compileProjectFile, compileProjectText, runCommand } from '../src/pipeline.ts';
 import { scheduledEventsFromTimeline } from '../src/sync-timeline.ts';
 import { buildEventMap, cropEventMap, serializeEventMap } from '../src/sync/index.ts';
 import { extractWavFrames, decodePcm } from '../src/render/index.ts';
+
+test('timeline adapter and project CLI accept constructor track IDs and ignore inherited role entries', t => {
+  const project = JSON.parse(readFileSync('examples/demo.json', 'utf8'));
+  project.tracks[0].id = 'constructor';
+  const compilation = compileProjectText(JSON.stringify(project));
+  assert.ok(compilation.timeline, JSON.stringify(compilation.diagnostics));
+  const source = { id: 'prototype-name-regression' };
+  const plain = scheduledEventsFromTimeline(compilation.timeline, source);
+  assert.ok(plain.filter(e => e.trackId === 'constructor').every(e => e.visualRoles === undefined));
+  const inherited = Object.create({ constructor: ['inherited'] }) as Record<string, string[]>;
+  assert.deepEqual(scheduledEventsFromTimeline(compilation.timeline, source, 44100, inherited), plain);
+  const own = Object.fromEntries([['constructor', ['impact']]]);
+  assert.ok(scheduledEventsFromTimeline(compilation.timeline, source, 44100, own)
+    .filter(e => e.trackId === 'constructor').every(e => e.visualRoles?.[0] === 'impact'));
+  const dir = mkdtempSync(join(tmpdir(), 'daemon-sync-constructor-'));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  const input = join(dir, 'project.json'), output = join(dir, 'map.json');
+  writeFileSync(input, JSON.stringify(project));
+  const result = spawnSync(process.execPath, ['bin/daemonv12.js', 'sync', input, '--project', '--out', output, '--json'], { encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  assert.equal(JSON.parse(readFileSync(output, 'utf8')).events.length, plain.length);
+});
 
 test('native adapter uses exactly the sampler render trigger frames without affecting render bytes', async t => {
   const dir = mkdtempSync(join(tmpdir(), 'daemon-sync-'));
