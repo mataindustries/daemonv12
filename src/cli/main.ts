@@ -4,6 +4,7 @@ import { resultFor, runCommand, type Command, type CommandOptions, type CommandR
 import { ENGINE_VERSION } from '../version.ts';
 import { formatDoctor, inspectEnvironment } from '../doctor.ts';
 import { formatInit, initWorkspace } from './init.ts';
+import { runSyncCli, syncUsage } from './sync.ts';
 const usage = `Usage:
   daemonv12 doctor [--soundfont <file.sf2>] [--json]
   daemonv12 init <new-workspace-directory> [--json]
@@ -11,10 +12,11 @@ const usage = `Usage:
   daemonv12 midi <project.json> [--out-dir <dir>] [--json]
   daemonv12 render <project.json> [--out-dir <dir>] [--soundfont <file.sf2>] [--stems] [--format wav|mp3|wav,mp3] [--json]
   daemonv12 analyze <audio.wav> [--json]
+${syncUsage.split('\n')[0]}
   daemonv12 help | --help | -h
   daemonv12 --version | -v
 
-init copies starter projects and CC0 sound packs into a new workspace and prints
+init copies starter projects and sound packs into a new workspace and prints
 the MCP server configuration for it. The MCP server is the daemonv12-mcp command.`;
 function print(result: CommandResult, json: boolean, diagnostics: Diagnostic[] = [...result.errors,...result.warnings]): void {
   if (json) { process.stdout.write(JSON.stringify(result,null,2)+'\n'); return; }
@@ -42,6 +44,7 @@ function print(result: CommandResult, json: boolean, diagnostics: Diagnostic[] =
 }
 async function main(): Promise<void> {
   const argv=process.argv.slice(2), json=argv.includes('--json');
+  if (argv[0] === 'sync') { process.exitCode = await runSyncCli(argv.slice(1)); return; }
   let command: Command | null=null, project:string|null=null;
   let options: CommandOptions;
   try {

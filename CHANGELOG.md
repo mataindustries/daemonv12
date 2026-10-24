@@ -4,6 +4,17 @@ Notable changes to DaemonV12. Every release reads project `formatVersion: 1`, an
 existing projects keep their rendered output unless an entry says otherwise. No
 version has been tagged or published to npm yet.
 
+## Unreleased
+
+- **MORPH sync pack.** A standalone event-map library and `sync` CLI preserve
+  authoritative sample frames, project them to rational picture FPS, and crop by
+  integer sample offsets. Regressions cover all 595 MORPH//06 source events and
+  all 361 THE CIRCUIT clip events. Existing render and project behavior is unchanged.
+- **MORPH v1 prototype.** Five offline-generated cable, Beast and ratchet one-shots
+  use the existing sampler/drum-kit format. An eight-second composition, its event
+  map, parameters, source hashes and a Node-only reproduction command are documented
+  in [MORPH_SYNC_PACK.md](docs/MORPH_SYNC_PACK.md).
+
 ## 0.7.0: sampler articulation (2026-10-13)
 
 Sampler and drum-kit notes gain four optional controls. Projects without them

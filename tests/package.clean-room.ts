@@ -24,7 +24,9 @@ const repo = realpathSync(fileURLToPath(new URL('../', import.meta.url)));
 const TOOLS = ['daemonv12_analyze', 'daemonv12_drumkits_list', 'daemonv12_instruments_list', 'daemonv12_project_create', 'daemonv12_project_patch',
   'daemonv12_project_read', 'daemonv12_project_validate', 'daemonv12_render', 'daemonv12_render_info'];
 const HIDDEN_AUDIO = { DAEMONV12_FLUIDSYNTH: '/daemonv12-unavailable/fluidsynth', DAEMONV12_SOUNDFONT: '/daemonv12-unavailable/FluidR3_GM.sf2', DAEMONV12_FFMPEG: '/daemonv12-unavailable/ffmpeg' };
-const BUDGET = { entries: 120, packedBytes: 6_000_000, unpackedBytes: 9_000_000 };
+// MORPH adds five small PCM assets, documentation and reusable sync modules.
+// Keep the existing byte budgets; only the file-count allowance grows.
+const BUDGET = { entries: 140, packedBytes: 6_000_000, unpackedBytes: 9_000_000 };
 const sha256 = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex');
 const inside = (path: string, dir: string) => path === dir || path.startsWith(dir + sep);
 const files = (dir: string) => readdirSync(dir, { recursive: true, encoding: 'utf8' }).filter(file => statSync(join(dir, file)).isFile()).map(file => file.split(sep).join('/'));
@@ -119,6 +121,37 @@ test('packed tarball installs and works from an empty directory without the sour
     assert.equal(mcpVersion.status, 0); assert.equal(mcpVersion.stdout, `daemonv12-mcp ${ENGINE_VERSION}\n`);
     const mcpHelp = run(join(bin, 'daemonv12-mcp'), ['--help'], { cwd: consumer, env: environment() });
     assert.equal(mcpHelp.status, 0); assert.match(mcpHelp.stdout, /--root <dir>/);
+  });
+
+  await t.test('installed sync library, timeline adapter, PCM crop and CLI work without source or audio tools', () => {
+    const importer = join(consumer, 'sync-check.mjs');
+    writeFileSync(importer, `import assert from 'node:assert/strict';
+import { writeFileSync } from 'node:fs';
+import { buildEventMap, cropEventMap, serializeEventMap } from 'daemonv12/sync';
+import { scheduledEventsFromTimeline } from 'daemonv12/sync/timeline';
+import { extractWavFrames } from 'daemonv12/audio/clip';
+assert.equal(typeof scheduledEventsFromTimeline, 'function');
+assert.equal(typeof extractWavFrames, 'function');
+const source = { generator: 'custom-score', revision: 'fixture-v1' };
+const events = [{ sampleFrame: 882735, trackId: 'cable bass', eventId: 'slap/0', velocity: 1.5, source }];
+const options = { sampleRate: 44100, fps: { numerator: 60, denominator: 1 }, source };
+const map = cropEventMap(buildEventMap(events, options), 882000, 1234800);
+assert.equal(map.events[0].sampleFrame, 882735);
+assert.equal(map.events[0].clipSampleFrame, 735);
+assert.equal(map.events[0].pictureFrame, 1);
+writeFileSync('expected.events.json', serializeEventMap(map));
+writeFileSync('custom.schedule.json', JSON.stringify({ ...options, events }));
+`);
+    const imported = run(process.execPath, [importer], { cwd: consumer, env: environment() });
+    assert.equal(imported.status, 0, imported.stdout + imported.stderr);
+    const exported = cli(['sync', 'custom.schedule.json', '--start-sample', '882000', '--end-sample', '1234800', '--out', 'actual.events.json', '--json']);
+    assert.equal(exported.status, 0, exported.stdout + exported.stderr);
+    assert.deepEqual(readFileSync(join(consumer, 'actual.events.json')), readFileSync(join(consumer, 'expected.events.json')));
+    const demo = cli(['render', join(installed, 'examples/morph-sync-demo.json'), '--out-dir', join(consumer, 'morph-render'), '--json']);
+    assert.equal(demo.status, 0, demo.stdout + demo.stderr);
+    const result = JSON.parse(demo.stdout);
+    assert.equal(result.manifest.wav.sha256, '4687a4b239196a49075083edc2fae5e043519e43db3ca21d4bf53855a0b50275');
+    assert.equal(audible(result.artifacts.wav).frames, 352800);
   });
 
   await t.test('doctor: installed-package mode, Node-only readiness, actionable fixes', () => {

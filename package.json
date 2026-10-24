@@ -66,7 +66,13 @@
     "SECURITY.md",
     "docs/V0_7_SAMPLER_ARTICULATION.md",
     "examples/one-sound-before.json",
-    "examples/one-sound-after.json"
+    "examples/one-sound-after.json",
+    "examples/morph-sync-demo.json",
+    "examples/morph-sync-demo.events.json",
+    "examples/morph-v1.catalog.json",
+    "docs/MORPH_SYNC_PACK.md",
+    "docs/MORPH_SYNC_SOURCES.md",
+    "docs/MORPH_SOUND_AUDIT.md"
   ],
   "engines": {
     "node": ">=22.18.0"
@@ -100,7 +106,9 @@
     "demo:ghost-shift": "node bin/daemonv12.js render examples/ghost-shift.json --out-dir renders/ghost-shift --stems --format wav,mp3",
     "test:v06": "node --test \"tests/v06*.test.ts\"",
     "test:v07": "node --test \"tests/v07*.test.ts\"",
-    "demo:one-sound": "node scripts/verify-v07.ts"
+    "demo:one-sound": "node scripts/verify-v07.ts",
+    "fixtures:morph": "node scripts/generate-morph-pack.ts",
+    "demo:morph-sync": "node scripts/verify-morph-sync.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.3.1",
@@ -111,5 +119,11 @@
     "@tonejs/midi": "2.0.28",
     "@types/node": "22.20.5",
     "typescript": "7.0.2"
+  },
+  "exports": {
+    "./sync": "./dist/src/sync/index.js",
+    "./sync/timeline": "./dist/src/sync-timeline.js",
+    "./audio/clip": "./dist/src/render/clip.js",
+    "./*": "./*"
   }
 }

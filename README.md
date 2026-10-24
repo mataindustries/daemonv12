@@ -46,6 +46,9 @@ calling tools. DaemonV12 gives them a music format built for that:
   delay, compressor, reverb and saturation; master gain; voice-over ducking.
 - **Timing:** exact output durations in bars, musical time or seconds, with
   controlled release tails.
+- **Audiovisual sync:** a standalone scheduled-event exporter with rational FPS,
+  integer sample crops and provenance. The [MORPH sync pack](docs/MORPH_SYNC_PACK.md)
+  includes five prototype sounds and an eight-second synchronized composition.
 
 Measured examples (Linux; Ubuntu's FluidSynth 2.3.4, FluidR3_GM and FFmpeg 6.1.1):
 
