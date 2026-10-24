@@ -21,7 +21,8 @@ test('init creates a self-contained workspace whose projects validate where they
   assert.equal(report.mcp.command, process.execPath);
   assert.deepEqual(report.mcp.args, [resolve('bin/daemonv12-mcp.js'), '--root', workspace]);
   assert.deepEqual(report.mcp.env, { DAEMONV12_FLUIDSYNTH: 'fluidsynth', DAEMONV12_FFMPEG: '/opt/audio/ffmpeg' });
-  assert.deepEqual(readdirSync(join(workspace, 'assets')).sort(), ['glasshouse', 'orbital-foundry', 'pulse-kit', 'v05']);
+  assert.deepEqual(readdirSync(join(workspace, 'assets')).sort(), ['glasshouse', 'morph-v1', 'orbital-foundry', 'pulse-kit', 'v05']);
+  assert.deepEqual(readFileSync(join(workspace, 'morph-v1.catalog.json')), readFileSync('examples/morph-v1.catalog.json'));
   for (const pack of ['orbital-foundry', 'glasshouse']) assert.ok(existsSync(join(workspace, `assets/${pack}/LICENSE`)), `CC0 notice travels with ${pack}`);
   assert.deepEqual(readFileSync(join(workspace, 'README.md')), readFileSync('examples/README.md'));
   for (const project of STARTER_PROJECTS) {

@@ -159,13 +159,14 @@ test('discovery returns all GM names, playable sample paths and validated named 
   const found = await call('instruments_list', {project, query: 'impact'});
   assert.ok((found.samples as string[]).includes('assets/pulse-kit/impact.wav'));
   const kits = await call('drumkits_list', {project});
-  assert.equal(kits.ok, true); assert.equal(kits.totalKits, 3);
+  assert.equal(kits.ok, true); assert.equal(kits.totalKits, 4);
   assert.deepEqual(kits.warnings, []);
   const discovered = kits.kits as {kit: string; samples: {name: string}[]}[];
-  assert.deepEqual(discovered.map(k => k.kit), ['assets/glasshouse/kit.json', 'assets/orbital-foundry/kit.json', 'assets/pulse-kit/kit.json']);
-  assert.deepEqual(discovered[2]!.samples.map(s => s.name), ['kick', 'snare', 'hat']);
+  assert.deepEqual(discovered.map(k => k.kit), ['assets/glasshouse/kit.json', 'assets/morph-v1/kit.json', 'assets/orbital-foundry/kit.json', 'assets/pulse-kit/kit.json']);
+  assert.deepEqual(discovered[3]!.samples.map(s => s.name), ['kick', 'snare', 'hat']);
   assert.deepEqual(discovered[0]!.samples.map(s => s.name), ['glass-hit', 'glass-crush', 'vox-chip', 'bass-punch-cs', 'sub-cs', 'chrome-clap', 'pixel-hat']);
-  assert.deepEqual(discovered[1]!.samples.map(s => s.name), [
+  assert.deepEqual(discovered[1]!.samples.map(s => s.name), ['cable-pluck', 'cable-slap', 'ratchet-open', 'ratchet-tight']);
+  assert.deepEqual(discovered[2]!.samples.map(s => s.name), [
     'sub-pulse', 'mechanical-kick', 'metallic-strike', 'machine-tick',
     'industrial-snare', 'low-boom', 'cinematic-impact',
   ]);

@@ -1,0 +1,391 @@
+{
+  "formatVersion": 1,
+  "title": "MORPH / Small Machines",
+  "description": "Eight-second call and response: a plucked cable establishes the pulse, the frozen Beast vowel answers, and individually scheduled ratchet slices tighten into the final turn. All sound generation is offline; playback uses the existing drumkit and sampler.",
+  "bpm": 120,
+  "timeSignature": "4/4",
+  "bars": 4,
+  "seed": 1,
+  "tracks": [
+    {
+      "id": "cable",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/morph-v1/kit.json"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "call"
+        },
+        {
+          "bar": 2,
+          "pattern": "space"
+        },
+        {
+          "bar": 3,
+          "pattern": "variation"
+        },
+        {
+          "bar": 4,
+          "pattern": "ending"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "call",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "cable-pluck",
+              "velocity": 0.65
+            },
+            {
+              "start": "1:2",
+              "pitch": "cable-pluck",
+              "velocity": 0.5,
+              "playbackRate": 1.5
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "cable-slap",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:3",
+              "pitch": "cable-pluck",
+              "velocity": 0.6
+            },
+            {
+              "start": "1:4",
+              "pitch": "cable-slap",
+              "velocity": 0.55
+            }
+          ]
+        },
+        {
+          "id": "space",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "cable-pluck",
+              "velocity": 0.55,
+              "gate": "1/8",
+              "envelope": {
+                "releaseSeconds": 0.015
+              }
+            },
+            {
+              "start": "1:3",
+              "pitch": "cable-slap",
+              "velocity": 0.45
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "cable-pluck",
+              "velocity": 0.4,
+              "playbackRate": 1.5,
+              "gate": "1/16"
+            }
+          ]
+        },
+        {
+          "id": "variation",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "cable-pluck",
+              "velocity": 0.7
+            },
+            {
+              "start": "1:2",
+              "pitch": "cable-slap",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "cable-pluck",
+              "velocity": 0.4,
+              "playbackRate": 1.5,
+              "gate": "1/16"
+            },
+            {
+              "start": "1:3",
+              "pitch": "cable-pluck",
+              "velocity": 0.6,
+              "gate": "1/8"
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "cable-slap",
+              "velocity": 0.35
+            },
+            {
+              "start": "1:4",
+              "pitch": "cable-slap",
+              "velocity": 0.5
+            }
+          ]
+        },
+        {
+          "id": "ending",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "cable-pluck",
+              "velocity": 0.6,
+              "playbackRate": 0.75,
+              "gate": "1/4",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "1:3",
+              "pitch": "cable-slap",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:4",
+              "pitch": "cable-pluck",
+              "velocity": 0.55,
+              "gate": "1/8",
+              "envelope": {
+                "releaseSeconds": 0.015
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ratchet",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/morph-v1/kit.json"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "sparse"
+        },
+        {
+          "bar": 2,
+          "pattern": "answer"
+        },
+        {
+          "bar": 3,
+          "pattern": "sparse"
+        },
+        {
+          "bar": 4,
+          "pattern": "fill"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "sparse",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "pitch": "ratchet-tight",
+              "velocity": 0.25
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "ratchet-tight",
+              "velocity": 0.4
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "ratchet-tight",
+              "velocity": 0.25
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "ratchet-tight",
+              "velocity": 0.4
+            }
+          ]
+        },
+        {
+          "id": "answer",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "pitch": "ratchet-open",
+              "velocity": 0.3
+            },
+            {
+              "start": "1:2",
+              "pitch": "ratchet-tight",
+              "velocity": 0.35
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "ratchet-tight",
+              "velocity": 0.3
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "ratchet-open",
+              "velocity": 0.35
+            },
+            {
+              "start": "1:4",
+              "pitch": "ratchet-tight",
+              "velocity": 0.3
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "ratchet-tight",
+              "velocity": 0.35
+            }
+          ]
+        },
+        {
+          "id": "fill",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "pitch": "ratchet-open",
+              "velocity": 0.3
+            },
+            {
+              "start": "1:2",
+              "pitch": "ratchet-tight",
+              "velocity": 0.3
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "ratchet-tight",
+              "velocity": 0.4
+            },
+            {
+              "start": "1:3",
+              "pitch": "ratchet-tight",
+              "velocity": 0.3
+            },
+            {
+              "start": "1:3+1/16",
+              "pitch": "ratchet-tight",
+              "velocity": 0.25
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "ratchet-tight",
+              "velocity": 0.4
+            },
+            {
+              "start": "1:3+3/16",
+              "pitch": "ratchet-tight",
+              "velocity": 0.25
+            },
+            {
+              "start": "1:4",
+              "pitch": "ratchet-tight",
+              "velocity": 0.45
+            },
+            {
+              "start": "1:4+1/16",
+              "pitch": "ratchet-tight",
+              "velocity": 0.25
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "ratchet-tight",
+              "velocity": 0.35
+            },
+            {
+              "start": "1:4+3/16",
+              "pitch": "ratchet-tight",
+              "velocity": 0.2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beast",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/morph-v1/beast-wom.wav"
+      },
+      "clips": [
+        {
+          "bar": 2,
+          "pattern": "reply"
+        },
+        {
+          "bar": 4,
+          "pattern": "reply-high"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "reply",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "velocity": 0.65,
+              "gate": "1/4",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "1:3+1/8",
+              "velocity": 0.55,
+              "playbackRate": 1.25,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.02
+              }
+            }
+          ]
+        },
+        {
+          "id": "reply-high",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "velocity": 0.6,
+              "playbackRate": 1.5,
+              "glide": {
+                "to": 1,
+                "duration": "1/8"
+              },
+              "gate": "1/4",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "1:3",
+              "velocity": 0.5,
+              "playbackRate": 0.75,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.02
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

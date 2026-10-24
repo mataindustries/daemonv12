@@ -8,7 +8,7 @@ import { ENGINE_VERSION } from '../version.ts';
 // Newcomer order. Every file here and examples/assets/ is in the package "files" allowlist.
 export const STARTER_PROJECTS = ['sample-only-demo.json', 'orbital-foundry-audition.json', 'glasshouse-audition.json', 'ghost-shift.json', 'v05-loop-demo.json',
   'v05-video-demo.json', 'production-demo.json', 'shoot-the-moon-locked-score.json'] as const;
-const STARTER_FILES = [...STARTER_PROJECTS, 'orbital-foundry.catalog.json', 'glasshouse.catalog.json', 'README.md'];
+const STARTER_FILES = [...STARTER_PROJECTS, 'orbital-foundry.catalog.json', 'glasshouse.catalog.json', 'morph-v1.catalog.json', 'README.md'];
 const AUDIO_VARIABLES = ['DAEMONV12_FLUIDSYNTH', 'DAEMONV12_SOUNDFONT', 'DAEMONV12_FFMPEG'] as const;
 
 // POSIX shell quoting for the copy-and-paste commands printed below.
@@ -70,8 +70,8 @@ export function formatInit(result: InitResult): string {
   const config = { mcpServers: { daemonv12: { command: mcp.command, args: mcp.args, ...(Object.keys(mcp.env).length ? { env: mcp.env } : {}) } } };
   const flags = Object.entries(mcp.env).map(([name, value]) => `--env ${name}=${quote(value)} `).join('');
   return [`Created DaemonV12 workspace: ${result.workspace}`,
-    `  ${STARTER_PROJECTS.length} starter projects, orbital-foundry.catalog.json, glasshouse.catalog.json and README.md`,
-    '  assets/orbital-foundry (12 CC0 cinematic sounds + kit), assets/glasshouse (10 CC0 electronic sounds + kit), assets/pulse-kit, assets/v05',
+    `  ${STARTER_PROJECTS.length} starter projects, orbital-foundry.catalog.json, glasshouse.catalog.json, morph-v1.catalog.json and README.md`,
+    '  assets/orbital-foundry (12 CC0 cinematic sounds + kit), assets/glasshouse (10 CC0 electronic sounds + kit), assets/pulse-kit, assets/v05, assets/morph-v1 (5 prototype sounds; see its README)',
     '', 'Hear it now (Node only, no audio tools needed):',
     `  cd ${quote(result.workspace)}`, `  ${result.cli} render sample-only-demo.json`,
     '', 'Connect an MCP client. It launches this stdio command:', `  ${launch}`,
