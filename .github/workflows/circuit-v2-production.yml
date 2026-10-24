@@ -1,0 +1,100 @@
+name: THE CIRCUIT V2 production
+
+on:
+  push:
+    branches: [production/the-circuit-v2-render-orchestration]
+    paths:
+      - .github/workflows/circuit-v2-production.yml
+      - .github/scripts/circuit_v2_production.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: circuit-v2-production-61bd2e1
+  cancel-in-progress: false
+
+env:
+  CIRCUIT_SOURCE: ${{ github.workspace }}/source
+  GH_TOKEN: ${{ github.token }}
+  OMP_NUM_THREADS: '4'
+  OPENBLAS_NUM_THREADS: '4'
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: orchestration
+      - uses: actions/checkout@v4
+        with:
+          ref: 61bd2e1f8d28378203586a6a170a791bc9408e1d
+          fetch-depth: 0
+          path: source
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned render and finishing dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libegl1 libxkbcommon0 libsm6 libxrender1 libgl1 fonts-dejavu-core
+          python -m pip install bpy==4.3.0 numpy==2.3.5 Pillow==12.3.0
+      - name: Validate source and restore or build immutable scene checkpoint
+        run: python orchestration/.github/scripts/circuit_v2_production.py preflight
+
+  render:
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        batch: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: orchestration
+      - uses: actions/checkout@v4
+        with:
+          ref: 61bd2e1f8d28378203586a6a170a791bc9408e1d
+          fetch-depth: 0
+          path: source
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned render dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libegl1 libxkbcommon0 libsm6 libxrender1 libgl1 fonts-dejavu-core
+          python -m pip install bpy==4.3.0 numpy==2.3.5 Pillow==12.3.0
+      - name: Render resumable batch and independently recheck its boundaries
+        run: python orchestration/.github/scripts/circuit_v2_production.py render --batch ${{ matrix.batch }}
+
+  finish:
+    needs: render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: orchestration
+      - uses: actions/checkout@v4
+        with:
+          ref: 61bd2e1f8d28378203586a6a170a791bc9408e1d
+          fetch-depth: 0
+          path: source
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned finishing dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
+          python -m pip install numpy==2.3.5 Pillow==12.3.0
+      - name: Assemble, finish, verify and commit deliverables
+        id: master
+        run: python orchestration/.github/scripts/circuit_v2_production.py finish
