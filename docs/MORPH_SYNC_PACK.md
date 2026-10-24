@@ -61,6 +61,8 @@ They describe meaning, such as `impact` or `voice`; visual software decides how 
 interpret them. Keep source event names, indices, parameters and hashes in `source`.
 The exporter cannot authenticate provenance: callers must record honest source
 identities and verify their bytes.
+Provenance accepts at most 128 nested objects or arrays; deeper metadata is
+rejected with diagnostics before validation or serialization can exhaust the stack.
 
 `buildEventMap(events, options)` validates inputs and returns `formatVersion: 1`,
 `kind: "daemonv12-event-map"`, sample rate, reduced rational FPS, source provenance,
@@ -92,7 +94,7 @@ at the clip's start. Preserve longer visual state separately when needed.
 `validateEventMap(unknown)` returns actionable diagnostics (code, path, message,
 hint), checking schema, source JSON, identities, ordering and all derived timing.
 `serializeEventMap` validates again and returns canonical compact JSON plus a newline.
-Keys, equal-time event identities and role tags sort by codepoint order, never locale.
+Keys, equal-time event identities and role tags sort by UTF-16 code unit order, never locale.
 Inputs are not mutated. Duplicated identities within a track, noninteger/unsafe
 sample offsets and unsafe derived picture frames are rejected.
 

@@ -10,7 +10,7 @@ export function scheduledEventsFromTimeline(
   return timeline.tracks.flatMap(track => track.notes.map((note, noteIndex) => ({
     sampleFrame: ticksToFrames(note.tick, timeline.usPerQuarter, sampleRate),
     trackId: track.id, eventId: String(noteIndex), velocity: note.velocity,
-    ...(visualRoles[track.id] ? { visualRoles: [...visualRoles[track.id]!] } : {}),
+    ...(Object.hasOwn(visualRoles, track.id) && visualRoles[track.id] ? { visualRoles: [...visualRoles[track.id]!] } : {}),
     source: { ...source, trackIndex: track.index, noteIndex, tick: note.tick, pitch: note.pitch },
   })));
 }
