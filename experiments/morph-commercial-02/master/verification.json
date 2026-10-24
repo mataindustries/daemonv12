@@ -1,0 +1,5325 @@
+{
+ "status": "PASS",
+ "kind": "master",
+ "sources": {
+  "audio": {
+   "sample_rate": 44100,
+   "channels": 2,
+   "sample_width_bytes": 3,
+   "sample_frames": 352800,
+   "compression": "NONE",
+   "sha256": "66551bbb73e103116be032e4cd082d66f7659f8dec24bc87d3c365d1d1f894cc",
+   "bit_exact_crop_of_source_20_to_28_s": true
+  },
+  "event_map": {
+   "sha256": "5e3f2d85dcc45e0ff7e458a85d85cd28c7af948bc4e2a9e11b57d477c71a8e8f",
+   "source_events": 361,
+   "sample_offsets_and_picture_buckets_match": true
+  }
+ },
+ "scope": {
+  "base_commit": "572caf9c6ae835e7f840f4163b73056e431bbf57",
+  "v1_files_unchanged": true,
+  "changes_confined_to": "experiments/morph-commercial-02/"
+ },
+ "video": {
+  "file": "the-circuit-v2-master.mp4",
+  "sha256": "fbc46d118d94928fd8e425c55562d93d74a5651f971049727ed3eaf9bf6d9f8f",
+  "width": 1080,
+  "height": 1920,
+  "fps": "60/1",
+  "frames": 480,
+  "seconds": 8,
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "audio_presentation_samples": 352800,
+  "container": {
+   "top_level_boxes": [
+    {
+     "type": "ftyp",
+     "offset": 0,
+     "size": 32
+    },
+    {
+     "type": "moov",
+     "offset": 32,
+     "size": 14460
+    },
+    {
+     "type": "free",
+     "offset": 14492,
+     "size": 8
+    },
+    {
+     "type": "mdat",
+     "offset": 14500,
+     "size": 37083185
+    }
+   ],
+   "file_bytes": 37097685,
+   "exact_box_walk_to_eof": true,
+   "single_moov": true,
+   "faststart": true,
+   "ffprobe_warning_output": ""
+  },
+  "pixels": {
+   "first_complete_black_frame": 456,
+   "complete_black_frame_count": 24,
+   "all_pre_cut_frames_nonblack": true
+  },
+  "terminal_rgb": {
+   "frames_checked": 24,
+   "all_rgb_channels_zero": true
+  },
+  "luma_change": {
+   "measure": "Adjacent decoded full-range grayscale pictures; pixel values 0\u2013255. Intentional blackout transition 455\u2192456 excluded from maxima.",
+   "largest_adjacent_absolute_mean_luma_step": 31.048415316358025,
+   "largest_adjacent_absolute_mean_luma_step_normalized": 0.12175849143669813,
+   "largest_mean_luma_step_to_frame": 360,
+   "maximum_fraction_pixels_with_absolute_luma_change_over_80": 0.33437789351851854,
+   "maximum_changed_fraction_to_frame": 240,
+   "limitation": "Descriptive image-change measurements only; no formal flash-safety or accessibility compliance claim."
+  }
+ },
+ "sync": {
+  "events": 361,
+  "with_visual_response": 304,
+  "without_separate_response": 57,
+  "rule": "response(frame60 - 1) == 0 and response(frame60) > 0 for every event with a visual role",
+  "rows": [
+   {
+    "sourceIndex": 234,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 0,
+    "frame60": 0,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 0
+   },
+   {
+    "sourceIndex": 235,
+    "part": "cable partner",
+    "event": "pluck",
+    "sampleFrame": 0,
+    "frame60": 0,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Quiet partner pluck sounds with the main slap."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 236,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 0,
+    "frame60": 0,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 0
+   },
+   {
+    "sourceIndex": 237,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 0,
+    "frame60": 0,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 0
+   },
+   {
+    "sourceIndex": 238,
+    "part": "section",
+    "event": "VI. Payoff",
+    "sampleFrame": 0,
+    "frame60": 0,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "Section marker; its music already drives the loops."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 239,
+    "part": "perc",
+    "event": "alarm-bell hat",
+    "sampleFrame": 2756,
+    "frame60": 3,
+    "roles": [
+     {
+      "role": "bell",
+      "reason": "Corner fasteners strike white."
+     }
+    ],
+    "firstVisibleFrame": 3
+   },
+   {
+    "sourceIndex": 240,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 5513,
+    "frame60": 7,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 7
+   },
+   {
+    "sourceIndex": 241,
+    "part": "beast",
+    "event": "ka",
+    "sampleFrame": 11025,
+    "frame60": 15,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 15
+   },
+   {
+    "sourceIndex": 242,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 11025,
+    "frame60": 15,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 15
+   },
+   {
+    "sourceIndex": 243,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 16538,
+    "frame60": 22,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 22
+   },
+   {
+    "sourceIndex": 244,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 16538,
+    "frame60": 22,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 22
+   },
+   {
+    "sourceIndex": 245,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 22050,
+    "frame60": 30,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 30
+   },
+   {
+    "sourceIndex": 246,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 22050,
+    "frame60": 30,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 30
+   },
+   {
+    "sourceIndex": 247,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 27563,
+    "frame60": 37,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 37
+   },
+   {
+    "sourceIndex": 248,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 27563,
+    "frame60": 37,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 37
+   },
+   {
+    "sourceIndex": 249,
+    "part": "beast",
+    "event": "OW",
+    "sampleFrame": 33075,
+    "frame60": 45,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 2 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 45
+   },
+   {
+    "sourceIndex": 250,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 33075,
+    "frame60": 45,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 45
+   },
+   {
+    "sourceIndex": 251,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 38588,
+    "frame60": 52,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 52
+   },
+   {
+    "sourceIndex": 252,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 38588,
+    "frame60": 52,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 52
+   },
+   {
+    "sourceIndex": 253,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 44100,
+    "frame60": 60,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 60
+   },
+   {
+    "sourceIndex": 254,
+    "part": "snare",
+    "event": "half-time snare",
+    "sampleFrame": 44100,
+    "frame60": 60,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "ring",
+      "reason": "Snare rings the middle loop white."
+     }
+    ],
+    "firstVisibleFrame": 60
+   },
+   {
+    "sourceIndex": 255,
+    "part": "snare",
+    "event": "toaster spring",
+    "sampleFrame": 44100,
+    "frame60": 60,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Spring layer belongs to the snare hit."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 256,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 49613,
+    "frame60": 67,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 67
+   },
+   {
+    "sourceIndex": 257,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 49613,
+    "frame60": 67,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 67
+   },
+   {
+    "sourceIndex": 258,
+    "part": "beast",
+    "event": "YOW",
+    "sampleFrame": 55125,
+    "frame60": 75,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 2 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 75
+   },
+   {
+    "sourceIndex": 259,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 55125,
+    "frame60": 75,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 75
+   },
+   {
+    "sourceIndex": 260,
+    "part": "kick",
+    "event": "ghost kick",
+    "sampleFrame": 60638,
+    "frame60": 82,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 82
+   },
+   {
+    "sourceIndex": 261,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 60638,
+    "frame60": 82,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 82
+   },
+   {
+    "sourceIndex": 262,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 60638,
+    "frame60": 82,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Quiet ghost below the roll threshold."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 263,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 60638,
+    "frame60": 82,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 82
+   },
+   {
+    "sourceIndex": 264,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 66150,
+    "frame60": 90,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 90
+   },
+   {
+    "sourceIndex": 265,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 66150,
+    "frame60": 90,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 90
+   },
+   {
+    "sourceIndex": 266,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 71663,
+    "frame60": 97,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 97
+   },
+   {
+    "sourceIndex": 267,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 71663,
+    "frame60": 97,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 97
+   },
+   {
+    "sourceIndex": 268,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 77175,
+    "frame60": 105,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 105
+   },
+   {
+    "sourceIndex": 269,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 77175,
+    "frame60": 105,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 105
+   },
+   {
+    "sourceIndex": 270,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 82688,
+    "frame60": 112,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 112
+   },
+   {
+    "sourceIndex": 271,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 82688,
+    "frame60": 112,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 112
+   },
+   {
+    "sourceIndex": 272,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 82688,
+    "frame60": 112,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Quiet ghost below the roll threshold."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 273,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 88200,
+    "frame60": 120,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 120
+   },
+   {
+    "sourceIndex": 274,
+    "part": "cable partner",
+    "event": "pluck",
+    "sampleFrame": 88200,
+    "frame60": 120,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Quiet partner pluck sounds with the main slap."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 275,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 88200,
+    "frame60": 120,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 120
+   },
+   {
+    "sourceIndex": 276,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 88200,
+    "frame60": 120,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 120
+   },
+   {
+    "sourceIndex": 277,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 93713,
+    "frame60": 127,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 127
+   },
+   {
+    "sourceIndex": 278,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 93713,
+    "frame60": 127,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 127
+   },
+   {
+    "sourceIndex": 279,
+    "part": "cable bass",
+    "event": "ghost",
+    "sampleFrame": 99225,
+    "frame60": 135,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Ghost articulation; the major attacks carry the phrase."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 280,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 99225,
+    "frame60": 135,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 135
+   },
+   {
+    "sourceIndex": 281,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 104738,
+    "frame60": 142,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 142
+   },
+   {
+    "sourceIndex": 282,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 104738,
+    "frame60": 142,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 142
+   },
+   {
+    "sourceIndex": 283,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 110250,
+    "frame60": 150,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 150
+   },
+   {
+    "sourceIndex": 284,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 110250,
+    "frame60": 150,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 150
+   },
+   {
+    "sourceIndex": 285,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 115763,
+    "frame60": 157,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 157
+   },
+   {
+    "sourceIndex": 286,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 115763,
+    "frame60": 157,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 157
+   },
+   {
+    "sourceIndex": 287,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 121275,
+    "frame60": 165,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 165
+   },
+   {
+    "sourceIndex": 288,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 121275,
+    "frame60": 165,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 165
+   },
+   {
+    "sourceIndex": 289,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 126788,
+    "frame60": 172,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 172
+   },
+   {
+    "sourceIndex": 290,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 132300,
+    "frame60": 180,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 180
+   },
+   {
+    "sourceIndex": 291,
+    "part": "snare",
+    "event": "half-time snare",
+    "sampleFrame": 132300,
+    "frame60": 180,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "ring",
+      "reason": "Snare rings the middle loop white."
+     }
+    ],
+    "firstVisibleFrame": 180
+   },
+   {
+    "sourceIndex": 292,
+    "part": "snare",
+    "event": "toaster spring",
+    "sampleFrame": 132300,
+    "frame60": 180,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Spring layer belongs to the snare hit."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 293,
+    "part": "beast",
+    "event": "EEYOOW",
+    "sampleFrame": 137813,
+    "frame60": 187,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 4 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 187
+   },
+   {
+    "sourceIndex": 294,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 137813,
+    "frame60": 187,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 187
+   },
+   {
+    "sourceIndex": 295,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 143325,
+    "frame60": 195,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 195
+   },
+   {
+    "sourceIndex": 296,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 143325,
+    "frame60": 195,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 195
+   },
+   {
+    "sourceIndex": 297,
+    "part": "kick",
+    "event": "ghost kick",
+    "sampleFrame": 148838,
+    "frame60": 202,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 202
+   },
+   {
+    "sourceIndex": 298,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 148838,
+    "frame60": 202,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 202
+   },
+   {
+    "sourceIndex": 299,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 148838,
+    "frame60": 202,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Quiet ghost below the roll threshold."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 300,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 148838,
+    "frame60": 202,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 202
+   },
+   {
+    "sourceIndex": 301,
+    "part": "cable",
+    "event": "SNAP (crack)",
+    "sampleFrame": 154350,
+    "frame60": 210,
+    "roles": [
+     {
+      "role": "snap",
+      "reason": "Crack: the clock loop jolts and catches; every route flashes outward."
+     }
+    ],
+    "firstVisibleFrame": 210
+   },
+   {
+    "sourceIndex": 302,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 154350,
+    "frame60": 210,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 303,
+    "part": "section",
+    "event": "Wind-up 3",
+    "sampleFrame": 154350,
+    "frame60": 210,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "Section marker; its music already drives the loops."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 304,
+    "part": "cable",
+    "event": "WIND-UP",
+    "sampleFrame": 159863,
+    "frame60": 217,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "State marker; the ratchet repeats and strikes carry it."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 305,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 159863,
+    "frame60": 217,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 306,
+    "part": "ratchet",
+    "event": "RATCHET (ks)",
+    "sampleFrame": 159863,
+    "frame60": 217,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "Ratchet header; its repeats wind the loop."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 307,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 159863,
+    "frame60": 217,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 217
+   },
+   {
+    "sourceIndex": 308,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 162504,
+    "frame60": 221,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 221
+   },
+   {
+    "sourceIndex": 309,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 162504,
+    "frame60": 221,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 221
+   },
+   {
+    "sourceIndex": 310,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 165375,
+    "frame60": 225,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 225
+   },
+   {
+    "sourceIndex": 311,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 165375,
+    "frame60": 225,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 312,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 167073,
+    "frame60": 227,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 227
+   },
+   {
+    "sourceIndex": 313,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 167073,
+    "frame60": 227,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 227
+   },
+   {
+    "sourceIndex": 314,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 170888,
+    "frame60": 232,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 315,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 171108,
+    "frame60": 232,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 232
+   },
+   {
+    "sourceIndex": 316,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 171110,
+    "frame60": 232,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 232
+   },
+   {
+    "sourceIndex": 317,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 173692,
+    "frame60": 236,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 236
+   },
+   {
+    "sourceIndex": 318,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 173693,
+    "frame60": 236,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 236
+   },
+   {
+    "sourceIndex": 319,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 175443,
+    "frame60": 238,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 238
+   },
+   {
+    "sourceIndex": 320,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 175445,
+    "frame60": 238,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 238
+   },
+   {
+    "sourceIndex": 321,
+    "part": "beast",
+    "event": "WOM",
+    "sampleFrame": 176400,
+    "frame60": 240,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 4 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 240
+   },
+   {
+    "sourceIndex": 322,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 176400,
+    "frame60": 240,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     },
+     {
+      "role": "release",
+      "reason": "The wound clock loop springs forward the six slots it was wound."
+     }
+    ],
+    "firstVisibleFrame": 240
+   },
+   {
+    "sourceIndex": 323,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 176400,
+    "frame60": 240,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 240
+   },
+   {
+    "sourceIndex": 324,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 176400,
+    "frame60": 240,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 325,
+    "part": "section",
+    "event": "Unison",
+    "sampleFrame": 176400,
+    "frame60": 240,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "Section marker; its music already drives the loops."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 326,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 176731,
+    "frame60": 240,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Tail of the wind-up, carried by the release on the downbeat."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 327,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 177802,
+    "frame60": 241,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Tail of the wind-up, carried by the release on the downbeat."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 328,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 178870,
+    "frame60": 243,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Tail of the wind-up, carried by the release on the downbeat."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 329,
+    "part": "perc",
+    "event": "alarm-bell hat",
+    "sampleFrame": 179156,
+    "frame60": 243,
+    "roles": [
+     {
+      "role": "bell",
+      "reason": "Corner fasteners strike white."
+     }
+    ],
+    "firstVisibleFrame": 243
+   },
+   {
+    "sourceIndex": 330,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 181913,
+    "frame60": 247,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 247
+   },
+   {
+    "sourceIndex": 331,
+    "part": "beast",
+    "event": "ka",
+    "sampleFrame": 187425,
+    "frame60": 255,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 255
+   },
+   {
+    "sourceIndex": 332,
+    "part": "cable bass",
+    "event": "ghost",
+    "sampleFrame": 187425,
+    "frame60": 255,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Ghost articulation; the major attacks carry the phrase."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 333,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 187425,
+    "frame60": 255,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 255
+   },
+   {
+    "sourceIndex": 334,
+    "part": "beast",
+    "event": "YOI",
+    "sampleFrame": 192938,
+    "frame60": 262,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 262
+   },
+   {
+    "sourceIndex": 335,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 192938,
+    "frame60": 262,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 262
+   },
+   {
+    "sourceIndex": 336,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 192938,
+    "frame60": 262,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 262
+   },
+   {
+    "sourceIndex": 337,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 198450,
+    "frame60": 270,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 270
+   },
+   {
+    "sourceIndex": 338,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 203963,
+    "frame60": 277,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 277
+   },
+   {
+    "sourceIndex": 339,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 203963,
+    "frame60": 277,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 277
+   },
+   {
+    "sourceIndex": 340,
+    "part": "beast",
+    "event": "OW",
+    "sampleFrame": 209475,
+    "frame60": 285,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 2 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 285
+   },
+   {
+    "sourceIndex": 341,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 209475,
+    "frame60": 285,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 285
+   },
+   {
+    "sourceIndex": 342,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 209475,
+    "frame60": 285,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 285
+   },
+   {
+    "sourceIndex": 343,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 214988,
+    "frame60": 292,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 292
+   },
+   {
+    "sourceIndex": 344,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 220500,
+    "frame60": 300,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 300
+   },
+   {
+    "sourceIndex": 345,
+    "part": "snare",
+    "event": "half-time snare",
+    "sampleFrame": 220500,
+    "frame60": 300,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "ring",
+      "reason": "Snare rings the middle loop white."
+     }
+    ],
+    "firstVisibleFrame": 300
+   },
+   {
+    "sourceIndex": 346,
+    "part": "snare",
+    "event": "toaster spring",
+    "sampleFrame": 220500,
+    "frame60": 300,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Spring layer belongs to the snare hit."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 347,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 223256,
+    "frame60": 303,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 303
+   },
+   {
+    "sourceIndex": 348,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 226013,
+    "frame60": 307,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 307
+   },
+   {
+    "sourceIndex": 349,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 226013,
+    "frame60": 307,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 307
+   },
+   {
+    "sourceIndex": 350,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 226013,
+    "frame60": 307,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 307
+   },
+   {
+    "sourceIndex": 351,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 228769,
+    "frame60": 311,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 311
+   },
+   {
+    "sourceIndex": 352,
+    "part": "beast",
+    "event": "YOW",
+    "sampleFrame": 231525,
+    "frame60": 315,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 2 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 315
+   },
+   {
+    "sourceIndex": 353,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 231525,
+    "frame60": 315,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 315
+   },
+   {
+    "sourceIndex": 354,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 231525,
+    "frame60": 315,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 315
+   },
+   {
+    "sourceIndex": 355,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 234281,
+    "frame60": 318,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 318
+   },
+   {
+    "sourceIndex": 356,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 237038,
+    "frame60": 322,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 322
+   },
+   {
+    "sourceIndex": 357,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 237038,
+    "frame60": 322,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 322
+   },
+   {
+    "sourceIndex": 358,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 239794,
+    "frame60": 326,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 326
+   },
+   {
+    "sourceIndex": 359,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 239794,
+    "frame60": 326,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 326
+   },
+   {
+    "sourceIndex": 360,
+    "part": "beast",
+    "event": "ya",
+    "sampleFrame": 242550,
+    "frame60": 330,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 330
+   },
+   {
+    "sourceIndex": 361,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 242550,
+    "frame60": 330,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 330
+   },
+   {
+    "sourceIndex": 362,
+    "part": "cable partner",
+    "event": "crack",
+    "sampleFrame": 242550,
+    "frame60": 330,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "The second cable cracks on the right pin bank."
+     }
+    ],
+    "firstVisibleFrame": 330
+   },
+   {
+    "sourceIndex": 363,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 242550,
+    "frame60": 330,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 330
+   },
+   {
+    "sourceIndex": 364,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 242550,
+    "frame60": 330,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 330
+   },
+   {
+    "sourceIndex": 365,
+    "part": "section",
+    "event": "Excitement",
+    "sampleFrame": 242550,
+    "frame60": 330,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "Section marker; its music already drives the loops."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 366,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 242550,
+    "frame60": 330,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Quiet ghost below the roll threshold."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 367,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 245306,
+    "frame60": 333,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 333
+   },
+   {
+    "sourceIndex": 368,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 245306,
+    "frame60": 333,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 333
+   },
+   {
+    "sourceIndex": 369,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 245306,
+    "frame60": 333,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 333
+   },
+   {
+    "sourceIndex": 370,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 248063,
+    "frame60": 337,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 337
+   },
+   {
+    "sourceIndex": 371,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 248063,
+    "frame60": 337,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 337
+   },
+   {
+    "sourceIndex": 372,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 248063,
+    "frame60": 337,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 337
+   },
+   {
+    "sourceIndex": 373,
+    "part": "beast",
+    "event": "ya",
+    "sampleFrame": 249900,
+    "frame60": 340,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 340
+   },
+   {
+    "sourceIndex": 374,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 250819,
+    "frame60": 341,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 341
+   },
+   {
+    "sourceIndex": 375,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 250819,
+    "frame60": 341,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 341
+   },
+   {
+    "sourceIndex": 376,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 250819,
+    "frame60": 341,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 341
+   },
+   {
+    "sourceIndex": 377,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 253575,
+    "frame60": 345,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 345
+   },
+   {
+    "sourceIndex": 378,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 253575,
+    "frame60": 345,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 345
+   },
+   {
+    "sourceIndex": 379,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 253575,
+    "frame60": 345,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 345
+   },
+   {
+    "sourceIndex": 380,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 253575,
+    "frame60": 345,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 381,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 256331,
+    "frame60": 348,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 348
+   },
+   {
+    "sourceIndex": 382,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 256331,
+    "frame60": 348,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 348
+   },
+   {
+    "sourceIndex": 383,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 256331,
+    "frame60": 348,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 348
+   },
+   {
+    "sourceIndex": 384,
+    "part": "beast",
+    "event": "ka",
+    "sampleFrame": 257250,
+    "frame60": 350,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 350
+   },
+   {
+    "sourceIndex": 385,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 259088,
+    "frame60": 352,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 352
+   },
+   {
+    "sourceIndex": 386,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 259088,
+    "frame60": 352,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 352
+   },
+   {
+    "sourceIndex": 387,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 259088,
+    "frame60": 352,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 352
+   },
+   {
+    "sourceIndex": 388,
+    "part": "beast",
+    "event": "ka",
+    "sampleFrame": 260907,
+    "frame60": 354,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 354
+   },
+   {
+    "sourceIndex": 389,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 261844,
+    "frame60": 356,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 356
+   },
+   {
+    "sourceIndex": 390,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 261844,
+    "frame60": 356,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 356
+   },
+   {
+    "sourceIndex": 391,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 261844,
+    "frame60": 356,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 356
+   },
+   {
+    "sourceIndex": 392,
+    "part": "beast",
+    "event": "WOM",
+    "sampleFrame": 264600,
+    "frame60": 360,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 4 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 360
+   },
+   {
+    "sourceIndex": 393,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 264600,
+    "frame60": 360,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 360
+   },
+   {
+    "sourceIndex": 394,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 264600,
+    "frame60": 360,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 360
+   },
+   {
+    "sourceIndex": 395,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 264600,
+    "frame60": 360,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 360
+   },
+   {
+    "sourceIndex": 396,
+    "part": "section",
+    "event": "VII. The overload",
+    "sampleFrame": 264600,
+    "frame60": 360,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "Section marker; its music already drives the loops."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 397,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 267356,
+    "frame60": 363,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 363
+   },
+   {
+    "sourceIndex": 398,
+    "part": "perc",
+    "event": "alarm-bell hat",
+    "sampleFrame": 267356,
+    "frame60": 363,
+    "roles": [
+     {
+      "role": "bell",
+      "reason": "Corner fasteners strike white."
+     }
+    ],
+    "firstVisibleFrame": 363
+   },
+   {
+    "sourceIndex": 399,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 270113,
+    "frame60": 367,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 367
+   },
+   {
+    "sourceIndex": 400,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 272869,
+    "frame60": 371,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 371
+   },
+   {
+    "sourceIndex": 401,
+    "part": "beast",
+    "event": "ka",
+    "sampleFrame": 275625,
+    "frame60": 375,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 375
+   },
+   {
+    "sourceIndex": 402,
+    "part": "cable bass",
+    "event": "ghost",
+    "sampleFrame": 275625,
+    "frame60": 375,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Ghost articulation; the major attacks carry the phrase."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 403,
+    "part": "kick",
+    "event": "break kick",
+    "sampleFrame": 275625,
+    "frame60": 375,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 375
+   },
+   {
+    "sourceIndex": 404,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 275625,
+    "frame60": 375,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 375
+   },
+   {
+    "sourceIndex": 405,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 278381,
+    "frame60": 378,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 378
+   },
+   {
+    "sourceIndex": 406,
+    "part": "beast",
+    "event": "YOI",
+    "sampleFrame": 281138,
+    "frame60": 382,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 382
+   },
+   {
+    "sourceIndex": 407,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 281138,
+    "frame60": 382,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 382
+   },
+   {
+    "sourceIndex": 408,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 281138,
+    "frame60": 382,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 382
+   },
+   {
+    "sourceIndex": 409,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 283894,
+    "frame60": 386,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 386
+   },
+   {
+    "sourceIndex": 410,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 286650,
+    "frame60": 390,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 390
+   },
+   {
+    "sourceIndex": 411,
+    "part": "cable partner",
+    "event": "crack",
+    "sampleFrame": 286650,
+    "frame60": 390,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "The second cable cracks on the right pin bank."
+     }
+    ],
+    "firstVisibleFrame": 390
+   },
+   {
+    "sourceIndex": 412,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 286650,
+    "frame60": 390,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 390
+   },
+   {
+    "sourceIndex": 413,
+    "part": "snare",
+    "event": "BIG snare (cable crack inside)",
+    "sampleFrame": 286650,
+    "frame60": 390,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "ring",
+      "reason": "BIG snare: every carrier flashes, the package slams."
+     }
+    ],
+    "firstVisibleFrame": 390
+   },
+   {
+    "sourceIndex": 414,
+    "part": "snare",
+    "event": "toaster spring",
+    "sampleFrame": 286650,
+    "frame60": 390,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Spring layer belongs to the snare hit."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 415,
+    "part": "beast",
+    "event": "ka",
+    "sampleFrame": 289406,
+    "frame60": 393,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 393
+   },
+   {
+    "sourceIndex": 416,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 289406,
+    "frame60": 393,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 393
+   },
+   {
+    "sourceIndex": 417,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 292163,
+    "frame60": 397,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 397
+   },
+   {
+    "sourceIndex": 418,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 292163,
+    "frame60": 397,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 397
+   },
+   {
+    "sourceIndex": 419,
+    "part": "perc",
+    "event": "press clank",
+    "sampleFrame": 292163,
+    "frame60": 397,
+    "roles": [
+     {
+      "role": "thump",
+      "reason": "Clank presses the package."
+     }
+    ],
+    "firstVisibleFrame": 397
+   },
+   {
+    "sourceIndex": 420,
+    "part": "beast",
+    "event": "YOI",
+    "sampleFrame": 294919,
+    "frame60": 401,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 401
+   },
+   {
+    "sourceIndex": 421,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 294919,
+    "frame60": 401,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 401
+   },
+   {
+    "sourceIndex": 422,
+    "part": "cable bass",
+    "event": "slap",
+    "sampleFrame": 297675,
+    "frame60": 405,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Slap fires all 56 routes outward and writes all four outer gates."
+     }
+    ],
+    "firstVisibleFrame": 405
+   },
+   {
+    "sourceIndex": 423,
+    "part": "kick",
+    "event": "kick",
+    "sampleFrame": 297675,
+    "frame60": 405,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 405
+   },
+   {
+    "sourceIndex": 424,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 297675,
+    "frame60": 405,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 405
+   },
+   {
+    "sourceIndex": 425,
+    "part": "perc",
+    "event": "alarm-bell hat",
+    "sampleFrame": 297675,
+    "frame60": 405,
+    "roles": [
+     {
+      "role": "bell",
+      "reason": "Corner fasteners strike white."
+     }
+    ],
+    "firstVisibleFrame": 405
+   },
+   {
+    "sourceIndex": 426,
+    "part": "snare",
+    "event": "break snare + spring",
+    "sampleFrame": 297675,
+    "frame60": 405,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "ring",
+      "reason": "Snare rings the middle loop white."
+     }
+    ],
+    "firstVisibleFrame": 405
+   },
+   {
+    "sourceIndex": 427,
+    "part": "beast",
+    "event": "ka",
+    "sampleFrame": 300431,
+    "frame60": 408,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 408
+   },
+   {
+    "sourceIndex": 428,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 300431,
+    "frame60": 408,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 408
+   },
+   {
+    "sourceIndex": 429,
+    "part": "cable bass",
+    "event": "pluck",
+    "sampleFrame": 303188,
+    "frame60": 412,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Pluck fires two pin banks and writes one of their outer gates."
+     }
+    ],
+    "firstVisibleFrame": 412
+   },
+   {
+    "sourceIndex": 430,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 303188,
+    "frame60": 412,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 412
+   },
+   {
+    "sourceIndex": 431,
+    "part": "snare",
+    "event": "break snare + spring",
+    "sampleFrame": 303188,
+    "frame60": 412,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "ring",
+      "reason": "Snare rings the middle loop white."
+     }
+    ],
+    "firstVisibleFrame": 412
+   },
+   {
+    "sourceIndex": 432,
+    "part": "beast",
+    "event": "YOI",
+    "sampleFrame": 305944,
+    "frame60": 416,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 416
+   },
+   {
+    "sourceIndex": 433,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 305944,
+    "frame60": 416,
+    "roles": [
+     {
+      "role": "clock",
+      "reason": "Outer loop advances one slot clockwise."
+     }
+    ],
+    "firstVisibleFrame": 416
+   },
+   {
+    "sourceIndex": 434,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 305944,
+    "frame60": 416,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 416
+   },
+   {
+    "sourceIndex": 435,
+    "part": "beast",
+    "event": "ka",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 420
+   },
+   {
+    "sourceIndex": 436,
+    "part": "cable",
+    "event": "slap (strike)",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "Overwind strike fires all routes and writes all outer gates."
+     }
+    ],
+    "firstVisibleFrame": 420
+   },
+   {
+    "sourceIndex": 437,
+    "part": "cable",
+    "event": "OVERWIND",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "State marker; the ratchet repeats and strikes carry it."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 438,
+    "part": "cable partner",
+    "event": "crack",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "The second cable cracks on the right pin bank."
+     }
+    ],
+    "firstVisibleFrame": 420
+   },
+   {
+    "sourceIndex": 439,
+    "part": "kick",
+    "event": "break kick",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 420
+   },
+   {
+    "sourceIndex": 440,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 441,
+    "part": "perc",
+    "event": "alarm-bell hat",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "bell",
+      "reason": "Corner fasteners strike white."
+     }
+    ],
+    "firstVisibleFrame": 420
+   },
+   {
+    "sourceIndex": 442,
+    "part": "ratchet",
+    "event": "RATCHET (crack)",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "Ratchet header; its repeats wind the loop."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 443,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 420
+   },
+   {
+    "sourceIndex": 444,
+    "part": "section",
+    "event": "Overwind",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "Section marker; its music already drives the loops."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 445,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Quiet ghost below the roll threshold."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 446,
+    "part": "snare",
+    "event": "break snare + spring",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "ring",
+      "reason": "Snare rings the middle loop white."
+     }
+    ],
+    "firstVisibleFrame": 420
+   },
+   {
+    "sourceIndex": 447,
+    "part": "snare",
+    "event": "toaster spring",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Spring layer belongs to the snare hit."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 448,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 308700,
+    "frame60": 420,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 420
+   },
+   {
+    "sourceIndex": 449,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 309600,
+    "frame60": 421,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 421
+   },
+   {
+    "sourceIndex": 450,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 309600,
+    "frame60": 421,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 421
+   },
+   {
+    "sourceIndex": 451,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 310499,
+    "frame60": 422,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 422
+   },
+   {
+    "sourceIndex": 452,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 310499,
+    "frame60": 422,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 422
+   },
+   {
+    "sourceIndex": 453,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 311394,
+    "frame60": 423,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 423
+   },
+   {
+    "sourceIndex": 454,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 311395,
+    "frame60": 423,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 423
+   },
+   {
+    "sourceIndex": 455,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 311456,
+    "frame60": 423,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 456,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 311456,
+    "frame60": 423,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Quiet ghost below the roll threshold."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 457,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 311456,
+    "frame60": 423,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 423
+   },
+   {
+    "sourceIndex": 458,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 312281,
+    "frame60": 424,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 424
+   },
+   {
+    "sourceIndex": 459,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 312283,
+    "frame60": 424,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 424
+   },
+   {
+    "sourceIndex": 460,
+    "part": "beast",
+    "event": "YOI",
+    "sampleFrame": 313110,
+    "frame60": 426,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 426
+   },
+   {
+    "sourceIndex": 461,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 313163,
+    "frame60": 426,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 426
+   },
+   {
+    "sourceIndex": 462,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 313163,
+    "frame60": 426,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 426
+   },
+   {
+    "sourceIndex": 463,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 314032,
+    "frame60": 427,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 427
+   },
+   {
+    "sourceIndex": 464,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 314032,
+    "frame60": 427,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 427
+   },
+   {
+    "sourceIndex": 465,
+    "part": "kick",
+    "event": "break kick",
+    "sampleFrame": 314213,
+    "frame60": 427,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 427
+   },
+   {
+    "sourceIndex": 466,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 314213,
+    "frame60": 427,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 467,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 314213,
+    "frame60": 427,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Quiet ghost below the roll threshold."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 468,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 314213,
+    "frame60": 427,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 427
+   },
+   {
+    "sourceIndex": 469,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 314887,
+    "frame60": 428,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 428
+   },
+   {
+    "sourceIndex": 470,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 314889,
+    "frame60": 428,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 428
+   },
+   {
+    "sourceIndex": 471,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 315730,
+    "frame60": 429,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 429
+   },
+   {
+    "sourceIndex": 472,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 315731,
+    "frame60": 429,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 429
+   },
+   {
+    "sourceIndex": 473,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 316557,
+    "frame60": 430,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 430
+   },
+   {
+    "sourceIndex": 474,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 316559,
+    "frame60": 430,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 430
+   },
+   {
+    "sourceIndex": 475,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 316969,
+    "frame60": 431,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 476,
+    "part": "perc",
+    "event": "press clank",
+    "sampleFrame": 316969,
+    "frame60": 431,
+    "roles": [
+     {
+      "role": "thump",
+      "reason": "Clank presses the package."
+     }
+    ],
+    "firstVisibleFrame": 431
+   },
+   {
+    "sourceIndex": 477,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 316969,
+    "frame60": 431,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 431
+   },
+   {
+    "sourceIndex": 478,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 316969,
+    "frame60": 431,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 431
+   },
+   {
+    "sourceIndex": 479,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 317366,
+    "frame60": 431,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 431
+   },
+   {
+    "sourceIndex": 480,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 317366,
+    "frame60": 431,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 431
+   },
+   {
+    "sourceIndex": 481,
+    "part": "beast",
+    "event": "ka",
+    "sampleFrame": 317520,
+    "frame60": 432,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 432
+   },
+   {
+    "sourceIndex": 482,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 318155,
+    "frame60": 432,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 432
+   },
+   {
+    "sourceIndex": 483,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 318156,
+    "frame60": 432,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 432
+   },
+   {
+    "sourceIndex": 484,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 318927,
+    "frame60": 433,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 433
+   },
+   {
+    "sourceIndex": 485,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 318927,
+    "frame60": 433,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 433
+   },
+   {
+    "sourceIndex": 486,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 319676,
+    "frame60": 434,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 434
+   },
+   {
+    "sourceIndex": 487,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 319678,
+    "frame60": 434,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 434
+   },
+   {
+    "sourceIndex": 488,
+    "part": "cable partner",
+    "event": "crack",
+    "sampleFrame": 319725,
+    "frame60": 435,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "The second cable cracks on the right pin bank."
+     }
+    ],
+    "firstVisibleFrame": 435
+   },
+   {
+    "sourceIndex": 489,
+    "part": "kick",
+    "event": "break kick",
+    "sampleFrame": 319725,
+    "frame60": 435,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 435
+   },
+   {
+    "sourceIndex": 490,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 319725,
+    "frame60": 435,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 491,
+    "part": "perc",
+    "event": "alarm-bell hat",
+    "sampleFrame": 319725,
+    "frame60": 435,
+    "roles": [
+     {
+      "role": "bell",
+      "reason": "Corner fasteners strike white."
+     }
+    ],
+    "firstVisibleFrame": 435
+   },
+   {
+    "sourceIndex": 492,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 319725,
+    "frame60": 435,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 493,
+    "part": "snare",
+    "event": "break snare + spring",
+    "sampleFrame": 319725,
+    "frame60": 435,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "ring",
+      "reason": "Snare rings the middle loop white."
+     }
+    ],
+    "firstVisibleFrame": 435
+   },
+   {
+    "sourceIndex": 494,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 319725,
+    "frame60": 435,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 435
+   },
+   {
+    "sourceIndex": 495,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 320408,
+    "frame60": 435,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 435
+   },
+   {
+    "sourceIndex": 496,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 320409,
+    "frame60": 435,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 435
+   },
+   {
+    "sourceIndex": 497,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 321118,
+    "frame60": 436,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 436
+   },
+   {
+    "sourceIndex": 498,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 321119,
+    "frame60": 436,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 436
+   },
+   {
+    "sourceIndex": 499,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 321807,
+    "frame60": 437,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 437
+   },
+   {
+    "sourceIndex": 500,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 321807,
+    "frame60": 437,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 437
+   },
+   {
+    "sourceIndex": 501,
+    "part": "beast",
+    "event": "YOI",
+    "sampleFrame": 321930,
+    "frame60": 438,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 438
+   },
+   {
+    "sourceIndex": 502,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 322475,
+    "frame60": 438,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 438
+   },
+   {
+    "sourceIndex": 503,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 322477,
+    "frame60": 438,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 438
+   },
+   {
+    "sourceIndex": 504,
+    "part": "kick",
+    "event": "ghost kick",
+    "sampleFrame": 322481,
+    "frame60": 438,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 438
+   },
+   {
+    "sourceIndex": 505,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 322481,
+    "frame60": 438,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 506,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 322481,
+    "frame60": 438,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 507,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 322481,
+    "frame60": 438,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 438
+   },
+   {
+    "sourceIndex": 508,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 323123,
+    "frame60": 439,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 439
+   },
+   {
+    "sourceIndex": 509,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 323125,
+    "frame60": 439,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 439
+   },
+   {
+    "sourceIndex": 510,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 323751,
+    "frame60": 440,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 440
+   },
+   {
+    "sourceIndex": 511,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 323751,
+    "frame60": 440,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 440
+   },
+   {
+    "sourceIndex": 512,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 324359,
+    "frame60": 441,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 441
+   },
+   {
+    "sourceIndex": 513,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 324360,
+    "frame60": 441,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 441
+   },
+   {
+    "sourceIndex": 514,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 324946,
+    "frame60": 442,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 442
+   },
+   {
+    "sourceIndex": 515,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 324947,
+    "frame60": 442,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 442
+   },
+   {
+    "sourceIndex": 516,
+    "part": "kick",
+    "event": "break kick",
+    "sampleFrame": 325238,
+    "frame60": 442,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 442
+   },
+   {
+    "sourceIndex": 517,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 325238,
+    "frame60": 442,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 518,
+    "part": "perc",
+    "event": "alarm-bell hat",
+    "sampleFrame": 325238,
+    "frame60": 442,
+    "roles": [
+     {
+      "role": "bell",
+      "reason": "Corner fasteners strike white."
+     }
+    ],
+    "firstVisibleFrame": 442
+   },
+   {
+    "sourceIndex": 519,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 325238,
+    "frame60": 442,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 520,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 325238,
+    "frame60": 442,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 442
+   },
+   {
+    "sourceIndex": 521,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 325515,
+    "frame60": 442,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 442
+   },
+   {
+    "sourceIndex": 522,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 325517,
+    "frame60": 442,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 442
+   },
+   {
+    "sourceIndex": 523,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 326067,
+    "frame60": 443,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 443
+   },
+   {
+    "sourceIndex": 524,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 326068,
+    "frame60": 443,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 443
+   },
+   {
+    "sourceIndex": 525,
+    "part": "beast",
+    "event": "ka",
+    "sampleFrame": 326340,
+    "frame60": 444,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 444
+   },
+   {
+    "sourceIndex": 526,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 326600,
+    "frame60": 444,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 444
+   },
+   {
+    "sourceIndex": 527,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 326602,
+    "frame60": 444,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 444
+   },
+   {
+    "sourceIndex": 528,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 327119,
+    "frame60": 445,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 445
+   },
+   {
+    "sourceIndex": 529,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 327121,
+    "frame60": 445,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 445
+   },
+   {
+    "sourceIndex": 530,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 327619,
+    "frame60": 445,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 445
+   },
+   {
+    "sourceIndex": 531,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 327619,
+    "frame60": 445,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 445
+   },
+   {
+    "sourceIndex": 532,
+    "part": "cable partner",
+    "event": "crack",
+    "sampleFrame": 327994,
+    "frame60": 446,
+    "roles": [
+     {
+      "role": "fire",
+      "reason": "The second cable cracks on the right pin bank."
+     }
+    ],
+    "firstVisibleFrame": 446
+   },
+   {
+    "sourceIndex": 533,
+    "part": "kick",
+    "event": "ghost kick",
+    "sampleFrame": 327994,
+    "frame60": 446,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 446
+   },
+   {
+    "sourceIndex": 534,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 327994,
+    "frame60": 446,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 535,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 327994,
+    "frame60": 446,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 536,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 327994,
+    "frame60": 446,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 446
+   },
+   {
+    "sourceIndex": 537,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 328103,
+    "frame60": 446,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 446
+   },
+   {
+    "sourceIndex": 538,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 328104,
+    "frame60": 446,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 446
+   },
+   {
+    "sourceIndex": 539,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 328571,
+    "frame60": 447,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 447
+   },
+   {
+    "sourceIndex": 540,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 328571,
+    "frame60": 447,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 447
+   },
+   {
+    "sourceIndex": 541,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 329026,
+    "frame60": 447,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 447
+   },
+   {
+    "sourceIndex": 542,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 329026,
+    "frame60": 447,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 447
+   },
+   {
+    "sourceIndex": 543,
+    "part": "perc",
+    "event": "press clank",
+    "sampleFrame": 329372,
+    "frame60": 448,
+    "roles": [
+     {
+      "role": "thump",
+      "reason": "Clank presses the package."
+     }
+    ],
+    "firstVisibleFrame": 448
+   },
+   {
+    "sourceIndex": 544,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 329465,
+    "frame60": 448,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 448
+   },
+   {
+    "sourceIndex": 545,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 329467,
+    "frame60": 448,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 448
+   },
+   {
+    "sourceIndex": 546,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 329890,
+    "frame60": 448,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 448
+   },
+   {
+    "sourceIndex": 547,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 329892,
+    "frame60": 448,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 448
+   },
+   {
+    "sourceIndex": 548,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 330305,
+    "frame60": 449,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 449
+   },
+   {
+    "sourceIndex": 549,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 330305,
+    "frame60": 449,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 449
+   },
+   {
+    "sourceIndex": 550,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 330706,
+    "frame60": 449,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 449
+   },
+   {
+    "sourceIndex": 551,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 330706,
+    "frame60": 449,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 449
+   },
+   {
+    "sourceIndex": 552,
+    "part": "beast",
+    "event": "ya",
+    "sampleFrame": 330750,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "voice",
+      "reason": "Core lifts, glows amber and turns 1 slot(s)."
+     }
+    ],
+    "firstVisibleFrame": 450
+   },
+   {
+    "sourceIndex": 553,
+    "part": "kick",
+    "event": "break kick",
+    "sampleFrame": 330750,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     },
+     {
+      "role": "thump",
+      "reason": "Kick presses the whole package and writes the middle gates."
+     }
+    ],
+    "firstVisibleFrame": 450
+   },
+   {
+    "sourceIndex": 554,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 330750,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 555,
+    "part": "perc",
+    "event": "alarm-bell hat",
+    "sampleFrame": 330750,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "bell",
+      "reason": "Corner fasteners strike white."
+     }
+    ],
+    "firstVisibleFrame": 450
+   },
+   {
+    "sourceIndex": 556,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 330750,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 557,
+    "part": "snare",
+    "event": "break snare + spring",
+    "sampleFrame": 330750,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "ring",
+      "reason": "Snare rings the middle loop white."
+     }
+    ],
+    "firstVisibleFrame": 450
+   },
+   {
+    "sourceIndex": 558,
+    "part": "snare",
+    "event": "toaster spring",
+    "sampleFrame": 330750,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "Spring layer belongs to the snare hit."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 559,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 330750,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 450
+   },
+   {
+    "sourceIndex": 560,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 331094,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 450
+   },
+   {
+    "sourceIndex": 561,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 331095,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 450
+   },
+   {
+    "sourceIndex": 562,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 331472,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 450
+   },
+   {
+    "sourceIndex": 563,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 331473,
+    "frame60": 450,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 450
+   },
+   {
+    "sourceIndex": 564,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 331839,
+    "frame60": 451,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 451
+   },
+   {
+    "sourceIndex": 565,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 331839,
+    "frame60": 451,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 451
+   },
+   {
+    "sourceIndex": 566,
+    "part": "beast",
+    "event": "glitch (beat-repeat + crush)",
+    "sampleFrame": 331853,
+    "frame60": 451,
+    "roles": [
+     {
+      "role": "glitch",
+      "reason": "Beat-repeat: the picture repeats a two-frame slice and crushes."
+     }
+    ],
+    "firstVisibleFrame": 451
+   },
+   {
+    "sourceIndex": 567,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 332195,
+    "frame60": 451,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 451
+   },
+   {
+    "sourceIndex": 568,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 332196,
+    "frame60": 451,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 451
+   },
+   {
+    "sourceIndex": 569,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 332540,
+    "frame60": 452,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 452
+   },
+   {
+    "sourceIndex": 570,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 332541,
+    "frame60": 452,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 452
+   },
+   {
+    "sourceIndex": 571,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 332876,
+    "frame60": 452,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 452
+   },
+   {
+    "sourceIndex": 572,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 332877,
+    "frame60": 452,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 452
+   },
+   {
+    "sourceIndex": 573,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 333202,
+    "frame60": 453,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 453
+   },
+   {
+    "sourceIndex": 574,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 333204,
+    "frame60": 453,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 453
+   },
+   {
+    "sourceIndex": 575,
+    "part": "kick",
+    "event": "ghost kick",
+    "sampleFrame": 333506,
+    "frame60": 453,
+    "roles": [
+     {
+      "role": "groove",
+      "reason": "Middle loop advances counter-clockwise."
+     }
+    ],
+    "firstVisibleFrame": 453
+   },
+   {
+    "sourceIndex": 576,
+    "part": "perc",
+    "event": "cable tick",
+    "sampleFrame": 333506,
+    "frame60": 453,
+    "roles": [
+     {
+      "role": "absorbed",
+      "reason": "The ratchet pawl holds the clock loop while it is wound."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 577,
+    "part": "snare",
+    "event": "ghost snare",
+    "sampleFrame": 333506,
+    "frame60": 453,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 578,
+    "part": "toms",
+    "event": "cable tom",
+    "sampleFrame": 333506,
+    "frame60": 453,
+    "roles": [
+     {
+      "role": "coalesced",
+      "reason": "Shares a picture frame with another drum hit: one loop step."
+     },
+     {
+      "role": "walk",
+      "reason": "Tom writes copper at a gate that walks one slot per tom."
+     }
+    ],
+    "firstVisibleFrame": 453
+   },
+   {
+    "sourceIndex": 579,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 333522,
+    "frame60": 453,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 453
+   },
+   {
+    "sourceIndex": 580,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 333524,
+    "frame60": 453,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 453
+   },
+   {
+    "sourceIndex": 581,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 333831,
+    "frame60": 454,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 454
+   },
+   {
+    "sourceIndex": 582,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 333833,
+    "frame60": 454,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 454
+   },
+   {
+    "sourceIndex": 583,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 334133,
+    "frame60": 454,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 454
+   },
+   {
+    "sourceIndex": 584,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 334132,
+    "frame60": 454,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 454
+   },
+   {
+    "sourceIndex": 585,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 334426,
+    "frame60": 455,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 455
+   },
+   {
+    "sourceIndex": 586,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 334428,
+    "frame60": 455,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 455
+   },
+   {
+    "sourceIndex": 587,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 334710,
+    "frame60": 455,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 455
+   },
+   {
+    "sourceIndex": 588,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 334712,
+    "frame60": 455,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 455
+   },
+   {
+    "sourceIndex": 589,
+    "part": "cable",
+    "event": "wind strike",
+    "sampleFrame": 334991,
+    "frame60": 455,
+    "roles": [
+     {
+      "role": "draw",
+      "reason": "Each wind strike draws one pin bank inward and charges its gate."
+     }
+    ],
+    "firstVisibleFrame": 455
+   },
+   {
+    "sourceIndex": 590,
+    "part": "ratchet",
+    "event": "repeat",
+    "sampleFrame": 334992,
+    "frame60": 455,
+    "roles": [
+     {
+      "role": "wind",
+      "reason": "Ratchet winds the outer loop back one slot."
+     }
+    ],
+    "firstVisibleFrame": 455
+   },
+   {
+    "sourceIndex": 591,
+    "part": "all",
+    "event": "CUT: silence",
+    "sampleFrame": 335160,
+    "frame60": 456,
+    "roles": [
+     {
+      "role": "cut",
+      "reason": "Exact black from this frame; render is never called for 456-479."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 592,
+    "part": "cable",
+    "event": "silent",
+    "sampleFrame": 335160,
+    "frame60": 456,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "State marker; the ratchet repeats and strikes carry it."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 593,
+    "part": "cable",
+    "event": "grab (hand stops the cable)",
+    "sampleFrame": 335160,
+    "frame60": 456,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "State marker; the ratchet repeats and strikes carry it."
+     }
+    ]
+   },
+   {
+    "sourceIndex": 594,
+    "part": "section",
+    "event": "CUT",
+    "sampleFrame": 335160,
+    "frame60": 456,
+    "roles": [
+     {
+      "role": "metadata",
+      "reason": "Section marker; its music already drives the loops."
+     }
+    ]
+   }
+  ]
+ },
+ "typography": {
+  "finished_with_lockup": false,
+  "frames_recomputed_without_overlay": 36,
+  "all_match_encoder_input_hashes": true,
+  "note": "Diegetic markings that are part of the fictional board geometry (V1 scene.py) remain."
+ },
+ "approved_proof": {
+  "approved_proof_commit": "9b0f7c9645348d1daac3e93f6b22bbc1529c25f4",
+  "delivery_files_unchanged": true,
+  "approved_proof_sha256": "f4d73ca4d8c4ab1a5d6fa377c4db93eac6dadaa61c145a4ab7b70f914d89dbb7",
+  "reproduce": "render.py --variant proof --width 432 --samples 12; finish.py --kind proof --lockup"
+ },
+ "climax_clarity": {
+  "variant": "master",
+  "camera_shutter_share_of_180_degrees": {
+   "390": 1.0,
+   "400": 0.923,
+   "410": 0.498,
+   "420": 0.25,
+   "444": 0.25,
+   "455": 0.25
+  },
+  "machinery_shutter": "180 degrees throughout (unchanged)",
+  "unchanged_before_frame": 396
+ },
+ "determinism": {
+  "re_rendered_frames_bit_identical": true,
+  "raw_rgb_sha256": {
+   "raw-000.png": "6ea717c5ace7a278353e3469af78cac7e1361c6ff8d7ff3a60f38bea86c6a3f8",
+   "raw-056.png": "74870a03ae5df79e4052cc552b2b03cc06f943ceb6f27274f9b54665a33f01cf",
+   "raw-057.png": "bef12651cdd882caf201ee0a1dceb0dc6dbba883d75f4637781054d727966c5c",
+   "raw-113.png": "9fb000a79c34aeaf132fc9253d3eed3d0a60f031a0719b5aa67b71c9a6b749fb",
+   "raw-114.png": "be429ca1142f4c9f2eb4e8af7f38ea2df0bd80ebe4c571796908c415390591da",
+   "raw-170.png": "6b34e9eff30f53c34a18ddce4f3c5acff45728d51965127d38f90233b471ff72",
+   "raw-171.png": "9bce839a5d4696c6406a62c05bfa3ef8deb97c6408e588e3203219cd88f782fe",
+   "raw-227.png": "458e92274c9d68a9c1e6f6e7619d62eaaef730b97d34eedb1a42c02effb723ae",
+   "raw-228.png": "5855b7263494c317091138f729c23481bdf2357abc5d3b67dd7ed6531fb794e9",
+   "raw-240.png": "00637186b16873c6ca3c31a533837d02db269dcd4543148a36d2239bdc785ff7",
+   "raw-284.png": "74499770c36f1aa874f149b8be1692e015e2cc1746989f561eb058045be11580",
+   "raw-285.png": "97df2793540213c37021cd9e1bea82d179e3014a9f4147113aedc0e4f32abbc1",
+   "raw-341.png": "f5cdf1c7a8301a623df3c9cdc770cdc121156b0ee0f89a016066c2364253f94d",
+   "raw-342.png": "e11b1716c11388ce4a315e835e1840f80d949bec745ab1e5c44397e2c56eb6b8",
+   "raw-395.png": "5f474b5d97d2b355e41172a3b65577bfd45e1bc8271f1218c534a891b11233f6",
+   "raw-396.png": "205fa775eaf77f68318fcb6d80b78fef7d9c40e166297220969f5f5229054e88",
+   "raw-398.png": "84640c60e732a570c3c3a38c8e1737de383ebdcb40497f3cdb13ab76fb4627a7",
+   "raw-399.png": "69db3638d8ed7b088e325c1511d9440566f91a180d37353e49249b3b7ea9567c",
+   "raw-444.png": "73421a0cc86cbfb19c2dcd0ea9e9611f5241b7c2c7e573d95ca006e292242fcf",
+   "raw-453.png": "6d1eb7b95eaf4a1f5ecbea202e1bc0dcca66970c4a201fff295cd9c609093fb7",
+   "raw-455.png": "0b342749e4486f3caeee27eb4792da543de2fabec39d8ab93b8274a319fdd9c1"
+  },
+  "scope": "Same machine, Blender build, thread count and settings; not a cross-platform claim."
+ }
+}
