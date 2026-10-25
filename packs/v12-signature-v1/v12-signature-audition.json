@@ -1,0 +1,209 @@
+{
+  "formatVersion": 1,
+  "title": "V12 SIGNATURE — Instrument Audition",
+  "description": "Dry audition of all sixteen V12 SIGNATURE sounds, in catalog order, at 120 BPM (one bar = 2.000 s). Bars 1–6 percussion, 7–8 ABYSS, 9–10 REACTOR, 11–12 SIGNAL, 13–14 PHANTOM, 15–17 EVENT HORIZON, 18–19 AFTERGLOW, 20–21 SPECTER, 22–23 CHROME STRIKE, 24–26 ASCENSION, 27 CONVERGENCE (57.000 s with its tail). No effects, mix or automation: the Node-only sample route.",
+  "bpm": 120,
+  "timeSignature": "4/4",
+  "key": "A minor",
+  "bars": 27,
+  "seed": 12,
+  "tracks": [
+    {
+      "id": "kit",
+      "description": "All seven percussion sounds through the pack kit (kit pitches 35–53), one bar each in catalog order.",
+      "instrument": {"type":"drumkit","kit":"assets/v12-signature/kit.json"},
+      "clips": [{"bar":1,"pattern":"score"}],
+      "patterns": [
+        {
+          "id": "score",
+          "bars": 27,
+          "notes": [
+            {"start":"1:1","pitch":"sub-hammer","velocity":0.95,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"1:2+1/8","pitch":"sub-hammer","velocity":0.8,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"1:3","pitch":"sub-hammer","velocity":1},
+            {"start":"2:1","pitch":"iron-pulse","velocity":0.95},
+            {"start":"2:2","pitch":"iron-pulse","velocity":0.8},
+            {"start":"2:3","pitch":"iron-pulse","velocity":0.88},
+            {"start":"2:4","pitch":"iron-pulse","velocity":1},
+            {"start":"3:2","pitch":"titanium-crack","velocity":0.9},
+            {"start":"3:4","pitch":"titanium-crack","velocity":0.95},
+            {"start":"3:3","pitch":"titanium-crack","velocity":0.3,"gate":"1/32","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"snare"},
+            {"start":"3:3+1/16","pitch":"titanium-crack","velocity":0.42,"gate":"1/32","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"snare"},
+            {"start":"3:3+1/8","pitch":"titanium-crack","velocity":0.54,"gate":"1/32","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"snare"},
+            {"start":"3:3+3/16","pitch":"titanium-crack","velocity":0.66,"gate":"1/32","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"snare"},
+            {"start":"4:2","pitch":"neon-clap","velocity":0.9},
+            {"start":"4:4","pitch":"neon-clap","velocity":0.95,"playbackRate":0.890899},
+            {"start":"5:1","pitch":"ghost-tick","velocity":0.75,"chokeGroup":"hats"},
+            {"start":"5:1+1/16","pitch":"ghost-tick","velocity":0.32,"chokeGroup":"hats"},
+            {"start":"5:1+1/8","pitch":"ghost-tick","velocity":0.5,"chokeGroup":"hats"},
+            {"start":"5:1+3/16","pitch":"ghost-tick","velocity":0.35,"chokeGroup":"hats"},
+            {"start":"5:2","pitch":"ghost-tick","velocity":0.75,"chokeGroup":"hats"},
+            {"start":"5:2+1/16","pitch":"ghost-tick","velocity":0.32,"chokeGroup":"hats"},
+            {"start":"5:2+1/8","pitch":"ghost-tick","velocity":0.5,"chokeGroup":"hats"},
+            {"start":"5:2+3/16","pitch":"ghost-tick","velocity":0.35,"chokeGroup":"hats"},
+            {"start":"5:3","pitch":"ghost-tick","velocity":0.75,"chokeGroup":"hats"},
+            {"start":"5:3+1/16","pitch":"ghost-tick","velocity":0.32,"chokeGroup":"hats"},
+            {"start":"5:3+1/8","pitch":"ghost-tick","velocity":0.5,"chokeGroup":"hats"},
+            {"start":"5:3+3/16","pitch":"ghost-tick","velocity":0.35,"chokeGroup":"hats"},
+            {"start":"5:4","pitch":"ghost-tick","velocity":0.75,"chokeGroup":"hats"},
+            {"start":"5:4+1/16","pitch":"ghost-tick","velocity":0.32,"chokeGroup":"hats"},
+            {"start":"5:4+1/8","pitch":"ghost-tick","velocity":0.5,"chokeGroup":"hats"},
+            {"start":"5:4+3/16","pitch":"ghost-tick","velocity":0.35,"chokeGroup":"hats"},
+            {"start":"6:1+1/8","pitch":"open-circuit","velocity":0.75,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.06},"chokeGroup":"hats"},
+            {"start":"6:2+1/8","pitch":"open-circuit","velocity":0.75,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.06},"chokeGroup":"hats"},
+            {"start":"6:3","pitch":"open-circuit","velocity":0.85},
+            {"start":"22:1","pitch":"chrome-strike","velocity":0.8,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.25}},
+            {"start":"22:1+3/16","pitch":"chrome-strike","velocity":0.6,"playbackRate":1.189207,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.25}},
+            {"start":"22:2+1/8","pitch":"chrome-strike","velocity":0.65,"playbackRate":1.498307,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.25}},
+            {"start":"22:3","pitch":"chrome-strike","velocity":0.85}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "abyss",
+      "description": "07 ABYSS: one held A1 bar, then G1 and E1 halves (2 bars).",
+      "instrument": {"type":"sampler","sample":"assets/v12-signature/07-abyss.wav"},
+      "clips": [{"bar":1,"pattern":"score"}],
+      "patterns": [
+        {
+          "id": "score",
+          "bars": 27,
+          "notes": [
+            {"start":"7:1","velocity":0.9,"gate":"1/1","envelope":{"attackSeconds":0.004,"releaseSeconds":0.12}},
+            {"start":"8:1","velocity":0.85,"playbackRate":0.890899,"gate":"1/2","envelope":{"attackSeconds":0.004,"releaseSeconds":0.08}},
+            {"start":"8:3","velocity":0.9,"playbackRate":0.749154,"gate":"7/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.2}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reactor",
+      "description": "08 REACTOR: rolling sixteenths on A1, then a held F1 to A1 (2 bars).",
+      "instrument": {"type":"sampler","sample":"assets/v12-signature/08-reactor.wav"},
+      "clips": [{"bar":1,"pattern":"score"}],
+      "patterns": [
+        {
+          "id": "score",
+          "bars": 27,
+          "notes": [
+            {"start":"9:1+1/16","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:1+1/8","velocity":0.7,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:1+3/16","velocity":0.78,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:2+1/16","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:2+1/8","velocity":0.7,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:2+3/16","velocity":0.78,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:3+1/16","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:3+1/8","velocity":0.7,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:3+3/16","velocity":0.78,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:4+1/16","velocity":0.85,"playbackRate":1.189207,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:4+1/8","velocity":0.7,"playbackRate":1.189207,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"9:4+3/16","velocity":0.78,"playbackRate":1.189207,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03}},
+            {"start":"10:1","velocity":0.85,"playbackRate":0.793701,"gate":"1/2","envelope":{"attackSeconds":0.003,"releaseSeconds":0.08}},
+            {"start":"10:3","velocity":0.9,"gate":"7/16","envelope":{"attackSeconds":0.003,"releaseSeconds":0.2}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "signal",
+      "description": "09 SIGNAL: the hypnotic three-note cell, then held E5 and A4 (2 bars).",
+      "instrument": {"type":"sampler","sample":"assets/v12-signature/09-signal.wav"},
+      "clips": [{"bar":1,"pattern":"score"}],
+      "patterns": [
+        {
+          "id": "score",
+          "bars": 27,
+          "notes": [
+            {"start":"11:1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:1+1/16","velocity":0.58,"playbackRate":1.498307,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:1+1/8","velocity":0.58,"playbackRate":1.189207,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:1+3/16","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:2","velocity":0.58,"playbackRate":1.498307,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:2+1/16","velocity":0.58,"playbackRate":1.189207,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:2+1/8","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:2+3/16","velocity":0.58,"playbackRate":1.498307,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:3","velocity":0.58,"playbackRate":1.189207,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:3+1/16","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:3+1/8","velocity":0.58,"playbackRate":1.498307,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:3+3/16","velocity":0.58,"playbackRate":1.189207,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:4","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:4+1/16","velocity":0.58,"playbackRate":1.498307,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:4+1/8","velocity":0.58,"playbackRate":1.189207,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"11:4+3/16","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.04}},
+            {"start":"12:1","velocity":0.8,"playbackRate":1.498307,"gate":"1/2","envelope":{"attackSeconds":0.001,"releaseSeconds":0.15}},
+            {"start":"12:3","velocity":0.8,"gate":"7/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.3}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phantom",
+      "description": "10 PHANTOM: the hook phrase, then a held A5 that blooms into vibrato (2 bars).",
+      "instrument": {"type":"sampler","sample":"assets/v12-signature/10-phantom.wav"},
+      "clips": [{"bar":1,"pattern":"score"}],
+      "patterns": [
+        {
+          "id": "score",
+          "bars": 27,
+          "notes": [
+            {"start":"13:1","velocity":0.85,"gate":"3/8","envelope":{"attackSeconds":0.005,"releaseSeconds":0.12}},
+            {"start":"13:2+1/8","velocity":0.85,"playbackRate":1.33484,"gate":"3/8","envelope":{"attackSeconds":0.005,"releaseSeconds":0.12}},
+            {"start":"13:4","velocity":0.85,"playbackRate":1.189207,"gate":"1/4","envelope":{"attackSeconds":0.005,"releaseSeconds":0.12}},
+            {"start":"14:1","velocity":0.9,"playbackRate":1.33484,"gate":"7/8","envelope":{"attackSeconds":0.005,"releaseSeconds":0.3}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "event-horizon",
+      "description": "11 EVENT HORIZON: the open-fifth pad swelling on A2 for three bars.",
+      "instrument": {"type":"sampler","sample":"assets/v12-signature/11-event-horizon.wav"},
+      "clips": [{"bar":1,"pattern":"score"}],
+      "patterns": [{"id":"score","bars":27,"notes":[{"start":"15:1","velocity":0.9,"gate":"11/4","envelope":{"attackSeconds":0,"releaseSeconds":0.6}}]}]
+    },
+    {
+      "id": "afterglow",
+      "description": "12 AFTERGLOW: A minor then F major, four stacked notes each (2 bars).",
+      "instrument": {"type":"sampler","sample":"assets/v12-signature/12-afterglow.wav"},
+      "clips": [{"bar":1,"pattern":"score"}],
+      "patterns": [
+        {
+          "id": "score",
+          "bars": 27,
+          "notes": [
+            {"start":"18:1","velocity":0.6,"playbackRate":0.749154,"gate":"1/1","envelope":{"attackSeconds":0.02,"releaseSeconds":0.3}},
+            {"start":"18:1","velocity":0.6,"gate":"1/1","envelope":{"attackSeconds":0.02,"releaseSeconds":0.3}},
+            {"start":"18:1","velocity":0.6,"playbackRate":1.189207,"gate":"1/1","envelope":{"attackSeconds":0.02,"releaseSeconds":0.3}},
+            {"start":"18:1","velocity":0.6,"playbackRate":1.498307,"gate":"1/1","envelope":{"attackSeconds":0.02,"releaseSeconds":0.3}},
+            {"start":"19:1","velocity":0.6,"playbackRate":0.793701,"gate":"7/8","envelope":{"attackSeconds":0.02,"releaseSeconds":0.45}},
+            {"start":"19:1","velocity":0.6,"gate":"7/8","envelope":{"attackSeconds":0.02,"releaseSeconds":0.45}},
+            {"start":"19:1","velocity":0.6,"playbackRate":1.189207,"gate":"7/8","envelope":{"attackSeconds":0.02,"releaseSeconds":0.45}},
+            {"start":"19:1","velocity":0.6,"playbackRate":1.587401,"gate":"7/8","envelope":{"attackSeconds":0.02,"releaseSeconds":0.45}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "specter",
+      "description": "13 SPECTER: the choir vowel held on A3 through oo, oh and ah (2 bars).",
+      "instrument": {"type":"sampler","sample":"assets/v12-signature/13-specter.wav"},
+      "clips": [{"bar":1,"pattern":"score"}],
+      "patterns": [{"id":"score","bars":27,"notes":[{"start":"20:1","velocity":0.9,"gate":"15/8","envelope":{"attackSeconds":0.05,"releaseSeconds":0.25}}]}]
+    },
+    {
+      "id": "ascension",
+      "description": "15 ASCENSION: the full six-second riser, ending exactly on bar 27.",
+      "instrument": {"type":"sampler","sample":"assets/v12-signature/15-ascension.wav"},
+      "clips": [{"bar":1,"pattern":"score"}],
+      "patterns": [{"id":"score","bars":27,"notes":[{"start":"24:1","velocity":0.9}]}]
+    },
+    {
+      "id": "convergence",
+      "description": "16 CONVERGENCE: the impact on bar 27, with its full tail.",
+      "instrument": {"type":"sampler","sample":"assets/v12-signature/16-convergence.wav"},
+      "clips": [{"bar":1,"pattern":"score"}],
+      "patterns": [{"id":"score","bars":27,"notes":[{"start":"27:1","velocity":0.9}]}]
+    }
+  ]
+}

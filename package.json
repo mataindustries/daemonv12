@@ -108,7 +108,11 @@
     "test:v07": "node --test \"tests/v07*.test.ts\"",
     "demo:one-sound": "node scripts/verify-v07.ts",
     "fixtures:morph": "node scripts/generate-morph-pack.ts",
-    "demo:morph-sync": "node scripts/verify-morph-sync.ts"
+    "demo:morph-sync": "node scripts/verify-morph-sync.ts",
+    "fixtures:v12-signature": "node scripts/generate-v12-signature.ts && node scripts/create-v12-signature-projects.ts",
+    "demo:v12-signature": "node bin/daemonv12.js render packs/v12-signature-v1/v12-signature-showcase.json --out-dir renders/v12-signature --stems --format wav,mp3",
+    "verify:v12-signature": "node scripts/verify-v12-signature.ts --deliver",
+    "test:v12-signature": "node --test tests/v12-signature.test.ts tests/v12-signature.integration.test.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.3.1",
