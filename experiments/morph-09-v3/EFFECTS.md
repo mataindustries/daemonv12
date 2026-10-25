@@ -21,10 +21,12 @@ the OVERTONE event map; speeds from the MORPH//07 rotor telemetry.
 | 6.763–6.858 | 406–412 | friction power (clamp × speed^1.5) | 22 particle births (11 per caliper) |
 | 6.80 | 408 | brake heat builds | vapor appears over the visible caliper |
 | 6.967 | 418 | — | vapor at its peak; the hot pad lights its underside |
+| 7.04–7.22 | 422–433 | — | vapor thins and dissipates before the camera's dive passes the caliper |
 | 7.031 | 422 | — | last particle cools below visible glow |
 | ~7.1 | 426 | camera turns back toward the brush (V2 path) | caliper and plume leave the frame |
 | 7.0 / 7.027 | 420 / 422 | `form` return / `regime` separation | unchanged from V2 |
-| 7.867 | 472 | — | vapor envelope and radiant heat light reach exactly zero |
+| 7.223 | 434 | — | vapor envelope exactly zero |
+| 7.867 | 472 | — | radiant heat light (off-screen) reaches exactly zero |
 | 7.867–8.000, 0–6.2 | 472–479, 0–372 | — | no effect: the picture is V2's, pixel for pixel |
 
 ## The three effects
@@ -60,9 +62,11 @@ widening with height, advected 4D noise for wisps, a front rising at 3.4 units/s
 along the disc's direction of motion (the rotor's windage). It is lit by the studio, by V2's
 glowing disc rim and pads, and by a radiant-heat point light at the hot pad face (orange, energy
 ∝ V2's brake heat², windowed). Envelope: a function of time since the brake modulo 8 s, rising
-over 0.03–0.20 s and decaying to exactly zero by 1.10 s. The camera leaves the caliper at about
-7.1 s, so the plume's later life is off-screen. Either way it is zero for eight pictures before
-the loop point.
+over 0.03–0.20 s and decaying to exactly zero by 0.46 s (7.22 s). That timing came from
+verification: with the longer life first tried (zero at 7.86 s), the camera's dive at 7.15–7.35 s
+passed within one unit of the still-dense plume, which then hung as a grey veil over the
+foreground mechanism. The brief puff peaks while the caliper is in frame and is gone before the
+dive reaches it. It is zero for 46 pictures before the loop point.
 
 V2's glowing brake rim and pads are unchanged.
 

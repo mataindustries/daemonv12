@@ -146,6 +146,21 @@ def pixels(v3_dir: Path, v2_dir: Path, frames):
     return out
 
 
+def departure(v3_dir: Path, v2_dir: Path, frames):
+    """Mean absolute difference and luminance shift from V2 for each effect picture (8-bit)."""
+    import numpy as np
+    from PIL import Image
+    out = {}
+    for f in frames:
+        p = v3_dir / f'{f:04d}.png'
+        if not p.exists():
+            continue
+        x = np.asarray(Image.open(p).convert('RGB'), dtype=np.float32)
+        y = np.asarray(Image.open(v2_dir / f'{f:04d}.png').convert('RGB'), dtype=np.float32)
+        out[f] = {'meanAbsDiff': round(float(np.abs(x - y).mean()), 3), 'lumaShift': round(float(x.mean() - y.mean()), 3)}
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', type=Path, default=ROOT / 'work/morph-09-v3/audit')
@@ -167,6 +182,9 @@ def main():
     if a.rendered:
         report['identityWithV2'] = pixels(a.rendered, a.v2_frames, [f for f in range(480) if f not in active])
         assert all(v['identicalToV2'] for v in report['identityWithV2'].values())
+    if a.rendered:
+        # Effect pictures: how far each departs from V2 (whole-picture mean and luminance shift).
+        report['departureFromV2'] = departure(a.rendered, a.v2_frames, active)
     if a.frames:
         report['imageSeam'] = v2verify.image_seam(a.frames)
     if a.proof:
@@ -179,7 +197,8 @@ def main():
         f'All {events["count"]} events presented no earlier than their sample',
         'Arcs only from rotor speed > 2 rev/s until the lock; none lit in strobe pictures; each lands on a riser',
         'Brake particles born only after the brake event; all cooled out before the return',
-        'Vapor envelope zero from picture 472 to picture 405: nothing to disappear at 479 -> 0',
+        f'Vapor envelope zero from picture {report["effects"]["vapor"]["lastPicture"] + 1} to picture '
+        f'{report["effects"]["vapor"]["firstPicture"] - 1}: nothing to disappear at 479 -> 0',
         f'Effects deterministic; pictures outside {min(active)}-{max(active)} carry no effect',
     ]
     (a.out / 'v3-audit.json').write_text(json.dumps(report, indent=1, default=str) + '\n')

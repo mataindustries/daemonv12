@@ -13,9 +13,10 @@ re-run produces identical geometry, trajectories and light.
 2. Brake friction, from the brake event. Incandescent particles leave the trailing edge of
    each caliper, thrown along the disc's motion with speed set by the disc's surface speed,
    under drag and gravity, bouncing once off the deck, cooling along a blackbody ramp.
-3. Thermal vapor. One plume rises over the visible caliper after engagement. Its envelope is
-   a function of the time since the brake modulo eight seconds and reaches exactly zero
-   before the loop point, so nothing disappears at 479 → 0.
+3. Thermal vapor. One brief plume rises over the visible caliper after engagement. Its
+   envelope is a function of the time since the brake modulo eight seconds, peaks while the
+   caliper is in frame and reaches exactly zero at 7.22 s, before the camera's dive passes the
+   caliper and long before the loop point, so nothing disappears at 479 → 0.
 """
 from __future__ import annotations
 
@@ -284,7 +285,8 @@ VAPOR_RISE = 3.4            # units / s
 def vapor(t: float) -> dict:
     """Age since the brake (mod 8 s) and the plume's density envelope; zero before the seam."""
     age = (t - ch.BRAKE) % ch.PERIOD
-    env = smoothstep(0.03, 0.20, age) * (1.0 - smoothstep(0.32, 1.10, age))
+    # A brief puff as the pads bite: gone before the camera's dive passes the caliper (~7.25 s).
+    env = smoothstep(0.03, 0.20, age) * (1.0 - smoothstep(0.28, 0.46, age))
     return {'age': age, 'envelope': env, 'front': 0.15 + VAPOR_RISE * age}
 
 

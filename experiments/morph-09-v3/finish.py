@@ -25,9 +25,9 @@ WORK = ROOT / 'work' / 'morph-09-v3'
 NAME = 'morph-09-v3-critical-overload'
 COMPARE = [(375, '6.250 s', 'overload begins'), (389, '6.483 s', 'last picture before the lock'),
            (408, '6.800 s', 'brake: particles'), (418, '6.967 s', 'vapor at its peak'),
-           (426, '7.100 s', 'leaving the brake'), (450, '7.500 s', 'return (unchanged)')]
+           (426, '7.100 s', 'leaving the brake'), (450, '7.500 s', 'return: no effect in view')]
 DETAIL = [(385, (215, 280, 395, 440), 'arcs, 6.417 s'), (389, (215, 280, 395, 440), 'arcs, 6.483 s'),
-          (409, (150, 300, 432, 560), 'particles, 6.817 s'), (418, (60, 300, 340, 560), 'vapor, 6.967 s')]
+          (412, (90, 340, 390, 640), 'particles, 6.867 s'), (418, (60, 300, 340, 560), 'vapor, 6.967 s')]
 font = lambda s: ImageFont.truetype(v2.FONT, s)
 
 
