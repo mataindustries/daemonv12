@@ -1,0 +1,1169 @@
+{
+  "pack": {
+    "name": "V12 SIGNATURE",
+    "version": "1.0.0",
+    "directory": "packs/v12-signature-v1"
+  },
+  "sourceCode": {
+    "scripts/generate-v12-signature.ts": "a9559b876583e9a50c5376433d41065ac70fba275e2ba62b9307103b0d4ba3e4",
+    "scripts/create-v12-signature-projects.ts": "4fb00f5e89292db10f7ed39e4cf78c54d9390e24ab5f456a2feb73d470c6f062",
+    "scripts/inspect-v12-signature.ts": "a3bb84bddfa074b7a45df0850b4e5305d9897788a2d1e36ef2aa17e4b78febab",
+    "scripts/verify-v12-signature.ts": "2ca3091eb4a195623aa25057a04852f1f93bd45a4791daabaf46d903f9e9e836"
+  },
+  "regeneration": {
+    "files": 20,
+    "identical": true,
+    "hashes": {
+      "assets/v12-signature/01-sub-hammer.wav": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+      "assets/v12-signature/02-iron-pulse.wav": "504facd29ca2f4655420804c3f76c531173b1a6f03f33eb5cc11a0a18b96651a",
+      "assets/v12-signature/03-titanium-crack.wav": "ffe6cee44f204c203a81d3e65ce58a97b3a58d910d0a54eedb15c089cd0781df",
+      "assets/v12-signature/04-neon-clap.wav": "b9597ef83f5fd72fc58d19316e7b826d8bb9c263f5c39b2fe4c52a7bcce6187c",
+      "assets/v12-signature/05-ghost-tick.wav": "f32ff937cb2209776f882e59f40cd27e0e1fadca9c67cabb0ed7465f8cc473f8",
+      "assets/v12-signature/06-open-circuit.wav": "a12955f3184c3dc0f211826f4964a1c7cc0495961dce0d866ae777b71afa4f1b",
+      "assets/v12-signature/07-abyss.wav": "5d6e52ee847aeaebb24d10cd642f9e03de6da21a51c1917cca494d1e1d47b03a",
+      "assets/v12-signature/08-reactor.wav": "1afa9ad35a055204305b7f02cbef6df8a14952758cdc4456cf8ca4d3010c2aa2",
+      "assets/v12-signature/09-signal.wav": "784cbb24dc06c92b3c63e18564198d1ab5055a1d83c3808f75c8e73abba6fdb9",
+      "assets/v12-signature/10-phantom.wav": "f664148e85efa54638926b5e3ad918e3f438faf7815db68bc9842179467d6a9e",
+      "assets/v12-signature/11-event-horizon.wav": "c881ec16051024dd23769c2fc279f9b8b6a641d69075ab00942adf2398439025",
+      "assets/v12-signature/12-afterglow.wav": "404d9ca4617e47ffa57c6c3b00360f56c3043742344221f23559e601f84133ae",
+      "assets/v12-signature/13-specter.wav": "82ed2ab5ab914d0a44a8db0c306aa17a8f85d4123a4fc8f796d6bd9c32105488",
+      "assets/v12-signature/14-chrome-strike.wav": "924b61722f7743bc6d53843622fcdc516a703b87062fb60e4222a5c4ccb548ea",
+      "assets/v12-signature/15-ascension.wav": "4bb595205e10f873b347438df59300a07001e8196e3e82917aa9eaf31bd329e7",
+      "assets/v12-signature/16-convergence.wav": "bdaa8658443025b031b2f05a8febbebe9700285c428b9eb5392bb7ab8a44ed2c"
+    }
+  },
+  "lowLock": {
+    "sub-hammer": {
+      "window": [
+        0.15,
+        0.6
+      ],
+      "fundamentalCorrelation": 0.9239,
+      "sumPeakDbfs": -0.46
+    },
+    "iron-pulse": {
+      "window": [
+        0.08,
+        0.3
+      ],
+      "fundamentalCorrelation": 0.8101,
+      "sumPeakDbfs": -2.17
+    },
+    "reactor": {
+      "window": [
+        0.2,
+        4
+      ],
+      "fundamentalCorrelation": 0.9478,
+      "sumPeakDbfs": -2.46
+    },
+    "convergence": {
+      "window": [
+        0.6,
+        3
+      ],
+      "fundamentalCorrelation": 0.8803,
+      "sumPeakDbfs": 0.17
+    }
+  },
+  "sources": [
+    {
+      "id": "sub-hammer",
+      "file": "packs/v12-signature-v1/assets/v12-signature/01-sub-hammer.wav",
+      "seconds": 0.95,
+      "channels": 1,
+      "samplePeakDbfs": -4,
+      "truePeakDbfs": -4,
+      "rmsDbfs": -15.975,
+      "dc": -0.00006677,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 0,
+      "clickAtSeconds": 0.1716,
+      "envelope": {
+        "attackTo3dBSeconds": 0,
+        "peakSeconds": 0,
+        "decayTo20dBSeconds": 0.68,
+        "decayTo40dBSeconds": 0.88,
+        "levelDbAt": {
+          "10%": -2.52,
+          "25%": -7.2,
+          "50%": -13.55,
+          "75%": -20.59,
+          "90%": -35.05
+        }
+      },
+      "tuning": {
+        "windows": 13,
+        "medianCents": 0.1,
+        "p10Cents": 0,
+        "p90Cents": 5.96,
+        "spectralPeak": {
+          "hz": 55.015,
+          "cents": 0.47
+        }
+      },
+      "centroidHz": {
+        "start": 60,
+        "middle": 56,
+        "end": 56
+      },
+      "stereo": null,
+      "bandPowerPercent": {
+        "0-30 Hz": 0.47,
+        "30-120 Hz": 88.59,
+        "120-500 Hz": 10.29,
+        "500-2000 Hz": 0.65,
+        "2000-6000 Hz": 0.01,
+        "6000-12000 Hz": 0,
+        "12000-22050 Hz": 0
+      }
+    },
+    {
+      "id": "iron-pulse",
+      "file": "packs/v12-signature-v1/assets/v12-signature/02-iron-pulse.wav",
+      "seconds": 0.45,
+      "channels": 1,
+      "samplePeakDbfs": -4,
+      "truePeakDbfs": -3.93,
+      "rmsDbfs": -19.636,
+      "dc": -0.00002935,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 0,
+      "clickAtSeconds": 0.1507,
+      "envelope": {
+        "attackTo3dBSeconds": 0,
+        "peakSeconds": 0,
+        "decayTo20dBSeconds": 0.2,
+        "decayTo40dBSeconds": 0.37,
+        "levelDbAt": {
+          "10%": -3.3,
+          "25%": -10.87,
+          "50%": -22.83,
+          "75%": -34.23,
+          "90%": -50.51
+        }
+      },
+      "tuning": {
+        "windows": 4,
+        "medianCents": 7.11,
+        "p10Cents": 0.43,
+        "p90Cents": 21.42,
+        "spectralPeak": {
+          "hz": 55.128,
+          "cents": 4.03
+        }
+      },
+      "centroidHz": {
+        "start": 70,
+        "middle": 61,
+        "end": 61
+      },
+      "stereo": null,
+      "bandPowerPercent": {
+        "0-30 Hz": 2.22,
+        "30-120 Hz": 72.87,
+        "120-500 Hz": 20.35,
+        "500-2000 Hz": 4.2,
+        "2000-6000 Hz": 0.33,
+        "6000-12000 Hz": 0.03,
+        "12000-22050 Hz": 0
+      }
+    },
+    {
+      "id": "titanium-crack",
+      "file": "packs/v12-signature-v1/assets/v12-signature/03-titanium-crack.wav",
+      "seconds": 0.6,
+      "channels": 2,
+      "samplePeakDbfs": -5,
+      "truePeakDbfs": -4.78,
+      "rmsDbfs": -23.138,
+      "dc": -0.00002188,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 0.36,
+      "clickAtSeconds": 0.2903,
+      "envelope": {
+        "attackTo3dBSeconds": 0,
+        "peakSeconds": 0.005,
+        "decayTo20dBSeconds": 0.24,
+        "decayTo40dBSeconds": 0.495,
+        "levelDbAt": {
+          "10%": -5.4,
+          "25%": -13.52,
+          "50%": -24.02,
+          "75%": -33.9,
+          "90%": -50.58
+        }
+      },
+      "tuning": {
+        "windows": 1,
+        "medianCents": -45.26,
+        "p10Cents": -45.26,
+        "p90Cents": -45.26,
+        "spectralPeak": {
+          "hz": 220.007,
+          "cents": 0.05
+        }
+      },
+      "centroidHz": {
+        "start": 2768,
+        "middle": 5539,
+        "end": 5691
+      },
+      "stereo": {
+        "correlation": 0.9704,
+        "lowBandCorrelation": 1,
+        "monoFoldDownDb": -0.06,
+        "lowBandMonoFoldDownDb": 0
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0.07,
+        "120-500 Hz": 54.21,
+        "500-2000 Hz": 5.21,
+        "2000-6000 Hz": 20.3,
+        "6000-12000 Hz": 17.48,
+        "12000-22050 Hz": 2.73
+      }
+    },
+    {
+      "id": "neon-clap",
+      "file": "packs/v12-signature-v1/assets/v12-signature/04-neon-clap.wav",
+      "seconds": 0.65,
+      "channels": 2,
+      "samplePeakDbfs": -5,
+      "truePeakDbfs": -5,
+      "rmsDbfs": -28.414,
+      "dc": 2.465e-7,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": -1.02,
+      "clickAtSeconds": 0.2405,
+      "envelope": {
+        "attackTo3dBSeconds": 0.03,
+        "peakSeconds": 0.045,
+        "decayTo20dBSeconds": 0.31,
+        "decayTo40dBSeconds": 0.53,
+        "levelDbAt": {
+          "10%": -2.08,
+          "25%": -9.18,
+          "50%": -20.79,
+          "75%": -33.37,
+          "90%": -52.38
+        }
+      },
+      "tuning": null,
+      "centroidHz": {
+        "start": 7196,
+        "middle": 7305,
+        "end": 7454
+      },
+      "stereo": {
+        "correlation": 0.7682,
+        "lowBandCorrelation": 0.9424,
+        "monoFoldDownDb": -0.54,
+        "lowBandMonoFoldDownDb": -0.13
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0,
+        "120-500 Hz": 0.06,
+        "500-2000 Hz": 11.58,
+        "2000-6000 Hz": 41.75,
+        "6000-12000 Hz": 30.91,
+        "12000-22050 Hz": 15.69
+      }
+    },
+    {
+      "id": "ghost-tick",
+      "file": "packs/v12-signature-v1/assets/v12-signature/05-ghost-tick.wav",
+      "seconds": 0.12,
+      "channels": 1,
+      "samplePeakDbfs": -7,
+      "truePeakDbfs": -6.1,
+      "rmsDbfs": -26.417,
+      "dc": -0.000004083,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": -16.69,
+      "clickAtSeconds": 0.0659,
+      "envelope": {
+        "attackTo3dBSeconds": 0,
+        "peakSeconds": 0,
+        "decayTo20dBSeconds": 0.04,
+        "decayTo40dBSeconds": 0.09,
+        "levelDbAt": {
+          "10%": -2.14,
+          "25%": -14.97,
+          "50%": -28.94,
+          "75%": -40.16,
+          "90%": -48.17
+        }
+      },
+      "tuning": null,
+      "centroidHz": {
+        "start": 11784,
+        "middle": 11747,
+        "end": 11598
+      },
+      "stereo": null,
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0,
+        "120-500 Hz": 0,
+        "500-2000 Hz": 0,
+        "2000-6000 Hz": 1.88,
+        "6000-12000 Hz": 62.08,
+        "12000-22050 Hz": 36.04
+      }
+    },
+    {
+      "id": "open-circuit",
+      "file": "packs/v12-signature-v1/assets/v12-signature/06-open-circuit.wav",
+      "seconds": 1,
+      "channels": 2,
+      "samplePeakDbfs": -7,
+      "truePeakDbfs": -7,
+      "rmsDbfs": -29.39,
+      "dc": -1.426e-7,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 0.75,
+      "clickAtSeconds": 0.2315,
+      "envelope": {
+        "attackTo3dBSeconds": 0,
+        "peakSeconds": 0,
+        "decayTo20dBSeconds": 0.55,
+        "decayTo40dBSeconds": 0.87,
+        "levelDbAt": {
+          "10%": -6.62,
+          "25%": -11.13,
+          "50%": -18.96,
+          "75%": -28.46,
+          "90%": -45.73
+        }
+      },
+      "tuning": null,
+      "centroidHz": {
+        "start": 11147,
+        "middle": 11517,
+        "end": 11583
+      },
+      "stereo": {
+        "correlation": 0.8148,
+        "lowBandCorrelation": 0.9113,
+        "monoFoldDownDb": -0.42,
+        "lowBandMonoFoldDownDb": -0.51
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0,
+        "120-500 Hz": 0,
+        "500-2000 Hz": 0,
+        "2000-6000 Hz": 2.79,
+        "6000-12000 Hz": 63.67,
+        "12000-22050 Hz": 33.54
+      }
+    },
+    {
+      "id": "abyss",
+      "file": "packs/v12-signature-v1/assets/v12-signature/07-abyss.wav",
+      "seconds": 8,
+      "channels": 1,
+      "samplePeakDbfs": -5,
+      "truePeakDbfs": -5,
+      "rmsDbfs": -12.478,
+      "dc": 1.903e-8,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 0,
+      "clickAtSeconds": 0.1826,
+      "envelope": {
+        "attackTo3dBSeconds": 0.005,
+        "peakSeconds": 0.03,
+        "decayTo20dBSeconds": 7.58,
+        "decayTo40dBSeconds": 7.855,
+        "levelDbAt": {
+          "10%": -1.95,
+          "25%": -2.94,
+          "50%": -3.63,
+          "75%": -4.33,
+          "90%": -9.75
+        }
+      },
+      "tuning": {
+        "windows": 242,
+        "medianCents": 0,
+        "p10Cents": -0.01,
+        "p90Cents": 0.01,
+        "spectralPeak": {
+          "hz": 54.989,
+          "cents": -0.34
+        }
+      },
+      "centroidHz": {
+        "start": 58,
+        "middle": 56,
+        "end": 57
+      },
+      "stereo": null,
+      "bandPowerPercent": {
+        "0-30 Hz": 0.01,
+        "30-120 Hz": 99.35,
+        "120-500 Hz": 0.64,
+        "500-2000 Hz": 0,
+        "2000-6000 Hz": 0,
+        "6000-12000 Hz": 0,
+        "12000-22050 Hz": 0
+      }
+    },
+    {
+      "id": "reactor",
+      "file": "packs/v12-signature-v1/assets/v12-signature/08-reactor.wav",
+      "seconds": 5.5,
+      "channels": 2,
+      "samplePeakDbfs": -5,
+      "truePeakDbfs": -4.98,
+      "rmsDbfs": -18.608,
+      "dc": 0.000003968,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 1.32,
+      "clickAtSeconds": 1.1454,
+      "envelope": {
+        "attackTo3dBSeconds": 0,
+        "peakSeconds": 4.565,
+        "decayTo20dBSeconds": 5.315,
+        "decayTo40dBSeconds": 5.435,
+        "levelDbAt": {
+          "10%": -1.17,
+          "25%": -1.03,
+          "50%": -1.62,
+          "75%": -1.03,
+          "90%": -2.75
+        }
+      },
+      "tuning": {
+        "windows": 164,
+        "medianCents": 0.04,
+        "p10Cents": -1.05,
+        "p90Cents": 1.15,
+        "spectralPeak": {
+          "hz": 55.04,
+          "cents": 1.27
+        }
+      },
+      "centroidHz": {
+        "start": 248,
+        "middle": 253,
+        "end": 234
+      },
+      "stereo": {
+        "correlation": 0.7773,
+        "lowBandCorrelation": 0.9353,
+        "monoFoldDownDb": -0.52,
+        "lowBandMonoFoldDownDb": -0.15
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 60.64,
+        "120-500 Hz": 22.02,
+        "500-2000 Hz": 16.92,
+        "2000-6000 Hz": 0.41,
+        "6000-12000 Hz": 0,
+        "12000-22050 Hz": 0
+      }
+    },
+    {
+      "id": "signal",
+      "file": "packs/v12-signature-v1/assets/v12-signature/09-signal.wav",
+      "seconds": 4.5,
+      "channels": 2,
+      "samplePeakDbfs": -6,
+      "truePeakDbfs": -5.61,
+      "rmsDbfs": -19.309,
+      "dc": 0.000002107,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 1.02,
+      "clickAtSeconds": 0.5797,
+      "envelope": {
+        "attackTo3dBSeconds": 0,
+        "peakSeconds": 0.05,
+        "decayTo20dBSeconds": 4.215,
+        "decayTo40dBSeconds": 4.415,
+        "levelDbAt": {
+          "10%": -6.65,
+          "25%": -6.37,
+          "50%": -7.71,
+          "75%": -8.37,
+          "90%": -10.45
+        }
+      },
+      "tuning": {
+        "windows": 166,
+        "medianCents": 0,
+        "p10Cents": -0.56,
+        "p90Cents": 0.61,
+        "spectralPeak": {
+          "hz": 439.917,
+          "cents": -0.33
+        }
+      },
+      "centroidHz": {
+        "start": 804,
+        "middle": 672,
+        "end": 835
+      },
+      "stereo": {
+        "correlation": 0.8595,
+        "lowBandCorrelation": 0.8635,
+        "monoFoldDownDb": -0.32,
+        "lowBandMonoFoldDownDb": -0.31
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0,
+        "120-500 Hz": 81.88,
+        "500-2000 Hz": 11.18,
+        "2000-6000 Hz": 6.37,
+        "6000-12000 Hz": 0.54,
+        "12000-22050 Hz": 0.03
+      }
+    },
+    {
+      "id": "phantom",
+      "file": "packs/v12-signature-v1/assets/v12-signature/10-phantom.wav",
+      "seconds": 6,
+      "channels": 2,
+      "samplePeakDbfs": -6,
+      "truePeakDbfs": -5.97,
+      "rmsDbfs": -13.271,
+      "dc": -0.000001349,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 1.89,
+      "clickAtSeconds": 1.322,
+      "envelope": {
+        "attackTo3dBSeconds": 0.025,
+        "peakSeconds": 1.965,
+        "decayTo20dBSeconds": 5.79,
+        "decayTo40dBSeconds": 5.93,
+        "levelDbAt": {
+          "10%": -5.41,
+          "25%": -1.8,
+          "50%": -3.32,
+          "75%": -1.46,
+          "90%": -3.82
+        }
+      },
+      "tuning": {
+        "windows": 223,
+        "medianCents": 1.05,
+        "p10Cents": -16.14,
+        "p90Cents": 16.91,
+        "spectralPeak": {
+          "hz": 658.254,
+          "cents": -2.63
+        }
+      },
+      "centroidHz": {
+        "start": 1143,
+        "middle": 1728,
+        "end": 1519
+      },
+      "stereo": {
+        "correlation": 0.6643,
+        "lowBandCorrelation": 0.674,
+        "monoFoldDownDb": -0.8,
+        "lowBandMonoFoldDownDb": -0.77
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0,
+        "120-500 Hz": 6.32,
+        "500-2000 Hz": 75.93,
+        "2000-6000 Hz": 16.24,
+        "6000-12000 Hz": 1.39,
+        "12000-22050 Hz": 0.13
+      }
+    },
+    {
+      "id": "event-horizon",
+      "file": "packs/v12-signature-v1/assets/v12-signature/11-event-horizon.wav",
+      "seconds": 10,
+      "channels": 2,
+      "samplePeakDbfs": -7,
+      "truePeakDbfs": -6.97,
+      "rmsDbfs": -21.221,
+      "dc": -5.121e-9,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 1.03,
+      "clickAtSeconds": 4.39,
+      "envelope": {
+        "attackTo3dBSeconds": 1.755,
+        "peakSeconds": 6.87,
+        "decayTo20dBSeconds": 9.595,
+        "decayTo40dBSeconds": 9.86,
+        "levelDbAt": {
+          "10%": -7.22,
+          "25%": -3.54,
+          "50%": -4.81,
+          "75%": -1.52,
+          "90%": -6.07
+        }
+      },
+      "tuning": {
+        "windows": 379,
+        "medianCents": -0.48,
+        "p10Cents": -1.17,
+        "p90Cents": 0.05,
+        "spectralPeak": {
+          "hz": 109.994,
+          "cents": -0.1
+        }
+      },
+      "centroidHz": {
+        "start": 870,
+        "middle": 1109,
+        "end": 721
+      },
+      "stereo": {
+        "correlation": 0.7754,
+        "lowBandCorrelation": 0.9922,
+        "monoFoldDownDb": -0.52,
+        "lowBandMonoFoldDownDb": -0.02
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 12.75,
+        "120-500 Hz": 32.83,
+        "500-2000 Hz": 44.27,
+        "2000-6000 Hz": 8.46,
+        "6000-12000 Hz": 0.68,
+        "12000-22050 Hz": 1.01
+      }
+    },
+    {
+      "id": "afterglow",
+      "file": "packs/v12-signature-v1/assets/v12-signature/12-afterglow.wav",
+      "seconds": 8,
+      "channels": 2,
+      "samplePeakDbfs": -7,
+      "truePeakDbfs": -6.99,
+      "rmsDbfs": -17.145,
+      "dc": 1.127e-7,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 1.7,
+      "clickAtSeconds": 1.9476,
+      "envelope": {
+        "attackTo3dBSeconds": 0.605,
+        "peakSeconds": 3.49,
+        "decayTo20dBSeconds": 7.515,
+        "decayTo40dBSeconds": 7.86,
+        "levelDbAt": {
+          "10%": -1.92,
+          "25%": -6.32,
+          "50%": -4.03,
+          "75%": -4.68,
+          "90%": -10.98
+        }
+      },
+      "tuning": {
+        "windows": 302,
+        "medianCents": -0.11,
+        "p10Cents": -1.18,
+        "p90Cents": 1.02,
+        "spectralPeak": {
+          "hz": 220.069,
+          "cents": 0.55
+        }
+      },
+      "centroidHz": {
+        "start": 383,
+        "middle": 279,
+        "end": 398
+      },
+      "stereo": {
+        "correlation": 0.6759,
+        "lowBandCorrelation": 0.7362,
+        "monoFoldDownDb": -0.77,
+        "lowBandMonoFoldDownDb": -0.61
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0,
+        "120-500 Hz": 84.47,
+        "500-2000 Hz": 13.34,
+        "2000-6000 Hz": 2.16,
+        "6000-12000 Hz": 0.03,
+        "12000-22050 Hz": 0
+      }
+    },
+    {
+      "id": "specter",
+      "file": "packs/v12-signature-v1/assets/v12-signature/13-specter.wav",
+      "seconds": 6.5,
+      "channels": 2,
+      "samplePeakDbfs": -7,
+      "truePeakDbfs": -7,
+      "rmsDbfs": -22.382,
+      "dc": -4.099e-9,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 1.75,
+      "clickAtSeconds": 3.5769,
+      "envelope": {
+        "attackTo3dBSeconds": 1.185,
+        "peakSeconds": 3.88,
+        "decayTo20dBSeconds": 5.785,
+        "decayTo40dBSeconds": 6.305,
+        "levelDbAt": {
+          "10%": -15.35,
+          "25%": -14.16,
+          "50%": -7.42,
+          "75%": -16.21,
+          "90%": -21.3
+        }
+      },
+      "tuning": {
+        "windows": 228,
+        "medianCents": -4.03,
+        "p10Cents": -31.26,
+        "p90Cents": 14.77,
+        "spectralPeak": {
+          "hz": 220.138,
+          "cents": 1.08
+        }
+      },
+      "centroidHz": {
+        "start": 572,
+        "middle": 809,
+        "end": 674
+      },
+      "stereo": {
+        "correlation": 0.7646,
+        "lowBandCorrelation": 0.8449,
+        "monoFoldDownDb": -0.54,
+        "lowBandMonoFoldDownDb": -0.36
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0.01,
+        "120-500 Hz": 49.46,
+        "500-2000 Hz": 44.73,
+        "2000-6000 Hz": 5.5,
+        "6000-12000 Hz": 0.09,
+        "12000-22050 Hz": 0.22
+      }
+    },
+    {
+      "id": "chrome-strike",
+      "file": "packs/v12-signature-v1/assets/v12-signature/14-chrome-strike.wav",
+      "seconds": 2.6,
+      "channels": 2,
+      "samplePeakDbfs": -6,
+      "truePeakDbfs": -5.99,
+      "rmsDbfs": -22.877,
+      "dc": -0.00001596,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 0.68,
+      "clickAtSeconds": 0.9199,
+      "envelope": {
+        "attackTo3dBSeconds": 0,
+        "peakSeconds": 0.025,
+        "decayTo20dBSeconds": 2.19,
+        "decayTo40dBSeconds": 2.48,
+        "levelDbAt": {
+          "10%": -4.99,
+          "25%": -7.39,
+          "50%": -12.01,
+          "75%": -15.9,
+          "90%": -26.96
+        }
+      },
+      "tuning": {
+        "windows": 72,
+        "medianCents": 39.44,
+        "p10Cents": -51.44,
+        "p90Cents": 93.43,
+        "spectralPeak": {
+          "hz": 439.994,
+          "cents": -0.02
+        }
+      },
+      "centroidHz": {
+        "start": 521,
+        "middle": 471,
+        "end": 435
+      },
+      "stereo": {
+        "correlation": 0.5684,
+        "lowBandCorrelation": 0.9951,
+        "monoFoldDownDb": -1.06,
+        "lowBandMonoFoldDownDb": -0.01
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0.02,
+        "120-500 Hz": 53.94,
+        "500-2000 Hz": 45.2,
+        "2000-6000 Hz": 0.83,
+        "6000-12000 Hz": 0.01,
+        "12000-22050 Hz": 0
+      }
+    },
+    {
+      "id": "ascension",
+      "file": "packs/v12-signature-v1/assets/v12-signature/15-ascension.wav",
+      "seconds": 6,
+      "channels": 2,
+      "samplePeakDbfs": -6,
+      "truePeakDbfs": -4.74,
+      "rmsDbfs": -29.014,
+      "dc": -9.406e-8,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": null,
+      "clickAtSeconds": 0,
+      "envelope": {
+        "attackTo3dBSeconds": 5.59,
+        "peakSeconds": 5.945,
+        "decayTo20dBSeconds": null,
+        "decayTo40dBSeconds": null,
+        "levelDbAt": {
+          "10%": -39.63,
+          "25%": -35.01,
+          "50%": -25.36,
+          "75%": -13.09,
+          "90%": -4.83
+        }
+      },
+      "tuning": {
+        "windows": 0,
+        "medianCents": null,
+        "p10Cents": null,
+        "p90Cents": null,
+        "spectralPeak": {
+          "hz": 437.347,
+          "cents": -10.47
+        }
+      },
+      "centroidHz": {
+        "start": 574,
+        "middle": 985,
+        "end": 2500
+      },
+      "stereo": {
+        "correlation": 0.661,
+        "lowBandCorrelation": 0.9979,
+        "monoFoldDownDb": -0.81,
+        "lowBandMonoFoldDownDb": 0
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0,
+        "30-120 Hz": 0,
+        "120-500 Hz": 10.06,
+        "500-2000 Hz": 16.89,
+        "2000-6000 Hz": 19.31,
+        "6000-12000 Hz": 51.42,
+        "12000-22050 Hz": 2.32
+      }
+    },
+    {
+      "id": "convergence",
+      "file": "packs/v12-signature-v1/assets/v12-signature/16-convergence.wav",
+      "seconds": 5,
+      "channels": 2,
+      "samplePeakDbfs": -4,
+      "truePeakDbfs": -3.99,
+      "rmsDbfs": -14.477,
+      "dc": -0.000005799,
+      "clippedSamples": 0,
+      "endpoints": {
+        "firstFrameZero": true,
+        "lastFrameZero": true
+      },
+      "clickDb": 1.02,
+      "clickAtSeconds": 2.1471,
+      "envelope": {
+        "attackTo3dBSeconds": 0,
+        "peakSeconds": 0,
+        "decayTo20dBSeconds": 4.115,
+        "decayTo40dBSeconds": 4.75,
+        "levelDbAt": {
+          "10%": -1.86,
+          "25%": -5.44,
+          "50%": -10.71,
+          "75%": -16.28,
+          "90%": -26.98
+        }
+      },
+      "tuning": {
+        "windows": 64,
+        "medianCents": -8.73,
+        "p10Cents": -17.55,
+        "p90Cents": -1.46,
+        "spectralPeak": {
+          "hz": 54.992,
+          "cents": -0.27
+        }
+      },
+      "centroidHz": {
+        "start": 190,
+        "middle": 197,
+        "end": 216
+      },
+      "stereo": {
+        "correlation": 0.7355,
+        "lowBandCorrelation": 0.9812,
+        "monoFoldDownDb": -0.62,
+        "lowBandMonoFoldDownDb": -0.04
+      },
+      "bandPowerPercent": {
+        "0-30 Hz": 0.11,
+        "30-120 Hz": 45.29,
+        "120-500 Hz": 47.81,
+        "500-2000 Hz": 6.35,
+        "2000-6000 Hz": 0.3,
+        "6000-12000 Hz": 0.08,
+        "12000-22050 Hz": 0.08
+      }
+    }
+  ],
+  "projects": {
+    "audition": {
+      "file": "packs/v12-signature-v1/v12-signature-audition.json",
+      "tracks": 10,
+      "notes": 89,
+      "budget": {
+        "interpolationTaps": 97393035,
+        "tapBudgetPercent": 9.7,
+        "largestVoiceBytes": 1623040,
+        "voiceBudgetPercent": 1.21
+      },
+      "render": {
+        "twoFreshRendersIdentical": true,
+        "artifactsCompared": 14,
+        "wavSha256": "aa1538c8e80b5efaf610950f3e302783bf4a350d14210ecde1c154f6ac477e6a",
+        "frames": 2513700,
+        "seconds": 57,
+        "stems": 10,
+        "stemsAlignedToMaster": false,
+        "clippedSamples": 0,
+        "analysis": {
+          "durationSeconds": 57,
+          "frames": 2513700,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -2.202071,
+          "rmsDbfs": -17.722321,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -15.07,
+          "loudnessRangeLu": 12.4,
+          "truePeakDbfs": -2.2
+        },
+        "stereo": {
+          "correlation": 0.822,
+          "lowBandCorrelation": 0.9891,
+          "monoFoldDownDb": -0.4,
+          "lowBandMonoFoldDownDb": -0.02
+        },
+        "truePeakDbfsMeasured": -2.2,
+        "dc": -0.00004547,
+        "last10msPeakDbfs": null,
+        "tools": {
+          "node": "v22.22.0",
+          "ffmpeg": "6.1.1-3ubuntu5"
+        }
+      }
+    },
+    "showcase": {
+      "file": "packs/v12-signature-v1/v12-signature-showcase.json",
+      "tracks": 13,
+      "notes": 591,
+      "budget": {
+        "interpolationTaps": 581587790,
+        "tapBudgetPercent": 58.2,
+        "largestVoiceBytes": 3670016,
+        "voiceBudgetPercent": 2.73
+      },
+      "render": {
+        "twoFreshRendersIdentical": true,
+        "artifactsCompared": 17,
+        "wavSha256": "e73f3029516edf267936d10d86904fce8273f6e33eec300703ec429409b87167",
+        "frames": 1234800,
+        "seconds": 28,
+        "stems": 13,
+        "stemsAlignedToMaster": true,
+        "clippedSamples": 0,
+        "analysis": {
+          "durationSeconds": 28,
+          "frames": 1234800,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -1.770969,
+          "rmsDbfs": -15.75402,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -14.23,
+          "loudnessRangeLu": 5.6,
+          "truePeakDbfs": -1.62
+        },
+        "stereo": {
+          "correlation": 0.8804,
+          "lowBandCorrelation": 0.995,
+          "monoFoldDownDb": -0.27,
+          "lowBandMonoFoldDownDb": -0.01
+        },
+        "truePeakDbfsMeasured": -1.62,
+        "dc": -0.0002355,
+        "last10msPeakDbfs": -60.8,
+        "tools": {
+          "node": "v22.22.0",
+          "ffmpeg": "6.1.1-3ubuntu5"
+        }
+      },
+      "sections": [
+        {
+          "name": "ignition",
+          "bars": "1-2",
+          "start": 0,
+          "end": 3.75,
+          "integratedLufs": -18.23,
+          "truePeakDbfs": -4.84,
+          "rmsDbfs": -18.228,
+          "stereoCorrelation": 0.9268,
+          "lowBandCorrelation": 0.9996
+        },
+        {
+          "name": "orbit",
+          "bars": "3-6",
+          "start": 3.75,
+          "end": 11.25,
+          "integratedLufs": -14.93,
+          "truePeakDbfs": -1.82,
+          "rmsDbfs": -16.192,
+          "stereoCorrelation": 0.9158,
+          "lowBandCorrelation": 0.996
+        },
+        {
+          "name": "ascension",
+          "bars": "7-8",
+          "start": 11.25,
+          "end": 15,
+          "integratedLufs": -14.64,
+          "truePeakDbfs": -2.88,
+          "rmsDbfs": -16.686,
+          "stereoCorrelation": 0.8742,
+          "lowBandCorrelation": 0.9912
+        },
+        {
+          "name": "convergence (drop)",
+          "bars": "9-12",
+          "start": 15,
+          "end": 22.5,
+          "integratedLufs": -12.69,
+          "truePeakDbfs": -1.62,
+          "rmsDbfs": -13.992,
+          "stereoCorrelation": 0.8659,
+          "lowBandCorrelation": 0.9933
+        },
+        {
+          "name": "afterglow",
+          "bars": "13-14",
+          "start": 22.5,
+          "end": 26.25,
+          "integratedLufs": -13.57,
+          "truePeakDbfs": -2.29,
+          "rmsDbfs": -14.686,
+          "stereoCorrelation": 0.8486,
+          "lowBandCorrelation": 0.9965
+        },
+        {
+          "name": "released tail",
+          "bars": "15",
+          "start": 26.25,
+          "end": 28,
+          "integratedLufs": -30.96,
+          "truePeakDbfs": -18.9,
+          "rmsDbfs": -34.199,
+          "stereoCorrelation": 0.7163,
+          "lowBandCorrelation": 0.979
+        }
+      ],
+      "stemLoudness": {
+        "kick": -18.93,
+        "snare": -21.59,
+        "hats": -28.16,
+        "chrome": -29.23,
+        "abyss": -22.01,
+        "reactor": -23.25,
+        "signal": -24.22,
+        "phantom": -19.28,
+        "event-horizon": -25.83,
+        "afterglow": -23.03,
+        "specter": -27.18,
+        "ascension": -27.56,
+        "convergence": -21.02
+      }
+    }
+  },
+  "method": "True peak 4x windowed sinc; clicks = 1 ms >12 kHz energy vs the loudest other 1 ms frame within ±40 ms, after the designed attack; tuning in three sustain windows; 150 Hz two-pole low band; 8192-point band power (independent channels, unweighted).",
+  "verification": "Analytical measurements only; no listening session is claimed. Musical judgments need human listening."
+}
