@@ -1,0 +1,120 @@
+# Reviewed production workflow; pilot mode is active, production is storage-gated.
+# Pilot: free standard public runners; only small derived JPEG/JSON review commits.
+# Production: artifact upload stays disabled until an explicit storage budget is authorized.
+name: MORPH09 full-resolution master
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - prod/morph-09-v3-1080p-master
+    paths:
+      - .github/workflows/morph-09-master.yml
+      - experiments/morph-09-v3/master/**
+      - '!experiments/morph-09-v3/master/pilot-review/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: morph09-master-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PIP_NO_CACHE_DIR: '1'
+  PIP_DISABLE_PIP_VERSION_CHECK: '1'
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  plan:
+    # Standard hosted compute is free only while this exact repository is public.
+    if: github.repository == 'mataindustries/daemonv12' && github.event.repository.private == false && github.ref == 'refs/heads/prod/morph-09-v3-1080p-master'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      mode: ${{ steps.plan.outputs.mode }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          sparse-checkout: experiments/morph-09-v3/master
+      - name: Validate compute mode and storage gate; build independent matrix
+        id: plan
+        run: python3 experiments/morph-09-v3/master/actions-batch.py plan
+
+  pilot:
+    needs: plan
+    if: needs.plan.outputs.mode == 'pilot'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    permissions:
+      contents: write # Derived pilot JPEGs/JSON only, allowlisted in actions-batch.py.
+    strategy:
+      fail-fast: false
+      max-parallel: 7
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    env:
+      MORPH_JOB: ${{ toJSON(matrix.job) }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.11.17'
+          # No Actions cache: artifact/cache billing is not used for the pilot.
+      - name: Install approved runtime and FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg libegl1 libgl1 libx11-6 libxi6 libxfixes3 libxrender1 libsm6 libxext6 libxxf86vm1
+          python -m pip install --no-cache-dir -r experiments/morph-09-v3/master/requirements-actions.txt
+      - name: Render paired native-resolution sampling checks
+        run: python experiments/morph-09-v3/master/actions-batch.py run
+      - name: Commit only derived review plates and original JSON metadata
+        if: always()
+        run: python experiments/morph-09-v3/master/actions-batch.py pilot-review
+
+  production:
+    needs: plan
+    if: needs.plan.outputs.mode == 'production'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    env:
+      MORPH_JOB: ${{ toJSON(matrix.job) }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.11.17'
+      - name: Install approved runtime and FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg libegl1 libgl1 libx11-6 libxi6 libxfixes3 libxrender1 libsm6 libxext6 libxxf86vm1
+          python -m pip install --no-cache-dir -r experiments/morph-09-v3/master/requirements-actions.txt
+      - name: Render30pictures plus independent boundary and quiet controls
+        run: python experiments/morph-09-v3/master/actions-batch.py run
+      - name: Collect completed frames and provenance within authorized artifact budget
+        id: bundle
+        if: always()
+        run: python experiments/morph-09-v3/master/actions-batch.py bundle
+      - name: Upload recoverable raw batch; retain one day
+        if: always() && steps.bundle.outcome == 'success'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}
+          path: work/morph-09-v3-master/action-artifact/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          include-hidden-files: false
