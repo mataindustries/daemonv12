@@ -1,0 +1,281 @@
+{
+ "kind": "morph09-v3-audit",
+ "sources": {
+  "hashes": {
+   "experiments/morph-08/candidates/overtone.wav": "f771979966ce4b85ff96e44474f3259bf2da3f576a71bf0847af9d37e5b4111c",
+   "experiments/morph-08/candidates/overtone.events.json": "7cf59c782842a090db77056285a4ac1bf737bf5d81dc606403f77b3ca7ed655e",
+   "experiments/morph-07/candidates/hypnotic-motor.telemetry.json": "7d04ad6b5236296b2733ba56fe2b1c8ce82c9b375bfcee9b1459583107c87206"
+  },
+  "matchesV1SourceAudit": true,
+  "v1EngineMusicAndTelemetryUnchangedSince": "4ad6905525896e014422f10398689728278013f6",
+  "v2CodeIdenticalToApprovedProof": {
+   "experiments/morph-09-v2/choreography.py": true,
+   "experiments/morph-09-v2/scene.py": true,
+   "experiments/morph-09-v2/render.py": true,
+   "experiments/morph-09-v2/finish.py": true,
+   "experiments/morph-09-v2/verify.py": true
+  },
+  "approvedV2Commit": "005f02ccf40f4d73ba05cb146bc1bdd683cedc74"
+ },
+ "cameraSeam": {
+  "method": "Periodic Fritsch-Carlson (C1) interpolation of every camera channel; the mean orbit rate (45 deg/s) is removed before interpolation and restored after, so the orbit closes after exactly 360 degrees.",
+  "stateAt0": {
+   "x": -1.9607012776628578,
+   "y": -3.1377779557787764,
+   "z": 1.55,
+   "qw": 0.6772560321224014,
+   "qx": 0.5469574463791387,
+   "qy": -0.30918479857382314,
+   "qz": -0.3828401482800581,
+   "lensMm": 50.0,
+   "focus": 2.1379233821131356,
+   "fstop": 2.5
+  },
+  "stateAt8": {
+   "x": -1.9607012776628587,
+   "y": -3.1377779557787764,
+   "z": 1.55,
+   "qw": 0.6772560321224013,
+   "qx": 0.5469574463791388,
+   "qy": -0.30918479857382325,
+   "qz": -0.38284014828005813,
+   "lensMm": 50.0,
+   "focus": 2.1379233821131365,
+   "fstop": 2.5
+  },
+  "largestStateDifference": 8.881784197001252e-16,
+  "velocityAfter0": {
+   "x": 0.9403153702347566,
+   "y": -0.46965609445948076,
+   "z": 5.253575352526241e-07,
+   "qw": 0.09643567389083785,
+   "qx": 0.04684497489915174,
+   "qy": 0.1267204225441354,
+   "qz": 0.13518395203249156,
+   "lensMm": 0.0,
+   "focus": -0.5508325156000637,
+   "fstop": 0.0
+  },
+  "velocityBefore8": {
+   "x": 0.9403153387044227,
+   "y": -0.4696565709672029,
+   "z": -3.4345859489803843e-06,
+   "qw": 0.096435288532426,
+   "qx": 0.04684544618882569,
+   "qy": 0.12672010285541546,
+   "qz": 0.1351840823171635,
+   "lensMm": 2.240341245851596e-05,
+   "focus": -0.5508340521487298,
+   "fstop": -1.155964213239713e-06
+  },
+  "largestVelocityDifference": 2.240341245851596e-05,
+  "analyticPositionVelocity0": [
+   0.9403163865725729,
+   -0.46965705073111463,
+   0.0
+  ],
+  "analyticPositionVelocity8": [
+   0.9403163865704767,
+   -0.4696570507301534,
+   -6.869746472642155e-12
+  ],
+  "orbitDegreesPerLoop": 360.0,
+  "positionStepAcrossSeam479to0": 0.01723920698106253,
+  "positionStep478to479": 0.016899576754108955,
+  "positionStep0to1": 0.017152291996255557,
+  "lensStepAcrossSeam": 0.006162962962960705,
+  "focusStepAcrossSeam": 0.009346961323511316,
+  "maximumPositionStepAnyFrame": 0.49300697245246966,
+  "cameraNeverAttachedToRotor": true,
+  "minimumClearanceToForkAxes": {
+   "fork0": {
+    "distance": 1.227,
+    "time": 2.706
+   },
+   "fork1": {
+    "distance": 6.2,
+    "time": 5.663
+   },
+   "fork2": {
+    "distance": 3.01,
+    "time": 6.161
+   },
+   "fork3": {
+    "distance": 3.482,
+    "time": 6.983
+   },
+   "fork4": {
+    "distance": 1.021,
+    "time": 7.684
+   }
+  }
+ },
+ "machineSeam": {
+  "nonRotorChannels": 29,
+  "largestLeftLimitDifference": 8.123452222008609e-08,
+  "differenceByChannel": {
+   "kick": 8.372224649666471e-10,
+   "clap": 6.063845568249696e-11,
+   "bass": 1.241965308373949e-08,
+   "vox": 1.521968584494715e-08,
+   "vox_note": 4.440892098500626e-16,
+   "brush": 7.2861948280378286e-09,
+   "fused": 0.0,
+   "arc": 1.165791171930941e-08,
+   "pallet": 1.3075968308129404e-08,
+   "riders[0]": 0.0,
+   "riders[1]": 0.0,
+   "riders[2]": 0.0,
+   "riders[3]": 0.0,
+   "riders[4]": 0.0,
+   "governor": 0.0,
+   "lock": 1.6404878800876932e-10,
+   "strobe": 0.0,
+   "ring[0]": 7.406558838463084e-10,
+   "ring[1]": 8.173382609610869e-09,
+   "ring[2]": 1.8741563995172683e-09,
+   "ring[3]": 4.6035679435174615e-09,
+   "ring[4]": 2.4685429950155324e-09,
+   "coil[0]": 1.3123903006007076e-10,
+   "coil[1]": 1.2389306559834612e-09,
+   "coil[2]": 1.3123903006007076e-10,
+   "coil[3]": 2.623172703358767e-10,
+   "coil[4]": 1.3279356780859786e-10,
+   "clamp": 0.0,
+   "heat": 8.123452222008609e-08
+  },
+  "rotor": {
+   "travelRevolutions": 27.000034690960607,
+   "orientationResidualDegrees": 0.012488745818615143,
+   "speedAt0": 0.48040000000000005,
+   "speedAt8": 0.48078362578198375,
+   "frame0ShutterOpenAngle": -0.004787078740076112,
+   "frame479CloseAngle": 26.990823,
+   "unwrappedAdvanceFrame479to0OpenRevolutions": 0.004389921259924989,
+   "note": "Raw MORPH07 telemetry is nearly periodic (V1 audit: 27.000035 revolutions). The residual is disclosed, not corrected; frame 0 unwraps the previous cycle so the shutter never spins backwards."
+  },
+  "escapementHatsPerLoop": 28,
+  "escapementClosesOnSameSide": true,
+  "brakeHeatAt0": 0.16243077224105834,
+  "brakeHeatBefore8": 0.16243085347558056
+ },
+ "events": {
+  "count": 205,
+  "maximumDelayMs": 16.394557823129254,
+  "meanDelayMs": 10.042475526796073,
+  "rule": "first visible picture = ceil(sampleFrame / 735); exposure closes at the picture time",
+  "strobeFrames": [
+   390,
+   405
+  ],
+  "strobeSeconds": [
+   6.5,
+   6.75
+  ],
+  "landmarks": {
+   "fusion": 6.2352607709750565,
+   "lock": 6.49907029478458,
+   "brake": 6.76265306122449,
+   "return": 7.0,
+   "separation": 7.026802721088435
+  }
+ },
+ "effects": {
+  "arcs": {
+   "count": 29,
+   "firstPicture": 373,
+   "lastPicture": 389,
+   "firstSeconds": 6.216666666666667,
+   "lastSeconds": 6.483333333333333,
+   "lastLitPicture": 389,
+   "perPicture": {
+    "373": 1,
+    "374": 1,
+    "375": 1,
+    "376": 1,
+    "377": 1,
+    "378": 1,
+    "379": 1,
+    "380": 2,
+    "381": 2,
+    "382": 1,
+    "383": 2,
+    "384": 2,
+    "385": 3,
+    "386": 2,
+    "387": 2,
+    "388": 3,
+    "389": 3
+   },
+   "kinds": {
+    "bridge": 23,
+    "creep": 6
+   },
+   "landingOffsetFromRiserCentreDeg": [
+    1.464,
+    3.79
+   ],
+   "rule": "count, reach and brightness grow with log(rotor speed) above 2 rev/s; each ends on a riser cheek at the picture's rotor angle; none lit in strobe pictures 390-405"
+  },
+  "particles": {
+   "count": 22,
+   "perCaliper": 11,
+   "birthSeconds": [
+    6.7627,
+    6.8582
+   ],
+   "lastGlowSeconds": 7.0307,
+   "bounced": 4,
+   "initialSpeedUnitsPerSecond": [
+    3.57,
+    12.49
+   ]
+  },
+  "vapor": {
+   "firstPicture": 408,
+   "lastPicture": 433,
+   "envelopeAtPicture479": 0.0,
+   "envelopeAtPicture0": 0.0,
+   "peakSeconds": 6.9667
+  },
+  "strobePictures": [
+   390,
+   405
+  ],
+  "quietPictures": "pictures 0-371 carry no effect object or light (all hidden)"
+ },
+ "determinism": {
+  "arcEventsSha256": "2bc965c02a219fa4acc26086663e4dd010f1297583ff709b74f8907b568c183e",
+  "particleEventsSha256": "0dd27962a316a55a5c3a5ab0366c439d06b2ef4989bb2bfede1b7dfeeba692b7",
+  "seeds": {
+   "arcs": 909101,
+   "particles": 770301
+  }
+ },
+ "effectPictures": {
+  "first": 373,
+  "last": 471,
+  "count": 83,
+  "outsideTheseThePictureIsV2": true
+ },
+ "identityWithV2": {
+  "0": {
+   "identicalToV2": true,
+   "meanAbsDiff": 0.0
+  },
+  "240": {
+   "identicalToV2": true,
+   "meanAbsDiff": 0.0
+  }
+ },
+ "departureFromV2": {},
+ "checksPassed": [
+  "Approved audio, event map and telemetry unchanged; V2 code byte-identical to the approved proof",
+  "Camera and machine are V2's: identical state at 0 and 8 s, velocities match",
+  "All 205 events presented no earlier than their sample",
+  "Arcs only from rotor speed > 2 rev/s until the lock; none lit in strobe pictures; each lands on a riser",
+  "Brake particles born only after the brake event; all cooled out before the return",
+  "Vapor envelope zero from picture 434 to picture 407: nothing to disappear at 479 -> 0",
+  "Effects deterministic; pictures outside 373-471 carry no effect"
+ ]
+}
