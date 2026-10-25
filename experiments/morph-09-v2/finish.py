@@ -20,10 +20,10 @@ ROOT = HERE.parents[1]
 AUDIO = ROOT / 'experiments/morph-08/candidates/overtone.wav'
 FONT = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 STILLS = [  # (picture frame, label, what it shows)
-    (24, '00.400  CONTACT', 'Bar 3 strikes the brush; fork 1 answers behind it'),
+    (24, '00.400  CONTACT', 'Bar 3 strikes the brush; fork 1, selected by it, rises behind'),
     (242, '04.033  THE CROWN', 'Half-time downbeat: the tallest fork rings'),
     (396, '06.600  A1 LOCK', 'Strobe: rotor, governor and five forks frozen'),
-    (423, '07.050  BRAKE', 'Pads glow; the camera dives back to the brush'),
+    (423, '07.050  BRAKE', 'The disc rim glows from the stop; the camera dives home'),
 ]
 
 

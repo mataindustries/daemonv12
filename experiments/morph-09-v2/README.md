@@ -30,6 +30,14 @@ What to judge: [REVIEW.md](REVIEW.md).
 - [`delivery/v2-audit.json`](delivery/v2-audit.json), [`delivery/v2-sync-audit.csv`](delivery/v2-sync-audit.csv),
   [`delivery/motion-analysis.json`](delivery/motion-analysis.json), [`delivery/SHA256SUMS`](delivery/SHA256SUMS).
 
+## Verified
+
+Camera state identical at 0 and 8 s (9e-16); camera velocity continuous across the seam;
+29 machine channels close within 8e-08; rotor residual 0.0125° inherited from the source
+telemetry; picture 479 → 0 changes less than the median picture step (20.0 vs 21.4);
+`.mov` audio is the approved PCM byte-for-byte; 480 pictures, 60 fps, 8.000 s. Details:
+[REVIEW.md](REVIEW.md) and [delivery/v2-audit.json](delivery/v2-audit.json).
+
 ## Build
 
 Blender 4.3 with CPU Cycles: the `bpy==4.3.0` module (Python 3.11, NumPy < 2) or a Blender 4.3

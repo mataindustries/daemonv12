@@ -33,6 +33,38 @@ real time. Whether it is beautiful and replayable is the reviewer's call.
 | 6.763–7.0 s | brake | dives onto the caliper | warm light and blur return; the rotor drops from 55 to 0.5 rev/s in under 0.2 s; the disc rim glows |
 | 7.0–8.0 s | return, Am7 | descends back to the brush | the opening composition, lens and focus, still drifting the same way: the loop restarts without a cut |
 
+## Measured (descriptive; `analyze.py`, both films decoded to 135 × 240 grey)
+
+| Per second | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| V1 motion energy | 3.22 | 3.2 | 3.22 | 3.15 | 1.9 | 1.84 | 1.75 | 3.25 |
+| V2 motion energy | 18.73 | 23.87 | 23.79 | 15.47 | 9.55 | 11.57 | 26.51 | 22.8 |
+| V1 mean luma | 76 | 76 | 76 | 76 | 76 | 76 | 78.4 | 76 |
+| V2 mean luma | 57.8 | 80.7 | 65.6 | 49.1 | 45.8 | 46.2 | 64 | 70.8 |
+
+- Motion energy is the mean absolute difference between adjacent pictures (0–255). V2 moves
+  five to fifteen times more than V1, and its shape follows the score: the heavy half-time
+  bar (4–6 s) is the calmest stretch, the spin-up, lock and brake (6–7 s) the most active.
+- Lowest correlation of any picture with picture 0: V1 0.897, V2 -0.172. V1 never
+  leaves its framing; V2 travels all the way round and back.
+
+## Seam verification (`verify.py`, [delivery/v2-audit.json](delivery/v2-audit.json))
+
+- **Camera** (periodic by construction): largest state difference between 0 s and 8 s across
+  position, orientation, lens, focus and f-stop 8.9e-16; largest velocity difference
+  across the seam 2.2e-05 (finite-difference resolution). One 360° orbit per loop.
+  Closest approach to any fork axis 1.02 units.
+- **Machine**: 29 non-rotor channels close within 8.1e-08. The raw rotor closes to
+  0.0125° (MORPH//07 telemetry, disclosed, not corrected); picture 0's shutter unwraps the
+  previous cycle so the rotor never spins backwards inside an exposure.
+- **Pictures**: the change from picture 479 to picture 0 is 20.0 (8-bit mean), against a
+  median picture-to-picture change of 21.4; it ranks 279 of 480 steps. No blackout,
+  no duplicated closing frame ([loop-boundary.jpg](delivery/loop-boundary.jpg)).
+- **Audio**: the `.mov` decodes to the approved PCM exactly; the `.mp4` is the AAC viewing copy.
+- **Sync**: all 205 events are presented no earlier than their sample (largest delay
+  16.395 ms); the strobe covers pictures 390–405, exactly those whose exposure ends in
+  [6.499070, 6.762653) s.
+
 ## Please judge
 
 1. **The opening.** Does the contact macro read immediately, at phone size, as a bar striking a
