@@ -256,6 +256,9 @@ def quality_checks(path, sources, production, raw):
             file_sha = digest(item)
         frame = row.get('frame')
         require(isinstance(frame, int) and 0 <= frame < FRAMES, f'Invalid reviewed frame: {item}')
+        require((row.get('width'), row.get('height')) == SIZE, f'Reviewed pilot was not recorded at full resolution: {item}')
+        require(row.get('backend') == ('v3' if frame in EXPECTED_ACTIVE else 'v2'),
+                f'Reviewed pilot used the wrong production scene at picture {frame}.')
         require(row.get('sourceDigest') == sources['sourceDigest'] and row.get('sourceCommit') == LOCKED,
                 f'Quality pilot uses different creative sources: {item}')
         require(row.get('fileSha256') == entry.get('fileSha256') == file_sha,
@@ -268,6 +271,8 @@ def quality_checks(path, sources, production, raw):
         require(isinstance(samples, int) and samples > 0, f'Invalid pilot samples: {item}')
         pilot_config = {**production, 'samples': samples}
         production_settings(row['settings'], pilot_config, f'Quality pilot {item}')
+        require(row.get('blenderVersion') == row['settings']['blenderVersion'],
+                f'Pilot sidecar and settings Blender versions differ: {item}')
         require(row.get('fullTimelineBake') == [0, 479], f'Incomplete pilot timeline bake: {item}')
         if samples == production['samples']:
             require(row['pixelSha256'] == raw[frame]['pixelSha256'],

@@ -61,11 +61,11 @@ After selecting samples:
 bash experiments/morph-09-v3/master/build.sh --render --resume
 ```
 
-The default is five sequential batches of 96 pictures, each with a separate log.
+The default is sixteen sequential batches of 30 pictures, each with a separate log.
 A single batch can be run or recovered independently:
 
 ```bash
-bash experiments/morph-09-v3/master/build.sh --render --frames 192-287 --resume
+bash experiments/morph-09-v3/master/build.sh --render --frames 180-209 --resume
 ```
 
 Use one process per output directory. Every invocation bakes the complete
@@ -115,3 +115,6 @@ loop-boundary comparison, verification report and `SHA256SUMS`. Public delivery
 still requires an actual unauthenticated download and matching checksum for every
 linked artifact. Keep any publication workflow separate: the task ends at human
 approval of the verified master.
+
+The dormant GitHub Actions workflow and its separate pilot/production gates are
+documented in [ACTIONS.md](ACTIONS.md).
