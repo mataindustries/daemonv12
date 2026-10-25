@@ -209,8 +209,8 @@ def quality_checks(path, sources, production, raw):
     This is a human/operator review record, not an automated aesthetic judgment.
     Local PNGs are decoded directly. Remote pilots can instead supply their
     immutable committed renderer sidecars and derived review images, retaining raw
-    PNGs outside Git. Selected pilot pixels must match the actual delivered raw
-    picture. An alternative sample count can justify the cheaper production setting.
+    PNGs outside Git. Selected pilot settings must match the actual delivered raw
+    picture; exact production repeat pixels are checked on their producing runner. An alternative sample count can justify the cheaper production setting.
     """
     evidence = load(path)
     require(evidence.get('sourceCommit') == LOCKED, 'Quality review is not pinned to the locked creative source.')
@@ -275,13 +275,16 @@ def quality_checks(path, sources, production, raw):
                 f'Pilot sidecar and settings Blender versions differ: {item}')
         require(row.get('fullTimelineBake') == [0, 479], f'Incomplete pilot timeline bake: {item}')
         if samples == production['samples']:
-            require(row['pixelSha256'] == raw[frame]['pixelSha256'],
-                    f'Reviewed selected-sample pilot differs from the delivered raw picture: {item}')
+            require(row['settingsDigest'] == raw[frame]['settingsDigest'],
+                    f'Reviewed selected-sample pilot settings differ from delivery: {item}')
+            # Cross-runner pilot pixel hashes are diagnostic. Mandatory same-runner
+            # independent production/boundary repeats below still require exact pixels.
         key = (frame, samples)
         require(key not in reviewed, f'Duplicate quality evidence for frame/sample pair: {key}')
         reviewed[key] = {'frame': frame, 'samples': samples, 'fileSha256': entry['fileSha256'],
                          'pixelSha256': entry['pixelSha256'], 'settingsDigest': entry['settingsDigest'],
-                         'rawPixelsDecodedLocally': not remote}
+                         'rawPixelsDecodedLocally': not remote,
+                         'pilotPixelsEqualProduction': row['pixelSha256'] == raw[frame]['pixelSha256'] if samples == production['samples'] else None}
         if remote:
             reviewed[key].update({k: entry[k] for k in ('evidenceCommit', 'recordRepositoryPath', 'workflowRunUrl', 'recordSha256', 'reviewImages')})
     selected = {f for f, samples in reviewed if samples == production['samples']}

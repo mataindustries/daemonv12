@@ -124,6 +124,7 @@ def main():
     ap.add_argument('--graded', type=Path, default=WORK / 'graded')
     ap.add_argument('--out', type=Path, default=HERE / 'delivery')
     ap.add_argument('--name', default=NAME)
+    ap.add_argument('--crf', type=int, choices=(16,17,18,19,20), default=16)
     a = ap.parse_args()
     if a.frames.resolve() == a.graded.resolve():
         raise ValueError('The grading destination must be separate from the raw render frames.')
@@ -175,7 +176,7 @@ def main():
     commands.append(run('ffmpeg', '-v', 'error', '-y', '-framerate', '60', '-start_number', '0',
                         '-i', a.graded / '%04d.png', '-i', AUDIO, '-map', '0:v:0', '-map', '1:a:0',
                         '-vf', VIDEO_FILTER,
-                        '-c:v', 'libx264', '-preset', 'slow', '-crf', '16', '-pix_fmt', 'yuv420p',
+                        '-c:v', 'libx264', '-preset', 'slow', '-crf', str(a.crf), '-pix_fmt', 'yuv420p',
                         '-profile:v', 'high', '-level:v', '4.2', '-tune', 'film', '-c:a', 'copy',
                         '-frames:v', '480', '-fps_mode', 'passthrough', '-video_track_timescale', '60000',
                         '-movflags', '+faststart', mov_part))
@@ -189,7 +190,7 @@ def main():
                 'audio': {'path': str(AUDIO.relative_to(ROOT)), 'sha256': AUDIO_SHA256, **audio_meta},
                 'settings': {'dimensions': list(SIZE), 'frameRate': '60/1', 'frames': 480,
                              'durationSeconds': 8.0, 'vignette': 'unchanged V2 finish.grade',
-                             'v2FinishSha256': grade_hash, 'h264Crf': 16, 'h264Preset': 'slow',
+                             'v2FinishSha256': grade_hash, 'h264Crf': a.crf, 'h264Preset': 'slow',
                              'h264Profile': 'high', 'h264Level': '4.2', 'pixelFormat': 'yuv420p',
                              'sampleAspectRatio': '1:1', 'displayAspectRatio': '9:16',
                              'colorRange': 'tv', 'colorSpace': 'smpte170m',

@@ -1,3 +1,5 @@
+Production launch:32samples selected from completed workflow40160011102. The active Actions workflow uses THE CIRCUIT draft-release checkpoints,16 batches of30frames, and an independent finishing/verification/delivery job. Actions artifact/cache flags below apply only to the dormant older helper. No raw frames enter Git.
+
 # MORPH//09 V3 — 1080 × 1920 master production
 
 This is a separate production pipeline from the approved proof. It starts from
