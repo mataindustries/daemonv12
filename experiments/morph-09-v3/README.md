@@ -43,9 +43,9 @@ Android the raw link downloads the file, which any video player opens):
 - `delivery/morph-09-v3-critical-overload.mp4`: H.264 + AAC, for phones.
 - `delivery/morph-09-v3-critical-overload.mov`: H.264 + the approved PCM, sample for sample.
 - `delivery/v2-vs-v3-6-8s.mp4`: V2 and V3 side by side, 6.0–8.0 s, with audio.
-- `delivery/vfx-preview-6-8s.mp4`: the first lightweight preview (288 × 512). Two later tuning
-  changes, stronger particles and vapor and the heat light moved under the plume, are in the
-  proof, not in this preview.
+- `delivery/vfx-preview-6-8s.mp4`: the first lightweight preview (288 × 512). Later changes are
+  in the proof, not in this preview: stronger particles and vapor, the heat light moved under
+  the plume, and the shorter vapor life that verification required (see EFFECTS.md).
 - `delivery/v2-v3-comparison.jpg`: V2 above V3 at 6.25, 6.48, 6.80, 6.97, 7.10 and 7.50 s.
 - `delivery/effect-detail.jpg`: each effect at 2×, V2 beside V3.
 - `delivery/contact-sheet.jpg`, `delivery/loop-boundary.jpg`.
