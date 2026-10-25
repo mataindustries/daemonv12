@@ -20,7 +20,7 @@ manifest = json.loads((package / 'plugin.json').read_text())
 Draft202012Validator.check_schema(schema)
 validator = Draft202012Validator(schema)
 validator.validate(manifest)
-assert manifest['version'] == '0.3.0'
+assert manifest['version'] == '0.4.0'
 assert manifest['name'] == 'daemonv12-composer'
 for mutated in [dict(manifest, version=3), dict(manifest, invented=True), dict(manifest, name='bad..name')]:
     assert list(validator.iter_errors(mutated)), 'Schema failed to reject malformed manifest'
@@ -73,8 +73,8 @@ const activation=JSON.parse(readFileSync('evals/activation-cases.json'));
 const behavior=JSON.parse(readFileSync('evals/behavioral-cases.json'));
 assert.equal(checkFixtureCases(activation,'activation').size,16);
 assert.equal(activation.cases.filter(c=>c.shouldActivate).length,10);
-assert.deepEqual([...checkFixtureCases(behavior,'behavior')],Array.from({length:8},(_,i)=>`B${i+11}`));
-assert.deepEqual([...readFileSync('evals/README.md','utf8').matchAll(/^\| (B\d+) /gm)].map(m=>m[1]),Array.from({length:18},(_,i)=>`B${String(i+1).padStart(2,'0')}`));
+assert.deepEqual([...checkFixtureCases(behavior,'behavior')],Array.from({length:14},(_,i)=>`B${i+11}`));
+assert.deepEqual([...readFileSync('evals/README.md','utf8').matchAll(/^\| (B\d+) /gm)].map(m=>m[1]),Array.from({length:24},(_,i)=>`B${String(i+1).padStart(2,'0')}`));
 assert.throws(()=>checkText(Buffer.from('bad \n'),'x.md'));
 assert.throws(()=>checkText(Buffer.from('```\nunclosed\n'),'x.md'));
 assert.throws(()=>checkLinks('[bad](absent.md)',resolve('README.md'),packageDir));
@@ -82,7 +82,7 @@ checkIsolation(['plugins/daemonv12-composer/plugin.json']);
 assert.throws(()=>checkIsolation(['src/pipeline.ts']));
 '''
 subprocess.run(['node', '--input-type=module', '-e', checks], cwd=package, check=True)
-base = sys.argv[1] if len(sys.argv) > 1 else '02438eda48506a94d10ad2756c6aafff8c5a9469'
+base = sys.argv[1] if len(sys.argv) > 1 else '17468e7ee1df11b8cef361cf4e49601d5f671589'
 paths = subprocess.check_output(['git', 'diff', '--name-only', base, '--'], cwd=package, text=True).splitlines()
 assert all(path.startswith('plugins/daemonv12-composer/') for path in paths), paths
 print(json.dumps({'status':'passed', 'version':manifest['version'], 'schema':'Draft2020-12/jsonschema', 'frontmatter':'PyYAML unique keys', 'sharedChecks':'text, links, fixtures, isolation', 'base':base, 'limits':'Offline alternative; Ajv/YAML suite and host behavioral runs remain separate.'}, indent=2))

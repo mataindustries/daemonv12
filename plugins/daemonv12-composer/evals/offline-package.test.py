@@ -71,7 +71,7 @@ class OfflineFrontmatterTests(unittest.TestCase):
                              'closed YAML frontmatter')
 
     def test_documented_release_baseline_validates_actual_branch(self):
-        base = '02438eda48506a94d10ad2756c6aafff8c5a9469'
+        base = '17468e7ee1df11b8cef361cf4e49601d5f671589'
         instructions = (PACKAGE / 'evals/README.md').read_text()
         command = re.search(r'^node plugins/daemonv12-composer/evals/validate-package\.mjs '
                             r'--validators-dir /tmp/daemonv12-composer-validation-tools '
