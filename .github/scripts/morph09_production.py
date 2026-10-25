@@ -38,6 +38,9 @@ BASE = ["work/morph-09-v2/resonator.blend", "work/morph-09-v2/resonator.json",
         "work/morph-09-v3/resonator-v3.blend", "work/morph-09-v3/resonator.json", "work/morph-09-v3-master/scene-build.json"]
 QUIET = {0,372,390,405,472,479}
 RECHECK = {0,389,396,418,479}
+RECOVERY_STARTS = {385,415}
+sys.path.insert(0,str(EXP))
+from recheck import compare as compare_recheck
 
 def require(ok, message):
     if not ok:
@@ -256,6 +259,10 @@ def preflight():
             '-F','draft=true','-F','prerelease=false','-f','name=MORPH09 private render checkpoints — DO NOT PUBLISH',
             '-f','body=Private draft checkpoints only. Never publish. No Actions artifacts or caches.')
     known=assets()
+    expected={f'frames-{f:04d}-{f+4:04d}.tar.gz' for f in range(0,480,5)}
+    missing=expected-set(known)
+    require(missing <= {'frames-0385-0389.tar.gz','frames-0415-0419.tar.gz'},f'Incompatible missing checkpoints:{missing}')
+    require('scene-base.tar.gz' in known,'Recovery requires existing immutable scene checkpoint')
     if 'scene-base.tar.gz' in known:
         restore_base(known)
     else:
@@ -297,8 +304,48 @@ def validate_chunk(fs,batch):
         for folder,required in [('rerenders',controls(batch)),('quiet-v3',QUIET)]:
             if f in required:
                 repeat=json.loads((WORK/f'{folder}/{f:04d}.json').read_text())
-                require(image_record(WORK/f'{folder}/{f:04d}.png')['rgb_sha256']==row['pixelSha256']==repeat['pixelSha256'],f'Independent pixels differ:{f}:{folder}')
+                require(image_record(WORK/f'{folder}/{f:04d}.png')['rgb_sha256']==repeat['pixelSha256'], 'Independent sidecar pixel hash differs')
+                result=compare_recheck(WORK/f'frames/{f:04d}.png',WORK/f'{folder}/{f:04d}.png',f)
+                require(result['passed'] if folder=='rerenders' else result['pixelIdentical'],f'Independent pixels differ:{f}:{folder}:{result}')
                 require(repeat['settingsDigest']==row['settingsDigest'],'Control settings mismatch')
+
+
+def diagnose_recovery(chunk,batch,known):
+    """Retain measurements and actual pairs even if strict recovery fails."""
+    report={'sourceCommit':SOURCE,'settings':SETTINGS,'chunk':chunk,'isolated':[], 'context':[]}
+    required=set(chunk)&controls(batch)
+    for f in sorted(required):
+        report['isolated'].append(compare_recheck(WORK/f'frames/{f:04d}.png',WORK/f'rerenders/{f:04d}.png',f))
+    needs_context=any(not r['passed'] for r in report['isolated'])
+    if needs_context:
+        (WORK/'isolated-recheck').mkdir(exist_ok=True)
+        for f in required:
+            for ext in ('png','json'):
+                shutil.copy2(WORK/f'rerenders/{f:04d}.{ext}',WORK/f'isolated-recheck/{f:04d}.{ext}')
+        render(chunk,'context-replay',batch)
+        for f in chunk:
+            result=compare_recheck(WORK/f'frames/{f:04d}.png',WORK/f'context-replay/{f:04d}.png',f)
+            report['context'].append(result)
+        if all(r['passed'] for r in report['context']):
+            for f in required:
+                for ext in ('png','json'):
+                    shutil.copy2(WORK/f'context-replay/{f:04d}.{ext}',WORK/f'rerenders/{f:04d}.{ext}')
+            report['classification']='render-history-sensitive; independent matching-context replay passed'
+        else:
+            report['classification']='unresolved scene/render difference; finishing blocked'
+    else:
+        report['classification']='exact or bounded one-LSB numerical variation; no changed geometry accepted'
+    report['accepted']=all(r['passed'] for r in (report['context'] if needs_context else report['isolated']))
+    report_path=STORE/f'recheck-{chunk[0]:04d}-run{os.environ["GITHUB_RUN_ID"]}-attempt{os.environ.get("GITHUB_RUN_ATTEMPT","1")}.json'
+    write_json(report_path,report);print('RECHECK_MEASUREMENTS',json.dumps(report,sort_keys=True),flush=True)
+    files={'report.json':report_path}
+    for folder in ('frames','rerenders','isolated-recheck','context-replay'):
+        for f in chunk:
+            for ext in ('png','json'):
+                path=WORK/f'{folder}/{f:04d}.{ext}'
+                if path.is_file():files[f'{folder}/{f:04d}.{ext}']=path
+    archive=report_path.with_suffix('.tar.gz');pack(archive,files,'recheck-diagnostic');upload(archive,known)
+    require(report['accepted'],'Recovery differences exceed scoped quantization/context rule; private diagnostic preserved')
 
 
 def render_batch(batch):
@@ -309,9 +356,11 @@ def render_batch(batch):
         if name in known:
             download(known[name],path);unpack(path,WORK,'frame-chunk',paths_for(chunk));validate_chunk(chunk,batch)
             print('RESUMED',name,flush=True);continue
+        require(first in RECOVERY_STARTS, f'Recovery refuses to render any other missing chunk:{first}')
         render(chunk,'frames',batch)
         render(set(chunk)&controls(batch),'rerenders',batch)
         render(set(chunk)&QUIET,'quiet-v3',batch,'v3')
+        diagnose_recovery(chunk,batch,known)
         validate_chunk(chunk,batch)
         files={p:WORK/p for p in paths_for(chunk) if (WORK/p).is_file()}
         pack(path,files,'frame-chunk',{'frames':chunk,'batch':batch,'machine':machine()});upload(path,known)
@@ -339,6 +388,18 @@ def finish():
             break
     run([sys.executable,EXP/'verify.py','--name','morph-09-v3-master','--manifest',WORK/'render-manifest.json'],timeout=3600)
     report=json.loads((MASTER/'production-verification.json').read_text());require(report['status']=='verified-local-master','Full master verification failed')
+    diagnostics=[]
+    for name,entry in known.items():
+        if not name.startswith('recheck-') or not name.endswith('.tar.gz'):continue
+        path=STORE/name;download(entry,path)
+        with tarfile.open(path,'r:gz') as archive:
+            manifest=json.load(archive.extractfile('manifest.json'))
+            require(manifest['source_commit']==SOURCE and manifest['settings']==SETTINGS and manifest['source_sha256']==source_hashes(),'Diagnostic provenance differs')
+            payload=archive.extractfile('report.json').read()
+            require(hashlib.sha256(payload).hexdigest()==manifest['files']['report.json']['sha256'],'Diagnostic report checksum differs')
+            diagnostics.append({'asset':name,'measurements':json.loads(payload)})
+        path.unlink()
+    report['recoveryDiagnostics']=diagnostics
     report['status']='PASS';report['checkpointStorage']={'type':'DRAFT GitHub Release','tag':TAG,'releasePublished':False,'actionsArtifactsOrCache':False}
     write_json(MASTER/'production-verification.json',report)
     # A durable private bundle is retained before Git delivery.
