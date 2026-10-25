@@ -82,8 +82,9 @@ These are hypotheses to compare, not universal arrangement prescriptions.
 
 ## Risk after competence
 
-Once V3 is technically clean, coherent, balanced and structurally complete,
-perform the **Risk Pass**. Ask: “What one high-upside musical decision could make
+Once the strongest version (normally V3, or a documented early stop) is
+technically clean, coherent, balanced and structurally complete, perform the
+**Risk Pass**. Ask: “What one high-upside musical decision could make
 this significantly more memorable without destroying coherence?”
 
 Propose **ONE risk** and record five brief points:

@@ -16,15 +16,16 @@ decisions, keep planning short, and render early. Preserve user work. Use the
 existing CLI/project format; never modify the engine, invent fields, or require
 MCP installation. This skill provides process, not a quality guarantee.
 
-## 1–4. Verify, define, choose, render
+## 1–4. Verify, define, choose hooks, render
 
 1. **Verify environment.** Locate the engine checkout and a separate composition
    workspace. Record engine commit and tool versions. Run `git rev-parse HEAD`,
    `node bin/daemonv12.js doctor --json` and `node bin/daemonv12.js --help`.
    Read [engine production notes](references/daemonv12-production-notes.md) and
-   the current specs/catalogs before authoring. Verify a small render through the
-   intended route; use documented `init` for a new workspace. Diagnose actual
-   failures and disclose blocked capabilities. Consult [headless audio](references/headless-audio.md)
+   the selected catalog before authoring. Reuse verified environment/spec notes;
+   investigate only changed or uncertain controls instead of repeating engine
+   reconnaissance. Verify a small render through the intended route; use
+   documented `init` for a new workspace. Diagnose actual failures and disclose blocked capabilities. Consult [headless audio](references/headless-audio.md)
    only for an audio-device initialization problem; do not apply its wrapper automatically.
 2. **Write a six-line musical thesis:** hook; rhythmic identity or pacing;
    low-end role (or deliberate absence); contrast idea; payoff; ending.
@@ -32,21 +33,39 @@ MCP installation. This skill provides process, not a quality guarantee.
    for a new direction. Read [short-form composition](references/short-form-composition.md)
    for arc, continuity, development and replay decisions; no fixed structure,
    key, BPM or palette is required.
-3. **Choose an intentional palette.** Give each sound a job. Check tuning,
+3. **Choose roles, then compare hooks.** Read the portable
+   [hook-first reference](references/hook-first.md). For a new composition, make
+   **3–4 short competing hooks** before building a full arrangement: different
+   rhythms and contours, not merely transpositions or new timbres. Use 2–4 bars
+   (or a similarly short gesture for free-time music), minimal accompaniment,
+   and declare low-end ownership before adding layers. Validate each sketch
+   before a cheap dry render; defer full effects/stems until a winner is chosen.
+   Human listening selects when available; otherwise record a provisional
+   score-based choice and its uncertainty. Save the winning hook unchanged as
+   an anchor. For revisions, preserve the established hook unless replacing it
+   is the explicit hypothesis; do not restart a hook search for every edit.
+   **Optional Signature Pack mode:** when requested or choosing that available
+   palette, use [Signature Pack mode](references/signature-pack.md); confirm
+   assets/catalog first. Missing pack: use verified available sounds and keep
+   this workflow. No pack installation is required. Check tuning,
    source length, transformed tails and kick/bass overlap. More layers do not
    automatically create richness. Use v0.7 `gate`, `endSeconds`, per-voice
    `envelope` and track-local `chokeGroup` for sampled-note shape and spacing. Gates/chokes release sampled
    voices; they are not generic MIDI note-off. Read the
    [electronic-production recipes](references/electronic-production.md) when
    writing electronic parts; validate against the selected engine and assets.
-4. **Render complete V1 quickly.** Include a complete ending; establish identity
+4. **Expand the winner into complete V1.** Plan contrast through subtraction,
+   harmonic movement and changed rhythmic patterns before adding layers.
+   Repeat the hook so it becomes learnable; change its context or answer rather
+   than erase its identity. Include a complete ending; establish identity
    within roughly the first 3–5 seconds. Establish repetition, then change its
    consequence. Leave space for the central idea before polishing details.
 
 ## 5–9. Evidence and three serious versions
 
-Validate and render separate `v1`, `v2`, `v3` project snapshots and outputs. Use
-the actual returned paths. Keep the same render route across comparisons;
+Hook sketches are preflight, not V1–V3. The normal full workflow retains
+separate `v1`, `v2`, `v3` project snapshots and complete renders. Use the actual
+returned paths. Keep the same render route across comparisons;
 choose production routing when aligned stems/exact duration matter. Reuse the
 written analysis report before rerunning native analysis:
 
@@ -69,15 +88,20 @@ evidence, likely cause and intended change. “Low LUFS” or “few effects” 
 not a musical weakness. If evidence is uncertain, name a hypothesis; never
 manufacture defects to fill slots.
 
-7–8. Make V2 from that critique, render, compare, and name its three weaknesses.
+7–8. Before V2, name what must survive: the hook's defining rhythm/contour and
+any successful groove or arrival. Change only the roles/bars implicated by the
+critique; compare against the saved anchor. Make V2, render, compare, and name
+its three weaknesses.
 9. Make V3 from that critique, render, compare, and record its status. **V1–V3
-are required in the normal full workflow:** complete renders and meaningful
-musical revisions. Renames, identical rerenders, output formats and arbitrary
-gain edits do not count. If user constraints prevent the full workflow, disclose
-the omitted steps. Keep or revert changes by musical consequence. Use the
-compact [production log](assets/production-log.md).
+remain the normal full workflow**, with meaningful musical revisions. Renames,
+identical rerenders, output formats and arbitrary gain edits do not count.
+If no defensible musical change remains, keep the stronger version, record the
+early-stop evidence and omitted versions, and complete review/Risk Pass on it.
+Do not invent weaknesses to reach V3. Also disclose steps omitted by user
+constraints. Keep or revert changes by musical consequence. Use the compact
+[production log](assets/production-log.md).
 Event, track, effect and automation counts or loudness are evidence, never
-quality scores.
+quality scores. Never assign an automatic musical quality score.
 
 ## 10–13. Review the record
 
@@ -112,9 +136,10 @@ timbral/octave doubles and section contrast. See the verified engine notes.
 
 ## 14. RISK PASS: risk after competence
 
-After V3, when the piece is technically clean, coherent, balanced and structurally
-complete, **perform a Risk Pass**. Ask: “What one high-upside musical decision
-could make this significantly more memorable without destroying coherence?”
+After V3 (or an evidence-based early stop), when the piece is technically clean,
+coherent, balanced and structurally complete, **perform a Risk Pass**. Ask:
+“What one high-upside musical decision could make this significantly more
+memorable without destroying coherence?”
 
 Propose **ONE risk**, its memorability upside, what could go wrong, the cheapest
 useful test, and the musical evidence for **keep/revert**. Examples of possible
@@ -127,7 +152,7 @@ address the specific defect before considering risk.
 
 ## 15. Optional V4/V5: compute discipline
 
-**Every additional version after V3**, including a rendered risk test, must state:
+**Every additional version after V3, and any rendered Risk Pass**, must state:
 
 - **MUSICAL HYPOTHESIS:** what exact audible musical improvement is expected?
 - **EVIDENCE NEEDED:** what minimum evidence decides it?
