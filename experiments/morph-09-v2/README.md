@@ -20,6 +20,15 @@ What to judge: [REVIEW.md](REVIEW.md).
 
 ## Delivery
 
+**Android playback.** Raw links (public repository, verified by download in
+[`delivery/retrieval-verification.json`](delivery/retrieval-verification.json); on Android the raw
+link downloads the file, which any video player opens):
+
+- MP4 (AAC): https://raw.githubusercontent.com/mataindustries/daemonv12/005f02ccf40f4d73ba05cb146bc1bdd683cedc74/experiments/morph-09-v2/delivery/morph-09-v2-inside-the-resonator.mp4
+- MOV (approved PCM): https://raw.githubusercontent.com/mataindustries/daemonv12/005f02ccf40f4d73ba05cb146bc1bdd683cedc74/experiments/morph-09-v2/delivery/morph-09-v2-inside-the-resonator.mov
+- Contact sheet: https://raw.githubusercontent.com/mataindustries/daemonv12/005f02ccf40f4d73ba05cb146bc1bdd683cedc74/experiments/morph-09-v2/delivery/contact-sheet.jpg
+
+
 - [`delivery/morph-09-v2-inside-the-resonator.mp4`](delivery/morph-09-v2-inside-the-resonator.mp4)
   — H.264 + AAC viewing copy (phones).
 - [`delivery/morph-09-v2-inside-the-resonator.mov`](delivery/morph-09-v2-inside-the-resonator.mov)
