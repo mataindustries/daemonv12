@@ -27,6 +27,13 @@ NAME = 'morph-09-v3-critical-overload-1080p'
 SIZE = (1080, 1920)
 NAMES = [f'{f:04d}.png' for f in range(480)]
 FONT = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
+# Keep the approved proof's RGB-to-YUV matrix and declare it explicitly. Merely
+# labelling its BT.601 YUV as BT.709 would change the copper on HD-only decoders.
+# AgX's existing sRGB display output supplies the primaries and transfer labels;
+# setparams labels those values without a transfer or gamut conversion.
+VIDEO_FILTER = ('format=yuv420p,'
+                'setparams=range=limited:color_primaries=bt709:'
+                'color_trc=iec61966-2-1:colorspace=smpte170m,setsar=1')
 
 spec = importlib.util.spec_from_file_location('approved_v2_finish', HERE.parent.parent / 'morph-09-v2/finish.py')
 v2 = importlib.util.module_from_spec(spec)
@@ -167,6 +174,7 @@ def main():
     commands = []
     commands.append(run('ffmpeg', '-v', 'error', '-y', '-framerate', '60', '-start_number', '0',
                         '-i', a.graded / '%04d.png', '-i', AUDIO, '-map', '0:v:0', '-map', '1:a:0',
+                        '-vf', VIDEO_FILTER,
                         '-c:v', 'libx264', '-preset', 'slow', '-crf', '16', '-pix_fmt', 'yuv420p',
                         '-profile:v', 'high', '-level:v', '4.2', '-tune', 'film', '-c:a', 'copy',
                         '-frames:v', '480', '-fps_mode', 'passthrough', '-video_track_timescale', '60000',
@@ -183,6 +191,10 @@ def main():
                              'durationSeconds': 8.0, 'vignette': 'unchanged V2 finish.grade',
                              'v2FinishSha256': grade_hash, 'h264Crf': 16, 'h264Preset': 'slow',
                              'h264Profile': 'high', 'h264Level': '4.2', 'pixelFormat': 'yuv420p',
+                             'sampleAspectRatio': '1:1', 'displayAspectRatio': '9:16',
+                             'colorRange': 'tv', 'colorSpace': 'smpte170m',
+                             'colorPrimaries': 'bt709', 'colorTransfer': 'iec61966-2-1',
+                             'rgbToYuvMatrix': 'unchanged approved proof BT.601 conversion; explicit metadata only',
                              'aacBitrate': '256k', 'videoCopiedFromMovToMp4': True,
                              'noVideoOverlays': True, 'noAudioDsp': True},
                 'frames': frames, 'commands': commands,

@@ -116,5 +116,18 @@ still requires an actual unauthenticated download and matching checksum for ever
 linked artifact. Keep any publication workflow separate: the task ends at human
 approval of the verified master.
 
-The dormant GitHub Actions workflow and its separate pilot/production gates are
+The GitHub Actions workflow and its separate pilot/production gates are
 documented in [ACTIONS.md](ACTIONS.md).
+
+Collect downloaded batch ZIPs locally before finishing. Each part is checked
+against its complete checksum inventory; existing frames are retained only when
+their bytes match exactly. Use one collector process at a time:
+
+```bash
+"$PYTHON" experiments/morph-09-v3/master/collect-batches.py \
+  --archives /workspace/work/morph09-artifacts --require-complete
+```
+
+An incomplete collection keeps verified completed pictures and reports missing
+raw frames, controls and declared artifact parts. Final verification remains a
+separate required step.

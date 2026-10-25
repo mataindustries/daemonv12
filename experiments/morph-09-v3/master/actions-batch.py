@@ -242,8 +242,11 @@ def bundle(c, job):
         source = WORK / folder
         if not source.exists():
             continue
-        for path in source.iterdir():
-            if re.fullmatch(r'[0-9]{4}\.(png|json)', path.name):
+        for sidecar in sorted(source.glob('[0-9][0-9][0-9][0-9].json')):
+            png = sidecar.with_suffix('.png')
+            if not png.is_file():
+                continue # Keep completed pairs; an interrupted partial is not an output picture.
+            for path in (png, sidecar):
                 target = out / folder / path.name
                 target.parent.mkdir(parents=True, exist_ok=True)
                 if not target.exists():
@@ -257,16 +260,63 @@ def bundle(c, job):
                    HERE / 'source-hashes.json', HERE / 'config.json'):
         if source.exists():
             shutil.copy2(source, metadata / source.name)
-    files = [p for p in sorted(out.rglob('*')) if p.is_file()]
-    total = sum(p.stat().st_size for p in files)
-    assert total + 100_000 <= job['artifactBudgetBytes'], f'{total}bytes exceeds configured per-job artifact budget; nothing should upload'
-    save(out / 'artifact-inventory.json', {'job': job, 'totalBytesBeforeInventory': total,
-                                         'artifactBudgetBytes': job['artifactBudgetBytes'],
-                                         'files': {str(p.relative_to(out)): {'sha256': digest(p), 'bytes': p.stat().st_size} for p in files}})
-    inventory = [p for p in sorted(out.rglob('*')) if p.is_file()]
-    (out / 'SHA256SUMS').write_text(''.join(f'{digest(p)}  {p.relative_to(out)}\n' for p in inventory))
-    assert sum(p.stat().st_size for p in out.rglob('*') if p.is_file()) <= job['artifactBudgetBytes']
-    print(f'Artifact ready: {total} bytes under authorized per-job cap {job["artifactBudgetBytes"]}', flush=True)
+    for old in ('artifact-inventory.json', 'SHA256SUMS'):
+        (out / old).unlink(missing_ok=True)
+    files = {str(p.relative_to(out)): p for p in sorted(out.rglob('*')) if p.is_file()}
+    common_names = {'metadata/scene-build.json', 'metadata/runtime.json',
+                    'metadata/source-hashes.json', 'metadata/config.json'}
+    assert common_names <= set(files), 'missing standalone part provenance'
+    common = [files[n] for n in sorted(common_names)]
+    common_bytes = sum(p.stat().st_size for p in common)
+    groups, used = [], set(common_names)
+    # PNGs and their sidecars stay together, so each downloaded part is independently valid.
+    for folder in ('frames', 'rerenders', 'quiet-v3'):
+        for sidecar in sorted((out / folder).glob('[0-9][0-9][0-9][0-9].json')):
+            png = sidecar.with_suffix('.png')
+            assert png.is_file()
+            groups.append([png, sidecar])
+            used.update(str(p.relative_to(out)) for p in (png, sidecar))
+    groups += [[files[n]] for n in sorted(set(files) - used)]
+    limit, reserve = 30 * 1024**2, 128 * 1024
+    parts, current, current_bytes = [], [], common_bytes
+    for group in groups:
+        size = sum(p.stat().st_size for p in group)
+        assert common_bytes + size <= limit - reserve, 'one complete frame/log exceeds the downloadable part limit'
+        if current and current_bytes + size > limit - reserve:
+            parts.append(current)
+            current, current_bytes = [], common_bytes
+        current.extend(group)
+        current_bytes += size
+    if current:
+        parts.append(current)
+    assert 1 <= len(parts) <= 10, 'batch requires more than ten30MiB upload parts'
+    destination = WORK / 'action-parts'
+    if destination.exists():
+        shutil.rmtree(destination)
+    total = 0
+    for index, group in enumerate(parts):
+        part = destination / f'part{index:02d}'
+        for source in common + group:
+            target = part / source.relative_to(out)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            os.link(source, target)
+        payload = [p for p in sorted(part.rglob('*')) if p.is_file()]
+        payload_bytes = sum(p.stat().st_size for p in payload)
+        save(part / 'artifact-inventory.json', {'job': job, 'partIndex': index, 'partCount': len(parts),
+             'downloadLimitBytes': limit, 'totalBytesBeforeInventory': payload_bytes,
+             'artifactBudgetBytes': job['artifactBudgetBytes'],
+             'files': {str(p.relative_to(part)): {'sha256': digest(p), 'bytes': p.stat().st_size} for p in payload}})
+        inventory = [p for p in sorted(part.rglob('*')) if p.is_file()]
+        (part / 'SHA256SUMS').write_text(''.join(f'{digest(p)}  {p.relative_to(part)}\n' for p in inventory))
+        part_bytes = sum(p.stat().st_size for p in part.rglob('*') if p.is_file())
+        assert part_bytes <= limit - 64 * 1024, 'part leaves insufficient ZIP metadata headroom'
+        total += part_bytes
+    budgeted = total + len(parts) * 64 * 1024 # Reserve ZIP headers in the storage budget too.
+    assert budgeted <= job['artifactBudgetBytes'], f'{budgeted}budgeted bytes exceeds authorized total per-job artifact budget; nothing should upload'
+    if os.environ.get('GITHUB_OUTPUT'):
+        with Path(os.environ['GITHUB_OUTPUT']).open('a') as output:
+            output.write(f'partCount={len(parts)}\n')
+    print(f'{len(parts)} downloadable parts ready: {total}bytes under authorized job cap {job["artifactBudgetBytes"]}', flush=True)
 
 
 def main():

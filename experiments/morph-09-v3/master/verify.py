@@ -476,6 +476,12 @@ def media(path, reference, audio_info, approved_pcm, approved_float, pcm_referen
     require(video['codec_name'] == 'h264' and video['pix_fmt'] == 'yuv420p', f'{path.name}: incompatible video codec/pixel format.')
     require(video.get('profile') == 'High' and int(video.get('level', 0)) <= 42, f'{path.name}: unexpected Android H.264 profile/level.')
     require((video['width'], video['height']) == SIZE, f'{path.name}: wrong display resolution.')
+    require(video.get('sample_aspect_ratio') == '1:1' and video.get('display_aspect_ratio') == '9:16',
+            f'{path.name}: Android display geometry is not explicitly square-pixel 9:16.')
+    color_metadata = {'color_range': 'tv', 'color_space': 'smpte170m',
+                      'color_primaries': 'bt709', 'color_transfer': 'iec61966-2-1'}
+    require(all(video.get(key) == value for key, value in color_metadata.items()),
+            f'{path.name}: color matrix/range/primaries/transfer differ from the proof-preserving finish.')
     require(video['r_frame_rate'] == '60/1' and video['avg_frame_rate'] == '60/1', f'{path.name}: not constant 60 fps.')
     require(int(video['nb_read_frames']) == FRAMES, f'{path.name}: not exactly 480 decodable pictures.')
     require(abs(float(metadata['format']['duration']) - 8.0) < 0.0001, f'{path.name}: container is not exactly 8 seconds.')
@@ -543,6 +549,8 @@ def media(path, reference, audio_info, approved_pcm, approved_float, pcm_referen
                         'trailingDecoderPaddingSampleFrames': (len(samples) - len(approved_float)) // audio_info['channels']}
     return {'file': path.name, 'sha256': digest(path), 'bytes': path.stat().st_size,
             'dimensions': list(SIZE), 'frames': FRAMES, 'fps': '60/1', 'durationSeconds': 8.0,
+            'sampleAspectRatio': video['sample_aspect_ratio'], 'displayAspectRatio': video['display_aspect_ratio'],
+            'colorMetadata': color_metadata,
             'videoCodec': video['codec_name'], 'audioCodec': audio['codec_name'],
             'fastStartAtomLayout': atoms,
             'everyDisplayedTimestampVerified': True, 'completeDecodeWithoutErrors': True,

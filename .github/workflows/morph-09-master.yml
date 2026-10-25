@@ -108,12 +108,102 @@ jobs:
         id: bundle
         if: always()
         run: python experiments/morph-09-v3/master/actions-batch.py bundle
-      - name: Upload recoverable raw batch; retain one day
-        if: always() && steps.bundle.outcome == 'success'
+      - name: Upload downloadable part 00; retain one day
+        if: always() && steps.bundle.outcome == 'success' && steps.bundle.outputs.partCount > 0
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}
-          path: work/morph-09-v3-master/action-artifact/
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}-part00
+          path: work/morph-09-v3-master/action-parts/part00/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          include-hidden-files: false
+      - name: Upload downloadable part 01; retain one day
+        if: always() && steps.bundle.outcome == 'success' && steps.bundle.outputs.partCount > 1
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}-part01
+          path: work/morph-09-v3-master/action-parts/part01/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          include-hidden-files: false
+      - name: Upload downloadable part 02; retain one day
+        if: always() && steps.bundle.outcome == 'success' && steps.bundle.outputs.partCount > 2
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}-part02
+          path: work/morph-09-v3-master/action-parts/part02/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          include-hidden-files: false
+      - name: Upload downloadable part 03; retain one day
+        if: always() && steps.bundle.outcome == 'success' && steps.bundle.outputs.partCount > 3
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}-part03
+          path: work/morph-09-v3-master/action-parts/part03/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          include-hidden-files: false
+      - name: Upload downloadable part 04; retain one day
+        if: always() && steps.bundle.outcome == 'success' && steps.bundle.outputs.partCount > 4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}-part04
+          path: work/morph-09-v3-master/action-parts/part04/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          include-hidden-files: false
+      - name: Upload downloadable part 05; retain one day
+        if: always() && steps.bundle.outcome == 'success' && steps.bundle.outputs.partCount > 5
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}-part05
+          path: work/morph-09-v3-master/action-parts/part05/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          include-hidden-files: false
+      - name: Upload downloadable part 06; retain one day
+        if: always() && steps.bundle.outcome == 'success' && steps.bundle.outputs.partCount > 6
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}-part06
+          path: work/morph-09-v3-master/action-parts/part06/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          include-hidden-files: false
+      - name: Upload downloadable part 07; retain one day
+        if: always() && steps.bundle.outcome == 'success' && steps.bundle.outputs.partCount > 7
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}-part07
+          path: work/morph-09-v3-master/action-parts/part07/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          include-hidden-files: false
+      - name: Upload downloadable part 08; retain one day
+        if: always() && steps.bundle.outcome == 'success' && steps.bundle.outputs.partCount > 8
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}-part08
+          path: work/morph-09-v3-master/action-parts/part08/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+          include-hidden-files: false
+      - name: Upload downloadable part 09; retain one day
+        if: always() && steps.bundle.outcome == 'success' && steps.bundle.outputs.partCount > 9
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: morph09-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.job.id }}-part09
+          path: work/morph-09-v3-master/action-parts/part09/
           if-no-files-found: error
           retention-days: 1
           compression-level: 0

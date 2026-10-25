@@ -1,8 +1,8 @@
 # Standard public GitHub Actions production
 
-`.github/workflows/morph-09-master.yml.disabled` is a review draft. Merely
-committing it does not start a workflow. Rename it to `.yml` only after review.
-The workflow accepts this exact public repository and production branch only,
+`.github/workflows/morph-09-master.yml` runs the reviewed free pilot. Production
+remains disabled by its separate storage and sampling gates. The workflow accepts
+this exact public repository and production branch only,
 and uses standard `ubuntu-24.04` runners: four CPUs, 16 GB RAM and 14 GB SSD.
 The current GitHub documentation identifies standard public-runner compute as
 free. No larger runners, GPU services, self-hosted hosts, caches or deployments
@@ -64,9 +64,16 @@ The total configured artifact budget is divided into sixteen per-job caps. The
 helper measures payload size and leaves ZIP metadata headroom before enabling an
 upload. It stores complete PNGs/sidecars, controls, logs, preflight reports and
 scene/runtime metadata; incomplete jobs can therefore be recovered independently.
-Artifacts retain for one day, with compression disabled for already-compressed
-PNGs. Download and verify them promptly. A failed render still attempts to retain
-its completed pictures within the authorized storage cap.
+Each batch is divided into independently verifiable download parts below 30 MiB,
+with room for ZIP headers. Every PNG stays with its original JSON sidecar; tiny
+source/runtime/scene/configuration headers are repeated so a part can be validated
+on its own. Each part has a complete checksum file and inventory identifying its
+part index/count. Ten explicit conditional upload steps handle the measured part
+count without another SDK. The total measured size of all parts must fit the
+authorized per-job storage cap, including repeated metadata. Artifacts retain for
+one day, with compression disabled for already-compressed PNGs. Download and
+verify them promptly. A failed render still attempts to retain its completed
+picture pairs within the authorized storage cap.
 
 A strict uncompressed PNG bound is approximately 6.23 MB per 1080 × 1920 RGB8
 picture. The 520 production/control pictures therefore have an upper bound near
@@ -76,8 +83,16 @@ render output per job is at most about 212 MB at this bound; the runtime, checko
 and scene files are expected to keep each runner well within its disk allocation.
 The helper requires at least 4 GiB free after dependency installation.
 
-After downloading, verify each artifact’s `SHA256SUMS`, merge non-overlapping frame
-records into the local production directories, regenerate the combined manifest,
-then run finishing and strict final verification. Keep the per-job metadata and
-raw frames outside Git. Neither successful jobs nor collected artifacts alone
-constitute a verified deliverable.
+After downloading all ZIP parts, run `collect-batches.py --archives DIR
+--require-complete`. It rejects unsafe/unknown ZIP members, verifies every file’s
+checksum and recorded inventory, decodes every full-resolution PNG and validates
+its source/settings/pixel hashes. It merges non-overlapping frames and controls
+into the local work directories, preserves per-part metadata/logs under
+`work/morph-09-v3-master/batches`, and regenerates a sorted combined manifest.
+An exact rerun safely skips existing matching bytes; conflicting bytes are never
+overwritten. A different artifact claiming a previously collected picture is
+rejected. Recover a failed batch by rendering its missing pictures and controls.
+The completeness gate requires all 480 pictures, representative/boundary/quiet
+controls and every declared part. Then run finishing and strict final
+verification. Keep metadata and raw frames outside Git. Neither successful jobs
+nor collected artifacts alone constitute a verified deliverable.
