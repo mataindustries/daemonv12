@@ -30,7 +30,7 @@ export const config = {
    * SUPPORT DEVELOPMENT: paste a Stripe Payment Link here
    * (https://buy.stripe.com/...). Opens in a new tab. No Stripe SDK is loaded.
    */
-  supportUrl: 'https://buy.stripe.com/8x2bJ3bYDgs7arR1Zt3F600',
+  supportUrl: 'https://buy.stripe.com/3cIdR29bM3O44fCcUWfMA00',
 
   /**
    * REQUEST A PACK: any https:// form URL (Tally, Typeform, Google Forms, a GitHub
