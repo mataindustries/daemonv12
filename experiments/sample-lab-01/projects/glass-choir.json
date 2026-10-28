@@ -1,0 +1,126 @@
+{
+  "formatVersion": 1,
+  "title": "GLASS CHOIR (SAMPLE LAB 01 resample for candidate B)",
+  "description": "A hybrid instrument printed from the palette: ghost-vox at C#4, the same voice an octave down, and glass-hit at C#5, struck together into a shared room. Candidate B plays this print as its hook.",
+  "bpm": 96,
+  "timeSignature": "4/4",
+  "bars": 1,
+  "seed": 1,
+  "render": {
+    "duration": {
+      "seconds": 3
+    },
+    "tail": "auto"
+  },
+  "master": {
+    "gainDb": 0,
+    "effects": [
+      {
+        "type": "highpass",
+        "frequencyHz": 90
+      },
+      {
+        "type": "reverb",
+        "roomSize": 0.62,
+        "decaySeconds": 2.1,
+        "wet": 0.3
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "voice",
+      "description": "ghost-vox at its own pitch, C#4.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/palette/ghost-vox.wav"
+      },
+      "mix": {
+        "gainDb": 4
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.82
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "voice-low",
+      "description": "ghost-vox an octave down: half speed, formants halved.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/palette/ghost-vox.wav"
+      },
+      "mix": {
+        "gainDb": -3
+      },
+      "effects": [
+        {
+          "type": "lowpass",
+          "frequencyHz": 2400
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.6,
+              "playbackRate": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glass",
+      "description": "glass-hit at C#5, the octave above the voice.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/palette/glass-hit.wav"
+      },
+      "mix": {
+        "gainDb": 3
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.78
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

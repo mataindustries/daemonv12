@@ -1,0 +1,689 @@
+{
+  "lab": "SAMPLE LAB 01",
+  "bpm": 96,
+  "loopFrames": 441000,
+  "palette": [
+    {
+      "file": "ghost-vox.wav",
+      "origin": "cc0",
+      "pack": "GLASSHOUSE",
+      "catalogId": "ghost-vox",
+      "copiedFrom": "examples/assets/glasshouse/04-ghost-vox.wav",
+      "catalog": "examples/glasshouse.catalog.json",
+      "sha256": "2c003a699d010082e64cb070e7dffd6adcd3189c22ee6f914bf3c7dfe537da68",
+      "bytes": 83834
+    },
+    {
+      "file": "glass-hit.wav",
+      "origin": "cc0",
+      "pack": "GLASSHOUSE",
+      "catalogId": "glass-hit",
+      "copiedFrom": "examples/assets/glasshouse/01-glass-hit.wav",
+      "catalog": "examples/glasshouse.catalog.json",
+      "sha256": "96ddb71c7aea630fdff30c9e79bfa24f6873547adc0fbf6febff95aff3cdba77",
+      "bytes": 88244
+    },
+    {
+      "file": "pixel-hat.wav",
+      "origin": "cc0",
+      "pack": "GLASSHOUSE",
+      "catalogId": "pixel-hat",
+      "copiedFrom": "examples/assets/glasshouse/09-pixel-hat.wav",
+      "catalog": "examples/glasshouse.catalog.json",
+      "sha256": "19451e5b4592e54d61f4555cfaec19d277b7e8499a49651b58b934ad6622f491",
+      "bytes": 4896
+    },
+    {
+      "file": "air-texture.wav",
+      "origin": "cc0",
+      "pack": "Orbital Foundry",
+      "catalogId": "air-texture",
+      "copiedFrom": "examples/assets/orbital-foundry/11-air-texture.wav",
+      "catalog": "examples/orbital-foundry.catalog.json",
+      "sha256": "c103c24ffe274a10d3d1a5aa157f24c16d6542a3835aaf6246009231860ceb1a",
+      "bytes": 1411244
+    },
+    {
+      "file": "mechanical-kick.wav",
+      "origin": "cc0",
+      "pack": "Orbital Foundry",
+      "catalogId": "mechanical-kick",
+      "copiedFrom": "examples/assets/orbital-foundry/02-mechanical-kick.wav",
+      "catalog": "examples/orbital-foundry.catalog.json",
+      "sha256": "19b350b860aac8864d5e5710f1fdfef59120bd3ccb38b0feb51acd0b7bcb9eb6",
+      "bytes": 37088
+    },
+    {
+      "file": "industrial-snare.wav",
+      "origin": "cc0",
+      "pack": "Orbital Foundry",
+      "catalogId": "industrial-snare",
+      "copiedFrom": "examples/assets/orbital-foundry/05-industrial-snare.wav",
+      "catalog": "examples/orbital-foundry.catalog.json",
+      "sha256": "9067d0eaf903a0fc949ace114869502d5a6fab6f0d01ad5a7f2535492d2dd0ac",
+      "bytes": 33560
+    },
+    {
+      "file": "keys-take.wav",
+      "origin": "generated",
+      "generator": "experiments/sample-lab-01/scripts/generate-sources.ts",
+      "sha256": "c223ed671b7c815570635f2624a8a663d43dd913b78e684efa3cf1e767aedf01",
+      "bytes": 1940444,
+      "regeneratedIdentically": true
+    },
+    {
+      "file": "bass-db.wav",
+      "origin": "generated",
+      "generator": "experiments/sample-lab-01/scripts/generate-sources.ts",
+      "sha256": "aa0c638eb25675edd923d28a3f556a820a163a36a7b5707fa91f1fd8101f6acd",
+      "bytes": 282284,
+      "regeneratedIdentically": true
+    }
+  ],
+  "resampled": [
+    {
+      "file": "crate-01.wav",
+      "origin": "resampled",
+      "project": "experiments/sample-lab-01/projects/crate-01.json",
+      "projectSha256": "989cbdb7676c3b259d26fe4eefedc6c121104f1815d1986ea0a39382e3fbc7ca",
+      "inputs": [
+        {
+          "file": "assets/palette/air-texture.wav",
+          "sha256": "c103c24ffe274a10d3d1a5aa157f24c16d6542a3835aaf6246009231860ceb1a"
+        },
+        {
+          "file": "assets/palette/ghost-vox.wav",
+          "sha256": "2c003a699d010082e64cb070e7dffd6adcd3189c22ee6f914bf3c7dfe537da68"
+        },
+        {
+          "file": "assets/palette/glass-hit.wav",
+          "sha256": "96ddb71c7aea630fdff30c9e79bfa24f6873547adc0fbf6febff95aff3cdba77"
+        },
+        {
+          "file": "assets/palette/keys-take.wav",
+          "sha256": "c223ed671b7c815570635f2624a8a663d43dd913b78e684efa3cf1e767aedf01"
+        }
+      ],
+      "sha256": "89e0086ce1d75167048d5bb8b973bf2be7ac3fe8bfa9536f40355094d68f06c5",
+      "frames": 485100
+    },
+    {
+      "file": "glass-choir.wav",
+      "origin": "resampled",
+      "project": "experiments/sample-lab-01/projects/glass-choir.json",
+      "projectSha256": "863965f732b75b46538c820974d006b56f92e44551806763c1c53e98daa03701",
+      "inputs": [
+        {
+          "file": "assets/palette/ghost-vox.wav",
+          "sha256": "2c003a699d010082e64cb070e7dffd6adcd3189c22ee6f914bf3c7dfe537da68"
+        },
+        {
+          "file": "assets/palette/glass-hit.wav",
+          "sha256": "96ddb71c7aea630fdff30c9e79bfa24f6873547adc0fbf6febff95aff3cdba77"
+        }
+      ],
+      "sha256": "ed274a61dfa30f379beacf7068b5a1a9851b311864d25ad699f8458ff781662b",
+      "frames": 132300
+    }
+  ],
+  "candidates": [
+    {
+      "candidate": "dusty-pocket",
+      "title": "DUSTY POCKET",
+      "loop": {
+        "file": "dusty-pocket.wav",
+        "frames": 441000,
+        "seconds": 10,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "sha256": "66d4d1f77707cc5b99518787040f76d6b543d4f20c1ec3e5cdbcfb32bbd6426c",
+        "sourceWindow": [
+          441000,
+          882000
+        ]
+      },
+      "loudness": {
+        "integratedLufs": -13.94,
+        "truePeakDbfs": -1.61,
+        "loudnessRangeLu": 1.1
+      },
+      "clipping": {
+        "peakDbfs": -1.66,
+        "rmsDbfs": -15.79,
+        "fullScaleSamples": 0,
+        "engine": {
+          "note": "engine overload counts and pre-quantization peaks for the whole two-cycle render",
+          "master": {
+            "clippedSamples": 0,
+            "preClipPeakDbfs": -1.662458
+          },
+          "tracks": {
+            "chops": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -6.89884
+            },
+            "bass": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -9.072996
+            },
+            "kick": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -3.819653
+            },
+            "snare": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -4.165738
+            },
+            "hat": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -9.449592
+            },
+            "shaker": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -19.306103
+            }
+          }
+        }
+      },
+      "seam": {
+        "periodicity": {
+          "note": "third vs second cycle of a three-cycle render, and delivered loop vs that second cycle",
+          "master": {
+            "maxAbsDiffLsb": 0,
+            "differingSamples": 0,
+            "deliveredVsThreeCycle": {
+              "maxAbsDiffLsb": 0,
+              "differingSamples": 0
+            }
+          },
+          "stems": {
+            "maxAbsDiffLsb": 0,
+            "differingSamples": 0
+          }
+        },
+        "seamStepLsb": [
+          2505,
+          1814
+        ],
+        "interiorStepLsb": {
+          "median": 379,
+          "p99": 3214,
+          "p999": 5873,
+          "max": 12922
+        },
+        "seamStepPercentile": 97.87,
+        "last10msRmsDbfs": -20.74,
+        "first10msRmsDbfs": -9.18
+      },
+      "stems": {
+        "count": 6,
+        "aligned": true,
+        "sumVsMaster": {
+          "lag": 0,
+          "correlation": 0.84213
+        },
+        "note": "stems include track processing and exclude master gain, filters, compression and saturation; best cross-correlation lag of their sum against the master within +/-64 frames",
+        "files": [
+          {
+            "track": "chops",
+            "file": "stems/01-chops.wav",
+            "frames": 441000,
+            "sha256": "f33e35209c181a39405f2e360b99eb552744e9e47dbf9bbcb0601a8fe0a0712c",
+            "peakDbfs": -6.9,
+            "rmsDbfs": -21.43,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "bass",
+            "file": "stems/02-bass.wav",
+            "frames": 441000,
+            "sha256": "640b9dba20281a62fc9cce61c07e5833e15464650eeaf233ad6d296978d66631",
+            "peakDbfs": -9.07,
+            "rmsDbfs": -20.89,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "kick",
+            "file": "stems/03-kick.wav",
+            "frames": 441000,
+            "sha256": "7c14d94badd2d23a26ae4e845792dede0b542e15aecec91b220582d4994b18f1",
+            "peakDbfs": -3.82,
+            "rmsDbfs": -20.47,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "snare",
+            "file": "stems/04-snare.wav",
+            "frames": 441000,
+            "sha256": "5164351d06cc1486d456b7fc6119fa43d8fa37b28255586cf758574c4ccd7c9d",
+            "peakDbfs": -4.17,
+            "rmsDbfs": -28.58,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "hat",
+            "file": "stems/05-hat.wav",
+            "frames": 441000,
+            "sha256": "04fe953f0676aa11b62e5a7269a7889b922c5b6b98e365a4c3843340dd1998de",
+            "peakDbfs": -9.45,
+            "rmsDbfs": -38.93,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "shaker",
+            "file": "stems/06-shaker.wav",
+            "frames": 441000,
+            "sha256": "c6f1f5428e175eab57b0425cc2b12f57f26a76d697791f886342c98a77fd8a63",
+            "peakDbfs": -19.31,
+            "rmsDbfs": -38.45,
+            "fullScaleSamples": 0
+          }
+        ]
+      },
+      "opening": {
+        "first500msRmsDbfs": -14,
+        "loopRmsDbfs": -15.79,
+        "eventsInFirst500ms": [
+          "chops 1:1+1/1280 (86)",
+          "kick 1:1+1/768 (144)",
+          "bass 1:1+3/640 (517)",
+          "shaker 1:1+143/1920 (8211)",
+          "shaker 1:1+241/1920 (13839)",
+          "hat 1:1+253/1920 (14528)"
+        ]
+      },
+      "timing": {
+        "chops": {
+          "events": 15,
+          "meanMs": -4.43,
+          "meanAbsMs": 7.73,
+          "spreadMs": 7.29,
+          "earliestMs": -14.97,
+          "latestMs": 9.77
+        },
+        "bass": {
+          "events": 18,
+          "meanMs": 4.77,
+          "meanAbsMs": 9.33,
+          "spreadMs": 9.11,
+          "earliestMs": -14.32,
+          "latestMs": 20.18
+        },
+        "kick": {
+          "events": 14,
+          "meanMs": 2.19,
+          "meanAbsMs": 7.95,
+          "spreadMs": 9.14,
+          "earliestMs": -14.32,
+          "latestMs": 18.23
+        },
+        "snare": {
+          "events": 12,
+          "meanMs": 21.59,
+          "meanAbsMs": 21.59,
+          "spreadMs": 9.05,
+          "earliestMs": 5.21,
+          "latestMs": 35.16
+        },
+        "hat": {
+          "events": 33,
+          "meanMs": 12.02,
+          "meanAbsMs": 12.53,
+          "spreadMs": 11.2,
+          "earliestMs": -1.95,
+          "latestMs": 29.95
+        },
+        "shaker": {
+          "events": 56,
+          "meanMs": 15.95,
+          "meanAbsMs": 16.41,
+          "spreadMs": 16.03,
+          "earliestMs": -1.3,
+          "latestMs": 33.85
+        }
+      },
+      "mp3": {
+        "file": "dusty-pocket.mp3",
+        "bitrateKbps": 320,
+        "decodedFrames": 441000,
+        "sha256": "f1db36adb72c7756e628d426a67c79b4504a7159f24018ef1f20cb4b96198a43"
+      },
+      "render": {
+        "engine": {
+          "name": "daemonv12",
+          "version": "0.7.0"
+        },
+        "project": "experiments/sample-lab-01/projects/dusty-pocket.json",
+        "projectSha256": "fcb683bd7fda55e839ba5a1425f729980d1109502c826776aac3c85f17501e73",
+        "twoCycleWavSha256": "632bc10bbeadf857044fcaa65af015ff72339941f3276aae4cf1460551693cee"
+      },
+      "events": {
+        "file": "dusty-pocket.events.json",
+        "count": 148
+      }
+    },
+    {
+      "candidate": "cosmic-collage",
+      "title": "COSMIC COLLAGE",
+      "loop": {
+        "file": "cosmic-collage.wav",
+        "frames": 441000,
+        "seconds": 10,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "sha256": "477640f6e1d58091485f3c91dc3baf5efefc1341942a9f8c5e8c90225c3a48d1",
+        "sourceWindow": [
+          441000,
+          882000
+        ]
+      },
+      "loudness": {
+        "integratedLufs": -13.9,
+        "truePeakDbfs": -1.43,
+        "loudnessRangeLu": 0.2
+      },
+      "clipping": {
+        "peakDbfs": -1.44,
+        "rmsDbfs": -15.94,
+        "fullScaleSamples": 0,
+        "engine": {
+          "note": "engine overload counts and pre-quantization peaks for the whole two-cycle render",
+          "master": {
+            "clippedSamples": 0,
+            "preClipPeakDbfs": -1.440582
+          },
+          "tracks": {
+            "hook": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -7.010253
+            },
+            "bed": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -10.095884
+            },
+            "drone": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -14.033189
+            },
+            "ghost": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -12.279073
+            },
+            "bass": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -7.670118
+            },
+            "kick": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -2.840756
+            },
+            "snare": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -5.35321
+            },
+            "hat": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -8.990717
+            },
+            "knock": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -15.581444
+            },
+            "air": {
+              "clippedSamples": 0,
+              "preClipPeakDbfs": -18.816277
+            }
+          }
+        }
+      },
+      "seam": {
+        "periodicity": {
+          "note": "third vs second cycle of a three-cycle render, and delivered loop vs that second cycle",
+          "master": {
+            "maxAbsDiffLsb": 0,
+            "differingSamples": 0,
+            "deliveredVsThreeCycle": {
+              "maxAbsDiffLsb": 0,
+              "differingSamples": 0
+            }
+          },
+          "stems": {
+            "maxAbsDiffLsb": 0,
+            "differingSamples": 0
+          }
+        },
+        "seamStepLsb": [
+          317,
+          670
+        ],
+        "interiorStepLsb": {
+          "median": 391,
+          "p99": 3077,
+          "p999": 6059,
+          "max": 13136
+        },
+        "seamStepPercentile": 71.65,
+        "last10msRmsDbfs": -16.78,
+        "first10msRmsDbfs": -8.76
+      },
+      "stems": {
+        "count": 10,
+        "aligned": true,
+        "sumVsMaster": {
+          "lag": 0,
+          "correlation": 0.8734
+        },
+        "note": "stems include track processing and exclude master gain, filters, compression and saturation; best cross-correlation lag of their sum against the master within +/-64 frames",
+        "files": [
+          {
+            "track": "hook",
+            "file": "stems/01-hook.wav",
+            "frames": 441000,
+            "sha256": "96f577859ee5e31f4a3ef024b0d973e0934761d14e5827285b62bd85fc2e8443",
+            "peakDbfs": -7.01,
+            "rmsDbfs": -19.9,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "bed",
+            "file": "stems/02-bed.wav",
+            "frames": 441000,
+            "sha256": "b81481a1d3cd5fc292490170fecd1d004178c775c3a429c2ea803f46caac19f2",
+            "peakDbfs": -10.1,
+            "rmsDbfs": -23.51,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "drone",
+            "file": "stems/03-drone.wav",
+            "frames": 441000,
+            "sha256": "1f9cb0cf388449fc97b332385c704def738c373c8268256d3d3832f3b7d9c0cb",
+            "peakDbfs": -14.03,
+            "rmsDbfs": -30.68,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "ghost",
+            "file": "stems/04-ghost.wav",
+            "frames": 441000,
+            "sha256": "f16f2ceea038b89d52ff3bf45405c9fec67b6e658a59e578f3876d2a94cb0104",
+            "peakDbfs": -12.28,
+            "rmsDbfs": -34.15,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "bass",
+            "file": "stems/05-bass.wav",
+            "frames": 441000,
+            "sha256": "81ae63118be3e162ef9393a4fbc77284df6ef84d3caf5d263b2eb6157cb194c9",
+            "peakDbfs": -7.67,
+            "rmsDbfs": -20.87,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "kick",
+            "file": "stems/06-kick.wav",
+            "frames": 441000,
+            "sha256": "aad0a636be0871bc677b43bb6a6547bce69a76b2da73e67897427e9ca67bdaad",
+            "peakDbfs": -2.84,
+            "rmsDbfs": -18.79,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "snare",
+            "file": "stems/07-snare.wav",
+            "frames": 441000,
+            "sha256": "0758bdc0d571db798a80d56f20f6e62a3376ca466a61fed3325e3cd352ffc45c",
+            "peakDbfs": -5.35,
+            "rmsDbfs": -30.11,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "hat",
+            "file": "stems/08-hat.wav",
+            "frames": 441000,
+            "sha256": "6cd90a1fdfe8d5e7c561a13b7f4fddfabd032eca12bf98446ae3f88970ee7ffc",
+            "peakDbfs": -8.99,
+            "rmsDbfs": -37.92,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "knock",
+            "file": "stems/09-knock.wav",
+            "frames": 441000,
+            "sha256": "640a0f4a8a390f8e92ceb840310a7404ff7e982faf7c11dae513bfff3b5fdd82",
+            "peakDbfs": -15.58,
+            "rmsDbfs": -35.59,
+            "fullScaleSamples": 0
+          },
+          {
+            "track": "air",
+            "file": "stems/10-air.wav",
+            "frames": 441000,
+            "sha256": "e2dbae72fb6bbd6a56d5a77d68c9358592edc82bbf1bf4b65c6ffb437c8ad502",
+            "peakDbfs": -18.82,
+            "rmsDbfs": -41.45,
+            "fullScaleSamples": 0
+          }
+        ]
+      },
+      "opening": {
+        "first500msRmsDbfs": -14.57,
+        "loopRmsDbfs": -15.94,
+        "eventsInFirst500ms": [
+          "hook 1:1 (0)",
+          "kick 1:1 (0)",
+          "bed 1:1+1/640 (172)",
+          "bass 1:1+7/1920 (402)",
+          "knock 1:1+95/768 (13638)",
+          "hat 1:1+83/640 (14298)",
+          "hook 1:1+353/1920 (20270)",
+          "kick 1:1+367/1920 (21074)"
+        ]
+      },
+      "timing": {
+        "hook": {
+          "events": 24,
+          "meanMs": -1.6,
+          "meanAbsMs": 7.51,
+          "spreadMs": 8.15,
+          "earliestMs": -14.32,
+          "latestMs": 11.72
+        },
+        "bed": {
+          "events": 8,
+          "meanMs": -0.81,
+          "meanAbsMs": 4.72,
+          "spreadMs": 5.24,
+          "earliestMs": -9.77,
+          "latestMs": 3.91
+        },
+        "drone": {
+          "events": 2,
+          "meanMs": 0,
+          "meanAbsMs": 0,
+          "spreadMs": 0,
+          "earliestMs": 0,
+          "latestMs": 0
+        },
+        "ghost": {
+          "events": 9,
+          "meanMs": 3.33,
+          "meanAbsMs": 3.33,
+          "spreadMs": 4.3,
+          "earliestMs": 0,
+          "latestMs": 14.32
+        },
+        "bass": {
+          "events": 20,
+          "meanMs": 5.31,
+          "meanAbsMs": 7.45,
+          "spreadMs": 5.84,
+          "earliestMs": -5.86,
+          "latestMs": 11.72
+        },
+        "kick": {
+          "events": 14,
+          "meanMs": 1.44,
+          "meanAbsMs": 6.37,
+          "spreadMs": 7.26,
+          "earliestMs": -9.77,
+          "latestMs": 14.32
+        },
+        "snare": {
+          "events": 9,
+          "meanMs": 13.38,
+          "meanAbsMs": 13.38,
+          "spreadMs": 7.65,
+          "earliestMs": 3.91,
+          "latestMs": 26.69
+        },
+        "hat": {
+          "events": 60,
+          "meanMs": 1.8,
+          "meanAbsMs": 3.97,
+          "spreadMs": 5.51,
+          "earliestMs": -3.91,
+          "latestMs": 14.97
+        },
+        "knock": {
+          "events": 15,
+          "meanMs": 0.39,
+          "meanAbsMs": 3.17,
+          "spreadMs": 3.68,
+          "earliestMs": -5.86,
+          "latestMs": 5.86
+        },
+        "air": {
+          "events": 2,
+          "meanMs": 0,
+          "meanAbsMs": 0,
+          "spreadMs": 0,
+          "earliestMs": 0,
+          "latestMs": 0
+        }
+      },
+      "mp3": {
+        "file": "cosmic-collage.mp3",
+        "bitrateKbps": 320,
+        "decodedFrames": 441000,
+        "sha256": "7633f852c72fab46ea37f217bffd7ced2bc9199889de9fe090f6cd959412636b"
+      },
+      "render": {
+        "engine": {
+          "name": "daemonv12",
+          "version": "0.7.0"
+        },
+        "project": "experiments/sample-lab-01/projects/cosmic-collage.json",
+        "projectSha256": "e2ea1718db68a3dba283c294f9c514979777e684dc3c899fa911ff3d55f661e6",
+        "twoCycleWavSha256": "70b9325e0af82fd4a17ff80a11ec7585314c78f67f95633f482b30bb6462e408"
+      },
+      "events": {
+        "file": "cosmic-collage.events.json",
+        "count": 163
+      }
+    }
+  ]
+}
