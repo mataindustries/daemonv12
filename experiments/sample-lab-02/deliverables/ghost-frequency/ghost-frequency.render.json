@@ -1,0 +1,2685 @@
+{
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "ghost-frequency.json",
+    "sha256": "906cccf410fee67923723dc948fcbc68ad5d9cc3541ea296e09efa0450869175",
+    "formatVersion": 1,
+    "seed": 1
+  },
+  "midi": {
+    "file": "ghost-frequency.mid",
+    "sha256": "b94ceb1cc4f00064f92b2c1231cbef3faff7a57e9ea148bd3d0af3cb2c2f9915",
+    "bytes": 93,
+    "ppq": 960,
+    "durationTicks": 11520,
+    "durationSeconds": 7.5,
+    "notes": 0
+  },
+  "renderer": {
+    "name": "daemonv12-production",
+    "version": "2",
+    "settings": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "panLaw": "linear stereo balance; unity center",
+      "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+      "normalization": false,
+      "dither": false,
+      "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+      "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+      "saturation": "tanh-v1; no output compensation",
+      "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+    }
+  },
+  "gmRenderer": null,
+  "gmSource": null,
+  "soundfont": null,
+  "samples": {
+    "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+    "assets": [
+      {
+        "file": "assets/sources/hum.wav",
+        "sha256": "ce9f3282f856d5e520eab304b8d821838c0a592c37221a93f38a1ca1c4c1a291",
+        "bytes": 194084,
+        "frames": 97020,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/sources/intercept.wav",
+        "sha256": "c099dcc296b4d55c3173a195297fbb2b28d6dc09d7967d3270c9c3ddf47f527d",
+        "bytes": 943784,
+        "frames": 471870,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      }
+    ],
+    "tracks": [
+      {
+        "trackId": "radio",
+        "trackIndex": 0,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/sources/intercept.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 2.496,
+                "frames": 110074
+              },
+              "voiceFrames": 361796
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 2.662,
+                "frames": 117394
+              },
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "voiceFrames": 7320,
+              "renderedFrames": 7320
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 251,
+            "frame": 7206,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 2.711,
+                "frames": 119555
+              },
+              "voiceFrames": 352315
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.12,
+                "frames": 137592
+              },
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 18037,
+              "renderedFrames": 18037
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 974,
+            "frame": 27964,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.189207,
+              "offset": {
+                "seconds": 3.431,
+                "frames": 151307
+              },
+              "voiceFrames": 269561
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.84,
+                "frames": 169344
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.06,
+                "releaseFrames": 2646
+              },
+              "voiceFrames": 15168,
+              "renderedFrames": 15168
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 1698,
+            "frame": 48751,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 1.33484,
+              "offset": {
+                "seconds": 2.711,
+                "frames": 119555
+              },
+              "voiceFrames": 263939
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.12,
+                "frames": 137592
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.06,
+                "releaseFrames": 2646
+              },
+              "voiceFrames": 13513,
+              "renderedFrames": 13513
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 2409,
+            "frame": 69165,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1.587401,
+              "offset": {
+                "seconds": 3.431,
+                "frames": 151307
+              },
+              "voiceFrames": 201943
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.84,
+                "frames": 169344
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.08,
+                "releaseFrames": 3528
+              },
+              "voiceFrames": 11363,
+              "renderedFrames": 11363
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 2868,
+            "frame": 82343,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.33484,
+              "offset": {
+                "seconds": 3.946,
+                "frames": 174019
+              },
+              "voiceFrames": 223137
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 4.285,
+                "frames": 188969
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 11200,
+              "renderedFrames": 11200
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 3369,
+            "frame": 96727,
+            "velocity": 0.84,
+            "playback": {
+              "rate": 1.189207,
+              "offset": {
+                "seconds": 4.265,
+                "frames": 188087
+              },
+              "voiceFrames": 238633
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 4.6,
+                "frames": 202860
+              },
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 12423,
+              "renderedFrames": 12423
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 3862,
+            "frame": 110882,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 8.476,
+                "frames": 373792
+              },
+              "voiceFrames": 98078
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 8.69,
+                "frames": 383229
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9437,
+              "renderedFrames": 9437
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 4335,
+            "frame": 124462,
+            "velocity": 0.86,
+            "playback": {
+              "rate": 0.943874,
+              "offset": {
+                "seconds": 8.676,
+                "frames": 382612
+              },
+              "glide": {
+                "to": 0.840896,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 105303
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 9.055,
+                "frames": 399326
+              },
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 19033,
+              "renderedFrames": 19033
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 5069,
+            "frame": 145536,
+            "velocity": 0.72,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 0.5,
+                "frames": 22050
+              },
+              "voiceFrames": 449820
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.96,
+                "frames": 42336
+              },
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.03,
+                "attackFrames": 1323,
+                "releaseSeconds": 0.01,
+                "releaseFrames": 441
+              },
+              "voiceFrames": 20286,
+              "renderedFrames": 20286
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 5760,
+            "frame": 165375,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 2.496,
+                "frames": 110074
+              },
+              "voiceFrames": 361796
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 2.662,
+                "frames": 117394
+              },
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "voiceFrames": 7320,
+              "renderedFrames": 7320
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 6011,
+            "frame": 172581,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 2.711,
+                "frames": 119555
+              },
+              "voiceFrames": 352315
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.12,
+                "frames": 137592
+              },
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 18037,
+              "renderedFrames": 18037
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 6734,
+            "frame": 193339,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.189207,
+              "offset": {
+                "seconds": 3.431,
+                "frames": 151307
+              },
+              "voiceFrames": 269561
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.84,
+                "frames": 169344
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.06,
+                "releaseFrames": 2646
+              },
+              "voiceFrames": 15168,
+              "renderedFrames": 15168
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 7458,
+            "frame": 214126,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 1.33484,
+              "offset": {
+                "seconds": 2.711,
+                "frames": 119555
+              },
+              "voiceFrames": 263939
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.12,
+                "frames": 137592
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.06,
+                "releaseFrames": 2646
+              },
+              "voiceFrames": 13513,
+              "renderedFrames": 13513
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 8169,
+            "frame": 234540,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1.587401,
+              "offset": {
+                "seconds": 3.431,
+                "frames": 151307
+              },
+              "voiceFrames": 201943
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.84,
+                "frames": 169344
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.08,
+                "releaseFrames": 3528
+              },
+              "voiceFrames": 11363,
+              "renderedFrames": 11363
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 8628,
+            "frame": 247718,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.33484,
+              "offset": {
+                "seconds": 3.946,
+                "frames": 174019
+              },
+              "voiceFrames": 223137
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 4.285,
+                "frames": 188969
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 11200,
+              "renderedFrames": 11200
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 9129,
+            "frame": 262102,
+            "velocity": 0.84,
+            "playback": {
+              "rate": 1.189207,
+              "offset": {
+                "seconds": 4.265,
+                "frames": 188087
+              },
+              "voiceFrames": 238633
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 4.6,
+                "frames": 202860
+              },
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 12423,
+              "renderedFrames": 12423
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 9622,
+            "frame": 276257,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 8.476,
+                "frames": 373792
+              },
+              "voiceFrames": 98078
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 8.69,
+                "frames": 383229
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9437,
+              "renderedFrames": 9437
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 10095,
+            "frame": 289837,
+            "velocity": 0.86,
+            "playback": {
+              "rate": 0.943874,
+              "offset": {
+                "seconds": 8.676,
+                "frames": 382612
+              },
+              "glide": {
+                "to": 0.840896,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 105303
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 9.055,
+                "frames": 399326
+              },
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 19033,
+              "renderedFrames": 19033
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 10829,
+            "frame": 310911,
+            "velocity": 0.72,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 0.5,
+                "frames": 22050
+              },
+              "voiceFrames": 449820
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 0.96,
+                "frames": 42336
+              },
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.03,
+                "attackFrames": 1323,
+                "releaseSeconds": 0.01,
+                "releaseFrames": 441
+              },
+              "voiceFrames": 20286,
+              "renderedFrames": 20286
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "static",
+        "trackIndex": 1,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/sources/intercept.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 498,
+            "frame": 14298,
+            "velocity": 0.55,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.258,
+                "frames": 231878
+              },
+              "voiceFrames": 239992
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 728,
+            "frame": 20902,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.890897,
+              "offset": {
+                "seconds": 9.358,
+                "frames": 412688
+              },
+              "voiceFrames": 66430
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 9.53,
+                "frames": 420273
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 8514,
+              "renderedFrames": 8514
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 1209,
+            "frame": 34712,
+            "velocity": 0.28,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.308,
+                "frames": 234083
+              },
+              "voiceFrames": 237787
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 1465,
+            "frame": 42062,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.278,
+                "frames": 232760
+              },
+              "voiceFrames": 239110
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 1954,
+            "frame": 56101,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.598,
+                "frames": 246872
+              },
+              "voiceFrames": 224998
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.98,
+                "frames": 263718
+              },
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 9096,
+              "renderedFrames": 9096
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 2415,
+            "frame": 69337,
+            "velocity": 0.48,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.298,
+                "frames": 233642
+              },
+              "voiceFrames": 238228
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 2652,
+            "frame": 76141,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 1.334838,
+              "offset": {
+                "seconds": 9.538,
+                "frames": 420626
+              },
+              "voiceFrames": 38390
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 9.71,
+                "frames": 428211
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 5683,
+              "renderedFrames": 5683
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 3382,
+            "frame": 97100,
+            "velocity": 0.55,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.268,
+                "frames": 232319
+              },
+              "voiceFrames": 239551
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3446
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3975,
+              "renderedFrames": 3975
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 3612,
+            "frame": 103704,
+            "velocity": 0.32,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 9.058,
+                "frames": 399458
+              },
+              "voiceFrames": 72412
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 9.225,
+                "frames": 406823
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.01,
+                "releaseFrames": 441
+              },
+              "voiceFrames": 3886,
+              "renderedFrames": 3886
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 4338,
+            "frame": 124548,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.288,
+                "frames": 233201
+              },
+              "voiceFrames": 238669
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 4572,
+            "frame": 131266,
+            "velocity": 0.28,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.318,
+                "frames": 234524
+              },
+              "voiceFrames": 237346
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3446
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3975,
+              "renderedFrames": 3975
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 4825,
+            "frame": 138530,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 9.698,
+                "frames": 427682
+              },
+              "voiceFrames": 44188
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 10.08,
+                "frames": 444528
+              },
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.06,
+                "releaseFrames": 2646
+              },
+              "voiceFrames": 9537,
+              "renderedFrames": 9537
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 5308,
+            "frame": 152398,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.258,
+                "frames": 231878
+              },
+              "voiceFrames": 239992
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 5529,
+            "frame": 158743,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 1.189205,
+              "offset": {
+                "seconds": 10.098,
+                "frames": 445322
+              },
+              "voiceFrames": 22325
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 10.27,
+                "frames": 452907
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 6379,
+              "renderedFrames": 6379
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 6258,
+            "frame": 179673,
+            "velocity": 0.55,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.258,
+                "frames": 231878
+              },
+              "voiceFrames": 239992
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 6488,
+            "frame": 186277,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.890897,
+              "offset": {
+                "seconds": 9.358,
+                "frames": 412688
+              },
+              "voiceFrames": 66430
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 9.53,
+                "frames": 420273
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 8514,
+              "renderedFrames": 8514
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 6969,
+            "frame": 200087,
+            "velocity": 0.28,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.308,
+                "frames": 234083
+              },
+              "voiceFrames": 237787
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 7225,
+            "frame": 207437,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.278,
+                "frames": 232760
+              },
+              "voiceFrames": 239110
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 7714,
+            "frame": 221476,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.598,
+                "frames": 246872
+              },
+              "voiceFrames": 224998
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.98,
+                "frames": 263718
+              },
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 9096,
+              "renderedFrames": 9096
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 8175,
+            "frame": 234712,
+            "velocity": 0.48,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.298,
+                "frames": 233642
+              },
+              "voiceFrames": 238228
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 8412,
+            "frame": 241516,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 1.334838,
+              "offset": {
+                "seconds": 9.538,
+                "frames": 420626
+              },
+              "voiceFrames": 38390
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 9.71,
+                "frames": 428211
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 5683,
+              "renderedFrames": 5683
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 9142,
+            "frame": 262475,
+            "velocity": 0.55,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.268,
+                "frames": 232319
+              },
+              "voiceFrames": 239551
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3446
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3975,
+              "renderedFrames": 3975
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 9372,
+            "frame": 269079,
+            "velocity": 0.32,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 9.058,
+                "frames": 399458
+              },
+              "voiceFrames": 72412
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 9.225,
+                "frames": 406823
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.01,
+                "releaseFrames": 441
+              },
+              "voiceFrames": 3886,
+              "renderedFrames": 3886
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 10098,
+            "frame": 289923,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.288,
+                "frames": 233201
+              },
+              "voiceFrames": 238669
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 10332,
+            "frame": 296641,
+            "velocity": 0.28,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.318,
+                "frames": 234524
+              },
+              "voiceFrames": 237346
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3446
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3975,
+              "renderedFrames": 3975
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 10585,
+            "frame": 303905,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 9.698,
+                "frames": 427682
+              },
+              "voiceFrames": 44188
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 10.08,
+                "frames": 444528
+              },
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.06,
+                "releaseFrames": 2646
+              },
+              "voiceFrames": 9537,
+              "renderedFrames": 9537
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 11068,
+            "frame": 317773,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 5.258,
+                "frames": 231878
+              },
+              "voiceFrames": 239992
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.425,
+                "frames": 239243
+              },
+              "gate": {
+                "duration": "1/32",
+                "frames": 3445
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.012,
+                "releaseFrames": 529
+              },
+              "voiceFrames": 3974,
+              "renderedFrames": 3974
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 11289,
+            "frame": 324118,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 1.189205,
+              "offset": {
+                "seconds": 10.098,
+                "frames": 445322
+              },
+              "voiceFrames": 22325
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 10.27,
+                "frames": 452907
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.05,
+                "releaseFrames": 2205
+              },
+              "voiceFrames": 6379,
+              "renderedFrames": 6379
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "kick",
+        "trackIndex": 2,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/sources/intercept.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1,
+            "playback": {
+              "rate": 0.9,
+              "offset": {
+                "seconds": 0.978,
+                "frames": 43130
+              },
+              "voiceFrames": 476378
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 1.18,
+                "frames": 52038
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9898,
+              "renderedFrames": 9898
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 1702,
+            "frame": 48866,
+            "velocity": 0.55,
+            "playback": {
+              "rate": 0.9,
+              "offset": {
+                "seconds": 0.978,
+                "frames": 43130
+              },
+              "voiceFrames": 476378
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 1.18,
+                "frames": 52038
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9898,
+              "renderedFrames": 9898
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 2874,
+            "frame": 82515,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 0.9,
+              "offset": {
+                "seconds": 0.978,
+                "frames": 43130
+              },
+              "voiceFrames": 476378
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 1.18,
+                "frames": 52038
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9898,
+              "renderedFrames": 9898
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 3615,
+            "frame": 103790,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.9,
+              "offset": {
+                "seconds": 0.978,
+                "frames": 43130
+              },
+              "voiceFrames": 476378
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 1.18,
+                "frames": 52038
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9898,
+              "renderedFrames": 9898
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 4329,
+            "frame": 124290,
+            "velocity": 0.72,
+            "playback": {
+              "rate": 0.9,
+              "offset": {
+                "seconds": 0.978,
+                "frames": 43130
+              },
+              "voiceFrames": 476378
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 1.18,
+                "frames": 52038
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9898,
+              "renderedFrames": 9898
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 5760,
+            "frame": 165375,
+            "velocity": 1,
+            "playback": {
+              "rate": 0.9,
+              "offset": {
+                "seconds": 0.978,
+                "frames": 43130
+              },
+              "voiceFrames": 476378
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 1.18,
+                "frames": 52038
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9898,
+              "renderedFrames": 9898
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 7462,
+            "frame": 214241,
+            "velocity": 0.55,
+            "playback": {
+              "rate": 0.9,
+              "offset": {
+                "seconds": 0.978,
+                "frames": 43130
+              },
+              "voiceFrames": 476378
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 1.18,
+                "frames": 52038
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9898,
+              "renderedFrames": 9898
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 8634,
+            "frame": 247890,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 0.9,
+              "offset": {
+                "seconds": 0.978,
+                "frames": 43130
+              },
+              "voiceFrames": 476378
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 1.18,
+                "frames": 52038
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9898,
+              "renderedFrames": 9898
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 9375,
+            "frame": 269165,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.9,
+              "offset": {
+                "seconds": 0.978,
+                "frames": 43130
+              },
+              "voiceFrames": 476378
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 1.18,
+                "frames": 52038
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9898,
+              "renderedFrames": 9898
+            }
+          },
+          {
+            "file": "assets/sources/intercept.wav",
+            "tick": 10089,
+            "frame": 289665,
+            "velocity": 0.72,
+            "playback": {
+              "rate": 0.9,
+              "offset": {
+                "seconds": 0.978,
+                "frames": 43130
+              },
+              "voiceFrames": 476378
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 1.18,
+                "frames": 52038
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 9898,
+              "renderedFrames": 9898
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "hum",
+        "trackIndex": 3,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/sources/hum.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 9,
+            "frame": 258,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1.373448,
+              "voiceFrames": 70640
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 22657,
+              "renderedFrames": 22657
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 975,
+            "frame": 27993,
+            "velocity": 0.55,
+            "playback": {
+              "rate": 1.373448,
+              "voiceFrames": 70640
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8876,
+              "renderedFrames": 8876
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 1692,
+            "frame": 48579,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1.633314,
+              "voiceFrames": 59401
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "choke": {
+                "frame": 55383,
+                "frames": 6804
+              },
+              "voiceFrames": 8789,
+              "renderedFrames": 8789
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 1929,
+            "frame": 55383,
+            "velocity": 0.82,
+            "playback": {
+              "rate": 1.373448,
+              "voiceFrames": 70640
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15767,
+              "renderedFrames": 15767
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 2646,
+            "frame": 75969,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1.223603,
+              "voiceFrames": 79291
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8876,
+              "renderedFrames": 8876
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 2886,
+            "frame": 82860,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1.090107,
+              "voiceFrames": 89001
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 22657,
+              "renderedFrames": 22657
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 3852,
+            "frame": 110595,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1.090107,
+              "voiceFrames": 89001
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8875,
+              "renderedFrames": 8875
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 4329,
+            "frame": 124290,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.090107,
+              "glide": {
+                "to": 1.028924,
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "voiceFrames": 94088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 22657,
+              "renderedFrames": 22657
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 5286,
+            "frame": 151766,
+            "velocity": 0.55,
+            "playback": {
+              "rate": 1.028924,
+              "voiceFrames": 94293
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "choke": {
+                "frame": 158226,
+                "frames": 6460
+              },
+              "voiceFrames": 8445,
+              "renderedFrames": 8445
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 5511,
+            "frame": 158226,
+            "velocity": 0.62,
+            "playback": {
+              "rate": 1.296362,
+              "voiceFrames": 74841
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8876,
+              "renderedFrames": 8876
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 5769,
+            "frame": 165633,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1.373448,
+              "voiceFrames": 70640
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 22657,
+              "renderedFrames": 22657
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 6735,
+            "frame": 193368,
+            "velocity": 0.55,
+            "playback": {
+              "rate": 1.373448,
+              "voiceFrames": 70640
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8876,
+              "renderedFrames": 8876
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 7452,
+            "frame": 213954,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1.633314,
+              "voiceFrames": 59401
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "choke": {
+                "frame": 220758,
+                "frames": 6804
+              },
+              "voiceFrames": 8789,
+              "renderedFrames": 8789
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 7689,
+            "frame": 220758,
+            "velocity": 0.82,
+            "playback": {
+              "rate": 1.373448,
+              "voiceFrames": 70640
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15767,
+              "renderedFrames": 15767
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 8406,
+            "frame": 241344,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1.223603,
+              "voiceFrames": 79291
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8876,
+              "renderedFrames": 8876
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 8646,
+            "frame": 248235,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1.090107,
+              "voiceFrames": 89001
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 22657,
+              "renderedFrames": 22657
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 9612,
+            "frame": 275970,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 1.090107,
+              "voiceFrames": 89001
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8875,
+              "renderedFrames": 8875
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 10089,
+            "frame": 289665,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.090107,
+              "glide": {
+                "to": 1.028924,
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "voiceFrames": 94088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 22657,
+              "renderedFrames": 22657
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 11046,
+            "frame": 317141,
+            "velocity": 0.55,
+            "playback": {
+              "rate": 1.028924,
+              "voiceFrames": 94293
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "choke": {
+                "frame": 323601,
+                "frames": 6460
+              },
+              "voiceFrames": 8445,
+              "renderedFrames": 8445
+            }
+          },
+          {
+            "file": "assets/sources/hum.wav",
+            "tick": 11271,
+            "frame": 323601,
+            "velocity": 0.62,
+            "playback": {
+              "rate": 1.296362,
+              "voiceFrames": 74841
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6891
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "attackFrames": 176,
+                "releaseSeconds": 0.045,
+                "releaseFrames": 1985
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8876,
+              "renderedFrames": 8876
+            }
+          }
+        ],
+        "clippedSamples": 0
+      }
+    ],
+    "playback": {
+      "name": "daemonv12-playback",
+      "version": "1",
+      "settings": {
+        "rate": "0.25 through 4; pitch and duration change together; no time-stretching",
+        "interpolation": "band-limited Kaiser-windowed sinc, 32 zero crossings per side, beta 8.5, 512 table steps per crossing with linear table interpolation; cutoff 0.92 x min(1, 1/rate) of source Nyquist; weights normalized to unity DC gain; silence outside the source; kernel from IEEE-754 basic arithmetic",
+        "glide": "rate linear in output frames from playbackRate to glide.to over the glide frames, then held; read position is the closed-form integral per frame",
+        "offset": "whole source frame: offsetSeconds as microseconds * 44100 / 1000000, nearest frame, ties later",
+        "exactPath": "rate 1 without glide copies source frames from the offset; no interpolation",
+        "end": "voice stops at the first output frame whose read position reaches the source length; no fades",
+        "velocity": "round(value * velocity) per voice sample, as for unperformed voices"
+      }
+    },
+    "articulation": {
+      "name": "daemonv12-articulation",
+      "version": "1",
+      "settings": {
+        "source": "exclusive source end; explicit slice silences interpolation taps outside [offset,end); V0.6 interpolation unchanged otherwise",
+        "envelope": "linear output-frame attack from zero; a scheduled gate/choke release freezes attack gain at its onset; source/output exhaustion compresses overlapping fades proportionally, retaining the authored attack level at the peak and never delaying a gate; last rendered frame reaches zero; defaults 1ms attack, 5ms release; explicit zero disables a fade",
+        "stop": "gate or earliest later same-track choke onset starts release; stop + release capped by source exhaustion and permitted audio boundary; no source extension",
+        "choke": "track-local group; equal output-frame onsets coexist; each older voice uses its own release; a release already started is never restarted",
+        "rounding": "seconds to exact microseconds then nearest frame, ties later; gate via difference of rounded absolute musical boundaries"
+      }
+    }
+  },
+  "timeline": {
+    "authoredDurationTicks": 11520,
+    "authoredFrames": 330750,
+    "duration": {
+      "bars": 3
+    },
+    "tail": "auto",
+    "requestedFinalFrames": 496125,
+    "audioEndFrames": 496125,
+    "resultingFrames": 496125,
+    "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+  },
+  "production": {
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1-3ubuntu5"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v22.22.0"
+    },
+    "tracks": [
+      {
+        "trackId": "radio",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "highpass",
+            "frequencyHz": 170
+          },
+          {
+            "type": "saturation",
+            "driveDb": 4,
+            "mix": 0.25
+          },
+          {
+            "type": "reverb",
+            "roomSize": 0.35,
+            "decaySeconds": 0.9,
+            "wet": 0.12
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -3.135347
+      },
+      {
+        "trackId": "static",
+        "gainDb": 0.5,
+        "pan": 0.12,
+        "effects": [
+          {
+            "type": "highpass",
+            "frequencyHz": 300
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -0.68265
+      },
+      {
+        "trackId": "kick",
+        "gainDb": -4.5,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "lowpass",
+            "frequencyHz": 1800
+          },
+          {
+            "type": "saturation",
+            "driveDb": 6,
+            "mix": 0.4
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -4.449839
+      },
+      {
+        "trackId": "hum",
+        "gainDb": -5,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "lowpass",
+            "frequencyHz": 1400
+          },
+          {
+            "type": "saturation",
+            "driveDb": 5,
+            "mix": 0.3
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -6.790412
+      }
+    ],
+    "master": {
+      "gainDb": -3.2,
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 30
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -17,
+          "ratio": 2.2,
+          "attackMs": 12,
+          "releaseMs": 140,
+          "makeupGainDb": 1.9
+        },
+        {
+          "type": "saturation",
+          "driveDb": 3,
+          "mix": 0.25
+        }
+      ],
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -3.830364
+    },
+    "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+  },
+  "mix": {
+    "clippedSamples": 0,
+    "gm": "sum processed independent tracks",
+    "samples": "sum exported track PCM"
+  },
+  "wav": {
+    "file": "ghost-frequency.wav",
+    "sha256": "8edc3f17e34bcc7d4621fdde2d509e4b9c6c946f147d92e6ebb27c47caa8086f",
+    "bytes": 1984544,
+    "frames": 496125,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 16,
+    "durationSeconds": 11.25
+  },
+  "audioTool": {
+    "name": "ffmpeg",
+    "version": "6.1.1-3ubuntu5"
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 11.25,
+      "frames": 496125,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -3.830351,
+      "rmsDbfs": -17.893519,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -14,
+      "loudnessRangeLu": 3.1,
+      "truePeakDbfs": -3.82
+    },
+    "tracks": []
+  }
+}

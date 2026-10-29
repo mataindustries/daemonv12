@@ -1,0 +1,52 @@
+{
+  "formatVersion": 1,
+  "title": "MUG ÷4 (SAMPLE LAB 02 print for sketch B)",
+  "description": "The first spoon tap of mug.wav played at quarter speed: A5 becomes A3, 1.8 s becomes 7.2 s. Sketch B plays this print at a quarter speed again.",
+  "bpm": 120,
+  "timeSignature": "4/4",
+  "bars": 1,
+  "seed": 1,
+  "render": {
+    "duration": {
+      "seconds": 7.2
+    },
+    "tail": "none"
+  },
+  "master": {
+    "gainDb": 0
+  },
+  "tracks": [
+    {
+      "id": "print",
+      "description": "The first spoon tap of mug.wav played at quarter speed: A5 becomes A3, 1.8 s becomes 7.2 s. Sketch B plays this print at a quarter speed again.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/sources/mug.wav"
+      },
+      "mix": {
+        "gainDb": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "one"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "one",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 1,
+              "offsetSeconds": 0.149,
+              "endSeconds": 1.94,
+              "playbackRate": 0.25
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

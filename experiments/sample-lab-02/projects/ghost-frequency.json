@@ -1,0 +1,653 @@
+{
+  "formatVersion": 1,
+  "title": "GHOST FREQUENCY (SAMPLE LAB 02, sketch A)",
+  "description": "A numbers-station voice turned into a hook: E-CHO and its climbing echoes, NI-NER, a frequency-shifted O-VER and the dial falling into zero beat at the loop point. Drums from radio artifacts, bass from the radio hum. 96 BPM, 6/4, one 3.75 s cycle; two cycles plus a bar of tail room, the deliverable is the second cycle.",
+  "bpm": 96,
+  "timeSignature": "6/4",
+  "key": "E minor",
+  "bars": 2,
+  "seed": 1,
+  "render": {
+    "duration": {
+      "bars": 3
+    },
+    "tail": "auto"
+  },
+  "master": {
+    "gainDb": -3.2,
+    "effects": [
+      {
+        "type": "highpass",
+        "frequencyHz": 30
+      },
+      {
+        "type": "compressor",
+        "thresholdDb": -17,
+        "ratio": 2.2,
+        "attackMs": 12,
+        "releaseMs": 140,
+        "makeupGainDb": 1.9
+      },
+      {
+        "type": "saturation",
+        "driveDb": 3,
+        "mix": 0.25
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "radio",
+      "description": "The hook: syllables of the intercepted announcement, a climbing echo, a drifted answer and the tuning sweep.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/sources/intercept.wav"
+      },
+      "mix": {
+        "gainDb": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 170
+        },
+        {
+          "type": "saturation",
+          "driveDb": 4,
+          "mix": 0.25
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.35,
+          "decaySeconds": 0.9,
+          "wet": 0.12
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        },
+        {
+          "bar": 2,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.95,
+              "offsetSeconds": 2.496,
+              "endSeconds": 2.662,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "1:1+251/3840",
+              "velocity": 0.92,
+              "offsetSeconds": 2.711,
+              "endSeconds": 3.12,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.05
+              }
+            },
+            {
+              "start": "1:2+7/1920",
+              "velocity": 0.8,
+              "offsetSeconds": 3.431,
+              "endSeconds": 3.84,
+              "playbackRate": 1.189207,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.06
+              }
+            },
+            {
+              "start": "1:2+123/640",
+              "velocity": 0.7,
+              "offsetSeconds": 2.711,
+              "endSeconds": 3.12,
+              "playbackRate": 1.33484,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.06
+              }
+            },
+            {
+              "start": "1:3+163/1280",
+              "velocity": 0.6,
+              "offsetSeconds": 3.431,
+              "endSeconds": 3.84,
+              "playbackRate": 1.587401,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.08
+              }
+            },
+            {
+              "start": "1:3+79/320",
+              "velocity": 0.9,
+              "offsetSeconds": 3.946,
+              "endSeconds": 4.285,
+              "playbackRate": 1.33484,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:4+163/1280",
+              "velocity": 0.84,
+              "offsetSeconds": 4.265,
+              "endSeconds": 4.6,
+              "playbackRate": 1.189207,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.05
+              }
+            },
+            {
+              "start": "1:5+11/1920",
+              "velocity": 0.92,
+              "offsetSeconds": 8.476,
+              "endSeconds": 8.69,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:5+33/256",
+              "velocity": 0.86,
+              "offsetSeconds": 8.676,
+              "endSeconds": 9.055,
+              "playbackRate": 0.943874,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.05
+              },
+              "glide": {
+                "to": 0.840896,
+                "duration": "1/8"
+              }
+            },
+            {
+              "start": "1:6+269/3840",
+              "velocity": 0.72,
+              "offsetSeconds": 0.5,
+              "endSeconds": 0.96,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.03,
+                "releaseSeconds": 0.01
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "static",
+      "description": "Lightning crash and CW-crash snares, squelch-tail hats, static pings retuned to E5, B5 and A5.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/sources/intercept.wav"
+      },
+      "mix": {
+        "gainDb": 0.5,
+        "pan": 0.12
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 300
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        },
+        {
+          "bar": 2,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+83/640",
+              "velocity": 0.55,
+              "offsetSeconds": 5.258,
+              "endSeconds": 5.425,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.012
+              }
+            },
+            {
+              "start": "1:1+91/480",
+              "velocity": 0.5,
+              "offsetSeconds": 9.358,
+              "endSeconds": 9.53,
+              "playbackRate": 0.890897,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.05
+              }
+            },
+            {
+              "start": "1:2+83/1280",
+              "velocity": 0.28,
+              "offsetSeconds": 5.308,
+              "endSeconds": 5.425,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.012
+              }
+            },
+            {
+              "start": "1:2+101/768",
+              "velocity": 0.6,
+              "offsetSeconds": 5.278,
+              "endSeconds": 5.425,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.012
+              }
+            },
+            {
+              "start": "1:3+17/1920",
+              "velocity": 0.95,
+              "offsetSeconds": 5.598,
+              "endSeconds": 5.98,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.05
+              }
+            },
+            {
+              "start": "1:3+33/256",
+              "velocity": 0.48,
+              "offsetSeconds": 5.298,
+              "endSeconds": 5.425,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.012
+              }
+            },
+            {
+              "start": "1:3+61/320",
+              "velocity": 0.42,
+              "offsetSeconds": 9.538,
+              "endSeconds": 9.71,
+              "playbackRate": 1.334838,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.05
+              }
+            },
+            {
+              "start": "1:4+251/1920",
+              "velocity": 0.55,
+              "offsetSeconds": 5.268,
+              "endSeconds": 5.425,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.012
+              }
+            },
+            {
+              "start": "1:4+61/320",
+              "velocity": 0.32,
+              "offsetSeconds": 9.058,
+              "endSeconds": 9.225,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.01
+              }
+            },
+            {
+              "start": "1:5+83/640",
+              "velocity": 0.6,
+              "offsetSeconds": 5.288,
+              "endSeconds": 5.425,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.012
+              }
+            },
+            {
+              "start": "1:5+61/320",
+              "velocity": 0.28,
+              "offsetSeconds": 5.318,
+              "endSeconds": 5.425,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.012
+              }
+            },
+            {
+              "start": "1:6+5/768",
+              "velocity": 0.9,
+              "offsetSeconds": 9.698,
+              "endSeconds": 10.08,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.06
+              }
+            },
+            {
+              "start": "1:6+127/960",
+              "velocity": 0.5,
+              "offsetSeconds": 5.258,
+              "endSeconds": 5.425,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.012
+              }
+            },
+            {
+              "start": "1:6+243/1280",
+              "velocity": 0.42,
+              "offsetSeconds": 10.098,
+              "endSeconds": 10.27,
+              "playbackRate": 1.189205,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.05
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kick",
+      "description": "The transmitter key-up thump, a little slower and deeper.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/sources/intercept.wav"
+      },
+      "mix": {
+        "gainDb": -4.5
+      },
+      "effects": [
+        {
+          "type": "lowpass",
+          "frequencyHz": 1800
+        },
+        {
+          "type": "saturation",
+          "driveDb": 6,
+          "mix": 0.4
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        },
+        {
+          "bar": 2,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 1,
+              "offsetSeconds": 0.978,
+              "endSeconds": 1.18,
+              "playbackRate": 0.9,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:2+371/1920",
+              "velocity": 0.55,
+              "offsetSeconds": 0.978,
+              "endSeconds": 1.18,
+              "playbackRate": 0.9,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:3+159/640",
+              "velocity": 0.95,
+              "offsetSeconds": 0.978,
+              "endSeconds": 1.18,
+              "playbackRate": 0.9,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:4+49/256",
+              "velocity": 0.5,
+              "offsetSeconds": 0.978,
+              "endSeconds": 1.18,
+              "playbackRate": 0.9,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:5+163/1280",
+              "velocity": 0.72,
+              "offsetSeconds": 0.978,
+              "endSeconds": 1.18,
+              "playbackRate": 0.9,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.03
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hum",
+      "description": "The receiver hum (60 Hz ground-loop buzz) retuned into a bassline: E | C -> B.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/sources/hum.wav"
+      },
+      "mix": {
+        "gainDb": -5
+      },
+      "effects": [
+        {
+          "type": "lowpass",
+          "frequencyHz": 1400
+        },
+        {
+          "type": "saturation",
+          "driveDb": 5,
+          "mix": 0.3
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        },
+        {
+          "bar": 2,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+3/1280",
+              "velocity": 0.95,
+              "gate": "3/16",
+              "playbackRate": 1.373448,
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.045
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:2+1/256",
+              "velocity": 0.55,
+              "gate": "1/16",
+              "playbackRate": 1.373448,
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.045
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:2+61/320",
+              "velocity": 0.6,
+              "gate": "1/16",
+              "playbackRate": 1.633314,
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.045
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:3+3/1280",
+              "velocity": 0.82,
+              "gate": "1/8",
+              "playbackRate": 1.373448,
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.045
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:3+121/640",
+              "velocity": 0.6,
+              "gate": "1/16",
+              "playbackRate": 1.223603,
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.045
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:4+1/640",
+              "velocity": 0.95,
+              "gate": "3/16",
+              "playbackRate": 1.090107,
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.045
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:5+1/320",
+              "velocity": 0.6,
+              "gate": "1/16",
+              "playbackRate": 1.090107,
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.045
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:5+163/1280",
+              "velocity": 0.9,
+              "gate": "3/16",
+              "playbackRate": 1.090107,
+              "glide": {
+                "to": 1.028924,
+                "duration": "1/16"
+              },
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.045
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:6+81/640",
+              "velocity": 0.55,
+              "gate": "1/16",
+              "playbackRate": 1.028924,
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.045
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:6+237/1280",
+              "velocity": 0.62,
+              "gate": "1/16",
+              "playbackRate": 1.296362,
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.045
+              },
+              "chokeGroup": "bass"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

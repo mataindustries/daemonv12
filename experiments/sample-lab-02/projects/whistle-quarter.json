@@ -1,0 +1,52 @@
+{
+  "formatVersion": 1,
+  "title": "WHISTLE ÷4 (SAMPLE LAB 02 print for sketch C)",
+  "description": "The steady start of the held B5 in stairwell.wav at quarter speed: B5 becomes B3 and 0.35 s becomes 1.4 s. Sketch C plays this print at a quarter speed again for its bass.",
+  "bpm": 120,
+  "timeSignature": "4/4",
+  "bars": 1,
+  "seed": 1,
+  "render": {
+    "duration": {
+      "seconds": 1.45
+    },
+    "tail": "none"
+  },
+  "master": {
+    "gainDb": 0
+  },
+  "tracks": [
+    {
+      "id": "print",
+      "description": "The steady start of the held B5 in stairwell.wav at quarter speed: B5 becomes B3 and 0.35 s becomes 1.4 s. Sketch C plays this print at a quarter speed again for its bass.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/sources/stairwell.wav"
+      },
+      "mix": {
+        "gainDb": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "one"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "one",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 1,
+              "offsetSeconds": 4.75,
+              "endSeconds": 5.1,
+              "playbackRate": 0.25
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

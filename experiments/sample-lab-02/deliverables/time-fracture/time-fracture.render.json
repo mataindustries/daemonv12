@@ -1,0 +1,1277 @@
+{
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "time-fracture.json",
+    "sha256": "9c94738402de13c67db9b60e3b7ecd3eb1f5362e9512abd030bd8ba6ab143727",
+    "formatVersion": 1,
+    "seed": 1
+  },
+  "midi": {
+    "file": "time-fracture.mid",
+    "sha256": "40478c3b411249670b59f7808fd1c9c6671a854833d060be346c046c8578151c",
+    "bytes": 91,
+    "ppq": 960,
+    "durationTicks": 9600,
+    "durationSeconds": 8,
+    "notes": 0
+  },
+  "renderer": {
+    "name": "daemonv12-production",
+    "version": "2",
+    "settings": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "panLaw": "linear stereo balance; unity center",
+      "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+      "normalization": false,
+      "dither": false,
+      "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+      "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+      "saturation": "tanh-v1; no output compensation",
+      "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+    }
+  },
+  "gmRenderer": null,
+  "gmSource": null,
+  "soundfont": null,
+  "samples": {
+    "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+    "assets": [
+      {
+        "file": "assets/derived/stairwell-reversed.wav",
+        "sha256": "b8c84681faba9d5df6584efd740342fc356efb688f66bf01668fc316708f2c0c",
+        "bytes": 2116844,
+        "frames": 529200,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/derived/stairwell-slowmo.wav",
+        "sha256": "210bd1491ce39b360e9ef1f152584593bbbe8b10facf4def8628537bad0c3da7",
+        "bytes": 705644,
+        "frames": 176400,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/prints/whistle-quarter.wav",
+        "sha256": "1a1f607cbd0aa321a8eaa5404d85acc94c59b5857e3768e535267d799b6bb798",
+        "bytes": 255824,
+        "frames": 63945,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/sources/stairwell.wav",
+        "sha256": "6c52bfc04fd07930ae3e0f2ff1abf8feb8735c8a99a16866c6f77165126aee3d",
+        "bytes": 2116844,
+        "frames": 529200,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      }
+    ],
+    "tracks": [
+      {
+        "trackId": "forward",
+        "trackIndex": 0,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/sources/stairwell.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/sources/stairwell.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 3.496,
+                "frames": 154174
+              },
+              "voiceFrames": 375026
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.136,
+                "frames": 226498
+              },
+              "gate": {
+                "duration": "1/2",
+                "frames": 70560
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 71883,
+              "renderedFrames": 71883
+            }
+          },
+          {
+            "file": "assets/sources/stairwell.wav",
+            "tick": 980,
+            "frame": 36015,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 2.715,
+                "frames": 119732
+              },
+              "voiceFrames": 409468
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.119,
+                "frames": 137548
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.1,
+                "releaseFrames": 4410
+              },
+              "voiceFrames": 17816,
+              "renderedFrames": 17816
+            }
+          },
+          {
+            "file": "assets/sources/stairwell.wav",
+            "tick": 1927,
+            "frame": 70817,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 1.901,
+                "frames": 83834
+              },
+              "voiceFrames": 445366
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 2.305,
+                "frames": 101651
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.08,
+                "releaseFrames": 3528
+              },
+              "voiceFrames": 17817,
+              "renderedFrames": 17817
+            }
+          },
+          {
+            "file": "assets/sources/stairwell.wav",
+            "tick": 2899,
+            "frame": 106538,
+            "velocity": 0.88,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 2.715,
+                "frames": 119732
+              },
+              "voiceFrames": 409468
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.119,
+                "frames": 137548
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.1,
+                "releaseFrames": 4410
+              },
+              "voiceFrames": 17816,
+              "renderedFrames": 17816
+            }
+          },
+          {
+            "file": "assets/sources/stairwell.wav",
+            "tick": 4800,
+            "frame": 176400,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 3.496,
+                "frames": 154174
+              },
+              "voiceFrames": 375026
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 5.136,
+                "frames": 226498
+              },
+              "gate": {
+                "duration": "1/2",
+                "frames": 70560
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "voiceFrames": 71883,
+              "renderedFrames": 71883
+            }
+          },
+          {
+            "file": "assets/sources/stairwell.wav",
+            "tick": 5780,
+            "frame": 212415,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 2.715,
+                "frames": 119732
+              },
+              "voiceFrames": 409468
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.119,
+                "frames": 137548
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.1,
+                "releaseFrames": 4410
+              },
+              "voiceFrames": 17816,
+              "renderedFrames": 17816
+            }
+          },
+          {
+            "file": "assets/sources/stairwell.wav",
+            "tick": 6727,
+            "frame": 247217,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 1.901,
+                "frames": 83834
+              },
+              "voiceFrames": 445366
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 2.305,
+                "frames": 101651
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.08,
+                "releaseFrames": 3528
+              },
+              "voiceFrames": 17817,
+              "renderedFrames": 17817
+            }
+          },
+          {
+            "file": "assets/sources/stairwell.wav",
+            "tick": 7699,
+            "frame": 282938,
+            "velocity": 0.88,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 2.715,
+                "frames": 119732
+              },
+              "voiceFrames": 409468
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 3.119,
+                "frames": 137548
+              },
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.001,
+                "attackFrames": 44,
+                "releaseSeconds": 0.1,
+                "releaseFrames": 4410
+              },
+              "voiceFrames": 17816,
+              "renderedFrames": 17816
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "freeze",
+        "trackIndex": 1,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/derived/stairwell-slowmo.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/derived/stairwell-slowmo.wav",
+            "tick": 1920,
+            "frame": 70560,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 1.744,
+                "frames": 76910
+              },
+              "voiceFrames": 99490
+            },
+            "articulation": {
+              "gate": {
+                "duration": "593/3840",
+                "frames": 21793
+              },
+              "envelope": {
+                "attackSeconds": 0.025,
+                "attackFrames": 1103,
+                "releaseSeconds": 0.015,
+                "releaseFrames": 662
+              },
+              "voiceFrames": 22455,
+              "renderedFrames": 22455
+            }
+          },
+          {
+            "file": "assets/derived/stairwell-slowmo.wav",
+            "tick": 2513,
+            "frame": 92353,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 0.97716,
+              "offset": {
+                "seconds": 2.88,
+                "frames": 127008
+              },
+              "voiceFrames": 50547
+            },
+            "articulation": {
+              "gate": {
+                "duration": "227/3840",
+                "frames": 8342
+              },
+              "envelope": {
+                "attackSeconds": 0.006,
+                "attackFrames": 265,
+                "releaseSeconds": 0.015,
+                "releaseFrames": 662
+              },
+              "voiceFrames": 9004,
+              "renderedFrames": 9004
+            }
+          },
+          {
+            "file": "assets/derived/stairwell-slowmo.wav",
+            "tick": 2740,
+            "frame": 100695,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.97716,
+              "offset": {
+                "seconds": 3.36,
+                "frames": 148176
+              },
+              "glide": {
+                "to": 0.943874,
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "voiceFrames": 29747
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/192",
+                "frames": 5145
+              },
+              "envelope": {
+                "attackSeconds": 0.006,
+                "attackFrames": 265,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "voiceFrames": 6027,
+              "renderedFrames": 6027
+            }
+          },
+          {
+            "file": "assets/derived/stairwell-slowmo.wav",
+            "tick": 6720,
+            "frame": 246960,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 1.744,
+                "frames": 76910
+              },
+              "voiceFrames": 99490
+            },
+            "articulation": {
+              "gate": {
+                "duration": "593/3840",
+                "frames": 21793
+              },
+              "envelope": {
+                "attackSeconds": 0.025,
+                "attackFrames": 1103,
+                "releaseSeconds": 0.015,
+                "releaseFrames": 662
+              },
+              "voiceFrames": 22455,
+              "renderedFrames": 22455
+            }
+          },
+          {
+            "file": "assets/derived/stairwell-slowmo.wav",
+            "tick": 7313,
+            "frame": 268753,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 0.97716,
+              "offset": {
+                "seconds": 2.88,
+                "frames": 127008
+              },
+              "voiceFrames": 50547
+            },
+            "articulation": {
+              "gate": {
+                "duration": "227/3840",
+                "frames": 8342
+              },
+              "envelope": {
+                "attackSeconds": 0.006,
+                "attackFrames": 265,
+                "releaseSeconds": 0.015,
+                "releaseFrames": 662
+              },
+              "voiceFrames": 9004,
+              "renderedFrames": 9004
+            }
+          },
+          {
+            "file": "assets/derived/stairwell-slowmo.wav",
+            "tick": 7540,
+            "frame": 277095,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.97716,
+              "offset": {
+                "seconds": 3.36,
+                "frames": 148176
+              },
+              "glide": {
+                "to": 0.943874,
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "voiceFrames": 29747
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/192",
+                "frames": 5145
+              },
+              "envelope": {
+                "attackSeconds": 0.006,
+                "attackFrames": 265,
+                "releaseSeconds": 0.02,
+                "releaseFrames": 882
+              },
+              "voiceFrames": 6027,
+              "renderedFrames": 6027
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "rewind",
+        "trackIndex": 2,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/derived/stairwell-reversed.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/derived/stairwell-reversed.wav",
+            "tick": 2880,
+            "frame": 105840,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 6.904,
+                "frames": 304466
+              },
+              "voiceFrames": 224734
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 8.504,
+                "frames": 375026
+              },
+              "gate": {
+                "duration": "1/2",
+                "frames": 70560
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.003,
+                "releaseFrames": 132
+              },
+              "voiceFrames": 70560,
+              "renderedFrames": 70560
+            }
+          },
+          {
+            "file": "assets/derived/stairwell-reversed.wav",
+            "tick": 7680,
+            "frame": 282240,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 1,
+              "offset": {
+                "seconds": 6.904,
+                "frames": 304466
+              },
+              "voiceFrames": 224734
+            },
+            "articulation": {
+              "sourceEnd": {
+                "seconds": 8.504,
+                "frames": 375026
+              },
+              "gate": {
+                "duration": "1/2",
+                "frames": 70560
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.003,
+                "releaseFrames": 132
+              },
+              "voiceFrames": 70560,
+              "renderedFrames": 70560
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "bass",
+        "trackIndex": 3,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/prints/whistle-quarter.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 247,
+            "frame": 9077,
+            "velocity": 1,
+            "playback": {
+              "rate": 0.25,
+              "voiceFrames": 255780
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "choke": {
+                "frame": 26644,
+                "frames": 17567
+              },
+              "voiceFrames": 21536,
+              "renderedFrames": 21536
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 725,
+            "frame": 26644,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 0.25,
+              "voiceFrames": 255780
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 12789,
+              "renderedFrames": 12789
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 1210,
+            "frame": 44468,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 0.297302,
+              "voiceFrames": 215085
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "choke": {
+                "frame": 53141,
+                "frames": 8673
+              },
+              "voiceFrames": 12642,
+              "renderedFrames": 12642
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 1446,
+            "frame": 53141,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.25,
+              "voiceFrames": 255780
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 12789,
+              "renderedFrames": 12789
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 2172,
+            "frame": 79821,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.39685,
+              "voiceFrames": 161132
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 26460
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 30429,
+              "renderedFrames": 30429
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 3127,
+            "frame": 114917,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 0.445449,
+              "voiceFrames": 143552
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "choke": {
+                "frame": 132484,
+                "frames": 17567
+              },
+              "voiceFrames": 21536,
+              "renderedFrames": 21536
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 3605,
+            "frame": 132484,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 0.445449,
+              "voiceFrames": 143552
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 12789,
+              "renderedFrames": 12789
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 3845,
+            "frame": 141304,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 170713
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 21609,
+              "renderedFrames": 21609
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 4327,
+            "frame": 159017,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 170713
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 12789,
+              "renderedFrames": 12789
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 5047,
+            "frame": 185477,
+            "velocity": 1,
+            "playback": {
+              "rate": 0.25,
+              "voiceFrames": 255780
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "choke": {
+                "frame": 203044,
+                "frames": 17567
+              },
+              "voiceFrames": 21536,
+              "renderedFrames": 21536
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 5525,
+            "frame": 203044,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 0.25,
+              "voiceFrames": 255780
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 12789,
+              "renderedFrames": 12789
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 6010,
+            "frame": 220868,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 0.297302,
+              "voiceFrames": 215085
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "choke": {
+                "frame": 229541,
+                "frames": 8673
+              },
+              "voiceFrames": 12642,
+              "renderedFrames": 12642
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 6246,
+            "frame": 229541,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.25,
+              "voiceFrames": 255780
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 12789,
+              "renderedFrames": 12789
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 6972,
+            "frame": 256221,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.39685,
+              "voiceFrames": 161132
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 26460
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 30429,
+              "renderedFrames": 30429
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 7927,
+            "frame": 291317,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 0.445449,
+              "voiceFrames": 143552
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "choke": {
+                "frame": 308884,
+                "frames": 17567
+              },
+              "voiceFrames": 21536,
+              "renderedFrames": 21536
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 8405,
+            "frame": 308884,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 0.445449,
+              "voiceFrames": 143552
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 12789,
+              "renderedFrames": 12789
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 8645,
+            "frame": 317704,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 170713
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 17640
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 21609,
+              "renderedFrames": 21609
+            }
+          },
+          {
+            "file": "assets/prints/whistle-quarter.wav",
+            "tick": 9127,
+            "frame": 335417,
+            "velocity": 0.6,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 170713
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 8820
+              },
+              "envelope": {
+                "attackSeconds": 0.012,
+                "attackFrames": 529,
+                "releaseSeconds": 0.09,
+                "releaseFrames": 3969
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 12789,
+              "renderedFrames": 12789
+            }
+          }
+        ],
+        "clippedSamples": 0
+      }
+    ],
+    "playback": {
+      "name": "daemonv12-playback",
+      "version": "1",
+      "settings": {
+        "rate": "0.25 through 4; pitch and duration change together; no time-stretching",
+        "interpolation": "band-limited Kaiser-windowed sinc, 32 zero crossings per side, beta 8.5, 512 table steps per crossing with linear table interpolation; cutoff 0.92 x min(1, 1/rate) of source Nyquist; weights normalized to unity DC gain; silence outside the source; kernel from IEEE-754 basic arithmetic",
+        "glide": "rate linear in output frames from playbackRate to glide.to over the glide frames, then held; read position is the closed-form integral per frame",
+        "offset": "whole source frame: offsetSeconds as microseconds * 44100 / 1000000, nearest frame, ties later",
+        "exactPath": "rate 1 without glide copies source frames from the offset; no interpolation",
+        "end": "voice stops at the first output frame whose read position reaches the source length; no fades",
+        "velocity": "round(value * velocity) per voice sample, as for unperformed voices"
+      }
+    },
+    "articulation": {
+      "name": "daemonv12-articulation",
+      "version": "1",
+      "settings": {
+        "source": "exclusive source end; explicit slice silences interpolation taps outside [offset,end); V0.6 interpolation unchanged otherwise",
+        "envelope": "linear output-frame attack from zero; a scheduled gate/choke release freezes attack gain at its onset; source/output exhaustion compresses overlapping fades proportionally, retaining the authored attack level at the peak and never delaying a gate; last rendered frame reaches zero; defaults 1ms attack, 5ms release; explicit zero disables a fade",
+        "stop": "gate or earliest later same-track choke onset starts release; stop + release capped by source exhaustion and permitted audio boundary; no source extension",
+        "choke": "track-local group; equal output-frame onsets coexist; each older voice uses its own release; a release already started is never restarted",
+        "rounding": "seconds to exact microseconds then nearest frame, ties later; gate via difference of rounded absolute musical boundaries"
+      }
+    }
+  },
+  "timeline": {
+    "authoredDurationTicks": 9600,
+    "authoredFrames": 352800,
+    "duration": {
+      "bars": 3
+    },
+    "tail": "auto",
+    "requestedFinalFrames": 529200,
+    "audioEndFrames": 529200,
+    "resultingFrames": 529200,
+    "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+  },
+  "production": {
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1-3ubuntu5"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v22.22.0"
+    },
+    "tracks": [
+      {
+        "trackId": "forward",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "highpass",
+            "frequencyHz": 40
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -2.773106
+      },
+      {
+        "trackId": "freeze",
+        "gainDb": 3,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "highpass",
+            "frequencyHz": 250
+          },
+          {
+            "type": "reverb",
+            "roomSize": 0.75,
+            "decaySeconds": 2,
+            "wet": 0.28
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -4.942148
+      },
+      {
+        "trackId": "rewind",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "highpass",
+            "frequencyHz": 60
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -3.87559
+      },
+      {
+        "trackId": "bass",
+        "gainDb": -11,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "highpass",
+            "frequencyHz": 30
+          },
+          {
+            "type": "saturation",
+            "driveDb": 22,
+            "mix": 0.25
+          },
+          {
+            "type": "lowpass",
+            "frequencyHz": 900
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -9.744043
+      }
+    ],
+    "master": {
+      "gainDb": -5.1,
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 28
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -18,
+          "ratio": 2.2,
+          "attackMs": 12,
+          "releaseMs": 140,
+          "makeupGainDb": 2.1
+        },
+        {
+          "type": "saturation",
+          "driveDb": 3,
+          "mix": 0.25
+        }
+      ],
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -6.999515
+    },
+    "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+  },
+  "mix": {
+    "clippedSamples": 0,
+    "gm": "sum processed independent tracks",
+    "samples": "sum exported track PCM"
+  },
+  "wav": {
+    "file": "time-fracture.wav",
+    "sha256": "1bb841d52934ad72dd7fbbe79e47f79fa09aea99dbbd8c128ab99dde85a7a54c",
+    "bytes": 2116844,
+    "frames": 529200,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 16,
+    "durationSeconds": 12
+  },
+  "audioTool": {
+    "name": "ffmpeg",
+    "version": "6.1.1-3ubuntu5"
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 12,
+      "frames": 529200,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -6.999364,
+      "rmsDbfs": -18.523305,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -14,
+      "loudnessRangeLu": 1.9,
+      "truePeakDbfs": -6.99
+    },
+    "tracks": []
+  }
+}

@@ -1,0 +1,385 @@
+{
+  "formatVersion": 1,
+  "title": "TIME FRACTURE (SAMPLE LAB 02, sketch C)",
+  "description": "One whistled take with foot and snaps, in three states of time: two beats forward, one beat frozen in slow motion that fractures at golden-ratio points, and the first two beats rewound. Bass is the whistle sixteen times slower. 75 BPM, 5/4, one 4.000 s cycle; two cycles plus a bar of tail room, the deliverable is the second cycle.",
+  "bpm": 75,
+  "timeSignature": "5/4",
+  "key": "B minor",
+  "bars": 2,
+  "seed": 1,
+  "render": {
+    "duration": {
+      "bars": 3
+    },
+    "tail": "auto"
+  },
+  "master": {
+    "gainDb": -5.1,
+    "effects": [
+      {
+        "type": "highpass",
+        "frequencyHz": 28
+      },
+      {
+        "type": "compressor",
+        "thresholdDb": -18,
+        "ratio": 2.2,
+        "attackMs": 12,
+        "releaseMs": 140,
+        "makeupGainDb": 2.1
+      },
+      {
+        "type": "saturation",
+        "driveDb": 3,
+        "mix": 0.25
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "forward",
+      "description": "The take as recorded: beats 1-2 of the tune with its foot and snap, plus the count-in foot (beat 3) and snap (beat 4).",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/sources/stairwell.wav"
+      },
+      "mix": {
+        "gainDb": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 40
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        },
+        {
+          "bar": 2,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.95,
+              "offsetSeconds": 3.496,
+              "endSeconds": 5.136,
+              "gate": "1/2",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:2+1/192",
+              "velocity": 0.9,
+              "offsetSeconds": 2.715,
+              "endSeconds": 3.119,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.1
+              }
+            },
+            {
+              "start": "1:3+7/3840",
+              "velocity": 0.92,
+              "offsetSeconds": 1.901,
+              "endSeconds": 2.305,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.08
+              }
+            },
+            {
+              "start": "1:4+19/3840",
+              "velocity": 0.88,
+              "offsetSeconds": 2.715,
+              "endSeconds": 3.119,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "freeze",
+      "description": "Beat 3: the held B5 in 4x slow motion, then three golden-ratio shards sagging like a stopping tape.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/derived/stairwell-slowmo.wav"
+      },
+      "mix": {
+        "gainDb": 3
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 250
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.75,
+          "decaySeconds": 2,
+          "wet": 0.28
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        },
+        {
+          "bar": 2,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:3",
+              "velocity": 0.95,
+              "offsetSeconds": 1.744,
+              "gate": "593/3840",
+              "envelope": {
+                "attackSeconds": 0.025,
+                "releaseSeconds": 0.015
+              }
+            },
+            {
+              "start": "1:3+593/3840",
+              "velocity": 0.85,
+              "offsetSeconds": 2.88,
+              "playbackRate": 0.97716,
+              "gate": "227/3840",
+              "envelope": {
+                "attackSeconds": 0.006,
+                "releaseSeconds": 0.015
+              }
+            },
+            {
+              "start": "1:3+41/192",
+              "velocity": 0.8,
+              "offsetSeconds": 3.36,
+              "playbackRate": 0.97716,
+              "glide": {
+                "to": 0.943874,
+                "duration": "1/16"
+              },
+              "gate": "140/3840",
+              "envelope": {
+                "attackSeconds": 0.006,
+                "releaseSeconds": 0.02
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rewind",
+      "description": "Beats 4-5: beats 1-2 from the reversed take, mirrored onto the grid.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/derived/stairwell-reversed.wav"
+      },
+      "mix": {
+        "gainDb": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 60
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        },
+        {
+          "bar": 2,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:4",
+              "velocity": 0.95,
+              "offsetSeconds": 6.904,
+              "endSeconds": 8.504,
+              "gate": "1/2",
+              "envelope": {
+                "attackSeconds": 0.012,
+                "releaseSeconds": 0.003
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bass",
+      "description": "The held B5 at a sixteenth of its speed: B | G | A | F#.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/prints/whistle-quarter.wav"
+      },
+      "mix": {
+        "gainDb": -11
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 30
+        },
+        {
+          "type": "saturation",
+          "driveDb": 22,
+          "mix": 0.25
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 900
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        },
+        {
+          "bar": 2,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+247/3840",
+              "velocity": 1,
+              "playbackRate": 0.25,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.012,
+                "releaseSeconds": 0.09
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:1+145/768",
+              "velocity": 0.6,
+              "playbackRate": 0.25,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.012,
+                "releaseSeconds": 0.09
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:2+25/384",
+              "velocity": 0.7,
+              "playbackRate": 0.297302,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.012,
+                "releaseSeconds": 0.09
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:2+81/640",
+              "velocity": 0.8,
+              "playbackRate": 0.25,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.012,
+                "releaseSeconds": 0.09
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:3+21/320",
+              "velocity": 0.9,
+              "playbackRate": 0.39685,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.012,
+                "releaseSeconds": 0.09
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:4+247/3840",
+              "velocity": 0.85,
+              "playbackRate": 0.445449,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.012,
+                "releaseSeconds": 0.09
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:4+145/768",
+              "velocity": 0.6,
+              "playbackRate": 0.445449,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.012,
+                "releaseSeconds": 0.09
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:5+1/768",
+              "velocity": 0.9,
+              "playbackRate": 0.374577,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.012,
+                "releaseSeconds": 0.09
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:5+487/3840",
+              "velocity": 0.6,
+              "playbackRate": 0.374577,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.012,
+                "releaseSeconds": 0.09
+              },
+              "chokeGroup": "bass"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
