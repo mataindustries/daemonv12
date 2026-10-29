@@ -1,0 +1,124 @@
+{
+  "lab": "SAMPLE LAB 03 — OBJECT ORCHESTRA: MUTATION",
+  "note": "Every sound the loop reads, with origin, generation and hash. Not legal advice.",
+  "rights": {
+    "license": "not yet declared (owner decision; CC0-1.0 proposed, as for SAMPLE LAB 02)",
+    "basis": "approved SAMPLE LAB 02 recordings (original physical models) and generations made from them by the DaemonV12 engine and a bit-exact offline reverse",
+    "thirdPartyMaterial": "none"
+  },
+  "importedFromSampleLab02": [
+    {
+      "file": "mug.wav",
+      "path": "experiments/sample-lab-03/projects/assets/sources/mug.wav",
+      "copiedFrom": "experiments/sample-lab-02/projects/assets/sources/mug.wav",
+      "sha256": "7147553e396843d20821dc506b88ee4e682f30329732dd5c8a62829f08acfa73",
+      "role": "the mug at its own pitch in TAKE",
+      "verifiedAgainst": "experiments/sample-lab-02/sources.manifest.json"
+    },
+    {
+      "file": "drips.wav",
+      "path": "experiments/sample-lab-03/projects/assets/sources/drips.wav",
+      "copiedFrom": "experiments/sample-lab-02/projects/assets/sources/drips.wav",
+      "sha256": "93a89c43d536c3120ff7424dc613f8d5949d2ad0e643c374a132986d3d4c4408",
+      "role": "the riff and the bounce in TAKE",
+      "verifiedAgainst": "experiments/sample-lab-02/sources.manifest.json"
+    },
+    {
+      "file": "box.wav",
+      "path": "experiments/sample-lab-03/projects/assets/sources/box.wav",
+      "copiedFrom": "experiments/sample-lab-02/projects/assets/sources/box.wav",
+      "sha256": "557ca4a92c62e5f281855575303397487f3a6fbff3efad74b756f3825f6654d8",
+      "role": "kick",
+      "verifiedAgainst": "experiments/sample-lab-02/sources.manifest.json"
+    },
+    {
+      "file": "book.wav",
+      "path": "experiments/sample-lab-03/projects/assets/sources/book.wav",
+      "copiedFrom": "experiments/sample-lab-02/projects/assets/sources/book.wav",
+      "sha256": "7f789f2cb963636eba2097bcaff6e4dafd83106a0d37be5246652dca23dce678",
+      "role": "snare",
+      "verifiedAgainst": "experiments/sample-lab-02/sources.manifest.json"
+    },
+    {
+      "file": "coin.wav",
+      "path": "experiments/sample-lab-03/projects/assets/sources/coin.wav",
+      "copiedFrom": "experiments/sample-lab-02/projects/assets/sources/coin.wav",
+      "sha256": "5a842253bef29202b93276f198cdb8f3c91cf3123b36489bb715b7961c7bdb37",
+      "role": "the landing",
+      "verifiedAgainst": "experiments/sample-lab-02/sources.manifest.json"
+    },
+    {
+      "file": "mug-quarter.wav",
+      "path": "experiments/sample-lab-03/projects/assets/prints/mug-quarter.wav",
+      "copiedFrom": "experiments/sample-lab-02/projects/assets/prints/mug-quarter.wav",
+      "sha256": "5cc7a2f4f483081d7a07d1ac7db251ff23d4510cc9f009e43e04f9187ef87a09",
+      "role": "MUG ÷4, played at quarter speed again in TAKE: the bass",
+      "verifiedAgainst": "experiments/sample-lab-02/sources.manifest.json"
+    }
+  ],
+  "enginePrints": [
+    {
+      "file": "take.wav",
+      "path": "experiments/sample-lab-03/projects/assets/prints/take.wav",
+      "project": "experiments/sample-lab-03/projects/take.json",
+      "projectSha256": "cd9f5b18788c18e7c7dcd3bcb0d8ddf7be49397d8180346186b04549b8d1ad32",
+      "inputs": [
+        {
+          "file": "assets/prints/mug-quarter.wav",
+          "sha256": "5cc7a2f4f483081d7a07d1ac7db251ff23d4510cc9f009e43e04f9187ef87a09"
+        },
+        {
+          "file": "assets/sources/drips.wav",
+          "sha256": "93a89c43d536c3120ff7424dc613f8d5949d2ad0e643c374a132986d3d4c4408"
+        },
+        {
+          "file": "assets/sources/mug.wav",
+          "sha256": "7147553e396843d20821dc506b88ee4e682f30329732dd5c8a62829f08acfa73"
+        }
+      ],
+      "sha256": "bacfcd9f9446a3509208fc3743aa40d911419d6996e37799f22760c07a6d44c6",
+      "frames": 132300
+    }
+  ],
+  "offlineGenerations": [
+    {
+      "file": "mirror.wav",
+      "path": "experiments/sample-lab-03/projects/assets/derived/mirror.wav",
+      "input": {
+        "file": "take.wav",
+        "sha256": "bacfcd9f9446a3509208fc3743aa40d911419d6996e37799f22760c07a6d44c6"
+      },
+      "operation": "frames 0-88199 of take.wav in reverse order (bit-exact; no level change, no fades)",
+      "why": "the engine has no reverse playback",
+      "sha256": "1a208a4b9161f7550e63764ff0201acddceccb0b64ce52f337c8ab3e35be26fb",
+      "frames": 88200
+    }
+  ],
+  "loop": {
+    "project": "experiments/sample-lab-03/projects/mutation.json",
+    "projectSha256": "124bec53636960f3147e44522611a5f7eb2eb5d31c04c3682f11dab1fb25107c",
+    "inputs": [
+      {
+        "file": "assets/derived/mirror.wav",
+        "sha256": "1a208a4b9161f7550e63764ff0201acddceccb0b64ce52f337c8ab3e35be26fb"
+      },
+      {
+        "file": "assets/prints/take.wav",
+        "sha256": "bacfcd9f9446a3509208fc3743aa40d911419d6996e37799f22760c07a6d44c6"
+      },
+      {
+        "file": "assets/sources/book.wav",
+        "sha256": "7f789f2cb963636eba2097bcaff6e4dafd83106a0d37be5246652dca23dce678"
+      },
+      {
+        "file": "assets/sources/box.wav",
+        "sha256": "557ca4a92c62e5f281855575303397487f3a6fbff3efad74b756f3825f6654d8"
+      },
+      {
+        "file": "assets/sources/coin.wav",
+        "sha256": "5a842253bef29202b93276f198cdb8f3c91cf3123b36489bb715b7961c7bdb37"
+      }
+    ],
+    "loopSha256": "9961e8fa8f654375eb80e73669962712ef36410ee98a4554905e08e153ac0a61"
+  }
+}

@@ -1,0 +1,379 @@
+{
+  "formatVersion": 1,
+  "title": "TAKE (SAMPLE LAB 03 print)",
+  "description": "One bar of the SAMPLE LAB 02 kitchen band, printed once: the mug four octaves down, the drips and the mug at its own pitch, ending in a drop that bounces into the bar line. The MUTATION loop is made only from this print, its reversal and the live drums and coin.",
+  "bpm": 120,
+  "timeSignature": "4/4",
+  "key": "A minor",
+  "bars": 1,
+  "seed": 1,
+  "render": {
+    "duration": {
+      "seconds": 3
+    },
+    "tail": "none"
+  },
+  "master": {
+    "gainDb": -5
+  },
+  "tracks": [
+    {
+      "id": "bass",
+      "description": "mug-quarter.wav at quarter speed again: one spoon tap four octaves down.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/prints/mug-quarter.wav"
+      },
+      "mix": {
+        "gainDb": -3.8
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 36
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 1100
+        },
+        {
+          "type": "saturation",
+          "driveDb": 4,
+          "mix": 0.3
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 1,
+              "gate": "3/16",
+              "playbackRate": 0.25,
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.07
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:1+739/3840",
+              "velocity": 0.55,
+              "gate": "1/16",
+              "playbackRate": 0.25,
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.07
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:2+41/320",
+              "velocity": 0.85,
+              "gate": "1/8",
+              "playbackRate": 0.374577,
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.07
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:3+33/256",
+              "velocity": 0.7,
+              "gate": "1/16",
+              "playbackRate": 0.33371,
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.07
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:3+249/1280",
+              "velocity": 0.8,
+              "gate": "1/16",
+              "playbackRate": 0.33371,
+              "glide": {
+                "to": 0.374577,
+                "duration": "1/16"
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.07
+              },
+              "chokeGroup": "bass"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mug",
+      "description": "The mug at its own pitch, 14 ms behind the boom.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/sources/mug.wav"
+      },
+      "mix": {
+        "gainDb": -1,
+        "pan": 0.3
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 400
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 11000
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+9/1280",
+              "velocity": 0.75,
+              "offsetSeconds": 0.149,
+              "endSeconds": 1.75,
+              "gate": "1/4",
+              "envelope": {
+                "attackSeconds": 0.001,
+                "releaseSeconds": 0.25
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drips",
+      "description": "The riff on retuned drops, then one drop bouncing into the bar line.",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/sources/drips.wav"
+      },
+      "mix": {
+        "gainDb": 1.5,
+        "pan": -0.2
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 600
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "loop"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+23/320",
+              "velocity": 0.55,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:1+1/8",
+              "velocity": 0.75,
+              "offsetSeconds": 0.718,
+              "endSeconds": 1.02,
+              "playbackRate": 1.006652,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:2+55/768",
+              "velocity": 0.5,
+              "offsetSeconds": 2.238,
+              "endSeconds": 2.54,
+              "playbackRate": 1.007661,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:2+1/8",
+              "velocity": 0.65,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:3",
+              "velocity": 0.55,
+              "offsetSeconds": 3.318,
+              "endSeconds": 3.62,
+              "playbackRate": 0.926482,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:3+139/1920",
+              "velocity": 0.5,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:3+1/8",
+              "velocity": 0.5,
+              "offsetSeconds": 1.188,
+              "endSeconds": 1.49,
+              "playbackRate": 1.000557,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.62,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:4+269/3840",
+              "velocity": 0.496,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:4+77/640",
+              "velocity": 0.397,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:4+301/1920",
+              "velocity": 0.317,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:4+117/640",
+              "velocity": 0.254,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:4+129/640",
+              "velocity": 0.203,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:4+413/1920",
+              "velocity": 0.163,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            },
+            {
+              "start": "1:4+9/40",
+              "velocity": 0.13,
+              "offsetSeconds": 5.448,
+              "endSeconds": 5.75,
+              "playbackRate": 0.997134,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.0005,
+                "releaseSeconds": 0.03
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
