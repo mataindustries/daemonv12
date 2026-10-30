@@ -13,7 +13,7 @@ final synchronization and mastering against the completed 1080×1920 / 60 fps pi
 | Cue sheet | `challenger/CUE_SHEET.md` + `challenger/delivery/*events-60fps.json` / `*cue-sheet.csv` | `CUE_SHEET.md` + `delivery/*` |
 | Checksums | `challenger/delivery/SHA256SUMS` | `delivery/SHA256SUMS` |
 
-Frozen at git tag `permitpulse-soundtrack-c3-freeze` on branch `feat/permitpulse-28s-score`.
+Frozen as of commit `1f3a53a` (C3 content; unchanged since) on branch `feat/permitpulse-28s-score`.
 Engine: DaemonV12 0.7.0 at `23619d1`, Node v22.22.0, FFmpeg 6.1.1-3ubuntu5. Repeat renders are byte-identical.
 
 ## Next step (not started): final sync and mastering
