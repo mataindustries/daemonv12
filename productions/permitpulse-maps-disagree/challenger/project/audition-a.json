@@ -1,0 +1,387 @@
+{
+  "formatVersion": 1,
+  "title": "PermitPulse challenger - Audition A (machine voice groove)",
+  "description": "Direction A: rhythm-forward 150 BPM half-time groove, ladder acid bass riff, formant machine voice hook. Picture 0.000-8.000.",
+  "bpm": 150,
+  "timeSignature": "4/4",
+  "key": "F minor",
+  "bars": 5,
+  "render": {
+    "duration": {"seconds":8},
+    "tail": "auto"
+  },
+  "master": {
+    "gainDb": 3,
+    "effects": [
+      {"type":"compressor","thresholdDb":-16,"ratio":2,"attackMs":15,"releaseMs":160}
+    ]
+  },
+  "tracks": [
+    {
+      "id": "kick",
+      "description": "[music] Machine kick; the unit landing at 1.6 is the bar-2 downbeat.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-a-kick.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"1:1","pitch":"kk-main-8a751e","velocity":1},
+            {"start":"1:3+1/8","pitch":"kk-main-8a751e","velocity":0.8},
+            {"start":"2:1","pitch":"kk-land-8fd3ab","velocity":1},
+            {"start":"2:3+1/8","pitch":"kk-main-8a751e","velocity":0.8},
+            {"start":"3:1","pitch":"kk-main-8a751e","velocity":1},
+            {"start":"3:3+1/8","pitch":"kk-main-8a751e","velocity":0.8},
+            {"start":"4:1","pitch":"kk-main-8a751e","velocity":1},
+            {"start":"4:1+3/16","pitch":"kk-main-8a751e","velocity":0.8},
+            {"start":"4:3+1/8","pitch":"kk-main-8a751e","velocity":0.8},
+            {"start":"5:1","pitch":"kk-main-8a751e","velocity":1},
+            {"start":"5:2","pitch":"kk-main-8a751e","velocity":1},
+            {"start":"5:3+1/12","pitch":"kk-main-8a751e","velocity":0.8}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-4},
+      "effects": [
+        {"type":"highpass","frequencyHz":28}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-4,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "snare",
+      "description": "[music] Mechanical clap on the half-time backbeat; displaced at 6.8.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-a-snare.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"1:3","pitch":"sn-main-2920b8","velocity":0.9},
+            {"start":"2:3","pitch":"sn-main-2920b8","velocity":0.9},
+            {"start":"3:3","pitch":"sn-main-2920b8","velocity":0.9},
+            {"start":"4:3","pitch":"sn-main-2920b8","velocity":0.9},
+            {"start":"5:3+1/6","pitch":"sn-main-2920b8","velocity":0.9}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-8},
+      "effects": [
+        {"type":"reverb","roomSize":0.35,"decaySeconds":0.8,"wet":0.18}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-8,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "hats",
+      "description": "[music] 16th hats + escapement ticks; flip to triplets at 6.8.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-a-hats.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"1:1+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"1:2+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"1:3+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"1:4+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"2:1","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"2:1+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"2:1+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"2:1+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"2:1+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"2:2","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"2:2+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"2:2+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"2:2+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"2:2+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"2:3","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"2:3+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"2:3+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"2:3+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"2:3+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"2:4","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"2:4+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"2:4+1/8","pitch":"ht-open-6ffb36","velocity":0.5,"chokeGroup":"hh"},
+            {"start":"2:4+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"2:4+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"3:1","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"3:1+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"3:1+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"3:1+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"3:1+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"3:2","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"3:2+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"3:2+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"3:2+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"3:2+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"3:3","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"3:3+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"3:3+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"3:3+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"3:3+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"3:4","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"3:4+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"3:4+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"3:4+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"3:4+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"4:1","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"4:1+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"4:1+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"4:1+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"4:1+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"4:2","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"4:2+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"4:2+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"4:2+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"4:2+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"4:3","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"4:3+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"4:3+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"4:3+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"4:3+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"4:4","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"4:4+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"4:4+1/8","pitch":"ht-open-6ffb36","velocity":0.5,"chokeGroup":"hh"},
+            {"start":"4:4+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"4:4+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"5:1","pitch":"ht-closed-8f680e","velocity":0.55,"chokeGroup":"hh"},
+            {"start":"5:1+1/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"5:1+1/8","pitch":"ht-closed-8f680e","velocity":0.38,"chokeGroup":"hh"},
+            {"start":"5:1+1/8","pitch":"ht-tick-e64ec8","velocity":0.45},
+            {"start":"5:1+3/16","pitch":"ht-closed-8f680e","velocity":0.22,"chokeGroup":"hh"},
+            {"start":"5:2","pitch":"ht-accent-288e2e","velocity":0.55},
+            {"start":"5:2+1/24","pitch":"ht-tick-e64ec8","velocity":0.3},
+            {"start":"5:2+1/12","pitch":"ht-accent-288e2e","velocity":0.55},
+            {"start":"5:2+1/8","pitch":"ht-tick-e64ec8","velocity":0.3},
+            {"start":"5:2+1/6","pitch":"ht-accent-288e2e","velocity":0.55},
+            {"start":"5:2+5/24","pitch":"ht-tick-e64ec8","velocity":0.3},
+            {"start":"5:3","pitch":"ht-accent-288e2e","velocity":0.55},
+            {"start":"5:3+1/24","pitch":"ht-tick-e64ec8","velocity":0.3},
+            {"start":"5:3+1/12","pitch":"ht-accent-288e2e","velocity":0.55},
+            {"start":"5:3+1/8","pitch":"ht-tick-e64ec8","velocity":0.3},
+            {"start":"5:3+1/6","pitch":"ht-accent-288e2e","velocity":0.55},
+            {"start":"5:3+5/24","pitch":"ht-tick-e64ec8","velocity":0.3},
+            {"start":"5:4","pitch":"ht-accent-288e2e","velocity":0.55},
+            {"start":"5:4+1/24","pitch":"ht-tick-e64ec8","velocity":0.3},
+            {"start":"5:4+1/12","pitch":"ht-accent-288e2e","velocity":0.55},
+            {"start":"5:4+1/8","pitch":"ht-tick-e64ec8","velocity":0.3},
+            {"start":"5:4+1/6","pitch":"ht-accent-288e2e","velocity":0.55},
+            {"start":"5:4+5/24","pitch":"ht-tick-e64ec8","velocity":0.3}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-13},
+      "effects": [
+        {"type":"highpass","frequencyHz":3000}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-13,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "bass",
+      "description": "[music] Ladder acid bass riff, F minor; slips to Gb triplets at 6.8.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-a-bass.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"1:1","pitch":"bs29-a865d5","velocity":1,"gate":"31/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"1:2+1/8","pitch":"bs32-6e0c57","velocity":0.91,"gate":"3/32","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"1:3+1/8","pitch":"bs36-922945","velocity":0.895,"gate":"11/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"1:4+1/16","pitch":"bs39-8829e5","velocity":0.85,"gate":"11/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"1:4+3/16","pitch":"bs41-abc897","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"2:1","pitch":"bs29-38d004","velocity":1,"gate":"29/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"2:1+3/16","pitch":"bs41-b70fcb","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"2:2+1/16","pitch":"bs29-188a82","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"2:2+1/8","pitch":"bs32-0c26ac","velocity":0.925,"gate":"3/32","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"2:3+1/16","pitch":"bs29-188a82","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"2:3+1/8","pitch":"bs36-a61fd2","velocity":0.895,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"2:4","pitch":"bs39-8829e5","velocity":0.85,"gate":"11/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"2:4+1/16","pitch":"bs41-b70fcb","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"2:4+3/16","pitch":"bs37-bafe74","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"3:1","pitch":"bs29-38d004","velocity":1,"gate":"29/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"3:1+3/16","pitch":"bs41-b70fcb","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"3:2+1/16","pitch":"bs29-188a82","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"3:2+1/8","pitch":"bs32-0c26ac","velocity":0.925,"gate":"3/32","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"3:3+1/16","pitch":"bs29-188a82","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"3:3+1/8","pitch":"bs36-a61fd2","velocity":0.895,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"3:4","pitch":"bs39-8829e5","velocity":0.85,"gate":"11/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"3:4+1/16","pitch":"bs41-b70fcb","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"3:4+3/16","pitch":"bs37-bafe74","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"4:1","pitch":"bs29-38d004","velocity":1,"gate":"29/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"4:1+3/16","pitch":"bs41-b70fcb","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"4:2+1/16","pitch":"bs29-188a82","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"4:2+1/8","pitch":"bs32-0c26ac","velocity":0.925,"gate":"3/32","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"4:3+1/16","pitch":"bs29-188a82","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"4:3+1/8","pitch":"bs36-a61fd2","velocity":0.895,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"4:4","pitch":"bs39-8829e5","velocity":0.85,"gate":"11/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"4:4+1/16","pitch":"bs41-b70fcb","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"4:4+3/16","pitch":"bs37-bafe74","velocity":0.85,"gate":"9/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"5:1","pitch":"bs29-a865d5","velocity":1,"gate":"31/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"5:2","pitch":"bs30-8e2aaf","velocity":1,"gate":"3/40","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"5:3","pitch":"bs30-246289","velocity":0.85,"gate":"3/40","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"5:3+1/6","pitch":"bs42-8f5c6e","velocity":0.85,"gate":"3/40","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"5:4","pitch":"bs33-f68fd3","velocity":0.85,"gate":"3/40","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"},
+            {"start":"5:4+1/6","pitch":"bs30-246289","velocity":0.85,"gate":"3/40","envelope":{"attackSeconds":0.001,"releaseSeconds":0.012},"chokeGroup":"bass"}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-7},
+      "effects": [
+        {"type":"highpass","frequencyHz":30},
+        {"type":"saturation","driveDb":3,"mix":0.25}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-7,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "voice",
+      "description": "[music] The machine voice hook.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-a-voice.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"1:1","pitch":"vx72-c9b0ce","velocity":0.85},
+            {"start":"1:1+1/8","pitch":"vx72-83fd27","velocity":0.7},
+            {"start":"1:1+3/16","pitch":"vx75-a5e66d","velocity":1},
+            {"start":"1:3+1/16","pitch":"vx73-cf04ce","velocity":0.75},
+            {"start":"1:3+3/16","pitch":"vx72-121fa2","velocity":0.9},
+            {"start":"2:4","pitch":"vx73-899c16","velocity":0.45},
+            {"start":"2:4+1/16","pitch":"vx72-44de22","velocity":0.5},
+            {"start":"3:1","pitch":"vx72-c9b0ce","velocity":0.8075},
+            {"start":"3:1+1/8","pitch":"vx72-83fd27","velocity":0.665},
+            {"start":"3:1+3/16","pitch":"vx75-a5e66d","velocity":0.95},
+            {"start":"3:3+1/16","pitch":"vx73-cf04ce","velocity":0.7125},
+            {"start":"3:3+3/16","pitch":"vx72-121fa2","velocity":0.855},
+            {"start":"4:1","pitch":"vx72-c9b0ce","velocity":0.85},
+            {"start":"4:1+1/8","pitch":"vx72-83fd27","velocity":0.7},
+            {"start":"4:1+3/16","pitch":"vx77-13dfdf","velocity":1},
+            {"start":"4:3+1/16","pitch":"vx73-cf04ce","velocity":0.75},
+            {"start":"4:3+3/16","pitch":"vx72-121fa2","velocity":0.9},
+            {"start":"5:2","pitch":"vx73-97d20b","velocity":0.8},
+            {"start":"5:2+1/12","pitch":"vx73-97d20b","velocity":0.7},
+            {"start":"5:2+1/6","pitch":"vx72-ba6a12","velocity":0.6},
+            {"start":"5:3","pitch":"vx70-22345e","velocity":0.8},
+            {"start":"5:3+3/16","pitch":"vx80-37be0b","velocity":0.85}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-5},
+      "effects": [
+        {"type":"highpass","frequencyHz":160},
+        {"type":"compressor","thresholdDb":-20,"ratio":3,"attackMs":4,"releaseMs":90,"makeupGainDb":2},
+        {"type":"delay","timeMs":300,"wet":0.14},
+        {"type":"reverb","roomSize":0.5,"decaySeconds":1.3,"wet":0.16}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-5,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "choir",
+      "description": "[music] Machine choir chords; Gb (bII) at the contradiction.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-a-choir.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"3:1","pitch":"ch53-165761","velocity":0.5},
+            {"start":"3:1","pitch":"ch56-ef90d6","velocity":0.5},
+            {"start":"3:1","pitch":"ch60-56aa3e","velocity":0.5},
+            {"start":"3:1","pitch":"ch67-1e74cc","velocity":0.5},
+            {"start":"4:1","pitch":"ch53-5bbccd","velocity":0.5},
+            {"start":"4:1","pitch":"ch56-4ed9c5","velocity":0.5},
+            {"start":"4:1","pitch":"ch60-70ddd6","velocity":0.5},
+            {"start":"4:1","pitch":"ch63-6def59","velocity":0.5},
+            {"start":"5:2","pitch":"ch54-7a7ed4","velocity":0.62},
+            {"start":"5:2","pitch":"ch58-126287","velocity":0.62},
+            {"start":"5:2","pitch":"ch61-1d1cd4","velocity":0.62},
+            {"start":"5:2","pitch":"ch65-154aaf","velocity":0.62}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-12},
+      "effects": [
+        {"type":"highpass","frequencyHz":140},
+        {"type":"reverb","roomSize":0.75,"decaySeconds":2.2,"wet":0.3}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-12,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "sfx",
+      "description": "[sound-design] Plate seat (3.1), servo slide (5.5-6.8), contradiction stab.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-a-sfx.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"2:4+3/16","pitch":"fx-seat-51c170","velocity":0.8},
+            {"start":"4:2+3/16","pitch":"fx-servo-cc30cd","velocity":0.7},
+            {"start":"5:2","pitch":"pl66-639471","velocity":0.6}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-10},
+      "effects": [
+        {"type":"reverb","roomSize":0.4,"decaySeconds":0.9,"wet":0.15}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-10,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    }
+  ]
+}

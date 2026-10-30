@@ -1,0 +1,359 @@
+{
+  "formatVersion": 1,
+  "title": "PermitPulse challenger - Audition B (electric cello pulse)",
+  "description": "Direction B: cinematic-electronic 150 BPM arp pulse, tuned toms, electric cello melody. Picture 0.000-8.000.",
+  "bpm": 150,
+  "timeSignature": "4/4",
+  "key": "F minor",
+  "bars": 5,
+  "render": {
+    "duration": {"seconds":8},
+    "tail": "auto"
+  },
+  "master": {
+    "gainDb": 3,
+    "effects": [
+      {"type":"compressor","thresholdDb":-16,"ratio":2,"attackMs":15,"releaseMs":160}
+    ]
+  },
+  "tracks": [
+    {
+      "id": "drums",
+      "description": "[music] Deep kicks and tuned toms (F, C, Ab).",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-b-drums.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"1:1","pitch":"kk-deep-92a7f0","velocity":1},
+            {"start":"1:1","pitch":"tm41-cb7539","velocity":1},
+            {"start":"1:2+1/8","pitch":"tm48-01037b","velocity":0.7},
+            {"start":"1:3+1/8","pitch":"tm44-323528","velocity":0.7},
+            {"start":"2:1","pitch":"kk-land-8fd3ab","velocity":1},
+            {"start":"2:1","pitch":"tm41-cb7539","velocity":1},
+            {"start":"2:2+1/8","pitch":"tm48-01037b","velocity":0.7},
+            {"start":"2:3+1/8","pitch":"tm44-323528","velocity":0.7},
+            {"start":"3:1","pitch":"kk-deep-92a7f0","velocity":1},
+            {"start":"3:1","pitch":"tm41-cb7539","velocity":1},
+            {"start":"3:2+1/8","pitch":"tm48-01037b","velocity":0.7},
+            {"start":"3:3+1/8","pitch":"tm44-323528","velocity":0.7},
+            {"start":"4:1","pitch":"kk-deep-92a7f0","velocity":1},
+            {"start":"4:1","pitch":"tm41-cb7539","velocity":1},
+            {"start":"4:2+1/8","pitch":"tm48-01037b","velocity":0.7},
+            {"start":"4:3+1/8","pitch":"tm44-323528","velocity":0.7},
+            {"start":"5:1","pitch":"kk-deep-92a7f0","velocity":1},
+            {"start":"5:1","pitch":"tm41-cb7539","velocity":1},
+            {"start":"5:2","pitch":"kk-main-8a751e","velocity":1},
+            {"start":"5:2+1/8","pitch":"tm48-01037b","velocity":0.7},
+            {"start":"5:3+1/8","pitch":"tm44-323528","velocity":0.7}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-6},
+      "effects": [
+        {"type":"highpass","frequencyHz":28},
+        {"type":"reverb","roomSize":0.5,"decaySeconds":1.2,"wet":0.12}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-6,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "bass",
+      "description": "[music] Pulsing 8th-note octave bass.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-b-bass.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"1:1","pitch":"bs29-b5422f","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"1:1+1/8","pitch":"bs41-22b046","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"1:2","pitch":"bs29-b5422f","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"1:2+1/8","pitch":"bs41-22b046","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"1:3","pitch":"bs29-b5422f","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"1:3+1/8","pitch":"bs41-22b046","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"1:4","pitch":"bs29-b5422f","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"1:4+1/8","pitch":"bs41-22b046","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"2:1","pitch":"bs25-5f33f8","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"2:1+1/8","pitch":"bs37-72a7e9","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"2:2","pitch":"bs25-5f33f8","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"2:2+1/8","pitch":"bs37-72a7e9","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"2:3","pitch":"bs25-5f33f8","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"2:3+1/8","pitch":"bs37-72a7e9","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"2:4","pitch":"bs25-5f33f8","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"2:4+1/8","pitch":"bs37-72a7e9","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"3:1","pitch":"bs29-b5422f","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"3:1+1/8","pitch":"bs41-22b046","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"3:2","pitch":"bs29-b5422f","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"3:2+1/8","pitch":"bs41-22b046","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"3:3","pitch":"bs29-b5422f","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"3:3+1/8","pitch":"bs41-22b046","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"3:4","pitch":"bs29-b5422f","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"3:4+1/8","pitch":"bs41-22b046","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"4:1","pitch":"bs27-bc7dd3","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"4:1+1/8","pitch":"bs39-0635a1","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"4:2","pitch":"bs27-bc7dd3","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"4:2+1/8","pitch":"bs39-0635a1","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"4:3","pitch":"bs27-bc7dd3","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"4:3+1/8","pitch":"bs39-0635a1","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"4:4","pitch":"bs27-bc7dd3","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"4:4+1/8","pitch":"bs39-0635a1","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"5:1","pitch":"bs29-b5422f","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"5:1+1/8","pitch":"bs41-22b046","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"5:2","pitch":"bs30-520a84","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"5:2+1/8","pitch":"bs42-b63b02","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"5:3","pitch":"bs30-520a84","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"5:3+1/8","pitch":"bs42-b63b02","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"5:4","pitch":"bs30-520a84","velocity":0.95,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"},
+            {"start":"5:4+1/8","pitch":"bs42-b63b02","velocity":0.7,"gate":"13/160","envelope":{"attackSeconds":0.001,"releaseSeconds":0.015},"chokeGroup":"bass"}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-9},
+      "effects": [
+        {"type":"highpass","frequencyHz":30}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-9,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "arp",
+      "description": "[music] 16th-note plucked arpeggio: Fm, Db, Fm, Eb, Fm, then Gb at 6.8.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-b-arp.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"1:1","pitch":"pl53-06d6df","velocity":0.9},
+            {"start":"1:1+1/16","pitch":"pl60-c054b0","velocity":0.5},
+            {"start":"1:1+1/8","pitch":"pl56-4f0768","velocity":0.7},
+            {"start":"1:1+3/16","pitch":"pl60-c054b0","velocity":0.5},
+            {"start":"1:2","pitch":"pl63-b49293","velocity":0.9},
+            {"start":"1:2+1/16","pitch":"pl60-c054b0","velocity":0.5},
+            {"start":"1:2+1/8","pitch":"pl56-4f0768","velocity":0.7},
+            {"start":"1:2+3/16","pitch":"pl60-c054b0","velocity":0.5},
+            {"start":"1:3","pitch":"pl53-06d6df","velocity":0.9},
+            {"start":"1:3+1/16","pitch":"pl60-c054b0","velocity":0.5},
+            {"start":"1:3+1/8","pitch":"pl56-4f0768","velocity":0.7},
+            {"start":"1:3+3/16","pitch":"pl60-c054b0","velocity":0.5},
+            {"start":"1:4","pitch":"pl63-b49293","velocity":0.9},
+            {"start":"1:4+1/16","pitch":"pl60-c054b0","velocity":0.5},
+            {"start":"1:4+1/8","pitch":"pl56-4f0768","velocity":0.7},
+            {"start":"1:4+3/16","pitch":"pl60-c054b0","velocity":0.5},
+            {"start":"2:1","pitch":"pl49-d1203d","velocity":0.9},
+            {"start":"2:1+1/16","pitch":"pl56-bff9cc","velocity":0.5},
+            {"start":"2:1+1/8","pitch":"pl53-13c046","velocity":0.7},
+            {"start":"2:1+3/16","pitch":"pl56-bff9cc","velocity":0.5},
+            {"start":"2:2","pitch":"pl60-6c0661","velocity":0.9},
+            {"start":"2:2+1/16","pitch":"pl56-bff9cc","velocity":0.5},
+            {"start":"2:2+1/8","pitch":"pl53-13c046","velocity":0.7},
+            {"start":"2:2+3/16","pitch":"pl56-bff9cc","velocity":0.5},
+            {"start":"2:3","pitch":"pl49-d1203d","velocity":0.9},
+            {"start":"2:3+1/16","pitch":"pl56-bff9cc","velocity":0.5},
+            {"start":"2:3+1/8","pitch":"pl53-13c046","velocity":0.7},
+            {"start":"2:3+3/16","pitch":"pl56-bff9cc","velocity":0.5},
+            {"start":"2:4","pitch":"pl60-6c0661","velocity":0.9},
+            {"start":"2:4+1/16","pitch":"pl56-bff9cc","velocity":0.5},
+            {"start":"2:4+1/8","pitch":"pl53-13c046","velocity":0.7},
+            {"start":"2:4+3/16","pitch":"pl56-bff9cc","velocity":0.5},
+            {"start":"3:1","pitch":"pl53-8031ca","velocity":0.9},
+            {"start":"3:1+1/16","pitch":"pl60-ef7f25","velocity":0.5},
+            {"start":"3:1+1/8","pitch":"pl56-5d74bc","velocity":0.7},
+            {"start":"3:1+3/16","pitch":"pl60-ef7f25","velocity":0.5},
+            {"start":"3:2","pitch":"pl63-6cdd10","velocity":0.9},
+            {"start":"3:2+1/16","pitch":"pl60-ef7f25","velocity":0.5},
+            {"start":"3:2+1/8","pitch":"pl56-5d74bc","velocity":0.7},
+            {"start":"3:2+3/16","pitch":"pl60-ef7f25","velocity":0.5},
+            {"start":"3:3","pitch":"pl53-8031ca","velocity":0.9},
+            {"start":"3:3+1/16","pitch":"pl60-ef7f25","velocity":0.5},
+            {"start":"3:3+1/8","pitch":"pl56-5d74bc","velocity":0.7},
+            {"start":"3:3+3/16","pitch":"pl60-ef7f25","velocity":0.5},
+            {"start":"3:4","pitch":"pl63-6cdd10","velocity":0.9},
+            {"start":"3:4+1/16","pitch":"pl60-ef7f25","velocity":0.5},
+            {"start":"3:4+1/8","pitch":"pl56-5d74bc","velocity":0.7},
+            {"start":"3:4+3/16","pitch":"pl60-ef7f25","velocity":0.5},
+            {"start":"4:1","pitch":"pl51-411e8d","velocity":0.9},
+            {"start":"4:1+1/16","pitch":"pl58-559f4c","velocity":0.5},
+            {"start":"4:1+1/8","pitch":"pl55-30c9c0","velocity":0.7},
+            {"start":"4:1+3/16","pitch":"pl58-559f4c","velocity":0.5},
+            {"start":"4:2","pitch":"pl62-068809","velocity":0.9},
+            {"start":"4:2+1/16","pitch":"pl58-559f4c","velocity":0.5},
+            {"start":"4:2+1/8","pitch":"pl55-30c9c0","velocity":0.7},
+            {"start":"4:2+3/16","pitch":"pl58-559f4c","velocity":0.5},
+            {"start":"4:3","pitch":"pl51-411e8d","velocity":0.9},
+            {"start":"4:3+1/16","pitch":"pl58-559f4c","velocity":0.5},
+            {"start":"4:3+1/8","pitch":"pl55-30c9c0","velocity":0.7},
+            {"start":"4:3+3/16","pitch":"pl58-559f4c","velocity":0.5},
+            {"start":"4:4","pitch":"pl62-068809","velocity":0.9},
+            {"start":"4:4+1/16","pitch":"pl58-559f4c","velocity":0.5},
+            {"start":"4:4+1/8","pitch":"pl55-30c9c0","velocity":0.7},
+            {"start":"4:4+3/16","pitch":"pl58-559f4c","velocity":0.5},
+            {"start":"5:1","pitch":"pl53-618bd0","velocity":0.9},
+            {"start":"5:1+1/16","pitch":"pl60-38b626","velocity":0.5},
+            {"start":"5:1+1/8","pitch":"pl56-b78f5a","velocity":0.7},
+            {"start":"5:1+3/16","pitch":"pl60-38b626","velocity":0.5},
+            {"start":"5:2","pitch":"pl65-91169d","velocity":0.9},
+            {"start":"5:2+1/16","pitch":"pl61-27a4f7","velocity":0.5},
+            {"start":"5:2+1/8","pitch":"pl58-704bc4","velocity":0.7},
+            {"start":"5:2+3/16","pitch":"pl61-27a4f7","velocity":0.5},
+            {"start":"5:3","pitch":"pl54-c4aa26","velocity":0.9},
+            {"start":"5:3+1/16","pitch":"pl61-27a4f7","velocity":0.5},
+            {"start":"5:3+1/8","pitch":"pl58-704bc4","velocity":0.7},
+            {"start":"5:3+3/16","pitch":"pl61-27a4f7","velocity":0.5},
+            {"start":"5:4","pitch":"pl65-91169d","velocity":0.9},
+            {"start":"5:4+1/16","pitch":"pl61-27a4f7","velocity":0.5},
+            {"start":"5:4+1/8","pitch":"pl58-704bc4","velocity":0.7},
+            {"start":"5:4+3/16","pitch":"pl61-27a4f7","velocity":0.5}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-10},
+      "effects": [
+        {"type":"highpass","frequencyHz":150},
+        {"type":"delay","timeMs":300,"wet":0.18},
+        {"type":"reverb","roomSize":0.6,"decaySeconds":1.6,"wet":0.2}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-10,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "cello",
+      "description": "[music] Electric cello melody, climbing to F5 and crying a semitone up at 6.8.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-b-cello.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"1:1","pitch":"ce65-f048f5","velocity":0.9},
+            {"start":"1:2+3/16","pitch":"ce68-7ef831","velocity":0.8},
+            {"start":"1:3+1/8","pitch":"ce72-12648c","velocity":0.9},
+            {"start":"2:1","pitch":"ce73-74c5be","velocity":1},
+            {"start":"2:3+1/8","pitch":"ce72-6e58cb","velocity":0.8},
+            {"start":"2:4+1/16","pitch":"ce70-0c6389","velocity":0.8},
+            {"start":"3:1","pitch":"ce68-0d54e7","velocity":0.85},
+            {"start":"3:2+1/8","pitch":"ce67-cd5d3e","velocity":0.7},
+            {"start":"3:3","pitch":"ce68-72a33e","velocity":0.75},
+            {"start":"3:3+1/8","pitch":"ce72-0496ef","velocity":0.85},
+            {"start":"4:1","pitch":"ce75-741ac1","velocity":1},
+            {"start":"4:4","pitch":"ce74-511dad","velocity":0.8},
+            {"start":"5:1","pitch":"ce77-dfa484","velocity":1},
+            {"start":"5:2","pitch":"ce78-c4435f","velocity":1},
+            {"start":"5:3+1/8","pitch":"ce77-bb800f","velocity":0.85}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-5},
+      "effects": [
+        {"type":"highpass","frequencyHz":120},
+        {"type":"reverb","roomSize":0.7,"decaySeconds":2,"wet":0.24}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-5,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "strings",
+      "description": "[music] Detuned string-synth chords.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-b-strings.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"1:1","pitch":"st53-345915","velocity":0.6},
+            {"start":"1:1","pitch":"st56-fc5eed","velocity":0.6},
+            {"start":"1:1","pitch":"st60-6d79c2","velocity":0.6},
+            {"start":"2:1","pitch":"st49-70c8eb","velocity":0.6},
+            {"start":"2:1","pitch":"st53-345915","velocity":0.6},
+            {"start":"2:1","pitch":"st56-fc5eed","velocity":0.6},
+            {"start":"3:1","pitch":"st53-345915","velocity":0.6},
+            {"start":"3:1","pitch":"st56-fc5eed","velocity":0.6},
+            {"start":"3:1","pitch":"st60-6d79c2","velocity":0.6},
+            {"start":"4:1","pitch":"st51-13603a","velocity":0.6},
+            {"start":"4:1","pitch":"st55-f9b603","velocity":0.6},
+            {"start":"4:1","pitch":"st58-fce3d0","velocity":0.6},
+            {"start":"5:1","pitch":"st53-fff80d","velocity":0.6},
+            {"start":"5:1","pitch":"st56-53e071","velocity":0.6},
+            {"start":"5:1","pitch":"st60-bd8bc0","velocity":0.6},
+            {"start":"5:2","pitch":"st54-23c454","velocity":0.7},
+            {"start":"5:2","pitch":"st58-0babfb","velocity":0.7},
+            {"start":"5:2","pitch":"st61-9542ec","velocity":0.7}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-14},
+      "effects": [
+        {"type":"highpass","frequencyHz":160},
+        {"type":"reverb","roomSize":0.8,"decaySeconds":2.6,"wet":0.3}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-14,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    },
+    {
+      "id": "sfx",
+      "description": "[sound-design] Plate seat, servo slide, contradiction crack.",
+      "instrument": {"type":"drumkit","kit":"assets/ppc/audition-b-sfx.kit.json"},
+      "clips": [
+        {"bar":1,"pattern":"cue"}
+      ],
+      "patterns": [
+        {
+          "id": "cue",
+          "bars": 5,
+          "notes": [
+            {"start":"2:4+3/16","pitch":"fx-seat-51c170","velocity":0.8},
+            {"start":"4:2+3/16","pitch":"fx-servo-cc30cd","velocity":0.7},
+            {"start":"5:2","pitch":"sn-big-b44309","velocity":0.8}
+          ]
+        }
+      ],
+      "mix": {"gainDb":-10},
+      "effects": [
+        {"type":"reverb","roomSize":0.5,"decaySeconds":1.2,"wet":0.2}
+      ],
+      "automation": {
+        "gainDb": [
+          {"at":{"seconds":7.86},"value":-10,"transition":"linear"},
+          {"at":{"seconds":7.99},"value":-40}
+        ]
+      }
+    }
+  ]
+}

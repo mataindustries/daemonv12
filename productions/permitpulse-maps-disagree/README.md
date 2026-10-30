@@ -27,6 +27,11 @@ See [CUE_SHEET.md](CUE_SHEET.md) for the timing map and
 [QA_AND_CRITIQUE.md](QA_AND_CRITIQUE.md) for audio QA, the version log and an
 honest self-critique.
 
+**Challenger (music-first rewrite):** [challenger/](challenger/README.md) holds a separate 28-second
+score (C3) built around a machine-voice hook, a 150 BPM groove and a metric modulation on the
+evidence cut, with its own auditions, stems, cue map and comparison against V3. V3 here is unchanged
+and stays the fallback.
+
 ## Musical thesis
 
 - **Hook:** a heartbeat (*lub-dub*, deep analog D) under a three-note glass motif,
