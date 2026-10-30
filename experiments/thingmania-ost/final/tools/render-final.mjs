@@ -164,7 +164,8 @@ function samplePeak(pcm) { let p = 0, full = 0; for (const v of pcm) { p = Math.
 
 function decodeCheck(file, refPcm, refWav) {
   const res = ff(['-i', file, '-f', 's16le', '-ac', '2', '-ar', String(SR), '-'], { maxBuffer: 1 << 30 });
-  const b = res.stdout, dec = new Int16Array(b.buffer, b.byteOffset, b.length / 2);
+  const b = res.stdout, dec = new Int16Array(b.length / 2);
+  for (let i = 0; i < dec.length; i++) dec[i] = b.readInt16LE(2 * i);
   const frames = dec.length / 2, n = Math.min(dec.length, refPcm.length);
   // Alignment: error energy against the original at lag 0 vs. the best lag within +/-2048 frames.
   const err = (lag) => { let e = 0, s = 0; for (let i = 0; i < n; i += 2) { const j = i + 2 * lag; if (j < 0 || j >= dec.length) continue; e += (dec[j] - refPcm[i]) ** 2; s += refPcm[i] ** 2; } return 10 * Math.log10(s / (e || 1)); };
