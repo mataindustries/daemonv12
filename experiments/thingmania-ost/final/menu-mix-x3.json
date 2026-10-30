@@ -1,0 +1,764 @@
+{
+  "formatVersion": 1,
+  "title": "THING//MANIA - Menu (x3 extraction copy)",
+  "description": "Loop-extraction copy of menu-mix.json: the identical 16-bar loop at bars 1, 17 and 33 (continuous, so effect tails carry across every boundary), then one closing downbeat at bar 49 that decays inside that bar. Cycle 2 (bars 17-32) is the seamless loop master; cycle 3 must be bit-identical to it.",
+  "bpm": 106.0773,
+  "timeSignature": "4/4",
+  "key": "E minor",
+  "bars": 49,
+  "seed": 0,
+  "render": {"tail":"none"},
+  "master": {
+    "gainDb": -3.3,
+    "effects": [
+      {"type":"highpass","frequencyHz":28},
+      {
+        "type": "compressor",
+        "thresholdDb": -16,
+        "ratio": 2,
+        "attackMs": 8,
+        "releaseMs": 120,
+        "makeupGainDb": 1
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "bass",
+      "description": "A's squelch bass riff (AC-01's sound, choke and processing).",
+      "instrument": {"type":"drumkit","kit":"assets/bass/kit.json"},
+      "mix": {"gainDb":0},
+      "effects": [
+        {"type":"highpass","frequencyHz":32},
+        {
+          "type": "compressor",
+          "thresholdDb": -16,
+          "ratio": 3,
+          "attackMs": 4,
+          "releaseMs": 90,
+          "makeupGainDb": 1
+        },
+        {"type":"saturation","driveDb":6,"mix":0.35}
+      ],
+      "clips": [
+        {"bar":1,"pattern":"loop"},
+        {"bar":17,"pattern":"loop"},
+        {"bar":33,"pattern":"loop"},
+        {"bar":49,"pattern":"button"}
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"1:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:3+17/240","pitch":"G1","velocity":0.6,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:3+1/8","pitch":"A1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:4","pitch":"Bb1","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:4+47/240","pitch":"E1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:3+17/240","pitch":"G1","velocity":0.6,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:3+1/8","pitch":"A1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:4","pitch":"Bb1","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:4+47/240","pitch":"E1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:3+17/240","pitch":"G1","velocity":0.6,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:3+1/8","pitch":"A1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:4","pitch":"Bb1","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:4+47/240","pitch":"E1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:3+17/240","pitch":"G1","velocity":0.6,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:3+1/8","pitch":"A1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:4","pitch":"Bb1","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:4+47/240","pitch":"E1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:1","pitch":"A1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:1+47/240","pitch":"A1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:2+17/240","pitch":"G2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:2+1/8","pitch":"E2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:3+17/240","pitch":"C2","velocity":0.45,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:3+1/8","pitch":"D2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:4","pitch":"Eb2","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:4+47/240","pitch":"A1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:1","pitch":"A1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:1+47/240","pitch":"A1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:2+1/8","pitch":"A1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:2+47/240","pitch":"C2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:3","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:3+1/8","pitch":"E2","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:4+1/8","pitch":"A1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:4+47/240","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:1","pitch":"C2","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:1+47/240","pitch":"C2","velocity":0.75,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:2+1/8","pitch":"C2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:3+17/240","pitch":"Eb2","velocity":0.45,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:3+1/8","pitch":"F2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:4","pitch":"F#2","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:4+47/240","pitch":"C2","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:1","pitch":"D2","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:1+47/240","pitch":"D2","velocity":0.75,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:2+1/8","pitch":"D2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:3+17/240","pitch":"F2","velocity":0.45,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:3+1/8","pitch":"G2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:4","pitch":"G#2","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:3+17/240","pitch":"G1","velocity":0.6,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:3+1/8","pitch":"A1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:4","pitch":"Bb1","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:4+47/240","pitch":"E1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:3","pitch":"F1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:3+47/240","pitch":"F1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:4+17/240","pitch":"Eb2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:4+1/8","pitch":"F1","velocity":0.95,"glide":{"to":0.943874,"duration":"1/8"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"}
+          ]
+        },
+        {
+          "id": "button",
+          "bars": 1,
+          "notes": [
+            {"start":"1:1","pitch":"E1","velocity":1,"gate":"1/2","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bass-grit",
+      "description": "Parallel driven copy of the bass for phone speakers, low-passed at 2.2 kHz to keep 2-6 kHz free for UI sounds.",
+      "instrument": {"type":"drumkit","kit":"assets/bass/kit.json"},
+      "mix": {"gainDb":-8},
+      "effects": [
+        {"type":"highpass","frequencyHz":350},
+        {"type":"saturation","driveDb":18,"mix":0.5},
+        {"type":"lowpass","frequencyHz":2200}
+      ],
+      "clips": [
+        {"bar":1,"pattern":"loop"},
+        {"bar":17,"pattern":"loop"},
+        {"bar":33,"pattern":"loop"},
+        {"bar":49,"pattern":"button"}
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"1:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:3+17/240","pitch":"G1","velocity":0.6,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:3+1/8","pitch":"A1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:4","pitch":"Bb1","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"1:4+47/240","pitch":"E1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"2:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:3+17/240","pitch":"G1","velocity":0.6,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:3+1/8","pitch":"A1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:4","pitch":"Bb1","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"3:4+47/240","pitch":"E1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"4:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:3+17/240","pitch":"G1","velocity":0.6,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:3+1/8","pitch":"A1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:4","pitch":"Bb1","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"5:4+47/240","pitch":"E1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"6:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:3+17/240","pitch":"G1","velocity":0.6,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:3+1/8","pitch":"A1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:4","pitch":"Bb1","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"7:4+47/240","pitch":"E1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"8:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:1","pitch":"A1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:1+47/240","pitch":"A1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:2+17/240","pitch":"G2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:2+1/8","pitch":"E2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:3+17/240","pitch":"C2","velocity":0.45,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:3+1/8","pitch":"D2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:4","pitch":"Eb2","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"9:4+47/240","pitch":"A1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:1","pitch":"A1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:1+47/240","pitch":"A1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:2+1/8","pitch":"A1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:2+47/240","pitch":"C2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:3","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:3+1/8","pitch":"E2","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:4+1/8","pitch":"A1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"10:4+47/240","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:1","pitch":"C2","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:1+47/240","pitch":"C2","velocity":0.75,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:2+1/8","pitch":"C2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:3+17/240","pitch":"Eb2","velocity":0.45,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:3+1/8","pitch":"F2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:4","pitch":"F#2","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"11:4+47/240","pitch":"C2","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:1","pitch":"D2","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:1+47/240","pitch":"D2","velocity":0.75,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:2+1/8","pitch":"D2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:3+17/240","pitch":"F2","velocity":0.45,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:3+1/8","pitch":"G2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:4","pitch":"G#2","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"12:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"13:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:3+17/240","pitch":"G1","velocity":0.6,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:3+1/8","pitch":"A1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:4","pitch":"Bb1","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"14:4+47/240","pitch":"E1","velocity":0.75,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:1","pitch":"E1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:1+47/240","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:2+1/8","pitch":"E1","velocity":0.5,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:2+47/240","pitch":"G1","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:3","pitch":"A1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:3+1/8","pitch":"B1","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:4+1/8","pitch":"D2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"15:4+47/240","pitch":"Eb2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:1","pitch":"E1","velocity":1,"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:1+47/240","pitch":"E1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:2+17/240","pitch":"D2","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:2+1/8","pitch":"B1","velocity":0.85,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:3","pitch":"F1","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:3+47/240","pitch":"F1","velocity":0.8,"playbackRate":2,"gate":"5/96","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:4+17/240","pitch":"Eb2","velocity":0.8,"gate":"1/16","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"},
+            {"start":"16:4+1/8","pitch":"F1","velocity":0.95,"glide":{"to":0.943874,"duration":"1/8"},"gate":"1/8","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"}
+          ]
+        },
+        {
+          "id": "button",
+          "bars": 1,
+          "notes": [
+            {"start":"1:1","pitch":"E1","velocity":1,"gate":"1/2","envelope":{"attackSeconds":0.001,"releaseSeconds":0.02},"chokeGroup":"bass"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "whistle",
+      "description": "A's whistle: hook, pickups and bends, with its dotted-eighth echo.",
+      "instrument": {"type":"drumkit","kit":"assets/whistle/kit.json"},
+      "mix": {"gainDb":-9,"pan":0.3},
+      "effects": [
+        {"type":"highpass","frequencyHz":400},
+        {"type":"delay","timeMs":424.5,"wet":0.14},
+        {"type":"reverb","roomSize":0.4,"decaySeconds":1,"wet":0.18}
+      ],
+      "clips": [
+        {"bar":1,"pattern":"loop"},
+        {"bar":17,"pattern":"loop"},
+        {"bar":33,"pattern":"loop"},
+        {"bar":49,"pattern":"button"}
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"1:4+17/240","pitch":"B5","velocity":0.7,"gate":"1/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"1:4+1/8","pitch":"D6","velocity":0.8,"gate":"1/8","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"2:1","pitch":"E6","velocity":0.95,"playbackRate":0.890899,"glide":{"to":1,"duration":"1/32"},"gate":"3/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"2:1+47/240","pitch":"D6","velocity":0.72,"gate":"1/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"2:2+17/240","pitch":"B5","velocity":0.72,"gate":"1/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"2:2+1/8","pitch":"C#6","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"2:3","pitch":"B5","velocity":0.85,"gate":"1/4","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"6:1","pitch":"E6","velocity":0.95,"playbackRate":0.890899,"glide":{"to":1,"duration":"1/32"},"gate":"3/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"6:1+47/240","pitch":"D6","velocity":0.72,"gate":"1/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"6:2+17/240","pitch":"B5","velocity":0.72,"gate":"1/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"6:2+1/8","pitch":"C#6","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"6:3","pitch":"B5","velocity":0.85,"playbackRate":0.943874,"glide":{"to":1,"duration":"1/16"},"gate":"1/4","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"12:4+17/240","pitch":"B5","velocity":0.7,"gate":"1/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"12:4+1/8","pitch":"D6","velocity":0.8,"gate":"1/8","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"13:1","pitch":"E6","velocity":0.95,"playbackRate":0.890899,"glide":{"to":1,"duration":"1/32"},"gate":"3/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"13:1+47/240","pitch":"D6","velocity":0.72,"gate":"1/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"13:2+17/240","pitch":"B5","velocity":0.72,"gate":"1/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"13:2+1/8","pitch":"C#6","velocity":0.85,"gate":"1/8","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"13:3","pitch":"B5","velocity":0.85,"gate":"1/4","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"}
+          ]
+        },
+        {
+          "id": "button",
+          "bars": 1,
+          "notes": [
+            {"start":"1:1","pitch":"E6","velocity":0.85,"playbackRate":0.890899,"glide":{"to":1,"duration":"1/32"},"gate":"1/2","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "whistle-dry",
+      "description": "The same whistle without the echo, for phrases that hand straight over to an appliance or a hit.",
+      "instrument": {"type":"drumkit","kit":"assets/whistle/kit.json"},
+      "mix": {"gainDb":-9,"pan":0.3},
+      "effects": [
+        {"type":"highpass","frequencyHz":400},
+        {"type":"reverb","roomSize":0.4,"decaySeconds":1,"wet":0.18}
+      ],
+      "clips": [{"bar":1,"pattern":"loop"},{"bar":17,"pattern":"loop"},{"bar":33,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"10:3","pitch":"A5","velocity":0.8,"gate":"7/64","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"10:3+1/8","pitch":"C#6","velocity":0.75,"gate":"7/64","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"10:4","pitch":"D#6","velocity":0.9,"glide":{"to":1.059463,"duration":"1/32"},"gate":"3/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"16:1","pitch":"E6","velocity":0.95,"playbackRate":0.890899,"glide":{"to":1,"duration":"1/32"},"gate":"3/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"16:1+47/240","pitch":"D6","velocity":0.72,"gate":"1/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"16:2+17/240","pitch":"B5","velocity":0.72,"gate":"1/16","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"},
+            {"start":"16:2+1/8","pitch":"C#6","velocity":0.85,"gate":"3/32","envelope":{"attackSeconds":0.004,"releaseSeconds":0.06},"chokeGroup":"lead"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hum",
+      "description": "The appliance choir humming the harmony on \"oo\" (menu only): one pad per bar.",
+      "instrument": {"type":"drumkit","kit":"assets/hum/kit.json"},
+      "mix": {"gainDb":-9},
+      "effects": [
+        {"type":"highpass","frequencyHz":150},
+        {"type":"lowpass","frequencyHz":2500},
+        {"type":"reverb","roomSize":0.6,"decaySeconds":1.6,"wet":0.25}
+      ],
+      "clips": [
+        {"bar":1,"pattern":"loop"},
+        {"bar":17,"pattern":"loop"},
+        {"bar":33,"pattern":"loop"},
+        {"bar":49,"pattern":"button"}
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"1:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"2:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"3:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"4:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"5:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"6:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"7:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"8:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"9:1","pitch":"hum-a13","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"10:1","pitch":"hum-a13","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"11:1","pitch":"hum-c","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"12:1","pitch":"hum-d","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"13:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"14:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"15:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}},
+            {"start":"16:1","pitch":"hum-em9","velocity":0.7,"gate":"1/2","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}}
+          ]
+        },
+        {
+          "id": "button",
+          "bars": 1,
+          "notes": [
+            {"start":"1:1","pitch":"hum-em9","velocity":0.7,"gate":"1/1","envelope":{"attackSeconds":0.12,"releaseSeconds":0.3}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kick",
+      "description": "A's kick, locked to the bass.",
+      "instrument": {"type":"drumkit","kit":"assets/drums/kit.json"},
+      "mix": {"gainDb":-5},
+      "clips": [
+        {"bar":1,"pattern":"loop"},
+        {"bar":17,"pattern":"loop"},
+        {"bar":33,"pattern":"loop"},
+        {"bar":49,"pattern":"button"}
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"1:1","pitch":"kick","velocity":0.8},
+            {"start":"1:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"2:1","pitch":"kick","velocity":0.8},
+            {"start":"2:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"2:4+17/240","pitch":"kick","velocity":0.42},
+            {"start":"3:1","pitch":"kick","velocity":0.8},
+            {"start":"3:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"4:1","pitch":"kick","velocity":0.8},
+            {"start":"4:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"4:4+17/240","pitch":"kick","velocity":0.42},
+            {"start":"5:1","pitch":"kick","velocity":0.8},
+            {"start":"5:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"6:1","pitch":"kick","velocity":0.8},
+            {"start":"6:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"6:4+17/240","pitch":"kick","velocity":0.42},
+            {"start":"7:1","pitch":"kick","velocity":0.8},
+            {"start":"7:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"8:1","pitch":"kick","velocity":0.8},
+            {"start":"8:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"8:4+17/240","pitch":"kick","velocity":0.42},
+            {"start":"9:1","pitch":"kick","velocity":0.8},
+            {"start":"9:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"10:1","pitch":"kick","velocity":0.8},
+            {"start":"10:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"10:4+17/240","pitch":"kick","velocity":0.42},
+            {"start":"11:1","pitch":"kick","velocity":0.8},
+            {"start":"11:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"12:1","pitch":"kick","velocity":0.8},
+            {"start":"12:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"13:1","pitch":"kick","velocity":0.8},
+            {"start":"13:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"13:4+17/240","pitch":"kick","velocity":0.42},
+            {"start":"14:1","pitch":"kick","velocity":0.8},
+            {"start":"14:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"15:1","pitch":"kick","velocity":0.8},
+            {"start":"15:3+1/8","pitch":"kick","velocity":0.65},
+            {"start":"15:4+17/240","pitch":"kick","velocity":0.42},
+            {"start":"16:1","pitch":"kick","velocity":0.8},
+            {"start":"16:2+1/8","pitch":"kick","velocity":0.6}
+          ]
+        },
+        {"id":"button","bars":1,"notes":[{"start":"1:1","pitch":"kick","velocity":1}]}
+      ]
+    },
+    {
+      "id": "snare",
+      "description": "A quiet backbeat on 2 and 4, no ghost notes.",
+      "instrument": {"type":"drumkit","kit":"assets/drums/kit.json"},
+      "mix": {"gainDb":-4,"pan":0.05},
+      "effects": [{"type":"reverb","roomSize":0.3,"decaySeconds":0.6,"wet":0.12}],
+      "clips": [{"bar":1,"pattern":"loop"},{"bar":17,"pattern":"loop"},{"bar":33,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"1:2","pitch":"snare","velocity":0.38},
+            {"start":"1:4","pitch":"snare","velocity":0.38},
+            {"start":"2:2","pitch":"snare","velocity":0.38},
+            {"start":"2:4","pitch":"snare","velocity":0.38},
+            {"start":"3:2","pitch":"snare","velocity":0.38},
+            {"start":"3:4","pitch":"snare","velocity":0.38},
+            {"start":"4:2","pitch":"snare","velocity":0.38},
+            {"start":"4:4","pitch":"snare","velocity":0.38},
+            {"start":"5:2","pitch":"snare","velocity":0.38},
+            {"start":"5:4","pitch":"snare","velocity":0.38},
+            {"start":"6:2","pitch":"snare","velocity":0.38},
+            {"start":"6:4","pitch":"snare","velocity":0.38},
+            {"start":"7:2","pitch":"snare","velocity":0.38},
+            {"start":"7:4","pitch":"snare","velocity":0.38},
+            {"start":"8:2","pitch":"snare","velocity":0.38},
+            {"start":"8:4","pitch":"snare","velocity":0.38},
+            {"start":"9:2","pitch":"snare","velocity":0.38},
+            {"start":"9:4","pitch":"snare","velocity":0.38},
+            {"start":"10:2","pitch":"snare","velocity":0.38},
+            {"start":"10:4","pitch":"snare","velocity":0.38},
+            {"start":"11:2","pitch":"snare","velocity":0.38},
+            {"start":"11:4","pitch":"snare","velocity":0.38},
+            {"start":"12:2","pitch":"snare","velocity":0.38},
+            {"start":"12:4","pitch":"snare","velocity":0.38},
+            {"start":"13:2","pitch":"snare","velocity":0.38},
+            {"start":"13:4","pitch":"snare","velocity":0.38},
+            {"start":"14:2","pitch":"snare","velocity":0.38},
+            {"start":"14:4","pitch":"snare","velocity":0.38},
+            {"start":"15:2","pitch":"snare","velocity":0.38},
+            {"start":"15:4","pitch":"snare","velocity":0.38},
+            {"start":"16:2","pitch":"snare","velocity":0.38}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hats",
+      "description": "Off-beat eighths only, closed.",
+      "instrument": {"type":"drumkit","kit":"assets/drums/kit.json"},
+      "mix": {"gainDb":-12,"pan":0.55},
+      "clips": [
+        {"bar":1,"pattern":"loop"},
+        {"bar":17,"pattern":"loop"},
+        {"bar":33,"pattern":"loop"},
+        {"bar":49,"pattern":"button"}
+      ],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"1:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"1:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"1:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"1:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"2:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"2:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"2:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"2:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"3:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"3:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"3:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"3:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"4:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"4:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"4:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"4:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"5:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"5:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"5:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"5:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"6:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"6:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"6:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"6:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"7:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"7:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"7:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"7:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"8:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"8:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"8:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"8:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"9:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"9:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"9:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"9:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"10:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"10:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"10:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"10:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"11:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"11:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"11:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"11:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"12:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"12:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"12:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"12:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"13:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"13:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"13:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"13:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"14:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"14:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"14:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"14:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"15:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"15:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"15:3+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"15:4+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"16:1+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"},
+            {"start":"16:2+1/8","pitch":"hat-c","velocity":0.5,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"}
+          ]
+        },
+        {
+          "id": "button",
+          "bars": 1,
+          "notes": [
+            {"start":"1:1","pitch":"hat-o","velocity":0.55,"envelope":{"attackSeconds":0.0005,"releaseSeconds":0.01},"chokeGroup":"hat"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "voice",
+      "description": "The lead appliance (toaster): the ba-da-DEE tag riding the bass bend.",
+      "instrument": {"type":"drumkit","kit":"assets/voice/kit.json"},
+      "mix": {"gainDb":-8,"pan":-0.35},
+      "effects": [
+        {"type":"highpass","frequencyHz":160},
+        {"type":"saturation","driveDb":3,"mix":0.2},
+        {"type":"delay","timeMs":282.8,"wet":0.1},
+        {"type":"reverb","roomSize":0.4,"decaySeconds":1,"wet":0.16}
+      ],
+      "clips": [{"bar":1,"pattern":"loop"},{"bar":17,"pattern":"loop"},{"bar":33,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"5:3","pitch":"ba-e4","velocity":0.85,"gate":"7/64","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead-voice"},
+            {"start":"5:3+1/8","pitch":"da-g4","velocity":0.75,"gate":"7/64","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead-voice"},
+            {"start":"5:4","pitch":"dee-as4","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead-voice"},
+            {"start":"9:3","pitch":"ba-a4","velocity":0.85,"gate":"7/64","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead-voice"},
+            {"start":"9:3+1/8","pitch":"da-cs5","velocity":0.75,"gate":"7/64","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead-voice"},
+            {"start":"9:4","pitch":"dee-ds5","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead-voice"},
+            {"start":"14:3","pitch":"ba-e4","velocity":0.85,"gate":"7/64","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead-voice"},
+            {"start":"14:3+1/8","pitch":"da-g4","velocity":0.75,"gate":"7/64","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead-voice"},
+            {"start":"14:4","pitch":"dee-as4","velocity":0.95,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead-voice"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kettle",
+      "description": "The kettle: the tag a fourth below the toaster.",
+      "instrument": {"type":"drumkit","kit":"assets/kettle/kit.json"},
+      "mix": {"gainDb":-11.5,"pan":0.65},
+      "effects": [
+        {"type":"highpass","frequencyHz":200},
+        {"type":"delay","timeMs":424.2,"wet":0.12},
+        {"type":"reverb","roomSize":0.4,"decaySeconds":1,"wet":0.18}
+      ],
+      "clips": [{"bar":1,"pattern":"loop"},{"bar":17,"pattern":"loop"},{"bar":33,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"14:3","pitch":"ba-b3","velocity":0.7,"gate":"7/64","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"kettle"},
+            {"start":"14:3+1/8","pitch":"da-d4","velocity":0.65,"gate":"7/64","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"kettle"},
+            {"start":"14:4","pitch":"dee-f4","velocity":0.85,"glide":{"to":1.059463,"duration":"1/32"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"kettle"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "choir",
+      "description": "Close-harmony appliance choir: hits, the return chord and the battery sag.",
+      "instrument": {"type":"drumkit","kit":"assets/choir/kit.json"},
+      "mix": {"gainDb":-5},
+      "effects": [
+        {"type":"highpass","frequencyHz":150},
+        {"type":"reverb","roomSize":0.6,"decaySeconds":1.6,"wet":0.28}
+      ],
+      "clips": [{"bar":1,"pattern":"loop"},{"bar":17,"pattern":"loop"},{"bar":33,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 16,
+          "notes": [
+            {"start":"16:3","pitch":"aah-slip","velocity":0.85,"envelope":{"attackSeconds":0.03,"releaseSeconds":0.015},"chokeGroup":"choir"},
+            {"start":"16:4","pitch":"aah-slip","velocity":0.85,"offsetSeconds":0.565625,"glide":{"to":0.943874,"duration":"1/4"},"gate":"5/16","envelope":{"attackSeconds":0.015,"releaseSeconds":0.12},"chokeGroup":"choir"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fx",
+      "description": "Kitchen FX: the E7 timer ding (power restored) and the kettle coming to the boil.",
+      "instrument": {"type":"drumkit","kit":"assets/fx/kit.json"},
+      "mix": {"gainDb":-11,"pan":0.5},
+      "effects": [{"type":"reverb","roomSize":0.5,"decaySeconds":1.2,"wet":0.25}],
+      "clips": [
+        {"bar":1,"pattern":"loop"},
+        {"bar":17,"pattern":"loop"},
+        {"bar":33,"pattern":"loop"},
+        {"bar":49,"pattern":"button"}
+      ],
+      "patterns": [
+        {"id":"loop","bars":16,"notes":[{"start":"1:1","pitch":"ding","velocity":0.55}]},
+        {"id":"button","bars":1,"notes":[{"start":"1:1","pitch":"ding","velocity":0.8}]}
+      ]
+    }
+  ]
+}
