@@ -1,0 +1,4292 @@
+{
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "fridge-light.json",
+    "sha256": "5c3d7b0e76b90348e421b2dae966b7b52cc2a24727fda12c0f6a713e8a94e9d0",
+    "formatVersion": 1,
+    "seed": 0
+  },
+  "midi": {
+    "file": "fridge-light.mid",
+    "sha256": "e4347acad1012a167b267771fff623b2fd0b3bb9e0c6a20f74208d1d9b962376",
+    "bytes": 89,
+    "ppq": 960,
+    "durationTicks": 15360,
+    "durationSeconds": 10,
+    "notes": 0
+  },
+  "renderer": {
+    "name": "daemonv12-production",
+    "version": "2",
+    "settings": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "panLaw": "linear stereo balance; unity center",
+      "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+      "normalization": false,
+      "dither": false,
+      "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+      "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+      "saturation": "tanh-v1; no output compensation",
+      "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+    }
+  },
+  "gmRenderer": null,
+  "gmSource": null,
+  "soundfont": null,
+  "samples": {
+    "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+    "assets": [
+      {
+        "file": "assets/bass/bb1.wav",
+        "sha256": "aa9a2e2624af5c1692c642fa7105509b01bcdc1a896c7551c5629f1bcbd3506e",
+        "bytes": 75014,
+        "frames": 37485,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bass/db2.wav",
+        "sha256": "9f876b8a33436953598513559815a400b1b52dcdcbede9c8496a9d9a01254afa",
+        "bytes": 75014,
+        "frames": 37485,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bass/e1.wav",
+        "sha256": "f6c667a0860f1146c544fe3eee56e67d85d643aa8dabbdc70e4abe37011c02ac",
+        "bytes": 75014,
+        "frames": 37485,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bass/f1.wav",
+        "sha256": "d09b3db7a23f1e7ae38219ce0c24dae27487dbc19ad4979ac398c048b043b875",
+        "bytes": 75014,
+        "frames": 37485,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bass/kit.json",
+        "sha256": "71ec344d186f9bf6943a149e23080767e04b61bb9874a74f42c50c91fe47f6f7",
+        "bytes": 348,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/bell/ab5.wav",
+        "sha256": "cc6247a9334bdc4c5e365d43d8702ee9d15f94618924393428e31561534c5d28",
+        "bytes": 88244,
+        "frames": 44100,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bell/b5.wav",
+        "sha256": "d0913f78017c10dd8e9754ca72647e95aa3c56a14a5ee74e6965d2304aaec3cc",
+        "bytes": 88244,
+        "frames": 44100,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bell/bb5.wav",
+        "sha256": "58324149ec484592c1642a7fc4d4783be346ae1fa32b04aec1d6f974bb144701",
+        "bytes": 88244,
+        "frames": 44100,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bell/c6.wav",
+        "sha256": "b6606a044d49648397d74d5ccdb296233295e3ed72cd5ffa11852433ee316228",
+        "bytes": 88244,
+        "frames": 44100,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bell/db6.wav",
+        "sha256": "cb5d4a6d21e6af63b38a513d77bc674332a71b7ebb26fcf3884a6018a5440c09",
+        "bytes": 88244,
+        "frames": 44100,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bell/eb6.wav",
+        "sha256": "ce982c36b2d37b950fb41ba72d194b2437b6f8d1418e10f5c44f369b72c6f4a5",
+        "bytes": 88244,
+        "frames": 44100,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/bell/kit.json",
+        "sha256": "a94bf1028150b85ed75ba9fc8b19c65b994de9941cceb1d7f9fe7fdc311cf20b",
+        "bytes": 502,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/drums/drip-ab6.wav",
+        "sha256": "a9383f3b62ce3d241dee42dab14d7561b3e8159add2c171f818b5e2bd6de081c",
+        "bytes": 14156,
+        "frames": 7056,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/drums/drip-c6.wav",
+        "sha256": "c8bf82e83442db81c09deb4877244d6667109fab4256af6fc0e9a517769d3550",
+        "bytes": 14156,
+        "frames": 7056,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/drums/drip-eb6.wav",
+        "sha256": "1590ebe652e26295b95839bf2b7b5a7caad2d29379bf65b3181660111ca58bea",
+        "bytes": 14156,
+        "frames": 7056,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/drums/drip-f6.wav",
+        "sha256": "15605a0826e176f8b9a116724d2493742c1bb0ed5ef467138754e20efd108da3",
+        "bytes": 14156,
+        "frames": 7056,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/drums/kick.wav",
+        "sha256": "b654d5ea38870bb641c54a1a13ca31099c444ca758b70e72e1de18b704a137bf",
+        "bytes": 52964,
+        "frames": 26460,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/drums/kit.json",
+        "sha256": "b3fbd76a2e6fb5895d3a94c7cc531f0448f658fb346f8981b370346e72e10d70",
+        "bytes": 631,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/drums/knock.wav",
+        "sha256": "5e995de7ff9401a636d313de4a518e41a5cda34fa5542a8e8afe2fa05f86a6e7",
+        "bytes": 26504,
+        "frames": 13230,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/drums/shaker.wav",
+        "sha256": "1482c20d3f09498b261f749b2548e7e4346c7079dc861d66c01f47cda4fe4406",
+        "bytes": 10628,
+        "frames": 5292,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/keys/bbm9.wav",
+        "sha256": "85fa0430c3fd0b7916a5303010aab345e1942529199f5f90a8b9bf9ef4836fd7",
+        "bytes": 211724,
+        "frames": 52920,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/keys/dbmaj9s11.wav",
+        "sha256": "10039bb660640c61e2ffa60ce4c4a10b880a2735c36cbbeb695c695ebcdfaad5",
+        "bytes": 211724,
+        "frames": 52920,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/keys/emaj9.wav",
+        "sha256": "07066eb5a61e576704e32b445fa56dd733e66a75014106b7e1a12e003f621df5",
+        "bytes": 352844,
+        "frames": 88200,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/keys/fm11.wav",
+        "sha256": "5c5d2734d305a2af3378d5ea8babb07909f4fe589b7d84749ad6dd2c56940e95",
+        "bytes": 211724,
+        "frames": 52920,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/keys/kit.json",
+        "sha256": "2c8da0d348540b5047df7ce320b0966ee78d9931402f18969f0e12dbc30b47a9",
+        "bytes": 372,
+        "kind": "drumkit"
+      }
+    ],
+    "tracks": [
+      {
+        "trackId": "bell",
+        "trackIndex": 0,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/bell/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/bell/c6.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 720,
+            "frame": 20672,
+            "velocity": 0.7
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 1440,
+            "frame": 41344,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 1920,
+            "frame": 55125,
+            "velocity": 0.75
+          },
+          {
+            "file": "assets/bell/c6.wav",
+            "tick": 2880,
+            "frame": 82688,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 3600,
+            "frame": 103359,
+            "velocity": 0.7
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 4320,
+            "frame": 124031,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 4800,
+            "frame": 137813,
+            "velocity": 0.75
+          },
+          {
+            "file": "assets/bell/c6.wav",
+            "tick": 5760,
+            "frame": 165375,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 6480,
+            "frame": 186047,
+            "velocity": 0.7
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 7200,
+            "frame": 206719,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 0.75
+          },
+          {
+            "file": "assets/bell/c6.wav",
+            "tick": 8640,
+            "frame": 248063,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 9360,
+            "frame": 268734,
+            "velocity": 0.7
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 10560,
+            "frame": 303188,
+            "velocity": 0.75
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.85
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.595,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 22050
+            }
+          },
+          {
+            "file": "assets/bell/b5.wav",
+            "tick": 12240,
+            "frame": 351422,
+            "velocity": 0.7
+          },
+          {
+            "file": "assets/bell/b5.wav",
+            "tick": 12240,
+            "frame": 351422,
+            "velocity": 0.49,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 22050
+            }
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.75
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.525,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 22050
+            }
+          },
+          {
+            "file": "assets/bell/bb5.wav",
+            "tick": 13440,
+            "frame": 385875,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/bell/bb5.wav",
+            "tick": 13440,
+            "frame": 385875,
+            "velocity": 0.56,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 22050
+            }
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 14880,
+            "frame": 427219,
+            "velocity": 0.65
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 14880,
+            "frame": 427219,
+            "velocity": 0.455,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 22050
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "keys",
+        "trackIndex": 1,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/keys/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/keys/fm11.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 49888,
+              "renderedFrames": 49888
+            }
+          },
+          {
+            "file": "assets/keys/fm11.wav",
+            "tick": 2400,
+            "frame": 68906,
+            "velocity": 0.55,
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 36107,
+              "renderedFrames": 36107
+            }
+          },
+          {
+            "file": "assets/keys/dbmaj9s11.wav",
+            "tick": 3840,
+            "frame": 110250,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 49888,
+              "renderedFrames": 49888
+            }
+          },
+          {
+            "file": "assets/keys/dbmaj9s11.wav",
+            "tick": 6240,
+            "frame": 179156,
+            "velocity": 0.55,
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 36107,
+              "renderedFrames": 36107
+            }
+          },
+          {
+            "file": "assets/keys/bbm9.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 49888,
+              "renderedFrames": 49888
+            }
+          },
+          {
+            "file": "assets/keys/bbm9.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.55,
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 36107,
+              "renderedFrames": 36107
+            }
+          },
+          {
+            "file": "assets/keys/emaj9.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.85,
+            "articulation": {
+              "gate": {
+                "duration": "3/4",
+                "frames": 82688
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 88200,
+              "renderedFrames": 88200
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "bass",
+        "trackIndex": 2,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/bass/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 1440,
+            "frame": 41344,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 2400,
+            "frame": 68906,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 3360,
+            "frame": 96469,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 3840,
+            "frame": 110250,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 5280,
+            "frame": 151594,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 6240,
+            "frame": 179156,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 7200,
+            "frame": 206719,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 9120,
+            "frame": 261844,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 11040,
+            "frame": 316969,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 13920,
+            "frame": 399656,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 14880,
+            "frame": 427219,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.943874,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37872
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 13781
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "bass-grit",
+        "trackIndex": 3,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/bass/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 1440,
+            "frame": 41344,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 2400,
+            "frame": 68906,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 3360,
+            "frame": 96469,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 3840,
+            "frame": 110250,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 5280,
+            "frame": 151594,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 6240,
+            "frame": 179156,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 7200,
+            "frame": 206719,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 9120,
+            "frame": 261844,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 11040,
+            "frame": 316969,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 13920,
+            "frame": 399656,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 14880,
+            "frame": 427219,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.943874,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37872
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 13781
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "kick",
+        "trackIndex": 4,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/drums/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 2400,
+            "frame": 68906,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 3840,
+            "frame": 110250,
+            "velocity": 1
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 6240,
+            "frame": 179156,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 1
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.9
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "knock",
+        "trackIndex": 5,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/drums/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/drums/knock.wav",
+            "tick": 1920,
+            "frame": 55125,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/drums/knock.wav",
+            "tick": 5760,
+            "frame": 165375,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/drums/knock.wav",
+            "tick": 7440,
+            "frame": 213609,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/knock.wav",
+            "tick": 9600,
+            "frame": 275625,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/drums/knock.wav",
+            "tick": 13440,
+            "frame": 385875,
+            "velocity": 0.9
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "shaker",
+        "trackIndex": 6,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/drums/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 240,
+            "frame": 6891,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 480,
+            "frame": 13781,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 720,
+            "frame": 20672,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 960,
+            "frame": 27563,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 1200,
+            "frame": 34453,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 1440,
+            "frame": 41344,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 1680,
+            "frame": 48234,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 1920,
+            "frame": 55125,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 2160,
+            "frame": 62016,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 2400,
+            "frame": 68906,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 2640,
+            "frame": 75797,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 2880,
+            "frame": 82688,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 3120,
+            "frame": 89578,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 3360,
+            "frame": 96469,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 3600,
+            "frame": 103359,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 3840,
+            "frame": 110250,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 4080,
+            "frame": 117141,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 4320,
+            "frame": 124031,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 4560,
+            "frame": 130922,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 4800,
+            "frame": 137813,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 5040,
+            "frame": 144703,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 5280,
+            "frame": 151594,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 5520,
+            "frame": 158484,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 5760,
+            "frame": 165375,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 6000,
+            "frame": 172266,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 6240,
+            "frame": 179156,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 6480,
+            "frame": 186047,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 6720,
+            "frame": 192938,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 6960,
+            "frame": 199828,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 7200,
+            "frame": 206719,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 7440,
+            "frame": 213609,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 7920,
+            "frame": 227391,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 8160,
+            "frame": 234281,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 8400,
+            "frame": 241172,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 8640,
+            "frame": 248063,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 8880,
+            "frame": 254953,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 9120,
+            "frame": 261844,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 9360,
+            "frame": 268734,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 9600,
+            "frame": 275625,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 9840,
+            "frame": 282516,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 10320,
+            "frame": 296297,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 10560,
+            "frame": 303188,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 10800,
+            "frame": 310078,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 11040,
+            "frame": 316969,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 11280,
+            "frame": 323859,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 12000,
+            "frame": 344531,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 12480,
+            "frame": 358313,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 13440,
+            "frame": 385875,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 13920,
+            "frame": 399656,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 14400,
+            "frame": 413438,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 14880,
+            "frame": 427219,
+            "velocity": 0.5
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "drips",
+        "trackIndex": 7,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/drums/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.55
+          },
+          {
+            "file": "assets/drums/drip-f6.wav",
+            "tick": 720,
+            "frame": 20672,
+            "velocity": 0.35
+          },
+          {
+            "file": "assets/drums/drip-eb6.wav",
+            "tick": 1440,
+            "frame": 41344,
+            "velocity": 0.45
+          },
+          {
+            "file": "assets/drums/drip-ab6.wav",
+            "tick": 2160,
+            "frame": 62016,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 2880,
+            "frame": 82688,
+            "velocity": 0.55
+          },
+          {
+            "file": "assets/drums/drip-f6.wav",
+            "tick": 3600,
+            "frame": 103359,
+            "velocity": 0.35
+          },
+          {
+            "file": "assets/drums/drip-eb6.wav",
+            "tick": 4320,
+            "frame": 124031,
+            "velocity": 0.45
+          },
+          {
+            "file": "assets/drums/drip-ab6.wav",
+            "tick": 5040,
+            "frame": 144703,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 5760,
+            "frame": 165375,
+            "velocity": 0.55
+          },
+          {
+            "file": "assets/drums/drip-f6.wav",
+            "tick": 6480,
+            "frame": 186047,
+            "velocity": 0.35
+          },
+          {
+            "file": "assets/drums/drip-eb6.wav",
+            "tick": 7200,
+            "frame": 206719,
+            "velocity": 0.45
+          },
+          {
+            "file": "assets/drums/drip-ab6.wav",
+            "tick": 7920,
+            "frame": 227391,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 8640,
+            "frame": 248063,
+            "velocity": 0.55
+          },
+          {
+            "file": "assets/drums/drip-f6.wav",
+            "tick": 9360,
+            "frame": 268734,
+            "velocity": 0.35
+          },
+          {
+            "file": "assets/drums/drip-eb6.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.45
+          },
+          {
+            "file": "assets/drums/drip-ab6.wav",
+            "tick": 10800,
+            "frame": 310078,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.55
+          },
+          {
+            "file": "assets/drums/drip-f6.wav",
+            "tick": 12240,
+            "frame": 351422,
+            "velocity": 0.35
+          },
+          {
+            "file": "assets/drums/drip-eb6.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.45
+          },
+          {
+            "file": "assets/drums/drip-ab6.wav",
+            "tick": 13680,
+            "frame": 392766,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 14400,
+            "frame": 413438,
+            "velocity": 0.55
+          }
+        ],
+        "clippedSamples": 0
+      }
+    ],
+    "playback": {
+      "name": "daemonv12-playback",
+      "version": "1",
+      "settings": {
+        "rate": "0.25 through 4; pitch and duration change together; no time-stretching",
+        "interpolation": "band-limited Kaiser-windowed sinc, 32 zero crossings per side, beta 8.5, 512 table steps per crossing with linear table interpolation; cutoff 0.92 x min(1, 1/rate) of source Nyquist; weights normalized to unity DC gain; silence outside the source; kernel from IEEE-754 basic arithmetic",
+        "glide": "rate linear in output frames from playbackRate to glide.to over the glide frames, then held; read position is the closed-form integral per frame",
+        "offset": "whole source frame: offsetSeconds as microseconds * 44100 / 1000000, nearest frame, ties later",
+        "exactPath": "rate 1 without glide copies source frames from the offset; no interpolation",
+        "end": "voice stops at the first output frame whose read position reaches the source length; no fades",
+        "velocity": "round(value * velocity) per voice sample, as for unperformed voices"
+      }
+    },
+    "articulation": {
+      "name": "daemonv12-articulation",
+      "version": "1",
+      "settings": {
+        "source": "exclusive source end; explicit slice silences interpolation taps outside [offset,end); V0.6 interpolation unchanged otherwise",
+        "envelope": "linear output-frame attack from zero; a scheduled gate/choke release freezes attack gain at its onset; source/output exhaustion compresses overlapping fades proportionally, retaining the authored attack level at the peak and never delaying a gate; last rendered frame reaches zero; defaults 1ms attack, 5ms release; explicit zero disables a fade",
+        "stop": "gate or earliest later same-track choke onset starts release; stop + release capped by source exhaustion and permitted audio boundary; no source extension",
+        "choke": "track-local group; equal output-frame onsets coexist; each older voice uses its own release; a release already started is never restarted",
+        "rounding": "seconds to exact microseconds then nearest frame, ties later; gate via difference of rounded absolute musical boundaries"
+      }
+    }
+  },
+  "timeline": {
+    "authoredDurationTicks": 15360,
+    "authoredFrames": 441000,
+    "duration": {
+      "bars": 4
+    },
+    "tail": "none",
+    "requestedFinalFrames": 441000,
+    "audioEndFrames": 441000,
+    "resultingFrames": 441000,
+    "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+  },
+  "production": {
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1-3ubuntu5"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v22.22.0"
+    },
+    "tracks": [
+      {
+        "trackId": "bell",
+        "gainDb": -7,
+        "pan": 0.1,
+        "effects": [
+          {
+            "type": "delay",
+            "timeMs": 468.75,
+            "wet": 0.3
+          },
+          {
+            "type": "reverb",
+            "roomSize": 0.65,
+            "decaySeconds": 2.2,
+            "wet": 0.25
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -7.280385
+      },
+      {
+        "trackId": "keys",
+        "gainDb": -5,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "highpass",
+            "frequencyHz": 150
+          },
+          {
+            "type": "reverb",
+            "roomSize": 0.55,
+            "decaySeconds": 1.6,
+            "wet": 0.22
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -11.436333
+      },
+      {
+        "trackId": "bass",
+        "gainDb": -2,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "highpass",
+            "frequencyHz": 30
+          },
+          {
+            "type": "saturation",
+            "driveDb": 5,
+            "mix": 0.3
+          },
+          {
+            "type": "compressor",
+            "thresholdDb": -15,
+            "ratio": 3,
+            "attackMs": 6,
+            "releaseMs": 120,
+            "makeupGainDb": 1.5
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -6.94668
+      },
+      {
+        "trackId": "bass-grit",
+        "gainDb": -8,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "highpass",
+            "frequencyHz": 300
+          },
+          {
+            "type": "saturation",
+            "driveDb": 14,
+            "mix": 0.45
+          },
+          {
+            "type": "lowpass",
+            "frequencyHz": 2500
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -5.018898
+      },
+      {
+        "trackId": "kick",
+        "gainDb": -3,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -6.000362
+      },
+      {
+        "trackId": "knock",
+        "gainDb": -1,
+        "pan": 0,
+        "effects": [
+          {
+            "type": "reverb",
+            "roomSize": 0.45,
+            "decaySeconds": 0.9,
+            "wet": 0.22
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -7.07374
+      },
+      {
+        "trackId": "shaker",
+        "gainDb": -11,
+        "pan": -0.35,
+        "effects": [
+          {
+            "type": "highpass",
+            "frequencyHz": 3000
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -20.997016
+      },
+      {
+        "trackId": "drips",
+        "gainDb": -5,
+        "pan": 0.35,
+        "effects": [
+          {
+            "type": "reverb",
+            "roomSize": 0.6,
+            "decaySeconds": 1.4,
+            "wet": 0.3
+          }
+        ],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -16.291386
+      }
+    ],
+    "master": {
+      "gainDb": 0,
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 28
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -15,
+          "ratio": 2,
+          "attackMs": 10,
+          "releaseMs": 150,
+          "makeupGainDb": 1
+        }
+      ],
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -1.90423
+    },
+    "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+  },
+  "mix": {
+    "clippedSamples": 0,
+    "gm": "sum processed independent tracks",
+    "samples": "sum exported track PCM"
+  },
+  "wav": {
+    "file": "fridge-light.wav",
+    "sha256": "256ae8ddec41f91e35ad89989b8804e7428c521b8e02fd2db3338b370f1ac193",
+    "bytes": 1764044,
+    "frames": 441000,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 16,
+    "durationSeconds": 10
+  },
+  "stems": [
+    {
+      "trackId": "bell",
+      "trackIndex": 0,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/bell/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/bell/c6.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 720,
+            "frame": 20672,
+            "velocity": 0.7
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 1440,
+            "frame": 41344,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 1920,
+            "frame": 55125,
+            "velocity": 0.75
+          },
+          {
+            "file": "assets/bell/c6.wav",
+            "tick": 2880,
+            "frame": 82688,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 3600,
+            "frame": 103359,
+            "velocity": 0.7
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 4320,
+            "frame": 124031,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 4800,
+            "frame": 137813,
+            "velocity": 0.75
+          },
+          {
+            "file": "assets/bell/c6.wav",
+            "tick": 5760,
+            "frame": 165375,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 6480,
+            "frame": 186047,
+            "velocity": 0.7
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 7200,
+            "frame": 206719,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 0.75
+          },
+          {
+            "file": "assets/bell/c6.wav",
+            "tick": 8640,
+            "frame": 248063,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 9360,
+            "frame": 268734,
+            "velocity": 0.7
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 10560,
+            "frame": 303188,
+            "velocity": 0.75
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.85
+          },
+          {
+            "file": "assets/bell/eb6.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.595,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 22050
+            }
+          },
+          {
+            "file": "assets/bell/b5.wav",
+            "tick": 12240,
+            "frame": 351422,
+            "velocity": 0.7
+          },
+          {
+            "file": "assets/bell/b5.wav",
+            "tick": 12240,
+            "frame": 351422,
+            "velocity": 0.49,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 22050
+            }
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.75
+          },
+          {
+            "file": "assets/bell/ab5.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.525,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 22050
+            }
+          },
+          {
+            "file": "assets/bell/bb5.wav",
+            "tick": 13440,
+            "frame": 385875,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/bell/bb5.wav",
+            "tick": 13440,
+            "frame": 385875,
+            "velocity": 0.56,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 22050
+            }
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 14880,
+            "frame": 427219,
+            "velocity": 0.65
+          },
+          {
+            "file": "assets/bell/db6.wav",
+            "tick": 14880,
+            "frame": 427219,
+            "velocity": 0.455,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 22050
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "fridge-light.stems/bell.wav",
+        "sha256": "e1330d46a47d1382b1b556b2e936b2026e3cb6788b4ade86d1ffc0659afc62f5",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "keys",
+      "trackIndex": 1,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/keys/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/keys/fm11.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 49888,
+              "renderedFrames": 49888
+            }
+          },
+          {
+            "file": "assets/keys/fm11.wav",
+            "tick": 2400,
+            "frame": 68906,
+            "velocity": 0.55,
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 36107,
+              "renderedFrames": 36107
+            }
+          },
+          {
+            "file": "assets/keys/dbmaj9s11.wav",
+            "tick": 3840,
+            "frame": 110250,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 49888,
+              "renderedFrames": 49888
+            }
+          },
+          {
+            "file": "assets/keys/dbmaj9s11.wav",
+            "tick": 6240,
+            "frame": 179156,
+            "velocity": 0.55,
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 36107,
+              "renderedFrames": 36107
+            }
+          },
+          {
+            "file": "assets/keys/bbm9.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 49888,
+              "renderedFrames": 49888
+            }
+          },
+          {
+            "file": "assets/keys/bbm9.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.55,
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 20672
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 36107,
+              "renderedFrames": 36107
+            }
+          },
+          {
+            "file": "assets/keys/emaj9.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.85,
+            "articulation": {
+              "gate": {
+                "duration": "3/4",
+                "frames": 82688
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.35,
+                "releaseFrames": 15435
+              },
+              "chokeGroup": "keys",
+              "voiceFrames": 88200,
+              "renderedFrames": 88200
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "fridge-light.stems/keys.wav",
+        "sha256": "e3f238be10efa99a291267aa9eeeea2358d6227ad7e7c87fba667fad66207126",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "bass",
+      "trackIndex": 2,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/bass/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 1440,
+            "frame": 41344,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 2400,
+            "frame": 68906,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 3360,
+            "frame": 96469,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 3840,
+            "frame": 110250,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 5280,
+            "frame": 151594,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 6240,
+            "frame": 179156,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 7200,
+            "frame": 206719,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 9120,
+            "frame": 261844,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 11040,
+            "frame": 316969,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 13920,
+            "frame": 399656,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 14880,
+            "frame": 427219,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.943874,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37872
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 13781
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "fridge-light.stems/bass.wav",
+        "sha256": "c647c1d382aa221ff43f872bec9eaea00c2f5d2cf30259d16abfa57b9868ecca",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "bass-grit",
+      "trackIndex": 3,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/bass/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 1440,
+            "frame": 41344,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 2400,
+            "frame": 68906,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 3360,
+            "frame": 96469,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 3840,
+            "frame": 110250,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 5280,
+            "frame": 151594,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/db2.wav",
+            "tick": 6240,
+            "frame": 179156,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 7200,
+            "frame": 206719,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 9120,
+            "frame": 261844,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/bb1.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 11040,
+            "frame": 316969,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 1.059463,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37076
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 1,
+            "articulation": {
+              "gate": {
+                "duration": "5/16",
+                "frames": 34453
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 35776,
+              "renderedFrames": 35776
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 2,
+              "voiceFrames": 18743
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 6890
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 8213,
+              "renderedFrames": 8213
+            }
+          },
+          {
+            "file": "assets/bass/e1.wav",
+            "tick": 13920,
+            "frame": 399656,
+            "velocity": 0.9,
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/bass/f1.wav",
+            "tick": 14880,
+            "frame": 427219,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.943874,
+              "glide": {
+                "to": 1,
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "voiceFrames": 37872
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.002,
+                "attackFrames": 88,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "bass",
+              "voiceFrames": 15104,
+              "renderedFrames": 13781
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "fridge-light.stems/bass-grit.wav",
+        "sha256": "c7e7b8627a3659c4d9e9faa42d4930112c70ead8c529cd05c072cb2402fb7c8d",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "kick",
+      "trackIndex": 4,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/drums/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 2400,
+            "frame": 68906,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 3840,
+            "frame": 110250,
+            "velocity": 1
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 6240,
+            "frame": 179156,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 1
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.8
+          },
+          {
+            "file": "assets/drums/kick.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.9
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "fridge-light.stems/kick.wav",
+        "sha256": "bd4bd116bcfb24cb4553313c0098d8ca8c2405773535e8732b9cad5f910ced2f",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "knock",
+      "trackIndex": 5,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/drums/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/drums/knock.wav",
+            "tick": 1920,
+            "frame": 55125,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/drums/knock.wav",
+            "tick": 5760,
+            "frame": 165375,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/drums/knock.wav",
+            "tick": 7440,
+            "frame": 213609,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/knock.wav",
+            "tick": 9600,
+            "frame": 275625,
+            "velocity": 0.9
+          },
+          {
+            "file": "assets/drums/knock.wav",
+            "tick": 13440,
+            "frame": 385875,
+            "velocity": 0.9
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "fridge-light.stems/knock.wav",
+        "sha256": "8a097b97af8f5e60aa55c6250df9db0569cd457fc56a90bd56d22dde286dd873",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "shaker",
+      "trackIndex": 6,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/drums/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 240,
+            "frame": 6891,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 480,
+            "frame": 13781,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 720,
+            "frame": 20672,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 960,
+            "frame": 27563,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 1200,
+            "frame": 34453,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 1440,
+            "frame": 41344,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 1680,
+            "frame": 48234,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 1920,
+            "frame": 55125,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 2160,
+            "frame": 62016,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 2400,
+            "frame": 68906,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 2640,
+            "frame": 75797,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 2880,
+            "frame": 82688,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 3120,
+            "frame": 89578,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 3360,
+            "frame": 96469,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 3600,
+            "frame": 103359,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 3840,
+            "frame": 110250,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 4080,
+            "frame": 117141,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 4320,
+            "frame": 124031,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 4560,
+            "frame": 130922,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 4800,
+            "frame": 137813,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 5040,
+            "frame": 144703,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 5280,
+            "frame": 151594,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 5520,
+            "frame": 158484,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 5760,
+            "frame": 165375,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 6000,
+            "frame": 172266,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 6240,
+            "frame": 179156,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 6480,
+            "frame": 186047,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 6720,
+            "frame": 192938,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 6960,
+            "frame": 199828,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 7200,
+            "frame": 206719,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 7440,
+            "frame": 213609,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 7680,
+            "frame": 220500,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 7920,
+            "frame": 227391,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 8160,
+            "frame": 234281,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 8400,
+            "frame": 241172,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 8640,
+            "frame": 248063,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 8880,
+            "frame": 254953,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 9120,
+            "frame": 261844,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 9360,
+            "frame": 268734,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 9600,
+            "frame": 275625,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 9840,
+            "frame": 282516,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 10320,
+            "frame": 296297,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 10560,
+            "frame": 303188,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 10800,
+            "frame": 310078,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 11040,
+            "frame": 316969,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 11280,
+            "frame": 323859,
+            "velocity": 0.18
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 12000,
+            "frame": 344531,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 12480,
+            "frame": 358313,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 13440,
+            "frame": 385875,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 13920,
+            "frame": 399656,
+            "velocity": 0.5
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 14400,
+            "frame": 413438,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/shaker.wav",
+            "tick": 14880,
+            "frame": 427219,
+            "velocity": 0.5
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "fridge-light.stems/shaker.wav",
+        "sha256": "7178cc71a9e7321026cb593ccdd3ea1a0c52c274d4e9eca1b0ec29ae60e89b98",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    },
+    {
+      "trackId": "drips",
+      "trackIndex": 7,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/drums/kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 0.55
+          },
+          {
+            "file": "assets/drums/drip-f6.wav",
+            "tick": 720,
+            "frame": 20672,
+            "velocity": 0.35
+          },
+          {
+            "file": "assets/drums/drip-eb6.wav",
+            "tick": 1440,
+            "frame": 41344,
+            "velocity": 0.45
+          },
+          {
+            "file": "assets/drums/drip-ab6.wav",
+            "tick": 2160,
+            "frame": 62016,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 2880,
+            "frame": 82688,
+            "velocity": 0.55
+          },
+          {
+            "file": "assets/drums/drip-f6.wav",
+            "tick": 3600,
+            "frame": 103359,
+            "velocity": 0.35
+          },
+          {
+            "file": "assets/drums/drip-eb6.wav",
+            "tick": 4320,
+            "frame": 124031,
+            "velocity": 0.45
+          },
+          {
+            "file": "assets/drums/drip-ab6.wav",
+            "tick": 5040,
+            "frame": 144703,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 5760,
+            "frame": 165375,
+            "velocity": 0.55
+          },
+          {
+            "file": "assets/drums/drip-f6.wav",
+            "tick": 6480,
+            "frame": 186047,
+            "velocity": 0.35
+          },
+          {
+            "file": "assets/drums/drip-eb6.wav",
+            "tick": 7200,
+            "frame": 206719,
+            "velocity": 0.45
+          },
+          {
+            "file": "assets/drums/drip-ab6.wav",
+            "tick": 7920,
+            "frame": 227391,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 8640,
+            "frame": 248063,
+            "velocity": 0.55
+          },
+          {
+            "file": "assets/drums/drip-f6.wav",
+            "tick": 9360,
+            "frame": 268734,
+            "velocity": 0.35
+          },
+          {
+            "file": "assets/drums/drip-eb6.wav",
+            "tick": 10080,
+            "frame": 289406,
+            "velocity": 0.45
+          },
+          {
+            "file": "assets/drums/drip-ab6.wav",
+            "tick": 10800,
+            "frame": 310078,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 11520,
+            "frame": 330750,
+            "velocity": 0.55
+          },
+          {
+            "file": "assets/drums/drip-f6.wav",
+            "tick": 12240,
+            "frame": 351422,
+            "velocity": 0.35
+          },
+          {
+            "file": "assets/drums/drip-eb6.wav",
+            "tick": 12960,
+            "frame": 372094,
+            "velocity": 0.45
+          },
+          {
+            "file": "assets/drums/drip-ab6.wav",
+            "tick": 13680,
+            "frame": 392766,
+            "velocity": 0.3
+          },
+          {
+            "file": "assets/drums/drip-c6.wav",
+            "tick": 14400,
+            "frame": 413438,
+            "velocity": 0.55
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "fridge-light.stems/drips.wav",
+        "sha256": "eee0f0bd879f85b3568c72fef1f1942bd35c7577a14d7c0106488640f91332b6",
+        "bytes": 1764044,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 10
+      }
+    }
+  ],
+  "audioTool": {
+    "name": "ffmpeg",
+    "version": "6.1.1-3ubuntu5"
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 10,
+      "frames": 441000,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -1.904271,
+      "rmsDbfs": -16.086404,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -14.84,
+      "loudnessRangeLu": 0.8,
+      "truePeakDbfs": -1.9
+    },
+    "tracks": [
+      {
+        "trackId": "bell",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -7.280376,
+          "rmsDbfs": -20.789586,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -17.35,
+          "loudnessRangeLu": 1.2,
+          "truePeakDbfs": -7.29
+        }
+      },
+      {
+        "trackId": "keys",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -11.436141,
+          "rmsDbfs": -28.077846,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -25.13,
+          "loudnessRangeLu": 1.5,
+          "truePeakDbfs": -11.43
+        }
+      },
+      {
+        "trackId": "bass",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -6.946713,
+          "rmsDbfs": -16.770463,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -16.62,
+          "loudnessRangeLu": 2.1,
+          "truePeakDbfs": -6.95
+        }
+      },
+      {
+        "trackId": "bass-grit",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -5.018781,
+          "rmsDbfs": -23.012377,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -21.28,
+          "loudnessRangeLu": 5.4,
+          "truePeakDbfs": -5.02
+        }
+      },
+      {
+        "trackId": "kick",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -6.000478,
+          "rmsDbfs": -16.021784,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -15.61,
+          "loudnessRangeLu": 4.9,
+          "truePeakDbfs": -5.99
+        }
+      },
+      {
+        "trackId": "knock",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -7.073855,
+          "rmsDbfs": -32.204946,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -23.87,
+          "loudnessRangeLu": 3,
+          "truePeakDbfs": -7.01
+        }
+      },
+      {
+        "trackId": "shaker",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -20.998368,
+          "rmsDbfs": -42.195707,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -36.14,
+          "loudnessRangeLu": 0.9,
+          "truePeakDbfs": -20.61
+        }
+      },
+      {
+        "trackId": "drips",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -16.291465,
+          "rmsDbfs": -35.348648,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -32.33,
+          "loudnessRangeLu": 1,
+          "truePeakDbfs": -16.28
+        }
+      }
+    ]
+  },
+  "mp3": {
+    "file": "fridge-light.mp3",
+    "sha256": "8d611f3bbcbc9624238bba33a2e6c06120b7f69ab7a35aab87c08afdf0862e1d",
+    "bytes": 241415,
+    "codec": "libmp3lame",
+    "bitrateKbps": 192
+  }
+}

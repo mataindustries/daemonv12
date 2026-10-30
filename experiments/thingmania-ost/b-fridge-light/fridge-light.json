@@ -1,0 +1,329 @@
+{
+  "formatVersion": 1,
+  "title": "THING//MANIA audition B: FRIDGE LIGHT",
+  "description": "Mysterious, sophisticated electronic groove. Thesis - hook: a four-note glass-bell motif (C-Ab-Eb-Db) that is three beats long, so it rotates against the four-beat bar and every repeat lands on a different chord; a dotted-eighth echo doubles the three-against-four. Rhythm: straight 16ths, half-time cabinet knock on beat 3, faucet drips every third sixteenth. Low end: FM bass on each root with a semitone slide into every new bar. Harmony: Fm11, Dbmaj9#11, Bbm9 (all F Aeolian), then the surprise. Surprise: bar 4 switches on an Emaj9 voiced an octave higher - the leading-tone chord a semitone below F - with the motif re-sung in E Lydian; the bass climbs E->F into the loop. Loop: the light switches off on the downbeat.",
+  "bpm": 96,
+  "timeSignature": "4/4",
+  "key": "F minor",
+  "bars": 4,
+  "seed": 0,
+  "render": {"duration":{"bars":4},"tail":"none"},
+  "master": {
+    "gainDb": 0,
+    "effects": [
+      {"type":"highpass","frequencyHz":28},
+      {
+        "type": "compressor",
+        "thresholdDb": -15,
+        "ratio": 2,
+        "attackMs": 10,
+        "releaseMs": 150,
+        "makeupGainDb": 1
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "bell",
+      "description": "Three-beat motif at beats 0, 3, 6 and 9 of the loop; bar 4 answers in E Lydian (D#-B-G#-A#, C# pickup), doubled an octave up (playbackRate 2) as the glint of the light.",
+      "instrument": {"type":"drumkit","kit":"assets/bell/kit.json"},
+      "mix": {"gainDb":-7,"pan":0.1},
+      "effects": [
+        {"type":"delay","timeMs":468.75,"wet":0.3},
+        {"type":"reverb","roomSize":0.65,"decaySeconds":2.2,"wet":0.25}
+      ],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"C6","velocity":0.9},
+            {"start":"1:1+3/16","pitch":"Ab5","velocity":0.7},
+            {"start":"1:2+1/8","pitch":"Eb6","velocity":0.8},
+            {"start":"1:3","pitch":"Db6","velocity":0.75},
+            {"start":"1:4","pitch":"C6","velocity":0.9},
+            {"start":"1:4+3/16","pitch":"Ab5","velocity":0.7},
+            {"start":"2:1+1/8","pitch":"Eb6","velocity":0.8},
+            {"start":"2:2","pitch":"Db6","velocity":0.75},
+            {"start":"2:3","pitch":"C6","velocity":0.9},
+            {"start":"2:3+3/16","pitch":"Ab5","velocity":0.7},
+            {"start":"2:4+1/8","pitch":"Eb6","velocity":0.8},
+            {"start":"3:1","pitch":"Db6","velocity":0.75},
+            {"start":"3:2","pitch":"C6","velocity":0.9},
+            {"start":"3:2+3/16","pitch":"Ab5","velocity":0.7},
+            {"start":"3:3+1/8","pitch":"Eb6","velocity":0.8},
+            {"start":"3:4","pitch":"Db6","velocity":0.75},
+            {"start":"4:1","pitch":"Eb6","velocity":0.85},
+            {"start":"4:1+3/16","pitch":"B5","velocity":0.7},
+            {"start":"4:2+1/8","pitch":"Ab5","velocity":0.75},
+            {"start":"4:3","pitch":"Bb5","velocity":0.8},
+            {"start":"4:4+1/8","pitch":"Db6","velocity":0.65},
+            {"start":"4:1","pitch":"Eb6","velocity":0.595,"playbackRate":2},
+            {"start":"4:1+3/16","pitch":"B5","velocity":0.49,"playbackRate":2},
+            {"start":"4:2+1/8","pitch":"Ab5","velocity":0.525,"playbackRate":2},
+            {"start":"4:3","pitch":"Bb5","velocity":0.56,"playbackRate":2},
+            {"start":"4:4+1/8","pitch":"Db6","velocity":0.455,"playbackRate":2}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keys",
+      "description": "Rootless FM electric-piano voicings on 1 and 3-and; the Emaj9 is held and lifted an octave.",
+      "instrument": {"type":"drumkit","kit":"assets/keys/kit.json"},
+      "mix": {"gainDb":-5},
+      "effects": [
+        {"type":"highpass","frequencyHz":150},
+        {"type":"reverb","roomSize":0.55,"decaySeconds":1.6,"wet":0.22}
+      ],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"fm11","velocity":0.8,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.35},"chokeGroup":"keys"},
+            {"start":"1:3+1/8","pitch":"fm11","velocity":0.55,"gate":"3/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.35},"chokeGroup":"keys"},
+            {"start":"2:1","pitch":"dbmaj9s11","velocity":0.8,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.35},"chokeGroup":"keys"},
+            {"start":"2:3+1/8","pitch":"dbmaj9s11","velocity":0.55,"gate":"3/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.35},"chokeGroup":"keys"},
+            {"start":"3:1","pitch":"bbm9","velocity":0.8,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.35},"chokeGroup":"keys"},
+            {"start":"3:3+1/8","pitch":"bbm9","velocity":0.55,"gate":"3/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.35},"chokeGroup":"keys"},
+            {"start":"4:1","pitch":"emaj9","velocity":0.85,"gate":"3/4","envelope":{"attackSeconds":0.002,"releaseSeconds":0.35},"chokeGroup":"keys"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bass",
+      "description": "Root, octave pop, root on 3-and, then a semitone slide into the next root (from above; from below into the loop).",
+      "instrument": {"type":"drumkit","kit":"assets/bass/kit.json"},
+      "mix": {"gainDb":-2},
+      "effects": [
+        {"type":"highpass","frequencyHz":30},
+        {"type":"saturation","driveDb":5,"mix":0.3},
+        {
+          "type": "compressor",
+          "thresholdDb": -15,
+          "ratio": 3,
+          "attackMs": 6,
+          "releaseMs": 120,
+          "makeupGainDb": 1.5
+        }
+      ],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"F1","velocity":1,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"1:2+1/8","pitch":"F1","velocity":0.7,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"1:3+1/8","pitch":"F1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"1:4+1/8","pitch":"Db2","velocity":0.8,"playbackRate":1.059463,"glide":{"to":1,"duration":"1/8"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:1","pitch":"Db2","velocity":1,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:2+1/8","pitch":"Db2","velocity":0.7,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:3+1/8","pitch":"Db2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:4+1/8","pitch":"Bb1","velocity":0.8,"playbackRate":1.059463,"glide":{"to":1,"duration":"1/8"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:1","pitch":"Bb1","velocity":1,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:2+1/8","pitch":"Bb1","velocity":0.7,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:3+1/8","pitch":"Bb1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:4+1/8","pitch":"E1","velocity":0.8,"playbackRate":1.059463,"glide":{"to":1,"duration":"1/8"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:1","pitch":"E1","velocity":1,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:2+1/8","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:3+1/8","pitch":"E1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:4+1/8","pitch":"F1","velocity":0.8,"playbackRate":0.943874,"glide":{"to":1,"duration":"1/8"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bass-grit",
+      "description": "Parallel high-passed, driven copy of the bass so the slides read on phone speakers.",
+      "instrument": {"type":"drumkit","kit":"assets/bass/kit.json"},
+      "mix": {"gainDb":-8},
+      "effects": [
+        {"type":"highpass","frequencyHz":300},
+        {"type":"saturation","driveDb":14,"mix":0.45},
+        {"type":"lowpass","frequencyHz":2500}
+      ],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"F1","velocity":1,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"1:2+1/8","pitch":"F1","velocity":0.7,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"1:3+1/8","pitch":"F1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"1:4+1/8","pitch":"Db2","velocity":0.8,"playbackRate":1.059463,"glide":{"to":1,"duration":"1/8"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:1","pitch":"Db2","velocity":1,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:2+1/8","pitch":"Db2","velocity":0.7,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:3+1/8","pitch":"Db2","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:4+1/8","pitch":"Bb1","velocity":0.8,"playbackRate":1.059463,"glide":{"to":1,"duration":"1/8"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:1","pitch":"Bb1","velocity":1,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:2+1/8","pitch":"Bb1","velocity":0.7,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:3+1/8","pitch":"Bb1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:4+1/8","pitch":"E1","velocity":0.8,"playbackRate":1.059463,"glide":{"to":1,"duration":"1/8"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:1","pitch":"E1","velocity":1,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:2+1/8","pitch":"E1","velocity":0.7,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:3+1/8","pitch":"E1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:4+1/8","pitch":"F1","velocity":0.8,"playbackRate":0.943874,"glide":{"to":1,"duration":"1/8"},"gate":"1/8","envelope":{"attackSeconds":0.002,"releaseSeconds":0.03},"chokeGroup":"bass"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kick",
+      "description": "Soft deep kick on 1 and 3-and with the bass; one kick in the light bar.",
+      "instrument": {"type":"drumkit","kit":"assets/drums/kit.json"},
+      "mix": {"gainDb":-3},
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"kick","velocity":1},
+            {"start":"1:3+1/8","pitch":"kick","velocity":0.8},
+            {"start":"2:1","pitch":"kick","velocity":1},
+            {"start":"2:3+1/8","pitch":"kick","velocity":0.8},
+            {"start":"3:1","pitch":"kick","velocity":1},
+            {"start":"3:3+1/8","pitch":"kick","velocity":0.8},
+            {"start":"4:1","pitch":"kick","velocity":0.9}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "knock",
+      "description": "Knuckles on a cabinet door, half-time on beat 3.",
+      "instrument": {"type":"drumkit","kit":"assets/drums/kit.json"},
+      "mix": {"gainDb":-1},
+      "effects": [{"type":"reverb","roomSize":0.45,"decaySeconds":0.9,"wet":0.22}],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:3","pitch":"knock","velocity":0.9},
+            {"start":"2:3","pitch":"knock","velocity":0.9},
+            {"start":"2:4+3/16","pitch":"knock","velocity":0.3},
+            {"start":"3:3","pitch":"knock","velocity":0.9},
+            {"start":"4:3","pitch":"knock","velocity":0.9}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shaker",
+      "description": "Quiet 16ths, off-beat eighths accented; eighths only under the light.",
+      "instrument": {"type":"drumkit","kit":"assets/drums/kit.json"},
+      "mix": {"gainDb":-11,"pan":-0.35},
+      "effects": [{"type":"highpass","frequencyHz":3000}],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"shaker","velocity":0.3},
+            {"start":"1:1+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"1:1+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"1:1+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"1:2","pitch":"shaker","velocity":0.3},
+            {"start":"1:2+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"1:2+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"1:2+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"1:3","pitch":"shaker","velocity":0.3},
+            {"start":"1:3+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"1:3+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"1:3+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"1:4","pitch":"shaker","velocity":0.3},
+            {"start":"1:4+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"1:4+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"1:4+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"2:1","pitch":"shaker","velocity":0.3},
+            {"start":"2:1+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"2:1+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"2:1+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"2:2","pitch":"shaker","velocity":0.3},
+            {"start":"2:2+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"2:2+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"2:2+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"2:3","pitch":"shaker","velocity":0.3},
+            {"start":"2:3+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"2:3+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"2:3+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"2:4","pitch":"shaker","velocity":0.3},
+            {"start":"2:4+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"2:4+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"2:4+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"3:1","pitch":"shaker","velocity":0.3},
+            {"start":"3:1+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"3:1+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"3:1+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"3:2","pitch":"shaker","velocity":0.3},
+            {"start":"3:2+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"3:2+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"3:2+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"3:3","pitch":"shaker","velocity":0.3},
+            {"start":"3:3+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"3:3+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"3:3+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"3:4","pitch":"shaker","velocity":0.3},
+            {"start":"3:4+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"3:4+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"3:4+3/16","pitch":"shaker","velocity":0.18},
+            {"start":"4:1","pitch":"shaker","velocity":0.3},
+            {"start":"4:1+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"4:2","pitch":"shaker","velocity":0.3},
+            {"start":"4:2+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"4:3","pitch":"shaker","velocity":0.3},
+            {"start":"4:3+1/8","pitch":"shaker","velocity":0.5},
+            {"start":"4:4","pitch":"shaker","velocity":0.3},
+            {"start":"4:4+1/8","pitch":"shaker","velocity":0.5}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drips",
+      "description": "A faucet drip every third sixteenth (a second three-against-four), four tuned pitches.",
+      "instrument": {"type":"drumkit","kit":"assets/drums/kit.json"},
+      "mix": {"gainDb":-5,"pan":0.35},
+      "effects": [{"type":"reverb","roomSize":0.6,"decaySeconds":1.4,"wet":0.3}],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"drip-c6","velocity":0.55},
+            {"start":"1:1+3/16","pitch":"drip-f6","velocity":0.35},
+            {"start":"1:2+1/8","pitch":"drip-eb6","velocity":0.45},
+            {"start":"1:3+1/16","pitch":"drip-ab6","velocity":0.3},
+            {"start":"1:4","pitch":"drip-c6","velocity":0.55},
+            {"start":"1:4+3/16","pitch":"drip-f6","velocity":0.35},
+            {"start":"2:1+1/8","pitch":"drip-eb6","velocity":0.45},
+            {"start":"2:2+1/16","pitch":"drip-ab6","velocity":0.3},
+            {"start":"2:3","pitch":"drip-c6","velocity":0.55},
+            {"start":"2:3+3/16","pitch":"drip-f6","velocity":0.35},
+            {"start":"2:4+1/8","pitch":"drip-eb6","velocity":0.45},
+            {"start":"3:1+1/16","pitch":"drip-ab6","velocity":0.3},
+            {"start":"3:2","pitch":"drip-c6","velocity":0.55},
+            {"start":"3:2+3/16","pitch":"drip-f6","velocity":0.35},
+            {"start":"3:3+1/8","pitch":"drip-eb6","velocity":0.45},
+            {"start":"3:4+1/16","pitch":"drip-ab6","velocity":0.3},
+            {"start":"4:1","pitch":"drip-c6","velocity":0.55},
+            {"start":"4:1+3/16","pitch":"drip-f6","velocity":0.35},
+            {"start":"4:2+1/8","pitch":"drip-eb6","velocity":0.45},
+            {"start":"4:3+1/16","pitch":"drip-ab6","velocity":0.3},
+            {"start":"4:4","pitch":"drip-c6","velocity":0.55}
+          ]
+        }
+      ]
+    }
+  ]
+}

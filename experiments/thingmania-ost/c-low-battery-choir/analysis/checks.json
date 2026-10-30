@@ -1,0 +1,269 @@
+{
+ "audition": "c-low-battery-choir",
+ "project": "low-battery-choir.json",
+ "engineVersion": "0.7.0",
+ "duration": {
+  "frames": 308700,
+  "seconds": 7,
+  "bars": 4,
+  "bpm": 120,
+  "timeSignature": "7/8",
+  "expectedFrames": 308700,
+  "x4Frames": 1311975
+ },
+ "clipping": {
+  "masterFullScaleSamples": 0,
+  "masterClipping": false,
+  "peakDbfs": -3.19767,
+  "truePeakDbfs": -1.37,
+  "warnings": [],
+  "stagePreClipPeaks": 8
+ },
+ "loudness": {
+  "integratedLufs": -15.64,
+  "loudnessRangeLu": 0.7,
+  "x4IntegratedLufs": -15.49
+ },
+ "mono": {
+  "correlation": 0.956,
+  "monoFoldEnergyDb": -0.1,
+  "monoFoldLufs": -15.7,
+  "stereoLufs": -15.5,
+  "monoFoldChangeLu": -0.2
+ },
+ "phoneProxy": {
+  "method": "two 2-pole high-passes at 300 Hz, then mono fold",
+  "lufs": -18,
+  "changeLu": -2.5,
+  "masterBandShares": {
+   "sub<120": 0.493,
+   "lowmid120-500": 0.144,
+   "mid500-2k": 0.329,
+   "upper2k-6k": 0.018,
+   "high>6k": 0.016
+  },
+  "stems": [
+   {
+    "trackId": "lead",
+    "lufs": -14.9,
+    "phoneProxyLufs": -15.1
+   },
+   {
+    "trackId": "choir",
+    "lufs": -21.3,
+    "phoneProxyLufs": -23.2
+   },
+   {
+    "trackId": "bass",
+    "lufs": -16,
+    "phoneProxyLufs": -23.6
+   },
+   {
+    "trackId": "box",
+    "lufs": -16.9,
+    "phoneProxyLufs": -40.4
+   },
+   {
+    "trackId": "lid",
+    "lufs": -23,
+    "phoneProxyLufs": -23.3
+   },
+   {
+    "trackId": "shaker",
+    "lufs": -33.5,
+    "phoneProxyLufs": -33.6
+   },
+   {
+    "trackId": "ding",
+    "lufs": -24.1,
+    "phoneProxyLufs": -24.2
+   }
+  ]
+ },
+ "loop": {
+  "cycle2VsCycle3": {
+   "maxAbsDiff": 0,
+   "diffToSignalDb": null,
+   "identical": true,
+   "below300HzDiffToSignalDb": null
+  },
+  "naiveExactLoop": {
+   "wrapJump": 0.09409,
+   "meanAdjacentStep": 0.01672,
+   "first500msMissingTailDb": -15.75
+  },
+  "seamlessLoop": {
+   "wrapJump": 0.0087,
+   "meanAdjacentStep": 0.01672,
+   "continuousMaxStepNearSameBoundary": 0.01184
+  },
+  "framesPerCycleExact": 308700
+ },
+ "determinism": {
+  "secondRenderIdentical": {
+   "master": true,
+   "stems": true
+  }
+ },
+ "sections": [
+  {
+   "name": "bar1",
+   "start": 0,
+   "end": 1.75,
+   "duration": 1.75,
+   "rms": 0.1423545664,
+   "peak": 0.6036987305,
+   "rmsDbfs": -16.93257194,
+   "peakDbfs": -4.383594749,
+   "bandRms": {
+    "sub": 0.09421944221,
+    "lowMid": 0.05213682496,
+    "mid": 0.09009253739,
+    "upperMid": 0.01661655304,
+    "high": 0.01646698235
+   },
+   "activity": {
+    "rmsRisesPerSecond": 0.5714285714
+   },
+   "stereo": {
+    "correlation": 0.9570479729,
+    "midRms": 0.1408113908,
+    "sideRms": 0.02090394211,
+    "sideEnergyFraction": 0.02156321845
+   },
+   "relativeToFirst": {
+    "rmsDb": 0,
+    "peakDb": 0,
+    "bandDb": {
+     "sub": 0,
+     "lowMid": 0,
+     "mid": 0,
+     "upperMid": 0,
+     "high": 0
+    },
+    "sideEnergyFractionDelta": 0
+   }
+  },
+  {
+   "name": "bar2",
+   "start": 1.75,
+   "end": 3.5,
+   "duration": 1.75,
+   "rms": 0.1339137494,
+   "peak": 0.6515197754,
+   "rmsDbfs": -17.4634966,
+   "peakDbfs": -3.721447955,
+   "bandRms": {
+    "sub": 0.09731679766,
+    "lowMid": 0.05601980124,
+    "mid": 0.06573153919,
+    "upperMid": 0.02531345734,
+    "high": 0.01894141949
+   },
+   "activity": {
+    "rmsRisesPerSecond": 1.714285714
+   },
+   "stereo": {
+    "correlation": 0.9528605253,
+    "midRms": 0.1323094563,
+    "sideRms": 0.02066639908,
+    "sideEnergyFraction": 0.02381657373
+   },
+   "relativeToFirst": {
+    "rmsDb": -0.5309246599,
+    "peakDb": 0.6621467936,
+    "bandDb": {
+     "sub": 0.2809456123,
+     "lowMid": 0.6239396745,
+     "mid": -2.738300334,
+     "upperMid": 3.656210549,
+     "high": 1.215970047
+    },
+    "sideEnergyFractionDelta": 0.00225335528
+   }
+  },
+  {
+   "name": "bar3",
+   "start": 3.5,
+   "end": 5.25,
+   "duration": 1.75,
+   "rms": 0.1362471532,
+   "peak": 0.6448974609,
+   "rmsDbfs": -17.31345127,
+   "peakDbfs": -3.810186659,
+   "bandRms": {
+    "sub": 0.09469080409,
+    "lowMid": 0.05497526199,
+    "mid": 0.07774018397,
+    "upperMid": 0.01379152304,
+    "high": 0.01835941506
+   },
+   "activity": {
+    "rmsRisesPerSecond": 0.5714285714
+   },
+   "stereo": {
+    "correlation": 0.9544484093,
+    "midRms": 0.1346865535,
+    "sideRms": 0.02056256418,
+    "sideEnergyFraction": 0.02277716502
+   },
+   "relativeToFirst": {
+    "rmsDb": -0.3808793225,
+    "peakDb": 0.5734080888,
+    "bandDb": {
+     "sub": 0.04334551297,
+     "lowMid": 0.4604545567,
+     "mid": -1.280865093,
+     "upperMid": -1.618574177,
+     "high": 0.9448964049
+    },
+    "sideEnergyFractionDelta": 0.00121394657
+   }
+  },
+  {
+   "name": "bar4",
+   "start": 5.25,
+   "end": 7,
+   "duration": 1.75,
+   "rms": 0.1389363348,
+   "peak": 0.6782836914,
+   "rmsDbfs": -17.14368324,
+   "peakDbfs": -3.371772499,
+   "bandRms": {
+    "sub": 0.0974524596,
+    "lowMid": 0.05298156255,
+    "mid": 0.08004739751,
+    "upperMid": 0.01782199869,
+    "high": 0.01633161438
+   },
+   "activity": {
+    "rmsRisesPerSecond": 1.714285714
+   },
+   "stereo": {
+    "correlation": 0.9601714812,
+    "midRms": 0.1375449994,
+    "sideRms": 0.01961321668,
+    "sideEnergyFraction": 0.01992810381
+   },
+   "relativeToFirst": {
+    "rmsDb": -0.2111113008,
+    "peakDb": 1.011822249,
+    "bandDb": {
+     "sub": 0.293045518,
+     "lowMid": 0.1396036527,
+     "mid": -1.026832038,
+     "upperMid": 0.6083093849,
+     "high": -0.07169806281
+    },
+    "sideEnergyFractionDelta": -0.00163511464
+   }
+  }
+ ],
+ "hashes": {
+  "masterWav": "0bc411a7c00863b6b7d8c74a977cc434c5ff73df883038773d889dc4103718ac",
+  "seamlessLoopWav": "1b2cc38e0ba7a05f9baec511fdaa968d684bf255a4f6ade5541da4404ecf5795",
+  "x4Wav": "a26ee1f95817481aa8130d5748c48ebf9af0ed74fcb2390ce83c81d19c71e557",
+  "project": "d3fa9f906e4ecd92fc71c2a75d61268b6b728d64c2d20558f483a32d8568423a",
+  "x4Project": "b237abecb8adca91929c7e387248bee4f7ca9a07fe6cc1a61f2cfd9337a66ece"
+ }
+}

@@ -1,0 +1,260 @@
+{
+  "formatVersion": 1,
+  "title": "THING//MANIA audition C: LOW BATTERY CHOIR",
+  "description": "Wildcard: a choir of singing appliances in 7/8. Thesis - hook: a synthetic voice chants \"ba-da-DEE-da-YAAH\" (root, 3rd, raised 4th, 5th, 3rd); the raised 4th is the mischief. The identical Lydian shape is planed onto C, D, Bb and Ab triads over a C pedal, so one object visits four rooms. Rhythm: 7/8 grouped 2+2+3, cardboard-box kick, spoon-on-pot-lid snare, rice shaker. Low end: a vocal \"doom\" bass with a squeaky octave pop. Surprise: in bar 4 the battery dies - lead, choir and bass sag three semitones together while the shaker winds down - and a kitchen-timer ding restores power on the loop downbeat.",
+  "bpm": 120,
+  "timeSignature": "7/8",
+  "key": "C major",
+  "bars": 4,
+  "seed": 0,
+  "render": {"duration":{"bars":4},"tail":"none"},
+  "master": {
+    "gainDb": -2.5,
+    "effects": [
+      {"type":"highpass","frequencyHz":30},
+      {
+        "type": "compressor",
+        "thresholdDb": -16,
+        "ratio": 2,
+        "attackMs": 8,
+        "releaseMs": 120,
+        "makeupGainDb": 1
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "lead",
+      "description": "The chant, one syllable per eighth and a held \"yaah\"; in bar 4 the held note sags three semitones.",
+      "instrument": {"type":"drumkit","kit":"assets/lead/kit.json"},
+      "mix": {"gainDb":-2},
+      "effects": [
+        {"type":"highpass","frequencyHz":180},
+        {"type":"saturation","driveDb":3,"mix":0.2},
+        {"type":"delay","timeMs":250,"wet":0.12},
+        {"type":"reverb","roomSize":0.4,"decaySeconds":1,"wet":0.16}
+      ],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"ba-c5","velocity":0.85,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"1:2","pitch":"da-e5","velocity":0.7,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"1:3","pitch":"dee-fs5","velocity":0.95,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"1:4","pitch":"da-g5","velocity":0.72,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"1:5","pitch":"yah-e5","velocity":0.9,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"2:1","pitch":"ba-d5","velocity":0.85,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"2:2","pitch":"da-fs5","velocity":0.7,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"2:3","pitch":"dee-gs5","velocity":0.95,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"2:4","pitch":"da-a5","velocity":0.72,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"2:5","pitch":"yah-fs5","velocity":0.9,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"3:1","pitch":"ba-bb4","velocity":0.85,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"3:2","pitch":"da-d5","velocity":0.7,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"3:3","pitch":"dee-e5","velocity":0.95,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"3:4","pitch":"da-f5","velocity":0.72,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"3:5","pitch":"yah-d5","velocity":0.9,"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"4:1","pitch":"ba-ab4","velocity":0.85,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"4:2","pitch":"da-c5","velocity":0.7,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"4:3","pitch":"dee-d5","velocity":0.95,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"4:4","pitch":"da-eb5","velocity":0.72,"gate":"11/96","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"},
+            {"start":"4:5","pitch":"yah-c5","velocity":0.9,"glide":{"to":0.840896,"duration":"3/8"},"gate":"5/16","envelope":{"attackSeconds":0.002,"releaseSeconds":0.04},"chokeGroup":"lead"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "choir",
+      "description": "\"ooh\" on the 2+2, \"oh-aah\" on the 3; Ab chord sags with the lead.",
+      "instrument": {"type":"drumkit","kit":"assets/choir/kit.json"},
+      "mix": {"gainDb":-5},
+      "effects": [
+        {"type":"highpass","frequencyHz":150},
+        {"type":"reverb","roomSize":0.6,"decaySeconds":1.6,"wet":0.3}
+      ],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"ooh-c","velocity":0.7,"gate":"1/2","envelope":{"attackSeconds":0.03,"releaseSeconds":0.09}},
+            {"start":"1:5","pitch":"aah-c","velocity":0.85,"gate":"5/16","envelope":{"attackSeconds":0.03,"releaseSeconds":0.09}},
+            {"start":"2:1","pitch":"ooh-d","velocity":0.7,"gate":"1/2","envelope":{"attackSeconds":0.03,"releaseSeconds":0.09}},
+            {"start":"2:5","pitch":"aah-d","velocity":0.85,"gate":"5/16","envelope":{"attackSeconds":0.03,"releaseSeconds":0.09}},
+            {"start":"3:1","pitch":"ooh-bb","velocity":0.7,"gate":"1/2","envelope":{"attackSeconds":0.03,"releaseSeconds":0.09}},
+            {"start":"3:5","pitch":"aah-bb","velocity":0.85,"gate":"5/16","envelope":{"attackSeconds":0.03,"releaseSeconds":0.09}},
+            {"start":"4:1","pitch":"ooh-ab","velocity":0.7,"gate":"1/2","envelope":{"attackSeconds":0.03,"releaseSeconds":0.09}},
+            {"start":"4:5","pitch":"aah-ab","velocity":0.85,"glide":{"to":0.840896,"duration":"3/8"},"gate":"5/16","envelope":{"attackSeconds":0.03,"releaseSeconds":0.09}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bass",
+      "description": "Vocal \"doom\" pedal on C with G and Bb answers and a squeaky octave pop; bar 4 drops to Ab and sags.",
+      "instrument": {"type":"drumkit","kit":"assets/bass/kit.json"},
+      "mix": {"gainDb":-2},
+      "effects": [
+        {"type":"highpass","frequencyHz":35},
+        {"type":"saturation","driveDb":10,"mix":0.5},
+        {
+          "type": "compressor",
+          "thresholdDb": -16,
+          "ratio": 3,
+          "attackMs": 5,
+          "releaseMs": 100,
+          "makeupGainDb": 2
+        }
+      ],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"doom-c2","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"1:3","pitch":"doom-c2","velocity":0.7,"gate":"1/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"1:4+1/16","pitch":"doom-c2","velocity":0.55,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"1:5","pitch":"doom-g1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"1:6+1/16","pitch":"doom-bb1","velocity":0.8,"gate":"1/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:1","pitch":"doom-c2","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:3","pitch":"doom-c2","velocity":0.7,"gate":"1/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:4+1/16","pitch":"doom-c2","velocity":0.55,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:5","pitch":"doom-g1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"2:6+1/16","pitch":"doom-bb1","velocity":0.8,"gate":"1/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:1","pitch":"doom-c2","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:3","pitch":"doom-c2","velocity":0.7,"gate":"1/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:4+1/16","pitch":"doom-c2","velocity":0.55,"playbackRate":2,"gate":"1/16","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:5","pitch":"doom-g1","velocity":0.9,"gate":"1/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"3:6+1/16","pitch":"doom-bb1","velocity":0.8,"gate":"1/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:1","pitch":"doom-c2","velocity":1,"gate":"3/16","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:3","pitch":"doom-c2","velocity":0.7,"gate":"1/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"},
+            {"start":"4:5","pitch":"doom-ab1","velocity":0.95,"glide":{"to":0.840896,"duration":"3/8"},"gate":"3/8","envelope":{"attackSeconds":0.003,"releaseSeconds":0.03},"chokeGroup":"bass"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "box",
+      "description": "Cardboard-box kick on the 1 and the start of the 3-group.",
+      "instrument": {"type":"drumkit","kit":"assets/kitchen/kit.json"},
+      "mix": {"gainDb":-3},
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"box","velocity":1},
+            {"start":"1:5","pitch":"box","velocity":0.85},
+            {"start":"2:1","pitch":"box","velocity":1},
+            {"start":"2:5","pitch":"box","velocity":0.85},
+            {"start":"3:1","pitch":"box","velocity":1},
+            {"start":"3:5","pitch":"box","velocity":0.85},
+            {"start":"4:1","pitch":"box","velocity":1},
+            {"start":"4:5","pitch":"box","velocity":0.7}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lid",
+      "description": "Spoon on a pot lid on the second 2-group and the last eighth; the ding replaces it in bar 4.",
+      "instrument": {"type":"drumkit","kit":"assets/kitchen/kit.json"},
+      "mix": {"gainDb":-6,"pan":-0.2},
+      "effects": [{"type":"reverb","roomSize":0.3,"decaySeconds":0.5,"wet":0.1}],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:3","pitch":"lid","velocity":0.85},
+            {"start":"1:7","pitch":"lid","velocity":0.7},
+            {"start":"2:3","pitch":"lid","velocity":0.85},
+            {"start":"2:7","pitch":"lid","velocity":0.7},
+            {"start":"3:3","pitch":"lid","velocity":0.85},
+            {"start":"3:7","pitch":"lid","velocity":0.7},
+            {"start":"4:3","pitch":"lid","velocity":0.85}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shaker",
+      "description": "Rice-jar 16ths accenting 2+2+3; winds down as the battery dies.",
+      "instrument": {"type":"drumkit","kit":"assets/kitchen/kit.json"},
+      "mix": {"gainDb":-10,"pan":0.3},
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [
+        {
+          "id": "loop",
+          "bars": 4,
+          "notes": [
+            {"start":"1:1","pitch":"shaker","velocity":0.55},
+            {"start":"1:1+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"1:2","pitch":"shaker","velocity":0.35},
+            {"start":"1:2+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"1:3","pitch":"shaker","velocity":0.55},
+            {"start":"1:3+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"1:4","pitch":"shaker","velocity":0.35},
+            {"start":"1:4+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"1:5","pitch":"shaker","velocity":0.55},
+            {"start":"1:5+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"1:6","pitch":"shaker","velocity":0.35},
+            {"start":"1:6+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"1:7","pitch":"shaker","velocity":0.55},
+            {"start":"1:7+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"2:1","pitch":"shaker","velocity":0.55},
+            {"start":"2:1+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"2:2","pitch":"shaker","velocity":0.35},
+            {"start":"2:2+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"2:3","pitch":"shaker","velocity":0.55},
+            {"start":"2:3+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"2:4","pitch":"shaker","velocity":0.35},
+            {"start":"2:4+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"2:5","pitch":"shaker","velocity":0.55},
+            {"start":"2:5+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"2:6","pitch":"shaker","velocity":0.35},
+            {"start":"2:6+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"2:7","pitch":"shaker","velocity":0.55},
+            {"start":"2:7+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"3:1","pitch":"shaker","velocity":0.55},
+            {"start":"3:1+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"3:2","pitch":"shaker","velocity":0.35},
+            {"start":"3:2+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"3:3","pitch":"shaker","velocity":0.55},
+            {"start":"3:3+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"3:4","pitch":"shaker","velocity":0.35},
+            {"start":"3:4+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"3:5","pitch":"shaker","velocity":0.55},
+            {"start":"3:5+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"3:6","pitch":"shaker","velocity":0.35},
+            {"start":"3:6+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"3:7","pitch":"shaker","velocity":0.55},
+            {"start":"3:7+1/16","pitch":"shaker","velocity":0.2},
+            {"start":"4:1","pitch":"shaker","velocity":0.55},
+            {"start":"4:1+1/16","pitch":"shaker","velocity":0.18},
+            {"start":"4:2","pitch":"shaker","velocity":0.28},
+            {"start":"4:2+1/16","pitch":"shaker","velocity":0.14},
+            {"start":"4:3","pitch":"shaker","velocity":0.33},
+            {"start":"4:3+1/16","pitch":"shaker","velocity":0.1},
+            {"start":"4:4","pitch":"shaker","velocity":0.14},
+            {"start":"4:4+1/16","pitch":"shaker","velocity":0.06}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ding",
+      "description": "Kitchen-timer ding on the last eighth of bar 4: power restored.",
+      "instrument": {"type":"drumkit","kit":"assets/kitchen/kit.json"},
+      "mix": {"gainDb":-10,"pan":0.15},
+      "effects": [{"type":"reverb","roomSize":0.5,"decaySeconds":1.2,"wet":0.25}],
+      "clips": [{"bar":1,"pattern":"loop"}],
+      "patterns": [{"id":"loop","bars":4,"notes":[{"start":"4:7","pitch":"ding","velocity":0.8}]}]
+    }
+  ]
+}
