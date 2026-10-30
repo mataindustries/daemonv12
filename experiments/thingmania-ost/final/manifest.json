@@ -1,0 +1,522 @@
+{
+ "title": "THING//MANIA - Official Soundtrack (final package)",
+ "source": {
+  "approvedAudition": "experiments/thingmania-ost/hybrid-ac/ac-01-groove-first.json (AC-01 GROOVE FIRST)",
+  "approvedMasterSha256": "f29d28d52725aedc9c22ca824405a36b3e053fb74fea49348e57c2a44e1a3196",
+  "rerenderMatchesRecorded": true
+ },
+ "environment": {
+  "engine": "daemonv12 0.7.0",
+  "node": "v22.22.0",
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "note": "Rendering is deterministic: a second render of every project gives byte-identical masters, track stems and group stems (analysis/<slug>.checks.json, determinism)."
+ },
+ "rights": "Every sound is synthesized from scratch by experiments/thingmania-ost/tools/instruments.mjs (deterministic DSP, no randomness beyond seeded generators). No recordings, samples, loops, SoundFonts, General MIDI (FluidR3 GM) or third-party audio are used. All melodies and rhythms were written for THING//MANIA. No license is declared; that remains the owner's decision.",
+ "projects": [
+  {
+   "file": "main-theme.json",
+   "sha256": "9636a04e3da47c00e9612ce8a4d0cbd84273d80c8b9e858d61ccbde671bb79b4"
+  },
+  {
+   "file": "main-theme-x3.json",
+   "sha256": "c27a977eeee4a5f5c01c502b8e262fc294b370492ac78fb6a038a584df5cfe00"
+  },
+  {
+   "file": "menu-mix.json",
+   "sha256": "779e43df6134eb36d596e4a2dc1dd63f933c16a12297cbee37ce1f7640dba91f"
+  },
+  {
+   "file": "menu-mix-x3.json",
+   "sha256": "ed7023b30561668ff73fe2569b35d1090f38e59a4e4122d46ecb025e85532c42"
+  },
+  {
+   "file": "demo-mix.json",
+   "sha256": "aa63c2920e80b0900e2c0eb6e279dd952d53fa278f056f0d1be73d16baa2d022"
+  }
+ ],
+ "palette": {
+  "file": "assets/palette.json",
+  "sha256": "1d2ab0c9a3958b459b711321b30e2d9814034c885765ef90656256580346d75c",
+  "reuse": {
+   "regeneratedFromAc01": 44,
+   "byteIdenticalToAc01": 44,
+   "newSounds": 22
+  }
+ },
+ "tools": [
+  {
+   "file": "experiments/thingmania-ost/final/tools/analysis-final.mjs",
+   "sha256": "8c173566ad21e4d46b9adfbb2ebecbb10b2a8485a09a53ebf80819c16477e67d"
+  },
+  {
+   "file": "experiments/thingmania-ost/final/tools/compose-final.mjs",
+   "sha256": "0339c90c9f86c25344f98d51749b972bf5541d7292ba028973f31cb4304f530b"
+  },
+  {
+   "file": "experiments/thingmania-ost/final/tools/make-sounds-final.mjs",
+   "sha256": "b03a07079deea2a291afdea2a1dcf74203b1c0973c0ce65450dc5d935f536dd6"
+  },
+  {
+   "file": "experiments/thingmania-ost/final/tools/manifest-final.mjs",
+   "sha256": "43c65efb10b40e92d95126a2e67c1bc84a4906f150197ab3a3940782482984c3"
+  },
+  {
+   "file": "experiments/thingmania-ost/final/tools/render-final.mjs",
+   "sha256": "346b63aeba1e99f95fd66d8cd0662628c0310e7add4ece0a09e4939e1bf6e52a"
+  },
+  {
+   "file": "experiments/thingmania-ost/final/tools/stem-groups.mjs",
+   "sha256": "308ba9655e38a92332e5538c4af43d91948789ef0c4134c1438dba5db5d22152"
+  },
+  {
+   "file": "experiments/thingmania-ost/tools/instruments.mjs",
+   "sha256": "aad1a9c1cc98b3a66f72012a46ff3f8d752bcc0fcef1370cb3c5cf836b4c9c37"
+  },
+  {
+   "file": "experiments/thingmania-ost/tools/dsp.mjs",
+   "sha256": "c231c8a7a9aae7054562f09f1403561f1c74e4ef48b42c8be307d8cf9fe27782"
+  },
+  {
+   "file": "experiments/thingmania-ost/tools/inspect-palette.mjs",
+   "sha256": "9566dd06723c89935466d19258aceed6dbd2b9ce720e88ec7ad8dd8586701248"
+  },
+  {
+   "file": "experiments/thingmania-ost/hybrid-ac/tools/analysis-ac.mjs",
+   "sha256": "fd857b6069b3f6599e11b2a580466ab36eb5ab4d0b716a78da9400d57ac9d0b7"
+  }
+ ],
+ "files": [
+  {
+   "file": "masters/demo-mix.wav",
+   "role": "final WAV master (PCM16 stereo 44.1 kHz)",
+   "deliverable": "demo-mix",
+   "bytes": 7232444,
+   "sha256": "66e00ff4db115ceab0e5125a7c04be3228d856e49187e422adcc6a8cc63c9b02",
+   "sampleRate": 44100,
+   "channels": 2,
+   "bitsPerSample": 16,
+   "frames": 1808100,
+   "seconds": 41,
+   "loop": "not a loop: real start and ending"
+  },
+  {
+   "file": "masters/main-theme-loop.wav",
+   "role": "final WAV master (PCM16 stereo 44.1 kHz)",
+   "deliverable": "main-theme",
+   "bytes": 6385724,
+   "sha256": "e8b3b49debfb72627c2bada362ca9bcae496c6fd95f36bb51a01dcbe94fa5385",
+   "sampleRate": 44100,
+   "channels": 2,
+   "bitsPerSample": 16,
+   "frames": 1596420,
+   "seconds": 36.2,
+   "loop": "seamless: cycle 2 of a continuous x3 render, bit-identical to cycle 3"
+  },
+  {
+   "file": "masters/menu-mix-loop.wav",
+   "role": "final WAV master (PCM16 stereo 44.1 kHz)",
+   "deliverable": "menu-mix",
+   "bytes": 6385724,
+   "sha256": "e94eacfd5aff28bc4a0907bf9c3a442402432b73e5f06fdc09a478e75c56a18a",
+   "sampleRate": 44100,
+   "channels": 2,
+   "bitsPerSample": 16,
+   "frames": 1596420,
+   "seconds": 36.2,
+   "loop": "seamless: cycle 2 of a continuous x3 render, bit-identical to cycle 3"
+  },
+  {
+   "file": "stems/demo-mix/appliances-choir.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "demo-mix",
+   "bytes": 1460281,
+   "sha256": "288054240d11f2768b0c8e93d4ba085bd76e741fb09c8da55e558e499b026332",
+   "group": "appliances-choir",
+   "tracks": [
+    "voice",
+    "kettle",
+    "choir"
+   ],
+   "frames": 1808100,
+   "losslessRoundTrip": true,
+   "pcmSha256": "7084d3b37b0fc957e184ca25d0fd779d137e18c84ddea545b541755c6717803f"
+  },
+  {
+   "file": "stems/demo-mix/bass-grit.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "demo-mix",
+   "bytes": 722491,
+   "sha256": "65e49fd44bc28b9cd0b9f40a111867bbeb174dad660c70b93124c78864d183e3",
+   "group": "bass-grit",
+   "tracks": [
+    "bass",
+    "bass-grit"
+   ],
+   "frames": 1808100,
+   "losslessRoundTrip": true,
+   "pcmSha256": "a3f66a63c452f15852d427ba6ca87186297d6548253132dced2a474a3ab4bd9d"
+  },
+  {
+   "file": "stems/demo-mix/drums.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "demo-mix",
+   "bytes": 3828529,
+   "sha256": "c8a5d8e7c0b09cfd8fa3ce63a491117479f0537440bf7630e3d8fbe650fc5303",
+   "group": "drums",
+   "tracks": [
+    "kick",
+    "snare",
+    "drum-crunch",
+    "hats",
+    "kitchen"
+   ],
+   "frames": 1808100,
+   "losslessRoundTrip": true,
+   "pcmSha256": "c1af3966221387fb282514bdbc8c1d95e2ecbb405b3334e36fbf399664eb16c1"
+  },
+  {
+   "file": "stems/demo-mix/fx.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "demo-mix",
+   "bytes": 222702,
+   "sha256": "400dd27e5a770460beee43e03d38b16ae5d356227bd80615e0a2a3b3d1e64c0f",
+   "group": "fx",
+   "tracks": [
+    "fx"
+   ],
+   "frames": 1808100,
+   "losslessRoundTrip": true,
+   "pcmSha256": "d2f3081a2df481529025cb9b39a8de2e925a5dfd69d93a8d80ee4a61bb5909f3"
+  },
+  {
+   "file": "stems/demo-mix/harmony.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "demo-mix",
+   "bytes": 733656,
+   "sha256": "17cb6063aaf5436e151bea68b26349791f544b31359bd21240eabeaffa0edc1d",
+   "group": "harmony",
+   "tracks": [
+    "clav"
+   ],
+   "frames": 1808100,
+   "losslessRoundTrip": true,
+   "pcmSha256": "2fd40cd7fcdc43186b9b85ddc6a05213f1cddfd884f1b3f1e226aa9b089e5442"
+  },
+  {
+   "file": "stems/demo-mix/whistle-lead.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "demo-mix",
+   "bytes": 1466687,
+   "sha256": "2883eb7b85f94a29d9a3844bf88a456449dc8aa8cd3ba58f449e9bd9bf99180a",
+   "group": "whistle-lead",
+   "tracks": [
+    "whistle",
+    "whistle-dry",
+    "whistle-harmony"
+   ],
+   "frames": 1808100,
+   "losslessRoundTrip": true,
+   "pcmSha256": "603237da8cc515eedfc863c0e5201f50159290680ac4fa8a1c02b3ee6cff7942"
+  },
+  {
+   "file": "stems/main-theme/appliances-choir.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "main-theme",
+   "bytes": 1213422,
+   "sha256": "86062dc065ea32b1b89e22a62f115690d588a6eb61dc317d9077b276d84606af",
+   "group": "appliances-choir",
+   "tracks": [
+    "voice",
+    "kettle",
+    "choir"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "9ac813629c6e4a5c166b21485f2cd7b3e65e4346a95cfd5026e133527bebd818"
+  },
+  {
+   "file": "stems/main-theme/bass-grit.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "main-theme",
+   "bytes": 689164,
+   "sha256": "9c9133495072cc1ddf9b5f47cbfad62b5d3515e1ac5f500cef8f1d2cf924d1ce",
+   "group": "bass-grit",
+   "tracks": [
+    "bass",
+    "bass-grit"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "7f9316037dc2f3cd29386ee979dab134d25a5953f1f7f5b4efe4d145c80ea74c"
+  },
+  {
+   "file": "stems/main-theme/drums.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "main-theme",
+   "bytes": 3641651,
+   "sha256": "96fd2b71f51006a28b0fff4712f03656385509a4d84d85a68de45ab43ac353ec",
+   "group": "drums",
+   "tracks": [
+    "kick",
+    "snare",
+    "drum-crunch",
+    "hats",
+    "kitchen"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "b4baf1cc1391e2c657defa72c787b5a6f0c73d31beb2fdbf28509813ada538f8"
+  },
+  {
+   "file": "stems/main-theme/fx.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "main-theme",
+   "bytes": 166762,
+   "sha256": "9590ca450bd10d6f5ef54d28e6221aeb1c6a5df42e5f169b1c067c91231ed01a",
+   "group": "fx",
+   "tracks": [
+    "fx"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "d77bf390d7f1916b0163a3c01cf4558380d3d0a96422b77010d2311971741b30"
+  },
+  {
+   "file": "stems/main-theme/harmony.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "main-theme",
+   "bytes": 687721,
+   "sha256": "d304b4ddbf0b8b230e9721ee909c9e67de947f54f4a43f3f6a3b40115f4c9ce8",
+   "group": "harmony",
+   "tracks": [
+    "clav"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "ee6a7dbc2a0562bf134542e351fe0953808fcb038ff691fb334debc5bb4995a5"
+  },
+  {
+   "file": "stems/main-theme/whistle-lead.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "main-theme",
+   "bytes": 1345359,
+   "sha256": "576e060c9d7bbe0972360f7e28fd6e3332802c746f3fe6e2d81372d0cb2c8642",
+   "group": "whistle-lead",
+   "tracks": [
+    "whistle",
+    "whistle-dry",
+    "whistle-harmony"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "b5b4b1b7aa10a7a766709c7f637e7d4870040249cde6a1be391c1f8d35377936"
+  },
+  {
+   "file": "stems/menu-mix/appliances-choir.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "menu-mix",
+   "bytes": 479580,
+   "sha256": "95168f8202ea0273939c2fa31bfc2387142c02c06a66aa39e96f510a2b1b744b",
+   "group": "appliances-choir",
+   "tracks": [
+    "voice",
+    "kettle",
+    "choir"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "d31577d84df2b6e818d47c85d8d49418443f14c0f4a1657811639290d6fd0ff9"
+  },
+  {
+   "file": "stems/menu-mix/bass-grit.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "menu-mix",
+   "bytes": 676328,
+   "sha256": "fd8b3ae81d9bddcebd6087c4cf24b145082fcbf4345e1ae20a405fa7e9d7fb6a",
+   "group": "bass-grit",
+   "tracks": [
+    "bass",
+    "bass-grit"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "d97a48a6dc21dd96fc4ae5d5616779c4cd0133ca1affe687d84be3ea7bd8bf9f"
+  },
+  {
+   "file": "stems/menu-mix/drums.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "menu-mix",
+   "bytes": 1988122,
+   "sha256": "26fdf48f937259ee36b3662b53665686915e625953a472d921f27a682e3b5269",
+   "group": "drums",
+   "tracks": [
+    "kick",
+    "snare",
+    "hats"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "e0976b0b23728c5a1a77fde90218abad1284bcb873757e0e1075b8d6ffe66df7"
+  },
+  {
+   "file": "stems/menu-mix/fx.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "menu-mix",
+   "bytes": 64593,
+   "sha256": "cf79a89bb3f904672eed5c29ca007e7f2c0255efae269aca4e35989d0fccbbcf",
+   "group": "fx",
+   "tracks": [
+    "fx"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "0205cb28384a95b9c422eb49d84f885b92b7c71d641bd5f44c362b5bc7218267"
+  },
+  {
+   "file": "stems/menu-mix/harmony.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "menu-mix",
+   "bytes": 1346313,
+   "sha256": "5d56071809aa263b966d0537c491bd6813705fe7d4488702f4a71ec9106679f1",
+   "group": "harmony",
+   "tracks": [
+    "hum"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "1a2ca494cfde45356e2b30209a6f40698d23d49bbfcdf4c7df08b91ec8437c47"
+  },
+  {
+   "file": "stems/menu-mix/whistle-lead.flac",
+   "role": "aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)",
+   "deliverable": "menu-mix",
+   "bytes": 854235,
+   "sha256": "86fdaec9bd99e620b2886923109fe3ff9592ab6f7cae369eda1b2090c44b2e5b",
+   "group": "whistle-lead",
+   "tracks": [
+    "whistle",
+    "whistle-dry"
+   ],
+   "frames": 1596420,
+   "losslessRoundTrip": true,
+   "pcmSha256": "dba2a9c9e51a0cd589ed9dbe1399015a119f723c50bd50eeddbe25c0e92e7d0f"
+  },
+  {
+   "file": "web/demo-mix.m4a",
+   "role": "browser listening copy",
+   "deliverable": "demo-mix",
+   "bytes": 1067273,
+   "sha256": "47989b790c9b67181127e4ffc43474f25b9fd151ea08670d453625f661e2d767",
+   "decodedFrames": 1808384,
+   "exactLength": false,
+   "alignmentLagFrames": 0,
+   "decodedTruePeakDbtp": -1.6
+  },
+  {
+   "file": "web/demo-mix.ogg",
+   "role": "browser listening copy",
+   "deliverable": "demo-mix",
+   "bytes": 1018939,
+   "sha256": "c317a3c4b120716fcb1d3f76ae41b228247058c5a7d0b878e03c223568900d62",
+   "decodedFrames": 1808100,
+   "exactLength": true,
+   "alignmentLagFrames": 0,
+   "decodedTruePeakDbtp": -1.2
+  },
+  {
+   "file": "web/main-theme-loop.m4a",
+   "role": "browser listening copy",
+   "deliverable": "main-theme",
+   "bytes": 947714,
+   "sha256": "793e3abe39d156a1ba14f7125bcdc354b966027cc0c062e20ea4f6251f9b41b2",
+   "decodedFrames": 1597440,
+   "exactLength": false,
+   "alignmentLagFrames": 0,
+   "decodedTruePeakDbtp": -1.6
+  },
+  {
+   "file": "web/main-theme-loop.ogg",
+   "role": "browser listening copy",
+   "deliverable": "main-theme",
+   "bytes": 923634,
+   "sha256": "b5ad3acd475992187ffbc099fa157c06a4df8138c9883b62369d4a3789a79763",
+   "decodedFrames": 1596420,
+   "exactLength": true,
+   "alignmentLagFrames": 0,
+   "decodedTruePeakDbtp": -1.3
+  },
+  {
+   "file": "web/menu-mix-loop.m4a",
+   "role": "browser listening copy",
+   "deliverable": "menu-mix",
+   "bytes": 959373,
+   "sha256": "8fd50204463188d2e9fdf12747764e1dedcc2525cb642ea7e46da0600ec677db",
+   "decodedFrames": 1597440,
+   "exactLength": false,
+   "alignmentLagFrames": 0,
+   "decodedTruePeakDbtp": -2.7
+  },
+  {
+   "file": "web/menu-mix-loop.ogg",
+   "role": "browser listening copy",
+   "deliverable": "menu-mix",
+   "bytes": 1011641,
+   "sha256": "f5d506c5a6b4e490d84ad7df91c166e7ca04ae710de7a3eccaaf56b0127c8304",
+   "decodedFrames": 1596420,
+   "exactLength": true,
+   "alignmentLagFrames": 0,
+   "decodedTruePeakDbtp": -2.5
+  },
+  {
+   "file": "previews/demo-mix.mp3",
+   "role": "MP3 preview (192 kbps CBR)",
+   "deliverable": "demo-mix",
+   "bytes": 985566,
+   "sha256": "08123ecd53de7d73dc6d2c335f1850874b1cc329d5532d6734a9066f6ce4badb",
+   "decodedFrames": 1808100,
+   "exactLength": true,
+   "alignmentLagFrames": 0,
+   "decodedTruePeakDbtp": -1.8
+  },
+  {
+   "file": "previews/main-theme-loop.mp3",
+   "role": "MP3 preview (192 kbps CBR)",
+   "deliverable": "main-theme",
+   "bytes": 870210,
+   "sha256": "d8be95f999bedb95e8bfb7b8b96b59f01907dbd024d54768453da47737006673",
+   "decodedFrames": 1596420,
+   "exactLength": true,
+   "alignmentLagFrames": 0,
+   "decodedTruePeakDbtp": -1.7
+  },
+  {
+   "file": "previews/main-theme-x2-listen.mp3",
+   "role": "MP3 preview (192 kbps CBR)",
+   "deliverable": "main-theme",
+   "bytes": 1793690,
+   "sha256": "9d0e846b362f3d8fd3afe52d6693a136ee63a73d7923650202506ee13cf59340",
+   "seconds": 74.662,
+   "content": "cycles 2 and 3 of the continuous x3 render plus the closing downbeat: the loop as heard in game, twice, then a button ending"
+  },
+  {
+   "file": "previews/menu-mix-loop.mp3",
+   "role": "MP3 preview (192 kbps CBR)",
+   "deliverable": "menu-mix",
+   "bytes": 870210,
+   "sha256": "ee5723c8d5a7cbf531d6f2ba396cab35c0f9bd7c09c72a72b44bd0833b971b8f",
+   "decodedFrames": 1596420,
+   "exactLength": true,
+   "alignmentLagFrames": 0,
+   "decodedTruePeakDbtp": -2.8
+  },
+  {
+   "file": "previews/menu-mix-x2-listen.mp3",
+   "role": "MP3 preview (192 kbps CBR)",
+   "deliverable": "menu-mix",
+   "bytes": 1793690,
+   "sha256": "de76a17459581c1312e0777659d57e797f3aa38756a1d75cf7df19a8269cd824",
+   "seconds": 74.662,
+   "content": "cycles 2 and 3 of the continuous x3 render plus the closing downbeat: the loop as heard in game, twice, then a button ending"
+  }
+ ]
+}

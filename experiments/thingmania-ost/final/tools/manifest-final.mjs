@@ -17,6 +17,13 @@ const rel = (p) => relative(HERE, p);
 const walk = (d) => (existsSync(d) ? readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)])) : []);
 
 const checks = Object.fromEntries(['main-theme', 'menu-mix', 'demo-mix'].map((s) => [s, JSON.parse(readFileSync(join(HERE, 'analysis', `${s}.checks.json`), 'utf8'))]));
+// Every result must belong to the project file as it is now.
+for (const [slug, c] of Object.entries(checks)) {
+  if (c.hashes.project !== sha(join(HERE, `${slug}.json`))) throw new Error(`${slug}: analysis is stale; rerun render-final.mjs ${slug}`);
+  if (c.determinism?.master !== true || !c.encodes) throw new Error(`${slug}: analysis comes from a --fast run`);
+}
+const summary = JSON.parse(readFileSync(join(HERE, 'analysis', 'summary.json'), 'utf8'));
+for (const slug of Object.keys(checks)) if (summary[slug]?.hashes?.masterWav !== checks[slug].hashes.masterWav) throw new Error(`summary.json disagrees with ${slug}.checks.json`);
 const ROLE = {
   masters: 'final WAV master (PCM16 stereo 44.1 kHz)', stems: 'aligned stem (FLAC, lossless PCM16 stereo 44.1 kHz; same start and length as its master)',
   web: 'browser listening copy', previews: 'MP3 preview (192 kbps CBR)',
@@ -41,7 +48,7 @@ const ffv = execFileSync(process.env.DAEMONV12_FFMPEG || 'ffmpeg', ['-version'],
 const toolFiles = [...walk(join(HERE, 'tools')), join(OST, 'tools', 'instruments.mjs'), join(OST, 'tools', 'dsp.mjs'), join(OST, 'tools', 'inspect-palette.mjs'), join(OST, 'hybrid-ac', 'tools', 'analysis-ac.mjs')];
 const manifest = {
   title: 'THING//MANIA - Official Soundtrack (final package)',
-  source: { approvedAudition: 'experiments/thingmania-ost/hybrid-ac/ac-01-groove-first.json (AC-01 GROOVE FIRST)', approvedMasterSha256: checks['main-theme'] && JSON.parse(readFileSync(join(HERE, 'analysis', 'summary.json'), 'utf8')).referenceAc01.masterWav },
+  source: { approvedAudition: 'experiments/thingmania-ost/hybrid-ac/ac-01-groove-first.json (AC-01 GROOVE FIRST)', approvedMasterSha256: summary.referenceAc01.masterWav, rerenderMatchesRecorded: summary.referenceAc01.rerenderMatchesRecorded },
   environment: { engine: `daemonv12 ${checks['main-theme'].engineVersion}`, node: process.version, ffmpeg: ffv,
     note: 'Rendering is deterministic: a second render of every project gives byte-identical masters, track stems and group stems (analysis/<slug>.checks.json, determinism).' },
   rights: 'Every sound is synthesized from scratch by experiments/thingmania-ost/tools/instruments.mjs (deterministic DSP, no randomness beyond seeded generators). No recordings, samples, loops, SoundFonts, General MIDI (FluidR3 GM) or third-party audio are used. All melodies and rhythms were written for THING//MANIA. No license is declared; that remains the owner\'s decision.',

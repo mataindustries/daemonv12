@@ -249,7 +249,7 @@ const MENU_DEFS = {
 //        the tag at double speed into the gap; the snare picks up into the groove.
 // Bars 2-17: the main theme (the ding of its bar 1 already happened in the cold open).
 // Bar 18: ending. The battery sag of bar 17 lands on a final E hit: ding, whistle swoop, choir.
-// Bar 19: decay only.
+// Bar 19: decay only; the output is cut at 41.0 s, after the tails fall below -70 dBFS.
 const INTRO = {
   bass: [[0, 'E1', 2, 1.0], [12, 'Bb1', 2, 0.95, bend], [14, 'D2', 1, 0.8], [15, 'Eb2', 1, 0.85]],
   clav: [[0, 'em9', 2, 0.85]],
@@ -305,8 +305,8 @@ const out = {
   ...loopProjects({ slug: 'menu-mix', title: 'THING//MANIA - Menu', defs: MENU_DEFS, score: MENU,
     description: 'Menu arrangement of the main theme: same 16-bar form, bassline and harmonic map (Em9 | A13 | Cmaj9 | D6/9 | Em9 with the F13 slip), so it can be swapped with the theme on any bar. Lighter: the appliance choir hums the chords on "oo" instead of clav stabs; soft kick, a quiet ghost-free backbeat and off-beat eighth hats; no crunch bus, kitchen percussion or band hits, which leaves 2-6 kHz open for button clicks. The whistle hook sounds in bars 2, 6 and 13, the appliances answer in bars 5, 9 and 14, and the battery sag still carries the loop home.' }),
 };
-out['demo-mix'] = { ...head('THING//MANIA - Demo Mix', 'Short, punchy arrangement for a hackathon demo video: a cold open (one full-band hit with the ding, then the toaster sings its tag at double speed into the silence and the snare picks up), the 16-bar main theme, and a real ending (the battery sag lands on a final E hit with the ding, the whistle swoop and the choir). 18 bars plus one decay bar, 42.99 s. Section starts for editing: theme 2.2625 s, appliances 11.3125 s, development 20.3625 s, hook return 29.4125 s, ending 38.4625 s.'),
-  bars: 19, seed: 0, render: { duration: { bars: 19 }, tail: 'none' }, master: MASTER, tracks: buildTracks(DEFS, DEMO, 19).map(({ button, ...t }) => t) };
+out['demo-mix'] = { ...head('THING//MANIA - Demo Mix', 'Short, punchy arrangement for a hackathon demo video: a cold open (one full-band hit with the ding, then the toaster sings its tag at double speed into the silence and the snare picks up), the 16-bar main theme, and a real ending (the battery sag lands on a final E hit with the ding, the whistle swoop and the choir). 18 bars and the decay of the ending, exactly 41.0 s (the mix is below -70 dBFS from 40.6 s). Section starts for editing: theme 2.2625 s, appliances 11.3125 s, development 20.3625 s, hook return 29.4125 s, ending 38.4625 s.'),
+  bars: 19, seed: 0, render: { duration: { seconds: 41 }, tail: 'none' }, master: MASTER, tracks: buildTracks(DEFS, DEMO, 19).map(({ button, ...t }) => t) };
 
 for (const [slug, project] of Object.entries(out)) {
   writeFileSync(join(HERE, `${slug}.json`), fmt(project) + '\n');

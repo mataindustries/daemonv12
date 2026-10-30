@@ -1,0 +1,1007 @@
+{
+ "slug": "menu-mix",
+ "project": "experiments/thingmania-ost/final/menu-mix.json",
+ "renderedProject": "experiments/thingmania-ost/final/menu-mix-x3.json",
+ "engineVersion": "0.7.0",
+ "validation": [
+  {
+   "project": "experiments/thingmania-ost/final/menu-mix.json",
+   "ok": true,
+   "warnings": []
+  },
+  {
+   "project": "experiments/thingmania-ost/final/menu-mix-x3.json",
+   "ok": true,
+   "warnings": []
+  }
+ ],
+ "duration": {
+  "frames": 1596420,
+  "seconds": 36.2,
+  "bars": 16,
+  "bpm": 106.0773,
+  "timeSignature": "4/4",
+  "expectedFrames": 1596420,
+  "target": "16 bars = 36.2 s exactly"
+ },
+ "engine": {
+  "masterClippedSamples": 0,
+  "warnings": [],
+  "trackStages": [
+   {
+    "trackId": "bass",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -2.396157
+   },
+   {
+    "trackId": "bass-grit",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -4.573803
+   },
+   {
+    "trackId": "whistle",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -12.295246
+   },
+   {
+    "trackId": "whistle-dry",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -12.800289
+   },
+   {
+    "trackId": "hum",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -15.994727
+   },
+   {
+    "trackId": "kick",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -8.000362
+   },
+   {
+    "trackId": "snare",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -16.514894
+   },
+   {
+    "trackId": "hats",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -20.193347
+   },
+   {
+    "trackId": "voice",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -12.993306
+   },
+   {
+    "trackId": "kettle",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -20.070147
+   },
+   {
+    "trackId": "choir",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -12.020808
+   },
+   {
+    "trackId": "fx",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -18.43715
+   }
+  ]
+ },
+ "stems": {
+  "groups": {
+   "drums": {
+    "tracks": [
+     "kick",
+     "snare",
+     "hats"
+    ],
+    "clippedSamples": 0
+   },
+   "bass-grit": {
+    "tracks": [
+     "bass",
+     "bass-grit"
+    ],
+    "clippedSamples": 0
+   },
+   "whistle-lead": {
+    "tracks": [
+     "whistle",
+     "whistle-dry"
+    ],
+    "clippedSamples": 0
+   },
+   "appliances-choir": {
+    "tracks": [
+     "voice",
+     "kettle",
+     "choir"
+    ],
+    "clippedSamples": 0
+   },
+   "harmony": {
+    "tracks": [
+     "hum"
+    ],
+    "clippedSamples": 0
+   },
+   "fx": {
+    "tracks": [
+     "fx"
+    ],
+    "clippedSamples": 0
+   }
+  },
+  "masterBusRebuildMaxDiffLsb": 0,
+  "nullTest": {
+   "method": "sum of the six s16 group stems minus the s16 master",
+   "maxAbsDiffLsb": 2,
+   "residualDbRelMaster": -75.7
+  },
+  "alignment": {
+   "drums": {
+    "frames": 1596420,
+    "sampleRate": 44100,
+    "channels": 2
+   },
+   "bass-grit": {
+    "frames": 1596420,
+    "sampleRate": 44100,
+    "channels": 2
+   },
+   "whistle-lead": {
+    "frames": 1596420,
+    "sampleRate": 44100,
+    "channels": 2
+   },
+   "appliances-choir": {
+    "frames": 1596420,
+    "sampleRate": 44100,
+    "channels": 2
+   },
+   "harmony": {
+    "frames": 1596420,
+    "sampleRate": 44100,
+    "channels": 2
+   },
+   "fx": {
+    "frames": 1596420,
+    "sampleRate": 44100,
+    "channels": 2
+   }
+  }
+ },
+ "loop": {
+  "method": "cycle 2 (frames N..2N) of the continuous x3 render; it starts with cycle 1 tails and must equal cycle 3 bit for bit",
+  "frames": 1596420,
+  "seconds": 36.2,
+  "exactRenderFrames": 1596420,
+  "x3Frames": 4889036,
+  "cycle2EqualsCycle3": {
+   "master": true,
+   "drums": true,
+   "bass-grit": true,
+   "whistle-lead": true,
+   "appliances-choir": true,
+   "harmony": true,
+   "fx": true
+  },
+  "seamlessWrapJump": 0.06339,
+  "continuousMaxStepNearSameBoundary": 0.11307,
+  "naiveExactRenderWrapJump": 0.06927,
+  "naiveExactRenderFirst500msMissingTailDb": -12.71
+ },
+ "loudness": {
+  "integratedLufs": -17.9,
+  "loudnessRangeLu": 1.5,
+  "p90MomentaryLufs": -16.3,
+  "maxMomentaryLufs": -15.4
+ },
+ "peaks": {
+  "truePeakDbtp": -2.6,
+  "peakDbfs": -2.61,
+  "fullScaleSamples": 0
+ },
+ "stereo": {
+  "correlation": 0.966,
+  "sideEnergyFraction": 0.0172,
+  "above300Hz": {
+   "correlation": 0.943,
+   "sideEnergyFraction": 0.0291
+  },
+  "monoFoldLufs": -18,
+  "monoFoldChangeLu": -0.1,
+  "pans": {
+   "bass": 0,
+   "bass-grit": 0,
+   "whistle": 0.3,
+   "whistle-dry": 0.3,
+   "hum": 0,
+   "kick": 0,
+   "snare": 0.05,
+   "hats": 0.55,
+   "voice": -0.35,
+   "kettle": 0.65,
+   "choir": 0,
+   "fx": 0.5
+  }
+ },
+ "phoneProxy": {
+  "method": "two 2-pole high-passes at 300 Hz, then mono fold",
+  "lufs": -21.5,
+  "changeLu": -3.6,
+  "masterBandShares": {
+   "sub<120": 0.585,
+   "lowmid120-500": 0.189,
+   "mid500-2k": 0.216,
+   "upper2k-6k": 0.006,
+   "high>6k": 0.002
+  }
+ },
+ "stemGroups": {
+  "drums": {
+   "integratedLufs": -24.7,
+   "p90MomentaryLufs": -22.5,
+   "phoneP90MomentaryLufs": -31.9,
+   "truePeakDbtp": -12.6,
+   "peakDbfs": -12.68,
+   "fullScaleSamples": 0
+  },
+  "bass-grit": {
+   "integratedLufs": -19.5,
+   "p90MomentaryLufs": -17.9,
+   "phoneP90MomentaryLufs": -21.2,
+   "truePeakDbtp": -2.9,
+   "peakDbfs": -2.88,
+   "fullScaleSamples": 0
+  },
+  "whistle-lead": {
+   "integratedLufs": -23.3,
+   "p90MomentaryLufs": -21.8,
+   "phoneP90MomentaryLufs": -22,
+   "truePeakDbtp": -16.1,
+   "peakDbfs": -16.13,
+   "fullScaleSamples": 0
+  },
+  "appliances-choir": {
+   "integratedLufs": -27.7,
+   "p90MomentaryLufs": -25.2,
+   "phoneP90MomentaryLufs": -26.6,
+   "truePeakDbtp": -15.8,
+   "peakDbfs": -15.81,
+   "fullScaleSamples": 0
+  },
+  "harmony": {
+   "integratedLufs": -31.1,
+   "p90MomentaryLufs": -29.6,
+   "phoneP90MomentaryLufs": -36.7,
+   "truePeakDbtp": -18.2,
+   "peakDbfs": -18.2,
+   "fullScaleSamples": 0
+  },
+  "fx": {
+   "integratedLufs": -34.5,
+   "p90MomentaryLufs": -31.5,
+   "phoneP90MomentaryLufs": -31.7,
+   "truePeakDbtp": -26.2,
+   "peakDbfs": -26.24,
+   "fullScaleSamples": 0
+  }
+ },
+ "separation": {
+  "method": "per 2048-sample frame and third-octave band (100 Hz-12.5 kHz) on mono track stems; a part is active within 30 dB (conflict: 25 dB) of its loudest frame",
+  "whistleUnmasked": {
+   "parts": [
+    "whistle",
+    "whistle-dry"
+   ],
+   "activeSeconds": 9.82,
+   "unmaskedShare": 0.991
+  },
+  "appliancesUnmasked": {
+   "parts": [
+    "voice",
+    "kettle",
+    "choir"
+   ],
+   "activeSeconds": 5.39,
+   "unmaskedShare": 0.752
+  },
+  "bassUnmasked": {
+   "parts": [
+    "bass",
+    "bass-grit"
+   ],
+   "activeSeconds": 26.87,
+   "unmaskedShare": 0.963
+  },
+  "whistleVsAppliances": {
+   "a": [
+    "whistle",
+    "whistle-dry"
+   ],
+   "b": [
+    "voice",
+    "kettle",
+    "choir"
+   ],
+   "aOnlySeconds": 9.5,
+   "bOnlySeconds": 5.13,
+   "simultaneousSeconds": 0.02,
+   "simultaneousShareOfB": 0.005,
+   "contestedShareOfAWhenSimultaneous": 0
+  },
+  "hookHeadUnmaskedByBar": [
+   {
+    "bar": 2,
+    "parts": [
+     "whistle",
+     "whistle-dry"
+    ],
+    "activeSeconds": 1.14,
+    "unmaskedShare": 0.991
+   },
+   {
+    "bar": 6,
+    "parts": [
+     "whistle",
+     "whistle-dry"
+    ],
+    "activeSeconds": 1.11,
+    "unmaskedShare": 0.993
+   },
+   {
+    "bar": 13,
+    "parts": [
+     "whistle",
+     "whistle-dry"
+    ],
+    "activeSeconds": 1.11,
+    "unmaskedShare": 0.991
+   },
+   {
+    "bar": 16,
+    "parts": [
+     "whistle",
+     "whistle-dry"
+    ],
+    "activeSeconds": 1.14,
+    "unmaskedShare": 0.996
+   }
+  ],
+  "centroidHz": {
+   "bass": 353,
+   "bass-grit": 640,
+   "whistle": 1129,
+   "whistle-dry": 1150,
+   "hum": 319,
+   "kick": 137,
+   "snare": 2471,
+   "hats": 10531,
+   "voice": 876,
+   "kettle": 591,
+   "choir": 883,
+   "fx": 3182
+  }
+ },
+ "masterCompressor": {
+  "method": "master vs sum of pre-master stems x master gain, 300 Hz-5 kHz, 50 ms windows; makeup gain removed",
+  "windows": 724,
+  "gainReductionDb": {
+   "median": 2.82,
+   "p95": 4.07,
+   "max": 4.47,
+   "mean": 2.29,
+   "stdDev": 1.39
+  }
+ },
+ "arcMedianMomentaryLufsByBar": [
+  -18.2,
+  -17.3,
+  -18.7,
+  -18.6,
+  -18.5,
+  -17.3,
+  -18.7,
+  -18.5,
+  -17.7,
+  -17,
+  -17.6,
+  -16.9,
+  -17.4,
+  -18.7,
+  -18.6,
+  -17.6
+ ],
+ "variety": {
+  "bars": 16,
+  "distinctBars": 8,
+  "meanPairCorrelation": 0.752,
+  "matrix": [
+   [
+    1,
+    0.474,
+    0.926,
+    0.507,
+    0.861,
+    0.475,
+    0.925,
+    0.507,
+    0.864,
+    0.45,
+    0.679,
+    0.659,
+    0.473,
+    0.857,
+    0.508,
+    0.551
+   ],
+   [
+    0.474,
+    1,
+    0.557,
+    0.907,
+    0.61,
+    1,
+    0.557,
+    0.907,
+    0.576,
+    0.941,
+    0.82,
+    0.823,
+    1,
+    0.61,
+    0.908,
+    0.674
+   ],
+   [
+    0.926,
+    0.557,
+    1,
+    0.62,
+    0.969,
+    0.559,
+    1,
+    0.62,
+    0.963,
+    0.598,
+    0.795,
+    0.778,
+    0.557,
+    0.966,
+    0.619,
+    0.608
+   ],
+   [
+    0.507,
+    0.907,
+    0.62,
+    1,
+    0.658,
+    0.908,
+    0.621,
+    1,
+    0.623,
+    0.926,
+    0.836,
+    0.842,
+    0.907,
+    0.656,
+    1,
+    0.63
+   ],
+   [
+    0.861,
+    0.61,
+    0.969,
+    0.658,
+    1,
+    0.611,
+    0.969,
+    0.658,
+    0.983,
+    0.662,
+    0.799,
+    0.783,
+    0.61,
+    1,
+    0.656,
+    0.681
+   ],
+   [
+    0.475,
+    1,
+    0.559,
+    0.908,
+    0.611,
+    1,
+    0.559,
+    0.908,
+    0.577,
+    0.941,
+    0.821,
+    0.823,
+    1,
+    0.611,
+    0.91,
+    0.674
+   ],
+   [
+    0.925,
+    0.557,
+    1,
+    0.621,
+    0.969,
+    0.559,
+    1,
+    0.621,
+    0.963,
+    0.598,
+    0.795,
+    0.778,
+    0.557,
+    0.966,
+    0.619,
+    0.608
+   ],
+   [
+    0.507,
+    0.907,
+    0.62,
+    1,
+    0.658,
+    0.908,
+    0.621,
+    1,
+    0.623,
+    0.926,
+    0.836,
+    0.842,
+    0.907,
+    0.656,
+    1,
+    0.63
+   ],
+   [
+    0.864,
+    0.576,
+    0.963,
+    0.623,
+    0.983,
+    0.577,
+    0.963,
+    0.623,
+    1,
+    0.63,
+    0.768,
+    0.759,
+    0.576,
+    0.983,
+    0.62,
+    0.645
+   ],
+   [
+    0.45,
+    0.941,
+    0.598,
+    0.926,
+    0.662,
+    0.941,
+    0.598,
+    0.926,
+    0.63,
+    1,
+    0.845,
+    0.855,
+    0.941,
+    0.662,
+    0.925,
+    0.651
+   ],
+   [
+    0.679,
+    0.82,
+    0.795,
+    0.836,
+    0.799,
+    0.821,
+    0.795,
+    0.836,
+    0.768,
+    0.845,
+    1,
+    0.983,
+    0.82,
+    0.797,
+    0.836,
+    0.634
+   ],
+   [
+    0.659,
+    0.823,
+    0.778,
+    0.842,
+    0.783,
+    0.823,
+    0.778,
+    0.842,
+    0.759,
+    0.855,
+    0.983,
+    1,
+    0.822,
+    0.781,
+    0.842,
+    0.632
+   ],
+   [
+    0.473,
+    1,
+    0.557,
+    0.907,
+    0.61,
+    1,
+    0.557,
+    0.907,
+    0.576,
+    0.941,
+    0.82,
+    0.822,
+    1,
+    0.609,
+    0.908,
+    0.673
+   ],
+   [
+    0.857,
+    0.61,
+    0.966,
+    0.656,
+    1,
+    0.611,
+    0.966,
+    0.656,
+    0.983,
+    0.662,
+    0.797,
+    0.781,
+    0.609,
+    1,
+    0.654,
+    0.683
+   ],
+   [
+    0.508,
+    0.908,
+    0.619,
+    1,
+    0.656,
+    0.91,
+    0.619,
+    1,
+    0.62,
+    0.925,
+    0.836,
+    0.842,
+    0.908,
+    0.654,
+    1,
+    0.631
+   ],
+   [
+    0.551,
+    0.674,
+    0.608,
+    0.63,
+    0.681,
+    0.674,
+    0.608,
+    0.63,
+    0.645,
+    0.651,
+    0.634,
+    0.632,
+    0.673,
+    0.683,
+    0.631,
+    1
+   ]
+  ]
+ },
+ "uiSpace": {
+  "method": "synthetic 3 kHz click, 4 ms decay, -20 dBFS peak, on every eighth note; click vs music energy in 2-6 kHz over 20 ms",
+  "clicks": 128,
+  "clickToMusicDb": {
+   "p10": 2.4,
+   "median": 3.8,
+   "p90": 16.3
+  },
+  "bandLevel2to6kHz": {
+   "method": "2-6 kHz band, RMS over 20 ms windows, dBFS",
+   "median": -43,
+   "p90": -37.9
+  }
+ },
+ "probes": [
+  {
+   "label": "bars 2/13: hook (E6 D6 B5 C#6 | B5)",
+   "stem": "whistle",
+   "reference": "E6",
+   "points": [
+    {
+     "seconds": 2.3525,
+     "hz": 1315.35,
+     "cents": -4,
+     "clarity": 0.986
+    },
+    {
+     "seconds": 2.7456,
+     "hz": 1184.51,
+     "cents": -186,
+     "clarity": 0.973
+    },
+    {
+     "seconds": 3.0284,
+     "hz": 991.06,
+     "cents": -494,
+     "clarity": 0.942
+    },
+    {
+     "seconds": 3.1709,
+     "hz": 1108.11,
+     "cents": -301,
+     "clarity": 0.997
+    },
+    {
+     "seconds": 3.5538,
+     "hz": 990.27,
+     "cents": -496,
+     "clarity": 0.992
+    },
+    {
+     "seconds": 27.24,
+     "hz": 1315.45,
+     "cents": -4,
+     "clarity": 0.986
+    },
+    {
+     "seconds": 27.6331,
+     "hz": 1184.51,
+     "cents": -186,
+     "clarity": 0.973
+    },
+    {
+     "seconds": 27.9159,
+     "hz": 991.06,
+     "cents": -494,
+     "clarity": 0.942
+    },
+    {
+     "seconds": 28.0584,
+     "hz": 1108.11,
+     "cents": -301,
+     "clarity": 0.997
+    },
+    {
+     "seconds": 28.4413,
+     "hz": 990.27,
+     "cents": -496,
+     "clarity": 0.992
+    }
+   ]
+  },
+  {
+   "label": "bar 5: toaster DEE (A#4) rides the bass bend up to B4",
+   "stem": "voice",
+   "reference": "A#4",
+   "points": [
+    {
+     "seconds": 10.7519,
+     "hz": 470.32,
+     "cents": 15,
+     "clarity": 0.974
+    },
+    {
+     "seconds": 10.8669,
+     "hz": 494.03,
+     "cents": 101,
+     "clarity": 0.995
+    }
+   ]
+  },
+  {
+   "label": "bar 9: the toaster tag in A (D#5 -> E5)",
+   "stem": "voice",
+   "reference": "D#5",
+   "points": [
+    {
+     "seconds": 19.8019,
+     "hz": 629.99,
+     "cents": 21,
+     "clarity": 0.972
+    },
+    {
+     "seconds": 19.9169,
+     "hz": 659.5,
+     "cents": 101,
+     "clarity": 0.989
+    }
+   ]
+  },
+  {
+   "label": "bar 16: choir slip chord holds, then sags one semitone",
+   "stem": "choir",
+   "tonesDb": [
+    {
+     "at": "hold",
+     "seconds": 35.229,
+     "G4": -53.2,
+     "C5": -46.7,
+     "D5": -44.7,
+     "F#4": -87.4,
+     "B4": -77.2,
+     "C#5": -78.8
+    },
+    {
+     "at": "downbeat arrival",
+     "seconds": 36.0774,
+     "G4": -69,
+     "C5": -74.6,
+     "D5": -71.5,
+     "F#4": -70.8,
+     "B4": -50.9,
+     "C#5": -46.3
+    }
+   ]
+  },
+  {
+   "label": "menu pads: the hum follows the harmony (Em9 bar 1, A13 bar 9, Cmaj7 bar 11, D bar 12)",
+   "stem": "hum",
+   "tonesDb": [
+    {
+     "at": "bar 1",
+     "seconds": 0.5656,
+     "D4": -60,
+     "C#4": -69.8,
+     "B3": -102.7,
+     "A3": -84.2
+    },
+    {
+     "at": "bar 9",
+     "seconds": 18.6656,
+     "D4": -76.6,
+     "C#4": -47.6,
+     "B3": -85.5,
+     "A3": -89.3
+    },
+    {
+     "at": "bar 11",
+     "seconds": 23.1906,
+     "D4": -101.9,
+     "C#4": -69.3,
+     "B3": -39.9,
+     "A3": -81
+    },
+    {
+     "at": "bar 12",
+     "seconds": 25.4531,
+     "D4": -54.7,
+     "C#4": -64.4,
+     "B3": -70.3,
+     "A3": -46.8
+    }
+   ]
+  }
+ ],
+ "determinism": {
+  "method": "second full render from the same project, then the same bus-stem processing; SHA-256 compared",
+  "master": true,
+  "trackStems": true,
+  "groupStems": true
+ },
+ "encodes": {
+  "ogg": {
+   "file": "experiments/thingmania-ost/final/web/menu-mix-loop.ogg",
+   "bytes": 1011641,
+   "sha256": "f5d506c5a6b4e490d84ad7df91c166e7ca04ae710de7a3eccaaf56b0127c8304",
+   "decodedFrames": 1596420,
+   "expectedFrames": 1596420,
+   "exactLength": true,
+   "snrAtLag0Db": 30.2,
+   "bestLagFrames": 0,
+   "decodedTruePeakDbtp": -2.5,
+   "decodedIntegratedLufs": -17.9
+  },
+  "m4a": {
+   "file": "experiments/thingmania-ost/final/web/menu-mix-loop.m4a",
+   "bytes": 959373,
+   "sha256": "8fd50204463188d2e9fdf12747764e1dedcc2525cb642ea7e46da0600ec677db",
+   "decodedFrames": 1597440,
+   "expectedFrames": 1596420,
+   "exactLength": false,
+   "snrAtLag0Db": 28.9,
+   "bestLagFrames": 0,
+   "decodedTruePeakDbtp": -2.7,
+   "decodedIntegratedLufs": -17.9
+  },
+  "mp3": {
+   "file": "experiments/thingmania-ost/final/previews/menu-mix-loop.mp3",
+   "bytes": 870210,
+   "sha256": "ee5723c8d5a7cbf531d6f2ba396cab35c0f9bd7c09c72a72b44bd0833b971b8f",
+   "decodedFrames": 1596420,
+   "expectedFrames": 1596420,
+   "exactLength": true,
+   "snrAtLag0Db": 29,
+   "bestLagFrames": 0,
+   "decodedTruePeakDbtp": -2.8,
+   "decodedIntegratedLufs": -18.1
+  },
+  "listenX2": {
+   "file": "experiments/thingmania-ost/final/previews/menu-mix-x2-listen.mp3",
+   "bytes": 1793690,
+   "sha256": "de76a17459581c1312e0777659d57e797f3aa38756a1d75cf7df19a8269cd824",
+   "seconds": 74.662,
+   "content": "cycles 2 and 3 of the continuous x3 render plus the closing downbeat: the loop as heard in game, twice, then a button ending"
+  },
+  "stems": {
+   "drums": {
+    "file": "experiments/thingmania-ost/final/stems/menu-mix/drums.flac",
+    "bytes": 1988122,
+    "sha256": "26fdf48f937259ee36b3662b53665686915e625953a472d921f27a682e3b5269",
+    "losslessRoundTrip": true,
+    "wavPcmSha256": "e0976b0b23728c5a1a77fde90218abad1284bcb873757e0e1075b8d6ffe66df7"
+   },
+   "bass-grit": {
+    "file": "experiments/thingmania-ost/final/stems/menu-mix/bass-grit.flac",
+    "bytes": 676328,
+    "sha256": "fd8b3ae81d9bddcebd6087c4cf24b145082fcbf4345e1ae20a405fa7e9d7fb6a",
+    "losslessRoundTrip": true,
+    "wavPcmSha256": "d97a48a6dc21dd96fc4ae5d5616779c4cd0133ca1affe687d84be3ea7bd8bf9f"
+   },
+   "whistle-lead": {
+    "file": "experiments/thingmania-ost/final/stems/menu-mix/whistle-lead.flac",
+    "bytes": 854235,
+    "sha256": "86fdaec9bd99e620b2886923109fe3ff9592ab6f7cae369eda1b2090c44b2e5b",
+    "losslessRoundTrip": true,
+    "wavPcmSha256": "dba2a9c9e51a0cd589ed9dbe1399015a119f723c50bd50eeddbe25c0e92e7d0f"
+   },
+   "appliances-choir": {
+    "file": "experiments/thingmania-ost/final/stems/menu-mix/appliances-choir.flac",
+    "bytes": 479580,
+    "sha256": "95168f8202ea0273939c2fa31bfc2387142c02c06a66aa39e96f510a2b1b744b",
+    "losslessRoundTrip": true,
+    "wavPcmSha256": "d31577d84df2b6e818d47c85d8d49418443f14c0f4a1657811639290d6fd0ff9"
+   },
+   "harmony": {
+    "file": "experiments/thingmania-ost/final/stems/menu-mix/harmony.flac",
+    "bytes": 1346313,
+    "sha256": "5d56071809aa263b966d0537c491bd6813705fe7d4488702f4a71ec9106679f1",
+    "losslessRoundTrip": true,
+    "wavPcmSha256": "1a2ca494cfde45356e2b30209a6f40698d23d49bbfcdf4c7df08b91ec8437c47"
+   },
+   "fx": {
+    "file": "experiments/thingmania-ost/final/stems/menu-mix/fx.flac",
+    "bytes": 64593,
+    "sha256": "cf79a89bb3f904672eed5c29ca007e7f2c0255efae269aca4e35989d0fccbbcf",
+    "losslessRoundTrip": true,
+    "wavPcmSha256": "0205cb28384a95b9c422eb49d84f885b92b7c71d641bd5f44c362b5bc7218267"
+   }
+  }
+ },
+ "hashes": {
+  "masterWav": "e94eacfd5aff28bc4a0907bf9c3a442402432b73e5f06fdc09a478e75c56a18a",
+  "project": "779e43df6134eb36d596e4a2dc1dd63f933c16a12297cbee37ce1f7640dba91f",
+  "x3Project": "ed7023b30561668ff73fe2569b35d1090f38e59a4e4122d46ecb025e85532c42",
+  "groupStemWavs": {
+   "drums": "5c2a80d10d4dbc6afe4b35543d0ece0e4080d4532b243dbcc480ce2db60c89fe",
+   "bass-grit": "09ec2b73569a8b8644ccea943c06257003242838786fa174602117a9cdfff56a",
+   "whistle-lead": "687f54ba9579e6dab1f341d54c4983e384c6998c05819a9924a92b02bc0c1930",
+   "appliances-choir": "5cd24c661ae1a28b23182a31f1a007f77470c36f8e4b2dfff5d28ff6ed696578",
+   "harmony": "543cb8959e29b3bc075836b04b0b315db0091e30e6e455927ae6ef52eb699678",
+   "fx": "189f5363621d162642055361aec92b1237da1d8eb62343fbbdd02a4997718078"
+  }
+ }
+}

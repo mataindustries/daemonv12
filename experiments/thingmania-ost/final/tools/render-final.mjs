@@ -269,7 +269,7 @@ function measure({ slug, masterPath, masterPcm, trackPcm, groupPaths, project, b
 const DELIVERABLES = {
   'main-theme': { loop: true, bars: 16, probes: THEME_PROBES(0), name: 'main-theme-loop' },
   'menu-mix': { loop: true, bars: 16, probes: MENU_PROBES, name: 'menu-mix-loop' },
-  'demo-mix': { loop: false, bars: 19, probes: THEME_PROBES(1), name: 'demo-mix' },
+  'demo-mix': { loop: false, bars: 19, seconds: 41, probes: THEME_PROBES(1), name: 'demo-mix' },
 };
 const DIRS = { masters: join(HERE, 'masters'), stems: join(HERE, 'stems'), web: join(HERE, 'web'), previews: join(HERE, 'previews'), analysis: join(HERE, 'analysis') };
 
@@ -314,15 +314,15 @@ function produce(slug) {
   log(slug, 'measure');
   const checks = {
     slug, project: rel(proj), renderedProject: rel(renderProj), engineVersion: main.engineVersion, validation,
-    duration: { frames: N, seconds: r(N / SR, 6), bars: d.loop ? 16 : 19, bpm: main.summary.bpm, timeSignature: main.summary.timeSignature,
-      expectedFrames: d.loop ? LOOP_FRAMES : Math.round(19 * BAR * SR), target: d.loop ? '16 bars = 36.2 s exactly' : '18 bars + one decay bar' },
+    duration: { frames: N, seconds: r(N / SR, 6), bars: d.loop ? 16 : d.bars, bpm: main.summary.bpm, timeSignature: main.summary.timeSignature,
+      expectedFrames: d.loop ? LOOP_FRAMES : Math.round(d.seconds * SR), target: d.loop ? '16 bars = 36.2 s exactly' : `18 bars and the ending's decay, cut at ${d.seconds} s` },
     engine: { masterClippedSamples: manifest.production?.master?.clippedSamples ?? null, warnings: main.warnings.map((w) => w.code),
       trackStages: (manifest.production?.tracks ?? []).map((t) => ({ trackId: t.trackId, clippedSamples: t.clippedSamples, preClipPeakDbfs: t.preClipPeakDbfs })) },
     stems: { groups: Object.fromEntries(Object.entries(bus.groups).map(([g, x]) => [g, { tracks: x.tracks, clippedSamples: x.clippedSamples }])),
       masterBusRebuildMaxDiffLsb: bus.masterRebuildMaxDiffLsb, nullTest: nul,
       alignment: Object.fromEntries(Object.entries(groupPaths).map(([g, p]) => { const b = readFileSync(p); return [g, { frames: b.readUInt32LE(40) / 4, sampleRate: b.readUInt32LE(24), channels: b.readUInt16LE(22) }]; })) },
     loop,
-    ...measure({ slug, masterPath, masterPcm, trackPcm, groupPaths, project, bars: d.loop ? 16 : 19, probes: d.probes }),
+    ...measure({ slug, masterPath, masterPcm, trackPcm, groupPaths, project, bars: d.loop ? 16 : d.bars, probes: d.probes }),
   };
   if (!d.loop) {
     const ch = toCh(masterPcm);
@@ -411,6 +411,11 @@ const brief = (c) => ({
   shape: c.shape,
 });
 writeFileSync(join(RENDERS, 'summary.json'), JSON.stringify(summary, null, 1));
-if (!FAST && slugs.length === Object.keys(DELIVERABLES).length) writeFileSync(join(DIRS.analysis, 'summary.json'), JSON.stringify(summary, null, 1) + '\n');
+// A partial run merges into the existing summary; manifest-final.mjs checks that every entry
+// still matches its project file.
+if (!FAST) {
+  const path = join(DIRS.analysis, 'summary.json'), prev = existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : {};
+  writeFileSync(path, JSON.stringify({ ...prev, ...summary }, null, 1) + '\n');
+}
 console.log(JSON.stringify({ referenceAc01: { ...summary.referenceAc01, hookHeadUnmaskedByBar: summary.referenceAc01.hookHeadUnmaskedByBar.map((x) => x.unmaskedShare) },
   ...Object.fromEntries(slugs.map((s) => [s, brief(summary[s])])) }, null, 1));
