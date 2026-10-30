@@ -1,0 +1,896 @@
+{
+ "slug": "ac-01-groove-first",
+ "project": "experiments/thingmania-ost/hybrid-ac/ac-01-groove-first.json",
+ "x4Project": "experiments/thingmania-ost/hybrid-ac/ac-01-groove-first-x4.json",
+ "engineVersion": "0.7.0",
+ "validation": [
+  {
+   "project": "experiments/thingmania-ost/hybrid-ac/ac-01-groove-first.json",
+   "ok": true,
+   "warnings": []
+  },
+  {
+   "project": "experiments/thingmania-ost/hybrid-ac/ac-01-groove-first-x4.json",
+   "ok": true,
+   "warnings": []
+  }
+ ],
+ "duration": {
+  "frames": 798210,
+  "seconds": 18.1,
+  "bars": 8,
+  "bpm": 106.0773,
+  "timeSignature": "4/4",
+  "expectedFrames": 798210,
+  "x4Frames": 3292616
+ },
+ "clipping": {
+  "masterFullScaleSamples": 0,
+  "masterClipping": false,
+  "peakDbfs": -1.379187,
+  "truePeakDbfs": -1.39,
+  "x4TruePeakDbfs": -1.39,
+  "x4FullScaleSamples": 0,
+  "warnings": [],
+  "mixClippedSamples": 0,
+  "trackStages": [
+   {
+    "trackId": "bass",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -2.396157
+   },
+   {
+    "trackId": "bass-grit",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -3.993348
+   },
+   {
+    "trackId": "whistle",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -11.295246
+   },
+   {
+    "trackId": "whistle-dry",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -11.800289
+   },
+   {
+    "trackId": "clav",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -7.258531
+   },
+   {
+    "trackId": "kick",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -4.512559
+   },
+   {
+    "trackId": "snare",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -8.110656
+   },
+   {
+    "trackId": "drum-crunch",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -8.910457
+   },
+   {
+    "trackId": "hats",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -15.353629
+   },
+   {
+    "trackId": "voice",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -10.625627
+   },
+   {
+    "trackId": "kettle",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -18.070147
+   },
+   {
+    "trackId": "choir",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -12.020808
+   },
+   {
+    "trackId": "ding",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -18.43715
+   }
+  ]
+ },
+ "loudness": {
+  "integratedLufs": -16.4,
+  "loudnessRangeLu": 0.6,
+  "p90MomentaryLufs": -15.4,
+  "x4IntegratedLufs": -16.47
+ },
+ "stereo": {
+  "correlation": 0.98,
+  "sideEnergyFraction": 0.0102,
+  "above300Hz": {
+   "correlation": 0.942,
+   "sideEnergyFraction": 0.0299
+  },
+  "monoFoldLufs": -16.5,
+  "monoFoldChangeLu": -0.1
+ },
+ "phoneProxy": {
+  "method": "two 2-pole high-passes at 300 Hz, then mono fold",
+  "lufs": -19.4,
+  "changeLu": -3,
+  "masterBandShares": {
+   "sub<120": 0.539,
+   "lowmid120-500": 0.204,
+   "mid500-2k": 0.204,
+   "upper2k-6k": 0.04,
+   "high>6k": 0.013
+  }
+ },
+ "stems": {
+  "bass": {
+   "integratedLufs": -17,
+   "p90MomentaryLufs": -15.2,
+   "phoneIntegratedLufs": -26.4,
+   "phoneP90MomentaryLufs": -24.8
+  },
+  "bass-grit": {
+   "integratedLufs": -19.1,
+   "p90MomentaryLufs": -17,
+   "phoneIntegratedLufs": -20.5,
+   "phoneP90MomentaryLufs": -18.4
+  },
+  "whistle": {
+   "integratedLufs": -17.9,
+   "p90MomentaryLufs": -16,
+   "phoneIntegratedLufs": -18.1,
+   "phoneP90MomentaryLufs": -16.4
+  },
+  "whistle-dry": {
+   "integratedLufs": -18.2,
+   "p90MomentaryLufs": -16,
+   "phoneIntegratedLufs": -18.4,
+   "phoneP90MomentaryLufs": -16.1
+  },
+  "clav": {
+   "integratedLufs": -27.6,
+   "p90MomentaryLufs": -25.4,
+   "phoneIntegratedLufs": -29.5,
+   "phoneP90MomentaryLufs": -27.3
+  },
+  "kick": {
+   "integratedLufs": -15,
+   "p90MomentaryLufs": -12.3,
+   "phoneIntegratedLufs": -36.6,
+   "phoneP90MomentaryLufs": -35.2
+  },
+  "snare": {
+   "integratedLufs": -21.9,
+   "p90MomentaryLufs": -18.9,
+   "phoneIntegratedLufs": -23.8,
+   "phoneP90MomentaryLufs": -20.8
+  },
+  "drum-crunch": {
+   "integratedLufs": -21.9,
+   "p90MomentaryLufs": -20,
+   "phoneIntegratedLufs": -24.3,
+   "phoneP90MomentaryLufs": -21.7
+  },
+  "hats": {
+   "integratedLufs": -31.1,
+   "p90MomentaryLufs": -29.5,
+   "phoneIntegratedLufs": -31.7,
+   "phoneP90MomentaryLufs": -30.1
+  },
+  "voice": {
+   "integratedLufs": -21.3,
+   "p90MomentaryLufs": -18.7,
+   "phoneIntegratedLufs": -22.2,
+   "phoneP90MomentaryLufs": -20.1
+  },
+  "kettle": {
+   "integratedLufs": -28.3,
+   "p90MomentaryLufs": -24.8,
+   "phoneIntegratedLufs": -31.5,
+   "phoneP90MomentaryLufs": -28.5
+  },
+  "choir": {
+   "integratedLufs": -20.9,
+   "p90MomentaryLufs": -19.6,
+   "phoneIntegratedLufs": -23,
+   "phoneP90MomentaryLufs": -21.2
+  },
+  "ding": {
+   "integratedLufs": -27,
+   "p90MomentaryLufs": -23.8,
+   "phoneIntegratedLufs": -27.8,
+   "phoneP90MomentaryLufs": -24.6
+  }
+ },
+ "separation": {
+  "method": "per 2048-sample frame and third-octave band (100 Hz-12.5 kHz) on mono stems; a part is active within 30 dB (conflict: 25 dB) of its loudest frame",
+  "whistleUnmasked": {
+   "parts": [
+    "whistle",
+    "whistle-dry"
+   ],
+   "activeSeconds": 7.66,
+   "unmaskedShare": 0.993
+  },
+  "appliancesUnmasked": {
+   "parts": [
+    "voice",
+    "kettle",
+    "choir"
+   ],
+   "activeSeconds": 4.78,
+   "unmaskedShare": 0.838
+  },
+  "bassUnmasked": {
+   "parts": [
+    "bass",
+    "bass-grit"
+   ],
+   "activeSeconds": 13.31,
+   "unmaskedShare": 0.918
+  },
+  "whistleVsAppliances": {
+   "a": [
+    "whistle",
+    "whistle-dry"
+   ],
+   "b": [
+    "voice",
+    "kettle",
+    "choir"
+   ],
+   "aOnlySeconds": 7.31,
+   "bOnlySeconds": 4.55,
+   "simultaneousSeconds": 0.07,
+   "simultaneousShareOfB": 0.015,
+   "contestedShareOfAWhenSimultaneous": 0
+  },
+  "centroidHz": {
+   "bass": 408,
+   "bass-grit": 690,
+   "whistle": 1135,
+   "whistle-dry": 1191,
+   "clav": 903,
+   "kick": 136,
+   "snare": 2467,
+   "drum-crunch": 1630,
+   "hats": 10527,
+   "voice": 765,
+   "kettle": 593,
+   "choir": 894,
+   "ding": 3182
+  }
+ },
+ "masterCompressor": {
+  "method": "master vs sum of pre-master stems x master gain, 300 Hz-5 kHz, 50 ms windows; makeup gain removed",
+  "windows": 357,
+  "gainReductionDb": {
+   "median": 3.05,
+   "p95": 4.46,
+   "max": 5.41,
+   "mean": 2.6,
+   "stdDev": 1.45
+  }
+ },
+ "loop": {
+  "seamlessWrapJump": 0.14432,
+  "meanAdjacentStep": 0.01615,
+  "continuousMaxStepNearSameBoundary": 0.15689,
+  "naiveExactLoopWrapJump": 0.18317,
+  "naiveExactLoopFirst500msMissingTailDb": -14.08,
+  "cycle2VsCycle3BitIdentical": true,
+  "seamlessWav": "experiments/thingmania-ost/hybrid-ac/loops/ac-01-groove-first-loop-seamless.wav"
+ },
+ "variety": {
+  "bars": 8,
+  "distinctBars": 6,
+  "meanPairCorrelation": 0.501,
+  "matrix": [
+   [
+    1,
+    0.274,
+    0.911,
+    0.274,
+    0.908,
+    0.035,
+    0.959,
+    0.328
+   ],
+   [
+    0.274,
+    1,
+    0.424,
+    1,
+    0.426,
+    0.614,
+    0.356,
+    0.459
+   ],
+   [
+    0.911,
+    0.424,
+    1,
+    0.425,
+    1,
+    0.109,
+    0.969,
+    0.442
+   ],
+   [
+    0.274,
+    1,
+    0.425,
+    1,
+    0.426,
+    0.614,
+    0.357,
+    0.459
+   ],
+   [
+    0.908,
+    0.426,
+    1,
+    0.426,
+    1,
+    0.109,
+    0.966,
+    0.445
+   ],
+   [
+    0.035,
+    0.614,
+    0.109,
+    0.614,
+    0.109,
+    1,
+    0.083,
+    0.274
+   ],
+   [
+    0.959,
+    0.356,
+    0.969,
+    0.357,
+    0.966,
+    0.083,
+    1,
+    0.375
+   ],
+   [
+    0.328,
+    0.459,
+    0.442,
+    0.459,
+    0.445,
+    0.274,
+    0.375,
+    1
+   ]
+  ]
+ },
+ "determinism": {
+  "master": true,
+  "stems": true
+ },
+ "probes": [
+  {
+   "label": "bar 3: DEE (A#4) rides the bass bend up to B",
+   "stem": "voice",
+   "reference": "A#4",
+   "points": [
+    {
+     "seconds": 6.2269,
+     "hz": 470.3,
+     "cents": 15,
+     "clarity": 0.974
+    },
+    {
+     "seconds": 6.2519,
+     "hz": 481.78,
+     "cents": 57,
+     "clarity": 0.99
+    },
+    {
+     "seconds": 6.2819,
+     "hz": 493.17,
+     "cents": 97,
+     "clarity": 0.993
+    },
+    {
+     "seconds": 6.3419,
+     "hz": 494.03,
+     "cents": 101,
+     "clarity": 0.995
+    }
+   ]
+  },
+  {
+   "label": "bar 3: bass Bb1 -> B1 bend under it",
+   "stem": "bass",
+   "reference": "Bb1",
+   "points": [
+    {
+     "seconds": 6.2219,
+     "hz": 59.69,
+     "cents": 42,
+     "clarity": 0.855
+    },
+    {
+     "seconds": 6.2519,
+     "hz": 61.08,
+     "cents": 82,
+     "clarity": 0.982
+    },
+    {
+     "seconds": 6.2819,
+     "hz": 61.79,
+     "cents": 102,
+     "clarity": 0.998
+    },
+    {
+     "seconds": 6.3419,
+     "hz": 61.79,
+     "cents": 102,
+     "clarity": 0.999
+    }
+   ]
+  },
+  {
+   "label": "bar 4: the whistle borrows the bend (A#5 -> B5)",
+   "stem": "whistle",
+   "reference": "A#5",
+   "points": [
+    {
+     "seconds": 7.9288,
+     "hz": 997.88,
+     "cents": 118,
+     "clarity": 0.874
+    },
+    {
+     "seconds": 7.9788,
+     "hz": 959.89,
+     "cents": 50,
+     "clarity": 0.998
+    },
+    {
+     "seconds": 8.0788,
+     "hz": 989.86,
+     "cents": 104,
+     "clarity": 0.992
+    },
+    {
+     "seconds": 8.2188,
+     "hz": 983.96,
+     "cents": 93,
+     "clarity": 0.992
+    }
+   ]
+  },
+  {
+   "label": "bar 5: kettle F4 -> F#4 a fourth under the DEE",
+   "stem": "kettle",
+   "reference": "F4",
+   "points": [
+    {
+     "seconds": 10.7549,
+     "hz": 353.47,
+     "cents": 21,
+     "clarity": 0.988
+    },
+    {
+     "seconds": 10.8669,
+     "hz": 370.61,
+     "cents": 103,
+     "clarity": 0.998
+    }
+   ]
+  },
+  {
+   "label": "bar 6: tag at double speed into the hole (E4 G4 A#4 B4)",
+   "stem": "voice",
+   "reference": "E4",
+   "points": [
+    {
+     "seconds": 12.4837,
+     "hz": 328.32,
+     "cents": -7,
+     "clarity": 0.991
+    },
+    {
+     "seconds": 12.644,
+     "hz": 391.52,
+     "cents": 298,
+     "clarity": 0.954
+    },
+    {
+     "seconds": 12.7866,
+     "hz": 466.31,
+     "cents": 601,
+     "clarity": 0.992
+    },
+    {
+     "seconds": 13.0894,
+     "hz": 491.88,
+     "cents": 693,
+     "clarity": 0.991
+    }
+   ]
+  },
+  {
+   "label": "bar 8: choir slip chord holds, then sags one semitone (G4 C5 D5 -> F#4 B4 C#5)",
+   "stem": "choir",
+   "tonesDb": [
+    {
+     "at": "hold",
+     "seconds": 17.129,
+     "G4": -53.2,
+     "C5": -46.7,
+     "D5": -44.7,
+     "F#4": -87.4,
+     "B4": -77.2,
+     "C#5": -78.8
+    },
+    {
+     "at": "sag midpoint",
+     "seconds": 17.7844,
+     "G4": -63,
+     "C5": -60.6,
+     "D5": -63.5,
+     "F#4": -59.2,
+     "B4": -63,
+     "C#5": -57.5
+    },
+    {
+     "at": "downbeat arrival",
+     "seconds": 17.9774,
+     "G4": -68.5,
+     "C5": -76.1,
+     "D5": -71.3,
+     "F#4": -71,
+     "B4": -52.8,
+     "C#5": -50.9
+    }
+   ]
+  },
+  {
+   "label": "bar 8: bass F1 slides home to E1",
+   "stem": "bass",
+   "reference": "F1",
+   "points": [
+    {
+     "seconds": 17.8222,
+     "hz": 43.49,
+     "cents": -7,
+     "clarity": 0.909
+    },
+    {
+     "seconds": 17.9772,
+     "hz": 42.06,
+     "cents": -64,
+     "clarity": 0.997
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "name": "bar1",
+   "start": 0,
+   "end": 2.262494331,
+   "duration": 2.262494331,
+   "rms": 0.1249169058,
+   "peak": 0.8526000977,
+   "rmsDbfs": -18.06757564,
+   "peakDbfs": -1.385092439,
+   "bandRms": {
+    "sub": 0.09172782377,
+    "lowMid": 0.05715815489,
+    "mid": 0.05393719897,
+    "upperMid": 0.02737180874,
+    "high": 0.01588455164
+   },
+   "activity": {
+    "rmsRisesPerSecond": 0.8839801155
+   },
+   "stereo": {
+    "correlation": 0.9790283146,
+    "midRms": 0.1242552881,
+    "sideRms": 0.01283965397,
+    "sideEnergyFraction": 0.01056487111
+   },
+   "relativeToFirst": {
+    "rmsDb": 0,
+    "peakDb": 0,
+    "bandDb": {
+     "sub": 0,
+     "lowMid": 0,
+     "mid": 0,
+     "upperMid": 0,
+     "high": 0
+    },
+    "sideEnergyFractionDelta": 0
+   }
+  },
+  {
+   "name": "bar2",
+   "start": 2.262494331,
+   "end": 4.525011338,
+   "duration": 2.262517007,
+   "rms": 0.1313494124,
+   "peak": 0.8177490234,
+   "rmsDbfs": -17.63143731,
+   "peakDbfs": -1.747599317,
+   "bandRms": {
+    "sub": 0.09355141487,
+    "lowMid": 0.05733266685,
+    "mid": 0.06551299752,
+    "upperMid": 0.02631088491,
+    "high": 0.0147262713
+   },
+   "activity": {
+    "rmsRisesPerSecond": 1.325956884
+   },
+   "stereo": {
+    "correlation": 0.9793281629,
+    "midRms": 0.1306310642,
+    "sideRms": 0.01371835281,
+    "sideEnergyFraction": 0.01090806374
+   },
+   "relativeToFirst": {
+    "rmsDb": 0.4361383219,
+    "peakDb": -0.3625068788,
+    "bandDb": {
+     "sub": 0.1709854019,
+     "lowMid": 0.02647885264,
+     "mid": 1.688781633,
+     "upperMid": -0.3433608364,
+     "high": -0.6576432742
+    },
+    "sideEnergyFractionDelta": 0.00034319263
+   }
+  },
+  {
+   "name": "bar3",
+   "start": 4.525011338,
+   "end": 6.787505669,
+   "duration": 2.262494331,
+   "rms": 0.1240498746,
+   "peak": 0.829498291,
+   "rmsDbfs": -18.12807341,
+   "peakDbfs": -1.623690088,
+   "bandRms": {
+    "sub": 0.09238672264,
+    "lowMid": 0.06061229526,
+    "mid": 0.0479032764,
+    "upperMid": 0.02535538196,
+    "high": 0.01514533639
+   },
+   "activity": {
+    "rmsRisesPerSecond": 1.325970173
+   },
+   "stereo": {
+    "correlation": 0.9921970506,
+    "midRms": 0.123800175,
+    "sideRms": 0.00786689749,
+    "sideEnergyFraction": 0.004021743076
+   },
+   "relativeToFirst": {
+    "rmsDb": -0.06049777202,
+    "peakDb": -0.2385976497,
+    "bandDb": {
+     "sub": 0.0621694202,
+     "lowMid": 0.5096505832,
+     "mid": -1.030463414,
+     "upperMid": -0.6646667891,
+     "high": -0.4139207413
+    },
+    "sideEnergyFractionDelta": -0.006543128034
+   }
+  },
+  {
+   "name": "bar4",
+   "start": 6.787505669,
+   "end": 9.05,
+   "duration": 2.262494331,
+   "rms": 0.1313312011,
+   "peak": 0.8196411133,
+   "rmsDbfs": -17.63264168,
+   "peakDbfs": -1.727525309,
+   "bandRms": {
+    "sub": 0.09379790445,
+    "lowMid": 0.0575031545,
+    "mid": 0.06496407967,
+    "upperMid": 0.02632392711,
+    "high": 0.01473745391
+   },
+   "activity": {
+    "rmsRisesPerSecond": 1.325970173
+   },
+   "stereo": {
+    "correlation": 0.9811581805,
+    "midRms": 0.1306809415,
+    "sideRms": 0.01305281263,
+    "sideEnergyFraction": 0.009878076274
+   },
+   "relativeToFirst": {
+    "rmsDb": 0.4349339594,
+    "peakDb": -0.3424328707,
+    "bandDb": {
+     "sub": 0.1938409162,
+     "lowMid": 0.0522693766,
+     "mid": 1.615698021,
+     "upperMid": -0.3390563425,
+     "high": -0.6510500196
+    },
+    "sideEnergyFractionDelta": -0.000686794836
+   }
+  },
+  {
+   "name": "bar5",
+   "start": 9.05,
+   "end": 11.31249433,
+   "duration": 2.262494331,
+   "rms": 0.124549262,
+   "peak": 0.8296203613,
+   "rmsDbfs": -18.09317683,
+   "peakDbfs": -1.622411952,
+   "bandRms": {
+    "sub": 0.09219758585,
+    "lowMid": 0.06186373042,
+    "mid": 0.04800141297,
+    "upperMid": 0.02531297735,
+    "high": 0.01509639393
+   },
+   "activity": {
+    "rmsRisesPerSecond": 1.325970173
+   },
+   "stereo": {
+    "correlation": 0.9893857351,
+    "midRms": 0.12421576,
+    "sideRms": 0.00910843726,
+    "sideEnergyFraction": 0.005348172735
+   },
+   "relativeToFirst": {
+    "rmsDb": -0.02560119324,
+    "peakDb": -0.2373195143,
+    "bandDb": {
+     "sub": 0.0443691871,
+     "lowMid": 0.6871580739,
+     "mid": -1.012687355,
+     "upperMid": -0.6792053237,
+     "high": -0.442034819
+    },
+    "sideEnergyFractionDelta": -0.005216698375
+   }
+  },
+  {
+   "name": "bar6",
+   "start": 11.31249433,
+   "end": 13.57501134,
+   "duration": 2.262517007,
+   "rms": 0.124076665,
+   "peak": 0.7489013672,
+   "rmsDbfs": -18.12619777,
+   "peakDbfs": -2.511507531,
+   "bandRms": {
+    "sub": 0.08803117543,
+    "lowMid": 0.05926065054,
+    "mid": 0.05808675481,
+    "upperMid": 0.02387334542,
+    "high": 0.01334762672
+   },
+   "activity": {
+    "rmsRisesPerSecond": 0.8839712559
+   },
+   "stereo": {
+    "correlation": 0.9793982942,
+    "midRms": 0.1234358005,
+    "sideRms": 0.01259451996,
+    "sideEnergyFraction": 0.01030345823
+   },
+   "relativeToFirst": {
+    "rmsDb": -0.05862212858,
+    "peakDb": -1.126415093,
+    "bandDb": {
+     "sub": -0.3572917854,
+     "lowMid": 0.3137642741,
+     "mid": 0.6437744956,
+     "upperMid": -1.187804298,
+     "high": -1.511418164
+    },
+    "sideEnergyFractionDelta": -0.00026141288
+   }
+  },
+  {
+   "name": "bar7",
+   "start": 13.57501134,
+   "end": 15.83750567,
+   "duration": 2.262494331,
+   "rms": 0.1246288732,
+   "peak": 0.8293457031,
+   "rmsDbfs": -18.08762663,
+   "peakDbfs": -1.625288022,
+   "bandRms": {
+    "sub": 0.09290330555,
+    "lowMid": 0.05688836339,
+    "mid": 0.05257235608,
+    "upperMid": 0.02564683274,
+    "high": 0.01523143721
+   },
+   "activity": {
+    "rmsRisesPerSecond": 1.325970173
+   },
+   "stereo": {
+    "correlation": 0.9870004422,
+    "midRms": 0.1242173221,
+    "sideRms": 0.01011992799,
+    "sideEnergyFraction": 0.006593522718
+   },
+   "relativeToFirst": {
+    "rmsDb": -0.02005099422,
+    "peakDb": -0.2401955838,
+    "bandDb": {
+     "sub": 0.110601533,
+     "lowMid": -0.04109522326,
+     "mid": -0.2226189689,
+     "upperMid": -0.5653951444,
+     "high": -0.3646815276
+    },
+    "sideEnergyFractionDelta": -0.003971348392
+   }
+  },
+  {
+   "name": "bar8",
+   "start": 15.83750567,
+   "end": 18.1,
+   "duration": 2.262494331,
+   "rms": 0.1280141506,
+   "peak": 0.8165588379,
+   "rmsDbfs": -17.85484042,
+   "peakDbfs": -1.760250326,
+   "bandRms": {
+    "sub": 0.09189056249,
+    "lowMid": 0.05433550742,
+    "mid": 0.06627944135,
+    "upperMid": 0.02155535193,
+    "high": 0.01081530135
+   },
+   "activity": {
+    "rmsRisesPerSecond": 0
+   },
+   "stereo": {
+    "correlation": 0.9480080696,
+    "midRms": 0.1263353902,
+    "sideRms": 0.02066378331,
+    "sideEnergyFraction": 0.02605575848
+   },
+   "relativeToFirst": {
+    "rmsDb": 0.2127352148,
+    "peakDb": -0.3751578878,
+    "bandDb": {
+     "sub": 0.01539639859,
+     "lowMid": -0.4398894768,
+     "mid": 1.789809,
+     "upperMid": -2.074967576,
+     "high": -3.338726721
+    },
+    "sideEnergyFractionDelta": 0.01549088737
+   }
+  }
+ ],
+ "hashes": {
+  "masterWav": "f29d28d52725aedc9c22ca824405a36b3e053fb74fea49348e57c2a44e1a3196",
+  "seamlessLoopWav": "af15f398004ef0a34f69e907dad6d1575e50750b7ee3bcc08e4bfd17f5499552",
+  "x4Wav": "6eb4962c801196432daeec3bf5204d9e02051b2694b3df7061aae6812ecfee61",
+  "x4Mp3": "d2f268d9775ccaea13f3274e537e72f177eac82300b9312b531a5faabbafcb0b",
+  "project": "b86b1b16518345ffd591d16a3f71bc40e5ce551be9db22f9c3ca491e597a90ac",
+  "x4Project": "2fd5da719685548cd172ad858f0b98310e47b6878039b7aed13fa2ca57318043"
+ }
+}

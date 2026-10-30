@@ -1,0 +1,390 @@
+{
+ "slug": "sock-slide",
+ "project": "experiments/thingmania-ost/a-sock-slide/sock-slide.json",
+ "x4Project": "experiments/thingmania-ost/a-sock-slide/sock-slide-x4.json",
+ "engineVersion": "0.7.0",
+ "validation": [
+  {
+   "project": "experiments/thingmania-ost/a-sock-slide/sock-slide.json",
+   "ok": true,
+   "warnings": []
+  },
+  {
+   "project": "experiments/thingmania-ost/a-sock-slide/sock-slide-x4.json",
+   "ok": true,
+   "warnings": []
+  }
+ ],
+ "duration": {
+  "frames": 399105,
+  "seconds": 9.05,
+  "bars": 4,
+  "bpm": 106.0773,
+  "timeSignature": "4/4",
+  "expectedFrames": 399105,
+  "x4Frames": 1696196
+ },
+ "clipping": {
+  "masterFullScaleSamples": 0,
+  "masterClipping": false,
+  "peakDbfs": -1.366459,
+  "truePeakDbfs": -1.35,
+  "x4TruePeakDbfs": -1.35,
+  "x4FullScaleSamples": 0,
+  "warnings": [],
+  "mixClippedSamples": 0,
+  "trackStages": [
+   {
+    "trackId": "bass",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -2.396157
+   },
+   {
+    "trackId": "bass-grit",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -4.697693
+   },
+   {
+    "trackId": "whistle",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -12.295246
+   },
+   {
+    "trackId": "clav",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -7.758531
+   },
+   {
+    "trackId": "kick",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -4.512559
+   },
+   {
+    "trackId": "snare",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -8.556296
+   },
+   {
+    "trackId": "hats",
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -15.853629
+   }
+  ]
+ },
+ "loudness": {
+  "integratedLufs": -16.4,
+  "loudnessRangeLu": 0.5,
+  "p90MomentaryLufs": -15.3,
+  "x4IntegratedLufs": -16.5
+ },
+ "stereo": {
+  "correlation": 0.992,
+  "sideEnergyFraction": 0.0041,
+  "above300Hz": {
+   "correlation": 0.972,
+   "sideEnergyFraction": 0.0149
+  },
+  "monoFoldLufs": -16.5,
+  "monoFoldChangeLu": -0.1
+ },
+ "phoneProxy": {
+  "method": "two 2-pole high-passes at 300 Hz, then mono fold",
+  "lufs": -19.9,
+  "changeLu": -3.5,
+  "masterBandShares": {
+   "sub<120": 0.647,
+   "lowmid120-500": 0.129,
+   "mid500-2k": 0.198,
+   "upper2k-6k": 0.015,
+   "high>6k": 0.012
+  }
+ },
+ "stems": {
+  "bass": {
+   "integratedLufs": -17,
+   "p90MomentaryLufs": -15.4,
+   "phoneIntegratedLufs": -26.4,
+   "phoneP90MomentaryLufs": -25
+  },
+  "bass-grit": {
+   "integratedLufs": -20.7,
+   "p90MomentaryLufs": -18.8,
+   "phoneIntegratedLufs": -22,
+   "phoneP90MomentaryLufs": -20.2
+  },
+  "whistle": {
+   "integratedLufs": -17.6,
+   "p90MomentaryLufs": -15.9,
+   "phoneIntegratedLufs": -17.8,
+   "phoneP90MomentaryLufs": -16.1
+  },
+  "clav": {
+   "integratedLufs": -26.8,
+   "p90MomentaryLufs": -24.8,
+   "phoneIntegratedLufs": -28.1,
+   "phoneP90MomentaryLufs": -26.1
+  },
+  "kick": {
+   "integratedLufs": -15.2,
+   "p90MomentaryLufs": -12.5,
+   "phoneIntegratedLufs": -36.7,
+   "phoneP90MomentaryLufs": -35.2
+  },
+  "snare": {
+   "integratedLufs": -22.1,
+   "p90MomentaryLufs": -18.9,
+   "phoneIntegratedLufs": -24,
+   "phoneP90MomentaryLufs": -20.8
+  },
+  "hats": {
+   "integratedLufs": -30.4,
+   "p90MomentaryLufs": -27.2,
+   "phoneIntegratedLufs": -30.5,
+   "phoneP90MomentaryLufs": -27.3
+  }
+ },
+ "separation": {
+  "method": "per 2048-sample frame and third-octave band (100 Hz-12.5 kHz) on mono stems; a part is active within 30 dB (conflict: 25 dB) of its loudest frame",
+  "whistleUnmasked": {
+   "parts": [
+    "whistle"
+   ],
+   "activeSeconds": 5.25,
+   "unmaskedShare": 0.993
+  },
+  "appliancesUnmasked": null,
+  "bassUnmasked": {
+   "parts": [
+    "bass",
+    "bass-grit"
+   ],
+   "activeSeconds": 6.78,
+   "unmaskedShare": 0.93
+  },
+  "whistleVsAppliances": null,
+  "centroidHz": {
+   "bass": 407,
+   "bass-grit": 704,
+   "whistle": 1124,
+   "clav": 914,
+   "kick": 136,
+   "snare": 2463,
+   "hats": 10525
+  }
+ },
+ "masterCompressor": {
+  "method": "master vs sum of pre-master stems x master gain, 300 Hz-5 kHz, 50 ms windows; makeup gain removed",
+  "windows": 177,
+  "gainReductionDb": {
+   "median": 3.09,
+   "p95": 4.63,
+   "max": 5,
+   "mean": 2.73,
+   "stdDev": 1.39
+  }
+ },
+ "loop": {
+  "seamlessWrapJump": 0.09409,
+  "meanAdjacentStep": 0.01542,
+  "continuousMaxStepNearSameBoundary": 0.20486,
+  "naiveExactLoopWrapJump": 0.10944,
+  "naiveExactLoopFirst500msMissingTailDb": -18.64,
+  "cycle2VsCycle3BitIdentical": true,
+  "seamlessWav": "experiments/thingmania-ost/hybrid-ac/renders/sock-slide/sock-slide-loop-seamless.wav"
+ },
+ "variety": {
+  "bars": 4,
+  "distinctBars": 3,
+  "meanPairCorrelation": 0.458,
+  "matrix": [
+   [
+    1,
+    0.287,
+    0.998,
+    0.347
+   ],
+   [
+    0.287,
+    1,
+    0.29,
+    0.477
+   ],
+   [
+    0.998,
+    0.29,
+    1,
+    0.347
+   ],
+   [
+    0.347,
+    0.477,
+    0.347,
+    1
+   ]
+  ]
+ },
+ "determinism": null,
+ "probes": [],
+ "sections": [
+  {
+   "name": "bar1",
+   "start": 0,
+   "end": 2.262494331,
+   "duration": 2.262494331,
+   "rms": 0.1314388375,
+   "peak": 0.8325195313,
+   "rmsDbfs": -17.62552582,
+   "peakDbfs": -1.59211138,
+   "bandRms": {
+    "sub": 0.1079294057,
+    "lowMid": 0.05015673356,
+    "mid": 0.05054896678,
+    "upperMid": 0.01691084721,
+    "high": 0.01594253879
+   },
+   "activity": {
+    "rmsRisesPerSecond": 2.209950289
+   },
+   "stereo": {
+    "correlation": 0.9940436104,
+    "midRms": 0.13124045,
+    "sideRms": 0.007218884134,
+    "sideEnergyFraction": 0.003016426337
+   },
+   "relativeToFirst": {
+    "rmsDb": 0,
+    "peakDb": 0,
+    "bandDb": {
+     "sub": 0,
+     "lowMid": 0,
+     "mid": 0,
+     "upperMid": 0,
+     "high": 0
+    },
+    "sideEnergyFractionDelta": 0
+   }
+  },
+  {
+   "name": "bar2",
+   "start": 2.262494331,
+   "end": 4.525011338,
+   "duration": 2.262517007,
+   "rms": 0.137775033,
+   "peak": 0.7768859863,
+   "rmsDbfs": -17.21658953,
+   "peakDbfs": -2.192854248,
+   "bandRms": {
+    "sub": 0.1088134245,
+    "lowMid": 0.05001889188,
+    "mid": 0.06403366342,
+    "upperMid": 0.01706793635,
+    "high": 0.01522884584
+   },
+   "activity": {
+    "rmsRisesPerSecond": 1.325956884
+   },
+   "stereo": {
+    "correlation": 0.9894669439,
+    "midRms": 0.137405082,
+    "sideRms": 0.01008975502,
+    "sideEnergyFraction": 0.00536315311
+   },
+   "relativeToFirst": {
+    "rmsDb": 0.4089362872,
+    "peakDb": -0.6007428693,
+    "bandDb": {
+     "sub": 0.07085385299,
+     "lowMid": -0.02390358673,
+     "mid": 2.053921317,
+     "upperMid": 0.08031297837,
+     "high": -0.3978098394
+    },
+    "sideEnergyFractionDelta": 0.002346726773
+   }
+  },
+  {
+   "name": "bar3",
+   "start": 4.525011338,
+   "end": 6.787505669,
+   "duration": 2.262494331,
+   "rms": 0.1313490156,
+   "peak": 0.8504943848,
+   "rmsDbfs": -17.63146355,
+   "peakDbfs": -1.406570988,
+   "bandRms": {
+    "sub": 0.1085279519,
+    "lowMid": 0.04931320306,
+    "mid": 0.04993987521,
+    "upperMid": 0.01673771084,
+    "high": 0.01590010344
+   },
+   "activity": {
+    "rmsRisesPerSecond": 2.209950289
+   },
+   "stereo": {
+    "correlation": 0.9945289089,
+    "midRms": 0.1311663661,
+    "sideRms": 0.006924470783,
+    "sideEnergyFraction": 0.002779198263
+   },
+   "relativeToFirst": {
+    "rmsDb": -0.005937741274,
+    "peakDb": 0.1855403915,
+    "bandDb": {
+     "sub": 0.04803643124,
+     "lowMid": -0.1473206623,
+     "mid": -0.1052966049,
+     "upperMid": -0.08938609921,
+     "high": -0.02315065329
+    },
+    "sideEnergyFractionDelta": -0.000237228074
+   }
+  },
+  {
+   "name": "bar4",
+   "start": 6.787505669,
+   "end": 9.05,
+   "duration": 2.262494331,
+   "rms": 0.138195319,
+   "peak": 0.8544311523,
+   "rmsDbfs": -17.19013334,
+   "peakDbfs": -1.366458515,
+   "bandRms": {
+    "sub": 0.1052050763,
+    "lowMid": 0.04916069576,
+    "mid": 0.07226835738,
+    "upperMid": 0.01559261088,
+    "high": 0.01126079658
+   },
+   "activity": {
+    "rmsRisesPerSecond": 0.8839801155
+   },
+   "stereo": {
+    "correlation": 0.9900747497,
+    "midRms": 0.1378476027,
+    "sideRms": 0.009797174199,
+    "sideEnergyFraction": 0.005025913324
+   },
+   "relativeToFirst": {
+    "rmsDb": 0.435392467,
+    "peakDb": 0.2256528633,
+    "bandDb": {
+     "sub": -0.2220618001,
+     "lowMid": -0.1742244947,
+     "mid": 3.10471801,
+     "upperMid": -0.7049304933,
+     "high": -3.019767382
+    },
+    "sideEnergyFractionDelta": 0.002009486987
+   }
+  }
+ ],
+ "hashes": {
+  "masterWav": "712e40a3cc3de933751d0aea7be28ba1d00b909613b401fea38c866edf052f23",
+  "seamlessLoopWav": "a6b800df798886a32fa536c51b507679453f0f2f65a4244d70247650292d1662",
+  "x4Wav": "72c7190d5668404e68b854dffa087742ca5f9d99b7b6bd2fa1ebd177c7eb2e63",
+  "x4Mp3": "e15a2371f29fdce0ba046d2d1dd8587d9f0a772002d993fb92b942aab02c53f2",
+  "project": "0d368310349e0200904c46069f32f748951f515cf2e743f62fbcba588b7c6492",
+  "x4Project": "72e9f845c9a8e8e6f9f77362edec97f30e02739b7a4542c6afbe99ce5de38c22"
+ }
+}
