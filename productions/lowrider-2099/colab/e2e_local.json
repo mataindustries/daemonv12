@@ -1,0 +1,87 @@
+{
+ "ok": true,
+ "steps": [
+  {
+   "step": "no budget: proof refuses for lack of a measurement",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "no budget: GPU test refuses",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "one-frame test measures build and per-frame time",
+   "ok": true,
+   "detail": "{\"key\": \"382f4ec13c5961f1184a942329904d95cd0cf048418601c161ef193b72509dd9\", \"buildSeconds\": 49.7, \"secondsPerFrame\": 7.9, \"device\": \"CPU (local)\"}"
+  },
+  {
+   "step": "keyed proof render writes its frames",
+   "ok": true,
+   "detail": "1b296cf95d36: ['frame_0000.png', 'frame_0400.png']"
+  },
+  {
+   "step": "render is charged to the ledger",
+   "ok": true,
+   "detail": "spent 2.09 of 10.0 min"
+  },
+  {
+   "step": "rerun reuses the same keyed frames",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "a settings change changes the key",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "an identical copy keeps the key; a one-character spec edit changes it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "an estimate over the remaining budget is refused",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "animatic refuses before GATE 03 approval",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "step": "animatic MP4 has picture and soundtrack",
+   "ok": true,
+   "detail": "angeles2099-crest-animatic.mp4: 1.000000 s, [('video', 'h264'), ('audio', 'aac')]"
+  }
+ ],
+ "status": {
+  "approvedMinutes": 60.0,
+  "approver": "e2e test",
+  "approvedAt": "2026-10-31 08:21:46",
+  "spent": [
+   {
+    "what": "GPU test, 1 frame",
+    "minutes": 0.96,
+    "key": "382f4ec13c59",
+    "at": "2026-10-31 08:20:38"
+   },
+   {
+    "what": "GATE03: 2 frame(s)",
+    "minutes": 1.13,
+    "key": "1b296cf95d36",
+    "at": "2026-10-31 08:21:46"
+   },
+   {
+    "what": "animatic: 24 frames",
+    "minutes": 1.21,
+    "key": "15052cd296f4",
+    "at": "2026-10-31 08:23:00"
+   }
+  ],
+  "spentMinutes": 3.3,
+  "remainingMinutes": 56.7
+ }
+}

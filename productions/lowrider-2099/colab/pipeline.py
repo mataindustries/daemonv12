@@ -225,53 +225,221 @@ def validate_inputs(candidate=None):
 
 
 # ---------------------------------------------------------------------------------------------
-# cells 6-7: gated renders with an explicit GPU budget
+# GPU spend: content-keyed outputs, an owner budget, measured timings only
 # ---------------------------------------------------------------------------------------------
-def budget(n_frames, res, samples):
-    """Conservative T4 estimate, from the measured seconds per frame if a proof has run."""
+SAFETY = 1.25            # estimates are padded by 25 %
+TEST_ALLOWANCE_MIN = 6.0 # the one-frame GPU test may use at most this much of the budget
+
+
+def settings(kind):
+    """Render settings from config.json; in local mode only, LOWRIDER_TEST_OVERRIDES (JSON) may
+    shrink them so the full path can be exercised on a CPU in seconds."""
+    c = dict(CONFIG[kind])
+    if LOCAL and os.environ.get("LOWRIDER_TEST_OVERRIDES"):
+        c.update(json.loads(os.environ["LOWRIDER_TEST_OVERRIDES"]).get(kind, {}))
+    return c
+
+
+def source_commit():
+    r = subprocess.run(["git", "-C", str(PROD), "rev-parse", "HEAD"], capture_output=True, text=True)
+    return r.stdout.strip() or None
+
+
+def render_key(cand, gate, frames, res, samples, engine, root=None):
+    """SHA-256 over everything that changes pixels: the generator, every spec, the cue sheet,
+    config, the soundtrack hash, the frame list and render settings, and the Blender version.
+    Outputs live under renders/<gate>/<key[:12]>; change any input and the cache misses."""
+    root = Path(root) if root else PROD
+    h = hashlib.sha256()
+    files = [root / "blender" / "angeles2099.py", root / "colab" / "config.json", root / "visual" / "sync" / f"{cand}.cues.json"]
+    files += sorted((root / "visual" / "specs").glob("*.json"))
+    for f in files:
+        h.update(f.relative_to(root).as_posix().encode()); h.update(sha256(f).encode())
+    master = json.loads((root / "review" / "music" / f"{cand}.master.json").read_text())
+    blob = {"cand": cand, "gate": gate, "frames": list(frames), "res": list(res), "samples": samples, "engine": engine,
+            "soundtrack": master["wav"]["sha256"], "blender": CONFIG["pins"]["blenderVersion"]}
+    h.update(json.dumps(blob, sort_keys=True).encode())
+    return h.hexdigest()
+
+
+def _budget_path():
+    return paths()["drive"] / "budget.json"
+
+
+def budget_state():
+    p = _budget_path()
+    b = json.loads(p.read_text()) if p.exists() else {"approvedMinutes": 0.0, "spent": []}
+    b["spentMinutes"] = round(sum(x["minutes"] for x in b["spent"]), 2)
+    b["remainingMinutes"] = round(b["approvedMinutes"] - b["spentMinutes"], 2)
+    return b
+
+
+def set_budget(minutes, approver):
+    """Owner only: approve a total GPU-minute budget for this Drive folder. Every GPU render is
+    charged against it and refused when its padded estimate does not fit."""
+    if not approver or minutes <= 0:
+        say("No GPU budget approved: set APPROVED_GPU_MINUTES and APPROVER in this cell. Nothing will render on a GPU until then.")
+        return budget_state()
+    b = budget_state()
+    b.update({"approvedMinutes": float(minutes), "approver": approver, "approvedAt": time.strftime("%Y-%m-%d %H:%M:%S")})
+    _budget_path().parent.mkdir(parents=True, exist_ok=True)
+    _budget_path().write_text(json.dumps({k: b[k] for k in ("approvedMinutes", "approver", "approvedAt", "spent")}, indent=1) + "\n")
+    say(f"GPU budget: {minutes} min approved by {approver}; {budget_state()['remainingMinutes']} min remaining.")
+    return budget_state()
+
+
+def _charge(what, seconds, key):
+    b = budget_state()
+    b["spent"].append({"what": what, "minutes": round(seconds / 60, 2), "key": key[:12], "at": time.strftime("%Y-%m-%d %H:%M:%S")})
+    _budget_path().write_text(json.dumps({k: b[k] for k in ("approvedMinutes", "approver", "approvedAt", "spent") if k in b}, indent=1) + "\n")
+
+
+def _require(st, gpu=True):
+    if not st.get("validated"):
+        raise PipelineError("Inputs have not been validated in this Drive folder.", "Run the 'Validate' cell first.")
+    if gpu and not LOCAL and not st.get("gpu", {}).get("ok"):
+        raise PipelineError("No verified GPU in this runtime.", "Run the GPU cell.")
+
+
+def _blender(args, timeout):
+    p = paths()
+    py = install_blender() if LOCAL else p["python"]
+    t0 = time.time()
+    r = run([str(py), str(p["prod"] / "blender" / "angeles2099.py"), *args], timeout=timeout)
+    per = [float(l.rsplit(" in ", 1)[1].split(" s")[0]) for l in r.stdout.splitlines() if l.startswith("rendered frame")]
+    return time.time() - t0, per
+
+
+def _write_manifest(out, key, extra):
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "key.json").write_text(json.dumps({"key": key, "sourceCommit": source_commit(), **extra}, indent=1) + "\n")
+
+
+def gpu_frame_test(confirm=False):
+    """Render ONE frame on the GPU at the proof settings and measure scene build and per-frame
+    time separately. Every later estimate uses these numbers; nothing is assumed."""
     st = load_state()
-    per = st.get("measuredSecondsPerFrame", {}).get(f"{res[0]}x{res[1]}@{samples}")
-    if per is None:
-        px = res[0] * res[1] * samples
-        per = 25.0 + px / 360 / 640 / 32 * 35.0          # assumed until measured: ~60 s at 360x640, 32 spp
-        basis = "assumed (no measurement yet)"
-    else:
-        basis = "measured on this project"
-    total = n_frames * per + 120                         # + scene build per batch
-    say(f"GPU budget: {n_frames} frames at {res[0]}x{res[1]}, {samples} samples ~ {per:.0f} s/frame ({basis}) "
-        f"=> ~{total / 60:.1f} min of T4 time.")
-    return total
+    _require(st)
+    c = settings("gpuTest")
+    res, samples, frame = tuple(c["resolution"]), c["samples"], c["frame"]
+    cand = st["candidate"]
+    key = render_key(cand, "GPUTEST", [frame], res, samples, "CYCLES")
+    meas = st.get("measured", {}).get(f"{res[0]}x{res[1]}@{samples}")
+    if meas and meas.get("key") == key:
+        say(f"Already measured for these inputs: build {meas['buildSeconds']} s, {meas['secondsPerFrame']} s/frame ({meas['device']}).")
+        return meas
+    b = budget_state()
+    if not confirm:
+        say(f"Not running the GPU test: set CONFIRM = True. It renders frame {frame} at {res[0]}x{res[1]}, {samples} samples, "
+            f"and may use at most {TEST_ALLOWANCE_MIN} min of the approved budget ({b['remainingMinutes']} min remaining).")
+        return None
+    if b["remainingMinutes"] < TEST_ALLOWANCE_MIN:
+        raise PipelineError(f"The GPU budget has {b['remainingMinutes']} min left; the test needs {TEST_ALLOWANCE_MIN}.", "Ask the owner to approve a budget in the budget cell.")
+    out = paths()["renders"] / "GPUTEST" / key[:12]
+    wall, per = _blender(["--cand", cand, "--frames", str(frame), "--res", f"{res[0]}x{res[1]}", "--samples", str(samples),
+                          "--device", "CPU" if LOCAL else "GPU", "--out-dir", str(out)], timeout=1800)
+    device = "CPU (local)" if LOCAL else (st.get("gpu", {}).get("nvidiaSmi") or "GPU")
+    meas = {"key": key, "buildSeconds": round(wall - sum(per), 1), "secondsPerFrame": round(per[0], 1), "device": device}
+    m = st.get("measured", {}); m[f"{res[0]}x{res[1]}@{samples}"] = meas
+    save_state(measured=m)
+    _charge("GPU test, 1 frame", wall, key)
+    _write_manifest(out, key, {"kind": "gpu-test", "measured": meas})
+    say(f"Measured on {device}: scene build {meas['buildSeconds']} s, {meas['secondsPerFrame']} s per frame. Frame in {out}.")
+    return meas
+
+
+def estimate(n_frames, res, samples, quiet=False):
+    meas = load_state().get("measured", {}).get(f"{res[0]}x{res[1]}@{samples}")
+    if not meas:
+        return None
+    minutes = (meas["buildSeconds"] + n_frames * meas["secondsPerFrame"]) * SAFETY / 60
+    if not quiet:
+        say(f"Estimate: {n_frames} frame(s) at {res[0]}x{res[1]}, {samples} samples = build {meas['buildSeconds']} s + "
+            f"{n_frames} x {meas['secondsPerFrame']} s, +25 % => {minutes:.1f} min ({meas['device']}, measured).")
+    return minutes
 
 
 def render(gate, frames, res, samples, confirm=False):
     p, st = paths(), load_state()
-    if not st.get("validated"):
-        raise PipelineError("Inputs have not been validated in this Drive folder.", "Run the 'Validate' cell first.")
+    _require(st)
     if gate == "GATE04" and not st.get("gates", {}).get("GATE03"):
         raise PipelineError("GATE 04 needs the owner's GATE 03 approval.", "Review the five-frame proof, then record approval with approve('GATE03').")
-    if not LOCAL and not st.get("gpu", {}).get("ok"):
-        raise PipelineError("No verified GPU in this runtime.", "Run the GPU cell.")
-    budget(len(frames), res, samples)
-    out = p["renders"] / gate
+    cand = st["candidate"]
+    key = render_key(cand, gate, frames, res, samples, "CYCLES")
+    out = p["renders"] / gate / key[:12]
+    stale = [d.name for d in (p["renders"] / gate).glob("*") if d.is_dir() and d.name != key[:12]] if (p["renders"] / gate).exists() else []
+    if stale:
+        say(f"Ignoring stale {gate} renders from different inputs: {stale} (kept on Drive, never reused).")
     todo = [f for f in frames if not (out / f"frame_{f:04d}.png").exists()]
     if not todo:
-        say(f"All {len(frames)} frames already on Drive in {out} (kept). Nothing to do.")
+        say(f"All {len(frames)} frames for these exact inputs are already in {out}. Nothing to do.")
         return out
-    if not confirm:
-        say(f"Not rendering: set CONFIRM = True in this cell to spend the budget above on {len(todo)} frame(s).")
+    est = estimate(len(todo), res, samples)
+    if est is None:
+        msg = "No measured GPU timing for these settings yet."
+        if confirm:
+            raise PipelineError(msg, "Run the one-frame GPU test cell first; estimates are never assumed.")
+        say(f"Not rendering. {msg} Run the GPU test cell first.")
         return None
-    out.mkdir(parents=True, exist_ok=True)
-    py = install_blender() if LOCAL else p["python"]
-    device = "CPU" if LOCAL else "GPU"
-    t0 = time.time()
-    run([str(py), str(p["prod"] / "blender" / "angeles2099.py"), "--cand", st["candidate"], "--frames", ",".join(map(str, todo)),
-         "--res", f"{res[0]}x{res[1]}", "--samples", str(samples), "--device", device, "--out-dir", str(out)], timeout=6 * 3600)
-    per = (time.time() - t0) / len(todo)
-    m = st.get("measuredSecondsPerFrame", {})
-    m[f"{res[0]}x{res[1]}@{samples}"] = round(per, 1)
-    save_state(measuredSecondsPerFrame=m, **{f"{gate}Rendered": sorted(set(st.get(f"{gate}Rendered", [])) | set(todo))})
-    say(f"Rendered {len(todo)} frame(s) to {out} at {per:.0f} s/frame ({device}).")
+    b = budget_state()
+    if est > b["remainingMinutes"]:
+        msg = f"Estimated {est:.1f} min exceeds the remaining approved budget ({b['remainingMinutes']} of {b['approvedMinutes']} min)."
+        if confirm:
+            raise PipelineError(msg, "Ask the owner to approve more GPU minutes in the budget cell, or render fewer frames.")
+        say("Not rendering. " + msg)
+        return None
+    if not confirm:
+        say(f"Not rendering: set CONFIRM = True to spend ~{est:.1f} of the {b['remainingMinutes']} approved minutes on {len(todo)} frame(s).")
+        return None
+    wall, per = _blender(["--cand", cand, "--frames", ",".join(map(str, todo)), "--res", f"{res[0]}x{res[1]}", "--samples", str(samples),
+                          "--device", "CPU" if LOCAL else "GPU", "--out-dir", str(out)], timeout=6 * 3600)
+    _charge(f"{gate}: {len(todo)} frame(s)", wall, key)
+    _write_manifest(out, key, {"kind": gate, "frames": frames, "res": list(res), "samples": samples, "seconds": round(wall, 1)})
+    save_state(**{f"{gate}Rendered": sorted(set(st.get(f"{gate}Rendered", [])) | set(todo))})
+    say(f"Rendered {len(todo)} frame(s) to {out} in {wall / 60:.1f} min (estimate was {est:.1f}).")
     return out
+
+
+def animatic(confirm=False):
+    """GATE 04: the whole piece as a Workbench animatic with the soundtrack, as MP4 on Drive.
+    A layout check of timing, cameras and sync, not a look. Measured upper bound: 1.4 s/frame at
+    360x640 on 4 CPU cores with software OpenGL; a T4 is faster."""
+    p, st = paths(), load_state()
+    _require(st, gpu=False)
+    if not st.get("gates", {}).get("GATE03"):
+        raise PipelineError("The animatic (GATE 04) needs the owner's GATE 03 approval.", "Review the five-frame proof, then record approval in the approval cell.")
+    c = settings("animatic")
+    res, first, last, step = tuple(c["resolution"]), c.get("first", 0), c.get("last", CONFIG["frames"] - 1), c.get("step", 1)
+    frames = list(range(first, last + 1, step))
+    cand = st["candidate"]
+    key = render_key(cand, "ANIMATIC", frames, res, 0, "WORKBENCH")
+    out = p["renders"] / "ANIMATIC" / key[:12]
+    mp4 = out / f"angeles2099-{cand}-animatic.mp4"
+    if mp4.exists():
+        say(f"Animatic for these exact inputs already on Drive: {mp4}")
+        return mp4
+    est = (60 + len(frames) * 1.4) * SAFETY / 60                    # measured CPU upper bound until a T4 number exists
+    b = budget_state()
+    if not confirm:
+        say(f"Not rendering the animatic: set CONFIRM = True. {len(frames)} Workbench frames, at most ~{est:.0f} min "
+            f"(CPU-measured upper bound); {b['remainingMinutes']} min of budget remaining.")
+        return None
+    if est > b["remainingMinutes"] and not LOCAL:
+        raise PipelineError(f"Animatic upper bound {est:.0f} min exceeds the remaining budget ({b['remainingMinutes']} min).", "Ask the owner to approve more minutes.")
+    import ctypes.util
+    if not LOCAL and not ctypes.util.find_library("EGL"):
+        run(["apt-get", "install", "-y", "-qq", "libegl1"], timeout=600)   # Workbench renders headless through EGL
+    wall, per = _blender(["--cand", cand, "--animatic", str(out), "--res", f"{res[0]}x{res[1]}", "--first", str(first), "--last", str(last), "--step", str(step)], timeout=4 * 3600)
+    audio = p["prod"] / "review" / "music" / f"{cand}.mp3"
+    seq_fps = 24 / step
+    run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", f"{seq_fps}", "-start_number", str(first), "-i", str(out / "frame_%04d.png"),
+         "-ss", f"{first / 24:.6f}", "-i", str(audio), "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", "24", "-c:a", "aac", "-b:a", "192k",
+         "-shortest", str(mp4)], timeout=1800)
+    _charge(f"animatic: {len(frames)} frames", wall, key)
+    _write_manifest(out, key, {"kind": "animatic", "frames": [first, last, step], "res": list(res), "seconds": round(wall, 1),
+                               "medianSecondsPerFrame": sorted(per)[len(per) // 2] if per else None})
+    say(f"Animatic: {mp4} ({len(frames)} frames in {wall / 60:.1f} min).")
+    return mp4
 
 
 def approve(gate):
@@ -285,7 +453,15 @@ def approve(gate):
 
 def status():
     p, st = paths(), load_state()
-    say(json.dumps(st, indent=1))
+    b = budget_state()
+    say(f"Source commit: {source_commit()}")
+    say(f"GPU budget: {b['approvedMinutes']} min approved, {b['spentMinutes']} spent, {b['remainingMinutes']} remaining")
+    for e in b["spent"]:
+        say(f"  {e['at']}  {e['what']}: {e['minutes']} min")
+    say(f"Measured timings: {json.dumps(st.get('measured', {}))}")
+    say(f"Gates approved: {st.get('gates', {})}")
     if p["renders"].exists():
-        for d in sorted(p["renders"].iterdir()):
-            say(f"{d.name}: {len(list(d.glob('*.png')))} frame(s)")
+        for g in sorted(p["renders"].iterdir()):
+            for d in sorted(g.iterdir()):
+                if d.is_dir():
+                    say(f"{g.name}/{d.name}: {len(list(d.glob('*.png')))} frame(s)")

@@ -1,0 +1,48 @@
+{
+ "blender": "4.5.14 LTS",
+ "checks": [
+  {
+   "check": "vehicle length matches spec",
+   "ok": true,
+   "detail": "5.70 m vs 5.7 m"
+  },
+  {
+   "check": "cue sheet frames in range",
+   "ok": true,
+   "detail": "34 kicks"
+  },
+  {
+   "check": "one camera per shot, bound to markers",
+   "ok": true,
+   "detail": [
+    "S1",
+    "S2",
+    "S3",
+    "S4c",
+    "S5",
+    "S6"
+   ]
+  },
+  {
+   "check": "car in frame at shot start/middle/end",
+   "ok": true,
+   "detail": "all in frame"
+  },
+  {
+   "check": "no camera inside geometry",
+   "ok": true,
+   "detail": "every centre ray clears 0.5 m"
+  },
+  {
+   "check": "sunset to night across the piece",
+   "ok": true,
+   "detail": "sun 4.0 deg -> -6.0 deg"
+  },
+  {
+   "check": "no NaN transforms",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "ok": true
+}

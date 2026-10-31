@@ -15,7 +15,7 @@ screens, or distorted vehicles.
 
 | Role | Colour | Where |
 |---|---|---|
-| Candy burgundy | `#5A0F1F`, flash `#A3203C` | the car's body, under a clear coat |
+| Candy burgundy | flake `#5A0F1F`→`#A3203C` under a `#4A0A18` tinted coat | the car's body |
 | Candy chrome | `#E4E2EA` (slight violet bias) | bumpers, spears, wheels, struts |
 | Warm gold | `#E2A84B` | pinstripe, hover-ring cores, tower crowns, guardrail reflectors |
 | Sodium grid | `#FFB35A` | the LA street grid at night |
@@ -28,18 +28,29 @@ sodium; the one exception is the tail bar. No cyan, no green.
 
 ## The car: CRESTLINE ([`specs/vehicle.json`](specs/vehicle.json))
 
-An original long, low 1960s hardtop silhouette (no real make or model) rebuilt in 2099 around an
-electromagnetic hover conversion.
+An original formal luxury hardtop in the 1960s–70s West Coast lowrider tradition (no real make or
+model), rebuilt in 2099 around an electromagnetic hover conversion. **Revised in v2 after owner
+review:** the first CRESTLINE was a rounded 60s coupe; this one is boxy, expensive and intimidating.
 
-- **Proportions:** 5.55 m long, 2.0 m wide, beltline 0.86 m, roof 1.22 m, long hood and deck, a
-  pillarless greenhouse set back on the body, subtle rear fins, the 60s side crease with a chrome
-  spear and a gold pinstripe on the beltline.
-- **Tiny wheels:** 0.22 m chrome wire wheels (24 spokes, gold hub, three-bar spinner). They spin but
-  carry no weight: lowrider jewellery kept after the conversion.
-- **Hover engineering, visible:** four rings (violet field, gold core) under the wheel positions,
-  on chrome A-arm struts. A violet underglow keel lights the asphalt.
+- **Silhouette:** 5.7 m long, 2.02 m wide, a flat hood at 0.82 m with a power dome, beltline 0.84 m,
+  a squared trunk, long straight body lines with a sharp crease and chrome spear. A formal
+  greenhouse set well back: upright windshield, flat roof at 1.29 m, a small backlight and a
+  padded oxblood landau top with chrome S-bars.
+- **Face and tail:** a wide rectangular egg-crate grille, quad lamps in chrome bezels, a gold hood
+  crest, a massive bumper with guards. At the back: vertical red lamp bars at the corners and a
+  centre bar.
+- **Paint:** candy burgundy: a metallic flake base under a tinted clear coat, so highlights stay
+  clean and the colour stays deep.
+- **Tiny wheels kept:** 0.22 m chrome wire wheels (24 spokes, gold hub). Jewellery, not support.
+- **Hover conversion as engineering:** at each corner a machined satin housing with a gold rim,
+  18 cooling fins and three field coils, carried on chrome hydraulic actuators and A-arms. The field
+  shows only as a soft violet pool on the asphalt and the coils' underside, never as a glowing ring
+  in the air.
+- **Lighting:** an automotive light rig travels with the car (a long overhead strip for the body-line
+  highlight, a warm rim toward the sun, a violet kicker). Light linking keeps it on the car: it
+  never floods the road.
 - **Expressive suspension:** the chassis bounces on every kick, rolls on every snare and clap,
-  drops 0.13 m on the slam, and lifts its nose on the hydraulic hop. The rings pulse with every
+  drops 0.13 m on the slam and lifts its nose on the hydraulic hop. The modules pulse with every
   808 note. All of this comes from the cue sheet, never from hand-placed keys.
 
 ## The world ([`specs/world.json`](specs/world.json))
@@ -49,9 +60,16 @@ electromagnetic hover conversion.
   then a long left sweeper points it down a spur ridge straight at the basin (that is where the
   drop happens), then it turns back for the hero slide.
 - **The basin:** the LA grid as a carpet of sodium light, breathing by district. Downtown is a
-  cluster of slender octagonal megatowers with setbacks and gold crown halos, plus satellite
-  clusters (Westside, Hollywood, Harbor), pearl blimps with gold bands, and flying traffic in lanes
-  that follow the grid.
+  cluster of octagonal megatowers (about 1:11) with three setbacks, a warm lantern, stacked gold
+  crown halos, a spire and a beacon, plus satellite clusters (Westside, Hollywood, Harbor). Window
+  bands are shaded for their size on screen, so at 9 km they average out instead of aliasing.
+  Pearl blimps with gold bands sit at chosen positions in the frame, and two-way flying-traffic
+  lanes at three altitudes slide with the music's tempo.
+- **Depth:** far ridges, the Pacific, and an evening marine layer lit from below by the city.
+- **Sky:** a three-stop California gradient with glow lobes around the real sun, a warm horizon band,
+  and cirrus that is lit toward the sun and shaded away from it, keyframed from golden hour to night.
+- **Terrain:** the near field is continuous by construction (see the v2 notes below); granite has
+  jointed blocks, medium-scale relief, speckle and desert varnish.
 - **Declared exaggerations:** downtown sits 9 km from the road (really ~25 km) with towers of
   1.2–3.0 km. At true scale a 9:16 frame shows the skyline as a 3° sliver. Bearing, the sunset
   behind the city (azimuth 247°) and mountains-above-basin stay true.
@@ -65,9 +83,9 @@ engine's event map; accents land on beats.
 
 | Shot | Section | Move |
 |---|---|---|
-| S1 Ground-scraping reveal | hook (bars 1–2) | 24 mm at 18 cm off the asphalt on the front wheel and hover ring, dollying back along the flank |
+| S1 Ground-scraping reveal | hook (bars 1–2) | 24 mm at 20 cm off the asphalt on the rear wheel and hover module, dollying out and tilting up to a backlit rear three-quarter under the sunset |
 | S2 Low tracking | pocket (3–4) | 20 mm front three-quarter from the opposite lane; 12° drift into the sweeper |
-| S3 Orbit | build (5) | 150° orbit, rising, as the light goes |
+| S3 Orbit | build (5) | 150° orbit, rising, as the light goes (CREST only: in HOVER, bar 5 belongs to S4h) |
 | S4c Into the mouth (CREST) | transition (6) | push into the front intake as the beat is swallowed; black from the silence to the slam |
 | S4h Spin-up (HOVER) | transition (5–6) | static low three-quarter; the car rises 0.6 m on its rings |
 | S5 Crane reveal | drop (7–8) | on the slam, from bumper height behind the car up and back, zooming 24 → 70 mm; the road leads the eye to the skyline |
@@ -88,7 +106,38 @@ under the slam's blast. A picture frame is 41.7 ms.
 ## Styleframes (GATE 02): honest review
 
 Rendered by [`blender/angeles2099.py`](../blender/angeles2099.py) on CPU, 720×1280, 96 samples,
-denoised. Each is a real frame of the planned animation, not a separate beauty setup.
+denoised. Each is a real frame of the planned animation (CREST timing, so v1 and v2 compare like
+for like), not a separate beauty setup. Before/after:
+[`review/styleframes/before-after.jpg`](../review/styleframes/before-after.jpg). The car on its own:
+[`review/car/`](../review/car).
+
+### v2 (this submission)
+
+| | What changed | What still does not work |
+|---|---|---|
+| **SF1 Hero vehicle** (S1, frame 100) | The new boxy CRESTLINE, backlit rear three-quarter in the lower third under the sunset gradient, a granite ridge behind instead of the flat cut wall, red tail bar, violet field pools | The paint reads copper-red under the low warm sun, not deep burgundy; the car is small in the frame; the sky above is clean but empty |
+| **SF2 Angeles Crest** (S3, frame 285) | The road winds past the guardrail to a skyline with crowned towers, blimps and traffic lanes; dark formal roof; the city glows below the ridge | Glass in the C-pillar mirrors the sky as a white vertical stripe; towers are stylised stacked drums, not architecture |
+| **SF3 The megacity** (S5, frame 470) | Lit and shaded cirrus across the afterglow, gold crowns (no longer clipped to white), towers with mass, recognisable blimps, the road leading to the city | The basin grid is hidden from this low angle; the towers stand on a flat haze band; still clearly procedural |
+
+**Found and fixed while rendering v2:**
+
+- **Vertical fluted cliffs.** The terrain chose mountain side, valley side and the spur blend from the
+  single nearest road segment, so heights jumped 15–60 m wherever that segment changed. They are
+  now softmin-weighted fields over the whole road, continued past its ends. The steepest slope
+  on a 5 m grid went from 138:1 to 6.8:1; the cut and fall profiles beside the road are unchanged.
+- **Clipped emission.** Crown halos (7.0), blimp bands (6.0) and tail lamps (14.0) clipped to white
+  under the +1.2-stop night exposure. They are now 1.6, 1.3 and 4.5, so they stay gold and red.
+- **A floating rocker trim** that ran through the wheel arches like a side pipe now sits flush,
+  between the arches.
+- **A white roof.** A 700 W overhead strip mirrored in the flat roof; it is now 380 W and narrower,
+  and the landau vinyl is matte.
+- **A buried camera.** S4c ended 0.3 m from a grille bar; the validator now ray-casts every shot.
+
+**Next, if approved:** close-up granite still reads as large cracked plates (the joint network is
+too regular at car scale); the paint needs a cooler key in SF1; the towers would gain most from
+modelled facade fins and a lit podium city at their feet. None of it needs a new approach.
+
+### v1 (first GATE 02 submission)
 
 | | What works | What does not yet |
 |---|---|---|

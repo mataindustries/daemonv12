@@ -64,10 +64,14 @@ def main():
             out = (r.stdout + r.stderr).strip()
             want_fail = expect_fail.get(i)
             passed = (r.returncode != 0 and want_fail in out and "HOW TO FIX" in out) if want_fail else r.returncode == 0
-            if i == 6:                                  # gated: renders nothing while CONFIRM = False
-                passed = r.returncode == 0 and "Not rendering" in out
-            if i == 8:                                  # refuses without the owner's GATE 03 approval
-                passed = r.returncode != 0 and "GATE 04 needs the owner's GATE 03 approval" in out and "HOW TO FIX" in out
+            if i == 6:                                  # no budget typed in: nothing may render on a GPU
+                passed = r.returncode == 0 and "No GPU budget approved" in out
+            if i == 7:                                  # the GPU test is gated
+                passed = r.returncode == 0 and "Not running the GPU test" in out
+            if i == 8:                                  # the proof refuses without a measured timing
+                passed = r.returncode == 0 and "Not rendering" in out and "No measured GPU timing" in out
+            if i == 10:                                 # the animatic refuses without the owner's GATE 03 approval
+                passed = r.returncode != 0 and "needs the owner's GATE 03 approval" in out and "HOW TO FIX" in out
             last = out.splitlines()[-1] if out else ""
             report["runs"].append({"attempt": attempt, "cell": i, "exit": r.returncode, "ok": passed, "last": last[-300:]})
             print(f"{'PASS' if passed else 'FAIL'} run {attempt} cell {i}: {last[-140:]}")
