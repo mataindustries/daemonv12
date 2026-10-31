@@ -22,7 +22,7 @@ import time
 import bpy
 import bmesh
 import numpy as np
-from mathutils import Matrix, Vector, noise
+from mathutils import Matrix, Quaternion, Vector, noise
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROD = os.path.dirname(HERE)
@@ -1869,7 +1869,7 @@ def animate_vehicle(car, road, cues, cand, frames):
     snares = [(e["frame"], 0.015 * e["strength"]) for e in cues["drivers"]["snareClap"]]
     roll = spring_track(frames, snares, 2.2, 0.3, fps)
     drift = np.array([drift_angle(f, section_at(cues, f)) for f in frames])
-    lean = damped_follow(0.09 * drift, 1.6, 0.45, fps)                     # the body leans out of a slide, late, and overshoots
+    lean = damped_follow(0.22 * drift, 1.6, 0.45, fps)                     # the body leans out of a slide, late, and overshoots (2.6 deg at 12)
     hop = np.array([sum(hop_curve(f - hf, S["hopFrontLift"]) for hf in hops) for f in frames])
     rise = np.array([0.6 * smooth((f - 250) / 90) * (1 - smooth((f - 352) / 6)) if (cand == "hover" and 240 <= f < 360) else 0.0 for f in frames])
     hop_z = 0.5 * hop                                                       # the hop pivots on the rear axle: the nose rises, the tail stays
@@ -1943,15 +1943,17 @@ def animate_vehicle(car, road, cues, cand, frames):
         surge = sum(2 * math.pi * 4 * smooth((f - sf) / 8) for sf in slam_f)       # the shock ring races outward
         fp["FieldPhase"].outputs[0].default_value = 2 * math.pi * 1.6 * f / fps + surge
         fp["FieldPhase"].outputs[0].keyframe_insert("default_value", frame=f)
-    # the grille breathes with the Mouth Drop (CREST): bright on "ah", closing through "oo", shut on
-    # "mm", dark in the silence, a faint inhale on the reversed breath, a flash on the slam
-    if cand == "crest" and "GrilleGlow" in bpy.data.materials:
-        gs = bpy.data.materials["GrilleGlow"].node_tree.nodes["Emission"].inputs["Strength"]
-        keys = [(298, 3.0), (300, 4.8), (308, 4.2), (315, 3.0), (327, 1.6), (334, 0.25), (345, 0.0), (347, 0.0),
-                (359, 1.4), (360, 7.0), (366, 4.0), (374, 3.0)]
+    # the headlamps are the Mouth Drop's eyes (CREST): bright but unclipped on "ah", closing through
+    # "oo", shut on "mm" and in the silence, a glimmer on the reversed breath, full on the slam. (At
+    # their running 25 the camera's push stared into them and the whole grille blew out to white;
+    # the v3 grille itself has no glow material.)
+    if cand == "crest" and "Headlight" in bpy.data.materials:
+        hl = bpy.data.materials["Headlight"].node_tree.nodes["Emission"].inputs["Strength"]
+        keys = [(299, 25.0), (300, 3.5), (308, 3.2), (315, 2.4), (327, 1.2), (334, 0.1), (345, 0.0), (354, 0.0),
+                (359, 0.6), (360, 25.0)]
         for f, v in keys:
-            gs.default_value = v
-            gs.keyframe_insert("default_value", frame=f)
+            hl.default_value = v
+            hl.keyframe_insert("default_value", frame=f)
 
 
 def animate_traffic(city, frames, fps):
@@ -2191,12 +2193,17 @@ def keyed(f, pts):
 # on "ah", a widening roll through "oh/oo" (the mouth grows), a fast push and fade on "mm", black
 # in the silence, a faint inhale; on the slam S5 continues the roll the same way round and unwinds.
 MOUTH_PUSH = [(300, 7.5), (308, 6.0), (334, 4.4), (345, 3.5), (359, 3.47)]       # metres ahead of the car centre
-MOUTH_ROLL = [(300, 0.0), (308, 12.0), (334, 70.0), (345, 150.0), (359, 175.0)]  # degrees
+MOUTH_ROLL = [(300, 0.0), (308, 12.0), (334, 70.0), (345, 150.0), (356, 360.0), (359, 360.0)]  # degrees: the turn completes in the black
 MOUTH_LENS = [(300, 35.0), (308, 35.0), (334, 30.0), (345, 28.0)]
-SLAM_ROLL = [(360, 175.0), (368, 340.0), (372, 368.0), (377, 357.0), (382, 360.0)]  # same direction, overshoot, settle
-LOOP_FROM = 584                                                                   # S6 flies back into S1's first frame
-S1_START = (-2.55, -1.6, 0.2)                                                     # car-local: S1's first camera position
-S1_WHEEL = (-1.625, -0.88, 0.3)                                                   # the rear-right wheel it looks at
+LOOP_FROM = 570                                                                   # S6 flies back into S1's first frame (29 frames)
+# The loop seam and the opening: under the rear overhang at road level, looking at the rear-right
+# maglev module and the tiny wheel spinning in mid-air beyond it. The body hides the sky and the sun,
+# so night (frame 599) and golden hour (frame 0) look alike there: light occlusion hides the seam.
+SEAM_POS = (-2.2, -0.15, 0.09)                                                    # car-local
+SEAM_TGT = (-1.625, -0.86, 0.12)                                                  # the hovering wheel's gap to the road
+S1_EXIT = (-2.55, -1.6, 0.06)                                                     # out from under the car, at road level
+S1_EXIT_TGT = (-1.625, -0.88, 0.08)                                               # the tyre's underside: the gap to the road, lit from behind
+S1_GLIDE = 30                                                                     # frames to glide out from under the car
 
 
 def look_at(cam, target, roll=0.0):
@@ -2270,7 +2277,7 @@ def build_cameras(car, city, road, cues, cand, frames):
     _road_for_sight.update(road)
     shots = [s for s in SHOTS["shots"] if s.get("candidate") in (None, cand)]
     for sh in shots:
-        lens = {"S1": 24, "S2": 20, "S3": 28, "S4c": 35, "S4h": 35, "S5": 30, "S6": 85}[sh["id"]]
+        lens = {"S1": 24, "S2": 24, "S3": 28, "S4c": 35, "S4h": 35, "S5": 30, "S6": 85}[sh["id"]]
         dof = (2.8, 2.2) if sh["id"] in ("S1", "S6") else None      # S6 ends on S1's first frame: same lens, same focus
         cam = make_camera(sh["id"], lens, dof)
         cams[sh["id"]] = cam
@@ -2280,22 +2287,28 @@ def build_cameras(car, city, road, cues, cand, frames):
             if f not in frames:
                 continue
             M = car_frame(car, f)
+            cam.rotation_mode = "XYZ"                                     # computed in Euler (aim_framing), keyed as quaternions
             u = (f - f0) / max(1, f1 - f0 - 1)
             def W(local):
                 return M @ Vector(local)
-            if sh["id"] == "S1":      # ground-scraping: rear-right wheel and module, dolly out to a backlit rear 3/4
-                k_ = smooth(u)
-                wheel = Vector(S1_WHEEL)
-                cam.location = keep_on_road(W(Vector(S1_START).lerp(Vector((-7.2, -3.4, 0.55)), k_)))
-                tgt = W(wheel.lerp(Vector((-0.9, 0.2, 2.0)), k_))          # tilts up: the car ends in the lower third, under the sky
+            if sh["id"] == "S1":      # the opening: under the machine, out to the hovering wheel, dolly out to a backlit rear 3/4
+                if f < S1_GLIDE:      # the first second: the impossible thing, a wire wheel spinning in mid-air over a rippling field
+                    g_ = smooth(f / S1_GLIDE)
+                    cam.location = W(Vector(SEAM_POS).lerp(Vector(S1_EXIT), g_))
+                    tgt = W(Vector(SEAM_TGT).lerp(Vector(S1_EXIT_TGT), g_))
+                else:
+                    k_ = smooth((f - S1_GLIDE) / (f1 - 1 - S1_GLIDE))
+                    cam.location = keep_on_road(W(Vector(S1_EXIT).lerp(Vector((-7.2, -3.4, 0.55)), k_)))
+                    tgt = W(Vector(S1_EXIT_TGT).lerp(Vector((-0.9, 0.2, 2.0)), k_))   # tilts up: the car ends in the lower third, under the sky
                 look_at(cam, tgt)
                 cam.data.dof.focus_distance = (cam.location - tgt).length
             elif sh["id"] == "S2":    # low, wide front three-quarter, tracking from the opposite lane
                 # in the ROAD's frame, not the car's: a camera that turns with the car hides the drift
                 yaw_r = M.to_euler().z - drift_angle(f, section_at(cues, f))
                 Mr = Matrix.Translation(M.translation) @ Matrix.Rotation(yaw_r, 4, "Z")
-                cam.location = Mr @ Vector((3.8 - 0.8 * u, 5.6, 0.9))
-                look_at(cam, W((-0.3, 0, 0.6)))
+                cam.location = Mr @ Vector((3.0 - 0.5 * u, 3.7, 2.2))         # closer and higher: road behind the car, not granite
+                tgt2 = W((-0.4, 0, 0.15))
+                look_at(cam, tgt2)
             elif sh["id"] == "S3":    # orbit 150 deg, rising
                 a = math.radians(70 + 150 * smooth(u))
                 cam.location = W((6.4 * math.cos(a), 6.4 * math.sin(a), 1.0 + 2.0 * smooth(u)))
@@ -2319,44 +2332,71 @@ def build_cameras(car, city, road, cues, cand, frames):
                 yaw_pt = car_pt + (car_pt - cam.location) * 50.0          # keep the car centred left-right
                 aim_framing(cam, car_pt, yaw_pt, 0.42 - 0.17 * lift)
             elif sh["id"] == "S6":    # long lens from up the mountain side: the slide, the city behind
-                if f == f0 or not cam.get("anchor"):
-                    Ma = car_frame(car, min(599, f0 + 60))
-                    cam["anchor"] = list(Ma @ Vector((10.0, -30.0, 6.0)))
+                if f == f0 or not cam.get("track"):
+                    # a telephoto tracking shot on the line from the skyline through the car, 34 m out and
+                    # low, so the megatowers and an airship stay behind the whole slide (a fixed camera
+                    # panned across the city and showed it for only a third of the shot). Heights are
+                    # solved for terrain and line of sight first, then smoothed, so the camera cannot bump.
+                    pts = []
+                    for ff in range(f0, f1):
+                        pc = car_frame(car, ff).translation
+                        away = Vector((pc.x - city["center"][0], pc.y - city["center"][1], 0.0)).normalized()
+                        p_ = pc + away * 34.0
+                        p_.z = max(1.4, terrain_height(np.array([p_.x]), np.array([p_.y]), road["centerline"], road["half"])[0] + 1.6)
+                        p_ = clear_sight(p_, pc + Vector((0, 0, 0.6)))
+                        pts.append(p_)
+                    zs = np.array([p_.z for p_ in pts])
+                    zs = np.array([zs[max(0, i - 10):i + 11].max() for i in range(len(zs))])        # never below the solved height
+                    zs = np.convolve(np.pad(zs, 6, mode="edge"), np.ones(13) / 13, mode="valid")
+                    zs = np.maximum(zs, [p_.z for p_ in pts])
+                    cam["track"] = [[p_.x, p_.y, float(z_)] for p_, z_ in zip(pts, zs)]
                     bpy.context.scene.frame_set(f)
-                cam.location = Vector(cam["anchor"])
-                tgt6 = W((0, 0, 0.55))
+                cam.location = Vector(cam["track"][f - f0])
+                tgt6 = W((0, 0, 1.3))                                            # aim above the roof: the car low, the skyline over it
                 if f >= LOOP_FROM:    # the loop: fly in to S1's first frame (car-local), widening 85 -> 24 mm
                     if not cam.get("loop0"):
-                        cam["loop0"] = list(M.inverted() @ Vector(cam["anchor"]))
+                        cam["loop0"] = list(M.inverted() @ Vector(cam["track"][f - f0]))
                     e = smooth((f - LOOP_FROM) / (f1 - 1 - LOOP_FROM)) ** 1.6
-                    a_ = Vector(cam["loop0"]); b_ = Vector(S1_START)
-                    mid = Vector((-9.0, -3.2, 2.6))                                   # over the shoulder behind the car
-                    loc_ = (a_.lerp(mid, e)).lerp(mid.lerp(b_, e), e)                 # quadratic Bezier, clear of the cut
+                    a_ = Vector(cam["loop0"]); b_ = Vector(SEAM_POS)
+                    p1, p2 = Vector((-8.5, -3.0, 1.4)), Vector((-4.4, -0.45, 0.13))  # behind the car, then down to the road
+                    if e < 0.65:
+                        t_ = e / 0.65
+                        loc_ = (a_.lerp(p1, t_)).lerp(p1.lerp(p2, t_), t_)
+                    else:                                                             # under the rear bumper into the seam pose
+                        loc_ = p2.lerp(b_, smooth((e - 0.65) / 0.35))
                     lw = W(loc_)
                     if abs(signed_distance(np.array([lw.x]), np.array([lw.y]), road["centerline"])[0]) > road["half"] + 2:
                         lw.z = max(lw.z, terrain_height(np.array([lw.x]), np.array([lw.y]), road["centerline"], road["half"])[0] + 0.6)
                     cam.location = lw
-                    tgt6 = W(Vector((0, 0, 0.55)).lerp(Vector(S1_WHEEL), e))
-                    cam.data.lens = 85 + (24 - 85) * e
+                    tgt6 = W(Vector((0, 0, 1.3)).lerp(Vector(SEAM_TGT), e * e))
+                    if not cam.get("lens0"):
+                        cam["lens0"] = cam.data.lens
+                    cam.data.lens = cam["lens0"] + (24 - cam["lens0"]) * e
                 else:                 # follow-zoom: the car stays about frame-wide while it approaches (it was tiny at 68 m)
                     cam.data.lens = min(180.0, max(85.0, 85.0 * (cam.location - tgt6).length / 31.0))
                 cam.data.keyframe_insert("lens", frame=f)
                 look_at(cam, tgt6)
                 cam.data.dof.focus_distance = (cam.location - tgt6).length
                 cam.data.dof.keyframe_insert("focus_distance", frame=f)
-            if sh["id"] in ("S2", "S5") or (sh["id"] == "S6" and f < LOOP_FROM):   # never inside the mountain, never behind a ridge
+            if sh["id"] in ("S2", "S5"):     # never inside the mountain, never behind a ridge (S6 solves it in its track)
                 before = cam.rotation_euler.copy()
                 cam.location = clear_sight(cam.location, W((0, 0, 0.6)))
                 if sh["id"] == "S5":
                     aim_framing(cam, W((0, 0, 0.6)), yaw_pt, 0.42 - 0.17 * lift)
-                    if cand == "crest" and f < 384:                        # the swallow's roll carries through the cut and unwinds
-                        cam.rotation_euler.rotate_axis("Z", math.radians(keyed(f, SLAM_ROLL)))
                 elif sh["id"] == "S6":
                     look_at(cam, tgt6)
                 else:
-                    look_at(cam, W((-0.3, 0, 0.6)))
+                    look_at(cam, tgt2)
+            # key the camera as a quaternion, sign-matched to the last frame: motion blur interpolates the
+            # keys, and Euler keys flip to an equivalent triple mid-roll (the frame would smear the long way)
+            q = cam.rotation_euler.to_quaternion()
+            if cam.get("prev_q") is not None and q.dot(Quaternion(cam["prev_q"])) < 0:
+                q.negate()
+            cam["prev_q"] = list(q)
+            cam.rotation_mode = "QUATERNION"
+            cam.rotation_quaternion = q
             cam.keyframe_insert("location", frame=f)
-            cam.keyframe_insert("rotation_euler", frame=f)
+            cam.keyframe_insert("rotation_quaternion", frame=f)
             if sh["id"] == "S1":
                 cam.data.dof.keyframe_insert("focus_distance", frame=f)
     return cams
@@ -2365,6 +2405,90 @@ def build_cameras(car, city, road, cues, cand, frames):
 # ======================================================================================
 # build, validate, render
 # ======================================================================================
+SEAM_EXPOSURE = 0.8          # total exposure at frames 599 and 0 (night base 1.2 + offset == day base 0 + offset); measured best of 0.4/0.8/1.4
+
+
+SEAM_GLOW = 30.0             # W: the underglow lights the hardware for the seam and the opening (8 W otherwise)
+
+
+def mouth_light_cues(car, cand):
+    """CREST's Mouth Drop (S4c) looks straight into the car's flat front: there the 2600 W rim light
+    mirrored in the candy coat as a white slab over the grille. The rim drops to 12 % for the shot
+    (cut to cut, 300-359) so the egg-crate grille and the closing headlamps read."""
+    if cand != "crest":
+        return
+    ad = car["rig"]["Rim"].data.animation_data
+    fc = ad.action.fcurves.find("energy") if ad and ad.action else None
+    if fc:
+        for f in range(300, 360):
+            fc.keyframe_points.insert(f, fc.evaluate(f) * 0.12, options={"REPLACE"})
+
+
+def add_airship(name, pos, yaw, M):
+    """One more of the city's pearl airships (the same build as build_city's: hull, lit gondola,
+    four fins), placed where a shot needs it."""
+    Lb = WORLD["city"]["blimps"]["length"]
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=64, ring_count=32, radius=1.0)
+    ob = bpy.context.active_object
+    ob.name = name
+    ob.scale = (Lb / 2, Lb / 9, Lb / 9)
+    ob.location = pos
+    ob.rotation_euler = (0, 0, yaw)
+    ob.data.materials.append(M["blimp"])
+    for pl in ob.data.polygons:
+        pl.use_smooth = True
+    g = box(f"{name}Gondola", (Lb * 0.16, Lb * 0.035, Lb * 0.026), (0, 0, 0), M["gondola"])
+    g.parent = ob; g.location = (0.05, 0, -1.08); g.scale = (2 / Lb, 9 / Lb, 9 / Lb)
+    for fi, (fy, fz, rot) in enumerate(((0, 1, 0), (0, -1, 0), (1, 0, math.pi / 2), (-1, 0, math.pi / 2))):
+        fin = box(f"{name}Fin{fi}", (Lb * 0.14, Lb * 0.008, Lb * 0.1), (0, 0, 0), M["blimp"])
+        fin.parent = ob; fin.location = (-0.86, fy * 0.55, fz * 0.55); fin.scale = (2 / Lb, 9 / Lb, 9 / Lb)
+        fin.rotation_euler = (rot, 0, 0)
+    return ob
+
+
+def place_s6_airship(cams, car, M):
+    """S6's background: an airship on the hero slide's sightline, 4.5 km out, 2.5 deg left of the
+    line and 5 deg up, broadside, so it hangs beside the tall tower for the whole slide."""
+    cam = cams.get("S6")
+    if not cam or not cam.get("track"):
+        return None
+    f0 = next(s_["frames"][0] for s_ in SHOTS["shots"] if s_["id"] == "S6")
+    mid = len(cam["track"]) // 2
+    cp = Vector(cam["track"][mid])
+    pc = car_frame(car, f0 + mid).translation
+    d = Vector((pc.x - cp.x, pc.y - cp.y, 0.0)).normalized()
+    left = Vector((-d.y, d.x, 0.0))
+    D = 4500.0
+    pos = cp + d * D + left * (D * math.tan(math.radians(2.5)))
+    pos.z = cp.z + D * math.tan(math.radians(5.0))
+    ship = add_airship("AirshipS6", pos, math.atan2(left.y, left.x), M)
+    for o in [ship] + list(ship.children):         # it flies into S6 only (from S1 it would sit in the sunset sky)
+        for f, hide in ((0, True), (f0 - 1, True), (f0, False)):
+            o.hide_render = hide
+            o.keyframe_insert("hide_render", frame=f)
+    return ship
+
+
+def seam_match_cues(n, car):
+    """The loop seam: over the last 6 frames the hover emitters and the field footprints settle to
+    exactly their frame-0 values, so the under-car light is the same on both sides of the cut. The
+    car's own underglow swells for the dive under the car and the first second (a lighting cue)."""
+    ug = car["underglow"].data
+    base = ug.energy
+    for f in list(range(0, S1_GLIDE + 1)) + list(range(n - 16, n)):
+        ug.energy = keyed(f, [(0, SEAM_GLOW), (S1_GLIDE, base)]) if f <= S1_GLIDE else keyed(f, [(n - 16, base), (n - 1, SEAM_GLOW)])
+        ug.keyframe_insert("energy", frame=f)
+    for mat, path in (("HoverField", 'nodes["Emission"].inputs[1].default_value'), ("FieldPrint", 'nodes["FieldGain"].outputs[0].default_value')):
+        ad = bpy.data.materials[mat].node_tree.animation_data
+        fc = ad.action.fcurves.find(path) if ad and ad.action else None
+        if not fc:
+            continue
+        v0 = fc.evaluate(0)
+        keys = [(f, fc.evaluate(f) + (v0 - fc.evaluate(f)) * smooth((f - (n - 7)) / 6)) for f in range(n - 7, n)]
+        for f, v in keys:
+            fc.keyframe_points.insert(f, v, options={"REPLACE"})
+
+
 def exposure_offset(f, cand):
     """Stops added to the time-of-day exposure. CREST's Mouth Drop: the lips seal to black (336-345),
     silence, then a faint inhale (347-359) up to the slam. The loop: a warm flash over the last six
@@ -2372,8 +2496,8 @@ def exposure_offset(f, cand):
     off = 0.0
     if cand == "crest" and 334 <= f < 360:
         off += keyed(f, [(334, 0.0), (345, -14.0), (347, -14.0), (359, -6.5)])
-    off += keyed(f, [(592, 0.0), (599, 3.8)]) if f >= 592 else 0.0           # +3.8: the night frame matches frame 0's brightness
-    off += keyed(f, [(0, 3.0), (6, 0.0)]) if f <= 6 else 0.0
+    off += keyed(f, [(586, 0.0), (599, SEAM_EXPOSURE - 1.2)]) if f >= 586 else 0.0   # into the dark under the car
+    off += keyed(f, [(0, SEAM_EXPOSURE), (14, 0.0)]) if f <= 14 else 0.0             # frame 0 = frame 599, exactly
     return off
 
 
@@ -2396,6 +2520,9 @@ def build(cand="crest", frames=None, log=print):
     build_ground_effects(car, frames)
     build_shadow_blimp(car, cues)
     cams = build_cameras(car, city, road, cues, cand, frames)
+    seam_match_cues(cues["durationFrames"], car)
+    mouth_light_cues(car, cand)
+    place_s6_airship(cams, car, M)
     for f in frames:                          # exposure = the time of day, plus the two transitions
         el = tod_value(cues, f, "sun")
         night = 1 - smooth((el + 1) / 5.0)
@@ -2429,9 +2556,10 @@ def validate(S):
         cam = S["cams"][sh["id"]]
         for f in (sh["frames"][0], (sh["frames"][0] + sh["frames"][1]) // 2, sh["frames"][1] - 1):
             sc.frame_set(f)
-            p = world_to_camera_view(sc, cam, car["chassis"].matrix_world.translation)
-            if not (0 <= p.x <= 1 and 0 <= p.y <= 1 and p.z > 0) and sh["id"] not in ("S4c",):
-                misses.append((sh["id"], f, round(p.x, 2), round(p.y, 2)))
+            pts = [car["chassis"].matrix_world.translation] + [o.matrix_world.translation for o in car["pods"] + car["wheels"]]
+            seen = [world_to_camera_view(sc, cam, pt) for pt in pts]
+            if not any(0 <= p.x <= 1 and 0 <= p.y <= 1 and p.z > 0 for p in seen) and sh["id"] not in ("S4c",):
+                misses.append((sh["id"], f, round(seen[0].x, 2), round(seen[0].y, 2)))
     check("car in frame at shot start/middle/end", not misses, misses or "all in frame")
     # no camera may sit inside geometry: the centre ray must travel at least 0.5 m (S1 once sat in
     # the granite cut and SF1 rendered as a wall of rock)
@@ -2505,9 +2633,11 @@ def animated_checks(S, check):
         sc.frame_set(f)
         cam = cam_at(f)
         if f not in black:
-            p = world_to_camera_view(sc, cam, car["chassis"].matrix_world.translation)
-            m_ = min(p.x, 1 - p.x, p.y, 1 - p.y) if p.z > 0 else -1.0
-            margins[cam.name] = min(margins.get(cam.name, 1.0), m_)
+            best = -1.0
+            for pt in [car["chassis"].matrix_world.translation] + [o.matrix_world.translation for o in car["pods"] + car["wheels"]]:
+                p = world_to_camera_view(sc, cam, pt)
+                best = max(best, min(p.x, 1 - p.x, p.y, 1 - p.y) if p.z > 0 else -1.0)
+            margins[cam.name] = min(margins.get(cam.name, 1.0), best)
         for o, c_ in links:
             ratio = (c_.target.matrix_world.translation - o.matrix_world.translation).length / c_.rest_length
             if not 0.8 <= ratio <= 1.25:
@@ -2520,12 +2650,13 @@ def animated_checks(S, check):
         if pq and f - pq[0] <= 2:
             step = f - pq[0]
             dpos = (cam.matrix_world.translation - pq[1]).length / step
-            drot = math.degrees(cam.matrix_world.to_quaternion().rotation_difference(pq[2]).angle) / step
+            drot = math.degrees(cam.matrix_world.to_quaternion().rotation_difference(pq[2]).angle)
+            drot = min(drot, 360.0 - drot) / step                         # q and -q are the same orientation
             if dpos > 6.0 or drot > 30.0:
                 jumps.append((cam.name, f, round(dpos, 2), round(drot, 1)))
         prev[cam.name] = (f, cam.matrix_world.translation.copy(), cam.matrix_world.to_quaternion())
     low = {k: round(v, 3) for k, v in margins.items() if v < 0.03}
-    check("car in frame on every checked frame (3 % margin)", not low, low or {k: round(v, 2) for k, v in margins.items()})
+    check("car in frame on every checked frame (body or a corner, 3 % margin)", not low, low or {k: round(v, 2) for k, v in margins.items()})
     check("rigged arms, struts and springs stay within 80-125 % of their length", not stretch, stretch[:6] or f"{len(links)} links on {len(sample)} frames")
     check("wheels clear the road and stay inside the body", wheel_low >= 0.005 and tuck <= CAR["body"]["hoodZ"] - 0.1,
           f"lowest tyre {wheel_low * 1000:.0f} mm above the road; highest tyre top {tuck:.2f} m (hood {CAR['body']['hoodZ']} m)")
@@ -2541,6 +2672,7 @@ def animated_checks(S, check):
     a_, b_ = poses[n - 1], poses[0]
     dpos = (a_[0] - b_[0]).length
     dang = math.degrees(a_[1].rotation_difference(b_[1]).angle)
+    dang = min(dang, 360.0 - dang)                                            # q and -q are the same orientation
     seam = {"positionM": round(dpos, 3), "angleDeg": round(dang, 2), "lens": [round(a_[2], 1), round(b_[2], 1)],
             "focusM": [round(a_[3] or 0, 2), round(b_[3] or 0, 2)], "exposure": [round(a_[4], 2), round(b_[4], 2)]}
     check("loop seam: frame 599's camera is frame 0's camera (car-relative)", dpos < 0.05 and dang < 2.0 and abs(a_[2] - b_[2]) < 0.5, seam)

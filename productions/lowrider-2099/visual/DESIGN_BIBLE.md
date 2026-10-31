@@ -152,19 +152,35 @@ below is driven by CREST's cue sheet; nothing is hand-keyed.
    | 300-308 | "ah" (open, brightest) | snap push, roll begins | grille glow peaks |
    | 308-334 | "oh" -> "oo" (the mouth grows) | slower push, roll to 70 deg, lens 35 -> 30 mm | glow closes |
    | 334-345 | "mm" (lips seal) | fast push to 0.6 m, roll to 150 deg | the frame seals to black |
-   | 345-359 | silence, then the reversed breath | drifting at 175 deg | a faint violet inhale |
-   | 360-383 | the slam | S5 keeps rolling the same way, 175 -> 368 -> 360 deg | grille flash, shock rings |
+   | 345-359 | silence, then the reversed breath | the roll completes to 360 deg in the black (345-356) | a level grille glimmers on the inhale |
+   | 360 | the slam | S5 opens level and readable: the body drops onto the modules | shock rings race out |
+
+   The headlamps are the mouth's eyes. They are bright but unclipped on "ah", close through "oo", shut on
+   "mm", and glimmer on the breath. The rim light dims for the shot, because the candy front mirrored it as
+   a white slab. (The first version kept rolling through the slam: 8 frames of chaos on a phone.)
 
 **Cameras that show the motion.** S2's camera follows the road, not the car: when it followed the
-car's own yaw, the drift was invisible. S6 follow-zooms (85-180 mm) so the sliding car stays about
-frame-wide. The proof and its list of visual failures are in
-[`review/motion/`](../review/motion).
+car's own yaw, the drift was invisible. It sits 2.2 m up, close, looking down onto the lane lines,
+so the car fills the frame and the 12 deg drift and the 2.6 deg lean read on a phone. S6 tracks
+alongside the car on the line from the skyline through it, 34 m out and low: the megatowers and an
+airship stay behind the whole slide, and a follow-zoom (85-180 mm) keeps the car frame-wide. The proof and its list of visual failures
+are in [`review/motion/`](../review/motion).
 
-**The loop.** Frame 599 is frame 0's camera:
-- *Fly-in:* from f584 the 85 mm hero shot flies back over the shoulder into S1's first frame,
-  car-relative, widening to 24 mm. The scene check measures the seam at 0.0 m and 0.0 deg.
-- *Flash:* the hop lands into a warm flash (f592-599) that frame 0 comes out of (f0-6), on the
-  lead's whoop. The flash covers the night -> golden-hour change.
+**The opening second.** The film starts under the machine: the rear-right maglev module and the
+tiny wire wheel spinning in mid-air over its rippling field, lit by the car's own underglow. Within
+a second the camera glides out to road level, and the 8 cm of light under the tyre says what this
+car is before the reveal begins.
+
+**The loop.** Frame 599 is frame 0's camera (the warm flash of the first version did not hide the
+night-to-golden-hour change):
+- *Fly-in:* from f570 the camera leaves the hero shot, flies behind the car, drops to the road
+  and slides under the rear bumper into frame 0's pose, car-relative, widening to 24 mm. The
+  scene check measures the seam at 0.0 m and 0.0 deg.
+- *Occlusion:* frames 599 and 0 are both under the body, which hides the sky and the sun. The
+  underglow swells, the emitters and field footprints settle to their frame-0 values, and the
+  exposure is equal on both sides. Measured on the rendered frames, the cut dropped from 53.7 to
+  22.0 (mean absolute difference, 0-255). What still changes is a strip of world behind the tyre,
+  night to golden hour, which reads as the light coming up as the camera emerges.
 - *Audio:* the master is locked and loops without a click, but its last 100 ms decays to
   -22 dBFS before the -9 dBFS downbeat: a breath, not a gap.
 

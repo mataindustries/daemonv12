@@ -9,7 +9,7 @@ This folder is self-contained production work; DaemonV12's engine (`src/`) is no
 |---|---|---|
 | **GATE 01** | The soundtrack | **Approved: CREST is the locked primary** ([`review/music/crest.mp3`](review/music/crest.mp3)). HOVER stays buildable. Details in [`music/README.md`](music/README.md) |
 | **GATE 02** | CRESTLINE and the look | **Approved and locked:** CRESTLINE v3 at `0b8af67` ([`review/car/v3/`](review/car/v3)), enforced by [`visual/specs/locks.json`](visual/specs/locks.json). Styleframes re-rendered with the v3 car: [`review/styleframes/v3/`](review/styleframes/v3) |
-| **Motion** | A music-synchronised CPU motion proof with the CREST master | **Ready for review:** [`review/motion/`](review/motion) (the proof, a loop check, a contact sheet and the list of visual failures). The direction is in [`visual/DESIGN_BIBLE.md`](visual/DESIGN_BIBLE.md#motion-making-the-machine-come-alive) |
+| **Motion** | A music-synchronised CPU motion proof with the CREST master | **Direction approved; polish pass ready for review** (loop seam, S2, S6, Mouth Drop, opening): [`review/motion/`](review/motion) (the proof, a loop check, a contact sheet and the list of visual failures). The direction is in [`visual/DESIGN_BIBLE.md`](visual/DESIGN_BIBLE.md#motion-making-the-machine-come-alive) |
 | GATE 03 | One-frame GPU test, then the five-frame Colab proof | **Not run:** needs approval of the motion direction and a GPU budget. Plan: [`RENDER_PLAN.md`](RENDER_PLAN.md) |
 | GATE 04 | Workbench animatic on Colab | Locked behind GATE 03 |
 | GATE 05 | Final render | Not started |
