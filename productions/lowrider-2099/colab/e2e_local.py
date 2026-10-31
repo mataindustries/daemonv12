@@ -13,6 +13,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -44,13 +45,24 @@ FR, RES, SPP = [0, 400], (96, 160), 4
 step("no budget: proof refuses for lack of a measurement", P.render("GATE03", FR, RES, SPP, confirm=False) is None)
 step("no budget: GPU test refuses", expect_error(lambda: P.gpu_frame_test(confirm=True), "budget"))
 P.set_budget(10, "e2e test")
+allowance, P.TEST_ALLOWANCE_MIN = P.TEST_ALLOWANCE_MIN, 0.2          # 12 s: shorter than the scene build, so it must time out
+t_0 = time.time()
+stopped = expect_error(lambda: P.gpu_frame_test(confirm=True), "wall-clock limit")
+took = time.time() - t_0
+P.TEST_ALLOWANCE_MIN = allowance
+time.sleep(1)
+ps_ = subprocess.run(["ps", "-eo", "pid=,comm=,args="], capture_output=True, text=True).stdout.splitlines()
+orphans = [l.split()[0] for l in ps_ if "python" in l.split()[1] and "angeles2099.py" in l]   # only the generator itself
+last = P.budget_state()["spent"][-1]
+step("a GPU test past its allowance is killed and its real time charged", stopped and took < 30 and not orphans and 0.15 <= last["minutes"] <= 0.5,
+     f"stopped after {took:.1f} s, charged {last['minutes']} min as '{last['what']}', orphan processes: {orphans}")
 meas = P.gpu_frame_test(confirm=True)
 step("one-frame test measures build and per-frame time", meas and meas["secondsPerFrame"] > 0 and meas["buildSeconds"] > 0, json.dumps(meas))
 out = P.render("GATE03", FR, RES, SPP, confirm=True)
 pngs = sorted(p.name for p in Path(out).glob("frame_*.png"))
 step("keyed proof render writes its frames", pngs == ["frame_0000.png", "frame_0400.png"], f"{out.name}: {pngs}")
 b = P.budget_state()
-step("render is charged to the ledger", b["spentMinutes"] > 0 and len(b["spent"]) == 2, f"spent {b['spentMinutes']} of {b['approvedMinutes']} min")
+step("render is charged to the ledger", b["spentMinutes"] > 0 and len(b["spent"]) == 3, f"spent {b['spentMinutes']} of {b['approvedMinutes']} min")
 step("rerun reuses the same keyed frames", P.render("GATE03", FR, RES, SPP, confirm=True) == out)
 k1 = P.render_key("crest", "GATE03", FR, RES, SPP, "CYCLES")
 k2 = P.render_key("crest", "GATE03", FR, RES, SPP + 1, "CYCLES")

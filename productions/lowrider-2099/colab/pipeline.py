@@ -12,6 +12,7 @@ import hashlib
 import json
 import os
 import shutil
+import signal
 import subprocess
 import sys
 import time
@@ -301,13 +302,39 @@ def _require(st, gpu=True):
         raise PipelineError("No verified GPU in this runtime.", "Run the GPU cell.")
 
 
-def _blender(args, timeout):
+def _blender(args, timeout, what, key):
+    """Run the scene generator under a hard wall-clock limit. On timeout the whole process group is
+    killed, and the time actually used is charged to the ledger before stopping. A failed run is
+    charged too: the GPU time was spent either way. On success the caller charges."""
     p = paths()
     py = install_blender() if LOCAL else p["python"]
     t0 = time.time()
-    r = run([str(py), str(p["prod"] / "blender" / "angeles2099.py"), *args], timeout=timeout)
-    per = [float(l.rsplit(" in ", 1)[1].split(" s")[0]) for l in r.stdout.splitlines() if l.startswith("rendered frame")]
-    return time.time() - t0, per
+    proc = subprocess.Popen([str(py), str(p["prod"] / "blender" / "angeles2099.py"), *args], stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT, text=True, start_new_session=True)
+    try:
+        out, _ = proc.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        out, _ = proc.communicate()
+        used = time.time() - t0
+        _charge(f"{what} (stopped at its {timeout / 60:.1f} min limit)", used, key)
+        raise PipelineError(f"{what} hit its {timeout / 60:.1f} min wall-clock limit and was stopped; {used / 60:.2f} min charged to the budget.",
+                            "Nothing more will run. Show the owner the status cell before approving more time.")
+    used = time.time() - t0
+    if proc.returncode != 0:
+        _charge(f"{what} (failed)", used, key)
+        raise PipelineError(f"{what} failed ({proc.returncode}) after {used / 60:.2f} min, which was charged to the budget.\n{out[-2000:]}",
+                            "Read the output above. Rerun this cell; if it fails the same way, Runtime > Disconnect and delete runtime, then Run all.")
+    per = [float(l.rsplit(" in ", 1)[1].split(" s")[0]) for l in out.splitlines() if l.startswith("rendered frame")]
+    return used, per
+
+
+def _limit(seconds):
+    """On Colab no render may outlast the remaining approved budget."""
+    return seconds if LOCAL else min(seconds, max(60.0, budget_state()["remainingMinutes"] * 60))
 
 
 def _write_manifest(out, key, extra):
@@ -337,7 +364,8 @@ def gpu_frame_test(confirm=False):
         raise PipelineError(f"The GPU budget has {b['remainingMinutes']} min left; the test needs {TEST_ALLOWANCE_MIN}.", "Ask the owner to approve a budget in the budget cell.")
     out = paths()["renders"] / "GPUTEST" / key[:12]
     wall, per = _blender(["--cand", cand, "--frames", str(frame), "--res", f"{res[0]}x{res[1]}", "--samples", str(samples),
-                          "--device", "CPU" if LOCAL else "GPU", "--out-dir", str(out)], timeout=1800)
+                          "--device", "CPU" if LOCAL else "GPU", "--out-dir", str(out)],
+                         timeout=TEST_ALLOWANCE_MIN * 60, what="GPU test, 1 frame", key=key)
     device = "CPU (local)" if LOCAL else (st.get("gpu", {}).get("nvidiaSmi") or "GPU")
     meas = {"key": key, "buildSeconds": round(wall - sum(per), 1), "secondsPerFrame": round(per[0], 1), "device": device}
     m = st.get("measured", {}); m[f"{res[0]}x{res[1]}@{samples}"] = meas
@@ -392,7 +420,8 @@ def render(gate, frames, res, samples, confirm=False):
         say(f"Not rendering: set CONFIRM = True to spend ~{est:.1f} of the {b['remainingMinutes']} approved minutes on {len(todo)} frame(s).")
         return None
     wall, per = _blender(["--cand", cand, "--frames", ",".join(map(str, todo)), "--res", f"{res[0]}x{res[1]}", "--samples", str(samples),
-                          "--device", "CPU" if LOCAL else "GPU", "--out-dir", str(out)], timeout=6 * 3600)
+                          "--device", "CPU" if LOCAL else "GPU", "--out-dir", str(out)],
+                         timeout=_limit(6 * 3600), what=f"{gate}: {len(todo)} frame(s)", key=key)
     _charge(f"{gate}: {len(todo)} frame(s)", wall, key)
     _write_manifest(out, key, {"kind": gate, "frames": frames, "res": list(res), "samples": samples, "seconds": round(wall, 1)})
     save_state(**{f"{gate}Rendered": sorted(set(st.get(f"{gate}Rendered", [])) | set(todo))})
@@ -432,7 +461,8 @@ def animatic(confirm=False):
     import ctypes.util
     if not LOCAL and not ctypes.util.find_library("EGL"):
         run(["apt-get", "install", "-y", "-qq", "libegl1"], timeout=600)   # Workbench renders headless through EGL
-    wall, per = _blender(["--cand", cand, "--animatic", str(out), "--res", f"{res[0]}x{res[1]}", "--first", str(first), "--last", str(last), "--step", str(step)], timeout=4 * 3600)
+    wall, per = _blender(["--cand", cand, "--animatic", str(out), "--res", f"{res[0]}x{res[1]}", "--first", str(first), "--last", str(last), "--step", str(step)],
+                         timeout=_limit(4 * 3600), what=f"animatic: {len(frames)} frames", key=key)
     audio = p["prod"] / "review" / "music" / f"{cand}.mp3"
     seq_fps = 24 / step
     run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", f"{seq_fps}", "-start_number", str(first), "-i", str(out / "frame_%04d.png"),

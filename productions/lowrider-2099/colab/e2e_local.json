@@ -12,19 +12,24 @@
    "detail": ""
   },
   {
+   "step": "a GPU test past its allowance is killed and its real time charged",
+   "ok": true,
+   "detail": "stopped after 12.5 s, charged 0.2 min as 'GPU test, 1 frame (stopped at its 0.2 min limit)', orphan processes: []"
+  },
+  {
    "step": "one-frame test measures build and per-frame time",
    "ok": true,
-   "detail": "{\"key\": \"fcac2a20c97a63dd9ee910b49b122eb8d73f90cd0aa052e22c6e1e7d06490f79\", \"buildSeconds\": 73.0, \"secondsPerFrame\": 19.5, \"device\": \"CPU (local)\"}"
+   "detail": "{\"key\": \"68b388d2185ec31a447c807f95582f4f8e1f50a737018194030753d1884621be\", \"buildSeconds\": 54.1, \"secondsPerFrame\": 16.1, \"device\": \"CPU (local)\"}"
   },
   {
    "step": "keyed proof render writes its frames",
    "ok": true,
-   "detail": "b5d291557fa0: ['frame_0000.png', 'frame_0400.png']"
+   "detail": "35ee7943bbd3: ['frame_0000.png', 'frame_0400.png']"
   },
   {
    "step": "render is charged to the ledger",
    "ok": true,
-   "detail": "spent 3.12 of 10.0 min"
+   "detail": "spent 2.57 of 10.0 min"
   },
   {
    "step": "rerun reuses the same keyed frames",
@@ -60,28 +65,34 @@
  "status": {
   "approvedMinutes": 60.0,
   "approver": "e2e test",
-  "approvedAt": "2026-10-31 11:28:35",
+  "approvedAt": "2026-10-31 22:28:31",
   "spent": [
    {
+    "what": "GPU test, 1 frame (stopped at its 0.2 min limit)",
+    "minutes": 0.2,
+    "key": "68b388d2185e",
+    "at": "2026-10-31 22:26:06"
+   },
+   {
     "what": "GPU test, 1 frame",
-    "minutes": 1.54,
-    "key": "fcac2a20c97a",
-    "at": "2026-10-31 11:27:00"
+    "minutes": 1.17,
+    "key": "68b388d2185e",
+    "at": "2026-10-31 22:27:18"
    },
    {
     "what": "GATE03: 2 frame(s)",
-    "minutes": 1.58,
-    "key": "b5d291557fa0",
-    "at": "2026-10-31 11:28:35"
+    "minutes": 1.2,
+    "key": "35ee7943bbd3",
+    "at": "2026-10-31 22:28:31"
    },
    {
     "what": "animatic: 24 frames",
-    "minutes": 1.51,
-    "key": "6afe1352bb7d",
-    "at": "2026-10-31 11:30:06"
+    "minutes": 1.2,
+    "key": "ee2be5883994",
+    "at": "2026-10-31 22:29:43"
    }
   ],
-  "spentMinutes": 4.63,
-  "remainingMinutes": 55.37
+  "spentMinutes": 3.77,
+  "remainingMinutes": 56.23
  }
 }
