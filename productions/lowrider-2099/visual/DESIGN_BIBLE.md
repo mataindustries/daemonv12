@@ -94,7 +94,7 @@ denoised. Each is a real frame of the planned animation, not a separate beauty s
 |---|---|---|
 | **SF1 Hero vehicle** (S2, frame 150) | The silhouette, greenhouse, chrome spear, tiny wire wheels inside gold-cored rings, violet pools on the double yellow | The backdrop: a front-lit granite cut that reads as a flat hazy wall with hard triangular shadows. The paint reads candy red under the orange key, not deep burgundy. Needs a rim-lit angle toward the sunset |
 | **SF2 Angeles Crest** (S3, frame 285) | The strongest frame: rear three-quarter, tail bar, hover pads, the road sweeping along the guardrail to a distant skyline at sunset, a granite cliff | The skyline is small; the near terrain is plain; no flying traffic or blimps reads at this scale |
-| **SF3 The megacity** (S5, frame 470) | The composition: the car on the spur road, the road leading to the megatowers, the burgundy-violet afterglow behind them | The towers are blocky and pale; the grid and blimps don't read; the sky is a flat gradient |
+| **SF3 The megacity** (S5, frame 470) | The composition: the car on the spur road, the road leading to the megatowers with gold crown halos, the burgundy-violet afterglow behind them | The procedural 4 m window texture aliases into a pixelated pattern at 9 km, so the towers look blocky and pale. The grid and blimps don't read at this angle; the sky is a flat gradient |
 
 What would most improve them, in order: rim-lit hero angles, modelled tower crowns and window
 banding, a proper volumetric haze layer (cheap on a T4), and car-scale props (lamp posts,
