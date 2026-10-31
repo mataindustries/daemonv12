@@ -418,7 +418,10 @@ def animatic(confirm=False):
     if mp4.exists():
         say(f"Animatic for these exact inputs already on Drive: {mp4}")
         return mp4
-    est = (60 + len(frames) * 1.4) * SAFETY / 60                    # measured CPU upper bound until a T4 number exists
+    # the scene build is the GPU test's measured build (it is CPU work either way); frames at the
+    # measured CPU upper bound until a T4 number exists
+    build = max((m.get("buildSeconds", 0) for m in st.get("measured", {}).values()), default=0) or 120.0
+    est = (build + len(frames) * 1.4) * SAFETY / 60
     b = budget_state()
     if not confirm:
         say(f"Not rendering the animatic: set CONFIRM = True. {len(frames)} Workbench frames, at most ~{est:.0f} min "

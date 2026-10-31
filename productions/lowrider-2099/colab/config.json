@@ -45,13 +45,13 @@
   },
   "candidateNote": "CREST and HOVER are both kept; the owner picks after a listening test. Change this one value to \"hover\" to make every render use HOVER timing.",
   "gpuTest": {
-    "frame": 400,
+    "frame": 170,
     "resolution": [
       360,
       640
     ],
     "samples": 32,
-    "note": "one frame on the GPU to measure real build and per-frame time"
+    "note": "one frame on the GPU to measure real build and per-frame time. Frame 170 (S2, wide) was the costliest proof frame on CPU (~54 s in two runs, vs ~18 s for frame 400), so estimates built on it err high, not low"
   },
   "animatic": {
     "resolution": [

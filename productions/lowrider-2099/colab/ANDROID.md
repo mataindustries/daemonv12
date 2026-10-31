@@ -29,7 +29,7 @@ finished work on Drive is reused only if every input that affects pixels is unch
 | Step | Cell | What you change | What it does |
 |---|---|---|---|
 | Budget | 6 | `APPROVED_GPU_MINUTES = 15`, `APPROVER = "your name"` | Records the owner's limit on Drive. Every render is charged against it |
-| One-frame test | 7 | `CONFIRM = True` | Renders frame 400 once (≤ 6 min of the budget) and measures real build and per-frame time on this GPU |
+| One-frame test | 7 | `CONFIRM = True` | Renders frame 170, the costliest proof frame, once (≤ 6 min of the budget) and measures real build and per-frame time on this GPU |
 | GATE 03 proof | 8 | `CONFIRM = True` | Prints the padded estimate from that measurement; refuses if it exceeds what is left |
 | Approve GATE 03 | 9 | `APPROVE_GATE03 = True` | Only after the owner has looked at the five frames |
 | GATE 04 animatic | 10 | `CONFIRM = True` | The whole piece as a Workbench animatic with the soundtrack, as an MP4 on Drive |

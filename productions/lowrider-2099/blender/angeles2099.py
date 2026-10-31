@@ -1016,7 +1016,9 @@ def terrain_height(px, py, c, half):
     """Road cut into the flank: shoulder ditch, a granite cut slope on the mountain side, a steep
     fall on the valley side, ridges behind, all rolling down toward the basin to the south-west.
     Continuous everywhere: the side and spur fields are soft (see soft_side_and_spur)."""
-    u = np.abs(signed_distance(px, py, _extended_road(c, step=1.0)[0]))
+    t0_, t1_ = (c[1] - c[0]) / np.linalg.norm(c[1] - c[0]), (c[-1] - c[-2]) / np.linalg.norm(c[-1] - c[-2])
+    ext = np.concatenate([[c[0] - t0_ * 700.0], c, [c[-1] + t1_ * 700.0]])   # straight: one segment each way
+    u = np.abs(signed_distance(px, py, ext))
     side, spur = soft_side_and_spur(px, py, c, u)
     n1 = fbm(px, py, 240.0, 6)
     n2 = fbm(px, py, 37.0, 3, SEED + 1)

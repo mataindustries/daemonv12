@@ -14,17 +14,17 @@
   {
    "step": "one-frame test measures build and per-frame time",
    "ok": true,
-   "detail": "{\"key\": \"382f4ec13c5961f1184a942329904d95cd0cf048418601c161ef193b72509dd9\", \"buildSeconds\": 49.7, \"secondsPerFrame\": 7.9, \"device\": \"CPU (local)\"}"
+   "detail": "{\"key\": \"fcac2a20c97a63dd9ee910b49b122eb8d73f90cd0aa052e22c6e1e7d06490f79\", \"buildSeconds\": 73.0, \"secondsPerFrame\": 19.5, \"device\": \"CPU (local)\"}"
   },
   {
    "step": "keyed proof render writes its frames",
    "ok": true,
-   "detail": "1b296cf95d36: ['frame_0000.png', 'frame_0400.png']"
+   "detail": "b5d291557fa0: ['frame_0000.png', 'frame_0400.png']"
   },
   {
    "step": "render is charged to the ledger",
    "ok": true,
-   "detail": "spent 2.09 of 10.0 min"
+   "detail": "spent 3.12 of 10.0 min"
   },
   {
    "step": "rerun reuses the same keyed frames",
@@ -60,28 +60,28 @@
  "status": {
   "approvedMinutes": 60.0,
   "approver": "e2e test",
-  "approvedAt": "2026-10-31 08:21:46",
+  "approvedAt": "2026-10-31 11:28:35",
   "spent": [
    {
     "what": "GPU test, 1 frame",
-    "minutes": 0.96,
-    "key": "382f4ec13c59",
-    "at": "2026-10-31 08:20:38"
+    "minutes": 1.54,
+    "key": "fcac2a20c97a",
+    "at": "2026-10-31 11:27:00"
    },
    {
     "what": "GATE03: 2 frame(s)",
-    "minutes": 1.13,
-    "key": "1b296cf95d36",
-    "at": "2026-10-31 08:21:46"
+    "minutes": 1.58,
+    "key": "b5d291557fa0",
+    "at": "2026-10-31 11:28:35"
    },
    {
     "what": "animatic: 24 frames",
-    "minutes": 1.21,
-    "key": "15052cd296f4",
-    "at": "2026-10-31 08:23:00"
+    "minutes": 1.51,
+    "key": "6afe1352bb7d",
+    "at": "2026-10-31 11:30:06"
    }
   ],
-  "spentMinutes": 3.3,
-  "remainingMinutes": 56.7
+  "spentMinutes": 4.63,
+  "remainingMinutes": 55.37
  }
 }
