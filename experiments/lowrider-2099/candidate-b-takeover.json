@@ -1,0 +1,2009 @@
+{
+  "formatVersion": 1,
+  "title": "LOWRIDER//2099 B: TAKEOVER",
+  "description": "Candidate B, aggressive futuristic trap takeover: 8 bars at 96 BPM, straight 16ths. Two bars of hook (lead, talkbox, ticks, riser) whose talkbox mouth grows to giant size into the drop; from bar 3 a distorted 808 calls with octave dives and the MORPH Wobble Beast answers in the bass register every bar while the 808 rests. Hat rolls only at phrase ends, climbing in pitch. Tape stop to silence.",
+  "bpm": 96,
+  "timeSignature": "4/4",
+  "key": "F minor",
+  "bars": 8,
+  "seed": 2099,
+  "render": {
+    "duration": {
+      "bars": 8
+    },
+    "tail": "none"
+  },
+  "master": {
+    "gainDb": 1,
+    "effects": [
+      {
+        "type": "highpass",
+        "frequencyHz": 28
+      },
+      {
+        "type": "compressor",
+        "thresholdDb": -12,
+        "ratio": 2,
+        "attackMs": 30,
+        "releaseMs": 160,
+        "makeupGainDb": 0
+      },
+      {
+        "type": "saturation",
+        "driveDb": 0,
+        "mix": 1
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "kick",
+      "description": "Knock kick, from the drop",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/drums/kit.json"
+      },
+      "mix": {
+        "gainDb": 1
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 40
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 8,
+          "notes": [
+            {
+              "start": "3:1",
+              "pitch": "kick",
+              "velocity": 1
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "4:1",
+              "pitch": "kick",
+              "velocity": 1
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "4:3+3/16",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "4:4+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "5:1",
+              "pitch": "kick",
+              "velocity": 1
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "5:3+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "6:1",
+              "pitch": "kick",
+              "velocity": 1
+            },
+            {
+              "start": "6:1+3/16",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "6:2+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "6:3+3/16",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "6:4+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "7:1",
+              "pitch": "kick",
+              "velocity": 1
+            },
+            {
+              "start": "7:2+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "7:3+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "8:1",
+              "pitch": "kick",
+              "velocity": 1
+            },
+            {
+              "start": "8:1+3/16",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "8:2+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bass-808",
+      "description": "Dirty 808: calls on beats 1-2.5 with octave dives, rests for the Beast",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/808-dirty/kit.json"
+      },
+      "mix": {
+        "gainDb": -1
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 26
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 8,
+          "notes": [
+            {
+              "start": "3:1",
+              "pitch": "F1",
+              "velocity": 1,
+              "playbackRate": 0.66742,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "3:1+3/16",
+              "pitch": "F2",
+              "velocity": 0.85,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "3:2",
+              "pitch": "F2",
+              "velocity": 0.85,
+              "playbackRate": 1,
+              "offsetSeconds": 0.156259,
+              "glide": {
+                "to": 0.5,
+                "duration": "1/16"
+              },
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "F1",
+              "velocity": 0.95,
+              "gate": "7/32",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "5:1",
+              "pitch": "F1",
+              "velocity": 1,
+              "playbackRate": 0.66742,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "5:1+3/16",
+              "pitch": "F2",
+              "velocity": 0.85,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "5:2",
+              "pitch": "F2",
+              "velocity": 0.85,
+              "playbackRate": 1,
+              "offsetSeconds": 0.156259,
+              "glide": {
+                "to": 0.5,
+                "duration": "1/16"
+              },
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "F1",
+              "velocity": 0.95,
+              "gate": "7/32",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "7:1",
+              "pitch": "F1",
+              "velocity": 1,
+              "playbackRate": 0.66742,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "7:1+3/16",
+              "pitch": "F2",
+              "velocity": 0.85,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "7:2",
+              "pitch": "F2",
+              "velocity": 0.85,
+              "playbackRate": 1,
+              "offsetSeconds": 0.156259,
+              "glide": {
+                "to": 0.5,
+                "duration": "1/16"
+              },
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "7:2+1/8",
+              "pitch": "F1",
+              "velocity": 0.95,
+              "gate": "7/32",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "4:1",
+              "pitch": "Db2",
+              "velocity": 1,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "Db2",
+              "velocity": 0.8,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "4:2",
+              "pitch": "Ab1",
+              "velocity": 0.85,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "C2",
+              "velocity": 0.95,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "4:3",
+              "pitch": "C2",
+              "velocity": 0.95,
+              "playbackRate": 1,
+              "offsetSeconds": 0.312494,
+              "glide": {
+                "to": 0.5,
+                "duration": "3/32"
+              },
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "6:1",
+              "pitch": "Db2",
+              "velocity": 1,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "6:1+3/16",
+              "pitch": "Db2",
+              "velocity": 0.8,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "6:2",
+              "pitch": "Ab1",
+              "velocity": 0.85,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "6:2+1/8",
+              "pitch": "C2",
+              "velocity": 0.95,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "6:3",
+              "pitch": "C2",
+              "velocity": 0.95,
+              "playbackRate": 1,
+              "offsetSeconds": 0.312494,
+              "glide": {
+                "to": 0.5,
+                "duration": "3/32"
+              },
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "8:1",
+              "pitch": "Db2",
+              "velocity": 1,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "8:1+3/16",
+              "pitch": "Db2",
+              "velocity": 0.8,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "8:2",
+              "pitch": "Ab1",
+              "velocity": 0.85,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "8:2+1/8",
+              "pitch": "Db2",
+              "velocity": 0.95,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "8:3",
+              "pitch": "Db2",
+              "velocity": 0.95,
+              "playbackRate": 1,
+              "offsetSeconds": 0.312494,
+              "glide": {
+                "to": 0.5,
+                "duration": "1/2"
+              },
+              "gate": "1/2",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.02
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "snare",
+      "description": "Snare + clap on 2 and 4",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/drums/kit.json"
+      },
+      "mix": {
+        "gainDb": -3
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 150
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.25,
+          "decaySeconds": 0.5,
+          "wet": 0.08
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 8,
+          "notes": [
+            {
+              "start": "3:2",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "3:2",
+              "pitch": "clap",
+              "velocity": 0.75
+            },
+            {
+              "start": "3:4",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "3:4",
+              "pitch": "clap",
+              "velocity": 0.75
+            },
+            {
+              "start": "4:2",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "4:2",
+              "pitch": "clap",
+              "velocity": 0.75
+            },
+            {
+              "start": "4:4",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "4:4",
+              "pitch": "clap",
+              "velocity": 0.75
+            },
+            {
+              "start": "5:2",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "5:2",
+              "pitch": "clap",
+              "velocity": 0.75
+            },
+            {
+              "start": "5:4",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "5:4",
+              "pitch": "clap",
+              "velocity": 0.75
+            },
+            {
+              "start": "6:2",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "6:2",
+              "pitch": "clap",
+              "velocity": 0.75
+            },
+            {
+              "start": "6:4",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "6:4",
+              "pitch": "clap",
+              "velocity": 0.75
+            },
+            {
+              "start": "7:2",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "7:2",
+              "pitch": "clap",
+              "velocity": 0.75
+            },
+            {
+              "start": "7:4",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "7:4",
+              "pitch": "clap",
+              "velocity": 0.75
+            },
+            {
+              "start": "8:2",
+              "pitch": "snare",
+              "velocity": 0.9
+            },
+            {
+              "start": "8:2",
+              "pitch": "clap",
+              "velocity": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hats",
+      "description": "Straight 16ths; rolls at phrase ends, climbing in pitch",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/drums/kit.json"
+      },
+      "mix": {
+        "gainDb": -6,
+        "pan": -0.25
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 5000
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 8,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "1:1+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "1:2",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "1:3",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "1:3+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "1:4",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "1:4+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "2:1",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "2:1+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "2:2",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "2:2+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "2:3",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "2:3+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "2:4",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "2:4+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.38,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:1",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:1+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:1+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:1+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:2",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:2+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:2+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:3",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:3+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:3+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:3+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:4",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:4+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:4+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "3:4+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:1",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:1+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:1+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:2",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:2+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:2+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:3",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:3+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:3+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:3+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:4",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:4+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:4+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.4,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:4+5/32",
+              "pitch": "hat-tick",
+              "velocity": 0.55,
+              "playbackRate": 1.0833,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:4+3/16",
+              "pitch": "hat-tick",
+              "velocity": 0.7,
+              "playbackRate": 1.1667,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "4:4+7/32",
+              "pitch": "hat-tick",
+              "velocity": 0.85,
+              "playbackRate": 1.25,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:1",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:1+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:1+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:1+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:2",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:2+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:2+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:3",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:3+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:3+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:3+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:4",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:4+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:4+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "5:4+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:1",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:1+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:1+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:1+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:2",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:2+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:2+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:2+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:3",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:3+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:3+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:3+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:4",
+              "pitch": "hat-tick",
+              "velocity": 0.35,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:4+1/24",
+              "pitch": "hat-tick",
+              "velocity": 0.46,
+              "playbackRate": 1.1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:4+1/12",
+              "pitch": "hat-tick",
+              "velocity": 0.57,
+              "playbackRate": 1.2,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:4+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.68,
+              "playbackRate": 1.3,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:4+1/6",
+              "pitch": "hat-tick",
+              "velocity": 0.79,
+              "playbackRate": 1.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:4+5/24",
+              "pitch": "hat-tick",
+              "velocity": 0.9,
+              "playbackRate": 1.5,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:1",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:1+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:1+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:1+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:2",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:2+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:2+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.45,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:2+5/32",
+              "pitch": "hat-tick",
+              "velocity": 0.55,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:2+3/16",
+              "pitch": "hat-tick",
+              "velocity": 0.65,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:2+7/32",
+              "pitch": "hat-tick",
+              "velocity": 0.75,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:3",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:3+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:3+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:3+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:4",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:4+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:4+1/8",
+              "pitch": "hat",
+              "velocity": 0.55,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "7:4+3/16",
+              "pitch": "hat",
+              "velocity": 0.42,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "8:1",
+              "pitch": "hat-tick",
+              "velocity": 0.5,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "8:1+1/24",
+              "pitch": "hat-tick",
+              "velocity": 0.56,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "8:1+1/12",
+              "pitch": "hat-tick",
+              "velocity": 0.62,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "8:1+1/8",
+              "pitch": "hat-tick",
+              "velocity": 0.68,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "8:1+1/6",
+              "pitch": "hat-tick",
+              "velocity": 0.74,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "8:1+5/24",
+              "pitch": "hat-tick",
+              "velocity": 0.8,
+              "playbackRate": 1,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "8:2",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "8:2+1/16",
+              "pitch": "hat",
+              "velocity": 0.4,
+              "chokeGroup": "hats"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lead",
+      "description": "Whine lead, driven: the call; tape stop at the end",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/lead/kit.json"
+      },
+      "mix": {
+        "gainDb": -11,
+        "pan": -0.1
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 300
+        },
+        {
+          "type": "saturation",
+          "driveDb": 9,
+          "mix": 0.35
+        },
+        {
+          "type": "delay",
+          "timeMs": 312.5,
+          "wet": 0.14
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.6,
+          "decaySeconds": 1.8,
+          "wet": 0.16
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 8,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "C6",
+              "velocity": 0.92,
+              "playbackRate": 0.793701,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "5/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "1:1+3/16",
+              "pitch": "Ab5",
+              "velocity": 0.8,
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "1:2+1/8",
+              "pitch": "F5",
+              "velocity": 0.86,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "1:3",
+              "pitch": "F5",
+              "velocity": 0.86,
+              "playbackRate": 1,
+              "offsetSeconds": 0.312494,
+              "glide": {
+                "to": 0.890899,
+                "duration": "1/16"
+              },
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "2:1",
+              "pitch": "C6",
+              "velocity": 0.92,
+              "playbackRate": 0.793701,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "5/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "2:1+3/16",
+              "pitch": "Ab5",
+              "velocity": 0.8,
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "2:2+1/8",
+              "pitch": "Db6",
+              "velocity": 0.88,
+              "playbackRate": 0.943874,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "2:3",
+              "pitch": "Db6",
+              "velocity": 0.88,
+              "playbackRate": 1,
+              "offsetSeconds": 0.310295,
+              "glide": {
+                "to": 0.943874,
+                "duration": "1/32"
+              },
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "3:1",
+              "pitch": "C6",
+              "velocity": 0.92,
+              "playbackRate": 0.793701,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "5/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "3:1+3/16",
+              "pitch": "Ab5",
+              "velocity": 0.8,
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "3:2+1/8",
+              "pitch": "F5",
+              "velocity": 0.86,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "3:3",
+              "pitch": "F5",
+              "velocity": 0.86,
+              "playbackRate": 1,
+              "offsetSeconds": 0.312494,
+              "glide": {
+                "to": 0.890899,
+                "duration": "1/16"
+              },
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "4:1",
+              "pitch": "C6",
+              "velocity": 0.92,
+              "playbackRate": 0.793701,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "5/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "4:1+3/16",
+              "pitch": "Ab5",
+              "velocity": 0.8,
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "4:2+1/8",
+              "pitch": "Db6",
+              "velocity": 0.88,
+              "playbackRate": 0.943874,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "4:3",
+              "pitch": "Db6",
+              "velocity": 0.88,
+              "playbackRate": 1,
+              "offsetSeconds": 0.310295,
+              "glide": {
+                "to": 0.943874,
+                "duration": "1/32"
+              },
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "5:1",
+              "pitch": "C6",
+              "velocity": 0.92,
+              "playbackRate": 0.793701,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "5/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "5:1+3/16",
+              "pitch": "Ab5",
+              "velocity": 0.8,
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "5:2+1/8",
+              "pitch": "F5",
+              "velocity": 0.86,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "5:3",
+              "pitch": "F5",
+              "velocity": 0.86,
+              "playbackRate": 1,
+              "offsetSeconds": 0.312494,
+              "glide": {
+                "to": 0.890899,
+                "duration": "1/16"
+              },
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "6:1",
+              "pitch": "C6",
+              "velocity": 0.92,
+              "playbackRate": 0.793701,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "5/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "6:1+3/16",
+              "pitch": "Ab5",
+              "velocity": 0.8,
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "6:2+1/8",
+              "pitch": "Db6",
+              "velocity": 0.88,
+              "playbackRate": 0.943874,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "6:3",
+              "pitch": "Db6",
+              "velocity": 0.88,
+              "playbackRate": 1,
+              "offsetSeconds": 0.310295,
+              "glide": {
+                "to": 0.943874,
+                "duration": "1/32"
+              },
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "7:1",
+              "pitch": "C6",
+              "velocity": 0.92,
+              "playbackRate": 0.793701,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "5/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "7:1+3/16",
+              "pitch": "Ab5",
+              "velocity": 0.8,
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "7:2+1/8",
+              "pitch": "F5",
+              "velocity": 0.86,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "7:3",
+              "pitch": "F5",
+              "velocity": 0.86,
+              "playbackRate": 1,
+              "offsetSeconds": 0.312494,
+              "glide": {
+                "to": 0.890899,
+                "duration": "1/16"
+              },
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "8:1",
+              "pitch": "C6",
+              "velocity": 0.92,
+              "playbackRate": 0.793701,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "5/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "8:1+3/16",
+              "pitch": "Ab5",
+              "velocity": 0.8,
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "8:2+1/8",
+              "pitch": "Db6",
+              "velocity": 0.9,
+              "playbackRate": 0.943874,
+              "glide": {
+                "to": 0.25,
+                "duration": "1/2"
+              },
+              "gate": "1/2",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talkbox",
+      "description": "Talkbox intro answers; the mouth grows into the drop",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/voice/kit.json"
+      },
+      "mix": {
+        "gainDb": 0,
+        "pan": 0.1
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 190
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -20,
+          "ratio": 3,
+          "attackMs": 5,
+          "releaseMs": 80,
+          "makeupGainDb": 2
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.5,
+          "decaySeconds": 1.4,
+          "wet": 0.14
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 8,
+          "notes": [
+            {
+              "start": "1:3+1/8",
+              "pitch": "wow",
+              "velocity": 0.9
+            },
+            {
+              "start": "2:3+1/8",
+              "pitch": "yeah-shrink",
+              "velocity": 0.95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beast",
+      "description": "Wobble Beast (bowed cable through the vocal tract): the answers, with its own sub",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/voice/kit.json"
+      },
+      "mix": {
+        "gainDb": 2
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 28
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -16,
+          "ratio": 3,
+          "attackMs": 3,
+          "releaseMs": 90,
+          "makeupGainDb": 1
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 8,
+          "notes": [
+            {
+              "start": "3:3+3/32",
+              "pitch": "beast-wom",
+              "velocity": 0.95
+            },
+            {
+              "start": "4:3+3/32",
+              "pitch": "beast-dive",
+              "velocity": 0.95
+            },
+            {
+              "start": "5:3+3/32",
+              "pitch": "beast-wom",
+              "velocity": 0.95
+            },
+            {
+              "start": "6:3+3/32",
+              "pitch": "beast-wa-wa",
+              "velocity": 0.95
+            },
+            {
+              "start": "7:3+3/32",
+              "pitch": "beast-wom",
+              "velocity": 0.95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fx",
+      "description": "Riser into the takeover",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/fx/kit.json"
+      },
+      "mix": {
+        "gainDb": -10,
+        "pan": 0.15
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 300
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 8,
+          "notes": [
+            {
+              "start": "2:1",
+              "pitch": "riser",
+              "velocity": 0.55
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
