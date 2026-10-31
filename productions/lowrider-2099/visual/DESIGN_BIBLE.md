@@ -109,6 +109,64 @@ Rules: the car is in frame at every shot's start, middle and end (validated). Ca
 enter terrain and never look through a ridge (validated by a line-of-sight solver). One lens move
 per shot.
 
+## Motion: making the machine come alive
+
+GATE 02 is approved and locked: CRESTLINE v3 at `0b8af67` and the CREST master. The scene check
+enforces the lock ([`specs/locks.json`](specs/locks.json): the vehicle spec, every car-building
+function and the master are hashed). Motion, light and cameras are what change now. Everything
+below is driven by CREST's cue sheet; nothing is hand-keyed.
+
+**The suspension.**
+- *Body:* bounces on every kick, rolls on every snare and clap, drops on the slam with a damped
+  overshoot.
+- *Hop:* the hydraulic hop has anticipation (the nose dips for 8 frames first), snaps up about
+  the rear axle, and lands nose-down with a bounce.
+- *Drifts:* each one starts with a counter-flick the other way (4 deg in the pocket, 5 deg before
+  the hero slide). The body lean follows late and overshoots.
+- *Modules:* each module is its own damped spring (3.4 Hz, damping 0.3). It holds 80 % of its ride
+  height against its own corner's travel, lags the body and overshoots, and stops dead on three
+  limits: a bump stop 3 mm under the floor, a 1 cm field gap above the road, and the strut's
+  12 cm stroke. On the hop the front hardware visibly hangs.
+
+**The ground.**
+- *Contact shadow:* a soft shadow under the body tightens and darkens when the body is low and
+  spreads and fades as it rises.
+- *Field footprints:* under each module, a pressure patch, thin violet ripples running outward,
+  and a mirage-like shimmer (the road reflects the sky through the rippling field at grazing
+  angles). All three grow as that module is pushed down.
+- *Slam:* fires a shock ring that races outward. No particles, no fluids.
+
+**Three tricks over expensive effects.**
+1. *Blimp-shadow foreshadowing (bar 4, f180).* A patrol blimp we never see hangs 420 m out over
+   the valley, on the line to the setting sun. Only its shadow exists for the camera: a long soft
+   band the car drives through, which slides up the granite. The car's rim light dims as it
+   passes. The blimps are revealed on the drop.
+2. *Multiplane city depth.* Four flat haze cards stand across the view to the basin, at 2.6, 5.6,
+   8.4 and 12.5 km. Each depth layer of the city sits behind one more step of haze, so the crane
+   gives layered parallax. At night the cards take the city's rose glow.
+3. *The Mouth Drop transition (bar 6, f300-383).* The camera is swallowed in a barrel roll, timed
+   to the vocal tract:
+
+   | Frames | Mouth | Camera | Light |
+   |---|---|---|---|
+   | 300-308 | "ah" (open, brightest) | snap push, roll begins | grille glow peaks |
+   | 308-334 | "oh" -> "oo" (the mouth grows) | slower push, roll to 70 deg, lens 35 -> 30 mm | glow closes |
+   | 334-345 | "mm" (lips seal) | fast push to 0.6 m, roll to 150 deg | the frame seals to black |
+   | 345-359 | silence, then the reversed breath | drifting at 175 deg | a faint violet inhale |
+   | 360-383 | the slam | S5 keeps rolling the same way, 175 -> 368 -> 360 deg | grille flash, shock rings |
+
+**The loop.** Frame 599 is frame 0's camera:
+- *Fly-in:* from f584 the 85 mm hero shot flies back over the shoulder into S1's first frame,
+  car-relative, widening to 24 mm. The scene check measures the seam at 0.0 m and 0.0 deg.
+- *Flash:* the hop lands into a warm flash (f592-599) that frame 0 comes out of (f0-6), on the
+  lead's whoop. The flash covers the night -> golden-hour change.
+- *Audio:* the master is locked and loops without a click, but its last 100 ms decays to
+  -22 dBFS before the -9 dBFS downbeat: a breath, not a gap.
+
+**Light.** The sun lamp now shines from the visible sunset (247 deg). Since v1 it had come from
+203 deg, 44 deg off the glow in the sky. The low sun is stronger, so shadows read. Motion blur
+(half-frame shutter) turns the spokes, the roll and the whip into blur instead of strobing.
+
 ## Beat sync ([`sync/`](sync))
 
 `daemonv12 sync <project> --project --fps 24/1` exports every note's exact sample frame and 24 fps

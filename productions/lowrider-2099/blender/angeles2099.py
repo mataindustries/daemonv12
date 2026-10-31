@@ -929,8 +929,11 @@ def tire_material():
 
 
 def field_print_material():
-    """Where the field meets the road: a faint pressure-darkened patch and thin violet ripples
-    running outward. 'FieldGain' (pulse x height falloff) and 'FieldPhase' are keyframed."""
+    """Where the field meets the road. A soft pressure-darkened patch, thin violet ripples running
+    outward, and a mirage-like shimmer (the road reflects the sky through the rippling field at
+    grazing angles). All three grow as the module is pushed down: each footprint reads its own
+    module's 'gap' (object property, keyed per frame). 'FieldGain' (808 pulse, slam shock, lift
+    falloff) and 'FieldPhase' are keyframed on the material."""
     m = bpy.data.materials.new("FieldPrint")
     m.use_nodes = True
     nt = m.node_tree
@@ -940,11 +943,11 @@ def field_print_material():
     tc = nt.nodes.new("ShaderNodeTexCoord")
     ln = nt.nodes.new("ShaderNodeVectorMath"); ln.operation = "LENGTH"; L(tc.outputs["Object"], ln.inputs[0])
     r = ln.outputs["Value"]
-    def mr(a, b, c=0.0, d=1.0):
+    def mr(src, a, b, c=0.0, d=1.0):
         n_ = nt.nodes.new("ShaderNodeMapRange"); n_.interpolation_type = "SMOOTHSTEP"
         n_.inputs["From Min"].default_value, n_.inputs["From Max"].default_value = a, b
         n_.inputs["To Min"].default_value, n_.inputs["To Max"].default_value = c, d
-        L(r, n_.inputs["Value"]); return n_.outputs[0]
+        L(src, n_.inputs["Value"]); return n_.outputs[0]
     def math_(op, a, b):
         n_ = nt.nodes.new("ShaderNodeMath"); n_.operation = op
         for k_, v_ in enumerate((a, b)):
@@ -955,17 +958,29 @@ def field_print_material():
         return n_.outputs[0]
     gain = nt.nodes.new("ShaderNodeValue"); gain.name = "FieldGain"; gain.outputs[0].default_value = 1.0
     phase = nt.nodes.new("ShaderNodeValue"); phase.name = "FieldPhase"; phase.outputs[0].default_value = 0.0
-    env = math_("MULTIPLY", mr(0.34, 0.12), mr(0.05, 0.11))                # an annulus 5-34 cm out
+    gap = nt.nodes.new("ShaderNodeAttribute"); gap.attribute_type = "OBJECT"; gap.attribute_name = "gap"
+    press = mr(gap.outputs["Fac"], 0.085, 0.025)                           # 0 at ride height, 1 pushed down to 25 mm
+    env = math_("MULTIPLY", mr(r, 0.34, 0.12), mr(r, 0.05, 0.11))          # an annulus 5-34 cm out
     wave = math_("SUBTRACT", math_("MULTIPLY", r, 2 * math.pi / 0.085), phase.outputs[0])
     ring = math_("POWER", math_("ADD", math_("MULTIPLY", math_("COSINE", wave, 0.0), 0.5), 0.5), 10.0)  # thin crests
     em_s = math_("MULTIPLY", math_("MULTIPLY", ring, env), gain.outputs[0])
+    em_s = math_("MULTIPLY", em_s, math_("ADD", math_("MULTIPLY", press, 1.2), 0.5))      # brighter when pushed down
     em = nt.nodes.new("ShaderNodeEmission"); em.inputs["Color"].default_value = P("hoverViolet")
     L(math_("MULTIPLY", em_s, 0.12), em.inputs["Strength"])                # a hint, not a target
     dark = nt.nodes.new("ShaderNodeBsdfDiffuse"); dark.inputs["Color"].default_value = lin("#07060A")
     tr = nt.nodes.new("ShaderNodeBsdfTransparent")
-    alpha = math_("MULTIPLY", mr(0.30, 0.04), 0.35)                       # a soft pressure patch
+    alpha = math_("MULTIPLY", mr(r, 0.30, 0.04), math_("ADD", math_("MULTIPLY", press, 0.4), 0.22))   # the pressure patch
     mix = nt.nodes.new("ShaderNodeMixShader"); L(alpha, mix.inputs[0]); L(tr.outputs[0], mix.inputs[1]); L(dark.outputs[0], mix.inputs[2])
-    add = nt.nodes.new("ShaderNodeAddShader"); L(mix.outputs[0], add.inputs[0]); L(em.outputs[0], add.inputs[1])
+    # mirage: a rippled glossy film, only at grazing angles
+    gl = nt.nodes.new("ShaderNodeBsdfGlossy"); gl.inputs["Roughness"].default_value = 0.06
+    bp = nt.nodes.new("ShaderNodeBump"); bp.inputs["Strength"].default_value = 0.6; bp.inputs["Distance"].default_value = 0.02
+    L(math_("SINE", math_("SUBTRACT", math_("MULTIPLY", r, 2 * math.pi / 0.05), math_("MULTIPLY", phase.outputs[0], 1.4)), 0.0), bp.inputs["Height"])
+    L(bp.outputs[0], gl.inputs["Normal"])
+    lw = nt.nodes.new("ShaderNodeLayerWeight"); lw.inputs["Blend"].default_value = 0.4
+    mir = math_("MULTIPLY", math_("MULTIPLY", math_("POWER", lw.outputs["Facing"], 3.0), mr(r, 0.42, 0.18)),
+                math_("ADD", math_("MULTIPLY", press, 0.35), 0.15))
+    mix2 = nt.nodes.new("ShaderNodeMixShader"); L(mir, mix2.inputs[0]); L(mix.outputs[0], mix2.inputs[1]); L(gl.outputs[0], mix2.inputs[2])
+    add = nt.nodes.new("ShaderNodeAddShader"); L(mix2.outputs[0], add.inputs[0]); L(em.outputs[0], add.inputs[1])
     L(add.outputs[0], out.inputs["Surface"])
     return m
 
@@ -1048,6 +1063,7 @@ MODULE_STACK_Z = 0.74      # the stack is modelled 157 mm tall and built at 74 %
 MODULE_STACK_XY = 1.15     # and 15 % wider than modelled: 0.227 m radius, still 11 cm clear of the tyre
 MODULE_TOP, MODULE_BOTTOM = 0.0955 * MODULE_STACK_Z, 0.0606 * MODULE_STACK_Z
 FLOOR_Z = 0.27              # underside of the undertray, chassis space
+MODULE_DROOP = 0.12         # the strut's stroke: the most a module can hang below its rest position
 
 
 def build_hover_module(ms, M, wh, mY, zM):
@@ -1734,9 +1750,12 @@ def animate_time_of_day(sky, cues, frames):
         sky["sky"].sun_elevation = math.radians(el)
         sky["sky"].keyframe_insert("sun_elevation", frame=f)
         sun = sky["sun"]
-        sun.rotation_euler = (math.radians(90 - el), 0, math.radians(WORLD["timeOfDay"]["sunAzimuthDeg"] + 90))
+        # a sun lamp shines along its -Z: tilt it down by the elevation, then turn it so the light
+        # comes FROM the compass azimuth (x east = sin az, y north = cos az). (Until v3 this used
+        # az + 90, which put the lamp at 203 deg, 44 deg off the visible sunset at 247 deg.)
+        sun.rotation_euler = (math.radians(90 - el), 0, math.radians(180 - WORLD["timeOfDay"]["sunAzimuthDeg"]))
         sun.keyframe_insert("rotation_euler", frame=f)
-        sun.data.energy = 3.0 * smooth((el + 1.0) / 6.0)
+        sun.data.energy = 3.8 * smooth((el + 1.0) / 5.5)                     # a real golden-hour key: shadows must read
         sun.data.color = lin("#FFC69A")[:3] if el < 6 else (1, 1, 1)
         sun.data.keyframe_insert("energy", frame=f)
         night = 1 - smooth((el + 1) / 5.0)                                 # 0 at golden hour, 1 after dusk
@@ -1749,6 +1768,14 @@ def animate_time_of_day(sky, cues, frames):
         hz["HazeColor"].outputs[0].keyframe_insert("default_value", frame=f)
         hz["HazeStrength"].outputs[0].default_value = 0.9 * (1 - night) + 0.25 * night
         hz["HazeStrength"].outputs[0].keyframe_insert("default_value", frame=f)
+        if "MultiplaneHaze" in bpy.data.materials:                             # the multiplane cards share the haze colour
+            cn = bpy.data.materials["MultiplaneHaze"].node_tree.nodes
+            glow = np.array(lin("#B85A78")[:3])                                # at night the haze is lit by the city
+            cc = np.array(col[:3]) * (1 - 0.6 * night) + glow * 0.6 * night
+            cn["CardColor"].outputs[0].default_value = tuple(cc) + (1.0,)
+            cn["CardColor"].outputs[0].keyframe_insert("default_value", frame=f)
+            cn["CardStrength"].outputs[0].default_value = 0.9 * (1 - night) + 0.75 * night
+            cn["CardStrength"].outputs[0].keyframe_insert("default_value", frame=f)
         sc.view_settings.exposure = 0.0 + 1.2 * night
         sc.view_settings.keyframe_insert("exposure", frame=f)
         wn = bpy.context.scene.world.node_tree.nodes
@@ -1783,12 +1810,57 @@ def spring_track(frames, impulses, freq, damping, fps):
     return out
 
 
+def damped_follow(target, freq, zeta, fps, lo=None, hi=None, sub=8):
+    """A second-order follower: it lags its target, overshoots, and stops dead against hard limits
+    (lo/hi per frame). This is what makes each corner of the suspension feel like a real spring."""
+    w = 2 * math.pi * freq
+    dt = 1.0 / fps / sub
+    y, v = float(target[0]), 0.0
+    out = np.empty(len(target))
+    for i in range(len(target)):
+        for _ in range(sub):
+            v += (w * w * (target[i] - y) - 2 * zeta * w * v) * dt
+            y += v * dt
+            if lo is not None and y < lo[i]:
+                y, v = lo[i], max(v, 0.0)
+            if hi is not None and y > hi[i]:
+                y, v = hi[i], min(v, 0.0)
+        out[i] = y
+    return out
+
+
+def bump(f, a, b):
+    """0 -> 1 -> 0 over frames a..b (half a sine)."""
+    return math.sin(math.pi * min(1.0, max(0.0, (f - a) / (b - a))))
+
+
+def hop_curve(t, lift):
+    """The hydraulic hop, t frames from its cue: the nose dips first (anticipation), snaps up, and
+    lands nose-down with a bounce (overshoot)."""
+    if t < -8:
+        return 0.0
+    if t < 0:
+        return -0.05 * math.sin(math.pi * (t + 8) / 8)
+    up = lift * (1 - math.exp(-t / 1.6)) * math.exp(-max(0.0, t - 5) / 4.5)
+    return up - 0.06 * math.exp(-((t - 13) ** 2) / 10.0)
+
+
+def drift_angle(f, sec):
+    """Drifts start with a counter-flick the other way (anticipation), then swing out."""
+    d = 0.0
+    if sec == "pocket":
+        d += -math.radians(4) * bump(f, 120, 133) + math.radians(12) * smooth((f - 132) / 26) * (1 - smooth((f - 225) / 15))
+    if sec == "pocket-out":
+        d += -math.radians(5) * bump(f, 480, 492) + math.radians(28) * smooth((f - 489) / 24)   # the hero slide
+    return d
+
+
 def animate_vehicle(car, road, cues, cand, frames):
     fps = cues["fps"]
     c, t = road["centerline"], road["tangent"]
     S = CAR["suspension"]
-    # speed: steady 17 m/s; position along the road (metres from the road start)
-    s0 = 140.0
+    n = len(frames)
+    s0 = 140.0                                                              # metres from the road start; steady 17 m/s
     kicks = [(k["frame"], -S["kickCompress"] * k["strength"]) for k in cues["drivers"]["kick"]]
     events = cues["drivers"]["events"]
     slams = [(e["frame"], -S["slamDrop"]) for e in events if e["event"] == "slam"]
@@ -1796,7 +1868,13 @@ def animate_vehicle(car, road, cues, cand, frames):
     lift = spring_track(frames, kicks + slams, S["spring"]["frequencyHz"], S["spring"]["damping"], fps)
     snares = [(e["frame"], 0.015 * e["strength"]) for e in cues["drivers"]["snareClap"]]
     roll = spring_track(frames, snares, 2.2, 0.3, fps)
-    clear = car.setdefault("clearance", {"road": 1.0, "floor": 1.0})
+    drift = np.array([drift_angle(f, section_at(cues, f)) for f in frames])
+    lean = damped_follow(0.09 * drift, 1.6, 0.45, fps)                     # the body leans out of a slide, late, and overshoots
+    hop = np.array([sum(hop_curve(f - hf, S["hopFrontLift"]) for hf in hops) for f in frames])
+    rise = np.array([0.6 * smooth((f - 250) / 90) * (1 - smooth((f - 352) / 6)) if (cand == "hover" and 240 <= f < 360) else 0.0 for f in frames])
+    hop_z = 0.5 * hop                                                       # the hop pivots on the rear axle: the nose rises, the tail stays
+    pitch = -np.arctan2(hop, CAR["wheels"]["wheelbase"])
+    body_roll = roll + lean
     for i, f in enumerate(frames):
         s = s0 + 17.0 * f / fps
         k = int(min(len(c) - 2, max(0, s)))
@@ -1804,63 +1882,76 @@ def animate_vehicle(car, road, cues, cand, frames):
         p = c[k] * (1 - fr) + c[k + 1] * fr
         hdg = math.atan2(t[k][1], t[k][0])
         p = p - road["normal"][k] * (WORLD["road"]["laneWidth"] / 2)          # right-hand lane (mountain side)
-        sec = section_at(cues, f)
-        drift = math.radians(12) * smooth((f - 130) / 30) * (1 - smooth((f - 225) / 15)) if sec == "pocket" else 0.0
-        if sec == "pocket-out":
-            drift = math.radians(28) * smooth((f - 485) / 25)               # the hero slide
         car["root"].location = (p[0], p[1], 0.0)
-        car["root"].rotation_euler = (0, 0, hdg + drift)
+        car["root"].rotation_euler = (0, 0, hdg + drift[i])
         car["root"].keyframe_insert("location", frame=f)
         car["root"].keyframe_insert("rotation_euler", frame=f)
-        hop = 0.0
-        for hf in hops:
-            hop += S["hopFrontLift"] * math.exp(-max(0, f - hf - 4) / 6.0) * smooth((f - hf + 2) / 4.0) if f >= hf - 2 else 0.0
-        rise = 0.0
-        if cand == "hover" and 240 <= f < 360:                              # the spin-up lifts the car on its rings
-            rise = 0.6 * smooth((f - 250) / 90) * (1 - smooth((f - 352) / 6))
-        hop_z = 0.5 * hop                                                   # the hop pivots on the rear axle: the nose rises, the tail stays
-        car["chassis"].location = (0, 0, lift[i] + hop_z + rise)
-        pitch = -math.atan2(hop, CAR["wheels"]["wheelbase"])
-        body_roll = roll[i] + 0.07 * drift                                  # the body leans out of the slide
-        car["chassis"].rotation_euler = (body_roll, pitch, 0)
+        car["chassis"].location = (0, 0, lift[i] + hop_z[i] + rise[i])
+        car["chassis"].rotation_euler = (body_roll[i], pitch[i], 0)
         car["chassis"].keyframe_insert("location", frame=f)
         car["chassis"].keyframe_insert("rotation_euler", frame=f)
-        # each module holds its ride height: it takes back most of the body's bounce, roll and pitch
-        # at its own corner (so the arms and struts visibly work), and stays level with the road
-        k_ = CAR["hover"]["articulation"]
-        for mod in car["pods"]:
-            mx, my, mz = mod["rest"]
-            d = lift[i] + hop_z + my * body_roll - mx * pitch             # this corner's travel
-            # travel window: the bump stop under the floor (3 mm) and a 1 cm field gap above the road.
-            # On the slam the body lays down onto the modules, which then dip toward the road.
-            up_max = FLOOR_Z - 0.003 - mz - MODULE_TOP
-            down_min = 0.01 + MODULE_BOTTOM - mz - d
-            rel = min(max(-k_ * d, down_min), up_max)
-            mod.location = (mx, my, mz + rel)
-            mod.rotation_euler = (-k_ * body_roll, -k_ * pitch, 0)
-            mod.keyframe_insert("location", frame=f)
-            mod.keyframe_insert("rotation_euler", frame=f)
-            clear["road"] = min(clear["road"], mz + d + rel - MODULE_BOTTOM)
-            clear["floor"] = min(clear["floor"], FLOOR_Z - (mz + rel + MODULE_TOP))
         for w in car["wheels"]:                                             # the wheels spin, carrying no weight
             w.rotation_euler = (0, 17.0 * f / fps / CAR["wheels"]["radius"], 0)
             w.keyframe_insert("rotation_euler", frame=f)
-    # hover emitters pulse on 808 onsets
+    # Each module is its own damped spring. It wants to hold its ride height against its corner's
+    # travel (80 %), but it lags the body, overshoots, and stops dead on the bump stop under the
+    # floor and on a 1 cm field gap above the road. So the four corners move independently.
+    k_ = CAR["hover"]["articulation"]
+    clear = car.setdefault("clearance", {"road": 1.0, "floor": 1.0, "wheel": 1.0})
+    gaps = car.setdefault("gaps", {})
+    for mod in car["pods"]:
+        mx, my, mz = mod["rest"]
+        d = lift + hop_z + my * body_roll - mx * pitch                    # this corner's travel
+        up_max = np.full(n, FLOOR_Z - 0.003 - mz - MODULE_TOP)
+        # ...and the strut's stroke: past 12 cm of droop the module hangs from the body (on the hop
+        # the front hardware visibly lifts) instead of the strut stretching
+        down_min = np.maximum(0.01 + MODULE_BOTTOM - mz - d, -MODULE_DROOP)
+        rel = damped_follow(-k_ * d, 3.4, 0.3, fps, lo=down_min, hi=up_max)
+        rx = damped_follow(-k_ * body_roll, 4.0, 0.35, fps)
+        ry = damped_follow(-k_ * pitch, 4.0, 0.35, fps)
+        for i, f in enumerate(frames):
+            mod.location = (mx, my, mz + rel[i])
+            mod.rotation_euler = (rx[i], ry[i], 0)
+            mod.keyframe_insert("location", frame=f)
+            mod.keyframe_insert("rotation_euler", frame=f)
+        gap = mz + d + rel - MODULE_BOTTOM                                  # emitter plate above the road (without the HOVER lift)
+        gaps[mod.name] = gap + rise
+        clear["road"] = min(clear["road"], float(gap.min()))
+        clear["floor"] = min(clear["floor"], float((FLOOR_Z - (mz + rel + MODULE_TOP)).min()))
+        clear["wheel"] = min(clear["wheel"], float((CAR["wheels"]["radius"] + 0.08 + d + rel - CAR["wheels"]["radius"]).min()))
+        fp_ob = bpy.data.objects.get(mod.name.replace("HoverModule", "FieldPrint"))
+        if fp_ob:                                                            # the field's footprint knows how hard it is pushing
+            for i, f in enumerate(frames):
+                fp_ob["gap"] = float(gaps[mod.name][i])
+                fp_ob.keyframe_insert('["gap"]', frame=f)
+    car["body_lift"] = lift + hop_z + rise
+    # hover emitters pulse on 808 onsets; the footprint ripples run outward; the slam fires a shock ring
     hv = bpy.data.materials["HoverField"].node_tree.nodes["Emission"].inputs["Strength"]
     pulses = [(e["frame"], 1.0) for e in cues["drivers"]["sub808"]]
-    env = np.zeros(len(frames))
+    env = np.zeros(n)
     for f0, a in pulses:
-        d = np.array(frames) - f0
-        env += np.where(d >= 0, a * np.exp(-d / 5.0), 0)
+        dd = np.array(frames) - f0
+        env += np.where(dd >= 0, a * np.exp(-dd / 5.0), 0)
     fp = bpy.data.materials["FieldPrint"].node_tree.nodes
+    slam_f = [e["frame"] for e in events if e["event"] == "slam"]
     for i, f in enumerate(frames):
         hv.default_value = 0.8 + 2.4 * min(1.5, env[i])
         hv.keyframe_insert("default_value", frame=f)
-        rise = 0.6 * smooth((f - 250) / 90) * (1 - smooth((f - 352) / 6)) if (cand == "hover" and 240 <= f < 360) else 0.0
-        fp["FieldGain"].outputs[0].default_value = (0.35 + 0.65 * min(1.0, env[i])) * math.exp(-rise / 0.25)   # fades as the car lifts
+        shock = sum(math.exp(-(f - sf) / 6.0) for sf in slam_f if f >= sf)
+        fp["FieldGain"].outputs[0].default_value = ((0.35 + 0.65 * min(1.0, env[i])) + 2.5 * shock) * math.exp(-rise[i] / 0.25)
         fp["FieldGain"].outputs[0].keyframe_insert("default_value", frame=f)
-        fp["FieldPhase"].outputs[0].default_value = 2 * math.pi * 1.6 * f / fps                             # ripples run outward
+        surge = sum(2 * math.pi * 4 * smooth((f - sf) / 8) for sf in slam_f)       # the shock ring races outward
+        fp["FieldPhase"].outputs[0].default_value = 2 * math.pi * 1.6 * f / fps + surge
         fp["FieldPhase"].outputs[0].keyframe_insert("default_value", frame=f)
+    # the grille breathes with the Mouth Drop (CREST): bright on "ah", closing through "oo", shut on
+    # "mm", dark in the silence, a faint inhale on the reversed breath, a flash on the slam
+    if cand == "crest" and "GrilleGlow" in bpy.data.materials:
+        gs = bpy.data.materials["GrilleGlow"].node_tree.nodes["Emission"].inputs["Strength"]
+        keys = [(298, 3.0), (300, 4.8), (308, 4.2), (315, 3.0), (327, 1.6), (334, 0.25), (345, 0.0), (347, 0.0),
+                (359, 1.4), (360, 7.0), (366, 4.0), (374, 3.0)]
+        for f, v in keys:
+            gs.default_value = v
+            gs.keyframe_insert("default_value", frame=f)
 
 
 def animate_traffic(city, frames, fps):
@@ -1877,6 +1968,199 @@ def animate_traffic(city, frames, fps):
 # ======================================================================================
 # cameras (one per shot, switched by timeline markers)
 # ======================================================================================
+def _decal(name, half_x, half_y, mat, parent, z):
+    v = [(-half_x, -half_y, 0), (half_x, -half_y, 0), (half_x, half_y, 0), (-half_x, half_y, 0)]
+    ob = mesh_object(name, v, [(0, 1, 2, 3)], mat, parent=parent)
+    ob.location.z = z
+    for attr in ("visible_shadow", "visible_diffuse", "visible_glossy", "visible_transmission", "visible_volume_scatter"):
+        setattr(ob, attr, False)
+    return ob
+
+
+def body_shadow_material():
+    """A soft contact shadow under the body: darker and tighter when the body is low (the slam), wider
+    and fainter as it rises (the hop, HOVER's lift). Reads the decal's own 'lift' property."""
+    m = bpy.data.materials.new("BodyShadow")
+    m.use_nodes = True
+    nt = m.node_tree
+    nt.nodes.remove(nt.nodes["Principled BSDF"])
+    L = nt.links.new
+    def math_(op, a, b=0.0):
+        n_ = nt.nodes.new("ShaderNodeMath"); n_.operation = op
+        for k_, v_ in enumerate((a, b)):
+            if isinstance(v_, float):
+                n_.inputs[k_].default_value = v_
+            else:
+                L(v_, n_.inputs[k_])
+        return n_.outputs[0]
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    sep = nt.nodes.new("ShaderNodeSeparateXYZ"); L(tc.outputs["Object"], sep.inputs[0])
+    lift = nt.nodes.new("ShaderNodeAttribute"); lift.attribute_type = "OBJECT"; lift.attribute_name = "lift"
+    qx = math_("SUBTRACT", math_("ABSOLUTE", sep.outputs["X"]), 2.6)
+    qy = math_("SUBTRACT", math_("ABSOLUTE", sep.outputs["Y"]), 0.85)
+    outside = math_("SQRT", math_("ADD", math_("POWER", math_("MAXIMUM", qx, 0.0), 2.0), math_("POWER", math_("MAXIMUM", qy, 0.0), 2.0)))
+    sd = math_("ADD", outside, math_("MINIMUM", math_("MAXIMUM", qx, qy), 0.0))      # signed distance to a rectangle
+    up = math_("MAXIMUM", lift.outputs["Fac"], 0.0)
+    soft = math_("ADD", math_("MULTIPLY", up, 2.2), 0.35)
+    t_ = math_("DIVIDE", math_("ADD", sd, soft), math_("MULTIPLY", soft, 2.0))
+    fall = nt.nodes.new("ShaderNodeMapRange"); fall.clamp = True; fall.interpolation_type = "SMOOTHSTEP"
+    fall.inputs["To Min"].default_value, fall.inputs["To Max"].default_value = 1.0, 0.0
+    L(t_, fall.inputs["Value"])
+    dens = nt.nodes.new("ShaderNodeMapRange"); dens.clamp = True
+    dens.inputs["From Min"].default_value, dens.inputs["From Max"].default_value = -0.1, 0.6
+    dens.inputs["To Min"].default_value, dens.inputs["To Max"].default_value = 0.78, 0.12
+    L(lift.outputs["Fac"], dens.inputs["Value"])
+    alpha = math_("MULTIPLY", fall.outputs[0], dens.outputs[0])
+    tr = nt.nodes.new("ShaderNodeBsdfTransparent")
+    dk = nt.nodes.new("ShaderNodeBsdfDiffuse"); dk.inputs["Color"].default_value = lin("#040307")
+    mx = nt.nodes.new("ShaderNodeMixShader"); L(alpha, mx.inputs[0]); L(tr.outputs[0], mx.inputs[1]); L(dk.outputs[0], mx.inputs[2])
+    L(mx.outputs[0], nt.nodes["Material Output"].inputs["Surface"])
+    return m
+
+
+def build_ground_effects(car, frames):
+    """The car's contact with the road: a soft body shadow keyed to the body's height, and the
+    field footprints kept out of shadow and lighting calculations (they are only seen)."""
+    sh = _decal("BodyShadow", 3.6, 1.9, body_shadow_material(), car["root"], 0.0025)
+    for i, f in enumerate(frames):
+        sh["lift"] = float(car["body_lift"][i])
+        sh.keyframe_insert('["lift"]', frame=f)
+    for ob in bpy.data.objects:
+        if ob.name.startswith("FieldPrint"):
+            for attr in ("visible_shadow", "visible_diffuse", "visible_glossy", "visible_transmission", "visible_volume_scatter"):
+                setattr(ob, attr, False)
+    return sh
+
+
+SHADOW_BLIMP_FRAME = 180          # bar 4 downbeat (CREST and HOVER): the car drives through its shadow
+
+
+def build_shadow_blimp(car, cues):
+    """Foreshadowing: a patrol blimp the audience never sees, low over the valley between the crest
+    and the setting sun. Only its shadow exists for the camera: a long soft band that the car drives
+    through on bar 4, sliding up the granite. The car's warm rim light dims as it passes (the rig
+    light is near the car, so the dimming is computed from the blimp against the sun disc)."""
+    sc = bpy.context.scene
+    fps = cues["fps"]
+    sc.frame_set(SHADOW_BLIMP_FRAME)
+    pc = car["root"].matrix_world.translation + Vector((0, 0, 0.8))
+    az = math.radians(WORLD["timeOfDay"]["sunAzimuthDeg"])
+    def sun_dir(f):
+        el = math.radians(tod_value(cues, f, "sun"))
+        return Vector((math.sin(az) * math.cos(el), math.cos(az) * math.cos(el), math.sin(el)))
+    D, Lb, Rb = 420.0, 100.0, 13.0                                             # a 17 m umbra at 420 m under a 1.2 deg sun
+    centre = pc + sun_dir(SHADOW_BLIMP_FRAME) * D
+    v, f_ = [], []
+    nu, nv = 32, 16
+    for i in range(nu + 1):
+        x = -1 + 2 * i / nu
+        rr = math.sqrt(max(0.0, 1 - x * x)) * (1 - 0.18 * max(0.0, -x))       # a fuller nose, a tapering tail
+        for j in range(nv):
+            a = 2 * math.pi * j / nv
+            v.append((x * Lb / 2, rr * Rb * math.cos(a), rr * Rb * math.sin(a)))
+    for i in range(nu):
+        for j in range(nv):
+            f_.append((i * nv + j, i * nv + (j + 1) % nv, (i + 1) * nv + (j + 1) % nv, (i + 1) * nv + j))
+    for k in range(4):                                                         # tail fins: the shadow must read as a blimp
+        a = math.pi / 4 + k * math.pi / 2
+        b0 = len(v)
+        for (x, r) in ((-Lb * 0.5, 0.0), (-Lb * 0.32, 0.0), (-Lb * 0.36, 1.0), (-Lb * 0.5, 1.0)):
+            rad = Rb * (0.55 + 0.75 * r)
+            v.append((x, rad * math.cos(a), rad * math.sin(a)))
+        f_.append((b0, b0 + 1, b0 + 2, b0 + 3))
+    ob = mesh_object("ShadowBlimp", v, f_, None)
+    for attr in ("visible_camera", "visible_diffuse", "visible_glossy", "visible_transmission", "visible_volume_scatter"):
+        setattr(ob, attr, False)                                               # shadow rays only
+    h = Vector((sun_dir(SHADOW_BLIMP_FRAME).x, sun_dir(SHADOW_BLIMP_FRAME).y, 0)).normalized()
+    ob.rotation_euler = (0, 0, math.atan2(h.y, h.x))                           # nose toward the sun: a narrow, long shadow
+    frames = list(range(cues["durationFrames"]))
+    for f in frames:                                                           # cruising slowly toward the sun
+        ob.location = centre + h * (6.0 * (f - SHADOW_BLIMP_FRAME) / fps)
+        ob.keyframe_insert("location", frame=f)
+    # how much of the sun disc the blimp hides from the car, frame by frame (analytic ellipsoid test)
+    rim = car["rig"]["Rim"].data
+    base = rim.energy
+    rng = random.Random(SEED)
+    jit = [(rng.uniform(-1, 1), rng.uniform(-1, 1)) for _ in range(24)]
+    occ_track = []
+    for f in frames:
+        sc.frame_set(f)
+        p0 = car["root"].matrix_world.translation + Vector((0, 0, 0.8))
+        sd_ = sun_dir(f)
+        u_ = sd_.cross(Vector((0, 0, 1))).normalized(); w_ = u_.cross(sd_)
+        inv = ob.matrix_world.inverted()
+        hits = 0
+        for ja, jb in jit:
+            d_ = (sd_ + (u_ * ja + w_ * jb) * math.radians(0.6)).normalized()
+            o_l, d_l = inv @ p0, inv.to_3x3() @ d_
+            sc_ = Vector((2 / Lb, 1 / Rb, 1 / Rb))
+            o2 = Vector((o_l.x * sc_.x, o_l.y * sc_.y, o_l.z * sc_.z)); d2 = Vector((d_l.x * sc_.x, d_l.y * sc_.y, d_l.z * sc_.z))
+            A_, B_, C_ = d2.dot(d2), 2 * o2.dot(d2), o2.dot(o2) - 1
+            disc = B_ * B_ - 4 * A_ * C_
+            if disc > 0 and (-B_ + math.sqrt(disc)) > 0:
+                hits += 1
+        occ = hits / len(jit)
+        occ_track.append(occ)
+        rim.energy = base * (1 - 0.85 * occ)
+        rim.keyframe_insert("energy", frame=f)
+    car["shadow_occ"] = occ_track
+    return ob
+
+
+def multiplane_material():
+    """A haze card: flat, stepped aerial perspective between depth layers of the basin (the
+    multiplane look). Dense at the basin floor, gone 1.5 km up, faded at its ends. Colour and
+    strength follow the time of day ('CardColor', 'CardStrength'); density is per card."""
+    m = bpy.data.materials.new("MultiplaneHaze")
+    m.use_nodes = True
+    nt = m.node_tree
+    nt.nodes.remove(nt.nodes["Principled BSDF"])
+    L = nt.links.new
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    sep = nt.nodes.new("ShaderNodeSeparateXYZ"); L(tc.outputs["Object"], sep.inputs[0])
+    vert = nt.nodes.new("ShaderNodeMapRange"); vert.interpolation_type = "SMOOTHSTEP"
+    vert.inputs["From Min"].default_value, vert.inputs["From Max"].default_value = 2400.0, 60.0
+    L(sep.outputs["Z"], vert.inputs["Value"])
+    ab = nt.nodes.new("ShaderNodeMath"); ab.operation = "ABSOLUTE"; L(sep.outputs["X"], ab.inputs[0])
+    edge = nt.nodes.new("ShaderNodeMapRange"); edge.interpolation_type = "SMOOTHSTEP"
+    edge.inputs["From Min"].default_value, edge.inputs["From Max"].default_value = 19000.0, 11000.0
+    L(ab.outputs[0], edge.inputs["Value"])
+    dens = nt.nodes.new("ShaderNodeAttribute"); dens.attribute_type = "OBJECT"; dens.attribute_name = "density"
+    m1 = nt.nodes.new("ShaderNodeMath"); m1.operation = "MULTIPLY"; L(vert.outputs[0], m1.inputs[0]); L(edge.outputs[0], m1.inputs[1])
+    m2 = nt.nodes.new("ShaderNodeMath"); m2.operation = "MULTIPLY"; L(m1.outputs[0], m2.inputs[0]); L(dens.outputs["Fac"], m2.inputs[1])
+    col = nt.nodes.new("ShaderNodeRGB"); col.name = "CardColor"; col.outputs[0].default_value = P("violetHaze")
+    st = nt.nodes.new("ShaderNodeValue"); st.name = "CardStrength"; st.outputs[0].default_value = 1.0
+    em = nt.nodes.new("ShaderNodeEmission"); L(col.outputs[0], em.inputs["Color"]); L(st.outputs[0], em.inputs["Strength"])
+    tr = nt.nodes.new("ShaderNodeBsdfTransparent")
+    mx = nt.nodes.new("ShaderNodeMixShader"); L(m2.outputs[0], mx.inputs[0]); L(tr.outputs[0], mx.inputs[1]); L(em.outputs[0], mx.inputs[2])
+    L(mx.outputs[0], nt.nodes["Material Output"].inputs["Surface"])
+    return m
+
+
+MULTIPLANE = [(2600.0, 0.22), (5600.0, 0.26), (8400.0, 0.30), (12500.0, 0.36)]   # metres toward the city, card density
+
+
+def build_multiplane():
+    """Four haze cards across the view to the city, between the crest and Hollywood, Hollywood and
+    downtown, downtown and the Westside, and in front of the far ridges. Each layer behind them is
+    separated by one more step of haze, so camera moves give layered, multiplane parallax."""
+    C = WORLD["city"]
+    b = math.radians(C["bearingFromRoadDeg"])
+    fwd = Vector((math.sin(b), math.cos(b), 0.0))
+    mat = multiplane_material()
+    cards = []
+    for i, (dist, dens) in enumerate(MULTIPLANE):
+        v = [(-20000.0, 0, -60.0), (20000.0, 0, -60.0), (20000.0, 0, 2500.0), (-20000.0, 0, 2500.0)]
+        ob = mesh_object(f"Multiplane{i}", v, [(0, 1, 2, 3)], mat)
+        ob.location = fwd * dist + Vector((0, 0, C["basinZ"]))
+        ob.rotation_euler = (0, 0, math.atan2(fwd.y, fwd.x) - math.pi / 2)        # face the crest
+        ob["density"] = dens
+        for attr in ("visible_shadow", "visible_diffuse", "visible_glossy", "visible_transmission", "visible_volume_scatter"):
+            setattr(ob, attr, False)
+        cards.append(ob)
+    return cards
+
+
 def make_camera(name, lens, dof=None):
     cd = bpy.data.cameras.new(name)
     cd.lens = lens
@@ -1889,6 +2173,30 @@ def make_camera(name, lens, dof=None):
     ob = bpy.data.objects.new(name, cd)
     bpy.context.scene.collection.objects.link(ob)
     return ob
+
+
+def keyed(f, pts):
+    """Piecewise eased curve through (frame, value) points (smoothstep inside each segment)."""
+    if f <= pts[0][0]:
+        return pts[0][1]
+    for (f0, v0), (f1, v1) in zip(pts, pts[1:]):
+        if f <= f1:
+            return v0 + (v1 - v0) * smooth((f - f0) / max(1e-6, f1 - f0))
+    return pts[-1][1]
+
+
+# The Mouth Drop (CREST bar 6, frames 300-359), from music/v2/build-mouth.mjs: "ah" opens at 300,
+# rounds through "oh" (~315) and "oo" (~327), the lips seal on "mm" at ~334, silence at 345, a
+# reversed breath from 347, the slam at 360. The camera is swallowed in a barrel roll: a snap push
+# on "ah", a widening roll through "oh/oo" (the mouth grows), a fast push and fade on "mm", black
+# in the silence, a faint inhale; on the slam S5 continues the roll the same way round and unwinds.
+MOUTH_PUSH = [(300, 7.5), (308, 6.0), (334, 4.4), (345, 3.5), (359, 3.47)]       # metres ahead of the car centre
+MOUTH_ROLL = [(300, 0.0), (308, 12.0), (334, 70.0), (345, 150.0), (359, 175.0)]  # degrees
+MOUTH_LENS = [(300, 35.0), (308, 35.0), (334, 30.0), (345, 28.0)]
+SLAM_ROLL = [(360, 175.0), (368, 340.0), (372, 368.0), (377, 357.0), (382, 360.0)]  # same direction, overshoot, settle
+LOOP_FROM = 584                                                                   # S6 flies back into S1's first frame
+S1_START = (-2.55, -1.6, 0.2)                                                     # car-local: S1's first camera position
+S1_WHEEL = (-1.625, -0.88, 0.3)                                                   # the rear-right wheel it looks at
 
 
 def look_at(cam, target, roll=0.0):
@@ -1963,7 +2271,7 @@ def build_cameras(car, city, road, cues, cand, frames):
     shots = [s for s in SHOTS["shots"] if s.get("candidate") in (None, cand)]
     for sh in shots:
         lens = {"S1": 24, "S2": 20, "S3": 28, "S4c": 35, "S4h": 35, "S5": 30, "S6": 85}[sh["id"]]
-        dof = (2.8, 2.2) if sh["id"] == "S1" else None
+        dof = (2.8, 2.2) if sh["id"] in ("S1", "S6") else None      # S6 ends on S1's first frame: same lens, same focus
         cam = make_camera(sh["id"], lens, dof)
         cams[sh["id"]] = cam
         f0, f1 = sh["frames"]
@@ -1977,8 +2285,8 @@ def build_cameras(car, city, road, cues, cand, frames):
                 return M @ Vector(local)
             if sh["id"] == "S1":      # ground-scraping: rear-right wheel and module, dolly out to a backlit rear 3/4
                 k_ = smooth(u)
-                wheel = Vector((-CAR["wheels"]["wheelbase"] / 2, -CAR["wheels"]["track"] / 2, 0.3))
-                cam.location = keep_on_road(W(Vector((-2.55, -1.6, 0.2)).lerp(Vector((-7.2, -3.4, 0.55)), k_)))
+                wheel = Vector(S1_WHEEL)
+                cam.location = keep_on_road(W(Vector(S1_START).lerp(Vector((-7.2, -3.4, 0.55)), k_)))
                 tgt = W(wheel.lerp(Vector((-0.9, 0.2, 2.0)), k_))          # tilts up: the car ends in the lower third, under the sky
                 look_at(cam, tgt)
                 cam.data.dof.focus_distance = (cam.location - tgt).length
@@ -1989,9 +2297,12 @@ def build_cameras(car, city, road, cues, cand, frames):
                 a = math.radians(70 + 150 * smooth(u))
                 cam.location = W((6.4 * math.cos(a), 6.4 * math.sin(a), 1.0 + 2.0 * smooth(u)))
                 look_at(cam, W((0, 0, 0.6)))
-            elif sh["id"] == "S4c":   # push into the front intake
-                cam.location = W((7.5 - 4.05 * smooth(u * 1.1), 0.0, 0.62 - 0.14 * smooth(u)))   # ends 0.6 m off the grille
-                look_at(cam, W((2.0, 0, 0.52)))
+            elif sh["id"] == "S4c":   # swallowed: a barrel-roll push into the grille, timed to the vowels
+                x_ = keyed(f, MOUTH_PUSH)
+                cam.location = W((x_, 0.0, 0.62 - 0.14 * smooth((7.5 - x_) / 4.03)))   # ends 0.6 m off the grille
+                cam.data.lens = keyed(f, MOUTH_LENS)
+                cam.data.keyframe_insert("lens", frame=f)
+                look_at(cam, W((2.0, 0, 0.52)), roll=math.radians(keyed(f, MOUTH_ROLL)))
             elif sh["id"] == "S4h":   # static low three-quarter while the car rises
                 cam.location = W((5.2, 4.0, 0.35))
                 look_at(cam, W((0, 0, 0.75)))
@@ -2010,14 +2321,35 @@ def build_cameras(car, city, road, cues, cand, frames):
                     cam["anchor"] = list(Ma @ Vector((10.0, -30.0, 6.0)))
                     bpy.context.scene.frame_set(f)
                 cam.location = Vector(cam["anchor"])
-                look_at(cam, W((0, 0, 0.55)))
-            if sh["id"] in ("S2", "S5", "S6"):     # never inside the mountain, never behind a ridge
+                tgt6 = W((0, 0, 0.55))
+                if f >= LOOP_FROM:    # the loop: fly in to S1's first frame (car-local), widening 85 -> 24 mm
+                    if not cam.get("loop0"):
+                        cam["loop0"] = list(M.inverted() @ Vector(cam["anchor"]))
+                    e = smooth((f - LOOP_FROM) / (f1 - 1 - LOOP_FROM)) ** 1.6
+                    a_ = Vector(cam["loop0"]); b_ = Vector(S1_START)
+                    mid = Vector((-9.0, -3.2, 2.6))                                   # over the shoulder behind the car
+                    loc_ = (a_.lerp(mid, e)).lerp(mid.lerp(b_, e), e)                 # quadratic Bezier, clear of the cut
+                    lw = W(loc_)
+                    if abs(signed_distance(np.array([lw.x]), np.array([lw.y]), road["centerline"])[0]) > road["half"] + 2:
+                        lw.z = max(lw.z, terrain_height(np.array([lw.x]), np.array([lw.y]), road["centerline"], road["half"])[0] + 0.6)
+                    cam.location = lw
+                    tgt6 = W(Vector((0, 0, 0.55)).lerp(Vector(S1_WHEEL), e))
+                    cam.data.lens = 85 + (24 - 85) * e
+                else:
+                    cam.data.lens = 85
+                cam.data.keyframe_insert("lens", frame=f)
+                look_at(cam, tgt6)
+                cam.data.dof.focus_distance = (cam.location - tgt6).length
+                cam.data.dof.keyframe_insert("focus_distance", frame=f)
+            if sh["id"] in ("S2", "S5") or (sh["id"] == "S6" and f < LOOP_FROM):   # never inside the mountain, never behind a ridge
                 before = cam.rotation_euler.copy()
                 cam.location = clear_sight(cam.location, W((0, 0, 0.6)))
                 if sh["id"] == "S5":
                     aim_framing(cam, W((0, 0, 0.6)), yaw_pt, 0.42 - 0.17 * lift)
+                    if cand == "crest" and f < 384:                        # the swallow's roll carries through the cut and unwinds
+                        cam.rotation_euler.rotate_axis("Z", math.radians(keyed(f, SLAM_ROLL)))
                 elif sh["id"] == "S6":
-                    look_at(cam, W((0, 0, 0.55)))
+                    look_at(cam, tgt6)
                 else:
                     look_at(cam, W((-0.3, 0, 0.6)))
             cam.keyframe_insert("location", frame=f)
@@ -2030,6 +2362,18 @@ def build_cameras(car, city, road, cues, cand, frames):
 # ======================================================================================
 # build, validate, render
 # ======================================================================================
+def exposure_offset(f, cand):
+    """Stops added to the time-of-day exposure. CREST's Mouth Drop: the lips seal to black (336-345),
+    silence, then a faint inhale (347-359) up to the slam. The loop: a warm flash over the last six
+    frames that the first six frames come out of, so night -> golden hour reads as one flare."""
+    off = 0.0
+    if cand == "crest" and 334 <= f < 360:
+        off += keyed(f, [(334, 0.0), (345, -14.0), (347, -14.0), (359, -6.5)])
+    off += keyed(f, [(592, 0.0), (599, 3.0)]) if f >= 592 else 0.0
+    off += keyed(f, [(0, 3.0), (6, 0.0)]) if f <= 6 else 0.0
+    return off
+
+
 def build(cand="crest", frames=None, log=print):
     t0 = time.time()
     cues = json.load(open(os.path.join(SYNC, f"{cand}.cues.json")))
@@ -2041,16 +2385,22 @@ def build(cand="crest", frames=None, log=print):
     terr = build_terrain(M, road)
     build_roadside(M, road)
     city = build_city(M)
+    build_multiplane()
     sky = build_sky()
     animate_vehicle(car, road, cues, cand, frames)
     animate_time_of_day(sky, cues, frames)
     animate_traffic(city, frames, cues["fps"])
+    build_ground_effects(car, frames)
+    build_shadow_blimp(car, cues)
     cams = build_cameras(car, city, road, cues, cand, frames)
-    if cand == "crest":                       # black between the swallow's silence and the slam
-        for f in frames:
-            if 345 <= f < 360:
-                sc.view_settings.exposure = -14.0
-                sc.view_settings.keyframe_insert("exposure", frame=f)
+    for f in frames:                          # exposure = the time of day, plus the two transitions
+        el = tod_value(cues, f, "sun")
+        night = 1 - smooth((el + 1) / 5.0)
+        sc.view_settings.exposure = 1.2 * night + exposure_offset(f, cand)
+        sc.view_settings.keyframe_insert("exposure", frame=f)
+    sc.render.use_motion_blur = True          # spinning spokes, the roll, the whip: blur, not strobing
+    sc.render.motion_blur_shutter = 0.5
+    sc.cycles.transparent_max_bounces = 16    # haze cards, marine layer, decals
     log(f"scene built for {cand} in {time.time() - t0:.1f} s: {len(bpy.data.objects)} objects, "
         f"{sum(len(o.data.polygons) for o in bpy.data.objects if o.type == 'MESH')} base polygons")
     return {"scene": sc, "cues": cues, "car": car, "road": road, "terrain": terr, "city": city, "sky": sky, "cams": cams}
@@ -2102,8 +2452,95 @@ def validate(S):
     cl = car.get("clearance", {"road": 0, "floor": 0})
     check("hover modules clear the road and the floor on every frame", cl["road"] >= 0.005 and cl["floor"] >= 0.002,
           f"closest: {cl['road'] * 1000:.0f} mm above the road, {cl['floor'] * 1000:.0f} mm below the floor")
+    animated_checks(S, check)
+    lock_checks(check)
     rep["ok"] = all(c["ok"] for c in rep["checks"])
     return rep
+
+
+def lock_checks(check):
+    """GATE 02 is approved: CRESTLINE v3 and the CREST master are frozen (visual/specs/locks.json)."""
+    import hashlib
+    import inspect
+    path = os.path.join(SPECS, "locks.json")
+    if not os.path.exists(path):
+        check("GATE 02 lock (CRESTLINE v3, CREST master)", False, "visual/specs/locks.json missing")
+        return
+    lk = json.load(open(path))
+    sha = lambda b: hashlib.sha256(b).hexdigest()
+    changed = [n for n, h in lk["crestline"]["builderSourceSha256"].items() if sha(inspect.getsource(globals()[n]).encode()) != h]
+    if sha(open(os.path.join(SPECS, "vehicle.json"), "rb").read()) != lk["crestline"]["vehicleSpecSha256"]:
+        changed.append("visual/specs/vehicle.json")
+    wav = os.path.join(PROD, lk["soundtrack"]["master"])
+    if os.path.exists(wav) and sha(open(wav, "rb").read()) != lk["soundtrack"]["sha256"]:
+        changed.append(lk["soundtrack"]["master"])
+    check("GATE 02 lock: CRESTLINE v3 (0b8af67) and the CREST master unchanged", not changed, changed or "car geometry, vehicle spec and master match the lock")
+
+
+def animated_checks(S, check):
+    """Checks across the animation, not just at shot boundaries: every 2nd frame plus each shot's
+    first and last frame and the loop seam."""
+    from bpy_extras.object_utils import world_to_camera_view
+    sc, car, cues = S["scene"], S["car"], S["cues"]
+    n = cues["durationFrames"]
+    marks = sorted((m.frame, m.camera) for m in sc.timeline_markers)
+    def cam_at(f):
+        c_ = marks[0][1]
+        for mf, mc in marks:
+            if mf <= f:
+                c_ = mc
+        return c_
+    black = set(range(345, 360)) if S["cues"]["candidate"] == "crest" else set()
+    sample = set(range(0, n, 2)) | {0, 1, n - 2, n - 1}
+    for mf, _ in marks:
+        sample |= {mf, max(0, mf - 1)}
+    links = [(o, c_) for o in bpy.data.objects for c_ in o.constraints if c_.type == "STRETCH_TO"]
+    R = CAR["wheels"]["radius"]
+    margins, stretch, jumps = {}, [], []
+    wheel_low, tuck, prev = 1.0, -1.0, {}
+    for f in sorted(sample):
+        sc.frame_set(f)
+        cam = cam_at(f)
+        if f not in black:
+            p = world_to_camera_view(sc, cam, car["chassis"].matrix_world.translation)
+            m_ = min(p.x, 1 - p.x, p.y, 1 - p.y) if p.z > 0 else -1.0
+            margins[cam.name] = min(margins.get(cam.name, 1.0), m_)
+        for o, c_ in links:
+            ratio = (c_.target.matrix_world.translation - o.matrix_world.translation).length / c_.rest_length
+            if not 0.8 <= ratio <= 1.25:
+                stretch.append((o.name, f, round(ratio, 2)))
+        rinv, cinv = car["root"].matrix_world.inverted(), car["chassis"].matrix_world.inverted()
+        for w in car["wheels"]:
+            wheel_low = min(wheel_low, (rinv @ w.matrix_world.translation).z - R)
+            tuck = max(tuck, (cinv @ w.matrix_world.translation).z + R)
+        pq = prev.get(cam.name)
+        if pq and f - pq[0] <= 2:
+            step = f - pq[0]
+            dpos = (cam.matrix_world.translation - pq[1]).length / step
+            drot = math.degrees(cam.matrix_world.to_quaternion().rotation_difference(pq[2]).angle) / step
+            if dpos > 6.0 or drot > 30.0:
+                jumps.append((cam.name, f, round(dpos, 2), round(drot, 1)))
+        prev[cam.name] = (f, cam.matrix_world.translation.copy(), cam.matrix_world.to_quaternion())
+    low = {k: round(v, 3) for k, v in margins.items() if v < 0.03}
+    check("car in frame on every checked frame (3 % margin)", not low, low or {k: round(v, 2) for k, v in margins.items()})
+    check("rigged arms, struts and springs stay within 80-125 % of their length", not stretch, stretch[:6] or f"{len(links)} links on {len(sample)} frames")
+    check("wheels clear the road and stay inside the body", wheel_low >= 0.005 and tuck <= CAR["body"]["hoodZ"] - 0.1,
+          f"lowest tyre {wheel_low * 1000:.0f} mm above the road; highest tyre top {tuck:.2f} m (hood {CAR['body']['hoodZ']} m)")
+    check("no camera jumps inside a shot (<= 6 m and 30 deg per frame)", not jumps, jumps[:6] or "continuous")
+    # the loop seam: the last frame's camera, in the car's frame, must be the first frame's camera
+    poses = {}
+    for f in (n - 1, 0):
+        sc.frame_set(f)
+        cam = cam_at(f)
+        rinv = car["root"].matrix_world.inverted()
+        poses[f] = (rinv @ cam.matrix_world.translation, (rinv.to_quaternion() @ cam.matrix_world.to_quaternion()), cam.data.lens,
+                    cam.data.dof.focus_distance if cam.data.dof.use_dof else None, sc.view_settings.exposure)
+    a_, b_ = poses[n - 1], poses[0]
+    dpos = (a_[0] - b_[0]).length
+    dang = math.degrees(a_[1].rotation_difference(b_[1]).angle)
+    seam = {"positionM": round(dpos, 3), "angleDeg": round(dang, 2), "lens": [round(a_[2], 1), round(b_[2], 1)],
+            "focusM": [round(a_[3] or 0, 2), round(b_[3] or 0, 2)], "exposure": [round(a_[4], 2), round(b_[4], 2)]}
+    check("loop seam: frame 599's camera is frame 0's camera (car-relative)", dpos < 0.05 and dang < 2.0 and abs(a_[2] - b_[2]) < 0.5, seam)
 
 
 def render_frames(S, frames, res, samples, out_dir=None, out=None, names=None):
@@ -2167,6 +2604,7 @@ def setup_animatic(S, res):
     timing and camera, not a look: Cycles stays for styleframes and finals."""
     sc = S["scene"]
     sc.render.engine = "BLENDER_WORKBENCH"
+    sc.render.use_motion_blur = False          # a layout check: keep it fast
     sh = sc.display.shading
     sh.light, sh.color_type, sh.show_cavity, sh.show_shadows = "STUDIO", "MATERIAL", True, False
     sh.background_type = "WORLD"
@@ -2239,8 +2677,9 @@ def main(argv):
     if a.styleframe:
         sf = next(s for s in SHOTS["styleframes"] if s["id"] == a.styleframe)
         frames = [sf["frame"]]
-    elif a.frames:
-        frames = [int(v) for v in a.frames.split(",")]
+    elif a.frames:                            # "0,170,330" or a range "0-599"
+        frames = [f_ for part in a.frames.split(",") for f_ in
+                  (range(int(part.split("-")[0]), int(part.split("-")[1]) + 1) if "-" in part else [int(part)])]
     else:
         frames = None
     # building animation for every frame is cheap; keys for only the requested frames would change interpolation

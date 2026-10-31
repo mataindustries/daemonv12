@@ -7,11 +7,12 @@ This folder is self-contained production work; DaemonV12's engine (`src/`) is no
 
 | Gate | Deliverable | Status |
 |---|---|---|
-| **GATE 01** | Two upgraded music candidates | **Owner listening test pending** (leaning HOVER). [`review/music/crest.mp3`](review/music/crest.mp3), [`review/music/hover.mp3`](review/music/hover.mp3); details in [`music/README.md`](music/README.md) |
-| **GATE 02** | Redesigned CRESTLINE and three revised styleframes | **Final wheel and hover-system pass ready for review:** [`review/car/v3/`](review/car/v3) (wheel, module and whole-car comparisons, plus HOVER articulation at the slam). Styleframes: [`review/styleframes/v2/`](review/styleframes/v2) (rendered before the v3 wheels and modules), [before/after](review/styleframes/before-after.jpg); v1 in [`review/styleframes/v1/`](review/styleframes/v1); critique in [`visual/DESIGN_BIBLE.md`](visual/DESIGN_BIBLE.md#styleframes-gate-02-honest-review) |
-| GATE 03 | One-frame GPU test, then the five-frame Colab proof (360×640) | Pipeline validated without a GPU and end to end on CPU; **not run**: needs GATES 01–02 and an owner-approved GPU budget. Plan: [`RENDER_PLAN.md`](RENDER_PLAN.md) |
-| GATE 04 | Workbench animatic of the whole piece with the soundtrack | Locked behind GATE 03 approval |
-| GATE 05 | Final render | Not started; needs GATE 04 approval and its own budget |
+| **GATE 01** | The soundtrack | **Approved: CREST is the locked primary** ([`review/music/crest.mp3`](review/music/crest.mp3)). HOVER stays buildable. Details in [`music/README.md`](music/README.md) |
+| **GATE 02** | CRESTLINE and the look | **Approved and locked:** CRESTLINE v3 at `0b8af67` ([`review/car/v3/`](review/car/v3)), enforced by [`visual/specs/locks.json`](visual/specs/locks.json). Styleframes re-rendered with the v3 car: [`review/styleframes/v3/`](review/styleframes/v3) |
+| **Motion** | A music-synchronised CPU motion proof with the CREST master | **Ready for review:** [`review/motion/`](review/motion) (the proof, a loop check, a contact sheet and the list of visual failures). The direction is in [`visual/DESIGN_BIBLE.md`](visual/DESIGN_BIBLE.md#motion-making-the-machine-come-alive) |
+| GATE 03 | One-frame GPU test, then the five-frame Colab proof | **Not run:** needs approval of the motion direction and a GPU budget. Plan: [`RENDER_PLAN.md`](RENDER_PLAN.md) |
+| GATE 04 | Workbench animatic on Colab | Locked behind GATE 03 |
+| GATE 05 | Final render | Not started |
 
 > **Nobody has listened to the music or watched motion yet.** The producer cannot hear audio.
 > Every audio claim is a measurement or a design intention; the styleframes are real renders, but
@@ -29,7 +30,8 @@ This folder is self-contained production work; DaemonV12's engine (`src/`) is no
 | [`visual/sync/`](visual/sync) | Engine event maps at 24 fps and the cue sheets that drive the animation, with a transient cross-check |
 | [`blender/angeles2099.py`](blender/angeles2099.py) | The deterministic Blender 4.5 LTS scene generator, with validation built in |
 | [`review/car/`](review/car) | CRESTLINE: `v3/` the lowrider wheel and maglev suspension, before/after; `v2/` the earlier design sheet |
-| [`review/styleframes/`](review/styleframes) | GATE 02 styleframes (v1 and v2), scene check reports, before/after |
+| [`review/styleframes/`](review/styleframes) | Styleframes v1, v2 and v3 (the locked car), scene check reports, before/after |
+| [`review/motion/`](review/motion) | The CPU motion proof with the CREST master, the loop check, the contact sheet, seam metrics |
 | [`RENDER_PLAN.md`](RENDER_PLAN.md) | Measured render times and the proposed GPU budget |
 | [`colab/`](colab) | The notebook (pinned to one commit), its pipeline module, config, validators and [Android instructions](colab/ANDROID.md) |
 
@@ -48,4 +50,6 @@ python3.11 productions/lowrider-2099/blender/angeles2099.py --styleframe SF2 --r
 python3.11 productions/lowrider-2099/blender/angeles2099.py --car-sheet car/ --res 960x540 --samples 64
 LOWRIDER_BPY_PYTHON=$(which python3.11) python3 productions/lowrider-2099/colab/validate_notebook.py   # Run all twice, 0 frames
 LOWRIDER_BPY_PYTHON=$(which python3.11) python3 productions/lowrider-2099/colab/e2e_local.py          # the GPU-spend path, on CPU
+python3.11 productions/lowrider-2099/blender/angeles2099.py --frames 0-599 --res 216x384 --samples 8 --out-dir proof/   # motion proof (~2 h CPU)
+python3 productions/lowrider-2099/blender/motion_proof.py proof/ productions/lowrider-2099/review/motion
 ```
