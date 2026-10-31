@@ -2291,7 +2291,10 @@ def build_cameras(car, city, road, cues, cand, frames):
                 look_at(cam, tgt)
                 cam.data.dof.focus_distance = (cam.location - tgt).length
             elif sh["id"] == "S2":    # low, wide front three-quarter, tracking from the opposite lane
-                cam.location = W((3.8 - 0.8 * u, 5.6, 0.9))
+                # in the ROAD's frame, not the car's: a camera that turns with the car hides the drift
+                yaw_r = M.to_euler().z - drift_angle(f, section_at(cues, f))
+                Mr = Matrix.Translation(M.translation) @ Matrix.Rotation(yaw_r, 4, "Z")
+                cam.location = Mr @ Vector((3.8 - 0.8 * u, 5.6, 0.9))
                 look_at(cam, W((-0.3, 0, 0.6)))
             elif sh["id"] == "S3":    # orbit 150 deg, rising
                 a = math.radians(70 + 150 * smooth(u))
@@ -2335,8 +2338,8 @@ def build_cameras(car, city, road, cues, cand, frames):
                     cam.location = lw
                     tgt6 = W(Vector((0, 0, 0.55)).lerp(Vector(S1_WHEEL), e))
                     cam.data.lens = 85 + (24 - 85) * e
-                else:
-                    cam.data.lens = 85
+                else:                 # follow-zoom: the car stays about frame-wide while it approaches (it was tiny at 68 m)
+                    cam.data.lens = min(180.0, max(85.0, 85.0 * (cam.location - tgt6).length / 31.0))
                 cam.data.keyframe_insert("lens", frame=f)
                 look_at(cam, tgt6)
                 cam.data.dof.focus_distance = (cam.location - tgt6).length
@@ -2369,7 +2372,7 @@ def exposure_offset(f, cand):
     off = 0.0
     if cand == "crest" and 334 <= f < 360:
         off += keyed(f, [(334, 0.0), (345, -14.0), (347, -14.0), (359, -6.5)])
-    off += keyed(f, [(592, 0.0), (599, 3.0)]) if f >= 592 else 0.0
+    off += keyed(f, [(592, 0.0), (599, 3.8)]) if f >= 592 else 0.0           # +3.8: the night frame matches frame 0's brightness
     off += keyed(f, [(0, 3.0), (6, 0.0)]) if f <= 6 else 0.0
     return off
 

@@ -58,7 +58,8 @@ def main():
     lst.write_text("".join(f"file '{(src / f'frame_{f:04d}.png').resolve()}'\nduration {1 / FPS:.6f}\n" for f in seq))
     dur = n / FPS
     run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst), "-i", a.audio, "-filter_complex",
-         f"[1:a]atrim={dur - 2}:{dur},asetpts=N/SR/TB[e];[1:a]atrim=0:2,asetpts=N/SR/TB[s];[e][s][e][s]concat=n=4:v=0:a=1[a];"
+         f"[1:a]asplit=2[a1][a2];[a1]atrim={dur - 2}:{dur},asetpts=N/SR/TB,asplit=2[e1][e2];[a2]atrim=0:2,asetpts=N/SR/TB,asplit=2[s1][s2];"
+         f"[e1][s1][e2][s2]concat=n=4:v=0:a=1[a];"
          f"[0:v]{scale},fps={FPS}[v]",
          "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
          "-movflags", "+faststart", str(out / "loop-check.mp4")])

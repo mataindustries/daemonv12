@@ -155,6 +155,11 @@ below is driven by CREST's cue sheet; nothing is hand-keyed.
    | 345-359 | silence, then the reversed breath | drifting at 175 deg | a faint violet inhale |
    | 360-383 | the slam | S5 keeps rolling the same way, 175 -> 368 -> 360 deg | grille flash, shock rings |
 
+**Cameras that show the motion.** S2's camera follows the road, not the car: when it followed the
+car's own yaw, the drift was invisible. S6 follow-zooms (85-180 mm) so the sliding car stays about
+frame-wide. The proof and its list of visual failures are in
+[`review/motion/`](../review/motion).
+
 **The loop.** Frame 599 is frame 0's camera:
 - *Fly-in:* from f584 the 85 mm hero shot flies back over the shoulder into S1's first frame,
   car-relative, widening to 24 mm. The scene check measures the seam at 0.0 m and 0.0 deg.

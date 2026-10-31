@@ -22,6 +22,14 @@ Per-frame cost varies about 3× across the piece: the wide road-and-city frames 
 ones. The one-frame GPU test therefore renders **frame 170**, the costliest proof frame, so
 every estimate built on it errs high, not low.
 
+## The motion proof (CPU, measured)
+
+The motion direction was reviewed as a real Cycles render of all 600 frames, not a Workbench
+layout: 216×384, 8 samples, denoised, half-frame motion blur, on this 4-vCPU container. That
+took **77 min for all 600 frames** (mean **7.6 s/frame**, worst 21.6 s on S1's wheel close-up).
+Re-rendering one shot after a fix takes 10–20 min (S2: 120 frames in 20.5 min). Motion blur and
+the new ground effects are included in these numbers. No GPU was used.
+
 ## What it implies on CPU (for scale, not a proposal)
 
 - The five-frame proof: **71 s + 212 s ≈ 4.7 min** on this 4-vCPU container.

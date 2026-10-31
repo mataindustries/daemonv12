@@ -1,0 +1,105 @@
+{
+ "blender": "4.5.14 LTS",
+ "checks": [
+  {
+   "check": "vehicle length matches spec",
+   "ok": true,
+   "detail": "5.70 m vs 5.7 m"
+  },
+  {
+   "check": "cue sheet frames in range",
+   "ok": true,
+   "detail": "34 kicks"
+  },
+  {
+   "check": "one camera per shot, bound to markers",
+   "ok": true,
+   "detail": [
+    "S1",
+    "S2",
+    "S3",
+    "S4c",
+    "S5",
+    "S6"
+   ]
+  },
+  {
+   "check": "car in frame at shot start/middle/end",
+   "ok": true,
+   "detail": "all in frame"
+  },
+  {
+   "check": "no camera inside geometry",
+   "ok": true,
+   "detail": "every centre ray clears 0.5 m"
+  },
+  {
+   "check": "sunset to night across the piece",
+   "ok": true,
+   "detail": "sun 4.0 deg -> -6.0 deg"
+  },
+  {
+   "check": "no NaN transforms",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "hover modules clear the road and the floor on every frame",
+   "ok": true,
+   "detail": "closest: 31 mm above the road, 3 mm below the floor"
+  },
+  {
+   "check": "car in frame on every checked frame (3 % margin)",
+   "ok": true,
+   "detail": {
+    "S1": 0.29,
+    "S2": 0.44,
+    "S3": 0.42,
+    "S4c": 0.38,
+    "S5": 0.22,
+    "S6": 0.39
+   }
+  },
+  {
+   "check": "rigged arms, struts and springs stay within 80-125 % of their length",
+   "ok": true,
+   "detail": "16 links on 307 frames"
+  },
+  {
+   "check": "wheels clear the road and stay inside the body",
+   "ok": true,
+   "detail": "lowest tyre 38 mm above the road; highest tyre top 0.60 m (hood 0.82 m)"
+  },
+  {
+   "check": "no camera jumps inside a shot (<= 6 m and 30 deg per frame)",
+   "ok": true,
+   "detail": "continuous"
+  },
+  {
+   "check": "loop seam: frame 599's camera is frame 0's camera (car-relative)",
+   "ok": true,
+   "detail": {
+    "positionM": 0.0,
+    "angleDeg": 0.0,
+    "lens": [
+     24.0,
+     24.0
+    ],
+    "focusM": [
+     1.18,
+     1.18
+    ],
+    "exposure": [
+     5.0,
+     3.0
+    ]
+   }
+  },
+  {
+   "check": "GATE 02 lock: CRESTLINE v3 (0b8af67) and the CREST master unchanged",
+   "ok": true,
+   "detail": "car geometry, vehicle spec and master match the lock"
+  }
+ ],
+ "ok": true
+}
