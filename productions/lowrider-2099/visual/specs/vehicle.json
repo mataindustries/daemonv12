@@ -32,22 +32,36 @@
   },
   "wheels": {
     "radius": 0.22,
-    "width": 0.14,
-    "spokes": 24,
+    "width": 0.135,
+    "spokes": 100,
     "wheelbase": 3.25,
     "track": 1.76,
-    "note": "tiny chrome wire wheels in squared arches; they spin but carry no weight"
+    "style": "a shrunken custom 13-inch lowrider wire wheel: 100 cross-laced chrome spokes in four lacing groups, a deep-dish polished rim with a proud lip, a recessed chrome hub with gold flanges, a three-wing chrome knock-off with a gold centre",
+    "tyre": {
+      "rimRadius": 0.13,
+      "sectionHeight": 0.09,
+      "whitewall": [
+        0.157,
+        0.17
+      ],
+      "note": "chunky miniature tyre, two tread grooves, fine siping; a thin whitewall on the outboard side only"
+    },
+    "note": "tiny on purpose; they spin but carry no weight. Each rides on its module's outrigger, 13 cm clear of the module"
   },
   "hover": {
     "modules": 4,
-    "housingRadius": 0.3,
-    "housingHeight": 0.09,
-    "fins": 18,
-    "coils": 3,
-    "moduleInboardY": 0.6,
-    "rideHeight": 0.24,
-    "emission": "field coils on the module underside only (hoverViolet), gold rim band; a small ground pool light per module",
-    "mount": "chrome hydraulic actuator (cylinder + piston rod) and satin A-arms per corner; stub axle out to the wire wheel"
+    "housingRadius": 0.227,
+    "housingHeight": 0.116,
+    "fins": 10,
+    "coilTurns": 64,
+    "moduleInboardY": 0.48,
+    "rideHeight": 0.13,
+    "articulation": 0.8,
+    "stack": "black anodised emitter plate (slim violet emitter ring underneath) / exposed gold toroidal coil pack / chrome band / brushed titanium dome with ten radial fins / chrome boss with a gold ring and six bolts",
+    "mount": "parallelogram trailing arms (chrome, gold pivot eyes) from a titanium chassis bracket on a chrome cross-member; a gold-sprung hydraulic strut from the module clevis inboard to a titanium manifold on the centreline; a titanium outrigger and chrome bearing carry the wheel",
+    "articulation_note": "each module takes back 80 % of the body's bounce, roll and pitch at its corner and stays level with the road; arms and struts follow by constraint",
+    "emission": "only the emitter rings under the plate (hoverViolet, pulsing with the 808), a 3 W pool per module, and a faint ripple field-print on the road that fades as the car lifts",
+    "travel": "clamped between a bump stop 3 mm under the floor and a 1 cm field gap above the road: on the slam the body lays down onto the modules"
   },
   "suspension": {
     "kickCompress": 0.035,
@@ -70,6 +84,7 @@
     "trim": "chrome",
     "inlay": "warmGold pinstripe and hood crest",
     "glass": "smoked violet",
-    "hardware": "satin titanium, chrome, gold-anodised rims"
+    "hardware": "brushed titanium, black anodised alloy, chrome, gold coil windings and fittings",
+    "tyre": "satin black rubber, thin whitewall"
   }
 }

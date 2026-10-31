@@ -41,17 +41,31 @@ review:** the first CRESTLINE was a rounded 60s coupe; this one is boxy, expensi
   centre bar.
 - **Paint:** candy burgundy: a metallic flake base under a tinted clear coat, so highlights stay
   clean and the colour stays deep.
-- **Tiny wheels kept:** 0.22 m chrome wire wheels (24 spokes, gold hub). Jewellery, not support.
-- **Hover conversion as engineering:** at each corner a machined satin housing with a gold rim,
-  18 cooling fins and three field coils, carried on chrome hydraulic actuators and A-arms. The field
-  shows only as a soft violet pool on the asphalt and the coils' underside, never as a glowing ring
-  in the air.
+- **Tiny wheels, real lowrider wheels (v3):** a shrunken custom 13-inch wire wheel at 0.22 m overall
+  radius: a chunky tyre with two tread grooves and a thin whitewall, a deep-dish polished rim with
+  a proud lip, 100 cross-laced chrome spokes in four lacing groups converging on a recessed chrome
+  hub with gold flanges, and a three-wing chrome knock-off with a gold centre. (The v2 wheel had no
+  tyre and 24 thick spokes: it read as a bicycle wheel.) Jewellery, not support.
+- **Hover conversion as engineering (v3):** each corner is a stacked maglev module 0.227 m in
+  radius, from the road up: a black anodised emitter plate, an exposed gold toroidal coil pack, a
+  chrome band, a brushed titanium dome with ten radial fins, and a chrome boss with a gold ring and
+  six bolts. It hangs on chrome parallelogram trailing arms with gold pivot eyes, from a titanium
+  bracket on a chrome cross-member. A gold-sprung hydraulic strut runs inboard to a titanium
+  manifold on the centreline: the lowrider pump-and-coil look, rebuilt as maglev. A titanium
+  outrigger and a chrome bearing carry the wheel, 11 cm clear of the module. With the lights off,
+  it is still metal worth looking at.
+- **Energy, kept subtle:** only a slim violet emitter ring under each plate (pulsing with the
+  808), a small pool of light on the asphalt, and faint ripples running outward on the road that
+  fade as the car lifts. No glowing rings in the air.
 - **Lighting:** an automotive light rig travels with the car (a long overhead strip for the body-line
   highlight, a warm rim toward the sun, a violet kicker). Light linking keeps it on the car: it
   never floods the road.
-- **Expressive suspension:** the chassis bounces on every kick, rolls on every snare and clap,
-  drops 0.13 m on the slam and lifts its nose on the hydraulic hop. The modules pulse with every
-  808 note. All of this comes from the cue sheet, never from hand-placed keys.
+- **Expressive suspension:** the body bounces on every kick, rolls on every snare and clap and
+  leans out of the drifts, drops onto the modules on the slam, and lifts its nose on the hydraulic
+  hop (pivoting on the rear axle). Each module holds 80 % of its ride height against its own
+  corner's travel and stays level with the road, so the arms and struts visibly work. Travel is
+  clamped by a bump stop under the floor and a 1 cm field gap above the road; the scene check
+  verifies both on every frame. All of it comes from the cue sheet, never from hand-placed keys.
 
 ## The world ([`specs/world.json`](specs/world.json))
 
@@ -111,7 +125,11 @@ for like), not a separate beauty setup. Before/after:
 [`review/styleframes/before-after.jpg`](../review/styleframes/before-after.jpg). The car on its own:
 [`review/car/`](../review/car).
 
-### v2 (this submission)
+### v2
+
+The v2 styleframes were rendered before the v3 wheels and hover modules (see
+[`review/car/v3/`](../review/car/v3)). Re-rendering them with the v3 car takes about 15 CPU minutes
+here and is the first step after GATE 02 is locked.
 
 | | What changed | What still does not work |
 |---|---|---|

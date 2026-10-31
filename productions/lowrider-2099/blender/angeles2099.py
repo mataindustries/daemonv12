@@ -219,6 +219,13 @@ def build_materials():
     M["glass"] = material("SmokedGlass", base=lin("#3A2E55"), rough=0.02, transmission=1.0, ior=1.45)
     M["interior"] = material("Oxblood", base=lin("#2A0A10"), rough=0.6)
     M["under"] = material("Undercarriage", base=lin("#141218"), metallic=0.6, rough=0.4)
+    M["tire"] = tire_material()
+    M["whitewall"] = material("Whitewall", base=lin("#E6E2DA"), rough=0.5)
+    M["titanium"] = material("BrushedTitanium", base=lin("#86828C"), metallic=1.0, rough=0.3)
+    M["titanium"].node_tree.nodes["Principled BSDF"].inputs["Anisotropic"].default_value = 0.65   # radial brushing
+    M["anodised"] = material("BlackAnodised", base=lin("#141118"), metallic=0.85, rough=0.32)
+    M["coil"] = material("CoilGold", base=lin("#D08A3E"), metallic=1.0, rough=0.38)   # windings: a soft sheen, not LED sparkle
+    M["fieldprint"] = field_print_material()
     M["hover"] = emission_material("HoverField", P("hoverViolet"), 1.2)
     M["hovercore"] = emission_material("HoverCore", P("warmGold"), 2.0)
     M["headlight"] = emission_material("Headlight", lin("#FFE9CC"), 25.0)
@@ -751,48 +758,48 @@ def build_vehicle(M):
     box("TailCentre", (0.025, W * 0.62, 0.035), (rx, 0, 0.74), M["taillight"], chassis, bevel=0.005)
     box("TrunkTrim", (0.03, W * 0.9, 0.018), (rx - 0.004, 0, 0.82), M["chrome"], chassis, bevel=0.005)
     box("Undertray", (L * 0.9, W * 0.62, 0.04), (0, 0, b["rockerZ"] + 0.01), M["under"], chassis)
-    # hover conversion, engineered: per corner a machined maglev module (satin housing, gold rim,
-    # radial heat-sink fins, field coils glowing on the underside only) hung on a chrome hydraulic
-    # actuator and satin A-arms; a stub axle carries the tiny wire wheel out in the arch.
+    # hover conversion, engineered (v3). Per corner: a stacked maglev module (black anodised emitter
+    # plate, an exposed gold coil pack, a chrome band, a brushed titanium finned dome, a chrome boss)
+    # on parallelogram trailing arms from a chassis bracket, damped by a gold-sprung hydraulic strut
+    # that runs inboard to a central manifold. An outrigger carries the tiny wheel, 13 cm clear of
+    # the module. The modules hold their ride height while the body moves (see animate_vehicle).
     wheels, modules = [], []
+    mY, zM = hv["moduleInboardY"], hv["rideHeight"]
     for sx in (1, -1):
+        cx = sx * wh["wheelbase"] / 2
+        xb = cx - sx * 0.66                                                   # bracket line, toward the car centre
+        tube_curve(f"CrossMember{sx}", [(xb, mY + 0.04, 0.262), (xb, -mY - 0.04, 0.262)], 0.017, M["chrome"], chassis)
+        box(f"Manifold{sx}", (0.12, 0.2, 0.05), (cx, 0, 0.258), M["titanium"], chassis, bevel=0.008)
+        for gy in (-0.06, 0.0, 0.06):
+            fit = mk_torus(f"ManifoldFitting{sx}{gy}", 0.011, 0.004, M["gold"], chassis, segs=16, tsegs=6)
+            fit.location = (cx + sx * 0.061, gy, 0.258); fit.rotation_euler = (0, math.pi / 2, 0)
         for sy in (1, -1):
-            cx, cyw, cym = sx * wh["wheelbase"] / 2, sy * wh["track"] / 2, sy * hv["moduleInboardY"]
-            wheel = empty(f"Wheel{sx}{sy}", parent=root, loc=(cx, cyw, wh["radius"] + 0.08))
-            build_wire_wheel(wheel, M, sy)
+            mod = empty(f"HoverModule{sx}{sy}", parent=chassis, loc=(cx, sy * mY, zM))
+            mod["rest"] = (cx, sy * mY, zM)
+            ms = empty(f"ModuleSide{sx}{sy}", parent=mod); ms.scale = (sx, sy, 1)   # built front-left, mirrored
+            parts = build_hover_module(ms, M, wh, mY, zM)
+            wheel = empty(f"Wheel{sx}{sy}", parent=mod, loc=(0, sy * (wh["track"] / 2 - mY), wh["radius"] + 0.08 - zM))
+            build_lowrider_wheel(wheel, M, sy)
             wheels.append(wheel)
-            mod = empty(f"HoverModule{sx}{sy}", parent=chassis, loc=(cx, cym, 0.13))
-            R, H = hv["housingRadius"], hv["housingHeight"]
-            hv_, hf_ = [], []
-            for k in range(32):
-                a = 2 * math.pi * k / 32
-                for rr, zz in ((R * 0.86, -H / 2), (R, -H / 4), (R, H / 4), (R * 0.9, H / 2)):
-                    hv_.append((rr * math.cos(a), rr * math.sin(a), zz))
-            for k in range(32):
-                for j in range(3):
-                    a0, a1 = k * 4 + j, ((k + 1) % 32) * 4 + j
-                    hf_.append((a0, a1, a1 + 1, a0 + 1))
-            hv_ += [(0, 0, H / 2), (0, 0, -H / 2)]
-            hf_ += [(k * 4 + 3, ((k + 1) % 32) * 4 + 3, 128) for k in range(32)] + [(((k + 1) % 32) * 4, k * 4, 129) for k in range(32)]
-            mesh_object(f"ModuleHousing{sx}{sy}", hv_, hf_, M["satin"], smooth_shade=True, parent=mod)
-            mk_torus(f"ModuleRim{sx}{sy}", R + 0.004, 0.011, M["gold"], mod, segs=48, tsegs=8)
-            for c, rc in enumerate((0.24, 0.17, 0.10)):
-                coil = mk_torus(f"Coil{sx}{sy}{c}", rc, 0.007, M["hover"], mod, segs=48, tsegs=6)
-                coil.location.z = -H / 2 - 0.004
-            for k in range(18):
-                a = 2 * math.pi * k / 18
-                fin = box(f"Fin{sx}{sy}{k}", (0.11, 0.008, 0.035), (0.17 * math.cos(a), 0.17 * math.sin(a), H / 2 + 0.017), M["satin"], mod)
-                fin.rotation_euler = (0, 0, a)
-            top_z = 0.13 + H / 2
-            tube_curve(f"ActuatorBody{sx}{sy}", [(cx, cym, top_z + 0.02), (cx, cym * 0.92, top_z + 0.11)], 0.034, M["chrome"], chassis)
-            tube_curve(f"ActuatorRod{sx}{sy}", [(cx, cym * 0.92, top_z + 0.1), (cx, cym * 0.85, b["rockerZ"] + 0.02)], 0.016, M["chrome"], chassis)
-            for dx in (-0.17, 0.17):
-                tube_curve(f"Arm{sx}{sy}{dx}", [(cx + dx, cym, top_z - 0.01), (cx + dx * 0.5, sy * 0.2, b["rockerZ"] + 0.01)], 0.012, M["satin"], chassis)
-            tube_curve(f"StubAxle{sx}{sy}", [(cx, cym + sy * R * 0.7, 0.16), (cx, cyw - sy * 0.03, wh["radius"] + 0.08)], 0.016, M["chrome"], chassis)
-            pool = bpy.data.lights.new(f"FieldPool{sx}{sy}", "AREA"); pool.shape = "DISK"; pool.size = 0.5
-            pool.color = P("hoverViolet")[:3]; pool.energy = 6
+            # parallelogram trailing arms: chassis bracket -> module lugs (Stretch To: they follow the module)
+            box(f"ArmBracket{sx}{sy}", (0.07, 0.075, 0.14), (xb - sx * 0.012, sy * mY, FLOOR_Z - 0.065), M["titanium"], chassis, bevel=0.006)
+            for nm in ("Upper", "Lower"):
+                lug = parts["lugs"][nm]
+                p0 = Vector((xb, sy * mY, zM + parts["lugZ"][nm] + 0.035))      # parallel arms, 2.5 deg down to the module
+                p1 = Vector((cx, sy * mY, zM)) + Vector((-sx * 0.225 * MODULE_STACK_XY, 0, parts["lugZ"][nm]))
+                rigged_link(f"Arm{nm}{sx}{sy}", p0, p1, lug, chassis, Vector((0, 1, 0)), M["chrome"], M["gold"], 0.0105, eyes=0.018)
+            # the strut: titanium cylinder pointing at the module, chrome rod and gold spring stretching to it
+            tower = Vector((cx, sy * 0.105, 0.258))
+            clevis = Vector((cx, sy * (mY - 0.085 * MODULE_STACK_XY), zM + 0.072 * MODULE_STACK_Z))
+            rigged_strut(f"Strut{sx}{sy}", tower, clevis, parts["clevis"], chassis, M)
+            pool = bpy.data.lights.new(f"FieldPool{sx}{sy}", "AREA"); pool.shape = "DISK"; pool.size = 0.35
+            pool.color = P("hoverViolet")[:3]; pool.energy = 3
             po = bpy.data.objects.new(f"FieldPool{sx}{sy}", pool); bpy.context.scene.collection.objects.link(po)
-            po.parent = mod; po.location = (0, 0, -H / 2 - 0.01); po.visible_camera = False
+            po.parent = mod; po.location = (0, 0, -MODULE_BOTTOM - 0.012); po.visible_camera = False
+            n_ = 40
+            disc = mesh_object(f"FieldPrint{sx}{sy}", [(0, 0, 0)] + [(0.42 * math.cos(2 * math.pi * k / n_), 0.42 * math.sin(2 * math.pi * k / n_), 0) for k in range(n_)],
+                               [(0, 1 + k, 1 + (k + 1) % n_) for k in range(n_)], M["fieldprint"], parent=root)
+            disc.location = (cx, sy * mY, 0.004)                              # on the road, under the module
             modules.append(mod)
     lt = bpy.data.lights.new("Underglow", "AREA"); lt.shape = "RECTANGLE"; lt.size, lt.size_y = L * 0.7, W * 0.5
     lt.color = P("hoverViolet")[:3]; lt.energy = 8
@@ -804,7 +811,7 @@ def build_vehicle(M):
     stack = [root]
     while stack:
         o = stack.pop()
-        if o.type in ("MESH", "CURVE"):
+        if o.type in ("MESH", "CURVE") and not o.name.startswith("Tyre"):   # rubber stays dark: no warm rim key on it
             receivers.objects.link(o)
         stack.extend(o.children)
     for lt_ in rig.values():                         # light linking: the rig lights the car, never the road
@@ -860,25 +867,308 @@ def mk_torus(name, R, r, mat, parent, segs=48, tsegs=12):
     return mesh_object(name, verts, faces, mat, smooth_shade=True, parent=parent)
 
 
-def build_wire_wheel(parent, M, side):
-    """A 0.22 m chrome wire wheel standing upright (axle along Y): rim, hub, spinner, 24 spokes."""
-    wh = CAR["wheels"]
-    R, W = wh["radius"], wh["width"]
-    rim = mk_torus("Rim", R * 0.92, 0.022, M["chrome"], parent)
-    rim.rotation_euler = (math.pi / 2, 0, 0)
-    lip = mk_torus("RimLip", R * 0.97, 0.012, M["chrome"], parent)
-    lip.rotation_euler = (math.pi / 2, 0, 0); lip.location = (0, side * W * 0.45, 0)
-    hub = mk_torus("Hub", 0.035, 0.03, M["gold"], parent)
-    hub.rotation_euler = (math.pi / 2, 0, 0); hub.location = (0, side * W * 0.3, 0)
-    for k in range(wh["spokes"]):
-        a = 2 * math.pi * k / wh["spokes"]
-        off = (k % 2) * 0.5 - 0.25
-        p0 = (0.04 * math.cos(a + 0.4), side * W * off * 0.6, 0.04 * math.sin(a + 0.4))
-        p1 = ((R * 0.9) * math.cos(a), -side * W * off * 0.4, (R * 0.9) * math.sin(a))
-        tube_curve(f"Spoke{k}", [p0, p1], 0.0035, M["chrome"], parent)
-    for k in range(3):                              # three-bar knock-off spinner
-        a = 2 * math.pi * k / 3
-        tube_curve(f"Spinner{k}", [(0, side * W * 0.42, 0), (0.07 * math.cos(a), side * W * 0.42, 0.07 * math.sin(a))], 0.008, M["chrome"], parent)
+def revolve(name, profile, mat, parent, axis="Z", segs=64, mats=None, mat_index=None, closed=False):
+    """Surface of revolution. profile: [(radius, height)]; axis 'Z' (height along Z) or 'Y'.
+    mats: extra materials; mat_index(i) -> material slot for the band between profile points i, i+1."""
+    verts, faces, idx = [], [], []
+    n = len(profile)
+    for j in range(segs):
+        a = 2 * math.pi * j / segs
+        ca, sa = math.cos(a), math.sin(a)
+        for r, h in profile:
+            verts.append((r * ca, r * sa, h) if axis == "Z" else (r * ca, h, r * sa))
+    edges = n if closed else n - 1
+    for j in range(segs):
+        j2 = (j + 1) % segs
+        for i in range(edges):
+            i2 = (i + 1) % n
+            q = (j * n + i, j2 * n + i, j2 * n + i2, j * n + i2)
+            faces.append(q if axis == "Z" else q[::-1])
+            idx.append(mat_index(i) if mat_index else 0)
+    ob = mesh_object(name, verts, faces, mat, smooth_shade=True, parent=parent)
+    for m_ in mats or []:
+        ob.data.materials.append(m_)
+    if mat_index:
+        for poly, k in zip(ob.data.polygons, idx):
+            poly.material_index = k
+    return ob
+
+
+def prism_strut(verts, faces, p0, p1, radius, sides=6, caps=False):
+    """Append an n-sided prism from p0 to p1 to verts/faces (many in one mesh); caps closes the ends."""
+    p0, p1 = Vector(p0), Vector(p1)
+    d = (p1 - p0).normalized()
+    u = d.cross(Vector((0, 1, 0)))
+    if u.length < 1e-6:
+        u = d.cross(Vector((1, 0, 0)))
+    u.normalize(); v = d.cross(u)
+    b0 = len(verts)
+    for p in (p0, p1):
+        for k in range(sides):
+            a = 2 * math.pi * k / sides
+            verts.append(tuple(p + (u * math.cos(a) + v * math.sin(a)) * radius))
+    faces.extend((b0 + k, b0 + (k + 1) % sides, b0 + sides + (k + 1) % sides, b0 + sides + k) for k in range(sides))
+    if caps:
+        faces.append(tuple(b0 + k for k in range(sides))[::-1])
+        faces.append(tuple(b0 + sides + k for k in range(sides)))
+
+
+def tire_material():
+    """Black rubber, satin rather than glossy, with fine tread siping (wave bands across the tread)."""
+    m = material("TireRubber", base=lin("#18161A"), rough=0.72)
+    nt = m.node_tree
+    nt.nodes["Principled BSDF"].inputs["Specular IOR Level"].default_value = 0.18   # rubber: a dull sheen, not a tan glaze
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    wv = nt.nodes.new("ShaderNodeTexWave"); wv.wave_type = "RINGS"; wv.rings_direction = "Y"
+    wv.inputs["Scale"].default_value = 160.0
+    nt.links.new(tc.outputs["Object"], wv.inputs["Vector"])
+    bp = nt.nodes.new("ShaderNodeBump"); bp.inputs["Strength"].default_value = 0.15
+    nt.links.new(wv.outputs["Fac"], bp.inputs["Height"])
+    nt.links.new(bp.outputs[0], nt.nodes["Principled BSDF"].inputs["Normal"])
+    return m
+
+
+def field_print_material():
+    """Where the field meets the road: a faint pressure-darkened patch and thin violet ripples
+    running outward. 'FieldGain' (pulse x height falloff) and 'FieldPhase' are keyframed."""
+    m = bpy.data.materials.new("FieldPrint")
+    m.use_nodes = True
+    nt = m.node_tree
+    nt.nodes.remove(nt.nodes["Principled BSDF"])
+    out = nt.nodes["Material Output"]
+    L = nt.links.new
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    ln = nt.nodes.new("ShaderNodeVectorMath"); ln.operation = "LENGTH"; L(tc.outputs["Object"], ln.inputs[0])
+    r = ln.outputs["Value"]
+    def mr(a, b, c=0.0, d=1.0):
+        n_ = nt.nodes.new("ShaderNodeMapRange"); n_.interpolation_type = "SMOOTHSTEP"
+        n_.inputs["From Min"].default_value, n_.inputs["From Max"].default_value = a, b
+        n_.inputs["To Min"].default_value, n_.inputs["To Max"].default_value = c, d
+        L(r, n_.inputs["Value"]); return n_.outputs[0]
+    def math_(op, a, b):
+        n_ = nt.nodes.new("ShaderNodeMath"); n_.operation = op
+        for k_, v_ in enumerate((a, b)):
+            if isinstance(v_, float):
+                n_.inputs[k_].default_value = v_
+            else:
+                L(v_, n_.inputs[k_])
+        return n_.outputs[0]
+    gain = nt.nodes.new("ShaderNodeValue"); gain.name = "FieldGain"; gain.outputs[0].default_value = 1.0
+    phase = nt.nodes.new("ShaderNodeValue"); phase.name = "FieldPhase"; phase.outputs[0].default_value = 0.0
+    env = math_("MULTIPLY", mr(0.34, 0.12), mr(0.05, 0.11))                # an annulus 5-34 cm out
+    wave = math_("SUBTRACT", math_("MULTIPLY", r, 2 * math.pi / 0.085), phase.outputs[0])
+    ring = math_("POWER", math_("ADD", math_("MULTIPLY", math_("COSINE", wave, 0.0), 0.5), 0.5), 10.0)  # thin crests
+    em_s = math_("MULTIPLY", math_("MULTIPLY", ring, env), gain.outputs[0])
+    em = nt.nodes.new("ShaderNodeEmission"); em.inputs["Color"].default_value = P("hoverViolet")
+    L(math_("MULTIPLY", em_s, 0.12), em.inputs["Strength"])                # a hint, not a target
+    dark = nt.nodes.new("ShaderNodeBsdfDiffuse"); dark.inputs["Color"].default_value = lin("#07060A")
+    tr = nt.nodes.new("ShaderNodeBsdfTransparent")
+    alpha = math_("MULTIPLY", mr(0.30, 0.04), 0.35)                       # a soft pressure patch
+    mix = nt.nodes.new("ShaderNodeMixShader"); L(alpha, mix.inputs[0]); L(tr.outputs[0], mix.inputs[1]); L(dark.outputs[0], mix.inputs[2])
+    add = nt.nodes.new("ShaderNodeAddShader"); L(mix.outputs[0], add.inputs[0]); L(em.outputs[0], add.inputs[1])
+    L(add.outputs[0], out.inputs["Surface"])
+    return m
+
+
+def _basis_euler(direction, keep):
+    """Rotation whose local +Y points along `direction` and local X stays as close to `keep` as possible."""
+    y = direction.normalized()
+    x = (keep - y * keep.dot(y)).normalized()
+    z = x.cross(y)
+    return Matrix(((x.x, y.x, z.x), (x.y, y.y, z.y), (x.z, y.z, z.z))).to_euler()
+
+
+def rigged_link(name, p0, p1, target, parent, pivot_axis, mat, eye_mat, radius, eyes=0.0):
+    """A rigid link built along local +Y from p0 to p1, with pivot eyes (along `pivot_axis`) at both
+    ends, kept attached to `target` by a Stretch To constraint (so it follows the module)."""
+    L0 = (p1 - p0).length
+    v, f = [], []
+    prism_strut(v, f, (0, 0, 0), (0, L0, 0), radius, sides=8)
+    nbody = len(f)
+    if eyes:
+        for y_ in (0.0, L0):
+            prism_strut(v, f, (-0.017, y_, 0), (0.017, y_, 0), eyes, sides=14, caps=True)
+    ob = mesh_object(name, v, f, mat, smooth_shade=True, parent=parent)
+    if eyes:
+        ob.data.materials.append(eye_mat)
+        for poly in ob.data.polygons[nbody:]:
+            poly.material_index = 1
+    ob.location = p0
+    ob.rotation_euler = _basis_euler(p1 - p0, pivot_axis)
+    c_ = ob.constraints.new("STRETCH_TO"); c_.target = target; c_.rest_length = L0
+    c_.volume = "NO_VOLUME"; c_.keep_axis = "PLANE_X"
+    return ob
+
+
+def rigged_strut(name, p0, p1, target, parent, M):
+    """Hydraulic strut from a chassis tower p0 to the module clevis p1: a titanium cylinder that
+    only turns (Damped Track), a chrome rod and a gold coil spring that stretch with it."""
+    L0 = (p1 - p0).length
+    rot = _basis_euler(p1 - p0, Vector((1, 0, 0)))
+    v, f = [], []
+    prism_strut(v, f, (0, 0, 0), (0, 0.13, 0), 0.021, sides=16, caps=True)
+    for y_ in (0.02, 0.11):
+        prism_strut(v, f, (0, y_, 0), (0, y_ + 0.008, 0), 0.0235, sides=16, caps=True)
+    body = mesh_object(f"{name}Body", v, f, M["titanium"], smooth_shade=True, parent=parent)
+    body.location, body.rotation_euler = p0, rot
+    dt = body.constraints.new("DAMPED_TRACK"); dt.target = target; dt.track_axis = "TRACK_Y"
+    v, f = [], []
+    prism_strut(v, f, (0, 0.12, 0), (0, L0, 0), 0.0085, sides=10)
+    prism_strut(v, f, (-0.012, L0, 0), (0.012, L0, 0), 0.011, sides=12, caps=True)
+    rod = mesh_object(f"{name}Rod", v, f, M["chrome"], smooth_shade=True, parent=parent)
+    turns, pts = 8.5, []
+    for i in range(int(turns * 16) + 1):
+        a = 2 * math.pi * i / 16
+        pts.append((0.031 * math.cos(a), 0.035 + (L0 - 0.07) * i / (turns * 16), 0.031 * math.sin(a)))
+    spring = tube_curve(f"{name}Spring", pts, 0.0042, M["coil"], parent)
+    for ob in (rod, spring):
+        ob.location, ob.rotation_euler = p0, rot
+        c_ = ob.constraints.new("STRETCH_TO"); c_.target = target; c_.rest_length = L0
+        c_.volume = "NO_VOLUME"; c_.keep_axis = "PLANE_X"
+    return body
+
+
+def mk_coil(name, R, r, turns, mat, parent, tsegs=10):
+    """A toroidal coil pack: a torus whose section swells once per winding, so it reads as wire."""
+    segs = turns * 6
+    verts, faces = [], []
+    for i in range(segs):
+        a = 2 * math.pi * i / segs
+        rr = r * (0.92 + 0.08 * math.sin(math.pi * (i % 6) / 6))
+        for j in range(tsegs):
+            b_ = 2 * math.pi * j / tsegs
+            verts.append(((R + rr * math.cos(b_)) * math.cos(a), (R + rr * math.cos(b_)) * math.sin(a), rr * math.sin(b_)))
+    for i in range(segs):
+        for j in range(tsegs):
+            faces.append((i * tsegs + j, ((i + 1) % segs) * tsegs + j, ((i + 1) % segs) * tsegs + (j + 1) % tsegs, i * tsegs + (j + 1) % tsegs))
+    return mesh_object(name, verts, faces, mat, smooth_shade=True, parent=parent)
+
+
+MODULE_STACK_Z = 0.74      # the stack is modelled 157 mm tall and built at 74 %: 116 mm between road and floor
+MODULE_STACK_XY = 1.15     # and 15 % wider than modelled: 0.227 m radius, still 11 cm clear of the tyre
+MODULE_TOP, MODULE_BOTTOM = 0.0955 * MODULE_STACK_Z, 0.0606 * MODULE_STACK_Z
+FLOOR_Z = 0.27              # underside of the undertray, chassis space
+
+
+def build_hover_module(ms, M, wh, mY, zM):
+    """One maglev module in its own space (z up, +y outboard, -x toward the car centre; the parent
+    mirrors it per corner). Returns the attachment empties for the arms and the strut."""
+    outer = ms
+    ms = empty("Stack", parent=outer); ms.scale = (MODULE_STACK_XY, MODULE_STACK_XY, MODULE_STACK_Z)
+    # black anodised emitter plate with a slim violet emitter ring underneath (the only glow)
+    revolve("EmitterPlate", [(0.02, -0.054), (0.10, -0.058), (0.150, -0.060), (0.178, -0.056), (0.192, -0.046), (0.195, -0.034), (0.186, -0.026)],
+            M["anodised"], ms, segs=64)
+    revolve("EmitterRing", [(0.108, -0.0606), (0.121, -0.0606)], M["hover"], ms, segs=64)
+    revolve("EmitterCore", [(0.044, -0.0606), (0.050, -0.0606)], M["hover"], ms, segs=48)
+    coil = mk_coil("CoilPack", 0.172, 0.019, 64, M["coil"], ms); coil.location.z = -0.012
+    band = mk_torus("ChromeBand", 0.193, 0.0055, M["chrome"], ms, segs=64, tsegs=8); band.location.z = 0.010
+    revolve("Dome", [(0.196, 0.012), (0.197, 0.030), (0.189, 0.042), (0.150, 0.050), (0.090, 0.054), (0.062, 0.056)], M["titanium"], ms, segs=64)
+    fv, ff = [], []
+    for k in range(10):                                                    # radial cooling fins, sloped tops
+        a = 2 * math.pi * k / 10 + math.pi / 10
+        e, n = Vector((math.cos(a), math.sin(a), 0)), Vector((-math.sin(a), math.cos(a), 0))
+        b0 = len(fv)
+        for rr, zb, zt in ((0.075, 0.053, 0.094), (0.188, 0.039, 0.061)):
+            for side_ in (-0.0045, 0.0045):
+                fv.append(tuple(e * rr + n * side_ + Vector((0, 0, zb)))); fv.append(tuple(e * rr + n * side_ + Vector((0, 0, zt))))
+        # vertex order per end: (-t bottom, -t top, +t bottom, +t top); inner end then outer end
+        ff += [(b0, b0 + 2, b0 + 3, b0 + 1), (b0 + 4, b0 + 5, b0 + 7, b0 + 6), (b0, b0 + 1, b0 + 5, b0 + 4),
+               (b0 + 2, b0 + 6, b0 + 7, b0 + 3), (b0 + 1, b0 + 3, b0 + 7, b0 + 5), (b0, b0 + 4, b0 + 6, b0 + 2)]
+    fins = mesh_object("Fins", fv, ff, M["titanium"], parent=ms)
+    bv = fins.modifiers.new("Bevel", "BEVEL"); bv.width, bv.segments = 0.0018, 2
+    revolve("Boss", [(0.062, 0.055), (0.0645, 0.080), (0.059, 0.090), (0.040, 0.0945), (0.001, 0.0955)], M["chrome"], ms, segs=48)
+    ring = mk_torus("BossRing", 0.0648, 0.0036, M["gold"], ms, segs=40, tsegs=6); ring.location.z = 0.07
+    bv_, bf_ = [], []
+    for k in range(6):
+        a = 2 * math.pi * k / 6
+        prism_strut(bv_, bf_, (0.09 * math.cos(a), 0.09 * math.sin(a), 0.051), (0.09 * math.cos(a), 0.09 * math.sin(a), 0.061), 0.0065, sides=6, caps=True)
+    mesh_object("Bolts", bv_, bf_, M["chrome"], parent=ms)
+    # clevis on the inboard side of the boss, for the strut
+    for dx in (-0.016, 0.016):
+        box(f"Clevis{dx}", (0.008, 0.032, 0.03), (dx, -0.078, 0.072), M["titanium"], ms, bevel=0.002)
+    clevis = empty("ClevisPin", parent=ms, loc=(0, -0.085, 0.072))
+    # trailing-arm lug toward the car centre, and the outboard knuckle + outrigger to the wheel bearing
+    box("Lug", (0.05, 0.062, 0.088), (-0.205, 0, 0.003), M["titanium"], ms, bevel=0.006)
+    lugz = {"Upper": 0.03, "Lower": -0.025}
+    lugs = {k: empty(f"Lug{k}", parent=ms, loc=(-0.225, 0, z)) for k, z in lugz.items()}
+    box("Knuckle", (0.075, 0.035, 0.09), (0, 0.2, 0.012), M["titanium"], ms, bevel=0.006)
+    k = MODULE_STACK_Z
+    wy, wz = wh["track"] / 2 - mY, wh["radius"] + 0.08 - zM                 # wheel centre, module space
+    ov, of = [], []
+    y0 = 0.205 * MODULE_STACK_XY                                           # the knuckle face
+    prism_strut(ov, of, (0, y0, 0.03 * k), (0, wy - 0.085, wz), 0.016, sides=10)
+    prism_strut(ov, of, (0, y0, -0.02 * k), (0, wy - 0.085, wz - 0.03), 0.011, sides=10)
+    mesh_object("Outrigger", ov, of, M["titanium"], smooth_shade=True, parent=outer)
+    bv2, bf2 = [], []
+    prism_strut(bv2, bf2, (0, wy - 0.10, wz), (0, wy - 0.058, wz), 0.027, sides=20, caps=True)
+    prism_strut(bv2, bf2, (0, wy - 0.06, wz), (0, wy + 0.02, wz), 0.011, sides=12, caps=True)
+    mesh_object("Bearing", bv2, bf2, M["chrome"], smooth_shade=True, parent=outer)
+    return {"lugs": lugs, "lugZ": {n_: z_ * k for n_, z_ in lugz.items()}, "clevis": clevis}
+
+
+def build_lowrider_wheel(parent, M, side):
+    """A shrunken custom 13-inch lowrider wire wheel (0.22 m overall radius, axle along Y):
+    a chunky tyre with a thin whitewall, a deep-dish polished rim with a proud lip, 100
+    cross-laced chrome spokes converging on a recessed hub with gold flanges, and a three-wing
+    knock-off spinner. Built for the left side and mirrored for the right."""
+    sd = empty("WheelSide", parent=parent); sd.scale = (1, side, 1)
+    # tyre: (radius, axial height; + is outboard). The whitewall is the band 157-170 mm out.
+    tp = [(0.130, 0.056), (0.142, 0.062), (0.150, 0.0652), (0.157, 0.0664), (0.170, 0.0672), (0.183, 0.0668), (0.196, 0.0640),
+          (0.207, 0.0570), (0.214, 0.0470), (0.2185, 0.034), (0.220, 0.022), (0.2163, 0.0205), (0.2163, 0.0135), (0.220, 0.012),
+          (0.220, -0.012), (0.2163, -0.0135), (0.2163, -0.0205), (0.220, -0.022), (0.2185, -0.034), (0.214, -0.047), (0.207, -0.057),
+          (0.196, -0.064), (0.183, -0.0668), (0.170, -0.0672), (0.150, -0.0652), (0.142, -0.062), (0.130, -0.056)]
+    revolve("Tyre", tp, M["tire"], sd, axis="Y", segs=96, mats=[M["whitewall"]], mat_index=lambda i: 1 if i == 3 else 0, closed=True)
+    # rim: a polished lip proud of the tyre, then the barrel; the spoke field sits deep inside it
+    rp = [(0.124, 0.050), (0.134, 0.058), (0.1405, 0.0645), (0.1425, 0.0692), (0.1385, 0.0728), (0.1295, 0.0718), (0.1215, 0.0665),
+          (0.1185, 0.056), (0.1175, 0.0), (0.1175, -0.050), (0.124, -0.058), (0.132, -0.062)]
+    revolve("Rim", rp, M["chrome"], sd, axis="Y", segs=96)
+    # hub: chrome shell, gold spoke flanges
+    hp = [(0.022, 0.030), (0.0305, 0.024), (0.0305, -0.052), (0.024, -0.056)]
+    revolve("Hub", hp, M["chrome"], sd, axis="Y", segs=32)
+    for nm, rr, hh in (("FlangeOuter", 0.037, -0.024), ("FlangeInner", 0.043, -0.047)):
+        fl = mk_torus(nm, rr, 0.0045, M["gold"], sd, segs=40, tsegs=8)
+        fl.rotation_euler = (math.pi / 2, 0, 0); fl.location = (0, hh, 0)
+    # 100 spokes, four lacing groups: outer/inner flange x leading/trailing, crossing in a lattice
+    sv, sf = [], []
+    for k in range(100):
+        g = k % 4
+        tr_ = 2 * math.pi * k / 100
+        outer = g < 2
+        rr, rh = 0.1165, (0.045 if outer else 0.031)
+        hr, hh = (0.037, -0.024) if outer else (0.043, -0.047)
+        th = tr_ + (0.92 if outer else 1.02) * (1 if g % 2 == 0 else -1)
+        prism_strut(sv, sf, (hr * math.cos(th), hh, hr * math.sin(th)), (rr * math.cos(tr_), rh, rr * math.sin(tr_)), 0.00125)
+    mesh_object("Spokes", sv, sf, M["chrome"], smooth_shade=True, parent=sd)
+    # knock-off: a domed chrome cap with a gold centre and three sculpted, rising, swept wings
+    cp = [(0.0245, 0.022), (0.0262, 0.030), (0.026, 0.040), (0.0225, 0.0475), (0.0165, 0.0535), (0.0095, 0.0568), (0.001, 0.058)]
+    revolve("KnockOffCap", cp, M["chrome"], sd, axis="Y", segs=48, mats=[M["gold"]], mat_index=lambda i: 1 if i >= 4 else 0)
+    wv, wf = [], []
+    for w in range(3):
+        phi = math.pi / 2 + 2 * math.pi * w / 3
+        secs = []
+        for i in range(10):
+            t = i / 9
+            rho = 0.020 + 0.047 * t
+            hw = 0.0135 * (1 - 0.4 * t) * (math.sqrt(max(0.0, 1 - ((t - 0.72) / 0.28) ** 2)) if t > 0.72 else 1.0)
+            hw = max(hw, 0.0008)
+            hc = 0.036 + 0.014 * t ** 1.4                          # rises outward: the ears catch light
+            th_ = 0.0075 * (1 - 0.45 * t)
+            sweep = phi - 0.28 * t ** 1.5                          # swept back
+            e = Vector((math.cos(sweep), 0, math.sin(sweep))); pw = Vector((-math.sin(sweep), 0, math.cos(sweep)))
+            c = e * rho + Vector((0, hc, 0))
+            secs.append([c + pw * hw + Vector((0, th_ / 2, 0)), c - pw * hw + Vector((0, th_ / 2, 0)),
+                         c - pw * hw - Vector((0, th_ / 2, 0)), c + pw * hw - Vector((0, th_ / 2, 0))])
+        b0 = len(wv)
+        for sec in secs:
+            wv.extend(tuple(p) for p in sec)
+        for i in range(len(secs) - 1):
+            for q in range(4):
+                a0, a1 = b0 + i * 4 + q, b0 + i * 4 + (q + 1) % 4
+                wf.append((a0, a1, a1 + 4, a0 + 4))
+        wf.append(tuple(b0 + q for q in range(4))[::-1]); wf.append(tuple(b0 + (len(secs) - 1) * 4 + q for q in range(4)))
+    wings = mesh_object("KnockOffWings", wv, wf, M["chrome"], smooth_shade=True, parent=sd)
+    bv = wings.modifiers.new("Bevel", "BEVEL"); bv.width, bv.segments = 0.0012, 2
+    return sd
 
 
 # ======================================================================================
@@ -1506,6 +1796,7 @@ def animate_vehicle(car, road, cues, cand, frames):
     lift = spring_track(frames, kicks + slams, S["spring"]["frequencyHz"], S["spring"]["damping"], fps)
     snares = [(e["frame"], 0.015 * e["strength"]) for e in cues["drivers"]["snareClap"]]
     roll = spring_track(frames, snares, 2.2, 0.3, fps)
+    clear = car.setdefault("clearance", {"road": 1.0, "floor": 1.0})
     for i, f in enumerate(frames):
         s = s0 + 17.0 * f / fps
         k = int(min(len(c) - 2, max(0, s)))
@@ -1527,10 +1818,30 @@ def animate_vehicle(car, road, cues, cand, frames):
         rise = 0.0
         if cand == "hover" and 240 <= f < 360:                              # the spin-up lifts the car on its rings
             rise = 0.6 * smooth((f - 250) / 90) * (1 - smooth((f - 352) / 6))
-        car["chassis"].location = (0, 0, lift[i] + rise)
-        car["chassis"].rotation_euler = (roll[i], -math.atan2(hop, CAR["wheels"]["wheelbase"]), 0)
+        hop_z = 0.5 * hop                                                   # the hop pivots on the rear axle: the nose rises, the tail stays
+        car["chassis"].location = (0, 0, lift[i] + hop_z + rise)
+        pitch = -math.atan2(hop, CAR["wheels"]["wheelbase"])
+        body_roll = roll[i] + 0.07 * drift                                  # the body leans out of the slide
+        car["chassis"].rotation_euler = (body_roll, pitch, 0)
         car["chassis"].keyframe_insert("location", frame=f)
         car["chassis"].keyframe_insert("rotation_euler", frame=f)
+        # each module holds its ride height: it takes back most of the body's bounce, roll and pitch
+        # at its own corner (so the arms and struts visibly work), and stays level with the road
+        k_ = CAR["hover"]["articulation"]
+        for mod in car["pods"]:
+            mx, my, mz = mod["rest"]
+            d = lift[i] + hop_z + my * body_roll - mx * pitch             # this corner's travel
+            # travel window: the bump stop under the floor (3 mm) and a 1 cm field gap above the road.
+            # On the slam the body lays down onto the modules, which then dip toward the road.
+            up_max = FLOOR_Z - 0.003 - mz - MODULE_TOP
+            down_min = 0.01 + MODULE_BOTTOM - mz - d
+            rel = min(max(-k_ * d, down_min), up_max)
+            mod.location = (mx, my, mz + rel)
+            mod.rotation_euler = (-k_ * body_roll, -k_ * pitch, 0)
+            mod.keyframe_insert("location", frame=f)
+            mod.keyframe_insert("rotation_euler", frame=f)
+            clear["road"] = min(clear["road"], mz + d + rel - MODULE_BOTTOM)
+            clear["floor"] = min(clear["floor"], FLOOR_Z - (mz + rel + MODULE_TOP))
         for w in car["wheels"]:                                             # the wheels spin, carrying no weight
             w.rotation_euler = (0, 17.0 * f / fps / CAR["wheels"]["radius"], 0)
             w.keyframe_insert("rotation_euler", frame=f)
@@ -1541,9 +1852,15 @@ def animate_vehicle(car, road, cues, cand, frames):
     for f0, a in pulses:
         d = np.array(frames) - f0
         env += np.where(d >= 0, a * np.exp(-d / 5.0), 0)
+    fp = bpy.data.materials["FieldPrint"].node_tree.nodes
     for i, f in enumerate(frames):
         hv.default_value = 0.8 + 2.4 * min(1.5, env[i])
         hv.keyframe_insert("default_value", frame=f)
+        rise = 0.6 * smooth((f - 250) / 90) * (1 - smooth((f - 352) / 6)) if (cand == "hover" and 240 <= f < 360) else 0.0
+        fp["FieldGain"].outputs[0].default_value = (0.35 + 0.65 * min(1.0, env[i])) * math.exp(-rise / 0.25)   # fades as the car lifts
+        fp["FieldGain"].outputs[0].keyframe_insert("default_value", frame=f)
+        fp["FieldPhase"].outputs[0].default_value = 2 * math.pi * 1.6 * f / fps                             # ripples run outward
+        fp["FieldPhase"].outputs[0].keyframe_insert("default_value", frame=f)
 
 
 def animate_traffic(city, frames, fps):
@@ -1782,6 +2099,9 @@ def validate(S):
     check("sunset to night across the piece", e0 > 2 and e1 < -4, f"sun {e0:.1f} deg -> {e1:.1f} deg")
     nan = any(not math.isfinite(v) for o in bpy.data.objects for v in o.location)
     check("no NaN transforms", not nan, "")
+    cl = car.get("clearance", {"road": 0, "floor": 0})
+    check("hover modules clear the road and the floor on every frame", cl["road"] >= 0.005 and cl["floor"] >= 0.002,
+          f"closest: {cl['road'] * 1000:.0f} mm above the road, {cl['floor'] * 1000:.0f} mm below the floor")
     rep["ok"] = all(c["ok"] for c in rep["checks"])
     return rep
 
@@ -1808,10 +2128,13 @@ CAR_SHEET = {   # car-local camera, car-local target, lens: a design sheet, not 
     "profile": ((0.0, 8.8, 0.7), (0.0, 0, 0.62), 50),
     "rear34": ((-5.9, 3.7, 1.2), (-0.4, 0, 0.62), 35),
     "module": ((2.75, 1.45, 0.05), (1.625, 0.6, 0.14), 35),
+    "wheel": ((2.45, 2.0, 0.36), (1.625, 0.88, 0.30), 50),       # front-left wheel close-up
+    "low34": ((4.9, 3.5, 0.30), (0.0, 0.0, 0.42), 30),           # the whole car, low front three-quarter
+    "moduleFront": ((2.7, 1.02, 0.15), (1.6, 0.46, 0.12), 32),  # under the front bumper, looking back at the front-left corner
 }
 
 
-def render_car_sheet(S, out_dir, res, samples, frame=100):
+def render_car_sheet(S, out_dir, res, samples, frame=100, views=None):
     """Four views of CRESTLINE in the production scene at golden hour (guardrail and roadside props
     hidden so they do not cut across the car). Writes <view>.png into out_dir."""
     sc = S["scene"]
@@ -1825,6 +2148,8 @@ def render_car_sheet(S, out_dir, res, samples, frame=100):
     sc.render.resolution_x, sc.render.resolution_y = res
     sc.cycles.samples = samples
     for name, (cl, tg, lens) in CAR_SHEET.items():
+        if views and name not in views:
+            continue
         cam = make_camera(f"Sheet_{name}", lens)
         cam.data.sensor_fit = "HORIZONTAL"; cam.data.sensor_width = 36.0
         cam.location = M @ Vector(cl)
@@ -1903,6 +2228,8 @@ def main(argv):
     ap.add_argument("--save-blend")
     ap.add_argument("--report")
     ap.add_argument("--car-sheet", help="render the four-view CRESTLINE design sheet into this folder")
+    ap.add_argument("--views", help="car sheet: comma-separated subset of views (default: all)")
+    ap.add_argument("--sheet-frame", type=int, default=100, help="car sheet: the animation frame to pose the car at")
     ap.add_argument("--animatic", help="render the Workbench animatic PNG sequence into this folder")
     ap.add_argument("--step", type=int, default=1, help="animatic: every n-th frame")
     ap.add_argument("--first", type=int, help="animatic: first frame (default 0)")
@@ -1935,7 +2262,7 @@ def main(argv):
         return 0
     if a.car_sheet:
         print("device:", set_device(S["scene"], a.device))
-        render_car_sheet(S, a.car_sheet, res, a.samples)
+        render_car_sheet(S, a.car_sheet, res, a.samples, frame=a.sheet_frame, views=a.views.split(",") if a.views else None)
         return 0
     if a.check or frames is None:
         return 0 if rep["ok"] else 1

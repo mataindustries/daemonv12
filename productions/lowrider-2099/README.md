@@ -8,7 +8,7 @@ This folder is self-contained production work; DaemonV12's engine (`src/`) is no
 | Gate | Deliverable | Status |
 |---|---|---|
 | **GATE 01** | Two upgraded music candidates | **Owner listening test pending** (leaning HOVER). [`review/music/crest.mp3`](review/music/crest.mp3), [`review/music/hover.mp3`](review/music/hover.mp3); details in [`music/README.md`](music/README.md) |
-| **GATE 02** | Redesigned CRESTLINE and three revised styleframes | **Ready for owner review.** [`review/car/`](review/car), [`review/styleframes/v2/`](review/styleframes/v2), [before/after](review/styleframes/before-after.jpg); v1 kept in [`review/styleframes/v1/`](review/styleframes/v1); critique in [`visual/DESIGN_BIBLE.md`](visual/DESIGN_BIBLE.md#styleframes-gate-02-honest-review) |
+| **GATE 02** | Redesigned CRESTLINE and three revised styleframes | **Final wheel and hover-system pass ready for review:** [`review/car/v3/`](review/car/v3) (wheel, module and whole-car comparisons, plus HOVER articulation at the slam). Styleframes: [`review/styleframes/v2/`](review/styleframes/v2) (rendered before the v3 wheels and modules), [before/after](review/styleframes/before-after.jpg); v1 in [`review/styleframes/v1/`](review/styleframes/v1); critique in [`visual/DESIGN_BIBLE.md`](visual/DESIGN_BIBLE.md#styleframes-gate-02-honest-review) |
 | GATE 03 | One-frame GPU test, then the five-frame Colab proof (360×640) | Pipeline validated without a GPU and end to end on CPU; **not run**: needs GATES 01–02 and an owner-approved GPU budget. Plan: [`RENDER_PLAN.md`](RENDER_PLAN.md) |
 | GATE 04 | Workbench animatic of the whole piece with the soundtrack | Locked behind GATE 03 approval |
 | GATE 05 | Final render | Not started; needs GATE 04 approval and its own budget |
@@ -28,7 +28,7 @@ This folder is self-contained production work; DaemonV12's engine (`src/`) is no
 | [`visual/specs/`](visual/specs) | Palette, vehicle, world and shot specs: JSON the generator reads |
 | [`visual/sync/`](visual/sync) | Engine event maps at 24 fps and the cue sheets that drive the animation, with a transient cross-check |
 | [`blender/angeles2099.py`](blender/angeles2099.py) | The deterministic Blender 4.5 LTS scene generator, with validation built in |
-| [`review/car/`](review/car) | CRESTLINE design sheet: front and rear three-quarter, profile, hover module |
+| [`review/car/`](review/car) | CRESTLINE: `v3/` the lowrider wheel and maglev suspension, before/after; `v2/` the earlier design sheet |
 | [`review/styleframes/`](review/styleframes) | GATE 02 styleframes (v1 and v2), scene check reports, before/after |
 | [`RENDER_PLAN.md`](RENDER_PLAN.md) | Measured render times and the proposed GPU budget |
 | [`colab/`](colab) | The notebook (pinned to one commit), its pipeline module, config, validators and [Android instructions](colab/ANDROID.md) |
