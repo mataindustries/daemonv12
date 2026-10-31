@@ -1,0 +1,25 @@
+{
+  "name": "CRESTLINE",
+  "concept": "An original long, low 1960s hardtop silhouette (no specific make or model) rebuilt in 2099 around an electromagnetic hover conversion. It keeps the lowrider language: candy paint, chrome, tiny wire wheels, pinstripe and a body that dances on its suspension.",
+  "units": "metres; +X forward, +Z up, origin at the centre of the footprint on the ground",
+  "body": {
+    "length": 5.55, "width": 2.0, "beltlineZ": 0.86, "rockerZ": 0.30, "hoodZ": 0.80, "deckZ": 0.86,
+    "finFlare": { "fromU": 0.84, "widthGain": 0.03, "zGain": 0.05 },
+    "sectionExponent": 3.6, "tumblehome": 0.10,
+    "frontOverhang": 1.15, "rearOverhang": 1.30
+  },
+  "greenhouse": { "fromU": 0.40, "toU": 0.70, "roofZ": 1.22, "roofHalfWidth": 0.76, "windshieldRunU": 0.08, "backlightRunU": 0.10, "pillarless": true },
+  "wheels": { "radius": 0.22, "width": 0.14, "spokes": 24, "wheelbase": 3.10, "track": 1.62, "note": "tiny chrome wire wheels; they spin but carry no weight" },
+  "hover": {
+    "pods": 4, "ringRadius": 0.30, "ringTube": 0.035, "rideHeight": 0.24,
+    "underglow": true, "emission": "hoverViolet core with warmGold inner ring",
+    "struts": "chrome A-arms from body to each pod; visible, articulated"
+  },
+  "suspension": {
+    "kickCompress": 0.035, "slamDrop": 0.13, "hopFrontLift": 0.22,
+    "spring": { "frequencyHz": 3.2, "damping": 0.35 },
+    "note": "per-corner offsets driven by visual/sync/<cand>.cues.json; kicks bounce, the slam drops all four corners, the hop lifts the nose"
+  },
+  "lights": { "head": "two thin horizontal light bars, warm white", "tail": "full-width warmGold-red bar", "grille": "horizontal chrome bars over a dim violet glow" },
+  "materials": { "body": "candyBurgundy with candyBurgundyFlash flake under a clear coat", "trim": "chrome", "inlay": "warmGold", "glass": "smoked violet", "interior": "oxblood tuck-and-roll (implied, dark)" }
+}

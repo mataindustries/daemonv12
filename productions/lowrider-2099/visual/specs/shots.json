@@ -1,0 +1,137 @@
+{
+  "name": "ANGELES//2099 shot plan",
+  "format": {
+    "aspect": "9:16",
+    "final": [
+      1080,
+      1920
+    ],
+    "preview": [
+      360,
+      640
+    ],
+    "fps": 24,
+    "durationFrames": 600
+  },
+  "rule": "Cuts land on bar lines from the cue sheet. Inside a shot, camera accents land on beats; the car's suspension and hover emitters answer the kick, snare, 808 and fx drivers. Both candidates share the 10-bar form (hook 1-2, pocket 3-4, build 5, transition 6, drop 7-8, out 9-10), so this plan fits either; the transition shot has a variant per candidate.",
+  "lens": "35 mm-equivalent full frame unless noted; shallow depth of field only in the macro shot",
+  "shots": [
+    {
+      "id": "S1",
+      "name": "Ground-scraping reveal",
+      "section": "hook",
+      "frames": [
+        0,
+        120
+      ],
+      "camera": "lens 24 mm at 0.18 m above the asphalt, starting on the front-left tiny chrome wheel and hover ring, dollying back along the flank to the full car by bar 2",
+      "sync": "f0 lead whoop: hover ring flares; every kick: body bounce; f60 (bar 2): emitter colour shifts to warm gold with the talkbox shrink"
+    },
+    {
+      "id": "S2",
+      "name": "Low tracking through the sweeper",
+      "section": "pocket",
+      "frames": [
+        120,
+        240
+      ],
+      "camera": "lens 35 mm, 0.6 m high, tracking alongside at the car's speed, slight lag; the city glows below the guardrail",
+      "sync": "the car drifts 12 degrees into the curve on bar 3; hydraulic hop on the fx 'hop' frame (crest) / Beast answers pulse the underglow (hover)"
+    },
+    {
+      "id": "S3",
+      "name": "Orbit",
+      "section": "build",
+      "frames": [
+        240,
+        300
+      ],
+      "camera": "orbit 150 degrees around the car, rising from 1 m to 3 m, lens 28 mm",
+      "sync": "orbit speed eases in to bar 6"
+    },
+    {
+      "id": "S4c",
+      "name": "Into the mouth (CREST)",
+      "section": "transition-mouth",
+      "frames": [
+        300,
+        360
+      ],
+      "candidate": "crest",
+      "camera": "push straight into the front hover intake as the beat is swallowed; black from the silence (f345) until the slam",
+      "sync": "the intake's glow closes with the vocal tract (ah, oo, mm); black frames 345-359; the reversed breath brings up a faint violet rim"
+    },
+    {
+      "id": "S4h",
+      "name": "Spin-up (HOVER)",
+      "section": "transition-hover",
+      "frames": [
+        240,
+        360
+      ],
+      "candidate": "hover",
+      "camera": "static low three-quarter; the car rises 0.6 m on its rings while the rings accelerate from visible pulses to a continuous glow",
+      "sync": "ring pulse rate follows the spin-up (pulses at f240, fused by ~f310); everything holds still in the eighth of silence (f352-359)"
+    },
+    {
+      "id": "S5",
+      "name": "Crane reveal of the megacity",
+      "section": "drop",
+      "frames": [
+        360,
+        480
+      ],
+      "camera": "on the slam the camera is at bumper height; it cranes up and back over the guardrail, 3 m to 40 m, revealing the basin, downtown megatowers, blimps and the grid",
+      "sync": "f360 slam: all four corners drop, dust and a violet shock ring on the asphalt; kicks keep the car breathing"
+    },
+    {
+      "id": "S6",
+      "name": "Hero drift",
+      "section": "pocket-out",
+      "frames": [
+        480,
+        600
+      ],
+      "camera": "long lens 85 mm from the next curve: the car slides sideways through the hairpin, the city behind it; the last 12 frames return toward S1's wheel framing so the loop closes",
+      "sync": "hop on the final fx frame (crest) / the tape-stop dive lowers the car (hover)"
+    }
+  ],
+  "styleframes": [
+    {
+      "id": "SF1",
+      "name": "Hero vehicle",
+      "shot": "S2",
+      "frame": 150,
+      "time": "golden hour, sun ~3 deg",
+      "purpose": "the car: silhouette, paint, chrome, tiny wheels, hover rings, suspension"
+    },
+    {
+      "id": "SF2",
+      "name": "Angeles Crest",
+      "shot": "S3",
+      "frame": 285,
+      "time": "last light, sun ~0.5 deg",
+      "purpose": "the road, granite cut, guardrail and the car in the last warm light, depth into the valley"
+    },
+    {
+      "id": "SF3",
+      "name": "The megacity",
+      "shot": "S5",
+      "frame": 470,
+      "time": "blue hour, sun -4 deg",
+      "purpose": "the basin: megatowers, grid, blimps, the car on the spur road"
+    }
+  ],
+  "proofFrames": {
+    "gate": "GATE 03 (Colab, low resolution)",
+    "frames": [
+      0,
+      170,
+      330,
+      400,
+      560
+    ],
+    "why": "one frame per camera move: reveal, tracking, transition, crane, hero"
+  },
+  "styleframesNote": "Each styleframe is a real frame of the planned animation (same cameras, same cue-driven timing), not a separate beauty setup."
+}

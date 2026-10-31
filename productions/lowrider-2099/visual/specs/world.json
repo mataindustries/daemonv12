@@ -1,0 +1,130 @@
+{
+  "name": "ANGELES//2099",
+  "thesis": "California evolved, not replaced: the San Gabriel Mountains and the LA basin as they are, with a civilisation that grew into them gracefully. Warm, desirable, lived-in. No neon overload, no random spikes.",
+  "units": "metres; the road sits at Z = 0; the basin floor is far below",
+  "road": {
+    "reference": "Angeles Crest Highway (CA-2) character: two lanes cut into granite, guardrail on the drop side, long sweepers and hairpins",
+    "laneWidth": 3.7,
+    "lanes": 2,
+    "shoulder": 0.6,
+    "centreLine": "double laneYellow",
+    "edgeLines": "laneWhite",
+    "guardrail": {
+      "side": "valley",
+      "height": 0.75,
+      "reflectorEvery": 8.0,
+      "reflector": "warmGold"
+    },
+    "cutSlope": {
+      "side": "mountain",
+      "height": 14.0,
+      "material": "granite"
+    },
+    "path": "a 600 m sweeping S with one tight hairpin; the valley opens to the south-west so the city sits behind the car in the reveal"
+  },
+  "terrain": {
+    "seed": 2099,
+    "extent": 9000,
+    "ridgeHeight": 900,
+    "basinDrop": 1450,
+    "material": "granite with dry chaparral tint"
+  },
+  "city": {
+    "distanceToDowntown": 9000,
+    "bearingFromRoadDeg": 230,
+    "basinZ": -1450,
+    "downtown": {
+      "megatowers": 34,
+      "heightRange": [
+        1200,
+        3000
+      ],
+      "style": "slender tapered towers, setbacks, crown halos in warmGold; never twisted spikes"
+    },
+    "satellites": [
+      {
+        "name": "Westside",
+        "offset": [
+          -9000,
+          2500
+        ],
+        "towers": 14,
+        "heightRange": [
+          350,
+          800
+        ]
+      },
+      {
+        "name": "Hollywood",
+        "offset": [
+          -4500,
+          6000
+        ],
+        "towers": 8,
+        "heightRange": [
+          250,
+          600
+        ]
+      },
+      {
+        "name": "Harbor",
+        "offset": [
+          2000,
+          -14000
+        ],
+        "towers": 10,
+        "heightRange": [
+          300,
+          700
+        ]
+      }
+    ],
+    "grid": {
+      "spacing": 400,
+      "extentX": 60000,
+      "extentY": 44000,
+      "light": "sodiumGrid",
+      "boulevards": "every 4th street brighter"
+    },
+    "flyingTraffic": {
+      "lanes": 7,
+      "altitude": [
+        250,
+        700
+      ],
+      "light": [
+        "windowWarm",
+        "laneWhite"
+      ],
+      "rule": "lanes follow the grid, never random"
+    },
+    "blimps": {
+      "count": 5,
+      "length": 260,
+      "altitude": [
+        500,
+        900
+      ],
+      "skin": "pearl with warmGold bands",
+      "lights": "soft band lights, no screens with text"
+    },
+    "ocean": {
+      "bearingDeg": 245,
+      "note": "the sun sets over it"
+    },
+    "note": "Downtown sits 9 km from the spur road (the real basin is ~25 km away) and its megatowers reach 1.2-3.0 km: a deliberate, declared exaggeration so a 9:16 reveal reads as gigantic. Bearing, sunset direction and the mountains-above-basin relationship stay true.",
+    "bearingNote": "230 deg: on the open valley side of the spur road (heading ~221 deg), with the sunset (azimuth 247 deg) behind the skyline."
+  },
+  "timeOfDay": {
+    "rule": "one continuous evening: the 25 s piece runs from golden hour to night, driven by the cue sheet's sections",
+    "sunElevationDegBySection": {
+      "hook": 4.0,
+      "pocket": 2.0,
+      "build": 0.5,
+      "transition": -1.5,
+      "drop": -4.0,
+      "pocket-out": -6.0
+    },
+    "sunAzimuthDeg": 247
+  }
+}
