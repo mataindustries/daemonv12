@@ -1,0 +1,27 @@
+{
+  "source": "renders/crest/crest.wav",
+  "sourceSha256": "8921930421c52efb8349c2e3706fc0329dfc54be3ccfcf15a11131d27e70f789",
+  "chain": [
+    "high shelf +2.5 dB @ 10 kHz",
+    "mono below 120 Hz",
+    "4x-oversampled soft clip on the top 3 dB",
+    "MORPH look-ahead limiter, true-peak ceiling -1 dBTP"
+  ],
+  "rule": "loudest of -8, -8.5, -9, -9.5, -10, -10.5, -11, -11.5, -12 LUFS (gain-staging estimate) within {\"limiterMaxDb\":2,\"clipMaxDb\":4.5,\"clipActivePercent\":2}",
+  "targetLufs": -11,
+  "preMasterLufsEstimate": -16.55,
+  "clipActivePercent": 1.139,
+  "clipMaxDb": 4.44,
+  "limiterMaxDb": 1.6,
+  "truePeakTrimDb": 0,
+  "outputLufsEstimate": -11.35,
+  "wav": {
+    "path": "masters/crest.wav",
+    "format": "44.1 kHz / 24-bit stereo, TPDF dither",
+    "sha256": "37fbfa66aeba9176538e512291c48b24227af484359760da0333c2d5dbe8b8ef"
+  },
+  "mp3": {
+    "path": "masters/crest.mp3",
+    "format": "320 kbps libmp3lame"
+  }
+}

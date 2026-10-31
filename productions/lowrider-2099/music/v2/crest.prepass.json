@@ -1,0 +1,602 @@
+{
+  "formatVersion": 1,
+  "title": "LOWRIDER//2099 v2 CREST prepass",
+  "description": "Bars 1-6 of CREST with no master processing: the beat the Mouth Drop swallows (bar 6).",
+  "bpm": 96,
+  "timeSignature": "4/4",
+  "key": "F minor",
+  "bars": 6,
+  "seed": 2099,
+  "render": {
+    "duration": {
+      "bars": 6
+    },
+    "tail": "none"
+  },
+  "master": {
+    "gainDb": -6
+  },
+  "tracks": [
+    {
+      "id": "kick",
+      "description": "kick",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/drums/kit.json"
+      },
+      "mix": {
+        "gainDb": -3
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 38
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "6:1",
+              "pitch": "kick",
+              "velocity": 1
+            },
+            {
+              "start": "6:2+19/96",
+              "pitch": "kick",
+              "velocity": 0.88
+            },
+            {
+              "start": "6:3+1/8",
+              "pitch": "kick",
+              "velocity": 0.88
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bass-808",
+      "description": "bass-808",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/808x/kit.json"
+      },
+      "mix": {
+        "gainDb": -2.5
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 26
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "6:1",
+              "pitch": "Db2",
+              "velocity": 0.95,
+              "gate": "11/32",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "6:2+19/96",
+              "pitch": "Db2",
+              "velocity": 0.75,
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.02
+              }
+            },
+            {
+              "start": "6:3+1/8",
+              "pitch": "C2",
+              "velocity": 0.92,
+              "gate": "1/4",
+              "envelope": {
+                "attackSeconds": 0.004,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "6:4+1/8",
+              "pitch": "C2",
+              "velocity": 0.92,
+              "playbackRate": 1,
+              "offsetSeconds": 0.625011,
+              "glide": {
+                "to": 0.66742,
+                "duration": "1/8"
+              },
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.02
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clap",
+      "description": "clap",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/drums/kit.json"
+      },
+      "mix": {
+        "gainDb": -3
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 170
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "6:2",
+              "pitch": "clap",
+              "velocity": 0.95
+            },
+            {
+              "start": "6:2",
+              "pitch": "snap",
+              "velocity": 0.5
+            },
+            {
+              "start": "6:4",
+              "pitch": "clap",
+              "velocity": 0.95
+            },
+            {
+              "start": "6:4",
+              "pitch": "snap",
+              "velocity": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hats",
+      "description": "hats",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/drums/kit.json"
+      },
+      "mix": {
+        "gainDb": -1
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 5000
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "6:1",
+              "pitch": "hat",
+              "velocity": 0.5,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:1+1/8",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:2",
+              "pitch": "hat",
+              "velocity": 0.5,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:2+1/8",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:3",
+              "pitch": "hat",
+              "velocity": 0.5,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:3+1/8",
+              "pitch": "hat",
+              "velocity": 0.72,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:4",
+              "pitch": "hat",
+              "velocity": 0.5,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:1+19/96",
+              "pitch": "hat-tick",
+              "velocity": 0.34,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:3+19/96",
+              "pitch": "hat-tick",
+              "velocity": 0.34,
+              "chokeGroup": "hats"
+            },
+            {
+              "start": "6:4+1/8",
+              "pitch": "hat-open",
+              "velocity": 0.58,
+              "chokeGroup": "hats"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shaker",
+      "description": "shaker",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/drums/kit.json"
+      },
+      "mix": {
+        "gainDb": -7,
+        "pan": 0.35
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 4000
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "6:1",
+              "pitch": "shaker",
+              "velocity": 0.5
+            },
+            {
+              "start": "6:1+7/96",
+              "pitch": "shaker-pull",
+              "velocity": 0.3
+            },
+            {
+              "start": "6:1+1/8",
+              "pitch": "shaker",
+              "velocity": 0.75
+            },
+            {
+              "start": "6:1+19/96",
+              "pitch": "shaker-pull",
+              "velocity": 0.35
+            },
+            {
+              "start": "6:2",
+              "pitch": "shaker",
+              "velocity": 0.5
+            },
+            {
+              "start": "6:2+7/96",
+              "pitch": "shaker-pull",
+              "velocity": 0.3
+            },
+            {
+              "start": "6:2+1/8",
+              "pitch": "shaker",
+              "velocity": 0.75
+            },
+            {
+              "start": "6:2+19/96",
+              "pitch": "shaker-pull",
+              "velocity": 0.35
+            },
+            {
+              "start": "6:3",
+              "pitch": "shaker",
+              "velocity": 0.5
+            },
+            {
+              "start": "6:3+7/96",
+              "pitch": "shaker-pull",
+              "velocity": 0.3
+            },
+            {
+              "start": "6:3+1/8",
+              "pitch": "shaker",
+              "velocity": 0.75
+            },
+            {
+              "start": "6:3+19/96",
+              "pitch": "shaker-pull",
+              "velocity": 0.35
+            },
+            {
+              "start": "6:4",
+              "pitch": "shaker",
+              "velocity": 0.5
+            },
+            {
+              "start": "6:4+7/96",
+              "pitch": "shaker-pull",
+              "velocity": 0.3
+            },
+            {
+              "start": "6:4+1/8",
+              "pitch": "shaker",
+              "velocity": 0.75
+            },
+            {
+              "start": "6:4+19/96",
+              "pitch": "shaker-pull",
+              "velocity": 0.35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lead",
+      "description": "Whine lead: the call. Octave whoop on each hook head",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/lead/kit.json"
+      },
+      "mix": {
+        "gainDb": -9.5
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 280
+        },
+        {
+          "type": "delay",
+          "timeMs": 468.75,
+          "wet": 0.14
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.55,
+          "decaySeconds": 1.6,
+          "wet": 0.16
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "6:1",
+              "pitch": "C6",
+              "velocity": 0.92,
+              "playbackRate": 0.793701,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "5/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "6:1+19/96",
+              "pitch": "Ab5",
+              "velocity": 0.8,
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.025
+              }
+            },
+            {
+              "start": "6:2+1/8",
+              "pitch": "Db6",
+              "velocity": 0.88,
+              "playbackRate": 0.943874,
+              "glide": {
+                "to": 1,
+                "duration": "1/32"
+              },
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.002,
+                "releaseSeconds": 0.005
+              }
+            },
+            {
+              "start": "6:3",
+              "pitch": "Db6",
+              "velocity": 0.88,
+              "playbackRate": 1,
+              "offsetSeconds": 0.310295,
+              "glide": {
+                "to": 0.943874,
+                "duration": "1/32"
+              },
+              "gate": "3/32",
+              "envelope": {
+                "attackSeconds": 0.005,
+                "releaseSeconds": 0.025
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "talkbox",
+      "description": "Talkbox (MORPH//03 vocal tract): ooh-WEE, the shrink, a wa-wa fill",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/voice/kit.json"
+      },
+      "mix": {
+        "gainDb": -1,
+        "pan": 0.12
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 190
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -20,
+          "ratio": 3,
+          "attackMs": 5,
+          "releaseMs": 80,
+          "makeupGainDb": 2
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.45,
+          "decaySeconds": 1.3,
+          "wet": 0.12
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "6:3+1/8",
+              "pitch": "yeah-shrink",
+              "velocity": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keys",
+      "description": "keys",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/keys/kit.json"
+      },
+      "mix": {
+        "gainDb": -13
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 220
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.6,
+          "decaySeconds": 2,
+          "wet": 0.3
+        }
+      ],
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "main"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "main",
+          "bars": 6,
+          "notes": [
+            {
+              "start": "6:1",
+              "pitch": "dbmaj9",
+              "velocity": 0.7,
+              "gate": "5/8",
+              "envelope": {
+                "releaseSeconds": 0.2
+              }
+            },
+            {
+              "start": "6:4",
+              "pitch": "c7b9",
+              "velocity": 0.65,
+              "gate": "1/4",
+              "envelope": {
+                "releaseSeconds": 0.1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
