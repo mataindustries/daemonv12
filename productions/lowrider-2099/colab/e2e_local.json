@@ -14,27 +14,32 @@
   {
    "step": "a GPU test past its allowance is killed and its real time charged",
    "ok": true,
-   "detail": "stopped after 12.6 s, charged 0.2 min as 'GPU test, 1 frame (stopped at its 0.2 min limit)', orphan processes: []"
+   "detail": "stopped after 12.8 s, charged 0.2 min as 'GPU test, 1 frame (stopped at its 0.2 min limit)', orphan processes: []"
   },
   {
    "step": "one-frame test measures build and per-frame time",
    "ok": true,
-   "detail": "{\"key\": \"8aa13928d3cedd681ded51f50afbddd2f84943b7ab2f2bcede12efce72389031\", \"buildSeconds\": 53.7, \"secondsPerFrame\": 15.4, \"device\": \"CPU (local)\"}"
+   "detail": "{\"key\": \"254790baf540c97907aaf410a69e6eff5d7551303711bc280e12d849952cdb71\", \"buildSeconds\": 60.8, \"secondsPerFrame\": 18.3, \"device\": \"CPU (local)\"}"
   },
   {
    "step": "keyed proof render writes its frames",
    "ok": true,
-   "detail": "0cd8486468ce: ['frame_0000.png', 'frame_0400.png']"
+   "detail": "6ee467c8b01b: ['frame_0000.png', 'frame_0400.png']"
   },
   {
    "step": "render is charged to the ledger",
    "ok": true,
-   "detail": "spent 2.53 of 10.0 min"
+   "detail": "spent 2.77 of 10.0 min"
   },
   {
    "step": "rerun reuses the same keyed frames",
    "ok": true,
    "detail": ""
+  },
+  {
+   "step": "a later job reuses frames another job rendered (the film reuses the teaser's)",
+   "ok": true,
+   "detail": "TEASER: 1 frame(s) charged; frames in 6ee467c8b01b: ['frame_0000.png', 'frame_0170.png', 'frame_0400.png']"
   },
   {
    "step": "a settings change changes the key",
@@ -52,6 +57,11 @@
    "detail": ""
   },
   {
+   "step": "the T4 benchmark measures car and city frames at both sizes and records them for estimates",
+   "ok": true,
+   "detail": "{\"72x128\": {\"buildSeconds\": 60.1, \"carSeconds\": 19.2, \"citySeconds\": 1.2, \"frames\": \"/tmp/lowrider-e2e-49p5k8df/renders/BENCH/a0407f1cd00d/72x128\"}, \"96x160\": {\"buildSeconds\": 61.5, \"carSeconds\": 19.1, \"citySeconds\": 1.0, \"frames\": \"/tmp/lowrider-e2e-49p5k8df/renders/BENCH/a0407f1cd00d/96x160\"}}"
+  },
+  {
    "step": "animatic refuses before GATE 03 approval",
    "ok": true,
    "detail": ""
@@ -65,34 +75,52 @@
  "status": {
   "approvedMinutes": 60.0,
   "approver": "e2e test",
-  "approvedAt": "2026-11-01 01:52:48",
+  "approvedAt": "2026-11-01 19:42:21",
   "spent": [
    {
     "what": "GPU test, 1 frame (stopped at its 0.2 min limit)",
     "minutes": 0.2,
-    "key": "8aa13928d3ce",
-    "at": "2026-11-01 01:50:24"
+    "key": "254790baf540",
+    "at": "2026-11-01 19:35:46"
    },
    {
     "what": "GPU test, 1 frame",
-    "minutes": 1.15,
-    "key": "8aa13928d3ce",
-    "at": "2026-11-01 01:51:35"
+    "minutes": 1.32,
+    "key": "254790baf540",
+    "at": "2026-11-01 19:37:06"
    },
    {
     "what": "GATE03: 2 frame(s)",
-    "minutes": 1.18,
-    "key": "0cd8486468ce",
-    "at": "2026-11-01 01:52:47"
+    "minutes": 1.25,
+    "key": "6ee467c8b01b",
+    "at": "2026-11-01 19:38:22"
+   },
+   {
+    "what": "TEASER: 1 frame(s)",
+    "minutes": 1.21,
+    "key": "6ee467c8b01b",
+    "at": "2026-11-01 19:39:36"
+   },
+   {
+    "what": "T4 benchmark 72x128",
+    "minutes": 1.34,
+    "key": "a0407f1cd00d",
+    "at": "2026-11-01 19:40:59"
+   },
+   {
+    "what": "T4 benchmark 96x160",
+    "minutes": 1.36,
+    "key": "a0407f1cd00d",
+    "at": "2026-11-01 19:42:21"
    },
    {
     "what": "animatic: 24 frames",
-    "minutes": 1.24,
-    "key": "11514059acc9",
-    "at": "2026-11-01 01:54:04"
+    "minutes": 1.36,
+    "key": "8a0a01eb6cb3",
+    "at": "2026-11-01 19:43:44"
    }
   ],
-  "spentMinutes": 3.77,
-  "remainingMinutes": 56.23
+  "spentMinutes": 8.04,
+  "remainingMinutes": 51.96
  }
 }

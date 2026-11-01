@@ -91,6 +91,10 @@ P.animatic(confirm=CONFIRM)
     ("code", BOOT + """# 11 · Status: source commit, budget ledger, measured timings, gates, renders by input key
 P.status()
 """),
+    ("code", BOOT + """# 12 · Cost gate: T4 benchmark, car and city frames at 720x1280 and 1080x1920, 16 samples (uses <= 12 min)
+CONFIRM = False
+P.bench_t4(confirm=CONFIRM)
+"""),
 ]
 
 

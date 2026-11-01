@@ -362,9 +362,9 @@ def _limit(seconds):
     return seconds if LOCAL else min(seconds, max(60.0, budget_state()["remainingMinutes"] * 60))
 
 
-def _write_manifest(out, key, extra):
+def _write_manifest(out, key, extra, name="key.json"):
     out.mkdir(parents=True, exist_ok=True)
-    (out / "key.json").write_text(json.dumps({"key": key, "sourceCommit": source_commit(), **extra}, indent=1) + "\n")
+    (out / name).write_text(json.dumps({"key": key, "sourceCommit": source_commit(), **extra}, indent=1) + "\n")
 
 
 def gpu_frame_test(confirm=False):
@@ -418,11 +418,16 @@ def render(gate, frames, res, samples, confirm=False):
     if gate == "GATE04" and not st.get("gates", {}).get("GATE03"):
         raise PipelineError("GATE 04 needs the owner's GATE 03 approval.", "Review the five-frame proof, then record approval with approve('GATE03').")
     cand = st["candidate"]
-    key = render_key(cand, gate, frames, res, samples, "CYCLES")
-    out = p["renders"] / gate / key[:12]
-    stale = [d.name for d in (p["renders"] / gate).glob("*") if d.is_dir() and d.name != key[:12]] if (p["renders"] / gate).exists() else []
+    # A frame's pixels depend on the inputs and the settings, never on which job asked for it: frames
+    # live in one store per setting, so the film reuses every frame the teaser (or the proof) rendered.
+    key = render_key(cand, "FRAMES", [], res, samples, "CYCLES")
+    out = p["renders"] / "frames" / key[:12]
+    stale = [d.name for d in (p["renders"] / "frames").glob("*") if d.is_dir() and d.name != key[:12]] if (p["renders"] / "frames").exists() else []
     if stale:
-        say(f"Ignoring stale {gate} renders from different inputs: {stale} (kept on Drive, never reused).")
+        say(f"Ignoring frames from other inputs or settings: {stale} (kept on Drive, never reused).")
+    have = [f for f in frames if (out / f"frame_{f:04d}.png").exists()]
+    if have and len(have) < len(frames):
+        say(f"Reusing {len(have)} frame(s) already rendered with these exact inputs and settings.")
     todo = [f for f in frames if not (out / f"frame_{f:04d}.png").exists()]
     if not todo:
         say(f"All {len(frames)} frames for these exact inputs are already in {out}. Nothing to do.")
@@ -448,10 +453,66 @@ def render(gate, frames, res, samples, confirm=False):
                           "--device", "CPU" if LOCAL else "GPU", "--out-dir", str(out)],
                          timeout=_limit(6 * 3600), what=f"{gate}: {len(todo)} frame(s)", key=key)
     _charge(f"{gate}: {len(todo)} frame(s)", wall, key)
-    _write_manifest(out, key, {"kind": gate, "frames": frames, "res": list(res), "samples": samples, "seconds": round(wall, 1)})
+    _write_manifest(out, key, {"kind": gate, "frames": list(frames), "res": list(res), "samples": samples, "seconds": round(wall, 1)}, name=f"manifest-{gate}.json")
     save_state(**{f"{gate}Rendered": sorted(set(st.get(f"{gate}Rendered", [])) | set(todo))})
     say(f"Rendered {len(todo)} frame(s) to {out} in {wall / 60:.1f} min (estimate was {est:.1f}).")
     return out
+
+
+BENCH_ALLOWANCE_MIN = 12.0   # the T4 benchmark may use at most this much of the budget (two builds, four frames)
+
+
+def bench_t4(confirm=False):
+    """Cost gate: render the car-heavy frame and the city frame at 720x1280 and 1080x1920 (16 samples,
+    denoised) on this GPU. Measures build and per-frame wall time, keeps the PNGs for a side-by-side
+    look, records the timings so the teaser and film renders can be estimated, and projects their
+    cost. Hard wall-clock limit; actual time charged."""
+    st = load_state()
+    _require(st)
+    c = settings("bench")
+    cand = st["candidate"]
+    frames = [c["frames"]["car"], c["frames"]["city"]]
+    key = render_key(cand, "BENCH", frames, (0, 0), c["samples"], "CYCLES")
+    if st.get("bench", {}).get("key") == key:
+        _bench_report(st["bench"])
+        return st["bench"]
+    b = budget_state()
+    if not confirm:
+        say(f"Not running the T4 benchmark: set CONFIRM = True. It renders frames {frames} at "
+            f"{' and '.join(f'{w}x{h}' for w, h in c['resolutions'])}, {c['samples']} samples, and may use at most "
+            f"{BENCH_ALLOWANCE_MIN} min of the approved budget ({b['remainingMinutes']} min remaining).")
+        return None
+    if b["remainingMinutes"] < BENCH_ALLOWANCE_MIN:
+        raise PipelineError(f"The GPU budget has {b['remainingMinutes']} min left; the benchmark needs {BENCH_ALLOWANCE_MIN}.", "Ask the owner to approve a budget in the budget cell.")
+    left, res_out, measured = BENCH_ALLOWANCE_MIN * 60, {}, st.get("measured", {})
+    device = "CPU (local)" if LOCAL else (st.get("gpu", {}).get("nvidiaSmi") or "GPU")
+    for w, h in c["resolutions"]:
+        out = paths()["renders"] / "BENCH" / key[:12] / f"{w}x{h}"
+        wall, per = _blender(["--cand", cand, "--frames", ",".join(map(str, frames)), "--res", f"{w}x{h}", "--samples", str(c["samples"]),
+                              "--device", "CPU" if LOCAL else "GPU", "--out-dir", str(out)], timeout=left, what=f"T4 benchmark {w}x{h}", key=key)
+        _charge(f"T4 benchmark {w}x{h}", wall, key)
+        left -= wall
+        r = {"buildSeconds": round(wall - sum(per), 1), "carSeconds": round(per[0], 1), "citySeconds": round(per[1], 1), "frames": str(out)}
+        res_out[f"{w}x{h}"] = r
+        measured[f"{w}x{h}@{c['samples']}"] = {"key": key, "buildSeconds": r["buildSeconds"], "secondsPerFrame": max(per), "device": device}
+    bench = {"key": key, "device": device, "samples": c["samples"], "results": res_out, "teaserFrames": c["teaserFrames"], "filmFrames": CONFIG["frames"]}
+    save_state(bench=bench, measured=measured)
+    _bench_report(bench)
+    return bench
+
+
+def _bench_report(bench):
+    n_t = bench["teaserFrames"][1] - bench["teaserFrames"][0] + 1
+    n_f = bench["filmFrames"] - n_t                                  # the film reuses the teaser's frames
+    say(f"T4 benchmark on {bench['device']}, {bench['samples']} samples + denoise (frames saved for a side-by-side look):")
+    for res, r in bench["results"].items():
+        mean, worst = (r["carSeconds"] + r["citySeconds"]) / 2, max(r["carSeconds"], r["citySeconds"])
+        teaser = (r["buildSeconds"] + n_t * mean) / 60
+        film = (r["buildSeconds"] + n_f * mean) / 60
+        say(f"  {res}: build {r['buildSeconds']} s, car frame {r['carSeconds']} s, city frame {r['citySeconds']} s -> "
+            f"teaser {n_t} frames ~{teaser:.0f} min (worst {(r['buildSeconds'] + n_t * worst) / 60 * SAFETY:.0f}), "
+            f"rest of film {n_f} frames ~{film:.0f} min (worst {(r['buildSeconds'] + n_f * worst) / 60 * SAFETY:.0f}). "
+            f"Compute units: minutes / 60 x your T4 rate (Colab > Resources).")
 
 
 def animatic(confirm=False):

@@ -55,6 +55,16 @@ above are software OpenGL). It also needs OpenGL through EGL on the runtime, whe
 CUDA/OptiX. **Not recommended.**
 
 **Recommendation: Cycles, 16 samples, OpenImageDenoise, 1080×1920, half-frame motion blur.**
+
+**Per-frame overhead, measured.**
+- Every frame used to re-sync the scene: about 3 s, plus about 6 s for the first frame.
+- Final renders now keep it between frames (persistent render data): 29 % faster over a five-frame
+  sequence. Output is identical: across the slam cut the largest difference was one pixel off by
+  1/255, the same as two fresh renders of the same frame.
+- The remaining fixed cost is specific to S2 (frames 120–239): about 10 s per frame, regardless of
+  resolution. Cycles re-syncs the car's light-linked rig each frame (1.1 s without light linking).
+  Light linking is what keeps the rig off the road, so it stays.
+- The T4 benchmark's car frame is an S2 frame, so its measurement includes that cost.
 - **CPU cost at that setting:** f170 takes 204 s and f470 85 s per frame. That is 4.3× cheaper than
   128 samples (886 s for f170) and 4.1–4.6× the approved 360×640 / 32-sample proof frame.
 - **Floor:** below 16 samples the saving is small. About 15–20 s per frame is fixed scene sync that
@@ -71,42 +81,53 @@ f170 is the costliest frame, so both are upper bounds. Fallback if that is too d
 setting at 720×1280, upscaled. That costs one test frame and a look on a phone before anyone relies
 on it.
 
-## 3. The teaser: 10.25 s, frames 240–485
+## 3. The teaser: 8.375 s, frames 285–485
 
-Built from the locked choreography and the original master, with nothing new rendered beyond these
-frames. 9:16, 24 fps, 246 frames. Audio: the CREST master from **10.000 s to 20.250 s**, a 10 ms
-fade-in and a 250 ms fade-out over the last 6 frames.
+Revised to open on the strongest existing image. The 240–299 orbit spent 1.9 s at dusk before
+anything happened. **Frame 285 is the approved SF2 composition:** the car on the crest, the road
+winding to the skyline.
+
+The cut starts one beat before the Mouth Drop, on the pickup into bar 6. Nothing new is rendered,
+the music is untouched and the cameras are locked.
 
 | Teaser | Frames | Shot | Picture | Music (CREST) |
 |---|---|---|---|---|
-| 0:00.00–0:02.50 | 240–299 | S3 | A 150° orbit, rising, at last light; the skyline comes round behind the car | Bar 5: the build |
-| 0:02.50–0:05.00 | 300–359 | S4c | **The Mouth Drop.** A barrel-roll push into the grille: "ah" 300, "oh" 315, "oo" 327, "mm" seals 334, black 345, the roll completes in the dark, the breath 347–359 | Bar 6: the beat is swallowed, silence, a reversed breath |
-| 0:05.00 | 360 | S5 | **The slam.** Opens level, the body drops onto the modules, shock rings | The slam downbeat |
-| 0:05.00–0:10.00 | 360–479 | S5 | **The megacity reveal.** A crane up and back through the multiplane haze, 24 → 70 mm, crowned megatowers and airships | Bars 7–8: the swung takeover, the talking 808 |
-| 0:10.00–0:10.25 | 480–485 | S6 | The button: the bar-9 downbeat, the car against the skyline and an airship. Hard cut to black | The 808 hit, fading |
+| 0:00.000–0:00.625 | 285–299 | S3 | SF2: the car above the winding road, skyline behind | bar 5, beat 4: the pickup |
+| 0:00.625–0:03.125 | 300–359 | S4c | **The Mouth Drop**: the barrel-roll push into the grille, "ah, oh, oo, mm", black, the roll completes in the dark, the breath | bar 6, swallowed |
+| 0:03.125 | 360 | S5 | **The slam**: level, the body drops, shock rings | the slam |
+| 0:03.125–0:08.125 | 360–479 | S5 | **The megacity reveal**: a crane through the multiplane haze | bars 7–8 |
+| 0:08.125–0:08.375 | 480–485 | S6 | The bar-9 hit against the skyline and an airship; hard cut to black | the 808 hit, fading |
 
-A shorter cut, if a platform wants under 9 s: frames 270–479 (8.75 s), audio 11.250 → 20.000 s,
-with a 250 ms fade-out.
-
-Assembly, once the frames exist (`TEASER/` holds `frame_0240.png` … `frame_0485.png`):
+201 frames. Audio: the committed master `review/music/crest.wav` (SHA-256 `37fbfa66…`, the same file
+as the build's master) from **11.875 s to 20.250 s**, a 10 ms fade-in and a 250 ms fade-out:
 
 ```sh
-ffmpeg -framerate 24 -start_number 240 -i TEASER/frame_%04d.png -ss 10.0 -t 10.25 -i productions/lowrider-2099/music/v2/masters/crest.wav \
-  -af "afade=t=in:st=0:d=0.01,afade=t=out:st=10.0:d=0.25" -c:v libx264 -profile:v high -crf 16 -pix_fmt yuv420p \
+ffmpeg -framerate 24 -start_number 285 -i TEASER/frame_%04d.png -ss 11.875 -t 8.375 -i productions/lowrider-2099/review/music/crest.wav \
+  -af "afade=t=in:st=0:d=0.01,afade=t=out:st=8.125:d=0.25" -c:v libx264 -profile:v high -crf 16 -pix_fmt yuv420p \
   -c:a aac -b:a 320k -shortest -movflags +faststart angeles2099-teaser.mp4
 ```
 
+The longer 240–485 cut (10.25 s, audio from 10.000 s) is still available. Frames 240–284 would
+then be the only teaser frames the film does not already need.
+
+**No frame is rendered twice.** Final frames are stored once per setting:
+`renders/frames/<key>/`, keyed on everything that changes pixels and nothing else. A film job
+renders only the frames that are missing. The 201 teaser frames count towards the 600; the film
+then needs 399 more. Tested in `colab/e2e_local.py`: a second job reused two frames, rendered
+only its one new frame and was charged for one.
+
 ## 4. What is left before publication
 
-1. **Owner:** approve the setting (Cycles 16 + denoise, 1080×1920) and the teaser cut (240–485).
-2. **Measure on the T4 (≤ 6 min of budget):**
-   - Set `gpuTest` in `colab/config.json` to 1080×1920 and 16 samples (frame 170), re-pin, and run
-     cell 7.
-   - The pipeline only estimates from a timing measured at the exact settings it will render.
-3. **Render the teaser on the T4:** `P.render("TEASER", list(range(240, 486)), (1080, 1920), 16, confirm=True)`.
+1. **Owner:** approve the setting (Cycles 16 + denoise; 720×1280 or 1080×1920 after the cost gate) and the teaser cut (285–485).
+2. **T4 cost gate (≤ 12 min of budget):** notebook cell 12 (`P.bench_t4`).
+   - It renders the car frame (170) and the city frame (470) at 720×1280 and 1080×1920, 16 samples.
+   - It saves both sizes to `renders/BENCH/` for a side-by-side look on a phone.
+   - It records the timings the teaser and film renders estimate from, and prints projected
+     minutes for the teaser and for the rest of the film, typical and worst case.
+3. **Render the teaser on the T4:** `P.render("TEASER", list(range(285, 486)), (1080, 1920), 16, confirm=True)` (or 720×1280 if the cost gate says so).
    This is keyed, budgeted and refused if over budget; size the budget with §2.
 4. **Assemble** with the command above and review on a phone. Fix only blockers.
-5. **Render the film:** all 600 frames at the same setting under its own budget. Assemble with the
+5. **Render the film:** `P.render("FILM", list(range(600)), …)` at the same setting renders only the 399 frames the teaser did not, under its own budget. Assemble with the
    full master. The loop version is the same file, because the seam is built in.
 6. **Deliverables:**
    - the film and the teaser, 1080×1920 H.264 High, 24 fps, AAC 320 kbps, with the master

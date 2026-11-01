@@ -2683,6 +2683,7 @@ def render_frames(S, frames, res, samples, out_dir=None, out=None, names=None):
     sc.render.resolution_x, sc.render.resolution_y = res
     sc.render.resolution_percentage = 100
     sc.cycles.samples = samples
+    sc.render.use_persistent_data = True       # keep the synced scene between frames: identical pixels, less per-frame CPU
     done = []
     for i, f in enumerate(frames):
         sc.frame_set(f)

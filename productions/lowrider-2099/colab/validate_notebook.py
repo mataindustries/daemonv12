@@ -70,6 +70,8 @@ def main():
                 passed = r.returncode == 0 and "Not running the GPU test" in out
             if i == 8:                                  # the proof refuses without a measured timing
                 passed = r.returncode == 0 and "Not rendering" in out and "No measured GPU timing" in out
+            if i == 12:                                 # the T4 benchmark is gated
+                passed = r.returncode == 0 and "Not running the T4 benchmark" in out
             if i == 10:                                 # the animatic refuses without the owner's GATE 03 approval
                 passed = r.returncode != 0 and "needs the owner's GATE 03 approval" in out and "HOW TO FIX" in out
             last = out.splitlines()[-1] if out else ""

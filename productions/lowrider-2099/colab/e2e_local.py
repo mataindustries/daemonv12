@@ -19,6 +19,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 os.environ.update(LOWRIDER_LOCAL="1", LOWRIDER_DRIVE=tempfile.mkdtemp(prefix="lowrider-e2e-"),
                   LOWRIDER_TEST_OVERRIDES=json.dumps({"gpuTest": {"resolution": [96, 160], "samples": 4},
+                                                       "bench": {"resolutions": [[72, 128], [96, 160]], "samples": 4},
                                                        "animatic": {"resolution": [180, 320], "first": 350, "last": 373}}))
 sys.path.insert(0, str(HERE))
 import pipeline as P  # noqa: E402
@@ -64,6 +65,12 @@ step("keyed proof render writes its frames", pngs == ["frame_0000.png", "frame_0
 b = P.budget_state()
 step("render is charged to the ledger", b["spentMinutes"] > 0 and len(b["spent"]) == 3, f"spent {b['spentMinutes']} of {b['approvedMinutes']} min")
 step("rerun reuses the same keyed frames", P.render("GATE03", FR, RES, SPP, confirm=True) == out)
+n0 = len(P.budget_state()["spent"])
+out_t = P.render("TEASER", [0, 170, 400], RES, SPP, confirm=True)
+spent_t = P.budget_state()["spent"][n0:]
+step("a later job reuses frames another job rendered (the film reuses the teaser's)",
+     out_t == out and len(spent_t) == 1 and spent_t[0]["what"] == "TEASER: 1 frame(s)" and (out / "manifest-TEASER.json").exists(),
+     f"{spent_t[0]['what'] if spent_t else 'nothing'} charged; frames in {out.name}: {sorted(p.name for p in out.glob('frame_*.png'))}")
 k1 = P.render_key("crest", "GATE03", FR, RES, SPP, "CYCLES")
 k2 = P.render_key("crest", "GATE03", FR, RES, SPP + 1, "CYCLES")
 step("a settings change changes the key", k1 != k2)
@@ -77,6 +84,11 @@ k_edit = P.render_key("crest", "GATE03", FR, RES, SPP, "CYCLES", root=tmp)
 step("an identical copy keeps the key; a one-character spec edit changes it", k_copy == k1 and k_edit != k1)
 P.set_budget(P.budget_state()["spentMinutes"] + 0.01, "e2e test")
 step("an estimate over the remaining budget is refused", expect_error(lambda: P.render("GATE03", [0, 170, 330, 400, 560], RES, SPP, confirm=True), "exceeds the remaining approved budget"))
+P.set_budget(P.budget_state()["spentMinutes"] + 30, "e2e test")
+bench = P.bench_t4(confirm=True)
+step("the T4 benchmark measures car and city frames at both sizes and records them for estimates",
+     bench and set(bench["results"]) == {"72x128", "96x160"} and all(r["carSeconds"] > 0 and r["citySeconds"] > 0 for r in bench["results"].values())
+     and "96x160@4" in P.load_state()["measured"], json.dumps(bench["results"]) if bench else "no result")
 step("animatic refuses before GATE 03 approval", expect_error(lambda: P.animatic(confirm=True), "GATE 03 approval"))
 P.set_budget(60, "e2e test")
 P.approve("GATE03")
