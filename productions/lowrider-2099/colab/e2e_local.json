@@ -14,22 +14,22 @@
   {
    "step": "a GPU test past its allowance is killed and its real time charged",
    "ok": true,
-   "detail": "stopped after 12.5 s, charged 0.2 min as 'GPU test, 1 frame (stopped at its 0.2 min limit)', orphan processes: []"
+   "detail": "stopped after 12.6 s, charged 0.2 min as 'GPU test, 1 frame (stopped at its 0.2 min limit)', orphan processes: []"
   },
   {
    "step": "one-frame test measures build and per-frame time",
    "ok": true,
-   "detail": "{\"key\": \"68b388d2185ec31a447c807f95582f4f8e1f50a737018194030753d1884621be\", \"buildSeconds\": 54.1, \"secondsPerFrame\": 16.1, \"device\": \"CPU (local)\"}"
+   "detail": "{\"key\": \"8aa13928d3cedd681ded51f50afbddd2f84943b7ab2f2bcede12efce72389031\", \"buildSeconds\": 53.7, \"secondsPerFrame\": 15.4, \"device\": \"CPU (local)\"}"
   },
   {
    "step": "keyed proof render writes its frames",
    "ok": true,
-   "detail": "35ee7943bbd3: ['frame_0000.png', 'frame_0400.png']"
+   "detail": "0cd8486468ce: ['frame_0000.png', 'frame_0400.png']"
   },
   {
    "step": "render is charged to the ledger",
    "ok": true,
-   "detail": "spent 2.57 of 10.0 min"
+   "detail": "spent 2.53 of 10.0 min"
   },
   {
    "step": "rerun reuses the same keyed frames",
@@ -65,31 +65,31 @@
  "status": {
   "approvedMinutes": 60.0,
   "approver": "e2e test",
-  "approvedAt": "2026-10-31 22:28:31",
+  "approvedAt": "2026-11-01 01:52:48",
   "spent": [
    {
     "what": "GPU test, 1 frame (stopped at its 0.2 min limit)",
     "minutes": 0.2,
-    "key": "68b388d2185e",
-    "at": "2026-10-31 22:26:06"
+    "key": "8aa13928d3ce",
+    "at": "2026-11-01 01:50:24"
    },
    {
     "what": "GPU test, 1 frame",
-    "minutes": 1.17,
-    "key": "68b388d2185e",
-    "at": "2026-10-31 22:27:18"
+    "minutes": 1.15,
+    "key": "8aa13928d3ce",
+    "at": "2026-11-01 01:51:35"
    },
    {
     "what": "GATE03: 2 frame(s)",
-    "minutes": 1.2,
-    "key": "35ee7943bbd3",
-    "at": "2026-10-31 22:28:31"
+    "minutes": 1.18,
+    "key": "0cd8486468ce",
+    "at": "2026-11-01 01:52:47"
    },
    {
     "what": "animatic: 24 frames",
-    "minutes": 1.2,
-    "key": "ee2be5883994",
-    "at": "2026-10-31 22:29:43"
+    "minutes": 1.24,
+    "key": "11514059acc9",
+    "at": "2026-11-01 01:54:04"
    }
   ],
   "spentMinutes": 3.77,

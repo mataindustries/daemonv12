@@ -1,0 +1,35 @@
+{
+ "ok": true,
+ "steps": [
+  {
+   "step": "fresh runtime: install from a cache holding only bpy and numpy (the failed run's state)",
+   "ok": true,
+   "seconds": 8.1
+  },
+  {
+   "step": "import bpy and every dependency; bpy.app.version_string",
+   "ok": true,
+   "seconds": 0.6
+  },
+  {
+   "step": "reconnect: new runtime, venv gone, wheels on Drive (offline install)",
+   "ok": true,
+   "seconds": 2.2
+  },
+  {
+   "step": "broken venv (bpy deleted): detected and rebuilt",
+   "ok": true,
+   "seconds": 2.3
+  },
+  {
+   "step": "corrupt cached wheel: deleted, downloaded again, verified",
+   "ok": true,
+   "seconds": 3.1
+  },
+  {
+   "step": "scene generation and validation with the installed Blender (crest)",
+   "ok": true,
+   "seconds": 54.6
+  }
+ ]
+}

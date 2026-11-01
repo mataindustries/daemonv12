@@ -107,7 +107,7 @@ def mount_drive():
 # ---------------------------------------------------------------------------------------------
 def install_blender():
     p, pins = paths(), CONFIG["pins"]
-    if LOCAL:
+    if LOCAL and os.environ.get("LOWRIDER_BPY_PYTHON"):         # a developer's existing bpy; unset it to test the real install
         py = Path(os.environ.get("LOWRIDER_BPY_PYTHON", ""))
         if not py.exists():
             raise PipelineError("LOWRIDER_BPY_PYTHON does not point to a Python with bpy.", "Set it to the interpreter of a venv with bpy==4.5.14.")
@@ -119,7 +119,9 @@ def install_blender():
             say("Blender already installed in this runtime.")
             return p["python"]
         except PipelineError:
-            say("Existing install failed verification; reinstalling.")
+            say("Existing install failed verification; rebuilding it from the cached wheels.")
+    if p["venv"].exists():                                     # never build on top of a half-finished or stale venv
+        shutil.rmtree(p["venv"])
     # uv (pinned) manages a Python 3.11 for bpy, independent of Colab's own Python
     req = p["cache"] / "uv-requirements.txt"
     req.write_text(f"uv=={pins['uv']['version']} --hash=sha256:{pins['uv']['sha256']}\n")
@@ -130,30 +132,53 @@ def install_blender():
     wheels.mkdir(parents=True, exist_ok=True)
     reqs = p["cache"] / "bpy-requirements.txt"
     reqs.write_text("".join(f"{w['name']}=={w['version']} --hash=sha256:{w['sha256']}\n" for w in pins["wheels"]))
-    have = {w.name for w in wheels.glob("*.whl")}
-    need = [w for w in pins["wheels"] if w["file"] not in have]
-    if need:
-        say(f"Downloading {', '.join(w['file'] for w in need)} to the Drive cache (once; later runtimes reuse it).")
-        run([sys.executable, "-m", "pip", "download", "--no-deps", "--only-binary=:all:",
-             "--python-version", pins["python"], "--platform", "manylinux_2_28_x86_64", "--platform", "manylinux2014_x86_64",
-             "--require-hashes", "-r", str(reqs), "-d", str(wheels)], timeout=1800)
-    for w in pins["wheels"]:
-        f = wheels / w["file"]
-        if not f.exists() or sha256(f) != w["sha256"]:
-            if f.exists():
-                f.unlink()
-            raise PipelineError(f"{w['file']} is missing or does not match its pinned SHA-256.", "Rerun this cell: the bad file was deleted and will be downloaded again.")
+    # every wheel of the complete dependency set is pinned (the first version pinned only bpy and
+    # numpy, so the offline install could not resolve bpy's own dependencies: cython, requests, ...)
+    for attempt in (1, 2):
+        bad = [w for w in pins["wheels"] if not (wheels / w["file"]).exists() or sha256(wheels / w["file"]) != w["sha256"]]
+        for w in bad:                                           # a partial or corrupt download is deleted, then fetched again
+            if (wheels / w["file"]).exists():
+                (wheels / w["file"]).unlink()
+        if not bad:
+            break
+        if attempt == 2:
+            raise PipelineError(f"{', '.join(w['file'] for w in bad)} still missing or not matching the pinned SHA-256.",
+                                "Check the runtime's internet connection, then rerun this cell.")
+        sub = p["cache"] / "bpy-requirements-missing.txt"
+        sub.write_text("".join(f"{w['name']}=={w['version']} --hash=sha256:{w['sha256']}\n" for w in bad))
+        say(f"Downloading {len(bad)} pinned wheel(s) to the Drive cache (once; later runtimes reuse them): {', '.join(w['name'] for w in bad)}")
+        run([sys.executable, "-m", "pip", "download", "--no-deps", "--only-binary=:all:", "--python-version", pins["python"],
+             "--platform", "manylinux_2_28_x86_64", "--platform", "manylinux_2_17_x86_64", "--platform", "manylinux2014_x86_64",
+             "--require-hashes", "-r", str(sub), "-d", str(wheels)], timeout=1800)
+    # offline, hash-checked, from the Drive cache only: the full set resolves with no index
     run([uv, "pip", "install", "--python", str(p["python"]), "--no-index", "--find-links", str(wheels), "--require-hashes", "-r", str(reqs)], timeout=1800)
     _verify_bpy(p["python"])
     return p["python"]
 
 
+VERIFY = r"""
+import json, sys, importlib, importlib.metadata as md
+pins = json.loads(sys.argv[1])
+for mod in ("numpy", "cython", "requests", "zstandard", "certifi", "charset_normalizer", "idna", "urllib3"):
+    importlib.import_module("Cython" if mod == "cython" else mod)
+import bpy
+wrong = {n: md.version(n) for n, v in pins.items() if md.version(n) != v}
+print(json.dumps({"blender": bpy.app.version_string, "python": sys.version.split()[0], "wrong": wrong}))
+"""
+
+
 def _verify_bpy(py):
-    r = run([str(py), "-c", "import bpy, numpy; print(bpy.app.version_string, numpy.__version__)"], timeout=300, check=False)
-    out = r.stdout.strip().splitlines()[-1] if r.stdout.strip() else ""
+    pins = {w["name"]: w["version"] for w in CONFIG["pins"]["wheels"]}
+    r = run([str(py), "-c", VERIFY, json.dumps(pins)], timeout=300, check=False)
     want = CONFIG["pins"]["blenderVersion"]
-    if r.returncode != 0 or not out.startswith(want):
-        raise PipelineError(f"Blender check failed (wanted {want}, got {out!r}).\n{r.stderr[-800:]}", "Rerun the Blender cell; it reinstalls from the pinned wheels.")
+    try:
+        got = json.loads(r.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError):
+        got = {}
+    if r.returncode != 0 or not got.get("blender", "").startswith(want) or got.get("wrong") or not got.get("python", "").startswith(CONFIG["pins"]["python"]):
+        raise PipelineError(f"Blender check failed (wanted {want} on Python {CONFIG['pins']['python']}, got {got or r.stdout[-300:]!r}).\n{r.stderr[-800:]}",
+                            "Rerun the Blender cell; it rebuilds the environment from the pinned wheels.")
+    out = f"{got['blender']} on Python {got['python']}, {len(pins)} pinned packages verified"
     save_state(blender=out)
     say(f"Blender OK: {out}")
 
