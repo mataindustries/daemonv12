@@ -33,6 +33,7 @@ This folder is self-contained production work; DaemonV12's engine (`src/`) is no
 | [`review/styleframes/`](review/styleframes) | Styleframes v1, v2 and v3 (the locked car), scene check reports, before/after |
 | [`review/motion/`](review/motion) | The CPU motion proof with the CREST master, the loop check, the contact sheet, seam metrics |
 | [`RENDER_PLAN.md`](RENDER_PLAN.md) | Measured render times and the proposed GPU budget |
+| [`RELEASE_PLAN.md`](RELEASE_PLAN.md) | The measured render choice (Cycles 16 + denoise vs EEVEE), the 10.25 s teaser cut, the publication checklist |
 | [`colab/`](colab) | The notebook (pinned to one commit), its pipeline module, config, validators and [Android instructions](colab/ANDROID.md) |
 
 The v1 experiment (the approved hook and the first A/B) is untouched in

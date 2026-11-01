@@ -1,0 +1,134 @@
+{
+ "blender": "4.5.14 LTS",
+ "frames": [
+  170,
+  470
+ ],
+ "res": [
+  360,
+  640
+ ],
+ "buildSeconds": 52.2,
+ "options": {
+  "cycles128": {
+   "engine": "CYCLES",
+   "samples": 128,
+   "seconds": [
+    93.6,
+    35.4
+   ],
+   "error": null
+  },
+  "cycles32": {
+   "engine": "CYCLES",
+   "samples": 32,
+   "seconds": [
+    50.1,
+    18.6
+   ],
+   "error": null,
+   "vsCycles128": [
+    {
+     "frame": 170,
+     "meanAbs255": 0.9,
+     "psnr": 36.1
+    },
+    {
+     "frame": 470,
+     "meanAbs255": 0.57,
+     "psnr": 39.4
+    }
+   ]
+  },
+  "cycles16": {
+   "engine": "CYCLES",
+   "samples": 16,
+   "seconds": [
+    31.6,
+    10.9
+   ],
+   "error": null,
+   "vsCycles128": [
+    {
+     "frame": 170,
+     "meanAbs255": 1.07,
+     "psnr": 34.8
+    },
+    {
+     "frame": 470,
+     "meanAbs255": 0.73,
+     "psnr": 38.0
+    }
+   ]
+  },
+  "cycles8": {
+   "engine": "CYCLES",
+   "samples": 8,
+   "seconds": [
+    23.2,
+    6.8
+   ],
+   "error": null,
+   "vsCycles128": [
+    {
+     "frame": 170,
+     "meanAbs255": 1.38,
+     "psnr": 32.7
+    },
+    {
+     "frame": 470,
+     "meanAbs255": 0.92,
+     "psnr": 36.2
+    }
+   ]
+  },
+  "eevee64": {
+   "engine": "BLENDER_EEVEE_NEXT",
+   "samples": 64,
+   "seconds": [
+    347.4,
+    324.4
+   ],
+   "error": null,
+   "vsCycles128": [
+    {
+     "frame": 170,
+     "meanAbs255": 9.85,
+     "psnr": 23.3
+    },
+    {
+     "frame": 470,
+     "meanAbs255": 3.77,
+     "psnr": 28.5
+    }
+   ]
+  },
+  "eevee16": {
+   "engine": "BLENDER_EEVEE_NEXT",
+   "samples": 16,
+   "seconds": [
+    105.7,
+    107.4
+   ],
+   "error": null,
+   "vsCycles128": [
+    {
+     "frame": 170,
+     "meanAbs255": 9.86,
+     "psnr": 23.2
+    },
+    {
+     "frame": 470,
+     "meanAbs255": 4.0,
+     "psnr": 28.4
+    }
+   ]
+  }
+ },
+ "finalSetting1080x1920at16": {
+  "frame170Seconds": 204.0,
+  "frame470Seconds": 85.2,
+  "note": "same CPU session, Cycles + OIDN, motion blur on"
+ },
+ "machine": "4-vCPU CPU container, Blender 4.5.14, EEVEE through software OpenGL (Mesa); no GPU"
+}
