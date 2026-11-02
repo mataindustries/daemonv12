@@ -16,6 +16,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      - name: Gate A installer regression tests (no rendering)
+        if: matrix.node == '22.18.0'
+        run: python3 -m unittest discover -s tools/angeles2099_actions/tests -v
       - name: Sample audio and MCP without system audio tools
         run: npm run smoke -- --mcp
         env:
