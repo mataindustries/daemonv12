@@ -29,7 +29,7 @@ jobs:
     timeout-minutes: 90
     env:
       PYTHONDONTWRITEBYTECODE: '1'
-      GATE_A_OUT: ${{ runner.temp }}/angeles2099-gate-a
+      GATE_A_OUT: ${{ github.workspace }}/work/angeles2099-gate-a
       RESUME_RUN_ID: ${{ inputs.resume_run_id }}
       RESUME_ATTEMPT: ${{ inputs.resume_attempt }}
     steps:
@@ -108,7 +108,7 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: angeles2099-gate-a-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/angeles2099-gate-a/
+          path: ${{ env.GATE_A_OUT }}/
           if-no-files-found: warn
           retention-days: 7
           compression-level: 0
