@@ -1,6 +1,6 @@
 # ANGELES//2099 — optional GitHub Actions CPU path
 
-**This PR implements Gate A only.** It adds a manual, single-worker smoke test beside the existing Colab path. It cannot launch the teaser or film. Gate A's native images, measured CPU times and visual review must come before parallel rendering.
+**Gate A is approved.** This page documents the original manual, single-worker smoke test beside Colab. The new [Gate B proof](GATE_B.md) tests three tiny chunks and soundtrack synchronization. The [storage proposal](STORAGE.md) needs review before Gate C. Neither proof can launch the teaser or film.
 
 The workflow checks out production at **`2a3208d3679a32e9f5ced303d6bc8baa1a237071`** into a separate directory. It never follows the older Colab pin or a moving production branch. It adds no changes to the creative assets or Colab files. Every render builds all 600 animation keys before selecting the smoke frames, preserving interpolation, choreography, lighting and motion blur.
 
@@ -49,7 +49,7 @@ No wheel cache, `.blend`, audio master, video, or duplicate reference assets are
 
 ## Runtime and usage estimates
 
-**Current GitHub runner measurements: pending.** See [RESULTS.md](RESULTS.md). Do not treat the historical CPU container numbers as a completed GitHub smoke test.
+**Actual Gate A passed and was approved by the owner:** 16-sample CPU frame times were 170: **251.0 s**, 330: **252.0 s**, 470: **124.4 s**; the five-frame run took **36m 48s**. All 14 scene checks and PNG checksums passed. See [Gate B](GATE_B.md) for current planning; the historical examples below remain labeled measurements from a different CPU container.
 
 The approved source's `review/render/engine-bench.json` records native 16-sample frame 170 at **204.0 s** and frame 470 at **85.2 s** on a 4-vCPU CPU container. Its `RENDER_PLAN.md` records scene build plus validation near **71 s** and native 128-sample frame 170 at **886.3 s**. These are historical measurements on another machine. Frame 330 and a matching native 128-sample city reference have no authoritative Gate A measurement here. Gate A measures all five renders and reports separate build/validation times and total harness wall time; job elapsed time additionally includes setup/download/upload.
 
@@ -69,9 +69,9 @@ The requested public-repository standard-runner path is intended to use GitHub's
 
 ## After approval: Gates B–D
 
-These are documented follow-on requirements, **not implemented or runnable modes in this PR**.
+Gate B is now implemented as the separately reviewed [fixed 12-frame proof](GATE_B.md). Gates C and D remain follow-on requirements and have no runnable modes.
 
-- **Gate B:** After reviewing Gate A, add only a short contiguous sample spanning at least two chunk boundaries. Fix identical H.264 `libx264 -preset slow -crf 16 -pix_fmt yuv420p`, 24 fps, closed GOP and identical stream parameters across chunks. Concatenate in manifest/index order using stream copy. Count decoded frames and verify timestamps, boundary order and A/V duration. Trim the locked PCM CREST master at sample **523687.5** of 44.1 kHz (11.875 s); because this falls halfway between source samples, use explicit fractional-time resampling and quantify the sub-sample rounding. Account for AAC priming/padding with decoded-audio comparison, not container duration alone. Produce a small downloadable proof MP4 and sync report. No creative retiming, remastering or audio gain changes.
+- **Gate B:** [Frames 285–296 in three chunks](GATE_B.md), identical high-quality H.264, stream-copy assembly and sample-level CREST synchronization QA. Review its PR before merging or launching it.
 - **Gate C:** Only after explicit teaser approval, implement manual-only matrix rendering of **285–485 inclusive**, initially at the concurrency supported by measured results, then 8–12 workers after approval. `plan.py` already supplies tested deterministic balanced partitions for 8–12 workers; it only computes data. Build all animation keys per worker; render missing frames at the same quality; use manifests/hashes and retained artifacts to resume successful chunks. Validate all 201 unique ordered frames before assembly and mux the master at exactly **11.875 s**, for **8.375 s** of playback. Retention/upload limits and an explicit storage plan must be reviewed before launching.
 - **Gate D:** After the teaser succeeds, prepare the 600-frame film by importing compatible **original lossless PNGs** (or another explicitly verified lossless frame store) and rendering the remaining 399 frames. H.264 distribution chunks alone are lossy and cannot stand in for a lossless render cache. Native 201-frame PNGs may exceed 500 MB; measure real bytes/frame at Gate A, reserve room, and agree a durable storage/download plan before Gate C. No full-film render is automated.
 

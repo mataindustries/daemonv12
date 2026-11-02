@@ -1,4 +1,6 @@
-# Gate A installer hotfix
+# Gate A approved — installer hotfix record
+
+**Current status:** the owner approved the successful [Gate A run 41391336159](https://github.com/mataindustries/daemonv12/actions/runs/41391336159): all five native PNGs, all 14 scene checks and checksums passed. The 16-sample frames took 251.0 s / 252.0 s / 124.4 s (170 / 330 / 470); full run 36m 48s. The new [Gate B PR](GATE_B.md) is the next proof. The following records the earlier installer failure and its fix.
 
 The first real Gate A run, [41388741445](https://github.com/mataindustries/daemonv12/actions/runs/41388741445), failed after installing all nine hash-verified packages. Python was **3.11.14**, pip **26.2.2**, and the runner **ubuntu-24.04**. Rendering never started.
 
@@ -40,9 +42,9 @@ In an isolated **local Linux x86_64 CPU environment**, with Python **3.11.14** a
 
 The local environment used glibc **2.41**; this is not a GitHub runner timing or native-frame render result. The workflow will repeat the installer verifier on the actual Ubuntu runner before Gate A rendering. Review the hotfix PR's checks for the current remote CI result.
 
-## After merge: Gate A only
+## Historical hotfix activation: Gate A only
 
 Start a **new manual run** of **ANGELES2099 CPU Gate A** using the updated `main` branch, following [the Android instructions](README.md#activate-and-trigger-from-android). Leave `resume_run_id` blank: the failed run rendered no frames. Do not use GitHub's ordinary **Re-run jobs** on the old run, because it retains the old workflow commit and its failing install command.
 
-Inspect `install-check.json`, `scene-check.json`, native PNGs, comparisons and measured render times from that new run. Actual GitHub CPU render timings and human visual approval remain pending. No teaser or full-film render is authorized or launched by this fix.
+The successor run passed and received owner approval as recorded above. No further Gate A rerun is needed for this Gate B PR. No teaser or full-film render is authorized or launched by either proof.
 

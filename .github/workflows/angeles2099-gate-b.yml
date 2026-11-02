@@ -1,0 +1,132 @@
+name: ANGELES2099 CPU Gate B
+run-name: ANGELES2099 Gate B · frames 285–296 · three chunks
+on:
+  workflow_dispatch:
+    inputs:
+      resume_run_id:
+        description: 'Optional retained Gate B run ID; blank for a fresh proof'
+        required: false
+        default: ''
+        type: string
+      resume_attempt:
+        description: 'Attempt containing the prior chunk artifacts'
+        required: false
+        default: '1'
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  # Share Gate A's existing group: one proof workflow reserves storage at a time.
+  group: angeles2099-gate-a
+  cancel-in-progress: false
+
+jobs:
+  admit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Reserve aggregate artifact storage and validate resume selection
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESUME_RUN_ID: ${{ inputs.resume_run_id }}
+          RESUME_ATTEMPT: ${{ inputs.resume_attempt }}
+        run: python3 tools/angeles2099_actions/gate_b.py budget --out "$RUNNER_TEMP/admission"
+
+  render:
+    needs: admit
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        chunk: [0, 1, 2]
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      GATE_B_OUT: ${{ github.workspace }}/work/gate-b-chunk-${{ matrix.chunk }}
+      PUBLISH_OUT: ${{ github.workspace }}/work/publish-${{ matrix.chunk }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/angeles2099-cpu-setup
+        with:
+          out: ${{ env.GATE_B_OUT }}
+      - name: Restore available chunks from the selected prior run
+        if: inputs.resume_run_id != ''
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          pattern: angeles2099-gate-b-chunk-*-${{ inputs.resume_run_id }}-${{ inputs.resume_attempt }}
+          run-id: ${{ inputs.resume_run_id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/gate-b-resume
+      - name: Render and encode four fixed frames
+        env:
+          CHUNK: ${{ matrix.chunk }}
+          RESUME_RUN_ID: ${{ inputs.resume_run_id }}
+          RESUME_ATTEMPT: ${{ inputs.resume_attempt }}
+        run: |
+          set -o pipefail
+          python -u tools/angeles2099_actions/gate_b.py render --source approved-source --chunk "$CHUNK" --out "$GATE_B_OUT" --resume "$RUNNER_TEMP/gate-b-resume/angeles2099-gate-b-chunk-$CHUNK-$RESUME_RUN_ID-$RESUME_ATTEMPT" 2>&1 | tee "$GATE_B_OUT/render.log"
+      - name: Stage completed work under the hard artifact ceiling
+        if: always()
+        run: python3 tools/angeles2099_actions/gate_b.py publish --out "$GATE_B_OUT" --destination "$PUBLISH_OUT"
+      - name: Preserve completed PNGs and encoded chunk even on failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: angeles2099-gate-b-chunk-${{ matrix.chunk }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.PUBLISH_OUT }}/
+          if-no-files-found: warn
+          retention-days: 7
+          compression-level: 0
+
+  assemble:
+    needs: [admit, render]
+    if: ${{ always() && needs.admit.result == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      GATE_B_OUT: ${{ github.workspace }}/work/gate-b-review
+      PUBLISH_OUT: ${{ github.workspace }}/work/publish-review
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/angeles2099-cpu-setup
+        with:
+          out: ${{ env.GATE_B_OUT }}
+      - name: Fetch only this attempt's chunk artifacts
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          pattern: angeles2099-gate-b-chunk-*-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/gate-b-inputs
+      - name: Assemble, synchronize the original master, and verify decoded output
+        run: |
+          set -o pipefail
+          python -u tools/angeles2099_actions/gate_b.py assemble --source approved-source --inputs "$RUNNER_TEMP/gate-b-inputs" --out "$GATE_B_OUT" 2>&1 | tee "$GATE_B_OUT/assembly.log"
+      - name: Show QA summary
+        if: always()
+        run: |
+          if [ -f "$GATE_B_OUT/report.md" ]; then
+            cat "$GATE_B_OUT/report.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Gate B incomplete; review job logs and retained chunks. Gate C remains unapproved.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Stage review outputs under the hard artifact ceiling
+        if: always()
+        run: python3 tools/angeles2099_actions/gate_b.py publish --out "$GATE_B_OUT" --destination "$PUBLISH_OUT"
+      - name: Save review MP4 and machine-readable QA, including failure diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: angeles2099-gate-b-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.PUBLISH_OUT }}/
+          if-no-files-found: warn
+          retention-days: 7
+          compression-level: 0
