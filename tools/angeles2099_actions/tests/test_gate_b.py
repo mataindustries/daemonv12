@@ -28,11 +28,11 @@ def png(path, frame, dimensions=(96, 160)):
                      + chunk(b"IDAT", zlib.compress(rows)) + chunk(b"IEND", b""))
 
 
-def master(path):
+def master(path, duration=14):
     # More than 12.375 s; changing chirp frequencies make wrong source offsets detectable.
     import numpy as np
     rate = 44100
-    t = np.arange(14 * rate) / rate
+    t = np.arange(duration * rate) / rate
     a = 0.24 * np.sin(2 * np.pi * (199 * t + 8 * t * t)) + 0.10 * np.sin(2 * np.pi * 631 * t)
     b = 0.18 * np.sin(2 * np.pi * (311 * t + 5 * t * t)) + a * 0.35
     samples = (np.stack((a, b), axis=1) * 32767).astype("<i2")
