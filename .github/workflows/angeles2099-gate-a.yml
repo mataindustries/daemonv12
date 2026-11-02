@@ -1,0 +1,115 @@
+name: ANGELES2099 CPU Gate A
+run-name: ANGELES2099 Gate A · native 1080x1920 · CPU
+on:
+  workflow_dispatch:
+    inputs:
+      resume_run_id:
+        description: 'Optional prior Gate A run ID with retained artifact (blank for fresh)'
+        required: false
+        default: ''
+        type: string
+      resume_attempt:
+        description: 'Prior run attempt to restore'
+        required: false
+        default: '1'
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: angeles2099-gate-a
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    # Standard public-repository CPU runner. No matrix or production mode in Gate A.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      GATE_A_OUT: ${{ github.workspace }}/work/angeles2099-gate-a
+      RESUME_RUN_ID: ${{ inputs.resume_run_id }}
+      RESUME_ATTEMPT: ${{ inputs.resume_attempt }}
+    steps:
+      - name: Check out workflow and harness
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Validate manual inputs
+        run: |
+          python3 - <<'PY'
+          import os, re
+          run_id, attempt = os.environ['RESUME_RUN_ID'], os.environ['RESUME_ATTEMPT']
+          if (run_id and not re.fullmatch(r'[1-9][0-9]*', run_id)) or not re.fullmatch(r'[1-9][0-9]*', attempt):
+              raise SystemExit('Resume ID and attempt must be positive integers')
+          PY
+      - name: Check out immutable approved production
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: mataindustries/daemonv12
+          ref: 2a3208d3679a32e9f5ced303d6bc8baa1a237071
+          path: approved-source
+          sparse-checkout: productions/lowrider-2099
+          persist-credentials: false
+      - name: Install exact Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.11.14'
+          architecture: x64
+      - name: Contract and failure-path tests (no renders)
+        run: python -m unittest discover -s tools/angeles2099_actions/tests -v
+      - name: Record runner and verify approved inputs
+        run: |
+          mkdir -p "$GATE_A_OUT"
+          python tools/angeles2099_actions/gate_a.py preflight --source approved-source --out "$GATE_A_OUT"
+      - name: Keep artifact storage below the Gate A budget
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/angeles2099_actions/artifact_budget.py --output "$GATE_A_OUT/storage.json"
+      - name: Install Blender system libraries
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1 libxrender1 libxi6 libxfixes3 libxkbcommon0 libsm6
+      - name: Download and verify pinned wheels
+        run: |
+          python -m pip download --only-binary=:all: --no-deps --require-hashes -r tools/angeles2099_actions/requirements.lock -d "${{ runner.temp }}/bpy-wheels"
+          python tools/angeles2099_actions/gate_a.py wheels --source approved-source --wheel-dir "${{ runner.temp }}/bpy-wheels"
+      - name: Install Blender offline from verified wheels
+        run: |
+          python -m pip install --no-index --find-links "${{ runner.temp }}/bpy-wheels" --require-hashes -r tools/angeles2099_actions/requirements.lock
+          python -m pip check
+      - name: Restore explicitly selected Gate A result
+        if: inputs.resume_run_id != ''
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: angeles2099-gate-a-${{ inputs.resume_run_id }}-${{ inputs.resume_attempt }}
+          run-id: ${{ inputs.resume_run_id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/gate-a-resume
+      - name: Render only the fixed Gate A smoke set
+        run: |
+          set -o pipefail
+          python -u tools/angeles2099_actions/gate_a.py render --source approved-source --out "$GATE_A_OUT" --resume "${{ runner.temp }}/gate-a-resume" 2>&1 | tee "$GATE_A_OUT/render.log"
+      - name: Publish report to job summary
+        if: always()
+        run: |
+          if [ -f "$GATE_A_OUT/report.md" ]; then
+            cat "$GATE_A_OUT/report.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Gate A incomplete. Inspect job logs and the retained preflight/report files. No later gate is authorized.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Check artifact size without removing completed frames
+        if: always()
+        run: python tools/angeles2099_actions/artifact_budget.py --directory "$GATE_A_OUT"
+      - name: Preserve completed PNGs and reports, including after failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: angeles2099-gate-a-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.GATE_A_OUT }}/
+          if-no-files-found: warn
+          retention-days: 7
+          compression-level: 0
+
