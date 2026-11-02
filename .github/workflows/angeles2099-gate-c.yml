@@ -1,0 +1,144 @@
+name: ANGELES2099 Gate C teaser
+on:
+  workflow_dispatch:
+    inputs:
+      render:
+        description: 'Render the teaser (owner repository-variable approvals also required)'
+        type: boolean
+        default: false
+      workers:
+        description: 'Initial CPU concurrency'
+        type: choice
+        options: ['8', '10']
+        default: '8'
+      gate_a_run:
+        description: 'Optional approved Gate A run ID'
+        type: string
+        default: ''
+      gate_b_run:
+        description: 'Optional approved Gate B run ID'
+        type: string
+        default: ''
+      recovery_run:
+        description: 'Optional previous Gate C run with pending-frame artifacts'
+        type: string
+        default: ''
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: angeles2099-gate-a
+  cancel-in-progress: false
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+jobs:
+  admit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      render: ${{ steps.plan.outputs.render }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - id: plan
+        env:
+          REQUEST_RENDER: ${{ inputs.render }}
+          WORKERS: ${{ inputs.workers }}
+          TEASER_LAUNCH_APPROVED: ${{ vars.ANGELES2099_GATE_C_LAUNCH_APPROVED }}
+          CACHE_PUBLICATION_APPROVED: ${{ vars.ANGELES2099_GATE_C_PUBLICATION_APPROVED }}
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/angeles2099_actions/gate_c.py admit --out "$RUNNER_TEMP/plan"
+      - name: Show fixed render plan
+        run: cat "$RUNNER_TEMP/plan/plan.json" >> "$GITHUB_STEP_SUMMARY"
+  render:
+    needs: admit
+    if: needs.admit.outputs.render == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: write
+      actions: read
+    strategy:
+      fail-fast: true
+      max-parallel: ${{ fromJSON(inputs.workers) }}
+      matrix: ${{ fromJSON(needs.admit.outputs.matrix) }}
+    env:
+      OUT: ${{ github.workspace }}/work/chunk-${{ matrix.index }}
+      TEASER_LAUNCH_APPROVED: ${{ vars.ANGELES2099_GATE_C_LAUNCH_APPROVED }}
+      CACHE_PUBLICATION_APPROVED: ${{ vars.ANGELES2099_GATE_C_PUBLICATION_APPROVED }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/angeles2099-cpu-setup
+        with:
+          out: ${{ env.OUT }}
+      - name: Import approved Gate A artifact
+        if: inputs.gate_a_run != ''
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: ${{ inputs.gate_a_run }}
+          github-token: ${{ github.token }}
+          pattern: angeles2099-gate-a-*
+          path: proofs/a
+      - name: Import approved Gate B artifacts
+        if: inputs.gate_b_run != ''
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: ${{ inputs.gate_b_run }}
+          github-token: ${{ github.token }}
+          pattern: angeles2099-gate-b-chunk-*
+          path: proofs/b
+      - name: Restore pending Gate C frames
+        if: inputs.recovery_run != ''
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          run-id: ${{ inputs.recovery_run }}
+          github-token: ${{ github.token }}
+          pattern: angeles2099-gate-c-pending-*
+          path: proofs/c
+      - name: Render missing frames and checkpoint each verified PNG
+        env:
+          INDEX: ${{ matrix.index }}
+        run: timeout --signal=TERM --kill-after=60s 70m python -u tools/angeles2099_actions/gate_c.py worker --index "$INDEX" --out "$OUT" --proofs proofs
+      - id: stage
+        name: Preserve only unpublished lossless work under 16 MB
+        if: always()
+        run: python3 tools/angeles2099_actions/gate_c.py stage --out "$OUT" --destination "$RUNNER_TEMP/pending"
+      - if: ${{ always() && steps.stage.outcome == 'success' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: angeles2099-gate-c-pending-${{ matrix.index }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/pending/
+          retention-days: 7
+          compression-level: 0
+  assemble:
+    needs: [admit, render]
+    if: needs.admit.outputs.render == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      OUT: ${{ github.workspace }}/work/review
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/angeles2099-cpu-setup
+        with:
+          out: ${{ env.OUT }}
+      - name: Verify lossless cache, encode ordered chunks and synchronize original CREST
+        run: python -u tools/angeles2099_actions/gate_c.py assemble --out "$OUT"
+      - id: stage
+        if: always()
+        run: python3 tools/angeles2099_actions/gate_c.py stage --out "$OUT" --destination "$RUNNER_TEMP/review" --review
+      - if: ${{ always() && steps.stage.outcome == 'success' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: angeles2099-teaser-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/review/
+          retention-days: 7
+          compression-level: 0
