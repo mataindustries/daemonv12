@@ -23,6 +23,29 @@ FALLBACK = 16_000_000
 RESERVE = 240_000_000
 
 
+def check_pixels(rgb, frame):
+    import numpy as np
+    if not np.isfinite(rgb).all():
+        raise RuntimeError("Non-finite image pixels")
+    if float(rgb.std()) < 1e-5:
+        # Locked exposure_offset applies the Mouth Drop seal/black cue at 334..359.
+        if not (334 <= frame < 360 and float(np.max(rgb)) <= 1e-4):
+            raise RuntimeError("Unexpected flat image outside the approved black transition")
+
+
+def image_stats(bpy, path, frame):
+    import numpy as np
+    A.png_header(path)
+    image=bpy.data.images.load(str(path.resolve()),check_existing=False)
+    try:
+        if tuple(image.size)!=A.RESOLUTION:
+            raise RuntimeError("Wrong native dimensions")
+        rgb=np.array(image.pixels[:],dtype=np.float32).reshape(1920,1080,4)[...,:3]
+        check_pixels(rgb,frame)
+    finally:
+        bpy.data.images.remove(image)
+
+
 def plan():
     chunks, first = [], FIRST
     while first <= LAST:
@@ -117,7 +140,7 @@ class Cache:
                 path = self.download(frame,m["asset"],m["sha256"],B.PNG_MAX)
                 if path.stat().st_size != m["bytes"]:
                     raise RuntimeError("Cache PNG size differs from manifest")
-                A.image_stats(bpy,path)
+                image_stats(bpy,path,frame)
                 dest = out / f"frame_{frame:04d}.png"
                 shutil.copy2(path,dest)
                 return m
@@ -207,7 +230,7 @@ def proof_frames(proofs, pre, frames, bpy):
                 if (png.name != f"frame_{f:04d}.png" or not png.is_file() or png.is_symlink() or not png.resolve().is_relative_to(folder.resolve())
                         or png.stat().st_size>B.PNG_MAX or A.digest(png)!=e["sha256"]):
                     continue
-                A.image_stats(bpy,png)
+                image_stats(bpy,png,f)
                 if f in found and found[f][1]["sha256"] != e["sha256"]:
                     raise RuntimeError("Conflicting compatible proof PNGs")
                 found[f]=(png,e)
@@ -264,7 +287,7 @@ def worker(source,out,index,proofs):
                 settings=A.settings_snapshot(scene["scene"])
                 origin={"imported":False,"run":os.environ["GITHUB_RUN_ID"]}
             A.assert_settings(settings,16)
-            A.image_stats(bpy,png)
+            image_stats(bpy,png,f)
             entry={"frame":f,"recipe":key,"sourceCommit":A.SOURCE,"sha256":A.digest(png),
                    "bytes":png.stat().st_size,"settings":settings,"origin":origin}
             validate_record(entry,key,f)

@@ -43,7 +43,7 @@ class GateCTests(unittest.TestCase):
             def download(frame,n,*args):
                 if "b"*64 in n:raise RuntimeError("checksum differs")
                 return manifest if n==name else png
-            with patch.object(cache,"listing",return_value=assets),patch.object(cache,"download",side_effect=download),patch.object(C.A,"image_stats"):
+            with patch.object(cache,"listing",return_value=assets),patch.object(cache,"download",side_effect=download),patch.object(C,"image_stats"):
                 result=cache.get(285,out,None)
                 self.assertEqual(result["sha256"],good["sha256"])
                 self.assertEqual((out/"frame_0285.png").read_bytes(),b"pixels")
@@ -121,12 +121,21 @@ class GateCTests(unittest.TestCase):
                    "sha256":C.A.digest(png),"settings":approved_settings()}
             m={"gate":"A","sourceCommit":C.A.SOURCE,"renderFingerprint":"approved","renders":[entry]}
             (root/"manifest.json").write_text(json.dumps(m))
-            with patch.object(C.A,"image_stats"):
+            with patch.object(C,"image_stats"):
                 self.assertIn(330,C.proof_frames(root,{"renderFingerprint":"approved"},[330],None))
                 self.assertFalse(C.proof_frames(root,{"renderFingerprint":"other"},[330],None))
                 self.assertFalse(C.proof_frames(root,{"renderFingerprint":"approved"},[331],None))
                 png.write_bytes(b"corrupted PNG")
                 self.assertFalse(C.proof_frames(root,{"renderFingerprint":"approved"},[330],None))
+
+    def test_locked_black_transition_is_preserved_without_accepting_other_blank_frames(self):
+        import numpy as np
+        black=np.zeros((2,2,3))
+        for f in (334,345,359):C.check_pixels(black,f)
+        for f in (285,333,360,485):
+            with self.assertRaises(RuntimeError):C.check_pixels(black,f)
+        with self.assertRaises(RuntimeError):C.check_pixels(np.ones((2,2,3)),350)
+        with self.assertRaises(RuntimeError):C.check_pixels(np.full((2,2,3),float('nan')),350)
 
     def test_actual_201_frame_encode_concat_and_aac_timeline(self):
         from test_gate_b import master

@@ -40,6 +40,8 @@ For each completed frame:
 
 No cache artifact is overwritten/deleted. Corrupt manifests or PNGs are rejected; a missing compatible frame is imported or rendered again. Repairs append new run-specific assets and new manifest commit markers. A failed upload never becomes an accepted cache entry.
 
+Image validation preserves the locked Mouth Drop seal/black exposure cue (334–359), including intentionally black frames. Only near-black flat images in that authored transition are accepted; unexpected flat images elsewhere, white flat images and non-finite pixels fail. No pixel values or animation are changed.
+
 Public asset downloads use browser asset URLs, avoiding REST quota for payload readback. CLI write/metadata calls still consume GitHub API quota: an unseeded teaser is approximately 800–950 REST calls plus retry overhead, near the default repository token's hourly budget. Rate-limit/network failures stop workers rather than retrying indefinitely or continuing to render uncheckpointed frames. Resume after the limit resets; do not increase concurrency to evade the limit.
 
 ## Storage admission and interruptions
