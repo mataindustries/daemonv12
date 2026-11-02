@@ -170,7 +170,7 @@ class Cache:
                     gh("release","view",tag)  # Another worker may have created the same tag.
             self.listing(frame,True)
         # Append-only repair names: never overwrite or delete an accepted asset.
-        name = f"png-{record['sha256']}-{os.environ['GITHUB_RUN_ID']}-{os.environ.get('GITHUB_RUN_ATTEMPT','1')}.png"
+        name = f"png-{record['sha256']}-{frame:04d}-{os.environ['GITHUB_RUN_ID']}-{os.environ.get('GITHUB_RUN_ATTEMPT','1')}.png"
         local = self.work / name
         shutil.copy2(png,local)
         if not any(a["name"]==name for a in self.listing(frame)):

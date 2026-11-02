@@ -105,8 +105,10 @@ class GateCTests(unittest.TestCase):
                         with self.assertRaises(RuntimeError):cache.put(record,png)
                         self.assertEqual(events,["upload-png","verify-png"])
                     else:
-                        cache.put(record,png)
+                        first=cache.put(record,png)
                         self.assertEqual(events,["upload-png","verify-png","upload-json","verify-json"])
+                        second=cache.put(dict(record,frame=286),png)
+                        self.assertNotEqual(first["asset"],second["asset"])
 
     def test_recipe_is_frame_range_independent_but_inputs_sensitive(self):
         self.assertEqual(C.recipe({"renderFingerprint":"a"}),C.recipe({"renderFingerprint":"a"}))
