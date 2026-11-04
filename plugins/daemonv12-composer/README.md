@@ -1,4 +1,26 @@
-# DaemonV12 Composer · 0.3.0
+# DaemonV12 Composer · 0.4.0
+
+Composer 0.4 adds a short hook-selection stage before full composition, distilled
+from the V12 Signature Composer Playbook. Compare 3–4 genuinely different ideas,
+choose with human listening when available, protect the winner through revisions,
+and build contrast through roles, subtraction, harmony and rhythmic change.
+The normal V1–V3 critique and Risk Pass remain available for all genres; a
+documented early stop avoids invented revisions when no useful change remains.
+Sketches are preflight, not additional full versions.
+
+- [Hook first](skills/daemonv12-composer/references/hook-first.md): portable musical decisions and cheap validation.
+- [Optional Signature Pack mode](skills/daemonv12-composer/references/signature-pack.md): verified roots, roles, bounds and adaptable recipes. The pack is optional and its audio is not included.
+- [Evaluation plan](evals/README.md): B01–B18 retained, B19–B24 added for diversity, repetition, low-end ownership, arrivals, hook preservation and pack-free acoustic work.
+- [Validation results](evals/validation-v04.md) and [fair Astra / Sol / Opus test launch](evals/composition-test-v04.md).
+
+Engine: unchanged v0.7.0. This stacked release starts from Signature branch commit
+`17468e7ee1df11b8cef361cf4e49601d5f671589`. All implementation changes stay inside
+this plugin. The skill and its local references work independently of the
+repository playbook; Signature assets/catalog must be supplied separately when
+using that palette. No new DSP, analysis tools, dependencies or competition.
+Behavioral improvement has **not** been established by agent evaluations.
+
+## Historical v0.3.0 overview
 
 Composer v0.3 targets engine v0.7.0 at
 `02438eda48506a94d10ad2756c6aafff8c5a9469`. It teaches source ends, musical gates,
@@ -126,7 +148,9 @@ for method, format limits and interpreting undefined values.
 
 ## Workflow and resources
 
-Verify → six-line thesis → palette → complete V1 → analysis/three weaknesses →
+Verify → six-line thesis → roles → 3–4 short hooks → cheap validation/dry
+comparison → human or provisional selection → protected anchor → complete V1 →
+analysis/three weaknesses →
 V2 → analysis/three weaknesses → V3 → opening continuity → impact → final
 3-second replay check → translation proxy → risk → optional justified V4/V5 →
 stop decision → deterministic lock. Adapt genre/duration and explicit user
@@ -141,7 +165,7 @@ constraints; ordinary composition should keep a compact log.
   verified automation, pan, samples, effects, routing and resource constraints.
 - [Headless audio](skills/daemonv12-composer/references/headless-audio.md):
   optional guidance only for a reproduced audio-device initialization problem.
-- [Production log](skills/daemonv12-composer/assets/production-log.md): compact v0.2 template.
+- [Production log](skills/daemonv12-composer/assets/production-log.md): compact v0.4 template with hook selection and protected ideas.
 - [Evals](evals/README.md), [activation cases](evals/activation-cases.json) and
   [validation record](evals/validation.md): tests, observations and limits.
 - [Round 3 proposal](round-3.md): future one-sound challenge; no contest started.

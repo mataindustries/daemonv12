@@ -111,7 +111,7 @@ export function validatePackage({ validatorsDir, base = frozenBase } = {}) {
   const validate = new Ajv({ strict: true, allErrors: true }).compile(schema);
   assert(validate(manifest), `Official schema: ${JSON.stringify(validate.errors)}`);
   assert.equal(manifest.name, 'daemonv12-composer');
-  assert.equal(manifest.version, '0.3.0');
+  assert.equal(manifest.version, '0.4.0');
   const files = filesUnder(packageDir);
   for (const file of files) {
     if (!/\.(?:md|json|mjs|py)$/.test(file)) continue;
@@ -126,10 +126,10 @@ export function validatePackage({ validatorsDir, base = frozenBase } = {}) {
   assert.equal(activation.skill, manifest.name);
   assert.equal(activationIds.size, 16);
   assert.equal(activation.cases.filter(item => item.shouldActivate).length, 10);
-  assert.deepEqual([...behaviorIds], Array.from({ length: 8 }, (_, i) => `B${i + 11}`));
+  assert.deepEqual([...behaviorIds], Array.from({ length: 14 }, (_, i) => `B${i + 11}`));
   const evalPlan = readFileSync(resolve(evalDir, 'README.md'), 'utf8');
   const plannedIds = [...evalPlan.matchAll(/^\| (B\d+) /gm)].map(match => match[1]);
-  assert.deepEqual(plannedIds, Array.from({ length: 18 }, (_, i) => `B${String(i + 1).padStart(2, '0')}`), 'Preserve B01–B10 and add B11–B18.');
+  assert.deepEqual(plannedIds, Array.from({ length: 24 }, (_, i) => `B${String(i + 1).padStart(2, '0')}`), 'Preserve B01–B18 and add B19–B24.');
   const repo = execFileSync('git', ['rev-parse', '--show-toplevel'], { cwd: packageDir, encoding: 'utf8' }).trim();
   const changed = execFileSync('git', ['diff', '--name-only', base, '--'], { cwd: repo, encoding: 'utf8' }).trim().split('\n').filter(Boolean);
   checkIsolation(changed);

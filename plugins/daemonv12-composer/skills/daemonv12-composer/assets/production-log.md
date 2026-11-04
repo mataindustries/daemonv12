@@ -1,4 +1,4 @@
-# Production log · v0.2
+# Production log · v0.4
 
 Copy into the composition workspace; keep entries short. Separate supplied human
 feedback, measured evidence, score-based inference and unavailable checks.
@@ -18,12 +18,20 @@ Contrast idea:
 Payoff:
 Ending:
 
+## HOOK PREFLIGHT
+
+Candidate / project + dry render / rhythm / contour + tension / technical gate:
+Human selection + feedback, or provisional score-based choice + uncertainty:
+Saved winning anchor / defining rhythm + contour / low-end owner:
+Optional Signature pack version + catalog identity, or available fallback:
+
 ## V1 THREE WEAKNESSES
 
 Each: time/section; musical weakness; evidence/uncertainty; intended change.
 1.
 2.
 3.
+V2 keep (protected hook/groove) / change / evidence needed:
 V2 edits / rendered comparison / keep or revert:
 
 ## V2 THREE WEAKNESSES
@@ -31,6 +39,7 @@ V2 edits / rendered comparison / keep or revert:
 1.
 2.
 3.
+V3 keep / change / evidence needed:
 V3 edits / rendered comparison / keep or revert:
 
 ## V3 STATUS
@@ -83,6 +92,7 @@ Repeat for each proposed version after V3, including a rendered risk test.
 Thesis / intentional opening / legible hook / groove or pacing / consequential
 payoff / replay ending / no obvious technical defect:
 Recent two revisions: material improvement or marginal? Stronger version:
+Omitted versions if early stop / evidence / completed review and Risk Pass:
 Remaining proposals: concrete or speculative? Lock / stop / disclosed blocker:
 
 ## DETERMINISM

@@ -14,8 +14,9 @@ import { readWavInfo } from '../../../src/render/wav.ts';
 const root = fileURLToPath(new URL('../../../', import.meta.url));
 const fixtures = JSON.parse(readFileSync(new URL('../skills/daemonv12-composer/references/production-recipes.json', import.meta.url), 'utf8'));
 assert.equal(fixtures.engineCommit, '02438eda48506a94d10ad2756c6aafff8c5a9469');
-// A plugin commit may differ; the engine files must remain pinned to this base.
-execFileSync('git', ['diff', '--exit-code', fixtures.engineCommit, '--', 'src/', 'bin/', 'package.json', 'package-lock.json', 'examples/'], { cwd: root, stdio: 'inherit' });
+// Fixtures retain their original provenance. Isolation uses the current stacked
+// release base, which already contains MORPH and Signature additions.
+execFileSync('git', ['diff', '--exit-code', '17468e7ee1df11b8cef361cf4e49601d5f671589', '--', 'src/', 'bin/', 'package.json', 'package-lock.json', 'examples/'], { cwd: root, stdio: 'inherit' });
 const destination = join(root, 'examples', 'composer-recipe-validation.json'); // virtual path; never written
 function compile(project) {
   return compileProjectTextWithAssets(JSON.stringify(project), destination);
