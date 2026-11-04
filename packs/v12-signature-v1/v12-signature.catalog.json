@@ -1,0 +1,960 @@
+{
+  "pack": "V12 SIGNATURE",
+  "id": "v12-signature",
+  "version": "1.0.0",
+  "engine": "DaemonV12 0.7.0 (formatVersion 1); no engine change required",
+  "sampleRate": 44100,
+  "bitsPerSample": 16,
+  "homeKey": "A minor",
+  "tuning": "A4 = 440 Hz, equal temperament",
+  "generator": "scripts/generate-v12-signature.ts",
+  "provenance": "Every WAV is computed by scripts/generate-v12-signature.ts from numeric parameters and seeded xorshift32 noise. No recordings, downloaded samples, SoundFonts, impulse responses, loops or third-party audio are read or embedded.",
+  "license": "pending owner declaration (see packs/v12-signature-v1/PROVENANCE.md)",
+  "rateTable": {
+    "0": 1,
+    "1": 1.059463,
+    "2": 1.122462,
+    "3": 1.189207,
+    "4": 1.259921,
+    "5": 1.33484,
+    "6": 1.414214,
+    "7": 1.498307,
+    "8": 1.587401,
+    "9": 1.681793,
+    "10": 1.781797,
+    "11": 1.887749,
+    "12": 2,
+    "13": 2.118926,
+    "14": 2.244924,
+    "15": 2.378414,
+    "16": 2.519842,
+    "17": 2.66968,
+    "18": 2.828427,
+    "19": 2.996614,
+    "20": 3.174802,
+    "21": 3.363586,
+    "22": 3.563595,
+    "23": 3.775497,
+    "24": 4,
+    "-24": 0.25,
+    "-23": 0.264866,
+    "-22": 0.280616,
+    "-21": 0.297302,
+    "-20": 0.31498,
+    "-19": 0.33371,
+    "-18": 0.353553,
+    "-17": 0.374577,
+    "-16": 0.39685,
+    "-15": 0.420448,
+    "-14": 0.445449,
+    "-13": 0.471937,
+    "-12": 0.5,
+    "-11": 0.529732,
+    "-10": 0.561231,
+    "-9": 0.594604,
+    "-8": 0.629961,
+    "-7": 0.66742,
+    "-6": 0.707107,
+    "-5": 0.749154,
+    "-4": 0.793701,
+    "-3": 0.840896,
+    "-2": 0.890899,
+    "-1": 0.943874
+  },
+  "rateRule": "playbackRate = 2^(semitones/12) relative to rootNote; pitch and duration change together (v0.7 has no time-stretch), so a source lasts seconds / playbackRate.",
+  "identity": {
+    "lowEnd": "SUB HAMMER (+4 cycles), IRON PULSE (+3), CONVERGENCE (+6) and REACTOR/ABYSS (zero phase) all settle on A1 = 55 Hz in phase: trigger any of them on the same tick and the fundamentals add instead of cancelling.",
+    "chrome": {
+      "description": "Minor-third bell (hum, prime, tierce, quint, nominal) plus eight inharmonic upper modes.",
+      "ratios": [
+        0.5,
+        1,
+        1.189207,
+        1.498307,
+        2,
+        2.514,
+        2.662,
+        3.011,
+        4.071,
+        4.597,
+        5.334,
+        6.703
+      ],
+      "usedBy": [
+        "chrome-strike",
+        "ghost-tick",
+        "open-circuit",
+        "titanium-crack",
+        "iron-pulse",
+        "ascension",
+        "convergence"
+      ]
+    },
+    "ghostVowel": {
+      "description": "Shared synthetic \"oh\" and \"ah\" formants [Hz, level, bandwidth Hz].",
+      "oh": [
+        [
+          420,
+          1,
+          80
+        ],
+        [
+          820,
+          0.55,
+          95
+        ],
+        [
+          2550,
+          0.14,
+          150
+        ],
+        [
+          3400,
+          0.07,
+          200
+        ]
+      ],
+      "ah": [
+        [
+          700,
+          1,
+          100
+        ],
+        [
+          1170,
+          0.72,
+          115
+        ],
+        [
+          2620,
+          0.26,
+          160
+        ],
+        [
+          3500,
+          0.13,
+          200
+        ]
+      ],
+      "usedBy": [
+        "reactor",
+        "phantom",
+        "specter"
+      ]
+    }
+  },
+  "kit": {
+    "file": "assets/v12-signature/kit.json",
+    "chokeGroups": {
+      "kick": [
+        "sub-hammer",
+        "iron-pulse"
+      ],
+      "snare": [
+        "titanium-crack"
+      ],
+      "hats": [
+        "ghost-tick",
+        "open-circuit"
+      ]
+    }
+  },
+  "sounds": [
+    {
+      "index": 1,
+      "id": "sub-hammer",
+      "name": "SUB HAMMER",
+      "category": "kick",
+      "file": "assets/v12-signature/01-sub-hammer.wav",
+      "channels": 1,
+      "frames": 41895,
+      "seconds": 0.95,
+      "peakDbfs": -4,
+      "rootNote": "A1",
+      "rootMidi": 33,
+      "fundamentalHz": 55,
+      "kitPitch": 36,
+      "playback": {
+        "recommendedSemitones": [
+          -5,
+          3
+        ],
+        "recommendedRates": [
+          0.749154,
+          1.189207
+        ],
+        "recommendedNotes": [
+          "E1",
+          "C2"
+        ],
+        "sourceSecondsAtLowestRate": 1.268,
+        "sourceSecondsAtHighestRate": 0.799,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Massive, tight, tuned kick: a 570 Hz strike falls to an A1 body that lands exactly in phase with ABYSS.",
+      "use": "Four-on-the-floor or half-time downbeats; trigger with ABYSS on the same tick for one coherent low end; velocity 0.75–1.",
+      "articulation": "Full tail for sparse grooves; gate \"1/8\" + releaseSeconds 0.04 for fast grooves; chokeGroup \"kick\" with IRON PULSE.",
+      "method": "Two-stage exponential pitch drop with exactly four extra cycles (phase-locks to 55 Hz), biased tanh drive that relaxes after 50 ms, band-passed strike noise and a 1.85 kHz beater click; 4x oversampled.",
+      "family": [
+        "low"
+      ],
+      "seed": 1220865,
+      "oversampling": 4,
+      "post": {
+        "hp": 10,
+        "fadeOut": 0.25
+      },
+      "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+      "bytes": 83834
+    },
+    {
+      "index": 2,
+      "id": "iron-pulse",
+      "name": "IRON PULSE",
+      "category": "kick",
+      "file": "assets/v12-signature/02-iron-pulse.wav",
+      "channels": 1,
+      "frames": 19845,
+      "seconds": 0.45,
+      "peakDbfs": -4,
+      "rootNote": "A1",
+      "rootMidi": 33,
+      "fundamentalHz": 55,
+      "kitPitch": 35,
+      "playback": {
+        "recommendedSemitones": [
+          -3,
+          5
+        ],
+        "recommendedRates": [
+          0.840896,
+          1.33484
+        ],
+        "recommendedNotes": [
+          "F#1",
+          "D2"
+        ],
+        "sourceSecondsAtLowestRate": 0.535,
+        "sourceSecondsAtHighestRate": 0.337,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Punchy, aggressive electronic kick: hard 1.3 kHz click, 150 Hz knock, short driven A1 body.",
+      "use": "Driving drops and techno grooves; layer over SUB HAMMER (both phase-lock to A1) for weight plus punch; velocity 0.7–1.",
+      "articulation": "Plays whole; for rolls use gate \"1/32\" + releaseSeconds 0.01; playbackRate 1.12–1.33 for a harder, shorter knock.",
+      "method": "Pitch drop with exactly three extra cycles, 150 Hz knock mode, strong asymmetric drive plus a short wavefold, band-passed click and a CHROME-mode tick; 4x.",
+      "family": [
+        "low",
+        "chrome"
+      ],
+      "seed": 1221122,
+      "oversampling": 4,
+      "post": {
+        "hp": 24,
+        "fadeOut": 0.12
+      },
+      "sha256": "504facd29ca2f4655420804c3f76c531173b1a6f03f33eb5cc11a0a18b96651a",
+      "bytes": 39734
+    },
+    {
+      "index": 3,
+      "id": "titanium-crack",
+      "name": "TITANIUM CRACK",
+      "category": "snare",
+      "file": "assets/v12-signature/03-titanium-crack.wav",
+      "channels": 2,
+      "frames": 26460,
+      "seconds": 0.6,
+      "peakDbfs": -5,
+      "rootNote": "A3",
+      "rootMidi": 57,
+      "fundamentalHz": 220,
+      "kitPitch": 38,
+      "playback": {
+        "recommendedSemitones": [
+          -4,
+          4
+        ],
+        "recommendedRates": [
+          0.793701,
+          1.259921
+        ],
+        "recommendedNotes": [
+          "F3",
+          "C#4"
+        ],
+        "sourceSecondsAtLowestRate": 0.756,
+        "sourceSecondsAtHighestRate": 0.476,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Layered, impactful snare: A3 shell, two-stage wire noise, a hard crack and a short CHROME ring with side-only room.",
+      "use": "Backbeats, half-time beat 3, rolls into drops (velocity ramps 0.35→1); stack with NEON CLAP for a wide drop snare.",
+      "articulation": "Rolls: gate \"1/32\" + releaseSeconds 0.015; chokeGroup \"snare\" keeps fast rolls clean.",
+      "method": "Pitch-dropping 220/351/470 Hz membrane modes, band-passed noise with fast and slow wire decays, high-passed crack, CHROME upper modes on A5, tanh glue, decorrelated diffused side tail.",
+      "family": [
+        "chrome"
+      ],
+      "seed": 1221379,
+      "oversampling": 4,
+      "post": {
+        "hp": 90,
+        "fadeOut": 0.18
+      },
+      "sha256": "ffe6cee44f204c203a81d3e65ce58a97b3a58d910d0a54eedb15c089cd0781df",
+      "bytes": 105884
+    },
+    {
+      "index": 4,
+      "id": "neon-clap",
+      "name": "NEON CLAP",
+      "category": "clap",
+      "file": "assets/v12-signature/04-neon-clap.wav",
+      "channels": 2,
+      "frames": 28665,
+      "seconds": 0.65,
+      "peakDbfs": -5,
+      "rootNote": null,
+      "rootMidi": null,
+      "fundamentalHz": null,
+      "kitPitch": 39,
+      "playback": {
+        "recommendedSemitones": [
+          -5,
+          3
+        ],
+        "recommendedRates": [
+          0.749154,
+          1.189207
+        ],
+        "recommendedNotes": null,
+        "sourceSecondsAtLowestRate": 0.868,
+        "sourceSecondsAtHighestRate": 0.547,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Bright, textured electronic clap: five panned bursts and a tail rung through an A5 comb (the neon buzz).",
+      "use": "Beats 2 and 4, layered with TITANIUM CRACK, or alone in breakdowns; playbackRate 0.84–0.94 for a darker, bigger clap.",
+      "articulation": "Plays whole; gate \"1/16\" + releaseSeconds 0.03 tightens it for fast patterns.",
+      "method": "Band-passed noise bursts at 0/7.1/15.8/24.9/33.6 ms with constant-power pans, a feedback comb tuned to 882 Hz inside the tail, decorrelated side tail; 4x.",
+      "family": [
+        "neon"
+      ],
+      "seed": 1221636,
+      "oversampling": 4,
+      "post": {
+        "hp": 280,
+        "fadeOut": 0.2
+      },
+      "sha256": "b9597ef83f5fd72fc58d19316e7b826d8bb9c263f5c39b2fe4c52a7bcce6187c",
+      "bytes": 114704
+    },
+    {
+      "index": 5,
+      "id": "ghost-tick",
+      "name": "GHOST TICK",
+      "category": "hat",
+      "file": "assets/v12-signature/05-ghost-tick.wav",
+      "channels": 1,
+      "frames": 5292,
+      "seconds": 0.12,
+      "peakDbfs": -7,
+      "rootNote": null,
+      "rootMidi": null,
+      "fundamentalHz": null,
+      "kitPitch": 42,
+      "playback": {
+        "recommendedSemitones": [
+          -3,
+          5
+        ],
+        "recommendedRates": [
+          0.840896,
+          1.33484
+        ],
+        "recommendedNotes": null,
+        "sourceSecondsAtLowestRate": 0.143,
+        "sourceSecondsAtHighestRate": 0.09,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Crisp, controlled closed hat: six square partials on CHROME ratios band-passed at 10 kHz, nothing below 5 kHz.",
+      "use": "1/16 grids with accent patterns (0.35/0.7), ghost notes at 0.2–0.3; shares chokeGroup \"hats\" with OPEN CIRCUIT.",
+      "articulation": "Plays whole (90 ms audible); chokeGroup \"hats\" closes OPEN CIRCUIT.",
+      "method": "Band-limited squares at 410 Hz x CHROME ratios, 10.2 kHz band-pass, four-pole 6.5 kHz high-pass, 12.5 kHz noise grain, two-stage 8.5/25 ms decay; 4x.",
+      "family": [
+        "chrome"
+      ],
+      "seed": 1221893,
+      "oversampling": 4,
+      "post": {
+        "hp": 3000,
+        "fadeOut": 0.03
+      },
+      "sha256": "f32ff937cb2209776f882e59f40cd27e0e1fadca9c67cabb0ed7465f8cc473f8",
+      "bytes": 10628
+    },
+    {
+      "index": 6,
+      "id": "open-circuit",
+      "name": "OPEN CIRCUIT",
+      "category": "hat",
+      "file": "assets/v12-signature/06-open-circuit.wav",
+      "channels": 2,
+      "frames": 44100,
+      "seconds": 1,
+      "peakDbfs": -7,
+      "rootNote": null,
+      "rootMidi": null,
+      "fundamentalHz": null,
+      "kitPitch": 46,
+      "playback": {
+        "recommendedSemitones": [
+          -3,
+          4
+        ],
+        "recommendedRates": [
+          0.840896,
+          1.259921
+        ],
+        "recommendedNotes": null,
+        "sourceSecondsAtLowestRate": 1.189,
+        "sourceSecondsAtHighestRate": 0.794,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Expressive open hat: the same metal opening from 7.2 to 10.5 kHz with a long stereo shimmer.",
+      "use": "Off-beat eighths in drops, one per bar in grooves; gate it musically, or let GHOST TICK choke it.",
+      "articulation": "gate \"1/8\" + releaseSeconds 0.06 for a tight off-beat; chokeGroup \"hats\" with GHOST TICK.",
+      "method": "GHOST TICK metal through a swept state-variable band-pass, per-channel noise, a 4.7 kHz ring-modulated sheen and a two-stage 20/280 ms decay; 4x.",
+      "family": [
+        "chrome"
+      ],
+      "seed": 1222150,
+      "oversampling": 4,
+      "post": {
+        "hp": 3000,
+        "fadeOut": 0.35
+      },
+      "sha256": "a12955f3184c3dc0f211826f4964a1c7cc0495961dce0d866ae777b71afa4f1b",
+      "bytes": 176444
+    },
+    {
+      "index": 7,
+      "id": "abyss",
+      "name": "ABYSS",
+      "category": "bass",
+      "file": "assets/v12-signature/07-abyss.wav",
+      "channels": 1,
+      "frames": 352800,
+      "seconds": 8,
+      "peakDbfs": -5,
+      "rootNote": "A1",
+      "rootMidi": 33,
+      "fundamentalHz": 55,
+      "kitPitch": null,
+      "playback": {
+        "recommendedSemitones": [
+          -7,
+          9
+        ],
+        "recommendedRates": [
+          0.66742,
+          1.681793
+        ],
+        "recommendedNotes": [
+          "D1",
+          "F#2"
+        ],
+        "sourceSecondsAtLowestRate": 11.986,
+        "sourceSecondsAtHighestRate": 4.757,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Deep sustained sub-bass on A1 (55 Hz): clean sine body, 2nd–5th harmonic bloom at the onset, steady warm sustain.",
+      "use": "Held roots and slow bass lines from E1 to F#2; pair with SUB HAMMER on shared onsets; duck it with gain automation under every kick.",
+      "articulation": "gate = note length, envelope {attackSeconds 0.004, releaseSeconds 0.08}; offsetSeconds 0.12 skips the bloom for tied legato notes.",
+      "method": "Additive sine with explicit sine-phase harmonics (bloom decays in 120 ms to −19/−26/−35 dB), slow 0.23 Hz second-harmonic breathing, 6 ms raised-cosine onset, 1.5 s end fade; zero start phase.",
+      "family": [
+        "low"
+      ],
+      "seed": 1222407,
+      "oversampling": 1,
+      "post": {
+        "hp": 10,
+        "fadeOut": 1.5
+      },
+      "sha256": "5d6e52ee847aeaebb24d10cd642f9e03de6da21a51c1917cca494d1e1d47b03a",
+      "bytes": 705644
+    },
+    {
+      "index": 8,
+      "id": "reactor",
+      "name": "REACTOR",
+      "category": "bass",
+      "file": "assets/v12-signature/08-reactor.wav",
+      "channels": 2,
+      "frames": 242550,
+      "seconds": 5.5,
+      "peakDbfs": -5,
+      "rootNote": "A1",
+      "rootMidi": 33,
+      "fundamentalHz": 55,
+      "kitPitch": null,
+      "playback": {
+        "recommendedSemitones": [
+          -7,
+          9
+        ],
+        "recommendedRates": [
+          0.66742,
+          1.681793
+        ],
+        "recommendedNotes": [
+          "D1",
+          "F#2"
+        ],
+        "sourceSecondsAtLowestRate": 8.241,
+        "sourceSecondsAtHighestRate": 3.27,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Aggressive, harmonically rich mid-bass on A1: driven saws plus FM growl through the ghost vowel, mono below 140 Hz.",
+      "use": "Rolling 1/16 bass, off-beat stabs and held drop notes; alone it is a full bass, over ABYSS add a 90–120 Hz track high-pass.",
+      "articulation": "Stabs: gate \"1/16\" + releaseSeconds 0.03; held: gate = note length, releaseSeconds 0.08; the first 60 ms are the bark.",
+      "method": "Detuned band-limited saws, FM carrier with evolving index and a phase-locked A1 sine, tanh drive at 4x, oh→ah formant band-passes, resonant low-pass with a 20 ms bark and slow non-periodic breathing, mono crossover at 140 Hz.",
+      "family": [
+        "low",
+        "vowel"
+      ],
+      "seed": 1222664,
+      "oversampling": 4,
+      "post": {
+        "hp": 10,
+        "fadeOut": 0.8
+      },
+      "sha256": "1afa9ad35a055204305b7f02cbef6df8a14952758cdc4456cf8ca4d3010c2aa2",
+      "bytes": 970244
+    },
+    {
+      "index": 9,
+      "id": "signal",
+      "name": "SIGNAL",
+      "category": "lead",
+      "file": "assets/v12-signature/09-signal.wav",
+      "channels": 2,
+      "frames": 198450,
+      "seconds": 4.5,
+      "peakDbfs": -6,
+      "rootNote": "A4",
+      "rootMidi": 69,
+      "fundamentalHz": 440,
+      "kitPitch": null,
+      "playback": {
+        "recommendedSemitones": [
+          -12,
+          10
+        ],
+        "recommendedRates": [
+          0.5,
+          1.781797
+        ],
+        "recommendedNotes": [
+          "A3",
+          "G5"
+        ],
+        "sourceSecondsAtLowestRate": 9,
+        "sourceSecondsAtHighestRate": 2.526,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Hypnotic melodic synth on A4: a crisp digital pluck that keeps singing when held.",
+      "use": "Arpeggios and ostinatos (A3–G5), call-and-response hooks, held notes up to 2.5 s at the top of its range.",
+      "articulation": "Arps: gate \"1/16\" + releaseSeconds 0.04; held: gate = note length, releaseSeconds 0.15.",
+      "method": "1:2 FM with a decaying index, PWM pulse from two band-limited saws through an enveloped resonant low-pass, harmonic and inharmonic (4.21x) pings, ±3.5 cent stereo pair; 2x.",
+      "family": [
+        "digital"
+      ],
+      "seed": 1222921,
+      "oversampling": 2,
+      "post": {
+        "hp": 60,
+        "fadeOut": 0.6
+      },
+      "sha256": "784cbb24dc06c92b3c63e18564198d1ab5055a1d83c3808f75c8e73abba6fdb9",
+      "bytes": 793844
+    },
+    {
+      "index": 10,
+      "id": "phantom",
+      "name": "PHANTOM",
+      "category": "lead",
+      "file": "assets/v12-signature/10-phantom.wav",
+      "channels": 2,
+      "frames": 264600,
+      "seconds": 6,
+      "peakDbfs": -6,
+      "rootNote": "E5",
+      "rootMidi": 76,
+      "fundamentalHz": 659.255,
+      "kitPitch": null,
+      "playback": {
+        "recommendedSemitones": [
+          -7,
+          8
+        ],
+        "recommendedRates": [
+          0.66742,
+          1.587401
+        ],
+        "recommendedNotes": [
+          "A4",
+          "C6"
+        ],
+        "sourceSecondsAtLowestRate": 8.99,
+        "sourceSecondsAtHighestRate": 3.78,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Powerful, emotionally resonant lead on E5: seven-voice unison voiced by the ghost vowel; held notes bloom and grow vibrato.",
+      "use": "The main hook from A4 to C6 (rates 0.67–1.59): short notes stay clean, notes over 0.5 s open up and sing.",
+      "articulation": "gate = note length, envelope {attackSeconds 0.005, releaseSeconds 0.12}; slides by overlapping notes 1/32.",
+      "method": "Seven band-limited saws (±19 cents, each drifting ±1.5 cents) with the centre three in both channels, sub-octave square, shared delayed 5.1 Hz vibrato, 1.4 s low-pass bloom with an attack bite, ghost-vowel formant peaks, soft drive, vowel-band breath noise; 2x.",
+      "family": [
+        "vowel"
+      ],
+      "seed": 1223178,
+      "oversampling": 2,
+      "post": {
+        "hp": 80,
+        "fadeOut": 0.8
+      },
+      "sha256": "f664148e85efa54638926b5e3ad918e3f438faf7815db68bc9842179467d6a9e",
+      "bytes": 1058444
+    },
+    {
+      "index": 11,
+      "id": "event-horizon",
+      "name": "EVENT HORIZON",
+      "category": "pad",
+      "file": "assets/v12-signature/11-event-horizon.wav",
+      "channels": 2,
+      "frames": 441000,
+      "seconds": 10,
+      "peakDbfs": -7,
+      "rootNote": "A2",
+      "rootMidi": 45,
+      "fundamentalHz": 110,
+      "kitPitch": null,
+      "playback": {
+        "recommendedSemitones": [
+          -5,
+          7
+        ],
+        "recommendedRates": [
+          0.749154,
+          1.498307
+        ],
+        "recommendedNotes": [
+          "E2",
+          "E3"
+        ],
+        "sourceSecondsAtLowestRate": 13.348,
+        "sourceSecondsAtHighestRate": 6.674,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Evolving, spacious open-fifth pad on A2 (A2 E3 A3 E4 A4): no third, so it fits minor and major chords.",
+      "use": "Section beds and drones under any chord built on its root; swells in by 1.6 s; offsetSeconds 1.6 starts it at full level.",
+      "articulation": "gate = section length, envelope {attackSeconds 0.3, releaseSeconds 1.2}.",
+      "method": "222 additive partials with independent slow amplitude LFOs, drift detune, a travelling log-frequency spectral bump and rotating constant-power pans (partials below 220 Hz centred), plus noise rung through chord-tone resonators.",
+      "family": [
+        "space"
+      ],
+      "seed": 1223435,
+      "oversampling": 1,
+      "post": {
+        "hp": 30,
+        "fadeOut": 2.2
+      },
+      "sha256": "c881ec16051024dd23769c2fc279f9b8b6a641d69075ab00942adf2398439025",
+      "bytes": 1764044
+    },
+    {
+      "index": 12,
+      "id": "afterglow",
+      "name": "AFTERGLOW",
+      "category": "pad",
+      "file": "assets/v12-signature/12-afterglow.wav",
+      "channels": 2,
+      "frames": 352800,
+      "seconds": 8,
+      "peakDbfs": -7,
+      "rootNote": "A3",
+      "rootMidi": 57,
+      "fundamentalHz": 220,
+      "kitPitch": null,
+      "playback": {
+        "recommendedSemitones": [
+          -9,
+          7
+        ],
+        "recommendedRates": [
+          0.594604,
+          1.498307
+        ],
+        "recommendedNotes": [
+          "C3",
+          "E4"
+        ],
+        "sourceSecondsAtLowestRate": 13.454,
+        "sourceSecondsAtHighestRate": 5.339,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Warm, cinematic single-note pad on A3: analog-style ensemble for building chords.",
+      "use": "Stack three or four notes from C3 to E4 for chords; 0.28 s attack plays on the beat; sustains full bars.",
+      "articulation": "gate = chord length, envelope {attackSeconds 0.02, releaseSeconds 0.45}.",
+      "method": "Six band-limited saws (±11 cents) with independent slow drift, triangle core, breathing two-pole low-pass, gentle tanh warmth; voices alternate L/R.",
+      "family": [
+        "warm"
+      ],
+      "seed": 1223692,
+      "oversampling": 1,
+      "post": {
+        "hp": 50,
+        "fadeOut": 1.6
+      },
+      "sha256": "404d9ca4617e47ffa57c6c3b00360f56c3043742344221f23559e601f84133ae",
+      "bytes": 1411244
+    },
+    {
+      "index": 13,
+      "id": "specter",
+      "name": "SPECTER",
+      "category": "voice",
+      "file": "assets/v12-signature/13-specter.wav",
+      "channels": 2,
+      "frames": 286650,
+      "seconds": 6.5,
+      "peakDbfs": -7,
+      "rootNote": "A3",
+      "rootMidi": 57,
+      "fundamentalHz": 220,
+      "kitPitch": null,
+      "playback": {
+        "recommendedSemitones": [
+          -5,
+          7
+        ],
+        "recommendedRates": [
+          0.749154,
+          1.498307
+        ],
+        "recommendedNotes": [
+          "E3",
+          "E4"
+        ],
+        "sourceSecondsAtLowestRate": 8.676,
+        "sourceSecondsAtHighestRate": 4.338,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Original synthetic vowel texture on A3: a three-voice androgynous choir that moves oo → oh → ah → oh → oo.",
+      "use": "Held choir tones, chord tops, vowel chops (offsetSeconds 2.2–2.8 is the open \"ah\"), haunting intros.",
+      "articulation": "gate = note length, envelope {attackSeconds 0.05, releaseSeconds 0.4}; chops: endSeconds + gate \"1/8\".",
+      "method": "Additive glottal-tilt harmonics shaped by morphing four-formant envelopes (OO, ghost \"oh\"/\"ah\", EH), three detuned voices with independent delayed vibrato and formant scale, glottal-pulsed breath noise through the formants.",
+      "family": [
+        "vowel"
+      ],
+      "seed": 1223949,
+      "oversampling": 1,
+      "post": {
+        "hp": 70,
+        "fadeOut": 1.2
+      },
+      "sha256": "82ed2ab5ab914d0a44a8db0c306aa17a8f85d4123a4fc8f796d6bd9c32105488",
+      "bytes": 1146644
+    },
+    {
+      "index": 14,
+      "id": "chrome-strike",
+      "name": "CHROME STRIKE",
+      "category": "percussion",
+      "file": "assets/v12-signature/14-chrome-strike.wav",
+      "channels": 2,
+      "frames": 114660,
+      "seconds": 2.6,
+      "peakDbfs": -6,
+      "rootNote": "A4",
+      "rootMidi": 69,
+      "fundamentalHz": 440,
+      "kitPitch": 53,
+      "playback": {
+        "recommendedSemitones": [
+          -12,
+          7
+        ],
+        "recommendedRates": [
+          0.5,
+          1.498307
+        ],
+        "recommendedNotes": [
+          "A3",
+          "E5"
+        ],
+        "sourceSecondsAtLowestRate": 5.2,
+        "sourceSecondsAtHighestRate": 1.735,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Distinctive metallic accent: the CHROME minor-third bell struck on A4, shimmering in stereo.",
+      "use": "Phrase-end accents, the opening identity hit, melodic bell figures (it is tuned: hum A3, prime A4, tierce C5).",
+      "articulation": "Plays whole; gate \"1/4\" + releaseSeconds 0.25 for rhythmic bell figures.",
+      "method": "Twelve CHROME modes with ratio-dependent decays and L/R split partners, strike-position weighting, band-passed strike noise and a 2.38 kHz FM anvil tick.",
+      "family": [
+        "chrome"
+      ],
+      "seed": 1224206,
+      "oversampling": 1,
+      "post": {
+        "hp": 100,
+        "fadeOut": 0.6
+      },
+      "sha256": "924b61722f7743bc6d53843622fcdc516a703b87062fb60e4222a5c4ccb548ea",
+      "bytes": 458684
+    },
+    {
+      "index": 15,
+      "id": "ascension",
+      "name": "ASCENSION",
+      "category": "transition",
+      "file": "assets/v12-signature/15-ascension.wav",
+      "channels": 2,
+      "frames": 264600,
+      "seconds": 6,
+      "peakDbfs": -6,
+      "rootNote": "A4",
+      "rootMidi": 69,
+      "fundamentalHz": 440,
+      "kitPitch": null,
+      "playback": {
+        "recommendedSemitones": [
+          -2,
+          2
+        ],
+        "recommendedRates": [
+          0.890899,
+          1.122462
+        ],
+        "recommendedNotes": [
+          "G4",
+          "B4"
+        ],
+        "sourceSecondsAtLowestRate": 6.735,
+        "sourceSecondsAtHighestRate": 5.345,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Musical tension riser: A–E fifths climbing exactly one octave to A4/E5, a rising noise sweep and accelerating flutter.",
+      "use": "Ends at its last frame: place it 6 s before a downbeat, or use offsetSeconds (6 − build seconds) for shorter builds.",
+      "articulation": "Plays whole; never gate it (the peak is the final frame).",
+      "method": "Exponential one-octave glide on soft band-limited saws, swept state-variable band-pass noise (350 Hz → 9.7 kHz) with rising Q, CHROME shimmer, accelerating tremolo, widening side signal, 6 ms boundary taper.",
+      "family": [
+        "space",
+        "chrome"
+      ],
+      "seed": 1224463,
+      "oversampling": 1,
+      "post": {
+        "hp": 120,
+        "fadeOut": 0.006,
+        "fadeIn": 0.5
+      },
+      "sha256": "4bb595205e10f873b347438df59300a07001e8196e3e82917aa9eaf31bd329e7",
+      "bytes": 1058444
+    },
+    {
+      "index": 16,
+      "id": "convergence",
+      "name": "CONVERGENCE",
+      "category": "impact",
+      "file": "assets/v12-signature/16-convergence.wav",
+      "channels": 2,
+      "frames": 220500,
+      "seconds": 5,
+      "peakDbfs": -4,
+      "rootNote": "A1",
+      "rootMidi": 33,
+      "fundamentalHz": 55,
+      "kitPitch": null,
+      "playback": {
+        "recommendedSemitones": [
+          -3,
+          2
+        ],
+        "recommendedRates": [
+          0.840896,
+          1.122462
+        ],
+        "recommendedNotes": [
+          "F#1",
+          "B1"
+        ],
+        "sourceSecondsAtLowestRate": 5.946,
+        "sourceSecondsAtHighestRate": 4.454,
+        "engineRates": [
+          0.25,
+          4
+        ]
+      },
+      "role": "Powerful cinematic impact: A2→A1 sub drop (phase-locked), body thump, crack, an A minor stab and a long CHROME tail.",
+      "use": "Section downbeats and finales; leave 3–5 s; pairs with ASCENSION ending on the same frame.",
+      "articulation": "Plays whole; gate the tail with releaseSeconds 0.6 if the next section starts early.",
+      "method": "Sub drop with exactly six extra cycles, band-passed noise thump, two-band crack, CHROME modes on A3 through per-channel allpass diffusion, low-passed A-minor saw stab, falling noise debris, mono below 140 Hz; 2x.",
+      "family": [
+        "low",
+        "chrome"
+      ],
+      "seed": 1224720,
+      "oversampling": 2,
+      "post": {
+        "hp": 10,
+        "fadeOut": 1.2
+      },
+      "sha256": "bdaa8658443025b031b2f05a8febbebe9700285c428b9eb5392bb7ab8a44ed2c",
+      "bytes": 882044
+    }
+  ]
+}
