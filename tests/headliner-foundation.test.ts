@@ -46,6 +46,17 @@ test('invalid section, pitch, phrase bounds and variation fail before writing', 
   }
 });
 
+test('production proof honors configured FFmpeg and fails instead of falling back', t => {
+  const tmp = mkdtempSync(join(tmpdir(), 'headliner-ffmpeg-')); t.after(() => rmSync(tmp, { recursive: true, force: true }));
+  const missing = join(tmp, 'missing-configured-ffmpeg');
+  const child = spawnSync(process.execPath, ['scripts/headliner.ts', 'verify', example, join(tmp, 'package')], {
+    encoding: 'utf8', env: { ...process.env, DAEMONV12_FFMPEG: missing },
+  });
+  assert.equal(child.status, 1, child.stderr);
+  assert.match(child.stderr, /AUDIO_TOOL_NOT_FOUND/);
+  assert.ok(child.stderr.includes(missing), child.stderr);
+});
+
 test('short v0.7 WAV/MP3 proof, aligned stems, deterministic archive and extracted hashes', async t => {
   const tmp = mkdtempSync(join(tmpdir(), 'headliner-proof-')); t.after(() => rmSync(tmp, { recursive: true, force: true }));
   const root = join(tmp, 'package'), report = await verifyStarter(example, root);

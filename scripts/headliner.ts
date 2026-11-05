@@ -36,7 +36,7 @@ export async function verifyStarter(score: string, output: string) {
       const compiled = compileProjectFile(join(root, project));
       assert.deepEqual(compiled.diagnostics.filter(d => d.severity === 'error'), [], project);
       const name = project.slice(0, -5), outDir = join(root, 'delivery', name);
-      const rendered = await runCommand('render', join(root, project), { outDir, stems: true, format: 'wav,mp3' });
+      const rendered = await runCommand('render', join(root, project), { outDir, stems: true, format: 'wav,mp3', env: process.env });
       assert.equal(rendered.exitCode, 0, JSON.stringify(rendered.result));
       const master = decodePcm(readFileSync(rendered.result.artifacts.wav!)).pcm!;
       const duration = compiled.project!.render!.duration! as { seconds: number };
@@ -52,7 +52,7 @@ export async function verifyStarter(score: string, output: string) {
       // Main's second short render compares ALL artifacts, including MP3, on this exact toolchain.
       if (name === 'main') {
         const repeat = join(scratch, 'repeat');
-        const second = await runCommand('render', join(root, project), { outDir: repeat, stems: true, format: 'wav,mp3' });
+        const second = await runCommand('render', join(root, project), { outDir: repeat, stems: true, format: 'wav,mp3', env: process.env });
         assert.equal(second.exitCode, 0, JSON.stringify(second.result));
         assert.deepEqual(files(outDir), files(repeat));
         for (const f of files(outDir)) assert.deepEqual(readFileSync(join(outDir, f)), readFileSync(join(repeat, f)), f);
