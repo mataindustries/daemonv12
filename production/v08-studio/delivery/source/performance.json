@@ -1,0 +1,640 @@
+{
+  "title": "RELAY — v0.8 studio integration study",
+  "bpm": 96,
+  "beatSeconds": 0.625,
+  "key": "D minor",
+  "transpose": 0,
+  "swing": 0.5,
+  "seed": 80043,
+  "sections": [
+    {
+      "id": "signal",
+      "bars": 2,
+      "development": "Bars introduce the figure; the voice answers over a warm bass.",
+      "startBeat": 0
+    },
+    {
+      "id": "relay",
+      "bars": 2,
+      "development": "The voice takes the figure while the bass and clock turn mechanical.",
+      "startBeat": 8
+    },
+    {
+      "id": "home",
+      "bars": 2,
+      "development": "A shorter answer returns to D; the transformations relax into the tail.",
+      "startBeat": 16
+    }
+  ],
+  "parts": [
+    {
+      "id": "bass",
+      "instrument": "living-bass",
+      "instrumentVersion": "1.0.0+mutation-001-A",
+      "gainDb": -4.65,
+      "pan": 0,
+      "room": 0.06,
+      "context": false,
+      "notes": [
+        {
+          "beat": 0,
+          "beats": 1.5,
+          "pitch": 38,
+          "velocity": 0.8
+        },
+        {
+          "beat": 2,
+          "beats": 0.75,
+          "pitch": 33,
+          "velocity": 0.6
+        },
+        {
+          "beat": 3,
+          "beats": 0.75,
+          "pitch": 36,
+          "velocity": 0.63
+        },
+        {
+          "beat": 4,
+          "beats": 1.5,
+          "pitch": 34,
+          "velocity": 0.72
+        },
+        {
+          "beat": 6,
+          "beats": 1.5,
+          "pitch": 33,
+          "velocity": 0.68
+        },
+        {
+          "beat": 8,
+          "beats": 1.5,
+          "pitch": 38,
+          "velocity": 0.82
+        },
+        {
+          "beat": 10,
+          "beats": 0.75,
+          "pitch": 41,
+          "velocity": 0.62
+        },
+        {
+          "beat": 11,
+          "beats": 0.75,
+          "pitch": 33,
+          "velocity": 0.64
+        },
+        {
+          "beat": 12,
+          "beats": 1.5,
+          "pitch": 31,
+          "velocity": 0.75
+        },
+        {
+          "beat": 14,
+          "beats": 1.5,
+          "pitch": 33,
+          "velocity": 0.73
+        },
+        {
+          "beat": 16,
+          "beats": 1.5,
+          "pitch": 34,
+          "velocity": 0.72
+        },
+        {
+          "beat": 18,
+          "beats": 1.5,
+          "pitch": 33,
+          "velocity": 0.65
+        },
+        {
+          "beat": 20,
+          "beats": 3.5,
+          "pitch": 38,
+          "velocity": 0.74,
+          "articulation": "normal"
+        }
+      ],
+      "macro": [
+        [
+          0,
+          0.12
+        ],
+        [
+          8,
+          0.38
+        ],
+        [
+          14,
+          0.78
+        ],
+        [
+          20,
+          0.3
+        ],
+        [
+          24,
+          0.12
+        ]
+      ],
+      "controls": {},
+      "offsets": {},
+      "expression": [
+        [
+          0,
+          0.66
+        ],
+        [
+          12,
+          0.78
+        ],
+        [
+          22,
+          0.6
+        ]
+      ],
+      "setup": {},
+      "breaths": [],
+      "motion": []
+    },
+    {
+      "id": "voice",
+      "instrument": "impossible-voice",
+      "instrumentVersion": "1.0.0+mutation-001-B",
+      "gainDb": -2.15,
+      "pan": 0.1,
+      "room": 0.18,
+      "context": false,
+      "notes": [
+        {
+          "beat": 2,
+          "beats": 1.5,
+          "pitch": 69,
+          "velocity": 0.6,
+          "articulation": "hum",
+          "params": {
+            "vowel": "mm",
+            "to": "oo"
+          }
+        },
+        {
+          "beat": 4,
+          "beats": 1.5,
+          "pitch": 65,
+          "velocity": 0.66,
+          "params": {
+            "vowel": "oo",
+            "to": "oh"
+          }
+        },
+        {
+          "beat": 6,
+          "beats": 1.5,
+          "pitch": 64,
+          "velocity": 0.61,
+          "params": {
+            "vowel": "oh"
+          }
+        },
+        {
+          "beat": 8,
+          "beats": 1,
+          "pitch": 62,
+          "velocity": 0.68,
+          "params": {
+            "vowel": "oh"
+          }
+        },
+        {
+          "beat": 9,
+          "beats": 1,
+          "pitch": 65,
+          "velocity": 0.7,
+          "params": {
+            "vowel": "oh",
+            "to": "ah"
+          }
+        },
+        {
+          "beat": 10,
+          "beats": 2,
+          "pitch": 69,
+          "velocity": 0.76,
+          "params": {
+            "vowel": "ah"
+          }
+        },
+        {
+          "beat": 12,
+          "beats": 1.5,
+          "pitch": 76,
+          "velocity": 0.68,
+          "slide": 0.08,
+          "params": {
+            "vowel": "ah",
+            "to": "eh"
+          }
+        },
+        {
+          "beat": 14,
+          "beats": 1.5,
+          "pitch": 74,
+          "velocity": 0.66,
+          "params": {
+            "vowel": "eh",
+            "to": "oh"
+          }
+        },
+        {
+          "beat": 16,
+          "beats": 1.5,
+          "pitch": 65,
+          "velocity": 0.63,
+          "params": {
+            "vowel": "oh"
+          }
+        },
+        {
+          "beat": 18,
+          "beats": 1.5,
+          "pitch": 64,
+          "velocity": 0.6,
+          "params": {
+            "vowel": "oh",
+            "to": "oo"
+          }
+        },
+        {
+          "beat": 20,
+          "beats": 3.25,
+          "pitch": 62,
+          "velocity": 0.64,
+          "articulation": "fall",
+          "params": {
+            "vowel": "oo",
+            "fall": 0.2
+          }
+        }
+      ],
+      "macro": [
+        [
+          0,
+          0.18
+        ],
+        [
+          8,
+          0.42
+        ],
+        [
+          14,
+          0.7
+        ],
+        [
+          20,
+          0.25
+        ],
+        [
+          24,
+          0.12
+        ]
+      ],
+      "controls": {},
+      "offsets": {},
+      "expression": [
+        [
+          0,
+          0.6
+        ],
+        [
+          10,
+          0.78
+        ],
+        [
+          20,
+          0.65
+        ],
+        [
+          24,
+          0.5
+        ]
+      ],
+      "setup": {},
+      "breaths": [
+        {
+          "beat": 1.5,
+          "beats": 0.35,
+          "kind": "in"
+        }
+      ],
+      "motion": []
+    },
+    {
+      "id": "bars",
+      "instrument": "mechanical-orchestra/bar",
+      "instrumentVersion": "1.0.0+mutation-001-C",
+      "gainDb": -10.7,
+      "pan": -0.23,
+      "room": 0.2,
+      "context": false,
+      "notes": [
+        {
+          "beat": 0,
+          "beats": 0.75,
+          "pitch": 74,
+          "velocity": 0.72
+        },
+        {
+          "beat": 1,
+          "beats": 0.75,
+          "pitch": 77,
+          "velocity": 0.64
+        },
+        {
+          "beat": 2,
+          "beats": 1,
+          "pitch": 81,
+          "velocity": 0.68
+        },
+        {
+          "beat": 3.5,
+          "beats": 0.5,
+          "pitch": 76,
+          "velocity": 0.55
+        },
+        {
+          "beat": 4,
+          "beats": 1,
+          "pitch": 74,
+          "velocity": 0.62
+        },
+        {
+          "beat": 6,
+          "beats": 1,
+          "pitch": 69,
+          "velocity": 0.56
+        },
+        {
+          "beat": 8,
+          "beats": 1,
+          "pitch": 74,
+          "velocity": 0.54
+        },
+        {
+          "beat": 10,
+          "beats": 1,
+          "pitch": 81,
+          "velocity": 0.52
+        },
+        {
+          "beat": 12,
+          "beats": 1,
+          "pitch": 79,
+          "velocity": 0.58
+        },
+        {
+          "beat": 14,
+          "beats": 1,
+          "pitch": 81,
+          "velocity": 0.6
+        },
+        {
+          "beat": 16,
+          "beats": 0.75,
+          "pitch": 77,
+          "velocity": 0.65
+        },
+        {
+          "beat": 17,
+          "beats": 0.75,
+          "pitch": 76,
+          "velocity": 0.58
+        },
+        {
+          "beat": 18,
+          "beats": 1,
+          "pitch": 69,
+          "velocity": 0.55
+        },
+        {
+          "beat": 20,
+          "beats": 2,
+          "pitch": 74,
+          "velocity": 0.7
+        },
+        {
+          "beat": 20,
+          "beats": 2,
+          "pitch": 81,
+          "velocity": 0.48
+        }
+      ],
+      "macro": [
+        [
+          0,
+          0.08
+        ],
+        [
+          8,
+          0.35
+        ],
+        [
+          14,
+          0.72
+        ],
+        [
+          20,
+          0.25
+        ],
+        [
+          24,
+          0.08
+        ]
+      ],
+      "controls": {},
+      "offsets": {},
+      "expression": 0.7,
+      "setup": {
+        "spread": 0.35
+      },
+      "breaths": [],
+      "motion": []
+    },
+    {
+      "id": "clock",
+      "instrument": "mechanical-orchestra/clock",
+      "instrumentVersion": "1.0.0+mutation-001-C",
+      "gainDb": -18.45,
+      "pan": 0.25,
+      "room": 0.08,
+      "context": false,
+      "notes": [
+        {
+          "beat": 0,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.65,
+          "articulation": "tock"
+        },
+        {
+          "beat": 1,
+          "beats": 0.1,
+          "pitch": 93,
+          "velocity": 0.42
+        },
+        {
+          "beat": 2,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.65,
+          "articulation": "tock"
+        },
+        {
+          "beat": 3,
+          "beats": 0.1,
+          "pitch": 93,
+          "velocity": 0.42
+        },
+        {
+          "beat": 4,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.65,
+          "articulation": "tock"
+        },
+        {
+          "beat": 5,
+          "beats": 0.1,
+          "pitch": 93,
+          "velocity": 0.42
+        },
+        {
+          "beat": 6,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.65,
+          "articulation": "tock"
+        },
+        {
+          "beat": 7,
+          "beats": 0.1,
+          "pitch": 93,
+          "velocity": 0.42
+        },
+        {
+          "beat": 8,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.65,
+          "articulation": "tock"
+        },
+        {
+          "beat": 9,
+          "beats": 0.1,
+          "pitch": 93,
+          "velocity": 0.42
+        },
+        {
+          "beat": 10,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.65,
+          "articulation": "tock"
+        },
+        {
+          "beat": 11,
+          "beats": 0.1,
+          "pitch": 93,
+          "velocity": 0.42
+        },
+        {
+          "beat": 12,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.65,
+          "articulation": "tock"
+        },
+        {
+          "beat": 13,
+          "beats": 0.1,
+          "pitch": 93,
+          "velocity": 0.42
+        },
+        {
+          "beat": 14,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.65,
+          "articulation": "tock"
+        },
+        {
+          "beat": 15,
+          "beats": 0.1,
+          "pitch": 93,
+          "velocity": 0.42
+        },
+        {
+          "beat": 16,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.65,
+          "articulation": "tock"
+        },
+        {
+          "beat": 17,
+          "beats": 0.1,
+          "pitch": 93,
+          "velocity": 0.42
+        },
+        {
+          "beat": 18,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.65,
+          "articulation": "tock"
+        },
+        {
+          "beat": 19,
+          "beats": 0.1,
+          "pitch": 93,
+          "velocity": 0.42
+        },
+        {
+          "beat": 20,
+          "beats": 0.1,
+          "pitch": 98,
+          "velocity": 0.55,
+          "articulation": "tock"
+        }
+      ],
+      "macro": [
+        [
+          0,
+          0.1
+        ],
+        [
+          8,
+          0.45
+        ],
+        [
+          14,
+          0.75
+        ],
+        [
+          20,
+          0.2
+        ],
+        [
+          24,
+          0.1
+        ]
+      ],
+      "controls": {},
+      "offsets": {},
+      "expression": 0.7,
+      "setup": {},
+      "breaths": [],
+      "motion": []
+    }
+  ]
+}

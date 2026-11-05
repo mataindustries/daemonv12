@@ -1,0 +1,514 @@
+{
+  "schema": "daemonv12.signature-rack.score/1",
+  "title": "RELAY — v0.8 studio integration study",
+  "bpm": 96,
+  "key": "D minor",
+  "seed": 80043,
+  "tailSeconds": 2,
+  "masterGainDb": -2.35,
+  "description": "A short technical review composition: a rising D–F–A–E figure passes from bars to voice over a living bass pulse. The machines open in the middle, then the voice and bass settle on D. Uses only the approved rack families; no new instruments or release mastering.",
+  "sections": [
+    {
+      "id": "signal",
+      "bars": 2,
+      "development": "Bars introduce the figure; the voice answers over a warm bass."
+    },
+    {
+      "id": "relay",
+      "bars": 2,
+      "development": "The voice takes the figure while the bass and clock turn mechanical."
+    },
+    {
+      "id": "home",
+      "bars": 2,
+      "development": "A shorter answer returns to D; the transformations relax into the tail."
+    }
+  ],
+  "room": {
+    "rt60": 1.15,
+    "size": 0.75,
+    "damp": 0.65,
+    "predelayMs": 19,
+    "lowCut": 220
+  },
+  "parts": [
+    {
+      "id": "bass",
+      "instrument": "living-bass",
+      "gainDb": -4.65,
+      "room": 0.06,
+      "macro": [
+        [
+          0,
+          0.12
+        ],
+        [
+          8,
+          0.38
+        ],
+        [
+          14,
+          0.78
+        ],
+        [
+          20,
+          0.3
+        ],
+        [
+          24,
+          0.12
+        ]
+      ],
+      "expression": [
+        [
+          0,
+          0.66
+        ],
+        [
+          12,
+          0.78
+        ],
+        [
+          22,
+          0.6
+        ]
+      ],
+      "notes": [
+        [
+          0,
+          1.5,
+          "D2",
+          0.8
+        ],
+        [
+          2,
+          0.75,
+          "A1",
+          0.6
+        ],
+        [
+          3,
+          0.75,
+          "C2",
+          0.63
+        ],
+        [
+          4,
+          1.5,
+          "Bb1",
+          0.72
+        ],
+        [
+          6,
+          1.5,
+          "A1",
+          0.68
+        ],
+        [
+          8,
+          1.5,
+          "D2",
+          0.82
+        ],
+        [
+          10,
+          0.75,
+          "F2",
+          0.62
+        ],
+        [
+          11,
+          0.75,
+          "A1",
+          0.64
+        ],
+        [
+          12,
+          1.5,
+          "G1",
+          0.75
+        ],
+        [
+          14,
+          1.5,
+          "A1",
+          0.73
+        ],
+        [
+          16,
+          1.5,
+          "Bb1",
+          0.72
+        ],
+        [
+          18,
+          1.5,
+          "A1",
+          0.65
+        ],
+        [
+          20,
+          3.5,
+          "D2",
+          0.74,
+          {
+            "articulation": "normal"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "voice",
+      "instrument": "impossible-voice",
+      "gainDb": -2.15,
+      "pan": 0.1,
+      "room": 0.18,
+      "macro": [
+        [
+          0,
+          0.18
+        ],
+        [
+          8,
+          0.42
+        ],
+        [
+          14,
+          0.7
+        ],
+        [
+          20,
+          0.25
+        ],
+        [
+          24,
+          0.12
+        ]
+      ],
+      "expression": [
+        [
+          0,
+          0.6
+        ],
+        [
+          10,
+          0.78
+        ],
+        [
+          20,
+          0.65
+        ],
+        [
+          24,
+          0.5
+        ]
+      ],
+      "breaths": [
+        {
+          "beat": 1.5,
+          "beats": 0.35,
+          "kind": "in"
+        }
+      ],
+      "notes": [
+        [
+          2,
+          1.5,
+          "A4",
+          0.6,
+          {
+            "vowel": "mm",
+            "to": "oo",
+            "articulation": "hum"
+          }
+        ],
+        [
+          4,
+          1.5,
+          "F4",
+          0.66,
+          {
+            "vowel": "oo",
+            "to": "oh"
+          }
+        ],
+        [
+          6,
+          1.5,
+          "E4",
+          0.61,
+          {
+            "vowel": "oh"
+          }
+        ],
+        [
+          8,
+          1,
+          "D4",
+          0.68,
+          {
+            "vowel": "oh"
+          }
+        ],
+        [
+          9,
+          1,
+          "F4",
+          0.7,
+          {
+            "vowel": "oh",
+            "to": "ah"
+          }
+        ],
+        [
+          10,
+          2,
+          "A4",
+          0.76,
+          {
+            "vowel": "ah"
+          }
+        ],
+        [
+          12,
+          1.5,
+          "E5",
+          0.68,
+          {
+            "vowel": "ah",
+            "to": "eh",
+            "slide": 0.08
+          }
+        ],
+        [
+          14,
+          1.5,
+          "D5",
+          0.66,
+          {
+            "vowel": "eh",
+            "to": "oh"
+          }
+        ],
+        [
+          16,
+          1.5,
+          "F4",
+          0.63,
+          {
+            "vowel": "oh"
+          }
+        ],
+        [
+          18,
+          1.5,
+          "E4",
+          0.6,
+          {
+            "vowel": "oh",
+            "to": "oo"
+          }
+        ],
+        [
+          20,
+          3.25,
+          "D4",
+          0.64,
+          {
+            "vowel": "oo",
+            "articulation": "fall",
+            "fall": 0.2
+          }
+        ]
+      ]
+    },
+    {
+      "id": "bars",
+      "instrument": "mechanical-orchestra/bar",
+      "gainDb": -10.7,
+      "pan": -0.23,
+      "room": 0.2,
+      "macro": [
+        [
+          0,
+          0.08
+        ],
+        [
+          8,
+          0.35
+        ],
+        [
+          14,
+          0.72
+        ],
+        [
+          20,
+          0.25
+        ],
+        [
+          24,
+          0.08
+        ]
+      ],
+      "setup": {
+        "spread": 0.35
+      },
+      "notes": [
+        [
+          0,
+          0.75,
+          "D5",
+          0.72
+        ],
+        [
+          1,
+          0.75,
+          "F5",
+          0.64
+        ],
+        [
+          2,
+          1,
+          "A5",
+          0.68
+        ],
+        [
+          3.5,
+          0.5,
+          "E5",
+          0.55
+        ],
+        [
+          4,
+          1,
+          "D5",
+          0.62
+        ],
+        [
+          6,
+          1,
+          "A4",
+          0.56
+        ],
+        [
+          8,
+          1,
+          "D5",
+          0.54
+        ],
+        [
+          10,
+          1,
+          "A5",
+          0.52
+        ],
+        [
+          12,
+          1,
+          "G5",
+          0.58
+        ],
+        [
+          14,
+          1,
+          "A5",
+          0.6
+        ],
+        [
+          16,
+          0.75,
+          "F5",
+          0.65
+        ],
+        [
+          17,
+          0.75,
+          "E5",
+          0.58
+        ],
+        [
+          18,
+          1,
+          "A4",
+          0.55
+        ],
+        [
+          20,
+          2,
+          "D5",
+          0.7
+        ],
+        [
+          20,
+          2,
+          "A5",
+          0.48
+        ]
+      ]
+    },
+    {
+      "id": "clock",
+      "instrument": "mechanical-orchestra/clock",
+      "gainDb": -18.45,
+      "pan": 0.25,
+      "room": 0.08,
+      "macro": [
+        [
+          0,
+          0.1
+        ],
+        [
+          8,
+          0.45
+        ],
+        [
+          14,
+          0.75
+        ],
+        [
+          20,
+          0.2
+        ],
+        [
+          24,
+          0.1
+        ]
+      ],
+      "repeats": [
+        {
+          "fromBeat": 0,
+          "toBeat": 20,
+          "lengthBeats": 2,
+          "notes": [
+            [
+              0,
+              0.1,
+              "D7",
+              0.65,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              1,
+              0.1,
+              "A6",
+              0.42
+            ]
+          ]
+        }
+      ],
+      "notes": [
+        [
+          20,
+          0.1,
+          "D7",
+          0.55,
+          {
+            "articulation": "tock"
+          }
+        ]
+      ]
+    }
+  ]
+}

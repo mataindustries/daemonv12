@@ -1,0 +1,3166 @@
+{
+  "kind": "daemonv12-sodium-hours-production24-ab",
+  "version": 1,
+  "referenceCommit": "6b1ab7b8f1602bd4e57244b16caee68d8876336f",
+  "project": {
+    "sha256": "fb9ca8ad10ca3029b0d873e6190760ba6e20019bb021744e2cf5b1e8de644edb",
+    "originalAndCandidateBytesIdentical": true,
+    "frames": 8224650,
+    "seconds": 186.5,
+    "tracks": 15,
+    "triggers": 2223,
+    "compositionChanges": false,
+    "sourceSounds": 163
+  },
+  "original": {
+    "sha256": "43da3fd7119f5add17ff9896e29d46123cdb1f214ea9fc8e7747513903f1e07d",
+    "unchangedBeforeAndAfter": true,
+    "bitsPerSample": 16,
+    "frames": 8224650,
+    "durationSeconds": 186.5,
+    "samplePeakDbfs": -2.583657857,
+    "sampleHeadroomDb": 2.583657857,
+    "rmsDbfs": -12.671715064,
+    "crestFactorDb": 10.088057207,
+    "fullScaleSamples": 0,
+    "stereoCorrelation": 0.866878568,
+    "monoFoldChangeDb": -0.299200454,
+    "sideToMidDb": -11.467761572,
+    "lowBand": {
+      "correlation": 0.996709836,
+      "monoFoldChangeDb": -0.00715085
+    },
+    "transients": {
+      "method": "Unweighted adjacent-sample first differences; a technical transient proxy.",
+      "peakDbfs": -0.68616814,
+      "rmsDbfs": -28.958775591
+    },
+    "loudness": {
+      "integratedLufs": -11.35,
+      "loudnessRangeLu": 6.2,
+      "truePeakDbfs": -2.07,
+      "truePeakHeadroomDb": 2.07
+    },
+    "tail": {
+      "lastSecond": {
+        "fromFrame": 8180550,
+        "toFrameExclusive": 8224650,
+        "peakDbfs": null,
+        "rmsDbfs": null,
+        "firstDifferencePeakDbfs": null
+      },
+      "last100ms": {
+        "fromFrame": 8220240,
+        "toFrameExclusive": 8224650,
+        "peakDbfs": null,
+        "rmsDbfs": null,
+        "firstDifferencePeakDbfs": null
+      },
+      "finalFrameNormalized": [
+        0,
+        0
+      ]
+    }
+  },
+  "candidate": {
+    "sha256": "93e08083ba191cb32ff0c3526712e35970d44cb0ba7135df505e953b92645f1c",
+    "bitsPerSample": 24,
+    "frames": 8224650,
+    "durationSeconds": 186.5,
+    "samplePeakDbfs": -2.583811214,
+    "sampleHeadroomDb": 2.583811214,
+    "rmsDbfs": -12.671715326,
+    "crestFactorDb": 10.087904112,
+    "fullScaleSamples": 0,
+    "nonzeroLowBytes": 16330131,
+    "stereoCorrelation": 0.866878693,
+    "monoFoldChangeDb": -0.299200163,
+    "sideToMidDb": -11.467765933,
+    "lowBand": {
+      "correlation": 0.996709846,
+      "monoFoldChangeDb": -0.007150829
+    },
+    "transients": {
+      "method": "Unweighted adjacent-sample first differences; a technical transient proxy.",
+      "peakDbfs": -0.686061688,
+      "rmsDbfs": -28.958786448
+    },
+    "loudness": {
+      "integratedLufs": -11.35,
+      "loudnessRangeLu": 6.2,
+      "truePeakDbfs": -2.07,
+      "truePeakHeadroomDb": 2.07
+    },
+    "tail": {
+      "lastSecond": {
+        "fromFrame": 8180550,
+        "toFrameExclusive": 8224650,
+        "peakDbfs": -98.217053511,
+        "rmsDbfs": -116.698212823,
+        "firstDifferencePeakDbfs": -112.029412111
+      },
+      "last100ms": {
+        "fromFrame": 8220240,
+        "toFrameExclusive": 8224650,
+        "peakDbfs": null,
+        "rmsDbfs": null,
+        "firstDifferencePeakDbfs": null
+      },
+      "finalFrameNormalized": [
+        0,
+        0
+      ]
+    },
+    "signalPath": "PCM16 source; unrounded Float64 interpolation/velocity/envelope, gain/pan automation and ordered track effects; Float64 sum, master gain/effects/ducking; single PCM24 quantization per export",
+    "export": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 24,
+      "dither": false,
+      "normalization": false
+    },
+    "masterClippedSamples": 0
+  },
+  "comparison": {
+    "alignment": {
+      "bestLagFrames": 0,
+      "bestCorrelation": 0.999999989,
+      "fullLengthZeroLagCorrelation": 0.999999989,
+      "method": "Normalized cross-product over both channels; lag search -16..16 frames sampled every 32 frames. Positive lag means candidate is delayed. No correction applied.",
+      "correlations": [
+        {
+          "lagFrames": -16,
+          "correlation": 0.608503473
+        },
+        {
+          "lagFrames": -15,
+          "correlation": 0.63591329
+        },
+        {
+          "lagFrames": -14,
+          "correlation": 0.664383263
+        },
+        {
+          "lagFrames": -13,
+          "correlation": 0.692067041
+        },
+        {
+          "lagFrames": -12,
+          "correlation": 0.720595183
+        },
+        {
+          "lagFrames": -11,
+          "correlation": 0.749140069
+        },
+        {
+          "lagFrames": -10,
+          "correlation": 0.777334534
+        },
+        {
+          "lagFrames": -9,
+          "correlation": 0.805249784
+        },
+        {
+          "lagFrames": -8,
+          "correlation": 0.832837014
+        },
+        {
+          "lagFrames": -7,
+          "correlation": 0.858845719
+        },
+        {
+          "lagFrames": -6,
+          "correlation": 0.883755169
+        },
+        {
+          "lagFrames": -5,
+          "correlation": 0.90704809
+        },
+        {
+          "lagFrames": -4,
+          "correlation": 0.929394407
+        },
+        {
+          "lagFrames": -3,
+          "correlation": 0.95056325
+        },
+        {
+          "lagFrames": -2,
+          "correlation": 0.970994971
+        },
+        {
+          "lagFrames": -1,
+          "correlation": 0.98828474
+        },
+        {
+          "lagFrames": 0,
+          "correlation": 0.999999989
+        },
+        {
+          "lagFrames": 1,
+          "correlation": 0.988046826
+        },
+        {
+          "lagFrames": 2,
+          "correlation": 0.970996811
+        },
+        {
+          "lagFrames": 3,
+          "correlation": 0.9505356
+        },
+        {
+          "lagFrames": 4,
+          "correlation": 0.929172408
+        },
+        {
+          "lagFrames": 5,
+          "correlation": 0.907085706
+        },
+        {
+          "lagFrames": 6,
+          "correlation": 0.883693585
+        },
+        {
+          "lagFrames": 7,
+          "correlation": 0.859251529
+        },
+        {
+          "lagFrames": 8,
+          "correlation": 0.833063081
+        },
+        {
+          "lagFrames": 9,
+          "correlation": 0.805439429
+        },
+        {
+          "lagFrames": 10,
+          "correlation": 0.776676898
+        },
+        {
+          "lagFrames": 11,
+          "correlation": 0.747922496
+        },
+        {
+          "lagFrames": 12,
+          "correlation": 0.719856457
+        },
+        {
+          "lagFrames": 13,
+          "correlation": 0.691505707
+        },
+        {
+          "lagFrames": 14,
+          "correlation": 0.663398229
+        },
+        {
+          "lagFrames": 15,
+          "correlation": 0.635894943
+        },
+        {
+          "lagFrames": 16,
+          "correlation": 0.608775739
+        }
+      ]
+    },
+    "residual": {
+      "method": "Candidate minus original at the same sample index and full-scale amplitude. No gain, delay, dither or mastering matching.",
+      "peakDbfs": -72.35388035,
+      "rmsDbfs": -89.079711078,
+      "rmsRelativeToOriginalDb": -76.407996015,
+      "changedSamples": 16370507,
+      "totalSamples": 16449300,
+      "adjacentDifferencePeakDbfs": -68.799200025
+    },
+    "lowBandMethod": "Two cascaded causal one-pole 150 Hz low-pass filters, continuous from sample zero; a mono-compatibility proxy, not a perceptual test.",
+    "interpretation": "Differences quantify changed rounding and float processing through the unchanged authored mix. Measurements do not establish a subjective improvement."
+  },
+  "timingAndContinuity": {
+    "everyTriggerMatchesIndependentBigIntRounding": true,
+    "allStemsAlignedFromSampleZero": true,
+    "method": "One continuous full-length renderer invocation per track/master, from sample zero; no independently reset section assembly. Boundaries are authored first-track clip starts. Adjacent deltas and crossing sources are diagnostics, not a perceptual seam certification.",
+    "boundaries": [
+      {
+        "enteringPattern": "groove",
+        "bar": 9,
+        "frame": 920348,
+        "seconds": 20.86956916099773,
+        "original": {
+          "fromFrame": 919907,
+          "toFrameExclusive": 920789,
+          "peakDbfs": -4.58346297,
+          "rmsDbfs": -10.566411971,
+          "firstDifferencePeakDbfs": -13.788799143
+        },
+        "candidate": {
+          "fromFrame": 919907,
+          "toFrameExclusive": 920789,
+          "peakDbfs": -4.583383992,
+          "rmsDbfs": -10.56640571,
+          "firstDifferencePeakDbfs": -13.788520583
+        },
+        "adjacentDeltaDbfs": [
+          [
+            -37.361339297,
+            -42.043003418
+          ],
+          [
+            -37.372044305,
+            -42.020239102
+          ]
+        ],
+        "dryVoicesCrossing": [
+          {
+            "trackId": "pad",
+            "onsetFrame": 805304,
+            "endFrameExclusive": 922457
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 747783,
+            "endFrameExclusive": 963483
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 754973,
+            "endFrameExclusive": 970738
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 776544,
+            "endFrameExclusive": 992044
+          },
+          {
+            "trackId": "atmos",
+            "onsetFrame": 0,
+            "endFrameExclusive": 1052648
+          }
+        ]
+      },
+      {
+        "enteringPattern": "hook-1",
+        "bar": 17,
+        "frame": 1840696,
+        "seconds": 41.73913832199546,
+        "original": {
+          "fromFrame": 1840255,
+          "toFrameExclusive": 1841137,
+          "peakDbfs": -4.426290317,
+          "rmsDbfs": -12.185248338,
+          "firstDifferencePeakDbfs": -16.519269732
+        },
+        "candidate": {
+          "fromFrame": 1840255,
+          "toFrameExclusive": 1841137,
+          "peakDbfs": -4.426286869,
+          "rmsDbfs": -12.185272974,
+          "firstDifferencePeakDbfs": -16.525770879
+        },
+        "adjacentDeltaDbfs": [
+          [
+            -36.434459721,
+            -65.203548597
+          ],
+          [
+            -36.434116314,
+            -64.504827245
+          ]
+        ],
+        "dryVoicesCrossing": [
+          {
+            "trackId": "snare",
+            "onsetFrame": 1812265,
+            "endFrameExclusive": 1911665
+          },
+          {
+            "trackId": "bass",
+            "onsetFrame": 1826315,
+            "endFrameExclusive": 1870763
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 1696892,
+            "endFrameExclusive": 1912592
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 1711272,
+            "endFrameExclusive": 1926600
+          },
+          {
+            "trackId": "voice",
+            "onsetFrame": 1826315,
+            "endFrameExclusive": 2298270
+          },
+          {
+            "trackId": "voice-space",
+            "onsetFrame": 1826315,
+            "endFrameExclusive": 2442724
+          },
+          {
+            "trackId": "atmos",
+            "onsetFrame": 920348,
+            "endFrameExclusive": 1917008
+          }
+        ]
+      },
+      {
+        "enteringPattern": "verse",
+        "bar": 25,
+        "frame": 2761044,
+        "seconds": 62.608707482993196,
+        "original": {
+          "fromFrame": 2760603,
+          "toFrameExclusive": 2761485,
+          "peakDbfs": -5.082789497,
+          "rmsDbfs": -11.665824359,
+          "firstDifferencePeakDbfs": -14.619505824
+        },
+        "candidate": {
+          "fromFrame": 2760603,
+          "toFrameExclusive": 2761485,
+          "peakDbfs": -5.083029303,
+          "rmsDbfs": -11.665836041,
+          "firstDifferencePeakDbfs": -14.619433373
+        },
+        "adjacentDeltaDbfs": [
+          [
+            -27.057710569,
+            -44.597852519
+          ],
+          [
+            -27.081147279,
+            -44.65322964
+          ]
+        ],
+        "dryVoicesCrossing": [
+          {
+            "trackId": "snare",
+            "onsetFrame": 2732732,
+            "endFrameExclusive": 2832132
+          },
+          {
+            "trackId": "hats",
+            "onsetFrame": 2746783,
+            "endFrameExclusive": 2765305
+          },
+          {
+            "trackId": "hats",
+            "onsetFrame": 2760984,
+            "endFrameExclusive": 2766276
+          },
+          {
+            "trackId": "bass",
+            "onsetFrame": 2754992,
+            "endFrameExclusive": 2763249
+          },
+          {
+            "trackId": "pad",
+            "onsetFrame": 2646000,
+            "endFrameExclusive": 2791914
+          },
+          {
+            "trackId": "voice",
+            "onsetFrame": 2286489,
+            "endFrameExclusive": 2772895
+          },
+          {
+            "trackId": "voice-space",
+            "onsetFrame": 2286489,
+            "endFrameExclusive": 2917278
+          },
+          {
+            "trackId": "atmos",
+            "onsetFrame": 1840696,
+            "endFrameExclusive": 2849244
+          }
+        ]
+      },
+      {
+        "enteringPattern": "breakdown",
+        "bar": 33,
+        "frame": 3681392,
+        "seconds": 83.47827664399092,
+        "original": {
+          "fromFrame": 3680951,
+          "toFrameExclusive": 3681833,
+          "peakDbfs": -7.283440821,
+          "rmsDbfs": -14.789262503,
+          "firstDifferencePeakDbfs": -21.356536744
+        },
+        "candidate": {
+          "fromFrame": 3680951,
+          "toFrameExclusive": 3681833,
+          "peakDbfs": -7.28355099,
+          "rmsDbfs": -14.789291742,
+          "firstDifferencePeakDbfs": -21.349373762
+        },
+        "adjacentDeltaDbfs": [
+          [
+            -27.845037199,
+            -21.44373895
+          ],
+          [
+            -27.844194118,
+            -21.450246023
+          ]
+        ],
+        "dryVoicesCrossing": [
+          {
+            "trackId": "pad",
+            "onsetFrame": 3566348,
+            "endFrameExclusive": 3712262
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 3537587,
+            "endFrameExclusive": 3752920
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 3551968,
+            "endFrameExclusive": 3767473
+          },
+          {
+            "trackId": "voice",
+            "onsetFrame": 3652631,
+            "endFrameExclusive": 4576396
+          },
+          {
+            "trackId": "voice-space",
+            "onsetFrame": 3393783,
+            "endFrameExclusive": 3699874
+          },
+          {
+            "trackId": "voice-space",
+            "onsetFrame": 3566348,
+            "endFrameExclusive": 3814917
+          },
+          {
+            "trackId": "voice-space",
+            "onsetFrame": 3652631,
+            "endFrameExclusive": 4720885
+          },
+          {
+            "trackId": "atmos",
+            "onsetFrame": 2761044,
+            "endFrameExclusive": 3766524
+          },
+          {
+            "trackId": "fx",
+            "onsetFrame": 3623870,
+            "endFrameExclusive": 3737464
+          }
+        ]
+      },
+      {
+        "enteringPattern": "hook-2",
+        "bar": 41,
+        "frame": 4601740,
+        "seconds": 104.34784580498867,
+        "original": {
+          "fromFrame": 4601299,
+          "toFrameExclusive": 4602181,
+          "peakDbfs": -3.186568574,
+          "rmsDbfs": -8.906828149,
+          "firstDifferencePeakDbfs": -12.922017084
+        },
+        "candidate": {
+          "fromFrame": 4601299,
+          "toFrameExclusive": 4602181,
+          "peakDbfs": -3.186596967,
+          "rmsDbfs": -8.906811503,
+          "firstDifferencePeakDbfs": -12.926322335
+        },
+        "adjacentDeltaDbfs": [
+          [
+            -52.924364305,
+            -28.482695505
+          ],
+          [
+            -53.131772074,
+            -28.486050585
+          ]
+        ],
+        "dryVoicesCrossing": [
+          {
+            "trackId": "snare",
+            "onsetFrame": 4595598,
+            "endFrameExclusive": 4606623
+          },
+          {
+            "trackId": "metal",
+            "onsetFrame": 4580169,
+            "endFrameExclusive": 4602219
+          },
+          {
+            "trackId": "metal",
+            "onsetFrame": 4587359,
+            "endFrameExclusive": 4613819
+          },
+          {
+            "trackId": "metal",
+            "onsetFrame": 4594550,
+            "endFrameExclusive": 4616600
+          },
+          {
+            "trackId": "bass",
+            "onsetFrame": 4486696,
+            "endFrameExclusive": 4611375
+          },
+          {
+            "trackId": "pad",
+            "onsetFrame": 4486696,
+            "endFrameExclusive": 4632610
+          },
+          {
+            "trackId": "pluck",
+            "onsetFrame": 4558598,
+            "endFrameExclusive": 4611300
+          },
+          {
+            "trackId": "pluck",
+            "onsetFrame": 4565789,
+            "endFrameExclusive": 4625950
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4386033,
+            "endFrameExclusive": 4601798
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4407604,
+            "endFrameExclusive": 4623104
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4429175,
+            "endFrameExclusive": 4644875
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4450745,
+            "endFrameExclusive": 4666073
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4472316,
+            "endFrameExclusive": 4688081
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4486696,
+            "endFrameExclusive": 4702396
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4493886,
+            "endFrameExclusive": 4709214
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4501077,
+            "endFrameExclusive": 4716842
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4508267,
+            "endFrameExclusive": 4723767
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4515457,
+            "endFrameExclusive": 4731157
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4522647,
+            "endFrameExclusive": 4737975
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4529838,
+            "endFrameExclusive": 4745603
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4537028,
+            "endFrameExclusive": 4752528
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4544218,
+            "endFrameExclusive": 4759918
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4551408,
+            "endFrameExclusive": 4766736
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4558598,
+            "endFrameExclusive": 4774363
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 4565789,
+            "endFrameExclusive": 4781289
+          },
+          {
+            "trackId": "voice",
+            "onsetFrame": 4587359,
+            "endFrameExclusive": 5059314
+          },
+          {
+            "trackId": "voice-space",
+            "onsetFrame": 3652631,
+            "endFrameExclusive": 4720885
+          },
+          {
+            "trackId": "voice-space",
+            "onsetFrame": 4587359,
+            "endFrameExclusive": 5203768
+          },
+          {
+            "trackId": "choir",
+            "onsetFrame": 4486696,
+            "endFrameExclusive": 4641430
+          }
+        ]
+      },
+      {
+        "enteringPattern": "signal-loss",
+        "bar": 49,
+        "frame": 5522088,
+        "seconds": 125.21741496598639,
+        "original": {
+          "fromFrame": 5521647,
+          "toFrameExclusive": 5522529,
+          "peakDbfs": -3.134696423,
+          "rmsDbfs": -9.275869705,
+          "firstDifferencePeakDbfs": -4.153944942
+        },
+        "candidate": {
+          "fromFrame": 5521647,
+          "toFrameExclusive": 5522529,
+          "peakDbfs": -3.134571646,
+          "rmsDbfs": -9.275845007,
+          "firstDifferencePeakDbfs": -4.153694385
+        },
+        "adjacentDeltaDbfs": [
+          [
+            -31.659523406,
+            -33.126232753
+          ],
+          [
+            -31.627042252,
+            -33.133932428
+          ]
+        ],
+        "dryVoicesCrossing": [
+          {
+            "trackId": "kick",
+            "onsetFrame": 5507707,
+            "endFrameExclusive": 5524734
+          },
+          {
+            "trackId": "hats",
+            "onsetFrame": 5507827,
+            "endFrameExclusive": 5526349
+          },
+          {
+            "trackId": "metal",
+            "onsetFrame": 5486137,
+            "endFrameExclusive": 5539057
+          },
+          {
+            "trackId": "metal",
+            "onsetFrame": 5507707,
+            "endFrameExclusive": 5534167
+          },
+          {
+            "trackId": "bass",
+            "onsetFrame": 5516036,
+            "endFrameExclusive": 5524293
+          },
+          {
+            "trackId": "grit",
+            "onsetFrame": 5516036,
+            "endFrameExclusive": 5523852
+          },
+          {
+            "trackId": "pad",
+            "onsetFrame": 5407044,
+            "endFrameExclusive": 5552958
+          },
+          {
+            "trackId": "pluck",
+            "onsetFrame": 5501655,
+            "endFrameExclusive": 5548776
+          },
+          {
+            "trackId": "pluck",
+            "onsetFrame": 5507707,
+            "endFrameExclusive": 5551451
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 5501655,
+            "endFrameExclusive": 5717160
+          },
+          {
+            "trackId": "pluck-space",
+            "onsetFrame": 5507707,
+            "endFrameExclusive": 5723040
+          },
+          {
+            "trackId": "voice",
+            "onsetFrame": 5047533,
+            "endFrameExclusive": 5525533
+          },
+          {
+            "trackId": "voice-space",
+            "onsetFrame": 5047533,
+            "endFrameExclusive": 5669994
+          },
+          {
+            "trackId": "choir",
+            "onsetFrame": 5407044,
+            "endFrameExclusive": 5548548
+          }
+        ]
+      },
+      {
+        "enteringPattern": "final",
+        "bar": 53,
+        "frame": 5982262,
+        "seconds": 135.65219954648526,
+        "original": {
+          "fromFrame": 5981821,
+          "toFrameExclusive": 5982703,
+          "peakDbfs": -2.977924842,
+          "rmsDbfs": -9.519674791,
+          "firstDifferencePeakDbfs": -11.339761298
+        },
+        "candidate": {
+          "fromFrame": 5981821,
+          "toFrameExclusive": 5982703,
+          "peakDbfs": -2.97800654,
+          "rmsDbfs": -9.519680121,
+          "firstDifferencePeakDbfs": -11.341144404
+        },
+        "adjacentDeltaDbfs": [
+          [
+            -28.056898669,
+            -55.501744909
+          ],
+          [
+            -28.060486067,
+            -55.693857725
+          ]
+        ],
+        "dryVoicesCrossing": [
+          {
+            "trackId": "snare",
+            "onsetFrame": 5888969,
+            "endFrameExclusive": 5988369
+          },
+          {
+            "trackId": "snare",
+            "onsetFrame": 5910539,
+            "endFrameExclusive": 6009939
+          },
+          {
+            "trackId": "voice",
+            "onsetFrame": 5967881,
+            "endFrameExclusive": 6439859
+          },
+          {
+            "trackId": "voice-space",
+            "onsetFrame": 5967881,
+            "endFrameExclusive": 6584290
+          },
+          {
+            "trackId": "choir",
+            "onsetFrame": 5967881,
+            "endFrameExclusive": 6539201
+          }
+        ]
+      },
+      {
+        "enteringPattern": "outro",
+        "bar": 65,
+        "frame": 7362784,
+        "seconds": 166.95655328798185,
+        "original": {
+          "fromFrame": 7362343,
+          "toFrameExclusive": 7363225,
+          "peakDbfs": -4.375256224,
+          "rmsDbfs": -12.603612197,
+          "firstDifferencePeakDbfs": -17.555202317
+        },
+        "candidate": {
+          "fromFrame": 7362343,
+          "toFrameExclusive": 7363225,
+          "peakDbfs": -4.375460134,
+          "rmsDbfs": -12.603618795,
+          "firstDifferencePeakDbfs": -17.557124823
+        },
+        "adjacentDeltaDbfs": [
+          [
+            -30.537819562,
+            -25.107570939
+          ],
+          [
+            -30.547264971,
+            -25.115889454
+          ]
+        ],
+        "dryVoicesCrossing": [
+          {
+            "trackId": "bass",
+            "onsetFrame": 7247740,
+            "endFrameExclusive": 7380040
+          },
+          {
+            "trackId": "pad",
+            "onsetFrame": 7247740,
+            "endFrameExclusive": 7494700
+          },
+          {
+            "trackId": "voice",
+            "onsetFrame": 6888229,
+            "endFrameExclusive": 7424308
+          },
+          {
+            "trackId": "voice-space",
+            "onsetFrame": 6888229,
+            "endFrameExclusive": 7568211
+          },
+          {
+            "trackId": "choir",
+            "onsetFrame": 6888229,
+            "endFrameExclusive": 7525449
+          },
+          {
+            "trackId": "choir",
+            "onsetFrame": 7247740,
+            "endFrameExclusive": 7556440
+          },
+          {
+            "trackId": "fx",
+            "onsetFrame": 7247740,
+            "endFrameExclusive": 7468240
+          }
+        ]
+      }
+    ],
+    "masterEffects": [
+      {
+        "type": "highpass",
+        "frequencyHz": 28
+      },
+      {
+        "type": "compressor",
+        "thresholdDb": -11,
+        "ratio": 1.6,
+        "attackMs": 30,
+        "releaseMs": 250
+      },
+      {
+        "type": "saturation",
+        "driveDb": 6,
+        "mix": 1
+      },
+      {
+        "type": "saturation",
+        "driveDb": 0,
+        "mix": 1
+      }
+    ],
+    "masterGainDb": -4
+  },
+  "reproducibility": {
+    "independentFullPackagesMatch": true,
+    "artifactsCompared": 221,
+    "compared": [
+      {
+        "file": "REPRODUCE.txt",
+        "sha256": "17ab9c2ba00a9b35659a3d2f9794f307bb471645b7ca52d5e099a779fd2d983e"
+      },
+      {
+        "file": "SHA256SUMS",
+        "sha256": "527d23f7390a08b3265db9164f09cc1377bd188dfe3c8d93805278ada9a768f8"
+      },
+      {
+        "file": "listening/sodium-hours.24.mp3",
+        "sha256": "fd5c2d876f5626fccbc9968a4887b3a432fc243412ac76aae5958c4d69b63e52"
+      },
+      {
+        "file": "masters/sodium-hours.24.wav",
+        "sha256": "93e08083ba191cb32ff0c3526712e35970d44cb0ba7135df505e953b92645f1c"
+      },
+      {
+        "file": "metadata/inventory.json",
+        "sha256": "d8d9687652ac8f89f56c5322b4b656539e08fbc8f6436d8101d1db31d23cced6"
+      },
+      {
+        "file": "metadata/licenses/ASSETS_AND_LICENSES.md",
+        "sha256": "85c70bc3ca43a1ba490b0dc4c125e4d1169ce1f87617a577fd44b6282854f175"
+      },
+      {
+        "file": "metadata/mastering.json",
+        "sha256": "a4b46142db003d8cbe4eefa69bcaf2f26751434b5c085a4acfbee1d37f501e40"
+      },
+      {
+        "file": "metadata/provenance.json",
+        "sha256": "fe8e18100080e145d6da22899b00dc5ce8082ba0533bd340c4bfc641c548483b"
+      },
+      {
+        "file": "metadata/render.json",
+        "sha256": "e10319661af2ea2f5327eb40c9e2d63ec69caec44aaff98ac740d7add9bdf4ed"
+      },
+      {
+        "file": "source/CREATIVE_LOG.md",
+        "sha256": "356bd494635e203cbcea04fc2b7197323ff3e08b0d6a76120b46aa6dc25e0428"
+      },
+      {
+        "file": "source/PRODUCTION_NOTES.md",
+        "sha256": "4ad27817e182670db5fe6e069d0ef63bcce8ee483a70d92fff270f93db01151e"
+      },
+      {
+        "file": "source/README.md",
+        "sha256": "df5b717c499544e9ef028b3e569cecc641515c35b794686d2c8305edd60260e4"
+      },
+      {
+        "file": "source/assets/sodium/atmos/kit.json",
+        "sha256": "38e75f9cd1ebe32f298129ba6ffbfca58a5a414f8e2a8db81dd3ee8e08255b7f"
+      },
+      {
+        "file": "source/assets/sodium/atmos/lamp.wav",
+        "sha256": "3ff969eb250d0952709e189876ae82cb41c48c46c7cb7a74a87bbe1ebdea1b5d"
+      },
+      {
+        "file": "source/assets/sodium/atmos/rain-2.wav",
+        "sha256": "18cdb322756a0eeb203307c1c6254e1fbfc6b373cade4f5a02ccfc35c19b69fb"
+      },
+      {
+        "file": "source/assets/sodium/atmos/rain.wav",
+        "sha256": "9318e932af48aad207f383ea2ee96b403f983a80464cef905a59b7ebbf612d5d"
+      },
+      {
+        "file": "source/assets/sodium/atmos/siren.wav",
+        "sha256": "01d0d16e317eb63aaff19455c18654367d58598a965035eeabf2c1089b92e0e0"
+      },
+      {
+        "file": "source/assets/sodium/bass/ab1.wav",
+        "sha256": "203afd5ef927e3ea9b100c4fcf34f7d66d787a8e721c33682ad65b80d88052fa"
+      },
+      {
+        "file": "source/assets/sodium/bass/ab2.wav",
+        "sha256": "f7bc844b47e6129399c74186ee82fce78093660ea35358b41b6127e329888fa6"
+      },
+      {
+        "file": "source/assets/sodium/bass/b1.wav",
+        "sha256": "cc93747c8e14dc990569d79f3338a3144bb9fd23564b4ca0c2f3373ed7ec9575"
+      },
+      {
+        "file": "source/assets/sodium/bass/bb1.wav",
+        "sha256": "d992b57a22d58c4b6b82c8e9ec08bb04a226009470c6fa06c47badc94e09768a"
+      },
+      {
+        "file": "source/assets/sodium/bass/bb2.wav",
+        "sha256": "9e314d734fc667785031d78c18b81e760c44641fb193b34487ced72ea515625d"
+      },
+      {
+        "file": "source/assets/sodium/bass/c2.wav",
+        "sha256": "850d5b1aaffdec0abcf8b81bff43faec09eabb3516499559d1428b2412e7510b"
+      },
+      {
+        "file": "source/assets/sodium/bass/c3.wav",
+        "sha256": "af5f9b15fb6a00b91a7f7673508f291b88207f819c46fec37d56a19248e3b220"
+      },
+      {
+        "file": "source/assets/sodium/bass/d2.wav",
+        "sha256": "a04ed7232722d3c0aa4c985dfc508a2775b208351fae0bb8abad8bb54172602c"
+      },
+      {
+        "file": "source/assets/sodium/bass/db2.wav",
+        "sha256": "bbf6d1632608ceb69eb483f1037ac1ab834bfb7bfb88e9938771d0bb23a2e15f"
+      },
+      {
+        "file": "source/assets/sodium/bass/db3.wav",
+        "sha256": "6b64060e7059ed7746f921f13da9780fe8420a450ee92d681032ee58b68bf27e"
+      },
+      {
+        "file": "source/assets/sodium/bass/e2.wav",
+        "sha256": "2ed2c712ce89e633abd6132ee2fe304c3258cbbd092b8a290b06c4f9c1b3e86b"
+      },
+      {
+        "file": "source/assets/sodium/bass/eb2.wav",
+        "sha256": "6dc38e0d44d486b6b32eb1150584adbdbdd5121fe9271beb5281d5aedfb0bc8e"
+      },
+      {
+        "file": "source/assets/sodium/bass/eb3.wav",
+        "sha256": "0301426835618a8407ce608389efc3e31867591be3ea161c0f5b3cc7d9ac5cd8"
+      },
+      {
+        "file": "source/assets/sodium/bass/f1.wav",
+        "sha256": "64bd81c99e00f2930e97a4b80572f500386169c2895cd22a5b6edaf2ce45c104"
+      },
+      {
+        "file": "source/assets/sodium/bass/f2.wav",
+        "sha256": "66e0dd2c145200782cf824419ceff9818fd10fb1b523d54bb54c0580c0c27a93"
+      },
+      {
+        "file": "source/assets/sodium/bass/g1.wav",
+        "sha256": "cbea10f18bc1ee8315bd077927d622aa1c49bda0b210353ad68dc499e0ce14e7"
+      },
+      {
+        "file": "source/assets/sodium/bass/gb1.wav",
+        "sha256": "348a2ab3d4bd78f01df8e4f0dc7597cea03cf4e536aa310712e0dedf9afff7a0"
+      },
+      {
+        "file": "source/assets/sodium/bass/kit.json",
+        "sha256": "4301a7497744530f7f2aaccd6501466e9529e06390575322c6264dba8d8726dc"
+      },
+      {
+        "file": "source/assets/sodium/choir/ch-bbm9.wav",
+        "sha256": "a99c9dc0c0006e93d53ef3a7bd8c04dbc5f09b10eead6aeff7de96fb5c6ffd08"
+      },
+      {
+        "file": "source/assets/sodium/choir/ch-c7.wav",
+        "sha256": "eeae1701c84fb7d5694d5d52cbdbea4f74adb0939c8b7cdd37a3e914a006256a"
+      },
+      {
+        "file": "source/assets/sodium/choir/ch-cm7.wav",
+        "sha256": "e3239ad683eb0fa07ea11a042e90b4fa0e5057700ec5d94c234b78d30337b309"
+      },
+      {
+        "file": "source/assets/sodium/choir/ch-db.wav",
+        "sha256": "4d8e2c14789a947bee93624801d9165c99251ff6abc972fe09aa1ab6d4418cfe"
+      },
+      {
+        "file": "source/assets/sodium/choir/ch-dbf.wav",
+        "sha256": "def54e5ab6e65d66d9929a9ad0c8a2607d6d732792d1c2046c2af39ec0103bd1"
+      },
+      {
+        "file": "source/assets/sodium/choir/ch-eb.wav",
+        "sha256": "21e8e2d5790235fe131321ffdd554c12b575ae81cba719d1cf7d985e87c1b370"
+      },
+      {
+        "file": "source/assets/sodium/choir/ch-fm.wav",
+        "sha256": "7620b3cfafcf83013cbe5943d24a155b796e6aa242335ba731f695bd2772687d"
+      },
+      {
+        "file": "source/assets/sodium/choir/ch-fmaj9-end.wav",
+        "sha256": "86af76090ca6d53cadf1e8447eb66a4d8936e4bf70ec03c1e46e51ec268286f2"
+      },
+      {
+        "file": "source/assets/sodium/choir/ch-fmaj9.wav",
+        "sha256": "b65200c304e37b2fd5ff861bb0728b0ea66c69544b27663058f6628907680636"
+      },
+      {
+        "file": "source/assets/sodium/choir/ch-gb.wav",
+        "sha256": "3750a690b6570d794261d2db1ca6d9f3fa612652aca44c34c14b982c35683abb"
+      },
+      {
+        "file": "source/assets/sodium/choir/ens-a.wav",
+        "sha256": "5c148beb9105ba69a072c3327e2b45d78605bf5755ee17d52f6dcade24594cb5"
+      },
+      {
+        "file": "source/assets/sodium/choir/ens-final.wav",
+        "sha256": "3a9254a7c91d98c7c7dc2c69305d76b2fc334cf83a3089a3fa0884dfb6097ef2"
+      },
+      {
+        "file": "source/assets/sodium/choir/ens-peak.wav",
+        "sha256": "5da6c5c12f89af1156132962ecc33442681d639568df862217f21f29248e1d8b"
+      },
+      {
+        "file": "source/assets/sodium/choir/kit.json",
+        "sha256": "acd5cb8e674e1d7d519f9a3643cc20b9a21f643c04b242c89608c8754009bdcf"
+      },
+      {
+        "file": "source/assets/sodium/fx/glitch.wav",
+        "sha256": "c7ffaddcbaf55391d02890285e0bab2050e5b4c189a4947c78e76054cec77b3a"
+      },
+      {
+        "file": "source/assets/sodium/fx/impact.wav",
+        "sha256": "0f4e4d4969fbb0c2d9e3c0e5e3b2867bf04a4cfeee0b642cb76b9c8a8392f532"
+      },
+      {
+        "file": "source/assets/sodium/fx/kit.json",
+        "sha256": "07ac45ce8e430d836e92073efdb5bdf8f04e38923ae9b7a77efbcb23ef237e90"
+      },
+      {
+        "file": "source/assets/sodium/fx/swell-c.wav",
+        "sha256": "24060b41c83cbb16dc3c05e383e3f851d040911b78977a88ea444195ac94065f"
+      },
+      {
+        "file": "source/assets/sodium/fx/swell-db.wav",
+        "sha256": "ebda622223aa4a5322a56b8ca7c164aab0a12f1b627b6c48c1123bf9efca536d"
+      },
+      {
+        "file": "source/assets/sodium/fx/swell-fm.wav",
+        "sha256": "8070180aa5d8dad1c1ac3f749c9ed7195f81880790246137e8e7960881a51280"
+      },
+      {
+        "file": "source/assets/sodium/grit/ab1-h.wav",
+        "sha256": "de11528e7f17dc05c2537d51ceb2faa7c7639a8ade281a4267559c855832d536"
+      },
+      {
+        "file": "source/assets/sodium/grit/ab1-p.wav",
+        "sha256": "56c31699e8cacf8ca63686d236890044fac70d2735dd4e82adbf18dc3c026c5d"
+      },
+      {
+        "file": "source/assets/sodium/grit/ab2-p.wav",
+        "sha256": "d2efc1f4fb277a1f344755a4098a480470284b2bd5d9a4feaba628fdfce7f324"
+      },
+      {
+        "file": "source/assets/sodium/grit/b1-p.wav",
+        "sha256": "78265c68f3c50ce991edff25f8ba00128254a34df6e0d9f949bb275ff9b1f87d"
+      },
+      {
+        "file": "source/assets/sodium/grit/bb1-h.wav",
+        "sha256": "dca5f11b073dcee83111b76417c5e9400451f1ac6bee93d57a3d0db380bba7ef"
+      },
+      {
+        "file": "source/assets/sodium/grit/bb1-p.wav",
+        "sha256": "e88b35dbdc423c727324b4cb20f403d8c58dd6c158865382479e2a3589b26718"
+      },
+      {
+        "file": "source/assets/sodium/grit/bb2-p.wav",
+        "sha256": "6d1cddcafacb9a2b2930c47aaaed9a8ba9b50c74f9ddbb0a39138623e312ac78"
+      },
+      {
+        "file": "source/assets/sodium/grit/c2-h.wav",
+        "sha256": "a4535bed9cceb26b812fa3784ba0167cf97332072e2c3b8af832d40d4442853b"
+      },
+      {
+        "file": "source/assets/sodium/grit/c2-p.wav",
+        "sha256": "9050b178f73cfcc42c28b47df87161ffbf161fad2021b4fb101db2c1ab6be244"
+      },
+      {
+        "file": "source/assets/sodium/grit/c3-p.wav",
+        "sha256": "1f27bcf0759d7a140e8bf05402e033eac12ce9bf2ddda6ba71695d3da3822f38"
+      },
+      {
+        "file": "source/assets/sodium/grit/d2-p.wav",
+        "sha256": "2fed9c893c38d045019b2412cb6ed5c7784d39dbcde9280f3f6b1a8857e0a70e"
+      },
+      {
+        "file": "source/assets/sodium/grit/db2-h.wav",
+        "sha256": "25d9e21e92115d075888766e5b62bfc16e49f72c0eaa3495e7c30e9f13221635"
+      },
+      {
+        "file": "source/assets/sodium/grit/db2-p.wav",
+        "sha256": "520f61cd1509e0ef78d94c68be4728d270a76b4ec1b54a1a5102b3884b288b0e"
+      },
+      {
+        "file": "source/assets/sodium/grit/db3-p.wav",
+        "sha256": "3b54b1c7897d012f33adf7342a95650553ba05e97c5c760618377f3da12ac3b4"
+      },
+      {
+        "file": "source/assets/sodium/grit/e2-p.wav",
+        "sha256": "e5f41ceb9b529a5d1e9afd65ba8ce0e223a6f668497151232bc071dbf2cc01f0"
+      },
+      {
+        "file": "source/assets/sodium/grit/eb2-h.wav",
+        "sha256": "6404e351f758d483a8d445acd03d0dfd8f9779d08e7a9fa0ef605329c86e4fd3"
+      },
+      {
+        "file": "source/assets/sodium/grit/eb2-p.wav",
+        "sha256": "e250014174fa8c13c0a993c23b25b38cefea1b833748c010cbff27e6fda2071f"
+      },
+      {
+        "file": "source/assets/sodium/grit/eb3-p.wav",
+        "sha256": "c282e9493c8f515dd91ca4863449078d9f398acbb6e2bb3d0793741a89d0fa3c"
+      },
+      {
+        "file": "source/assets/sodium/grit/f1-h.wav",
+        "sha256": "618dbbdf8bb28316404319cee60f5d49c54a96ddfaed64b0a52c2dd5cb4045e8"
+      },
+      {
+        "file": "source/assets/sodium/grit/f1-p.wav",
+        "sha256": "3037e9e0e4133ab072821fcec01bd2a594320dc8bbce44defcf61396343ba7c4"
+      },
+      {
+        "file": "source/assets/sodium/grit/f2-h.wav",
+        "sha256": "fd06c3518eadc88d0d8e872131e22b9dd141d6582605472f11405762ecf539cf"
+      },
+      {
+        "file": "source/assets/sodium/grit/f2-p.wav",
+        "sha256": "1839480415bb1eeeb8bf0f90c964bb77939e3e43aa33004fb694bf17cbb2bb68"
+      },
+      {
+        "file": "source/assets/sodium/grit/g1-p.wav",
+        "sha256": "143cfaddee311a621aca3a4d993c3fff9538312652a8989866b3b3e7ea2dd528"
+      },
+      {
+        "file": "source/assets/sodium/grit/gb1-h.wav",
+        "sha256": "057f142a3a89c274a1092ff445b8bdfecf99edd9ce1daf0fd8c0c5230287a1ec"
+      },
+      {
+        "file": "source/assets/sodium/grit/gb2-p.wav",
+        "sha256": "2a6c3f665ae07db8648b8f77a21da764392a19f742e701d5f93a88c2294da70b"
+      },
+      {
+        "file": "source/assets/sodium/grit/kit.json",
+        "sha256": "a7e1fb5c6d2ebc4301558ce3bcae13d2c878b6ad169c402ca9984044748a7420"
+      },
+      {
+        "file": "source/assets/sodium/hats/hat-open.wav",
+        "sha256": "d1e483d3b7eb0e1b1dfd0664c7b12d8cb127f39e10c8a99be18d5860a52e950c"
+      },
+      {
+        "file": "source/assets/sodium/hats/hat.wav",
+        "sha256": "1b4ac42743a455e5fceeaf89e03fb523edb4548a4e1d8fe8eeabc63ba432f90d"
+      },
+      {
+        "file": "source/assets/sodium/hats/hydraulic.wav",
+        "sha256": "20af1156f00154de513cb5162127932277b41991c329fa7c2c640812e1288242"
+      },
+      {
+        "file": "source/assets/sodium/hats/kit.json",
+        "sha256": "661c285d35714ef5e9d410a83dffbe83290b583e23468abfa9fe836ab983dd2b"
+      },
+      {
+        "file": "source/assets/sodium/hats/shaker.wav",
+        "sha256": "1e26be06353f127ae13b97478b6c579793e51f913da6e070e816663c803fa93d"
+      },
+      {
+        "file": "source/assets/sodium/hats/tick.wav",
+        "sha256": "92c8acb6ea7f3da577142938b58fc36be3f49c22685930131bab1a8bb934e0ce"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-bb13.wav",
+        "sha256": "b1dd015d130b08103d76701504bc07d3adfb7bcc3c86b52f341c3109f42dbbb9"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-bb13ab.wav",
+        "sha256": "4b4a92cfbcaaf4901413ce45b7354567489dc42a741ae0542685a9da9d6c9741"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-bb13c.wav",
+        "sha256": "581c428bcbd8de4bbf9bbff4f4c26631daf3bf0e5dee1ea6687855ee9052e50e"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-bb13d.wav",
+        "sha256": "df396fd9867d492bb429ed64facb0d2435625eaf5b968c98c943c9642f39bd98"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-bb9f.wav",
+        "sha256": "e029f4352d87f49a8038f08c4c358ee56c0455cbceb9bbe9049255762326ab8b"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-bbm9.wav",
+        "sha256": "529a13e97bff65e4a317ee9eede60e0901461f70815e7743807b4f621cf78586"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-c7.wav",
+        "sha256": "274056e957fc42cb86ca3ad0803c11c5388c08292ed9a44e88ae74b94c530efc"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-c7sus.wav",
+        "sha256": "e1748af6f4d98629e7f344171d9b5236f52933b7c0c27f472b8c4ead46f2d31f"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-cm7.wav",
+        "sha256": "209923d50a47c9ce70878e9a583dd9334add6fbce0b793bb32c4c881d1f27d84"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-db.wav",
+        "sha256": "cff5ea8c55e056fbc0685507f0552c3c634bc23bc804f1901242f30acc9f1689"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-db11.wav",
+        "sha256": "3f83129edca4f95e02220ea5b9575daa1f1b10f33bd4599475f2d2b566791e91"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-dbf.wav",
+        "sha256": "228541fbcf3f4bd9e6fa8174637ad07d70fcd80b794a00193512db04525c298c"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-eb.wav",
+        "sha256": "e1748af6f4d98629e7f344171d9b5236f52933b7c0c27f472b8c4ead46f2d31f"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-fm.wav",
+        "sha256": "a7d05960361c26b726e7f467d1b576046426194d659b6d4bd057fb587046badf"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-fm7eb.wav",
+        "sha256": "358aabdcebc7dd5b34c6ac24de5c4a8353faf537a361bad9f0a0432824718f69"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-fm9ab.wav",
+        "sha256": "f1973931daa4636283a1a902b1f64967a116779a7029f4c329dbd9edff57e785"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-fm9bb.wav",
+        "sha256": "43eeba9ff801565d44403c5873048b723866e6eae9e93fab06370119ceb5ce82"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-fm9f.wav",
+        "sha256": "cff5ea8c55e056fbc0685507f0552c3c634bc23bc804f1901242f30acc9f1689"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-fm9g.wav",
+        "sha256": "a7d05960361c26b726e7f467d1b576046426194d659b6d4bd057fb587046badf"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-fmaj9.wav",
+        "sha256": "617a258e7ffac41dab7366902034f469b93ad16481c7449f5337a2f164d3be5e"
+      },
+      {
+        "file": "source/assets/sodium/keys/ep-gb.wav",
+        "sha256": "e7c7b792b5cc3f511063bd0f8c63f1a93e4519814913d3b7df7f16a271b3b964"
+      },
+      {
+        "file": "source/assets/sodium/keys/kit.json",
+        "sha256": "731ee93b1501de6f827d0819488736f7425b1f8d16a71ace0457a7e11edb5087"
+      },
+      {
+        "file": "source/assets/sodium/kick/kick-boom.wav",
+        "sha256": "fe9f1036f42da13b1da6068bda48cf69e4bbc8effc606758d170175791b7be66"
+      },
+      {
+        "file": "source/assets/sodium/kick/kick-soft.wav",
+        "sha256": "0003bd5cfa862817fb5789d7148a1c718b24f62e1fa784a9355c134e50a78f15"
+      },
+      {
+        "file": "source/assets/sodium/kick/kick.wav",
+        "sha256": "b19b80bcffd62f57f2bb821699a500c85464eadee9e4c677e9fff854328485ef"
+      },
+      {
+        "file": "source/assets/sodium/kick/kit.json",
+        "sha256": "03ce7d0d9b979b60c7c8951ce4251cd93928b7584c90c13101bea024b821286e"
+      },
+      {
+        "file": "source/assets/sodium/metal/anvil.wav",
+        "sha256": "6d9cb61e602c1a2c0dfa05683307a18ed71c2ea2d78a0ba2d9b00ed62917a912"
+      },
+      {
+        "file": "source/assets/sodium/metal/kit.json",
+        "sha256": "612495df40f10ee8304e85d8364ca5c0393956a3732ce29662c6dbaf3289aefc"
+      },
+      {
+        "file": "source/assets/sodium/metal/pipe-bb2.wav",
+        "sha256": "54563392640d36b73ce77eb43c4e57dfd4ff99fbe53788acd2f64cfb33c1ea05"
+      },
+      {
+        "file": "source/assets/sodium/metal/pipe-c3.wav",
+        "sha256": "bb73a46b9ce8570b02f6f65c4c7cc74989cf40abe6169f02b39b1ed199994e73"
+      },
+      {
+        "file": "source/assets/sodium/metal/pipe-db3.wav",
+        "sha256": "868e985f21aa5f5d41a6b8ec4971463041e9be42963ec214abe476f5f55cd5ed"
+      },
+      {
+        "file": "source/assets/sodium/metal/pipe-eb3.wav",
+        "sha256": "6a034f613fc60eaf717cd07d7fc7c884e0b511ae2542bf407ba6996c98782359"
+      },
+      {
+        "file": "source/assets/sodium/metal/pipe-f3.wav",
+        "sha256": "4a35d137114c7a77113570705276a3f592c86bcecded47d2f04ea9d7c996d2b6"
+      },
+      {
+        "file": "source/assets/sodium/metal/tom-high.wav",
+        "sha256": "43afdc96992207abf0aab24181a3699728651eeca59ddfdafabff2b949fe0e78"
+      },
+      {
+        "file": "source/assets/sodium/metal/tom-low.wav",
+        "sha256": "793e85315f53d3cf04d0bca0043a22c4ec18dd4c14133c22b297f9c64ea1dade"
+      },
+      {
+        "file": "source/assets/sodium/pad/kit.json",
+        "sha256": "978c0eb8e7783a7530ac5248672ef07263c7accf0a790fd14c21e44c71aebbd7"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-bbm9.wav",
+        "sha256": "93f0e82f59a76272cff9a4ede3a7a496b16f588aaa2436ed6494fff3acd5e07b"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-c7.wav",
+        "sha256": "cbede80f501c724c6a1126c912fd884d22634f7bf920c5fc4f8aa251b84a8bc0"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-c7sus.wav",
+        "sha256": "8af5048464d625ffb3a002dcedf95806414caadeda38faeccb986b362f6c70fc"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-cm7.wav",
+        "sha256": "7be6af4dc32bdbeb1fc031f2d387a9cbdd44b4e0b707048cfbca8776b07c08be"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-db.wav",
+        "sha256": "78c1b58a61938dd4cde86e8562c7178749dcf58b85ee51512eec40eb75402974"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-db11.wav",
+        "sha256": "4ef60a21db5e940841f8cd92fd8c8ea8fab7dc0ff67892a13095581c6fb02a7e"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-dbf.wav",
+        "sha256": "675e26e8720c8411329b99c283ca5f40735f3d0a93219461342d80adc1078522"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-eb.wav",
+        "sha256": "8af5048464d625ffb3a002dcedf95806414caadeda38faeccb986b362f6c70fc"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-fm.wav",
+        "sha256": "596ebbf4796ce172768aa8ba216be0c7f06582377aae16e9ba72df060f443cf4"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-fmaj9.wav",
+        "sha256": "b1f0dc3a4ae62723ea1ac4c39423ce816883a076d002d35d3de8503f83ca4915"
+      },
+      {
+        "file": "source/assets/sodium/pad/pad-gb.wav",
+        "sha256": "4a51df77789c378e0a976cf030e1ed2e478ab7844ef96798e89df4928fecaf3f"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/a5.wav",
+        "sha256": "01b6e0ec8d1ce8ff3558c5d3470f57075da2eabfee9ea9462bb9455365b641e5"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/ab4.wav",
+        "sha256": "00b1c9c3f0d066024f7404ad369d22ef17320f9639584e9f6923c9e9f09efde0"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/ab5.wav",
+        "sha256": "45abd38adbdcbc819a211acbaa079b52f355f953c0312a8bebed5ececf98c80d"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/bb5.wav",
+        "sha256": "779c18e222ae5b2d4e632cf968d16beed79424c90141876d8f0a6561713157fd"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/c5.wav",
+        "sha256": "4e21b4431b7d028aa2e68d45dba885a1e4048117582f1b42fb86663621f72ea4"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/c6.wav",
+        "sha256": "bd07e05a744be01e6044f93f85b71d2842eafe88f5120ed0a2aaa272746f2e41"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/e5.wav",
+        "sha256": "8a8e4fed183e078642e9206ec70759f3673ba6625b9df14caea875927b42df4d"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/eb5.wav",
+        "sha256": "9587d787060d1ff2a1422a62e6f3c257b5b22b3927469f069b9aff3d8db0c981"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/eb6.wav",
+        "sha256": "400563bd94e15ccf8818230aa6d3f73d8825c19835af1e0ef93d099f70652ca9"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/f5.wav",
+        "sha256": "ef54802009c88096b1294af85378528ebcb1fd059f0950da45aeb52640b63f11"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/f6.wav",
+        "sha256": "f39b078311cd838ac680568df0415f607009c868e0455de1a3a8518ca3a5844f"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/g5.wav",
+        "sha256": "ad73a51986af177cdd89705dfa4fc58a69b1d3c306a19e2ff23753d06846ea24"
+      },
+      {
+        "file": "source/assets/sodium/pluck-space/kit.json",
+        "sha256": "095d50cffca96cff176027417ec6f7ff742f4e89243773eb6410e68d34bbff26"
+      },
+      {
+        "file": "source/assets/sodium/pluck/a5.wav",
+        "sha256": "c2a3a3d5d1583210815a664f20639aaddfc798837a48714b15944e55da925eb1"
+      },
+      {
+        "file": "source/assets/sodium/pluck/ab4.wav",
+        "sha256": "d5eab2c02e13a060f72dad9766f1fa6c5a0e574e6cea770134c4d7855716f721"
+      },
+      {
+        "file": "source/assets/sodium/pluck/ab5.wav",
+        "sha256": "eebf7e07c5da94ed7229f69cd072494c5e85c0122a0aa8571025af50d7ab6c29"
+      },
+      {
+        "file": "source/assets/sodium/pluck/bb5.wav",
+        "sha256": "76535ed9d59a5403502e29c745165f7009a5d47d61b8fccfaa3ee83c8df42696"
+      },
+      {
+        "file": "source/assets/sodium/pluck/c5.wav",
+        "sha256": "dcff608fe72a08a3c3e9539ccf7fa8e2b46e9231bd80da5d8d1ca0fd827f887e"
+      },
+      {
+        "file": "source/assets/sodium/pluck/c6.wav",
+        "sha256": "f0e275cf280307404e3d38ef63c9fe9c66070274e8b3150ca6d10cbbbb232bf4"
+      },
+      {
+        "file": "source/assets/sodium/pluck/e5.wav",
+        "sha256": "5e241a6a39117a43696e5c4075526a04a1e6e48244502938fc8e14f2fb50bcb4"
+      },
+      {
+        "file": "source/assets/sodium/pluck/eb5.wav",
+        "sha256": "8aa3c507b241679a94fa535e429d93ef8ceb3b31560b4bfee9be846a28477c4e"
+      },
+      {
+        "file": "source/assets/sodium/pluck/eb6.wav",
+        "sha256": "9a0bd3164bd91764293fc0cf44c648f1404c601fd3ad3a2b63994fc023f97e6e"
+      },
+      {
+        "file": "source/assets/sodium/pluck/f5.wav",
+        "sha256": "79eec2ebcb303fb83f6a34b0475228273d2d098989caafeb92c8c288bbcf62dc"
+      },
+      {
+        "file": "source/assets/sodium/pluck/f6.wav",
+        "sha256": "584b8bc7bd100abf337fd212610932e2605105ea86d8fc37f75743cb5538ff2d"
+      },
+      {
+        "file": "source/assets/sodium/pluck/g5.wav",
+        "sha256": "79317df77b6767a91f88e620602219123d1d61db7992a058808f5d4b1674a9eb"
+      },
+      {
+        "file": "source/assets/sodium/pluck/kit.json",
+        "sha256": "095d50cffca96cff176027417ec6f7ff742f4e89243773eb6410e68d34bbff26"
+      },
+      {
+        "file": "source/assets/sodium/snare/clap.wav",
+        "sha256": "f3c79d71afdf72b8d13c29b936ca60f3d94a7d4d05f3a0c765529b0fb594b25e"
+      },
+      {
+        "file": "source/assets/sodium/snare/ghost.wav",
+        "sha256": "d54ec5017ae793488d824b7ea08b99a4510d1079bd7eaa48bb03da61b50ceadc"
+      },
+      {
+        "file": "source/assets/sodium/snare/kit.json",
+        "sha256": "3ad3ffc898366538c9fb93631126712bec3143e417afa9c3e2ac48635193b82a"
+      },
+      {
+        "file": "source/assets/sodium/snare/rim.wav",
+        "sha256": "3de455aa40990369e381daa00aa1f50100fb7eaff67dd6bf23439f1c2af5cc10"
+      },
+      {
+        "file": "source/assets/sodium/snare/snare-verb.wav",
+        "sha256": "38bdbfbd9ba4bf76f8624675ebf087da08cb9787e4f9b9096eccaf7c2ec7c917"
+      },
+      {
+        "file": "source/assets/sodium/snare/snare.wav",
+        "sha256": "cb4e5e8b68cec185269b8871e2d99e9b842ff15af8fcb73aa1ebe031a52e6abc"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/frag-1.wav",
+        "sha256": "1bb43280081cb55aff1421840add01af30def1a092983ff788f7aed89d16c9c5"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/frag-2.wav",
+        "sha256": "7d74b642372b208974e9c2f6f3ab5db37637ef7ddf36028cc5aa78d53f10f55e"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/frag-3.wav",
+        "sha256": "7f586471c752efd2d22ff2628b19651bcf721e03fb03e80d323349269f651414"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/frag-4.wav",
+        "sha256": "7256dc111e0034cc0ae348f79dd8f9fba3c3f5d8fa44ebfcb21155d67cbd9244"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/hook-a-final.wav",
+        "sha256": "1fc9f42add895498768a764b3196849b0748a97d40bc70939ed1c6bfca12493f"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/hook-a.wav",
+        "sha256": "32e10c71b51c59fc2ae07c05cb06f44a2cce625f291b3c8e6adb7db1bfd1c71e"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/hook-b.wav",
+        "sha256": "979d2704cc12593a91e8c8d431b231a4eb307f6f719256697a29bceecb63d80e"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/hook-c.wav",
+        "sha256": "990277a3e11ffe9189558a55e638c314228bc4d4971a2f181c46922dfde23fcd"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/hook-final.wav",
+        "sha256": "3ff5e1f30f665f55751c9fc204d5d132d582f31f04c5c139fa2e3f05bb63c4cb"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/hook-peak.wav",
+        "sha256": "943320d6005fbe1a7dc9296c23f4a9b65afcfb589b08d4d99621d1186d22b462"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/kit.json",
+        "sha256": "c4532c0447a90fe49e691b25dad796c42448b32ba3cfd7a9e5b58c9291895ad2"
+      },
+      {
+        "file": "source/assets/sodium/voice-space/slow.wav",
+        "sha256": "9e1d763428e445c800487a20035e53a124b52edfc20d258938e3f40fab89a445"
+      },
+      {
+        "file": "source/assets/sodium/voice/frag-1.wav",
+        "sha256": "2f3a515e69213b50c05ba7f95270173a2705ec8395cfd9a94bcd974e4be47dc6"
+      },
+      {
+        "file": "source/assets/sodium/voice/frag-2.wav",
+        "sha256": "7e589ce4efc558cf9d1c64e4dd648a143adbe6c68cc2d158a195d8f64ddd9c53"
+      },
+      {
+        "file": "source/assets/sodium/voice/frag-3.wav",
+        "sha256": "355e98a183f00a8fc2c3e0cfd87452fd88e67e1ff7b460592d127d46982459f2"
+      },
+      {
+        "file": "source/assets/sodium/voice/frag-4.wav",
+        "sha256": "6875c9a03452d88e31b017fd7d318f3585d784d7325b32c58f354829e932295f"
+      },
+      {
+        "file": "source/assets/sodium/voice/hook-a-final.wav",
+        "sha256": "5f50a3e2342ae996305f466a4186ba6c43af3341acd517132f453523ab7be554"
+      },
+      {
+        "file": "source/assets/sodium/voice/hook-a.wav",
+        "sha256": "bfbfa027e580957eebe95091c247ab27ae57939b4fef330cdc95dc5296978329"
+      },
+      {
+        "file": "source/assets/sodium/voice/hook-b.wav",
+        "sha256": "69b769ba08e67c9ca84898879234c35deb94964ab59089c2e4e7064b118a4382"
+      },
+      {
+        "file": "source/assets/sodium/voice/hook-c.wav",
+        "sha256": "cc2690e4ec68747dfdf8b533b192e3d47038a88a947f9d4c8d86c1cad34d91bd"
+      },
+      {
+        "file": "source/assets/sodium/voice/hook-final.wav",
+        "sha256": "822abf11cb6d0214088a82c6519215e0f05fe3aa3fcbbf9fa2b892d2ad06f9c8"
+      },
+      {
+        "file": "source/assets/sodium/voice/hook-peak.wav",
+        "sha256": "90904898315495d09be9573346f3836fa7ab95c6f883cfbd2e63f31331c2d33a"
+      },
+      {
+        "file": "source/assets/sodium/voice/kit.json",
+        "sha256": "c4532c0447a90fe49e691b25dad796c42448b32ba3cfd7a9e5b58c9291895ad2"
+      },
+      {
+        "file": "source/assets/sodium/voice/slow.wav",
+        "sha256": "a1059994eee3273c3afd74d99556fe6e1257c7be76fe209d7e0f2dea7d0388da"
+      },
+      {
+        "file": "source/scripts/verify-delivery.sh",
+        "sha256": "2187ed9217e57cfc94c05d8c6f4ff78c5ce64fcf2aee921724b683073ba2d5f5"
+      },
+      {
+        "file": "source/sodium-hours.catalog.json",
+        "sha256": "b03b3c7ed0ea04e245c99cbffa46b6593376df9b5cc5d5b399a97e6c3d1d7f9e"
+      },
+      {
+        "file": "source/sodium-hours.json",
+        "sha256": "fb9ca8ad10ca3029b0d873e6190760ba6e20019bb021744e2cf5b1e8de644edb"
+      },
+      {
+        "file": "source/tools/audition.ts",
+        "sha256": "b074b4a86dd3728d3ca33ff97a8a6ec143d60078866208de39770ac9e4805f89"
+      },
+      {
+        "file": "source/tools/build.ts",
+        "sha256": "5118a5ade7e715350e0e8fcf9c8a22f99e1c7c481efa1861ec7f25d9b01b2c7e"
+      },
+      {
+        "file": "source/tools/dsp.ts",
+        "sha256": "594be2c4e5d59add7c520a30db0dbe4c853440f135653bbeb85f7ce6e2e762e4"
+      },
+      {
+        "file": "source/tools/flac.ts",
+        "sha256": "cae569cc1e9adb424d18268eeea8e9bf4aaf33c5eef396820b823c50371606fb"
+      },
+      {
+        "file": "source/tools/hook.ts",
+        "sha256": "e312d809870e004cdfffd90196cfaac1289c0f39b10005cb2bf8da2e914caa39"
+      },
+      {
+        "file": "source/tools/instruments.ts",
+        "sha256": "03bd48ff0b857989d9e71fe342da0059404867f8106e0c86522294370c857c44"
+      },
+      {
+        "file": "source/tools/kits.ts",
+        "sha256": "fe43df0dade3b4ecfa6a811c61db3b168ad4514950be0b72c2c558a45e6bda60"
+      },
+      {
+        "file": "source/tools/single.ts",
+        "sha256": "d94e48233a2a21802181b5bc8f3cf1339f08327f0117dc5c25c6497d4891ad0f"
+      },
+      {
+        "file": "source/tools/sketch-a.ts",
+        "sha256": "c5d8855a57665e4c5b6c96aa2666cf0d7ca9cffd3164f5a471f9df7755bd6a23"
+      },
+      {
+        "file": "source/tools/sketch-b.ts",
+        "sha256": "95165b1791d073195ef16a988e1cd10fe63ace661f9598661cf4afe190ca3b06"
+      },
+      {
+        "file": "source/tools/sketch-c.ts",
+        "sha256": "e4da496fa1743bf2f042864c06064b621a553b42429513e24b00bf837dbeb8bf"
+      },
+      {
+        "file": "source/tools/song.ts",
+        "sha256": "68f9d14b4d72dd312229b940aa8dcb7d983367f2189f0ff36999b23163e1ed61"
+      },
+      {
+        "file": "source/tools/theory.ts",
+        "sha256": "a3d4db570c07c5b3338462d6c2df447561fa857daf154e2a9c41429e2afe278d"
+      },
+      {
+        "file": "stems/atmos.wav",
+        "sha256": "f9724210ef43a3ff1a820f8d4eca5fe09c4c28b6570eb866b41fda3921308a32"
+      },
+      {
+        "file": "stems/bass.wav",
+        "sha256": "f89b46fb477c466c1b54ffdbf3a4eaecd46d75261b3c0597f1fa8f0ce6755cf1"
+      },
+      {
+        "file": "stems/choir.wav",
+        "sha256": "2ac6e2ac404170739e370a84b97b621aa356b632726b0b9f91b0fdbaf99f9cb0"
+      },
+      {
+        "file": "stems/fx.wav",
+        "sha256": "ced25500bb0223b46f7d1f26bf189df8baafc6e5c8959b41e306196b74a6325f"
+      },
+      {
+        "file": "stems/grit.wav",
+        "sha256": "c60713bcceb4300e95a5a38f2b169ef1f90457d5033460f85f9ba23d5bf8bd2a"
+      },
+      {
+        "file": "stems/hats.wav",
+        "sha256": "b0e5be73439426dbc027b9f066b5e64b7ef90d42e0bda9af581c0944cbf20ee8"
+      },
+      {
+        "file": "stems/keys.wav",
+        "sha256": "0006d6e292e168d726381bce3620131fe62fd107f37874cb249ab45838731389"
+      },
+      {
+        "file": "stems/kick.wav",
+        "sha256": "e5e0184b00626f92870d1776fbab52596ce0d6fa02ab7817f806c96092be66c2"
+      },
+      {
+        "file": "stems/metal.wav",
+        "sha256": "018ed4438b61c95e6095715e00ccd2f4916c94c1f2c3b8a7618e37446df06848"
+      },
+      {
+        "file": "stems/pad.wav",
+        "sha256": "a75ded1d1a0682578668c738622f13be15ee376395fbfe36fc8db03698ebc073"
+      },
+      {
+        "file": "stems/pluck-space.wav",
+        "sha256": "0dd328f1e4fd3f81cb29bfeb05657ad272ce0d467e5f098dea6eb0867984d357"
+      },
+      {
+        "file": "stems/pluck.wav",
+        "sha256": "b1ffd05ff72e771b626b0736476987e44f284a4e1230664703e4a169793c0f06"
+      },
+      {
+        "file": "stems/snare.wav",
+        "sha256": "bccb05b4a0670c4f5cde75cc694ddc54520755395614741678719d0ca93f3ef5"
+      },
+      {
+        "file": "stems/voice-space.wav",
+        "sha256": "3b49037004feb17647b5bc6a4e0e65a3d2038c2dccc92e5ebf67946a1f2cc325"
+      },
+      {
+        "file": "stems/voice.wav",
+        "sha256": "9c71d390698f7b9dc514a028224c4df24d725a3b42c7f17d5013d5aa84b1cc43"
+      }
+    ],
+    "scope": "Byte equality on the recorded Node/FFmpeg/toolchain only. Original stored MP3 predates this toolchain; comparable listening copies are separately derived with the same encoder."
+  },
+  "stems": [
+    {
+      "trackId": "kick",
+      "file": "stems/kick.wav",
+      "sha256": "e5e0184b00626f92870d1776fbab52596ce0d6fa02ab7817f806c96092be66c2",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "snare",
+      "file": "stems/snare.wav",
+      "sha256": "bccb05b4a0670c4f5cde75cc694ddc54520755395614741678719d0ca93f3ef5",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "hats",
+      "file": "stems/hats.wav",
+      "sha256": "b0e5be73439426dbc027b9f066b5e64b7ef90d42e0bda9af581c0944cbf20ee8",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "metal",
+      "file": "stems/metal.wav",
+      "sha256": "018ed4438b61c95e6095715e00ccd2f4916c94c1f2c3b8a7618e37446df06848",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "bass",
+      "file": "stems/bass.wav",
+      "sha256": "f89b46fb477c466c1b54ffdbf3a4eaecd46d75261b3c0597f1fa8f0ce6755cf1",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "grit",
+      "file": "stems/grit.wav",
+      "sha256": "c60713bcceb4300e95a5a38f2b169ef1f90457d5033460f85f9ba23d5bf8bd2a",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "keys",
+      "file": "stems/keys.wav",
+      "sha256": "0006d6e292e168d726381bce3620131fe62fd107f37874cb249ab45838731389",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "pad",
+      "file": "stems/pad.wav",
+      "sha256": "a75ded1d1a0682578668c738622f13be15ee376395fbfe36fc8db03698ebc073",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "pluck",
+      "file": "stems/pluck.wav",
+      "sha256": "b1ffd05ff72e771b626b0736476987e44f284a4e1230664703e4a169793c0f06",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "pluck-space",
+      "file": "stems/pluck-space.wav",
+      "sha256": "0dd328f1e4fd3f81cb29bfeb05657ad272ce0d467e5f098dea6eb0867984d357",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "voice",
+      "file": "stems/voice.wav",
+      "sha256": "9c71d390698f7b9dc514a028224c4df24d725a3b42c7f17d5013d5aa84b1cc43",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "voice-space",
+      "file": "stems/voice-space.wav",
+      "sha256": "3b49037004feb17647b5bc6a4e0e65a3d2038c2dccc92e5ebf67946a1f2cc325",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "choir",
+      "file": "stems/choir.wav",
+      "sha256": "2ac6e2ac404170739e370a84b97b621aa356b632726b0b9f91b0fdbaf99f9cb0",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "atmos",
+      "file": "stems/atmos.wav",
+      "sha256": "f9724210ef43a3ff1a820f8d4eca5fe09c4c28b6570eb866b41fda3921308a32",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "trackId": "fx",
+      "file": "stems/fx.wav",
+      "sha256": "ced25500bb0223b46f7d1f26bf189df8baafc6e5c8959b41e306196b74a6325f",
+      "frames": 8224650,
+      "originFrame": 0,
+      "clippedSamples": 0
+    }
+  ],
+  "sourceHashes": [
+    {
+      "file": "assets/sodium/kick/kick.wav",
+      "sha256": "b19b80bcffd62f57f2bb821699a500c85464eadee9e4c677e9fff854328485ef",
+      "bitsPerSample": 16,
+      "frames": 27342,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/kick/kick-boom.wav",
+      "sha256": "fe9f1036f42da13b1da6068bda48cf69e4bbc8effc606758d170175791b7be66",
+      "bitsPerSample": 16,
+      "frames": 105840,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/kick/kick-soft.wav",
+      "sha256": "0003bd5cfa862817fb5789d7148a1c718b24f62e1fa784a9355c134e50a78f15",
+      "bitsPerSample": 16,
+      "frames": 27342,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/snare/snare.wav",
+      "sha256": "cb4e5e8b68cec185269b8871e2d99e9b842ff15af8fcb73aa1ebe031a52e6abc",
+      "bitsPerSample": 16,
+      "frames": 24255,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/snare/snare-verb.wav",
+      "sha256": "38bdbfbd9ba4bf76f8624675ebf087da08cb9787e4f9b9096eccaf7c2ec7c917",
+      "bitsPerSample": 16,
+      "frames": 99400,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/snare/clap.wav",
+      "sha256": "f3c79d71afdf72b8d13c29b936ca60f3d94a7d4d05f3a0c765529b0fb594b25e",
+      "bitsPerSample": 16,
+      "frames": 24255,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/snare/ghost.wav",
+      "sha256": "d54ec5017ae793488d824b7ea08b99a4510d1079bd7eaa48bb03da61b50ceadc",
+      "bitsPerSample": 16,
+      "frames": 11025,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/snare/rim.wav",
+      "sha256": "3de455aa40990369e381daa00aa1f50100fb7eaff67dd6bf23439f1c2af5cc10",
+      "bitsPerSample": 16,
+      "frames": 5292,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/hats/hat.wav",
+      "sha256": "1b4ac42743a455e5fceeaf89e03fb523edb4548a4e1d8fe8eeabc63ba432f90d",
+      "bitsPerSample": 16,
+      "frames": 5292,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/hats/hat-open.wav",
+      "sha256": "d1e483d3b7eb0e1b1dfd0664c7b12d8cb127f39e10c8a99be18d5860a52e950c",
+      "bitsPerSample": 16,
+      "frames": 35280,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/hats/shaker.wav",
+      "sha256": "1e26be06353f127ae13b97478b6c579793e51f913da6e070e816663c803fa93d",
+      "bitsPerSample": 16,
+      "frames": 5733,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/hats/hydraulic.wav",
+      "sha256": "20af1156f00154de513cb5162127932277b41991c329fa7c2c640812e1288242",
+      "bitsPerSample": 16,
+      "frames": 18522,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/hats/tick.wav",
+      "sha256": "92c8acb6ea7f3da577142938b58fc36be3f49c22685930131bab1a8bb934e0ce",
+      "bitsPerSample": 16,
+      "frames": 2646,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/metal/anvil.wav",
+      "sha256": "6d9cb61e602c1a2c0dfa05683307a18ed71c2ea2d78a0ba2d9b00ed62917a912",
+      "bitsPerSample": 16,
+      "frames": 52920,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/metal/tom-low.wav",
+      "sha256": "793e85315f53d3cf04d0bca0043a22c4ec18dd4c14133c22b297f9c64ea1dade",
+      "bitsPerSample": 16,
+      "frames": 26460,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/metal/tom-high.wav",
+      "sha256": "43afdc96992207abf0aab24181a3699728651eeca59ddfdafabff2b949fe0e78",
+      "bitsPerSample": 16,
+      "frames": 22050,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/metal/pipe-bb2.wav",
+      "sha256": "54563392640d36b73ce77eb43c4e57dfd4ff99fbe53788acd2f64cfb33c1ea05",
+      "bitsPerSample": 16,
+      "frames": 26460,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/metal/pipe-db3.wav",
+      "sha256": "868e985f21aa5f5d41a6b8ec4971463041e9be42963ec214abe476f5f55cd5ed",
+      "bitsPerSample": 16,
+      "frames": 26460,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/metal/pipe-c3.wav",
+      "sha256": "bb73a46b9ce8570b02f6f65c4c7cc74989cf40abe6169f02b39b1ed199994e73",
+      "bitsPerSample": 16,
+      "frames": 26460,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/metal/pipe-eb3.wav",
+      "sha256": "6a034f613fc60eaf717cd07d7fc7c884e0b511ae2542bf407ba6996c98782359",
+      "bitsPerSample": 16,
+      "frames": 26460,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/metal/pipe-f3.wav",
+      "sha256": "4a35d137114c7a77113570705276a3f592c86bcecded47d2f04ea9d7c996d2b6",
+      "bitsPerSample": 16,
+      "frames": 26460,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/bass/db2.wav",
+      "sha256": "bbf6d1632608ceb69eb483f1037ac1ab834bfb7bfb88e9938771d0bb23a2e15f",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/eb2.wav",
+      "sha256": "6dc38e0d44d486b6b32eb1150584adbdbdd5121fe9271beb5281d5aedfb0bc8e",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/f1.wav",
+      "sha256": "64bd81c99e00f2930e97a4b80572f500386169c2895cd22a5b6edaf2ce45c104",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/c2.wav",
+      "sha256": "850d5b1aaffdec0abcf8b81bff43faec09eabb3516499559d1428b2412e7510b",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/f2.wav",
+      "sha256": "66e0dd2c145200782cf824419ceff9818fd10fb1b523d54bb54c0580c0c27a93",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/ab1.wav",
+      "sha256": "203afd5ef927e3ea9b100c4fcf34f7d66d787a8e721c33682ad65b80d88052fa",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/bb1.wav",
+      "sha256": "d992b57a22d58c4b6b82c8e9ec08bb04a226009470c6fa06c47badc94e09768a",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/b1.wav",
+      "sha256": "cc93747c8e14dc990569d79f3338a3144bb9fd23564b4ca0c2f3373ed7ec9575",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/bb2.wav",
+      "sha256": "9e314d734fc667785031d78c18b81e760c44641fb193b34487ced72ea515625d",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/ab2.wav",
+      "sha256": "f7bc844b47e6129399c74186ee82fce78093660ea35358b41b6127e329888fa6",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/d2.wav",
+      "sha256": "a04ed7232722d3c0aa4c985dfc508a2775b208351fae0bb8abad8bb54172602c",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/e2.wav",
+      "sha256": "2ed2c712ce89e633abd6132ee2fe304c3258cbbd092b8a290b06c4f9c1b3e86b",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/g1.wav",
+      "sha256": "cbea10f18bc1ee8315bd077927d622aa1c49bda0b210353ad68dc499e0ce14e7",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/db3.wav",
+      "sha256": "6b64060e7059ed7746f921f13da9780fe8420a450ee92d681032ee58b68bf27e",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/c3.wav",
+      "sha256": "af5f9b15fb6a00b91a7f7673508f291b88207f819c46fec37d56a19248e3b220",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/gb1.wav",
+      "sha256": "348a2ab3d4bd78f01df8e4f0dc7597cea03cf4e536aa310712e0dedf9afff7a0",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/bass/eb3.wav",
+      "sha256": "0301426835618a8407ce608389efc3e31867591be3ea161c0f5b3cc7d9ac5cd8",
+      "bitsPerSample": 16,
+      "frames": 132300,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/f2-p.wav",
+      "sha256": "1839480415bb1eeeb8bf0f90c964bb77939e3e43aa33004fb694bf17cbb2bb68",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/eb2-p.wav",
+      "sha256": "e250014174fa8c13c0a993c23b25b38cefea1b833748c010cbff27e6fda2071f",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/c2-p.wav",
+      "sha256": "9050b178f73cfcc42c28b47df87161ffbf161fad2021b4fb101db2c1ab6be244",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/bb1-p.wav",
+      "sha256": "e88b35dbdc423c727324b4cb20f403d8c58dd6c158865382479e2a3589b26718",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/b1-p.wav",
+      "sha256": "78265c68f3c50ce991edff25f8ba00128254a34df6e0d9f949bb275ff9b1f87d",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/bb2-p.wav",
+      "sha256": "6d1cddcafacb9a2b2930c47aaaed9a8ba9b50c74f9ddbb0a39138623e312ac78",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/ab2-p.wav",
+      "sha256": "d2efc1f4fb277a1f344755a4098a480470284b2bd5d9a4feaba628fdfce7f324",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/e2-p.wav",
+      "sha256": "e5f41ceb9b529a5d1e9afd65ba8ce0e223a6f668497151232bc071dbf2cc01f0",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/d2-p.wav",
+      "sha256": "2fed9c893c38d045019b2412cb6ed5c7784d39dbcde9280f3f6b1a8857e0a70e",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/db3-p.wav",
+      "sha256": "3b54b1c7897d012f33adf7342a95650553ba05e97c5c760618377f3da12ac3b4",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/db2-p.wav",
+      "sha256": "520f61cd1509e0ef78d94c68be4728d270a76b4ec1b54a1a5102b3884b288b0e",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/c3-p.wav",
+      "sha256": "1f27bcf0759d7a140e8bf05402e033eac12ce9bf2ddda6ba71695d3da3822f38",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/ab1-p.wav",
+      "sha256": "56c31699e8cacf8ca63686d236890044fac70d2735dd4e82adbf18dc3c026c5d",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/eb2-h.wav",
+      "sha256": "6404e351f758d483a8d445acd03d0dfd8f9779d08e7a9fa0ef605329c86e4fd3",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/eb3-p.wav",
+      "sha256": "c282e9493c8f515dd91ca4863449078d9f398acbb6e2bb3d0793741a89d0fa3c",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/f1-h.wav",
+      "sha256": "618dbbdf8bb28316404319cee60f5d49c54a96ddfaed64b0a52c2dd5cb4045e8",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/c2-h.wav",
+      "sha256": "a4535bed9cceb26b812fa3784ba0167cf97332072e2c3b8af832d40d4442853b",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/g1-p.wav",
+      "sha256": "143cfaddee311a621aca3a4d993c3fff9538312652a8989866b3b3e7ea2dd528",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/db2-h.wav",
+      "sha256": "25d9e21e92115d075888766e5b62bfc16e49f72c0eaa3495e7c30e9f13221635",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/gb2-p.wav",
+      "sha256": "2a6c3f665ae07db8648b8f77a21da764392a19f742e701d5f93a88c2294da70b",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/ab1-h.wav",
+      "sha256": "de11528e7f17dc05c2537d51ceb2faa7c7639a8ade281a4267559c855832d536",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/bb1-h.wav",
+      "sha256": "dca5f11b073dcee83111b76417c5e9400451f1ac6bee93d57a3d0db380bba7ef",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/f1-p.wav",
+      "sha256": "3037e9e0e4133ab072821fcec01bd2a594320dc8bbce44defcf61396343ba7c4",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/gb1-h.wav",
+      "sha256": "057f142a3a89c274a1092ff445b8bdfecf99edd9ce1daf0fd8c0c5230287a1ec",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/grit/f2-h.wav",
+      "sha256": "fd06c3518eadc88d0d8e872131e22b9dd141d6582605472f11405762ecf539cf",
+      "bitsPerSample": 16,
+      "frames": 114660,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/keys/ep-db.wav",
+      "sha256": "cff5ea8c55e056fbc0685507f0552c3c634bc23bc804f1901242f30acc9f1689",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-eb.wav",
+      "sha256": "e1748af6f4d98629e7f344171d9b5236f52933b7c0c27f472b8c4ead46f2d31f",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-fm.wav",
+      "sha256": "a7d05960361c26b726e7f467d1b576046426194d659b6d4bd057fb587046badf",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-c7.wav",
+      "sha256": "274056e957fc42cb86ca3ad0803c11c5388c08292ed9a44e88ae74b94c530efc",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-fm9g.wav",
+      "sha256": "a7d05960361c26b726e7f467d1b576046426194d659b6d4bd057fb587046badf",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-fm9ab.wav",
+      "sha256": "f1973931daa4636283a1a902b1f64967a116779a7029f4c329dbd9edff57e785",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-fm9bb.wav",
+      "sha256": "43eeba9ff801565d44403c5873048b723866e6eae9e93fab06370119ceb5ce82",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-fm9f.wav",
+      "sha256": "cff5ea8c55e056fbc0685507f0552c3c634bc23bc804f1901242f30acc9f1689",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-fm7eb.wav",
+      "sha256": "358aabdcebc7dd5b34c6ac24de5c4a8353faf537a361bad9f0a0432824718f69",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-bb13.wav",
+      "sha256": "b1dd015d130b08103d76701504bc07d3adfb7bcc3c86b52f341c3109f42dbbb9",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-bb9f.wav",
+      "sha256": "e029f4352d87f49a8038f08c4c358ee56c0455cbceb9bbe9049255762326ab8b",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-bb13d.wav",
+      "sha256": "df396fd9867d492bb429ed64facb0d2435625eaf5b968c98c943c9642f39bd98",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-bb13c.wav",
+      "sha256": "581c428bcbd8de4bbf9bbff4f4c26631daf3bf0e5dee1ea6687855ee9052e50e",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-bb13ab.wav",
+      "sha256": "4b4a92cfbcaaf4901413ce45b7354567489dc42a741ae0542685a9da9d6c9741",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-c7sus.wav",
+      "sha256": "e1748af6f4d98629e7f344171d9b5236f52933b7c0c27f472b8c4ead46f2d31f",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-bbm9.wav",
+      "sha256": "529a13e97bff65e4a317ee9eede60e0901461f70815e7743807b4f621cf78586",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-cm7.wav",
+      "sha256": "209923d50a47c9ce70878e9a583dd9334add6fbce0b793bb32c4c881d1f27d84",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-dbf.wav",
+      "sha256": "228541fbcf3f4bd9e6fa8174637ad07d70fcd80b794a00193512db04525c298c",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-gb.wav",
+      "sha256": "e7c7b792b5cc3f511063bd0f8c63f1a93e4519814913d3b7df7f16a271b3b964",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-fmaj9.wav",
+      "sha256": "617a258e7ffac41dab7366902034f469b93ad16481c7449f5337a2f164d3be5e",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/keys/ep-db11.wav",
+      "sha256": "3f83129edca4f95e02220ea5b9575daa1f1b10f33bd4599475f2d2b566791e91",
+      "bitsPerSample": 16,
+      "frames": 158760,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-db.wav",
+      "sha256": "78c1b58a61938dd4cde86e8562c7178749dcf58b85ee51512eec40eb75402974",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-eb.wav",
+      "sha256": "8af5048464d625ffb3a002dcedf95806414caadeda38faeccb986b362f6c70fc",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-fm.wav",
+      "sha256": "596ebbf4796ce172768aa8ba216be0c7f06582377aae16e9ba72df060f443cf4",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-c7.wav",
+      "sha256": "cbede80f501c724c6a1126c912fd884d22634f7bf920c5fc4f8aa251b84a8bc0",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-c7sus.wav",
+      "sha256": "8af5048464d625ffb3a002dcedf95806414caadeda38faeccb986b362f6c70fc",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-bbm9.wav",
+      "sha256": "93f0e82f59a76272cff9a4ede3a7a496b16f588aaa2436ed6494fff3acd5e07b",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-cm7.wav",
+      "sha256": "7be6af4dc32bdbeb1fc031f2d387a9cbdd44b4e0b707048cfbca8776b07c08be",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-dbf.wav",
+      "sha256": "675e26e8720c8411329b99c283ca5f40735f3d0a93219461342d80adc1078522",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-gb.wav",
+      "sha256": "4a51df77789c378e0a976cf030e1ed2e478ab7844ef96798e89df4928fecaf3f",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-fmaj9.wav",
+      "sha256": "b1f0dc3a4ae62723ea1ac4c39423ce816883a076d002d35d3de8503f83ca4915",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pad/pad-db11.wav",
+      "sha256": "4ef60a21db5e940841f8cd92fd8c8ea8fab7dc0ff67892a13095581c6fb02a7e",
+      "bitsPerSample": 16,
+      "frames": 246960,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck/eb5.wav",
+      "sha256": "8aa3c507b241679a94fa535e429d93ef8ceb3b31560b4bfee9be846a28477c4e",
+      "bitsPerSample": 16,
+      "frames": 48427,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/f5.wav",
+      "sha256": "79eec2ebcb303fb83f6a34b0475228273d2d098989caafeb92c8c288bbcf62dc",
+      "bitsPerSample": 16,
+      "frames": 45750,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/c5.wav",
+      "sha256": "dcff608fe72a08a3c3e9539ccf7fa8e2b46e9231bd80da5d8d1ca0fd827f887e",
+      "bitsPerSample": 16,
+      "frames": 52702,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/ab5.wav",
+      "sha256": "eebf7e07c5da94ed7229f69cd072494c5e85c0122a0aa8571025af50d7ab6c29",
+      "bitsPerSample": 16,
+      "frames": 42505,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/g5.wav",
+      "sha256": "79317df77b6767a91f88e620602219123d1d61db7992a058808f5d4b1674a9eb",
+      "bitsPerSample": 16,
+      "frames": 43744,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/ab4.wav",
+      "sha256": "d5eab2c02e13a060f72dad9766f1fa6c5a0e574e6cea770134c4d7855716f721",
+      "bitsPerSample": 16,
+      "frames": 60161,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/c6.wav",
+      "sha256": "f0e275cf280307404e3d38ef63c9fe9c66070274e8b3150ca6d10cbbbb232bf4",
+      "bitsPerSample": 16,
+      "frames": 38539,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/e5.wav",
+      "sha256": "5e241a6a39117a43696e5c4075526a04a1e6e48244502938fc8e14f2fb50bcb4",
+      "bitsPerSample": 16,
+      "frames": 47121,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/bb5.wav",
+      "sha256": "76535ed9d59a5403502e29c745165f7009a5d47d61b8fccfaa3ee83c8df42696",
+      "bitsPerSample": 16,
+      "frames": 40306,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/eb6.wav",
+      "sha256": "9a0bd3164bd91764293fc0cf44c648f1404c601fd3ad3a2b63994fc023f97e6e",
+      "bitsPerSample": 16,
+      "frames": 35559,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/f6.wav",
+      "sha256": "584b8bc7bd100abf337fd212610932e2605105ea86d8fc37f75743cb5538ff2d",
+      "bitsPerSample": 16,
+      "frames": 33892,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck/a5.wav",
+      "sha256": "c2a3a3d5d1583210815a664f20639aaddfc798837a48714b15944e55da925eb1",
+      "bitsPerSample": 16,
+      "frames": 41321,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/pluck-space/eb5.wav",
+      "sha256": "9587d787060d1ff2a1422a62e6f3c257b5b22b3927469f069b9aff3d8db0c981",
+      "bitsPerSample": 16,
+      "frames": 215700,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/f5.wav",
+      "sha256": "ef54802009c88096b1294af85378528ebcb1fd059f0950da45aeb52640b63f11",
+      "bitsPerSample": 16,
+      "frames": 215328,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/c5.wav",
+      "sha256": "4e21b4431b7d028aa2e68d45dba885a1e4048117582f1b42fb86663621f72ea4",
+      "bitsPerSample": 16,
+      "frames": 215765,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/ab5.wav",
+      "sha256": "45abd38adbdcbc819a211acbaa079b52f355f953c0312a8bebed5ececf98c80d",
+      "bitsPerSample": 16,
+      "frames": 215149,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/g5.wav",
+      "sha256": "ad73a51986af177cdd89705dfa4fc58a69b1d3c306a19e2ff23753d06846ea24",
+      "bitsPerSample": 16,
+      "frames": 215333,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/ab4.wav",
+      "sha256": "00b1c9c3f0d066024f7404ad369d22ef17320f9639584e9f6923c9e9f09efde0",
+      "bitsPerSample": 16,
+      "frames": 215500,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/c6.wav",
+      "sha256": "bd07e05a744be01e6044f93f85b71d2842eafe88f5120ed0a2aaa272746f2e41",
+      "bitsPerSample": 16,
+      "frames": 214466,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/e5.wav",
+      "sha256": "8a8e4fed183e078642e9206ec70759f3673ba6625b9df14caea875927b42df4d",
+      "bitsPerSample": 16,
+      "frames": 215505,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/bb5.wav",
+      "sha256": "779c18e222ae5b2d4e632cf968d16beed79424c90141876d8f0a6561713157fd",
+      "bitsPerSample": 16,
+      "frames": 214898,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/eb6.wav",
+      "sha256": "400563bd94e15ccf8818230aa6d3f73d8825c19835af1e0ef93d099f70652ca9",
+      "bitsPerSample": 16,
+      "frames": 213803,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/f6.wav",
+      "sha256": "f39b078311cd838ac680568df0415f607009c868e0455de1a3a8518ca3a5844f",
+      "bitsPerSample": 16,
+      "frames": 213130,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/pluck-space/a5.wav",
+      "sha256": "01b6e0ec8d1ce8ff3558c5d3470f57075da2eabfee9ea9462bb9455365b641e5",
+      "bitsPerSample": 16,
+      "frames": 215074,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice/hook-a.wav",
+      "sha256": "bfbfa027e580957eebe95091c247ab27ae57939b4fef330cdc95dc5296978329",
+      "bitsPerSample": 16,
+      "frames": 471955,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice/hook-b.wav",
+      "sha256": "69b769ba08e67c9ca84898879234c35deb94964ab59089c2e4e7064b118a4382",
+      "bitsPerSample": 16,
+      "frames": 486406,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice/frag-1.wav",
+      "sha256": "2f3a515e69213b50c05ba7f95270173a2705ec8395cfd9a94bcd974e4be47dc6",
+      "bitsPerSample": 16,
+      "frames": 104618,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice/frag-2.wav",
+      "sha256": "7e589ce4efc558cf9d1c64e4dd648a143adbe6c68cc2d158a195d8f64ddd9c53",
+      "bitsPerSample": 16,
+      "frames": 113628,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice/frag-3.wav",
+      "sha256": "355e98a183f00a8fc2c3e0cfd87452fd88e67e1ff7b460592d127d46982459f2",
+      "bitsPerSample": 16,
+      "frames": 161069,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice/frag-4.wav",
+      "sha256": "6875c9a03452d88e31b017fd7d318f3585d784d7325b32c58f354829e932295f",
+      "bitsPerSample": 16,
+      "frames": 104316,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice/slow.wav",
+      "sha256": "a1059994eee3273c3afd74d99556fe6e1257c7be76fe209d7e0f2dea7d0388da",
+      "bitsPerSample": 16,
+      "frames": 923765,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice/hook-c.wav",
+      "sha256": "cc2690e4ec68747dfdf8b533b192e3d47038a88a947f9d4c8d86c1cad34d91bd",
+      "bitsPerSample": 16,
+      "frames": 478000,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice/hook-a-final.wav",
+      "sha256": "5f50a3e2342ae996305f466a4186ba6c43af3341acd517132f453523ab7be554",
+      "bitsPerSample": 16,
+      "frames": 471978,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice/hook-peak.wav",
+      "sha256": "90904898315495d09be9573346f3836fa7ab95c6f883cfbd2e63f31331c2d33a",
+      "bitsPerSample": 16,
+      "frames": 478059,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice/hook-final.wav",
+      "sha256": "822abf11cb6d0214088a82c6519215e0f05fe3aa3fcbbf9fa2b892d2ad06f9c8",
+      "bitsPerSample": 16,
+      "frames": 536079,
+      "channels": 1
+    },
+    {
+      "file": "assets/sodium/voice-space/hook-a.wav",
+      "sha256": "32e10c71b51c59fc2ae07c05cb06f44a2cce625f291b3c8e6adb7db1bfd1c71e",
+      "bitsPerSample": 16,
+      "frames": 616409,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice-space/hook-b.wav",
+      "sha256": "979d2704cc12593a91e8c8d431b231a4eb307f6f719256697a29bceecb63d80e",
+      "bitsPerSample": 16,
+      "frames": 630789,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice-space/frag-1.wav",
+      "sha256": "1bb43280081cb55aff1421840add01af30def1a092983ff788f7aed89d16c9c5",
+      "bitsPerSample": 16,
+      "frames": 248569,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice-space/frag-2.wav",
+      "sha256": "7d74b642372b208974e9c2f6f3ab5db37637ef7ddf36028cc5aa78d53f10f55e",
+      "bitsPerSample": 16,
+      "frames": 256898,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice-space/frag-3.wav",
+      "sha256": "7f586471c752efd2d22ff2628b19651bcf721e03fb03e80d323349269f651414",
+      "bitsPerSample": 16,
+      "frames": 306091,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice-space/frag-4.wav",
+      "sha256": "7256dc111e0034cc0ae348f79dd8f9fba3c3f5d8fa44ebfcb21155d67cbd9244",
+      "bitsPerSample": 16,
+      "frames": 248569,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice-space/slow.wav",
+      "sha256": "9e1d763428e445c800487a20035e53a124b52edfc20d258938e3f40fab89a445",
+      "bitsPerSample": 16,
+      "frames": 1068254,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice-space/hook-c.wav",
+      "sha256": "990277a3e11ffe9189558a55e638c314228bc4d4971a2f181c46922dfde23fcd",
+      "bitsPerSample": 16,
+      "frames": 622461,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice-space/hook-a-final.wav",
+      "sha256": "1fc9f42add895498768a764b3196849b0748a97d40bc70939ed1c6bfca12493f",
+      "bitsPerSample": 16,
+      "frames": 616409,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice-space/hook-peak.wav",
+      "sha256": "943320d6005fbe1a7dc9296c23f4a9b65afcfb589b08d4d99621d1186d22b462",
+      "bitsPerSample": 16,
+      "frames": 622461,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/voice-space/hook-final.wav",
+      "sha256": "3ff5e1f30f665f55751c9fc204d5d132d582f31f04c5c139fa2e3f05bb63c4cb",
+      "bitsPerSample": 16,
+      "frames": 679982,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ch-db.wav",
+      "sha256": "4d8e2c14789a947bee93624801d9165c99251ff6abc972fe09aa1ab6d4418cfe",
+      "bitsPerSample": 16,
+      "frames": 264600,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ch-bbm9.wav",
+      "sha256": "a99c9dc0c0006e93d53ef3a7bd8c04dbc5f09b10eead6aeff7de96fb5c6ffd08",
+      "bitsPerSample": 16,
+      "frames": 264600,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ch-eb.wav",
+      "sha256": "21e8e2d5790235fe131321ffdd554c12b575ae81cba719d1cf7d985e87c1b370",
+      "bitsPerSample": 16,
+      "frames": 264600,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ch-cm7.wav",
+      "sha256": "e3239ad683eb0fa07ea11a042e90b4fa0e5057700ec5d94c234b78d30337b309",
+      "bitsPerSample": 16,
+      "frames": 264600,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ch-fm.wav",
+      "sha256": "7620b3cfafcf83013cbe5943d24a155b796e6aa242335ba731f695bd2772687d",
+      "bitsPerSample": 16,
+      "frames": 264600,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ch-dbf.wav",
+      "sha256": "def54e5ab6e65d66d9929a9ad0c8a2607d6d732792d1c2046c2af39ec0103bd1",
+      "bitsPerSample": 16,
+      "frames": 264600,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ch-gb.wav",
+      "sha256": "3750a690b6570d794261d2db1ca6d9f3fa612652aca44c34c14b982c35683abb",
+      "bitsPerSample": 16,
+      "frames": 264600,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ch-c7.wav",
+      "sha256": "eeae1701c84fb7d5694d5d52cbdbea4f74adb0939c8b7cdd37a3e914a006256a",
+      "bitsPerSample": 16,
+      "frames": 264600,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ens-a.wav",
+      "sha256": "5c148beb9105ba69a072c3327e2b45d78605bf5755ee17d52f6dcade24594cb5",
+      "bitsPerSample": 16,
+      "frames": 571320,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ens-peak.wav",
+      "sha256": "5da6c5c12f89af1156132962ecc33442681d639568df862217f21f29248e1d8b",
+      "bitsPerSample": 16,
+      "frames": 584135,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ens-final.wav",
+      "sha256": "3a9254a7c91d98c7c7dc2c69305d76b2fc334cf83a3089a3fa0884dfb6097ef2",
+      "bitsPerSample": 16,
+      "frames": 637220,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ch-fmaj9.wav",
+      "sha256": "b65200c304e37b2fd5ff861bb0728b0ea66c69544b27663058f6628907680636",
+      "bitsPerSample": 16,
+      "frames": 308700,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/choir/ch-fmaj9-end.wav",
+      "sha256": "86af76090ca6d53cadf1e8447eb66a4d8936e4bf70ec03c1e46e51ec268286f2",
+      "bitsPerSample": 16,
+      "frames": 375818,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/atmos/rain.wav",
+      "sha256": "9318e932af48aad207f383ea2ee96b403f983a80464cef905a59b7ebbf612d5d",
+      "bitsPerSample": 16,
+      "frames": 1058400,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/atmos/lamp.wav",
+      "sha256": "3ff969eb250d0952709e189876ae82cb41c48c46c7cb7a74a87bbe1ebdea1b5d",
+      "bitsPerSample": 16,
+      "frames": 529025,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/atmos/siren.wav",
+      "sha256": "01d0d16e317eb63aaff19455c18654367d58598a965035eeabf2c1089b92e0e0",
+      "bitsPerSample": 16,
+      "frames": 391629,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/atmos/rain-2.wav",
+      "sha256": "18cdb322756a0eeb203307c1c6254e1fbfc6b373cade4f5a02ccfc35c19b69fb",
+      "bitsPerSample": 16,
+      "frames": 1014300,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/fx/swell-fm.wav",
+      "sha256": "8070180aa5d8dad1c1ac3f749c9ed7195f81880790246137e8e7960881a51280",
+      "bitsPerSample": 16,
+      "frames": 84825,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/fx/swell-db.wav",
+      "sha256": "ebda622223aa4a5322a56b8ca7c164aab0a12f1b627b6c48c1123bf9efca536d",
+      "bitsPerSample": 16,
+      "frames": 113594,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/fx/impact.wav",
+      "sha256": "0f4e4d4969fbb0c2d9e3c0e5e3b2867bf04a4cfeee0b642cb76b9c8a8392f532",
+      "bitsPerSample": 16,
+      "frames": 220500,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/fx/swell-c.wav",
+      "sha256": "24060b41c83cbb16dc3c05e383e3f851d040911b78977a88ea444195ac94065f",
+      "bitsPerSample": 16,
+      "frames": 127957,
+      "channels": 2
+    },
+    {
+      "file": "assets/sodium/fx/glitch.wav",
+      "sha256": "c7ffaddcbaf55391d02890285e0bab2050e5b4c189a4947c78e76054cec77b3a",
+      "bitsPerSample": 16,
+      "frames": 22050,
+      "channels": 2
+    }
+  ],
+  "runtime": {
+    "node": "v24.19.0",
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1"
+    },
+    "render": {
+      "node": "v24.19.0",
+      "processor": {
+        "name": "ffmpeg",
+        "version": "6.1.1"
+      }
+    }
+  },
+  "limitations": [
+    "PCM16 sources retain their existing source resolution; newly calculated fractional detail survives to PCM24, but no lost source information is recovered.",
+    "Nonzero PCM24 low bytes are a diagnostic, not proof of source resolution or audible benefit; separate known-fraction precision tests establish correct processing and quantization.",
+    "Independently quantized post-track PCM24 stems need not sum byte for byte to the master, which sums original Float64 tracks before master processing.",
+    "No normalization or new mastering decisions are applied. True-peak/LUFS figures describe the unchanged authored mastering settings.",
+    "Cross-correlation, mono, boundary and transient measurements are engineering diagnostics. Human listening and release approval remain pending.",
+    "Generated sounds, composition and code licenses remain pending owner declaration. No commercial clearance or publication is implied."
+  ],
+  "evidence": {
+    "verifierSha256": "45cd9d5522a8b61a2cc8934c3520a1d1610e7a2897299922cac5b10506b04f7c",
+    "originalCatalogSha256": "b03b3c7ed0ea04e245c99cbffa46b6593376df9b5cc5d5b399a97e6c3d1d7f9e"
+  }
+}

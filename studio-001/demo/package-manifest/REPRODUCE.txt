@@ -1,0 +1,6 @@
+DaemonV12 Signature Rack 1.0.0 package (interface 1.0.0). Engine base e2962cc1a443c841cd6ca7cb2cc56c5ebabf0e99; Node 22.18+; FFmpeg with libmp3lame.
+Verify:      node studio-001/rack/cli.ts verify PACKAGE
+Regenerate:  node studio-001/rack/cli.ts bounce PACKAGE/score.json NEW_PACKAGE
+Render:      node bin/daemonv12.js render PACKAGE/main.json --out-dir NEW_RENDER --stems --format wav,mp3
+             (dry.json renders the instrument parts without context parts or room)
+Assets are canonical PCM16; phrases play at rate 1 and velocity 1, so the engine sum equals the rack take.

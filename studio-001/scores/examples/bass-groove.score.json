@@ -1,0 +1,20 @@
+{
+  "schema": "daemonv12.signature-rack.score/1",
+  "title": "Bass groove (E minor, 104 BPM)",
+  "bpm": 104, "key": "E minor", "swing": 0.56, "seed": 5, "tailSeconds": 1.5, "masterGainDb": 0,
+  "description": "Living Bass example: a new two-bar riff played warm, then again as the machine with triplet gear motion and a growl ending.",
+  "sections": [ { "id": "warm", "bars": 2, "development": "warm West Coast riff" }, { "id": "machine", "bars": 2, "development": "same riff, machine state, triplets then growl, final dive" } ],
+  "parts": [
+    { "id": "bass", "instrument": "living-bass", "gainDb": -2, "room": 0.05,
+      "macro": [[0, 0], [5, 0], [10, 1], [16, 1]],
+      "motion": [ { "fromBeat": 0, "toBeat": 8, "preset": "eighths" }, { "fromBeat": 8, "toBeat": 13, "preset": "triplets" }, { "fromBeat": 13, "toBeat": 20, "preset": "growl" } ],
+      "notes": [
+        [0, 1, "E1", 0.95, { "articulation": "accent", "scoop": 2 }], [1.25, 0.25, "E1", 0.5, { "articulation": "ghost" }], [1.5, 0.5, "G1", 0.75], [2, 1, "B1", 0.8, { "slide": 0.08 }], [3, 0.5, "D2", 0.75], [3.5, 0.5, "B1", 0.7, { "slide": 0.05 }],
+        [4, 1, "C2", 0.95, { "articulation": "accent" }], [5.25, 0.25, "C2", 0.5, { "articulation": "ghost" }], [5.5, 0.25, "C3", 0.7, { "articulation": "staccato" }], [5.75, 0.25, "B2", 0.7, { "articulation": "staccato" }], [6, 1, "G1", 0.85, { "slide": 0.12 }], [7, 1, "A1", 0.8, { "slide": 0.06 }],
+        [8, 1, "E1", 0.95, { "articulation": "accent", "scoop": 2 }], [9.25, 0.25, "E1", 0.5, { "articulation": "ghost" }], [9.5, 0.5, "G1", 0.75], [10, 1, "B1", 0.8, { "slide": 0.08 }], [11, 0.5, "D2", 0.75], [11.5, 0.5, "B1", 0.7, { "slide": 0.05 }],
+        [12, 1, "C2", 0.95, { "articulation": "accent" }], [13.25, 0.25, "C2", 0.5, { "articulation": "ghost" }], [13.5, 0.25, "C3", 0.7, { "articulation": "staccato" }], [13.75, 0.25, "B2", 0.7, { "articulation": "staccato" }], [14, 2, "E1", 0.9, { "slide": 0.14, "dive": 5, "diveBeats": 1 }]
+      ] },
+    { "id": "kick", "instrument": "context/kick", "gainDb": -6, "repeats": [ { "fromBeat": 0, "toBeat": 16, "lengthBeats": 4, "notes": [[0, 0.5, "E1", 1], [1.75, 0.5, "E1", 0.6], [2.5, 0.5, "E1", 0.85]] } ] },
+    { "id": "snare", "instrument": "context/snare", "gainDb": -9, "room": 0.2, "repeats": [ { "fromBeat": 0, "toBeat": 16, "lengthBeats": 2, "notes": [[1, 0.5, "C4", 0.85]] } ] }
+  ]
+}

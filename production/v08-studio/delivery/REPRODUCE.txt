@@ -1,0 +1,7 @@
+Node 22.18+; FFmpeg with libmp3lame; use the exact engine source and toolchain recorded in metadata/provenance.json.
+Verify: node scripts/headliner.ts hashes PACKAGE
+Render the preserved project: node scripts/render-production24.ts PACKAGE/source/main.json NEW_RENDER --reuse-voices
+Reproduce the complete package: node scripts/headliner-production24.ts replay PACKAGE NEW_PACKAGE
+PCM16 sources remain PCM16 sources; Float64 processing preserves newly calculated fractions until independent PCM24 exports.
+MP3 is encoded directly from the final PCM24 master with no gain or normalization change.
+Human listening, rights clearance and release-specific mastering remain pending.

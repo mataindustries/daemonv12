@@ -1,0 +1,325 @@
+{
+  "formatVersion": 1,
+  "title": "RELAY — v0.8 studio integration study (main)",
+  "bpm": 96,
+  "timeSignature": "4/4",
+  "key": "D minor",
+  "bars": 6,
+  "seed": 80043,
+  "description": "signal: Bars introduce the figure; the voice answers over a warm bass.; relay: The voice takes the figure while the bass and clock turn mechanical.; home: A shorter answer returns to D; the transformations relax into the tail.",
+  "render": {
+    "tail": {
+      "seconds": 2
+    }
+  },
+  "master": {
+    "gainDb": -2.35
+  },
+  "tracks": [
+    {
+      "id": "bass",
+      "description": "Living Bass (living-bass 1.0.0+mutation-001-A), warm → machine; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/bass/kit.json"
+      },
+      "mix": {
+        "gainDb": -4.65,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "signal"
+        },
+        {
+          "bar": 3,
+          "pattern": "relay"
+        },
+        {
+          "bar": 5,
+          "pattern": "home"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "signal",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-signal",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "relay",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-relay",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "home",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-home",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "voice",
+      "description": "Impossible Voice (impossible-voice 1.0.0+mutation-001-B), human → impossible; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/voice/kit.json"
+      },
+      "mix": {
+        "gainDb": -2.15,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "signal"
+        },
+        {
+          "bar": 3,
+          "pattern": "relay"
+        },
+        {
+          "bar": 5,
+          "pattern": "home"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "signal",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-signal",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "relay",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-relay",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "home",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-home",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bars",
+      "description": "Modal bar (mechanical-orchestra/bar 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/bars/kit.json"
+      },
+      "mix": {
+        "gainDb": -10.7,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "signal"
+        },
+        {
+          "bar": 3,
+          "pattern": "relay"
+        },
+        {
+          "bar": 5,
+          "pattern": "home"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "signal",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-signal",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "relay",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-relay",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "home",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-home",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clock",
+      "description": "Escapement clock (mechanical-orchestra/clock 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/clock/kit.json"
+      },
+      "mix": {
+        "gainDb": -18.45,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "signal"
+        },
+        {
+          "bar": 3,
+          "pattern": "relay"
+        },
+        {
+          "bar": 5,
+          "pattern": "home"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "signal",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-signal",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "relay",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-relay",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "home",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-home",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "room",
+      "description": "Wet-only room: FDN reverb of the per-part sends (post gain), rendered by the rack.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/room/kit.json"
+      },
+      "mix": {
+        "gainDb": 0,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "signal"
+        },
+        {
+          "bar": 3,
+          "pattern": "relay"
+        },
+        {
+          "bar": 5,
+          "pattern": "home"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "signal",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-signal",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "relay",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-relay",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "home",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-home",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
