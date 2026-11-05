@@ -5,14 +5,10 @@ import { basename, dirname, join, resolve } from 'node:path';
 import { compileProjectFile, stemFileName } from './pipeline.ts';
 import { sampleTriggers, playbackBudget } from './sample-render.ts';
 import { outputInAssets } from './project/assets.ts';
-import { automatedGainPan, gainPan, fitFloat } from './render/production.ts';
-import { sumFloatPrecise, quantize24, fitPcm24, analyzePcm24 } from './render/precision.ts';
-import { createAudioProcessor, type AudioProcessor } from './render/ffmpeg.ts';
-import { applyDucking } from './render/dynamics.ts';
-import { MAX_PCM_FRAMES } from './render/pcm.ts';
+import { automatedGainPan, gainPan, fitFloat, sumFloatPrecise, quantize24, fitPcm24, analyzePcm24,
+  createAudioProcessor, type AudioProcessor, applyDucking, MAX_PCM_FRAMES, VoiceSampleCache } from './render/index.ts';
 import { renderPlan, automationFrames } from './timing/render-plan.ts';
 import { ENGINE_VERSION } from './version.ts';
-import { VoiceSampleCache } from './render/voice-cache.ts';
 
 const hash = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex');
 const identity = (file: string, bytes: Buffer) => ({ file, sha256: hash(bytes), bytes: bytes.length });

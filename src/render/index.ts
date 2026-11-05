@@ -10,3 +10,4 @@ export { createAudioProcessor, inspectFfmpeg, type AudioProcessor } from './ffmp
 export { executablePath } from './environment.ts';
 export { extractWavFrames } from './clip.ts';
 export { voiceReuseKey, VoiceSampleCache } from './voice-cache.ts';
+export { sumFloatPrecise, quantize24, fitPcm24, analyzePcm24 } from './precision.ts';
