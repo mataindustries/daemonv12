@@ -4,7 +4,7 @@
  *   <dir>/assets/<kit>/<hit>.wav + kit.json, <dir>/<name>.json, <dir>/<name>.catalog.json
  * Only engine-documented project fields are emitted (formatVersion 1, engine 0.7.0).
  */
-import { mkdirSync, writeFileSync, rmSync, existsSync } from 'node:fs';
+import { mkdirSync, writeFileSync, rmSync, existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { encodeWav, peakOf, trimTail, dbAmp, SR, type Wave } from './dsp.ts';
@@ -133,9 +133,20 @@ export class Song {
     }
     return catalog;
   }
-  write(dir: string, name: string, assetRoot = 'assets/sodium'): { project: string; catalog: Record<string, unknown>[] } {
+  /** Confirms the on-disk kits hold exactly the sounds this score registers (same names, same order). */
+  assetsMatch(dir: string, assetRoot = 'assets/sodium'): boolean {
+    for (const kit of this.kits.values()) {
+      const f = join(dir, assetRoot, kit.name, 'kit.json');
+      if (!existsSync(f)) return false;
+      const disk = (JSON.parse(readFileSync(f, 'utf8')) as { samples: { name: string }[] }).samples.map(x => x.name).join(',');
+      if (disk !== kit.entries.map(e => e.name).join(',')) return false;
+    }
+    return true;
+  }
+  write(dir: string, name: string, assetRoot = 'assets/sodium', projectOnly = false): { project: string; catalog: Record<string, unknown>[] } {
     mkdirSync(dir, { recursive: true });
-    const catalog = this.writeAssets(dir, assetRoot);
+    if (projectOnly && !this.assetsMatch(dir, assetRoot)) throw new Error('--project-only refused: the score registers sounds that differ from the kits on disk; run a full build.');
+    const catalog = projectOnly ? (JSON.parse(readFileSync(join(dir, `${name}.catalog.json`), 'utf8')) as { sounds: Record<string, unknown>[] }).sounds : this.writeAssets(dir, assetRoot);
     const project = join(dir, `${name}.json`);
     writeFileSync(project, JSON.stringify(this.projectJson(assetRoot), null, 2) + '\n');
     return { project, catalog };

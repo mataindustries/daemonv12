@@ -34,6 +34,7 @@ export class Palette {
   tick() { return this.hats.add('tick', () => I.tick(), 'Machine tick: resonant 5.2 kHz noise and a 7.3 kHz blip, 5.5 ms.'); }
   anvil() { return this.metal.add('anvil', () => I.modal(I.midiHz(84), [1, 2.76, 5.4, 8.93], [0.5, 0.3, 0.15, 0.08], [1, 0.5, 0.3, 0.15], 1.2, 0.5), 'Modal bar strike tuned to C6 (free-free bar ratios 1, 2.76, 5.40, 8.93), stereo-split modes.', 'C6'); }
   pipe() { return this.metal.add('pipe', () => I.modal(I.midiHz(53), [1, 2.0, 3.01, 4.03, 5.1], [0.45, 0.32, 0.2, 0.12, 0.08], [1, 0.5, 0.35, 0.2, 0.12], 1.0, 0.6, 93, 0.6), 'Struck pipe tuned to F3: near-harmonic tube modes with a breathy strike.', 'F3'); }
+  pipeAt(midi: number) { const h = `pipe-${hitName(midi)}`; return this.metal.add(h, () => I.modal(I.midiHz(midi), [1, 2.0, 3.01, 4.03, 5.1], [0.26, 0.18, 0.12, 0.08, 0.05], [1, 0.45, 0.3, 0.18, 0.1], 0.6, 0.6, 93 + midi, 0.6), `Struck pipe tuned to ${hitName(midi).toUpperCase()}, short (0.26 s body): follows the chord root so the 3-3-2 grid never drones.`, hitName(midi).toUpperCase()); }
   chain() { return this.metal.add('chain', () => I.chain(), 'Chain rattle: eleven small modal contacts at seeded intervals and pans.'); }
   tomLow() { return this.metal.add('tom-low', () => I.tom(I.midiHz(48)), 'Pitched tom C3: sine with 45% pitch drop and breath noise.', 'C3'); }
   tomHigh() { return this.metal.add('tom-high', () => I.tom(I.midiHz(53), 0.5, 113), 'Pitched tom F3.', 'F3'); }
@@ -44,7 +45,7 @@ export class Palette {
   // ---- harmony
   epChord(name: string, midis: number[], len = 3.6) { return this.keys.add(name, () => I.epChord(midis, len), `FM electric-piano chord (tine ratio 1 + 14x bark, stereo tremolo 4.6 Hz): MIDI ${midis.join(' ')}.`, name); }
   padChord(name: string, midis: number[], len = 6.2, bright = 1) { return this.pad.add(name, () => I.padChord(midis, len, 181, bright), `Night strings: six detuned saws per note, L/R split, breathing low-pass, baked 3.2 s FDN hall: MIDI ${midis.join(' ')}.`, name); }
-  choirChord(name: string, midis: number[], vowel: I.Vowel = 'a', len = 7) { return this.choir.add(name, () => I.choirChord(midis, vowel, len), `Synthetic choir: four formant voices per note (vowel ${vowel}), independent vibrato/detune, baked 3.6 s FDN hall: MIDI ${midis.join(' ')}.`, name); }
+  choirChord(name: string, midis: number[], vowel: I.Vowel = 'a', len = 7, hold?: number, fade = 0) { return this.choir.add(name, () => I.choirChord(midis, vowel, len, 191, 0.7, hold ?? len - 0.6, fade), `Synthetic choir: four formant voices per note (vowel ${vowel}), independent vibrato/detune, baked 3.6 s FDN hall${fade ? `, voices fade over ${fade} s and the hall decays inside the sample` : ''}: MIDI ${midis.join(' ')}.`, name); }
   // ---- machine (low-pass gate pluck), dry and wet
   pluckNote(midi: number, bright = 1) {
     const h = `${hitName(midi)}${bright !== 1 ? '-b' : ''}`, render = once(`pluck-${h}-${this.tag}`, () => I.lpgPluck(midi, 1.7, 2, 141, bright));
@@ -57,8 +58,11 @@ export class Palette {
     this.voiceSpace.add(name, () => I.spaceFor(render()[0]!, this.song.beatSec, { rt60: 2.8, verb: 0.75, delay: 0.42, fb: 0.36 }), 'Wet-only space for the voice phrase: FDN hall (2.8 s) + dotted-eighth ping-pong.');
     return this.voice.add(name, render, `Synthetic talkbox phrase (${notes.length} notes): saw+pulse source, five-formant vowel bank, portamento, delayed vibrato, breath; one continuous legato take.`);
   }
+  ensemble(name: string, notes: I.VNote[], opts: Partial<I.VoiceOpts> = {}, voices = 4, octave = -12) {
+    return this.choir.add(name, () => I.ensemblePhrase(notes, { tickSec: this.song.tickSec, ...opts }, voices, octave), `Ensemble phrase: ${voices} formant voices sing the hook ${octave ? `${octave > 0 ? '+' : ''}${octave} semitones` : 'in unison'}, independent vibrato/detune/timing, stereo spread, baked 3 s FDN hall.`);
+  }
   // ---- atmosphere and fx
-  rain(len = 24) { return this.atmos.add('rain', () => I.rain(len), 'Night rain: seeded droplet resonances, pink hiss bed, brown-noise freeway rumble, two passing-car sweeps.'); }
+  rain(len = 24, name = 'rain', seed = 201) { return this.atmos.add(name, () => I.rain(len, seed), `Night rain (seed ${seed}): seeded droplet resonances, pink hiss bed, brown-noise freeway rumble, two passing-car sweeps.`); }
   lamp() { return this.atmos.add('lamp', () => I.lamp(12), 'Sodium lamp: flickering odd-heavy buzz tuned to F2 with a band-passed edge.', 'F2'); }
   siren(name: string, contour: [number, number][], len = 9) { return this.atmos.add(name, () => I.siren(contour, len), 'Distant siren tracing the hook\'s slide contour, low-passed 1.8 kHz, drowned in a 4.8 s FDN hall.'); }
   impact() { return this.fx.add('impact', () => I.impact(), 'Impact: 83 -> 31 Hz sub drop, low-passed noise burst, F5-tuned modal ring, 3.8 s FDN hall.'); }

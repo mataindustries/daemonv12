@@ -77,3 +77,75 @@ planned counterweight. Owner listening should confirm or overturn this choice.
 (near mono). Hats −39.6 LUFS, pad −35, keys −34 against bass −13.4. Rebalanced (bass −4.5 dB,
 hats +9, pad/keys +7–8, wet tracks +3–4). A spectrogram of the voice stem showed broadband clicks at
 vowel changes; fixed by gliding formant state (22 ms) instead of jumping.
+
+## 3. V1 — first complete single (3:08)
+
+70 bars + tail, 15 tracks, 2,311 notes, 149 generated sounds. Form: intro "haze" (1–8) · groove
+"boulevard" (9–16) · hook 1 (17–24) · verse "overpass" (25–32) · breakdown "mulholland" (33–40,
+half-speed hook, Neapolitan → V) · hook 2 "freeway" (41–48) · signal loss (49–52, 3-3-3-3-4 stop-time,
+voice stutter, two beats of silence) · final (53–64: choir sings the hook, C6 summit, E→F over
+F major) · outro "dawn" (65–70). Engine: −17.7 LUFS, −3.7 dBTP, no clipping anywhere.
+Preserved in `versions/v1/` (project, MP3, analysis, WAV hash).
+
+**V1 critique (measurement + score; no listening).**
+
+1. **Flat arc, weak physical payoff** (whole form). Section RMS: groove −18.0, hook 1 −17.9, verse −17.9,
+   hook 2 −17.1, final −17.1 dBFS; side-energy fraction 0.03 in hook 1 and 0.037 in the final. The final
+   is compositionally new but physically almost the same as hook 1. *Cause:* hook 1 already uses the
+   full kit and the breakdown pad is the loudest pad of the song. *Change:* lighten hook 1, make the
+   breakdown intimate, widen and thicken hook 2 and the final.
+2. **Near-mono image with drums** (all beat sections, side fraction ≤ 0.04, correlation ≥ 0.93).
+   *Cause:* the loud parts (kick, bass, snare core, dry voice, dry pluck) are mono and centred; wide
+   parts are quiet. *Change:* raise wide parts, place contrasting parts left/right (keys and metal left,
+   hats and pluck right).
+3. **Groove mid-hole and dull top** (bars 9–16: sub 13.5 dB over mid; 6 kHz+ band 17–19 dB under the
+   mids everywhere). *Cause:* keys too quiet to carry the groove, hats −32.7 LUFS. *Change:* keys up in
+   the groove, hats up, more snare crack.
+
+**Defects found.** (a) The struck pipe, tuned to F3 and hit six times per bar in the 3-3-2 pattern,
+forms an F drone (visible as a continuous ~175 Hz line from bar 25) that clashes with the E♮ leading
+tone over C7♭9 — it undercuts the hook's central tension. *Fix:* pipe follows the chord root, shorter
+decay. (b) Kick track pre-clip peak −0.5 dBFS when the boom stacks on a main kick. *Fix:* lower boom
+velocities. (c) The master sits at −17.7 LUFS with no soft-clip stage. *Fix in V2:* glue compressor
+and a tanh soft-clip stage, target ≈ −11 to −12 LUFS with ≤ −1 dBTP (not loudness-chasing).
+
+**Must survive into V2:** the hook's rhythm and contour, the slide into A♭5, the E♮/E♭ deception,
+the groove pattern, the signal-loss rhythm, the two-beat silence, the F-major resolution.
+
+## 4. V2 — balance, arc and master
+
+**What changed and why (mapped to the V1 critique).**
+- Pipe now follows the chord root with a 0.26 s body (defect a). Kick track gets its own tanh soft clip
+  and lower boom velocities (defect b).
+- Hook 1 lightened (no ghosts, no open hats, kick ×0.84); breakdown made intimate (slow voice
+  velocity 0.92→0.5, bass 0.72→0.52, pad/choir down); Hook 2 and final widened and thickened (choir
+  chords under the ensemble, pad, grit and wet tracks up, open-hat lift, impacts on each final pass).
+- Placement contrast for width: keys and metal left, hats and dry pluck right.
+- Hierarchy fixed after a per-stem K-weighted section matrix (`analysis/stem_matrix.py`) showed the
+  kick as the loudest stem everywhere: voice +2.5 dB, snare +2.5 dB (with its own soft clip), kick −2 dB.
+- **A first V2 render (V2a, preserved) changed almost nothing physically** — section differences stayed
+  within ~1 dB. Diagnosis: my master compressor (−18 dB threshold, 2:1) sat above the mix RMS all
+  the time and halved every section difference. Fixing that sent true peak to +0.69 dBTP, so the master
+  was chosen offline with `analysis/master_sim.py`, which reproduces the engine's master chain on the
+  stems (verified: −10.1 vs engine −10.16 LUFS, identical peak and true peak). Chosen chain: −4.5 dB,
+  high-pass 28 Hz, glue compressor −11 dB 1.6:1, tanh 6 dB, tanh 0 dB ceiling.
+
+**V2 measurements.** −11.7 LUFS integrated, LRA 6.1 LU, −1.4 dBTP, sample peak −2.6 dBFS, no clipped
+samples. Relative to hook 1: breakdown −3.5 dB (V1 −1.4), final +1.4 (V1 +0.8), resolution +2.3.
+Side-energy fraction: hook 1 0.040 → hook 2 0.052 → final 0.075 (V1: 0.030/0.029/0.037).
+Soft clip exceeds 1 dB of gain reduction on 9.7 % of loud samples, 3 dB on 0.4 %.
+
+**V2 critique (score + measurement; no listening).**
+1. **The groove fails the lead-muted test in the mids** (bars 9–16). Its 500–2000 Hz band sits 8.5 dB
+   below the hooks'; with no voice, the mid register holds only sparse keys stabs and pluck answers.
+   *Change:* give the groove a real mid-register part — keys comping louder and with a moving top line —
+   and a drum break at bar 16.
+2. **The intro spends the reveal** (bars 1–8). The machine plays the *complete* hook twice, including the
+   E♮ leading tone, before the voice ever sings; the voice's entrance adds timbre but no new melody.
+   *Change:* the machine manages only the call; its answer breaks off after the first cell. The full
+   answer, and the E♮, are first heard from the voice (bars 19–20).
+3. **Repeated transition gestures** — two impacts 1.3 s apart (bar 32 beat 3 and bar 33), and four
+   similar "stop" silences (bars 8, 32, 40, 52). *Change:* drop the bar-32 impact; bar 40 runs straight
+   into Hook 2 on a tom fill; silences escalate: one beat (8), a hanging E♮ (32), total silence (52).
+   Also still slightly dark (upper-mid 11.7 dB and highs 16.7 dB under the mids in the final):
+   brighten hats/snare/keys a little.

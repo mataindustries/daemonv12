@@ -325,6 +325,23 @@ export function voicePhrase(notes: VNote[], o: VoiceOpts): Wave {
   scale(out, o.gain ?? 1);
   return edgeFade(out, 0.0005, 0.05);
 }
+/** The city sings: a melody rendered by several formant voices (independent seed, vibrato, detune and a few ms of
+ *  timing spread), spread across the stereo field, with a baked hall. `octave` shifts the whole line. Stereo. */
+export function ensemblePhrase(notes: VNote[], o: VoiceOpts, voices = 4, octave = -12, spreadMs = 12, hall = 0.45): Wave[] {
+  const rng = new Rng((o.seed ?? 401) + 7); let L = new Float64Array(0), R = new Float64Array(0);
+  const takes: { w: Wave; pan: number; off: number }[] = [];
+  for (let k = 0; k < voices; k++) {
+    const shifted = notes.map(x => ({ ...x, p: x.p + octave, vib: (x.vib ?? 1) * (0.7 + 0.5 * rng.next()) }));
+    const w = voicePhrase(shifted, { ...o, seed: (o.seed ?? 401) + 31 * k, detune: rng.bi() * 10, vibRate: (o.vibRate ?? 5.3) * (0.9 + 0.2 * rng.next()), formantScale: (o.formantScale ?? 1) * (0.95 + 0.08 * rng.next()), gain: 0.4 });
+    takes.push({ w, pan: voices === 1 ? 0 : (k / (voices - 1)) * 1.5 - 0.75, off: n(rng.next() * spreadMs / 1000) });
+  }
+  const len = Math.max(...takes.map(t => t.w.length + t.off)); L = new Float64Array(len); R = new Float64Array(len);
+  for (const { w, pan, off } of takes) for (let i = 0; i < w.length; i++) { L[i + off] += w[i]! * (1 - Math.max(0, pan)); R[i + off] += w[i]! * (1 + Math.min(0, pan)); }
+  const [vl, vr] = fdnReverb(L, R, { rt60: 3.0, size: 1.25, damp: 4600, predelayMs: 24, mod: 1.4, lowCut: 240, seed: (o.seed ?? 401) + 3 }, 3.2);
+  const M = vl.length, OL = new Float64Array(M), OR = new Float64Array(M);
+  for (let i = 0; i < M; i++) { OL[i] = (L[i] ?? 0) + vl[i]! * hall; OR[i] = (R[i] ?? 0) + vr[i]! * hall; }
+  return [edgeFade(OL, 0.001, 0.3), edgeFade(OR, 0.001, 0.3)];
+}
 /** Wet-only space for a dry mono part: damped FDN hall plus a dotted-eighth ping-pong. */
 export function spaceFor(dry: Wave, beatSec: number, o: { rt60?: number; verb?: number; delay?: number; fb?: number; predelayMs?: number; seed?: number; damp?: number } = {}): Wave[] {
   const [rl, rr] = fdnReverb(dry, dry, { rt60: o.rt60 ?? 2.6, size: 1.15, damp: o.damp ?? 5200, predelayMs: o.predelayMs ?? 26, mod: 1.2, lowCut: 260, seed: o.seed ?? 161 }, (o.rt60 ?? 2.6) * 1.2);
@@ -353,7 +370,7 @@ export function epChord(midis: number[], len = 3.6, vel = 0.8, seed = 171): Wave
       L[i + off] += v * (1 + trem); R[i + off] += v * (1 - trem);
     }
   });
-  const lp = new Biquad('lp', 5200, 0.7), lp2 = new Biquad('lp', 5200, 0.7), hp = new Biquad('hp', 110, 0.7), hp2 = new Biquad('hp', 110, 0.7);
+  const lp = new Biquad('lp', 6800, 0.7), lp2 = new Biquad('lp', 6800, 0.7), hp = new Biquad('hp', 110, 0.7), hp2 = new Biquad('hp', 110, 0.7);
   return [edgeFade(L.map(v => hp.tick(lp.tick(v))), 0.0005, 0.08), edgeFade(R.map(v => hp2.tick(lp2.tick(v))), 0.0005, 0.08)];
 }
 /** Night strings: six detuned saws per note, slow-breathing low-pass, true L/R decorrelation, baked hall. */
@@ -377,14 +394,14 @@ export function padChord(midis: number[], len = 6.2, seed = 181, bright = 1, att
   return [edgeFade(L, 0.001, 0.3), edgeFade(R, 0.001, 0.3)];
 }
 /** Synthetic choir chord: four formant voices per note with independent vibrato, baked hall. */
-export function choirChord(midis: number[], vowel: Vowel = 'a', len = 7, seed = 191, attack = 0.7): Wave[] {
+export function choirChord(midis: number[], vowel: Vowel = 'a', len = 7, seed = 191, attack = 0.7, hold = len - 0.6, fade = 0): Wave[] {
   const N = n(len), L = new Float64Array(N), R = new Float64Array(N), rng = new Rng(seed);
   for (const m of midis) for (let k = 0; k < 4; k++) {
-    const notes: VNote[] = [{ t: 0, d: Math.round((len - 0.6) / 0.0006793), p: m, vowel: k % 2 ? 'o' : vowel, to: vowel, vib: 0.55 + 0.3 * rng.next() }];
+    const notes: VNote[] = [{ t: 0, d: Math.round(hold / 0.0006793), p: m, vowel: k % 2 ? 'o' : vowel, to: vowel, vib: 0.55 + 0.3 * rng.next() }];
     const v = voicePhrase(notes, { tickSec: 0.0006793, seed: seed + m * 13 + k, formantScale: 0.97 + 0.06 * rng.next(), breath: 0.08, buzz: 0.12, vibRate: 4.6 + rng.next() * 1.2, vibCents: 16, detune: rng.bi() * 9, gain: 0.25 });
     const pan = (k / 3) * 1.4 - 0.7 + rng.bi() * 0.15, off = n(rng.next() * 0.04);
     for (let i = 0; i < v.length && i + off < N; i++) {
-      const e = smooth((i / SR) / attack);
+      const t = i / SR, e = smooth(t / attack) * (fade > 0 ? 1 - smooth((t - (hold - fade)) / fade) : 1);
       L[i + off] += v[i]! * e * (1 - Math.max(0, pan)); R[i + off] += v[i]! * e * (1 + Math.min(0, pan));
     }
   }
@@ -402,7 +419,7 @@ export function rain(len = 24, seed = 201): Wave[] {
   for (let i = 0; i < N; i++) {
     const s = 0.75 + 0.25 * sw[i]!;
     L[i] = ll.tick(hl.tick(bedL[i]!)) * 0.18 * s; R[i] = lr.tick(hr.tick(bedR[i]!)) * 0.18 * s;
-    const r = rl.tick(rum[i]!) * 1.6 * (0.7 + 0.3 * sw[i]!); L[i] += r; R[i] += r;
+    const r = rl.tick(rum[i]!) * 0.8 * (0.7 + 0.3 * sw[i]!); L[i] += r; R[i] += r;
   }
   const drops = Math.round(len * 70);
   for (let k = 0; k < drops; k++) {
