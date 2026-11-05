@@ -75,6 +75,7 @@ export async function renderProduction24(projectPath: string, outputDirectory: s
       sourcePrecision: 'Sources are PCM16. No lost source detail is recovered. Newly computed fractional processing detail is retained.',
       stems: stems.map(stem => ({ ...stem, precision: 'post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization' })),
       sources: [...compilation.assets!].sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([file, asset]) => ({ ...identity(file, asset.bytes), bitsPerSample: asset.pcm ? 16 : null })),
+      ...(compilation.sidechain ? { sidechain: { ...identity(compilation.sidechain.file, compilation.sidechain.bytes), bitsPerSample: 16 } } : {}),
       limits: { maximumSeconds: 600, interpolationTaps: 1_000_000_000, performedVoiceBytes: 134217728, tracks: 15 },
       ...(cache ? {interpolationReuse: cache.provenance()} : {}),
       export: { sampleRate: 44100, channels: 2, bitsPerSample: 24, dither: false, normalization: false },

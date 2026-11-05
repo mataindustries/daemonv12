@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
@@ -43,6 +43,18 @@ test('invalid section, pitch, phrase bounds and variation fail before writing', 
     const score = JSON.parse(readFileSync(example, 'utf8')) as Score; mutate(score);
     const path = join(tmp, 'score.json'); writeFileSync(path, JSON.stringify(score));
     assert.throws(() => buildPackage(path, join(tmp, 'never-created')));
+  }
+});
+
+test('variation names cannot overwrite canonical score, catalog, verification or main project', t => {
+  const tmp = mkdtempSync(join(tmpdir(), 'headliner-reserved-')); t.after(() => rmSync(tmp, { recursive: true, force: true }));
+  for (const name of ['main', 'score', 'catalog', 'verification']) {
+    const score = JSON.parse(readFileSync(example, 'utf8')) as Score;
+    score.variations = { [name]: { omitTracks: [score.tracks[0]!.id] } };
+    const path = join(tmp, `${name}.json`), output = join(tmp, `${name}-package`);
+    writeFileSync(path, JSON.stringify(score));
+    assert.throws(() => buildPackage(path, output), /reserved variation name/);
+    assert.equal(existsSync(output), false, name);
   }
 });
 

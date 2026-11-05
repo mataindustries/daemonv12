@@ -57,6 +57,11 @@ For reusable original-source production, see the [HEADLINER foundation](producti
 deterministic instruments, native multisamples, expressive phrase bounces, sections,
 variations and hash-verified project packaging, with a nine-second v0.7 proof.
 
+The optional [Production24 integration](docs/PRODUCTION24_INTEGRATION.md) adds
+Float64 processing, PCM24 delivery and a locked-composition SODIUM HOURS A/B.
+The [HEADLINER PCM24 adapter](docs/HEADLINER_PRODUCTION24.md) preserves source
+precision limitations, original mix decisions and explicit provenance.
+
 Measured examples (Linux; Ubuntu's FluidSynth 2.3.4, FluidR3_GM and FFmpeg 6.1.1):
 
 | Demo | What it is | Result |

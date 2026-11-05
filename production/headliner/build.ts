@@ -92,7 +92,8 @@ function validate(score: Score) {
     }
   }
   for (const [name, variation] of Object.entries(score.variations)) {
-    id(name); assert.notEqual(name, 'main');
+    id(name);
+    assert.ok(!['main', 'score', 'catalog', 'verification'].includes(name), `reserved variation name: ${name}`);
     assert.ok(variation.omitTracks.length < score.tracks.length);
     variation.omitTracks.forEach(t => assert.ok(score.tracks.some(track => track.id === t)));
   }

@@ -12,6 +12,7 @@ import { diagnostic } from '../src/diagnostics.ts';
 import { builtinEffect } from '../src/render/dynamics.ts';
 import { createAudioProcessor, type AudioProcessor } from '../src/render/ffmpeg.ts';
 import { VoiceSampleCache } from '../src/render/voice-cache.ts';
+import { createHash } from 'node:crypto';
 
 const processor: AudioProcessor = { identity: {name:'test-float-pass-through',version:'1'},
   async effects(samples, effects, limit) { let value = samples; for (const effect of effects) {
@@ -83,6 +84,17 @@ test('track overload remains floating until master attenuation, while exported s
   const result=await renderProduction24(f.path,join(f.root,'render'),{processor});
   assert.equal(readFileSync(result.wav).readIntLE(44,3),5120000); assert.equal(result.manifest.master.clippedSamples,0);
   assert.equal(result.manifest.stems[0]!.clippedSamples,8820); assert.ok(result.manifest.warnings.some(w=>w.includes('stems overloaded')));
+});
+test('PCM24 manifest inventories a separately authored ducking source', async t => {
+  const f = fixture(t, 1000);
+  const sidechain = encodePcm(new Int16Array(4410 * 2).fill(500));
+  writeFileSync(join(f.root, 'assets/sidechain.wav'), sidechain);
+  f.project.master.ducking = { source: 'assets/sidechain.wav', amountDb: 6, thresholdDb: -40, attackMs: 10, releaseMs: 100 };
+  f.save();
+  const result = await renderProduction24(f.path, join(f.root, 'ducked'), { processor });
+  assert.deepEqual(result.manifest.sidechain, { file: 'assets/sidechain.wav',
+    sha256: createHash('sha256').update(sidechain).digest('hex'), bytes: sidechain.length, bitsPerSample: 16 });
+  assert.ok(result.manifest.master.ducking);
 });
 test('invalid or GM projects and processing failures leave no output or intermediate artifacts',async t=>{
   const f=fixture(t), out=join(f.root,'failed');

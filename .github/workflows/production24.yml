@@ -1,0 +1,22 @@
+name: Production24 full audio
+on:
+  pull_request:
+    paths:
+      - 'src/precision-render.ts'
+      - 'src/render/precision.ts'
+      - 'src/render/voice-cache.ts'
+      - 'scripts/headliner-production24.ts'
+      - 'scripts/sodium-production24.ts'
+      - 'scripts/verify-sodium-production24.ts'
+      - 'tests/precision.test.ts'
+      - 'tests/voice-reuse.test.ts'
+      - 'tests/headliner-production24.test.ts'
+      - 'tests/sodium-production24.test.ts'
+      - 'tests/sodium-production24-orchestration.test.ts'
+      - '.github/workflows/production24.yml'
+      - '.github/workflows/full-audio.yml'
+permissions:
+  contents: read
+jobs:
+  full-audio:
+    uses: ./.github/workflows/full-audio.yml
