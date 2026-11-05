@@ -1,7 +1,10 @@
-# DAEMON//HEADLINER 001 — creative-production log
+# DAEMON//HEADLINER 001 — production notes (detailed evidence)
 
-Working title: **SODIUM HOURS**. Status: in production on branch
-`claude/peaceful-bardeen-f7swi8`. Not published, merged or released; owner review pending.
+The short log is [CREATIVE_LOG.md](CREATIVE_LOG.md). This file keeps the full record, written as the work
+happened: thesis, directions, and every version's critique, change and measurement.
+
+Title: **SODIUM HOURS**. Branch `claude/peaceful-bardeen-f7swi8`. Not published, merged or released; owner
+review pending.
 
 **Listening disclosure.** The producer (an AI agent) cannot hear audio. Every judgment below is
 labelled as one of: *score reasoning* (notes, rhythm, harmony as written), *measurement*
@@ -207,4 +210,4 @@ sixteenth-note A♭5 passing tone gliding into the summit slide, present identic
 
 **Stop decision.** V5 is the fifth serious version, the default budget. Remaining ideas (e.g. grit
 answers in Hook 2's rests — the bass and grit already pop there) are speculative; the record is locked
-at V5. Final measurements are in `delivery/`.
+at V5. Final measurements are in `delivery/` and the [README](README.md).
