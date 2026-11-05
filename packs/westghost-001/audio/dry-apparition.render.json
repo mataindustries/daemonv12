@@ -1,0 +1,288 @@
+{
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "dry-apparition.json",
+    "sha256": "c42a834c36adc5201e6d7414b126827b583187f6296c6644f9acc3aebd9f5f61",
+    "formatVersion": 1,
+    "seed": 12003
+  },
+  "midi": {
+    "file": "dry-apparition.mid",
+    "sha256": "0eb0f25fba2df39a2712af31ec11adcd6071330054034288939298cccb19df72",
+    "bytes": 93,
+    "ppq": 960,
+    "durationTicks": 30720,
+    "durationSeconds": 16,
+    "notes": 0
+  },
+  "renderer": {
+    "name": "daemonv12-production",
+    "version": "2",
+    "settings": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "panLaw": "linear stereo balance; unity center",
+      "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+      "normalization": false,
+      "dither": false,
+      "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+      "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+      "saturation": "tanh-v1; no output compensation",
+      "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+    }
+  },
+  "gmRenderer": null,
+  "gmSource": null,
+  "soundfont": null,
+  "samples": {
+    "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+    "assets": [
+      {
+        "file": "assets/westghost001/dry-apparition/apparition-0f16bcc6668844cd.wav",
+        "sha256": "3b0764ff1d4a5861c54c93680f06d8967f289e7806892f143c355aecd404954a",
+        "bytes": 326384,
+        "frames": 163170,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/dry-apparition/apparition-37452b55e96dc5fe.wav",
+        "sha256": "44efe601e9a8b92edd05259f32c1af1507141d0a13bd5f4d6482747fee22b2b8",
+        "bytes": 326384,
+        "frames": 163170,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/dry-apparition/apparition-475e0c9bc6fdd1fc.wav",
+        "sha256": "baee963b7aef7f5915458f53a2aab5e8835ef3045e655704369a76d428cb4703",
+        "bytes": 326384,
+        "frames": 163170,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/dry-apparition/apparition-c407e5f297322e09.wav",
+        "sha256": "d07f5d3728080ca1522bdc0b8287d41d1cde8ebad84f3a119f1e739c69730cbd",
+        "bytes": 326384,
+        "frames": 163170,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/dry-apparition/apparition.kit.json",
+        "sha256": "12f96641ec71e3ed4f7be6832676bf7fcfeea242864ee8926cff2e2ea845ac5f",
+        "bytes": 504,
+        "kind": "drumkit"
+      }
+    ],
+    "tracks": [
+      {
+        "trackId": "apparition",
+        "trackIndex": 0,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/dry-apparition/apparition.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/dry-apparition/apparition-37452b55e96dc5fe.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-apparition/apparition-c407e5f297322e09.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-apparition/apparition-0f16bcc6668844cd.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-apparition/apparition-475e0c9bc6fdd1fc.wav",
+            "tick": 23040,
+            "frame": 529200,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      }
+    ]
+  },
+  "timeline": {
+    "authoredDurationTicks": 30720,
+    "authoredFrames": 705600,
+    "duration": {
+      "bars": 8
+    },
+    "tail": "none",
+    "requestedFinalFrames": 705600,
+    "audioEndFrames": 705600,
+    "resultingFrames": 705600,
+    "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+  },
+  "production": {
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v24.19.0"
+    },
+    "tracks": [
+      {
+        "trackId": "apparition",
+        "gainDb": -1.5,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -10.488447
+      }
+    ],
+    "master": {
+      "gainDb": 0,
+      "effects": [],
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -10.488023
+    },
+    "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+  },
+  "mix": {
+    "clippedSamples": 0,
+    "gm": "sum processed independent tracks",
+    "samples": "sum exported track PCM"
+  },
+  "wav": {
+    "file": "dry-apparition.wav",
+    "sha256": "9843377ccfde108f2d329b739f0955378c7aa46b8c9b4d1ca88072750b24039b",
+    "bytes": 2822444,
+    "frames": 705600,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 16,
+    "durationSeconds": 16
+  },
+  "stems": [
+    {
+      "trackId": "apparition",
+      "trackIndex": 0,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/dry-apparition/apparition.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/dry-apparition/apparition-37452b55e96dc5fe.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-apparition/apparition-c407e5f297322e09.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-apparition/apparition-0f16bcc6668844cd.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-apparition/apparition-475e0c9bc6fdd1fc.wav",
+            "tick": 23040,
+            "frame": 529200,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "dry-apparition.stems/apparition.wav",
+        "sha256": "9843377ccfde108f2d329b739f0955378c7aa46b8c9b4d1ca88072750b24039b",
+        "bytes": 2822444,
+        "frames": 705600,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 16
+      }
+    }
+  ],
+  "audioTool": {
+    "name": "ffmpeg",
+    "version": "6.1.1"
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 16,
+      "frames": 705600,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -10.488023,
+      "rmsDbfs": -21.115755,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -17.31,
+      "loudnessRangeLu": 2.6,
+      "truePeakDbfs": -10.46
+    },
+    "tracks": [
+      {
+        "trackId": "apparition",
+        "analysis": {
+          "durationSeconds": 16,
+          "frames": 705600,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -10.488023,
+          "rmsDbfs": -21.115755,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -17.31,
+          "loudnessRangeLu": 2.6,
+          "truePeakDbfs": -10.46
+        }
+      }
+    ]
+  },
+  "mp3": {
+    "file": "dry-apparition.mp3",
+    "sha256": "764c9f4dc03417f2b5648b50327a87671b174344a1823936dc5533d3a64f6463",
+    "bytes": 385611,
+    "codec": "libmp3lame",
+    "bitrateKbps": 192
+  }
+}

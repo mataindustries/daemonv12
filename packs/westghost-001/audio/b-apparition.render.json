@@ -1,0 +1,879 @@
+{
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "b-apparition.json",
+    "sha256": "5128dcc4558eb2e9e060f3e416fbe214c327f635e06a10dcf180fb8348ba1ba0",
+    "formatVersion": 1,
+    "seed": 12003
+  },
+  "midi": {
+    "file": "b-apparition.mid",
+    "sha256": "49acccb6f4893c0498a7c292dbfe3842bf9b49c010834f9785fa05e0a3a44fcf",
+    "bytes": 79,
+    "ppq": 960,
+    "durationTicks": 46080,
+    "durationSeconds": 24,
+    "notes": 0
+  },
+  "renderer": {
+    "name": "daemonv12-production",
+    "version": "2",
+    "settings": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "panLaw": "linear stereo balance; unity center",
+      "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+      "normalization": false,
+      "dither": false,
+      "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+      "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+      "saturation": "tanh-v1; no output compensation",
+      "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+    }
+  },
+  "gmRenderer": null,
+  "gmSource": null,
+  "soundfont": null,
+  "samples": {
+    "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+    "assets": [
+      {
+        "file": "assets/westghost001/b-apparition/apparition-14f51915d15d46d4.wav",
+        "sha256": "3761fac7732c3e6a957c2155c32e80f53296798506eed02ac8fa37fd4241f991",
+        "bytes": 127934,
+        "frames": 63945,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition-3323fb6311d8378d.wav",
+        "sha256": "c9ba5cfd29644a5589664c461eaf471ae978a07a5a5ea59c5479e3db49b80134",
+        "bytes": 145574,
+        "frames": 72765,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition-880eb3b54a189d72.wav",
+        "sha256": "37e21d476c8228a6c394ea2a41896b94aa0715697ab99a778e0ec9ae6752ea35",
+        "bytes": 127934,
+        "frames": 63945,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition-a01d21be33f6ee60.wav",
+        "sha256": "71831abe2b436693eab726d5efada3194e85ba90434af0230fb8f91a412cf53a",
+        "bytes": 198494,
+        "frames": 99225,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition-c48fa9893e040150.wav",
+        "sha256": "9f474303c992542fab81fe4b7fee2b80162bf251aa33d1f8e7af8be2f7c9ee82",
+        "bytes": 233774,
+        "frames": 116865,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition-c68cbd8765ae2f88.wav",
+        "sha256": "171b53b3527dd426321c37edbf0a953a0c184b05cc75f9bb0647afecb4d80405",
+        "bytes": 198494,
+        "frames": 99225,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition-d662219db5cfd841.wav",
+        "sha256": "c207dea08778c37805f4b09ca99f080b70d2c49cdbbf8a17c21699e5ec72cf15",
+        "bytes": 321974,
+        "frames": 160965,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition-df5f5b6a0f2b70e8.wav",
+        "sha256": "238e45e600a124f5c82abffa69142092ef2f36cc0dde9f0db6b38a23a448a235",
+        "bytes": 180854,
+        "frames": 90405,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition-ea3df6be275daf72.wav",
+        "sha256": "8a897b1665bb3f29728278b1d89cce9f19e39988b885f257910e14977799e87d",
+        "bytes": 154394,
+        "frames": 77175,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition-f0f3c2f44d1c67d5.wav",
+        "sha256": "f57d2881534c468f33488741a511af497ba172700c8dd762f44ffbfd299f87f4",
+        "bytes": 154394,
+        "frames": 77175,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition-ff4da22926880418.wav",
+        "sha256": "1f71ac6e6f70c557c2c907fa260697bab03d02c1c20d4d9ec6458cb72e62892e",
+        "bytes": 127934,
+        "frames": 63945,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/apparition.kit.json",
+        "sha256": "b5243ba8776fd72a66e22a65855174179ed375c0ec4a5f6ff9f7a3ccd60d83a6",
+        "bytes": 1310,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/westghost001/b-apparition/bloom-12260edfcab376d8.wav",
+        "sha256": "745310a977a09a0206ff8f45b72c307f1e65e1e03a78551a70690c3dc328e731",
+        "bytes": 546884,
+        "frames": 273420,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/bloom-7cc35ebdeb212e58.wav",
+        "sha256": "c18115b5237cfb4593bc43cfe0b8be406a1fc7a190f238a36b3041d4033f9879",
+        "bytes": 546884,
+        "frames": 273420,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/bloom-ca8eae08bed2a2b3.wav",
+        "sha256": "fd26e123ce5a5d6eb1974fa20630127262c3bfa59f8d08882ad086f1e67d6eed",
+        "bytes": 546884,
+        "frames": 273420,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/bloom.kit.json",
+        "sha256": "43020a0e55e6ccc6ccf9a3dcf5c8d33e4ff6eaa78a3e3c9a68593d054e2879cf",
+        "bytes": 374,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/westghost001/b-apparition/gravity-3555306125eaa586.wav",
+        "sha256": "b0b6d36befe6b38a58fb98de4365eb56401a090cfa589da80fedb44d181d68a3",
+        "bytes": 388124,
+        "frames": 194040,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/gravity-b1924dd26c3100a9.wav",
+        "sha256": "3d5d3c7b75ea0b1cb5a1ea5526798a11aa4ca16fba71f42e59de1c2c1c2ca320",
+        "bytes": 388124,
+        "frames": 194040,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/gravity-b99481e1308ba6f4.wav",
+        "sha256": "26533f6e1cbc813295ac3ddb1739c92d57589dd00119c55fcd109f7fa1184ad2",
+        "bytes": 388124,
+        "frames": 194040,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/gravity.kit.json",
+        "sha256": "cbfa08984754658983656b3c4edf50a693b4d9013ab505e688e647c852b2489f",
+        "bytes": 380,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/westghost001/b-apparition/whisper-19a1f662611e4603.wav",
+        "sha256": "d5a379830ef4af51bcd49a27859f29e13ac976b3c6247ca9463626d8f4c6947c",
+        "bytes": 123524,
+        "frames": 61740,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/whisper-6447fd9b6075531f.wav",
+        "sha256": "fe1aa7d6a6982f806053369a3fc7ab56fabb3b4880f4375e121ff36a94f59490",
+        "bytes": 123524,
+        "frames": 61740,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/whisper-8b21df256b554ed5.wav",
+        "sha256": "414dc8fe980b94d86274c04dc4f357aed34b1aea2e878b25ab53be3f53f98d6e",
+        "bytes": 123524,
+        "frames": 61740,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/whisper-c9aa42057a6a6419.wav",
+        "sha256": "950286d04b4206adbdc77509ebe405cbb19a96429ce2520d0182fcb1032bba2c",
+        "bytes": 123524,
+        "frames": 61740,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/b-apparition/whisper.kit.json",
+        "sha256": "971736464c97191e3526459544b47f6d8d8a70b007c5c54f6c7b787efbf76a14",
+        "bytes": 492,
+        "kind": "drumkit"
+      }
+    ],
+    "tracks": [
+      {
+        "trackId": "apparition",
+        "trackIndex": 0,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/b-apparition/apparition.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/b-apparition/apparition-ea3df6be275daf72.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-14f51915d15d46d4.wav",
+            "tick": 2880,
+            "frame": 66150,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-df5f5b6a0f2b70e8.wav",
+            "tick": 5760,
+            "frame": 132300,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-c48fa9893e040150.wav",
+            "tick": 9600,
+            "frame": 220500,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-f0f3c2f44d1c67d5.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-880eb3b54a189d72.wav",
+            "tick": 18240,
+            "frame": 418950,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-c68cbd8765ae2f88.wav",
+            "tick": 21120,
+            "frame": 485100,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-a01d21be33f6ee60.wav",
+            "tick": 25920,
+            "frame": 595350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-3323fb6311d8378d.wav",
+            "tick": 30720,
+            "frame": 705600,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-ff4da22926880418.wav",
+            "tick": 33600,
+            "frame": 771750,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-d662219db5cfd841.wav",
+            "tick": 36480,
+            "frame": 837900,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "whisper",
+        "trackIndex": 1,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/b-apparition/whisper.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/b-apparition/whisper-19a1f662611e4603.wav",
+            "tick": 6960,
+            "frame": 159863,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/whisper-c9aa42057a6a6419.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/whisper-6447fd9b6075531f.wav",
+            "tick": 23280,
+            "frame": 534713,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/whisper-8b21df256b554ed5.wav",
+            "tick": 29520,
+            "frame": 678038,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "bloom",
+        "trackIndex": 2,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/b-apparition/bloom.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/b-apparition/bloom-7cc35ebdeb212e58.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/bloom-ca8eae08bed2a2b3.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/bloom-12260edfcab376d8.wav",
+            "tick": 30720,
+            "frame": 705600,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "gravity",
+        "trackIndex": 3,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/b-apparition/gravity.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/b-apparition/gravity-b1924dd26c3100a9.wav",
+            "tick": 1920,
+            "frame": 44100,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/gravity-b99481e1308ba6f4.wav",
+            "tick": 17280,
+            "frame": 396900,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/gravity-3555306125eaa586.wav",
+            "tick": 32640,
+            "frame": 749700,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      }
+    ]
+  },
+  "timeline": {
+    "authoredDurationTicks": 46080,
+    "authoredFrames": 1058400,
+    "duration": {
+      "bars": 12
+    },
+    "tail": "none",
+    "requestedFinalFrames": 1058400,
+    "audioEndFrames": 1058400,
+    "resultingFrames": 1058400,
+    "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+  },
+  "production": {
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v24.19.0"
+    },
+    "tracks": [
+      {
+        "trackId": "apparition",
+        "gainDb": -3,
+        "pan": -0.05,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -13.130185
+      },
+      {
+        "trackId": "whisper",
+        "gainDb": -8,
+        "pan": 0.25,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -19.273509
+      },
+      {
+        "trackId": "bloom",
+        "gainDb": -15,
+        "pan": -0.25,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -26.020977
+      },
+      {
+        "trackId": "gravity",
+        "gainDb": -13,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -22.750596
+      }
+    ],
+    "master": {
+      "gainDb": 0,
+      "effects": [],
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -9.865382
+    },
+    "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+  },
+  "mix": {
+    "clippedSamples": 0,
+    "gm": "sum processed independent tracks",
+    "samples": "sum exported track PCM"
+  },
+  "wav": {
+    "file": "b-apparition.wav",
+    "sha256": "db163835917883118f6980ba6e53545e9ce37c38ebaa8e3a5ee30b27e59d734e",
+    "bytes": 4233644,
+    "frames": 1058400,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 16,
+    "durationSeconds": 24
+  },
+  "stems": [
+    {
+      "trackId": "apparition",
+      "trackIndex": 0,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/b-apparition/apparition.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/b-apparition/apparition-ea3df6be275daf72.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-14f51915d15d46d4.wav",
+            "tick": 2880,
+            "frame": 66150,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-df5f5b6a0f2b70e8.wav",
+            "tick": 5760,
+            "frame": 132300,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-c48fa9893e040150.wav",
+            "tick": 9600,
+            "frame": 220500,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-f0f3c2f44d1c67d5.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-880eb3b54a189d72.wav",
+            "tick": 18240,
+            "frame": 418950,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-c68cbd8765ae2f88.wav",
+            "tick": 21120,
+            "frame": 485100,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-a01d21be33f6ee60.wav",
+            "tick": 25920,
+            "frame": 595350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-3323fb6311d8378d.wav",
+            "tick": 30720,
+            "frame": 705600,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-ff4da22926880418.wav",
+            "tick": 33600,
+            "frame": 771750,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/apparition-d662219db5cfd841.wav",
+            "tick": 36480,
+            "frame": 837900,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "b-apparition.stems/apparition.wav",
+        "sha256": "63e9f2d4a5d82b1d193231a7cacf4f56f23fdf281bf12621ab5959cdd96301d6",
+        "bytes": 4233644,
+        "frames": 1058400,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 24
+      }
+    },
+    {
+      "trackId": "whisper",
+      "trackIndex": 1,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/b-apparition/whisper.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/b-apparition/whisper-19a1f662611e4603.wav",
+            "tick": 6960,
+            "frame": 159863,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/whisper-c9aa42057a6a6419.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/whisper-6447fd9b6075531f.wav",
+            "tick": 23280,
+            "frame": 534713,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/whisper-8b21df256b554ed5.wav",
+            "tick": 29520,
+            "frame": 678038,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "b-apparition.stems/whisper.wav",
+        "sha256": "966f5e121bcb395b610e631e75f960106d83f66c56b2e052949d5dcc44325aa8",
+        "bytes": 4233644,
+        "frames": 1058400,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 24
+      }
+    },
+    {
+      "trackId": "bloom",
+      "trackIndex": 2,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/b-apparition/bloom.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/b-apparition/bloom-7cc35ebdeb212e58.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/bloom-ca8eae08bed2a2b3.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/bloom-12260edfcab376d8.wav",
+            "tick": 30720,
+            "frame": 705600,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "b-apparition.stems/bloom.wav",
+        "sha256": "18762e5db879b4e485b02beebb02a12bff7bde9375bf3f0777b74e7322498bed",
+        "bytes": 4233644,
+        "frames": 1058400,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 24
+      }
+    },
+    {
+      "trackId": "gravity",
+      "trackIndex": 3,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/b-apparition/gravity.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/b-apparition/gravity-b1924dd26c3100a9.wav",
+            "tick": 1920,
+            "frame": 44100,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/gravity-b99481e1308ba6f4.wav",
+            "tick": 17280,
+            "frame": 396900,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/b-apparition/gravity-3555306125eaa586.wav",
+            "tick": 32640,
+            "frame": 749700,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "b-apparition.stems/gravity.wav",
+        "sha256": "4f835f520033c1406ff5596edada817b5d0167800e54b2fd2efbbcd260acdc73",
+        "bytes": 4233644,
+        "frames": 1058400,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 24
+      }
+    }
+  ],
+  "audioTool": {
+    "name": "ffmpeg",
+    "version": "6.1.1"
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 24,
+      "frames": 1058400,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -9.865382,
+      "rmsDbfs": -20.898404,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -18.1,
+      "loudnessRangeLu": 4.7,
+      "truePeakDbfs": -9.77
+    },
+    "tracks": [
+      {
+        "trackId": "apparition",
+        "analysis": {
+          "durationSeconds": 24,
+          "frames": 1058400,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -13.129838,
+          "rmsDbfs": -21.811158,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -18.3,
+          "loudnessRangeLu": 4.4,
+          "truePeakDbfs": -13.13
+        }
+      },
+      {
+        "trackId": "whisper",
+        "analysis": {
+          "durationSeconds": 24,
+          "frames": 1058400,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -19.272682,
+          "rmsDbfs": -37.094677,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -26.68,
+          "loudnessRangeLu": 3.9,
+          "truePeakDbfs": -18.56
+        }
+      },
+      {
+        "trackId": "bloom",
+        "analysis": {
+          "durationSeconds": 24,
+          "frames": 1058400,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -26.022721,
+          "rmsDbfs": -40.101521,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -36.27,
+          "loudnessRangeLu": 13.2,
+          "truePeakDbfs": -25.97
+        }
+      },
+      {
+        "trackId": "gravity",
+        "analysis": {
+          "durationSeconds": 24,
+          "frames": 1058400,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -22.75195,
+          "rmsDbfs": -28.983928,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -28.66,
+          "loudnessRangeLu": 6.6,
+          "truePeakDbfs": -22.75
+        }
+      }
+    ]
+  },
+  "mp3": {
+    "file": "b-apparition.mp3",
+    "sha256": "a03a6e4b206e93e7b8e8ff72a544f7cdca51cbb8eaf80f7a7b10800f2675995c",
+    "bytes": 577454,
+    "codec": "libmp3lame",
+    "bitrateKbps": 192
+  }
+}
