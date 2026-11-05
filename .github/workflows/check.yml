@@ -29,8 +29,8 @@ jobs:
       - name: CPU proof regression tests (synthetic media, no production rendering)
         if: matrix.node == '22.18.0'
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends ffmpeg
+          source "$RUNNER_TEMP/daemonv12-audio-tools/env.sh"
+          export PATH="$(dirname "$DAEMONV12_FFMPEG"):$PATH"
           python -c "from pathlib import Path; p=Path('tools/angeles2099_actions/requirements.lock'); Path('work').mkdir(exist_ok=True); Path('work/numpy.lock').write_text(next(s for s in p.read_text().splitlines() if s.startswith('numpy=='))+'\n')"
           python -m pip install --only-binary=:all: --no-deps --require-hashes -r work/numpy.lock
           python -m unittest discover -s tools/angeles2099_actions/tests -v
