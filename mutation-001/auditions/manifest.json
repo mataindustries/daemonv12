@@ -296,6 +296,212 @@
           "mp3Sha256": "c056553d10feb5f5b50e373495be480c3e9c0ec49271771e3da64fd3336e4778"
         }
       ]
+    },
+    "C-mechanical-orchestra": {
+      "title": "MECHANICAL ORCHESTRA",
+      "key": "A minor",
+      "bpm": 112,
+      "command": "node mutation-001/tools/c-mechanical-orchestra.ts",
+      "node": "v22.23.4",
+      "generator": [
+        {
+          "file": "mutation-001/tools/dsp.ts",
+          "sha256": "594be2c4e5d59add7c520a30db0dbe4c853440f135653bbeb85f7ce6e2e762e4"
+        },
+        {
+          "file": "mutation-001/tools/instruments.ts",
+          "sha256": "03bd48ff0b857989d9e71fe342da0059404867f8106e0c86522294370c857c44"
+        },
+        {
+          "file": "mutation-001/tools/score.ts",
+          "sha256": "dab96ceaeb276b6fc05d11265ab57896c0648801f925576f62a21caf03f6dccf"
+        },
+        {
+          "file": "mutation-001/tools/mechanical-orchestra.ts",
+          "sha256": "d2a942830030c6dc5a8d632ed3c72143c7d3664d53b3bfcb42e3b9b0623a1532"
+        },
+        {
+          "file": "mutation-001/tools/deliver.ts",
+          "sha256": "b4dd44a8ae361f905ae2f4d65f04438609fea222a4c61e468322ba4adc924532"
+        },
+        {
+          "file": "mutation-001/tools/c-mechanical-orchestra.ts",
+          "sha256": "7a597c26c04bc4ac9f0e643daa425aec44646f3a0123d1c3c946c2f450de14fc"
+        }
+      ],
+      "measurements": {
+        "note": "Plain signal measurements of the dry renders, mono fold-down (RMS re file peak, spectral centroid, energy share above 2 kHz) and per-family RMS (dBFS, before loudness normalisation). Not quality scores and not listening impressions.",
+        "c1PerSection": [
+          {
+            "segment": "bars 1-2",
+            "from": 0,
+            "to": 4.29,
+            "rmsDb": -23.3,
+            "centroidHz": 855,
+            "above2000HzPct": 5.4
+          },
+          {
+            "segment": "bars 3-4",
+            "from": 4.29,
+            "to": 8.57,
+            "rmsDb": -19.9,
+            "centroidHz": 647,
+            "above2000HzPct": 4.3
+          },
+          {
+            "segment": "bars 5-6",
+            "from": 8.57,
+            "to": 12.86,
+            "rmsDb": -17.8,
+            "centroidHz": 626,
+            "above2000HzPct": 2.9
+          },
+          {
+            "segment": "bars 7-8",
+            "from": 12.86,
+            "to": 17.14,
+            "rmsDb": -16.8,
+            "centroidHz": 665,
+            "above2000HzPct": 3.3
+          },
+          {
+            "segment": "bars 9-10",
+            "from": 17.14,
+            "to": 21.43,
+            "rmsDb": -16.5,
+            "centroidHz": 674,
+            "above2000HzPct": 2.5
+          },
+          {
+            "segment": "bars 11-12",
+            "from": 21.43,
+            "to": 25.71,
+            "rmsDb": -17.8,
+            "centroidHz": 740,
+            "above2000HzPct": 3.6
+          }
+        ],
+        "c1FamilyRmsDb": [
+          {
+            "segment": "bars 1-2",
+            "bars": -5.4,
+            "tines": -12.5,
+            "spring": -200,
+            "bow": -200,
+            "clock": -20.5,
+            "bearings": -200
+          },
+          {
+            "segment": "bars 3-4",
+            "bars": -4.1,
+            "tines": -12.7,
+            "spring": -6.7,
+            "bow": -200,
+            "clock": -20.6,
+            "bearings": -200
+          },
+          {
+            "segment": "bars 5-6",
+            "bars": -2.1,
+            "tines": -12,
+            "spring": -5.6,
+            "bow": -6.7,
+            "clock": -20.5,
+            "bearings": -200
+          },
+          {
+            "segment": "bars 7-8",
+            "bars": -2.2,
+            "tines": -13.3,
+            "spring": -5.5,
+            "bow": -3.8,
+            "clock": -20.7,
+            "bearings": -24.6
+          },
+          {
+            "segment": "bars 9-10",
+            "bars": -1.2,
+            "tines": -12.7,
+            "spring": -5.5,
+            "bow": -4.3,
+            "clock": -21.3,
+            "bearings": -20.9
+          },
+          {
+            "segment": "bars 11-12",
+            "bars": -2.1,
+            "tines": -13,
+            "spring": -7.4,
+            "bow": -5.1,
+            "clock": -21.7,
+            "bearings": -17.9
+          }
+        ],
+        "c3PerState": [
+          {
+            "segment": "morph 0",
+            "from": 0,
+            "to": 6.09,
+            "rmsDb": -22.1,
+            "centroidHz": 673,
+            "above2000HzPct": 3.9
+          },
+          {
+            "segment": "morph 0.5",
+            "from": 6.09,
+            "to": 12.17,
+            "rmsDb": -19.8,
+            "centroidHz": 607,
+            "above2000HzPct": 2
+          },
+          {
+            "segment": "morph 1",
+            "from": 12.17,
+            "to": 18.26,
+            "rmsDb": -19.3,
+            "centroidHz": 765,
+            "above2000HzPct": 2.8
+          }
+        ]
+      },
+      "files": [
+        {
+          "file": "c-mechanical-orchestra/c1-mechanical-orchestra-transformation-dry.wav",
+          "mp3": "c-mechanical-orchestra/c1-mechanical-orchestra-transformation-dry.mp3",
+          "role": "transformation, six machine families, no room (stereo)",
+          "seconds": 27.6,
+          "channels": 2,
+          "lufs": -19,
+          "lra": 5.2,
+          "truePeakDb": -3.5,
+          "wavSha256": "139ca7b832451d4feeef3913b0ca33454e9d59f6aba0005807cfc522e73cb588",
+          "mp3Sha256": "60b10c015db65a490a5d9a3263c35684b1183550991a38f293a10e7f15e205e6"
+        },
+        {
+          "file": "c-mechanical-orchestra/c2-mechanical-orchestra-transformation-context.wav",
+          "mp3": "c-mechanical-orchestra/c2-mechanical-orchestra-transformation-context.mp3",
+          "role": "same performance in a hall over a fixed half-time kick and snare (stereo)",
+          "seconds": 27.6,
+          "channels": 2,
+          "lufs": -19,
+          "lra": 5,
+          "truePeakDb": -3.5,
+          "wavSha256": "394cb466e2f85919d5e55942cdd83c0158075a491f9e8c7d0dc4aca98462b267",
+          "mp3Sha256": "cfcf18a35b644ec162447b00b1381bd6830c3013c1c7769f5bdcf38667b5c840"
+        },
+        {
+          "file": "c-mechanical-orchestra/c3-mechanical-orchestra-states-dry.wav",
+          "mp3": "c-mechanical-orchestra/c3-mechanical-orchestra-states-dry.mp3",
+          "role": "two-bar theme three times: morph 0, 0.5, 1 (stereo)",
+          "seconds": 18.257,
+          "channels": 2,
+          "lufs": -19,
+          "lra": 5.1,
+          "truePeakDb": -1.9,
+          "wavSha256": "6356d4f6b9517b6b67afae1199c0ceab3e9de39637e6905d1c7d0b6df586167b",
+          "mp3Sha256": "d6834f7c4a214f1609fc6f328dfa1a6e985a15997d0a6f70a0028478f2513b9b"
+        }
+      ]
     }
   }
 }

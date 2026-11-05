@@ -45,11 +45,28 @@ Tuning done before delivery, all measured:
 
 Open issues: see the README risks list.
 
-## C · MECHANICAL ORCHESTRA: next
+## C · MECHANICAL ORCHESTRA: done, waiting for the owner to listen
 
-Planned in `tools/mechanical-orchestra.ts`: playable, pitched machines, each taking pitch, velocity, damping and an articulation input.
-They share one ensemble score with seeded micro-timing, so the parts interlock (call and response, hocket, a shared pulse) rather than
-forming a collage. The script `tools/c-mechanical-orchestra.ts` writes c1 transformation dry, c2 context and c3 states/solos, using
-`deliver()` and `writeManifest(root, 'C-mechanical-orchestra', …)`.
+`tools/mechanical-orchestra.ts` (`malletBar`, `bowedBar`, `spring`, `tine`, `tick`, `barRatios`) and
+`tools/c-mechanical-orchestra.ts` → `auditions/c-mechanical-orchestra/c1–c3`. Command:
+`node mutation-001/tools/c-mechanical-orchestra.ts` (about 17 s). Verified:
 
-Stop after C for owner listening. Then open a draft PR with all auditions; do not merge or publish.
+- two runs give byte-identical WAV and MP3;
+- the engine's `analyze` reports −19.25 / −19.23 / −19.17 LUFS with no clipping;
+- the spring's low harmonics are in tune at morph 0 and 1;
+- the click scan is clean on c3; on c1 it flags only six spring pluck attacks.
+
+```
+139ca7b832451d4feeef3913b0ca33454e9d59f6aba0005807cfc522e73cb588  c1-mechanical-orchestra-transformation-dry.wav
+394cb466e2f85919d5e55942cdd83c0158075a491f9e8c7d0dc4aca98462b267  c2-mechanical-orchestra-transformation-context.wav
+6356d4f6b9517b6b67afae1199c0ceab3e9de39637e6905d1c7d0b6df586167b  c3-mechanical-orchestra-states-dry.wav
+```
+
+The pre-delivery fixes are listed in the README C section. One note on a measurement that misled me: an autocorrelation pitch probe
+read the dispersive spring 36–68 cents sharp. A direct spectrum showed the low partials exactly in tune and only the upper partials
+stretched, so the probe, not the instrument, was wrong.
+
+## Status: stopped for human listening
+
+All three mutations are delivered. The draft PR carries every audition. Nothing is merged or published, SODIUM HOURS is untouched,
+and licensing is unchanged (pending). Next steps depend on the owner's listening notes for B and C.

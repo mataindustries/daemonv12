@@ -11,7 +11,7 @@ song: each audition is a short, original phrase.
 |---|---|
 | **A · LIVING BASS** | **Approved by the owner after listening.** Three auditions, WAV + MP3; frozen |
 | **B · IMPOSSIBLE VOICE** | Done: three auditions, WAV + MP3; waiting for the owner to listen |
-| C · MECHANICAL ORCHESTRA | See [MUTATION_PROGRESS.md](MUTATION_PROGRESS.md) |
+| **C · MECHANICAL ORCHESTRA** | Done: three auditions, WAV + MP3; waiting for the owner to listen |
 
 ## A · LIVING BASS
 
@@ -116,6 +116,73 @@ The overtone melody shows up in the spectrum. Over the held D5 in phrase 4, the 
 second-difference energy against the local median) found nothing in b1 and b3. In b2 it flagged only the heartbeat kick's attack at
 0:00.
 
+## C · MECHANICAL ORCHESTRA
+
+| File (WAV + MP3 in [`auditions/c-mechanical-orchestra/`](auditions/c-mechanical-orchestra)) | Length | What it is |
+|---|---:|---|
+| `c1-mechanical-orchestra-transformation-dry` | 27.6 s, stereo | The main audition: six machine families, no room. Twelve bars, from a clockwork music box to strange machines |
+| `c2-mechanical-orchestra-transformation-context` | 27.6 s, stereo | The same performance in an FDN hall over a half-time kick and snare that never change (HEADLINER 001 patches) |
+| `c3-mechanical-orchestra-states-dry` | 18.3 s, stereo | The two-bar theme on bars, tines, spring and clock with the morph held at 0, 0.5 and 1 |
+
+**c1 form.** 112 BPM, A minor (Am · Fmaj7♯11 · Dm9 · E7 · Am), straight sixteenths with seeded micro-timing, velocity
+variation and the odd missed tick. The theme, variations and parts are original.
+
+| Bars | Time | Morph | What happens |
+|---|---|---|---|
+| 1–2 | 0:00 | 0 | **A clockwork music box.** Two tuned bars hocket the theme left/right, with vibraphone-style motor tremolo. Clean steel tines play dotted eighths (3 against 4). An escapement ticks sixteenths, with a tock on 1 and 3 |
+| 3–4 | 0:04 | 0 → 0.35 | The spring bass ostinato enters as a nearly harmonic plucked steel string. The bars' modes begin to leave their consonant tuning |
+| 5–6 | 0:09 | 0.35 → 0.5 | **Friction:** bowed metal (D and A) swells under the melody's high point. The tines start to buzz against their bridge |
+| 7–8 | 0:13 | 0.5 → 0.72 | E7 tension. A busier spring figure with dispersion chirps, and a bow on E–B then G♯–D. The first bearings fall, and the clock starts to sprout spring "zips" |
+| 9–10 | 0:17 | 0.72 → 1 | **The theme returns on the strange machines.** Alien gong bars with slowly beating twin modes, a laser-spring bass and buzzing tines. Bow overpressure grows subharmonics, first an octave and then a twelfth below. The clock zips and the bearings thicken |
+| 11–12 | 0:21 | 1 | Cadence onto A. A last bowed A–E–C chord rings under the rain of bearings, then fades |
+
+**The machines** ([`tools/mechanical-orchestra.ts`](tools/mechanical-orchestra.ts)). Each one is a playable note function: pitch,
+velocity, morph and its own articulation inputs.
+
+- `malletBar`: a modal bar whose five mode ratios move along a path, from tuned 1:4:10 (consonant), through a free-free bar
+  1:2.756:5.404, to an alien set 1:1.493:2.41:3.73:6.13 with slowly beating twin modes. Controls: hardness, damping, detune.
+- `bowedBar`: the same modes driven by friction, as a stick-slip pulse train plus rosin noise. Controls:
+  - bow pressure envelope;
+  - `chatter`, irregular slips;
+  - `sub`/`subN`, overpressure that skips slips and produces subharmonics.
+- `spring`: a dispersive coil spring. A delay loop runs through up to 53 first-order all-passes, so low frequencies travel slower.
+  It is tuned so the low harmonics are exact; at morph 1 the spectrum of A1 is 55.2 / 109.7 / 164.9 / 220.0 / 275.2 Hz. Morph
+  raises the dispersion from a near-harmonic plucked string to a chirping laser spring. Controls: attack twang (`bend`), decay.
+- `tine`: a clamped steel tine (cantilever modes 1:6.27:17.55:34.39) with a sitar-like bridge-contact `buzz`.
+- `tick`: an escapement tick or tock. The strange clock adds tiny high springs.
+- `bearings`: in the score, Poisson-timed tiny `malletBar` pings on the current chord tones, thickening over time.
+
+The ensemble is one score (`c-mechanical-orchestra.ts` `play()`). Its parts interlock: the hocket, 3 against 4, the bass ostinato,
+the clock grid and the bowed chords. Family levels are set in dB against a calibrated reference note of each machine.
+
+**Measurements** (mono fold-down of the dry renders, from `auditions/manifest.json`):
+
+| c1 section | RMS (dB re peak) | Spectral centroid | Energy above 2 kHz |
+|---|---:|---:|---:|
+| bars 1–2 | −23.3 | 855 Hz | 5.4 % |
+| bars 3–4 | −19.9 | 647 Hz | 4.3 % |
+| bars 5–6 | −17.8 | 626 Hz | 2.9 % |
+| bars 7–8 | −16.8 | 665 Hz | 3.3 % |
+| bars 9–10 | −16.5 | 674 Hz | 2.5 % |
+| bars 11–12 | −17.8 | 740 Hz | 3.6 % |
+
+Per-family RMS by section is in `manifest.json` (`c1FamilyRmsDb`). In bars 9–10 the bars are at −1.2 dB, spring −5.5, bow −4.3,
+tines −12.7, bearings −20.9 and clock −21.3. c3 states: morph 0 → 673 Hz / 3.9 %; morph 0.5 → 607 Hz / 2.0 %; morph 1 → 765 Hz /
+2.8 %.
+
+The brightness does not climb as the machines turn strange. The change is in harmonicity, beating, friction and dispersion, not in
+distortion. Within the c1 RMS figures, about 7 dB of build comes from parts entering.
+
+Tuning changes made from measurements before delivery:
+
+- Bow level is held constant across the morph (it had fallen 13 dB toward the alien end).
+- Tine buzz is level-compensated (it had added about 10 dB).
+- The bar's near-unison twin modes no longer cancel (they cost 6.5 dB at morph 0.5).
+- The spring's raw impulse pluck became a smooth zero-mean pulse. It had produced clicks with a crest factor near 28 dB, and those
+  had forced the true-peak ceiling.
+
+The click scan is clean on c3. On c1/c2 it flags six spring pluck attacks in quiet moments, the bass's first entry among them.
+
 ## Loudness
 
 Every audition is set by a single gain to **−19 LUFS integrated** (FFmpeg `ebur128`), with a −1 dBTP true-peak ceiling and no
@@ -124,6 +191,7 @@ engine's own `daemonv12 analyze` gives the same result:
 
 - a1 −19.16 LUFS / −2.42 dBTP; a2 −19.16 / −4.52; a3 −18.99 / −1.52.
 - b1 −19.03 / −6.62; b2 −19.08 / −6.12; b3 −19.17 / −7.62.
+- c1 −19.25 / −3.54; c2 −19.23 / −3.54; c3 −19.17 / −1.91.
 
 No file has any full-scale samples.
 
@@ -140,10 +208,14 @@ node mutation-001/tools/b-impossible-voice.ts
 ```
 
 ```bash
+node mutation-001/tools/c-mechanical-orchestra.ts
+```
+
+```bash
 cd mutation-001/auditions && sha256sum -c SHA256SUMS
 ```
 
-The scripts take about 13 s and 21 s and need no input files. Each mutation script rewrites only its own section of `manifest.json`
+The scripts take about 13 s, 21 s and 17 s and need no input files. Each mutation script rewrites only its own section of `manifest.json`
 and `SHA256SUMS`. Two runs of each produced byte-identical WAV **and** MP3 files. `auditions/manifest.json` records each file's
 loudness, true peak, LRA and SHA-256, the SHA-256 of every generator file, and the Node version.
 
@@ -154,7 +226,8 @@ loudness, true peak, LRA and SHA-256, the SHA-256 of every generator file, and t
   supply the DSP primitives (oscillators, ZDF filters, decimator) and, for `a2` only, the context drum and FM-keys patches. The kick
   is retuned to D1 through its existing `f0` argument.
 - New code: `score.ts`, `living-bass.ts`, `deliver.ts`, `a-living-bass.ts` (A, frozen); `lanes.ts`, `impossible-voice.ts`,
-  `b-impossible-voice.ts` (B). B only imports A's files, so A's recorded generator hashes still match. The vowel formant figures in
+  `b-impossible-voice.ts` (B); `mechanical-orchestra.ts`, `c-mechanical-orchestra.ts` (C). B and C only import A's files,
+  so A's recorded generator hashes still match. The vowel formant figures in
   `impossible-voice.ts` are approximate textbook ranges for sung vowels (numbers, not audio).
 - No recordings, samples, loops, SoundFonts, impulse responses, presets or third-party audio. SODIUM HOURS' melody,
   harmony and arrangement are not used: the riff, key, tempo and form are new. SODIUM HOURS and its master are untouched, on their own branch.
@@ -173,3 +246,8 @@ loudness, true peak, LRA and SHA-256, the SHA-256 of every generator file, and t
   - The overtone melody may read as a whistle rather than part of the voice.
   - In phrase 4 the stretched harmonics are inharmonic by design and may sound out of tune against the context bass.
   - How much the halo rings depends on vibrato sweeping the harmonics through very narrow resonances.
+- C has not been listened to.
+  - The bars carry the melody and are the loudest family. The clock sits 15–20 dB under them and may be too faint or too busy.
+  - In bars 3–8 the mode ratios are partway between tunings and inharmonic; that may read as out of tune rather than strange.
+  - In the last bars the bow's twelfth-below subharmonic may read as grind.
+  - The spring pluck attacks are deliberate transients.
