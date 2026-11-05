@@ -11,12 +11,14 @@ import { diagnostic, type Diagnostic } from './diagnostics.ts';
 import { ENGINE_VERSION } from './version.ts';
 import type { Compilation } from './pipeline.ts';
 import type { TimelineTrack } from './timing/timeline.ts';
+import { VoiceSampleCache, voiceReuseKey } from './render/index.ts';
 
 interface Request {
   compilation: Compilation; path: string; paths: {midi:string;wav:string;manifest:string}; stemDir: string;
   processor?: AudioProcessor;
   midi: Uint8Array; stems: boolean; renderer?: AudioRenderer; soundfont?: Soundfont;
   stemFileName: (trackId:string)=>string;
+  reuseVoices?: boolean;
 }
 const hash=(bytes:Uint8Array)=>createHash('sha256').update(bytes).digest('hex');
 function write(path:string,bytes:Uint8Array) { writeFileSync(`${path}.tmp`,bytes);renameSync(`${path}.tmp`,path); }
@@ -24,7 +26,7 @@ function wavIdentity(file:string,bytes:Buffer,frames:number) {
   return {file,sha256:hash(bytes),bytes:bytes.length,frames,sampleRate:PCM_RATE,channels:2,bitsPerSample:16,durationSeconds:Number((frames/PCM_RATE).toFixed(6))};
 }
 // A sample track's triggers: absolute frames and, for performed notes, playback and provenance.
-function sampleTriggers(c:Compilation,track:TimelineTrack,cap=Infinity) {
+export function sampleTriggers(c:Compilation,track:TimelineTrack,cap=Infinity) {
   const instrument=track.instrument as Exclude<TimelineTrack['instrument'],{type:'gm'}>,timeline=c.timeline!;
   const triggers=track.notes.map(note=>{
     const file=instrument.type==='sampler'?instrument.sample:c.kits!.get(instrument.kit)!.find(e=>e.pitch===note.pitch)!.sample;
@@ -73,12 +75,13 @@ function sampleTriggers(c:Compilation,track:TimelineTrack,cap=Infinity) {
 // so validate, render and MCP reject a pathological project before any audio work. It charges
 // what rendering will do: interpolated voices only, cut at the production audio boundary.
 // Accumulation stops just past the limit, far inside exact integer range.
-export function playbackBudget(c:Compilation,production:boolean,limits={work:PLAYBACK_WORK_LIMIT,bytes:PLAYBACK_VOICE_BYTES_LIMIT}):Diagnostic|undefined {
+export function playbackBudget(c:Compilation,production:boolean,limits={work:PLAYBACK_WORK_LIMIT,bytes:PLAYBACK_VOICE_BYTES_LIMIT},reuseVoices=false):Diagnostic|undefined {
   const cap=production?renderPlan(c.project!).audioEndFrames??Infinity:Infinity;
   const fail=(path:string,metric:string,received:unknown,message:string,expected:string,hint:string)=>{
     const d=diagnostic('OUT_OF_RANGE',path,{metric,...received as object},expected,hint);d.message=message;return d;
   };
-  let taps=0;
+  let taps=0,cachedBytes=0;
+  const reused=new Map<object,Set<string>>();
   for(const track of c.timeline!.tracks) {
     if(track.instrument.type==='gm')continue;
     for(const t of sampleTriggers(c,track,cap)) {
@@ -87,6 +90,19 @@ export function playbackBudget(c:Compilation,production:boolean,limits={work:PLA
         `The project exceeds the sample-performance render budget: one performed voice of ${t.file} would need a ${Math.ceil(cost.bytes/1048576)} MiB buffer; the limit is ${limits.bytes/1048576} MiB per voice.`,
         `performed voices of at most ${limits.bytes/1048576} MiB each (frames x channels x 8 bytes)`,
         'Shorten the voice: use gate, endSeconds, a less extreme slow playbackRate, a later offsetSeconds, a shorter or mono source, or render.duration to end it sooner.');
+      if(reuseVoices) {
+        const key=voiceReuseKey(t.pcm,t.playback,cap-t.frame,t.articulation);
+        if(key!==undefined) {
+          let keys=reused.get(t.pcm);
+          if(keys?.has(key))continue;
+          if(!keys){keys=new Set();reused.set(t.pcm,keys);}keys.add(key);
+          cachedBytes+=cost.bytes;
+          if(cachedBytes>limits.bytes)return fail(`tracks[${track.index}]`,'interpolationCacheBytes',{bytes:cachedBytes,limit:limits.bytes},
+            `The interpolation reuse cache exceeds its total ${limits.bytes/1048576} MiB memory budget.`,
+            `unique performed voice buffers totalling at most ${limits.bytes/1048576} MiB`,
+            'Use fewer unique rates/glides/slices or shorter gates, or render documented independent intermediate assets in separate bounded jobs. The cache does not evict or silently recompute voices.');
+        }
+      }
       taps+=cost.work;
       if(taps>limits.work)return fail(`tracks[${track.index}]`,'interpolationTaps',{taps:`more than ${limits.work}`,limit:limits.work},
         `The project exceeds the sample-performance render budget: its transformed sample voices need more than ${limits.work.toLocaleString('en-US')} interpolation steps in total (the limit was crossed in this track).`,
@@ -99,6 +115,7 @@ export function playbackBudget(c:Compilation,production:boolean,limits={work:PLA
 export async function renderSampledProject(request:Request):Promise<{manifest?:Record<string,unknown>;diagnostics:Diagnostic[]}> {
   const {compilation:c,path,paths,stemDir,midi,renderer,soundfont}=request;
   const production=!!request.processor;
+  const cache=request.reuseVoices?new VoiceSampleCache():undefined;
   const project=c.project!,plan=renderPlan(project);
   const dynamics=project.render!==undefined || project.master?.ducking!==undefined || project.tracks.some(t=>t.automation!==undefined)
     || [...project.tracks.flatMap(t=>t.effects??[]),...project.master?.effects??[]].some(e=>['compressor','reverb','saturation'].includes(e.type));
@@ -153,7 +170,7 @@ export async function renderSampledProject(request:Request):Promise<{manifest?:R
     if(triggers.some(t=>Math.min(t.frame+voiceFrames(t.pcm,t.playback,t.articulation),cap??Infinity)>MAX_PCM_FRAMES))return {diagnostics:[diagnostic('RENDERER_FAILED',`tracks[${track.index}]`,undefined,'sample render of at most 600 seconds including tails')]};
     performed||=triggers.some(t=>t.playback);
     articulated||=triggers.some(t=>t.articulation);
-    const mixed=production?await processTrack(sumFloat(triggers,minimumFrames,cap),track.index):mixPcm(triggers,minimumFrames);
+    const mixed=production?await processTrack(sumFloat(triggers,minimumFrames,cap,cache),track.index):mixPcm(triggers,minimumFrames,cache);
     if(!mixed)return {diagnostics};
     // The master sums the same quantized track PCM exported as stems. GM remains one
     // full-score FluidSynth render, preserving the V0.1 master/stem relationship.
@@ -198,7 +215,7 @@ export async function renderSampledProject(request:Request):Promise<{manifest?:R
     soundfont:soundfont?{file:soundfont.file,sha256:soundfont.sha256,bytes:soundfont.bytes}:null,
     samples:{timing:dynamics?'nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000':'nearest frame, ties later; ceil project end; absolute tick * usPerQuarter * 44100 / 960000000',
       assets:Array.from(c.assets!).sort(([a],[b])=>a<b?-1:a>b?1:0).map(([file,asset])=>({file,sha256:hash(asset.bytes),bytes:asset.bytes.length,...(asset.pcm?{frames:asset.pcm.frames,channels:asset.pcm.channels,sampleRate:PCM_RATE,bitsPerSample:16}:{kind:'drumkit'})})),tracks:sampleTracks,
-      ...(performed?{playback:playbackRenderer}:{}),...(articulated?{articulation:articulationRenderer}:{})},
+      ...(performed?{playback:playbackRenderer}:{}),...(articulated?{articulation:articulationRenderer}:{}),...(cache?{reuse:cache.provenance()}:{})},
     ...(dynamics?{timeline:{authoredDurationTicks:timeline.endTick,authoredFrames:plan.authoredFrames,duration:project.render?.duration??'auto',tail:project.render?.tail??'auto',requestedFinalFrames:plan.outputFrames,audioEndFrames:plan.audioEndFrames,resultingFrames:mixed.frames,rounding:'nearest sample frame; ties later; combined musical timeline + explicit tail rounded once'}}:{}),
     ...(production?{production:{processor:request.processor!.identity,...(dynamics?{runtime:{name:'node',version:process.version}}:{}),tracks:processedTracks,master:{gainDb:c.project!.master?.gainDb??0,effects:c.project!.master?.effects??[],...(duckingProvenance?{ducking:duckingProvenance}:{}),clippedSamples:mixed.clippedSamples,preClipPeakDbfs:'preClipPeakDbfs' in mixed?mixed.preClipPeakDbfs:null},stemAlignment:dynamics?'trim/pad to master frames; post-track, pre-master gain/effects/ducking':'zero-padded to master frames; post-track, pre-master processing'}}:{}),
     mix:{clippedSamples:mixed.clippedSamples,gm:production?'sum processed independent tracks':'full-score render',samples:'sum exported track PCM'},

@@ -9,3 +9,4 @@ export { analyzeWav, type AudioAnalysis } from './analysis.ts';
 export { createAudioProcessor, inspectFfmpeg, type AudioProcessor } from './ffmpeg.ts';
 export { executablePath } from './environment.ts';
 export { extractWavFrames } from './clip.ts';
+export { voiceReuseKey, VoiceSampleCache } from './voice-cache.ts';

@@ -1,0 +1,171 @@
+{
+  "baselineCommit": "e2962cc1a443c841cd6ca7cb2cc56c5ebabf0e99",
+  "runtime": {
+    "node": "v24.19.0",
+    "ffmpeg": "6.1.1",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "method": "Independent archive of main; continuous render with stems; compare full WAV, MIDI, stem and manifest file SHA-256 with modified default, then audio/MIDI/stems with reuseVoices true. Opt-in manifest adds intentional reuse provenance.",
+  "defaultIdentical": {
+    "wav": true,
+    "midi": true,
+    "stems": true,
+    "manifest": true
+  },
+  "reuseIdentical": {
+    "wav": true,
+    "midi": true,
+    "stems": true
+  },
+  "adversarialCases": {
+    "seed": 61443,
+    "count": 80,
+    "exactCappedFloat64Mix": true,
+    "exactUncappedPcmMix": true,
+    "coverage": [
+      "same-dimension distinct source PCM",
+      "offsets",
+      "glides",
+      "explicit source endpoints",
+      "gate stop and envelope lengths",
+      "changed velocity and attack on repeated voice",
+      "different final output caps"
+    ]
+  },
+  "cases": [
+    {
+      "project": "examples/morph-sync-demo.json",
+      "wav": "4687a4b239196a49075083edc2fae5e043519e43db3ca21d4bf53855a0b50275",
+      "midi": "958a9f644625a4b6a1f650a7d652d998668c8b4e05fec0567e657e970c802051",
+      "manifest": "771d90438bcfae87093dd4dcea42a2ee991a519813e352ce111c613329298d6d",
+      "stems": [
+        {
+          "trackId": "cable",
+          "sha256": "921ba34b9092d7b23f8a9d1e5508a910b3152f7943fff72ec283411737ee2827"
+        },
+        {
+          "trackId": "ratchet",
+          "sha256": "10df79f8b42b725ea84da40e7b7f740420f9035709bf4eb7122c95a8cb252cb6"
+        },
+        {
+          "trackId": "beast",
+          "sha256": "102deedef866a7b19d33f547b7c64d23e135bf4d17a6ef8e77fd446737cc0c53"
+        }
+      ]
+    },
+    {
+      "project": "examples/one-sound-after.json",
+      "wav": "b750d08edfe7b1ba0dd88e9b787def37f3995ce05cf2220abb92de0894ed0a17",
+      "midi": "a4d6102f74306c8e905f98e0484a790fa6386ea9438d23060c255e7b2ee16160",
+      "manifest": "c325cfebf2c0d78bc1ecd1089bf5d6352162f555e3ea688f326d1943fb8c8874",
+      "stems": [
+        {
+          "trackId": "original",
+          "sha256": "792ff3a799ef32a171a7602992e957dbe6d4750c7050ae0fd30b44a92f401d3a"
+        },
+        {
+          "trackId": "percussion",
+          "sha256": "ec74d78843a544596ea1c7e66d6123436e40e0ba39f224d89f9e1013d3d69be2"
+        },
+        {
+          "trackId": "low-end",
+          "sha256": "cb9963902da6e7364c31e0f84adda89e40c70c4ae2c997336519c1b6f7358809"
+        }
+      ]
+    },
+    {
+      "project": "examples/ghost-shift.json",
+      "wav": "fecd7eec4e640874882fe958d3dbb8ccdb41ab1f893e8cc74924c6b53525fb4c",
+      "midi": "1a23ae0c29c72b371e189e7b331c41d2184d72d0ae841765543b6829b795cb89",
+      "manifest": "ef12a4eff6f2ec6cf96a7a278d99b5e1f8161337af00b76c775bd05902acf80c",
+      "stems": [
+        {
+          "trackId": "ghost-hook",
+          "sha256": "c06261c6771f990eef8cfad723dc4a7f0cb4050968cb21aa70d5600345f11f5f"
+        },
+        {
+          "trackId": "ghost-high",
+          "sha256": "9a57e9ed5ce241464d82b5f0da77e1669a156627b353b51a4a13d3ac36aa4e2e"
+        },
+        {
+          "trackId": "ghost-fx",
+          "sha256": "06538a316565157e404448f7affab815c6bfb9692902735308546cac19aa38de"
+        },
+        {
+          "trackId": "ghost-bass",
+          "sha256": "f6bcbe78081fb109af662390e119e40a98d884e11422697294d96bcf41cf0612"
+        },
+        {
+          "trackId": "drums",
+          "sha256": "cc8f63a1c7c87be12beb9f62fe4dea633ebe810622391615a63acbab521924d6"
+        },
+        {
+          "trackId": "sub",
+          "sha256": "d97977ca5c746979eba858d092c33200d0119cca9d2abbf398296c3540ec0018"
+        }
+      ]
+    },
+    {
+      "project": "packs/v12-signature-v1/v12-signature-showcase.json",
+      "wav": "e73f3029516edf267936d10d86904fce8273f6e33eec300703ec429409b87167",
+      "midi": "b264adae04b0b2c009c6a2d3133265b3d53ac156f4d545d2653dd58988dcbc74",
+      "manifest": "29f99acefb22b6ae2d1a201eca2de884ceba531d6b9b44c4c7dc6b66fce681c1",
+      "stems": [
+        {
+          "trackId": "kick",
+          "sha256": "d0214fb7268fc72c398acf0932be0fda43be8073e8b27816ca8f942e55ca443f"
+        },
+        {
+          "trackId": "snare",
+          "sha256": "0cc122d218420c418d653024d5fa8ee8c3e032b684be634f4ceebcfb53ae5b0b"
+        },
+        {
+          "trackId": "hats",
+          "sha256": "25a0aa19a8dc15ab056c53fb4a8c3a9c37c05ce19f6c89649976c61c31e8e525"
+        },
+        {
+          "trackId": "chrome",
+          "sha256": "a0cd95f1f77f6e364193f8b22255abd5dd1663dda62010402476233395e82e79"
+        },
+        {
+          "trackId": "abyss",
+          "sha256": "cfaef56212b075e4f9e740e35bb8ee3af50916459360745def4fb1469eb70426"
+        },
+        {
+          "trackId": "reactor",
+          "sha256": "0a1c458ae1a8ec02486ef50f585e70bc9ad2b8ae7acd7d381cf0fcc24a5aa891"
+        },
+        {
+          "trackId": "signal",
+          "sha256": "94f0103fceffc92f46130ec35dc355ae8cb94cb1c7fd0279c7c0be73c11b5a06"
+        },
+        {
+          "trackId": "phantom",
+          "sha256": "0b4ef94489c06d36b4d40deaa1595f375ac2469a73535d8209d15aa98d65ecdb"
+        },
+        {
+          "trackId": "event-horizon",
+          "sha256": "66feb6973438851fdd35d57e1c3e075f249e356a19b6b06bf7972f30f951f61e"
+        },
+        {
+          "trackId": "afterglow",
+          "sha256": "a9a83f77c638067c9695d34adf05730bafd14039c7d09e15389155c2a9a34d72"
+        },
+        {
+          "trackId": "specter",
+          "sha256": "1bdf42e87b721ae8c2291d6b8b452589c9bb42cb997854e6b4da0449e7a5d69f"
+        },
+        {
+          "trackId": "ascension",
+          "sha256": "3f604ad2637f5497ccbd9910c69e7136adc71191f951aed4a3b9eaef5d73ace3"
+        },
+        {
+          "trackId": "convergence",
+          "sha256": "b40f922aca07be7f48091d4568610c400b89b72abbc5bb81460002b42f8a215d"
+        }
+      ]
+    }
+  ],
+  "listening": "No human listening claimed."
+}
