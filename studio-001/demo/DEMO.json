@@ -1,0 +1,109 @@
+{
+  "schema": "daemonv12.signature-rack.demo/1",
+  "title": "CROSSING",
+  "score": "studio-001/scores/crossing.score.json",
+  "scoreSha256": "4d4af287e6a9ceeeb5c6511f7e7fa271c0ce02102ddef7ba916e10dd7bd6a41c",
+  "route": "rack bounce -> unchanged DaemonV12 0.7 engine CLI render (--stems --format wav,mp3)",
+  "engineBase": "e2962cc1a443c841cd6ca7cb2cc56c5ebabf0e99",
+  "node": "v22.23.4",
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "determinism": {
+    "bounceTwiceIdentical": true,
+    "engineRenderTwiceIdentical": true,
+    "comparedFiles": 16
+  },
+  "files": {
+    "crossing.wav": {
+      "role": "main: all parts, context kick/snare and room (engine master)",
+      "r128": {
+        "lufs": -16.4,
+        "lra": 8.1,
+        "truePeakDb": -3.8
+      },
+      "engine": {
+        "integratedLufs": -16.51,
+        "truePeakDbfs": -3.78,
+        "loudnessRangeLu": 10.5,
+        "peakDbfs": -3.776547,
+        "clipping": false,
+        "fullScaleSamples": 0,
+        "frames": 2373841,
+        "durationSeconds": 53.828594
+      }
+    },
+    "crossing-dry.wav": {
+      "role": "dry: instrument parts only (no context drums, no room)",
+      "r128": {
+        "lufs": -16.7,
+        "lra": 7.8,
+        "truePeakDb": -4.3
+      },
+      "engine": {
+        "integratedLufs": -16.8,
+        "truePeakDbfs": -4.32,
+        "loudnessRangeLu": 10.3,
+        "peakDbfs": -4.33805,
+        "clipping": false,
+        "fullScaleSamples": 0,
+        "frames": 2373841,
+        "durationSeconds": 53.828594
+      }
+    }
+  },
+  "stems": {
+    "stems/bars.flac": {
+      "decodesTo": "bars.wav",
+      "wavSha256": "9d96e6d933f792f3be91e340d9665e2829135ee88b92316d8bf425affafbe535"
+    },
+    "stems/bass.flac": {
+      "decodesTo": "bass.wav",
+      "wavSha256": "1665d8463a58004800a14c7701d92cfcb1c43829435c4f75e7bc731476889bf9"
+    },
+    "stems/bearings.flac": {
+      "decodesTo": "bearings.wav",
+      "wavSha256": "8d695f7ff2d8e80282f53f86c34bc6e488aab092425909aa716493b6dae720ce"
+    },
+    "stems/bow.flac": {
+      "decodesTo": "bow.wav",
+      "wavSha256": "a13d44014f1355cbc579356462f96aadb631218c49e2c1295a21fb58b212b90c"
+    },
+    "stems/clock.flac": {
+      "decodesTo": "clock.wav",
+      "wavSha256": "a0d5ebbbaec7f85d4908f25a0cfd37f56a97922c6b6c5c823320ffff25f99e52"
+    },
+    "stems/kick.flac": {
+      "decodesTo": "kick.wav",
+      "wavSha256": "43190dd9b6efe2ef7a67cd758a113920e5578bc09f754e489a925eaff8cd073e"
+    },
+    "stems/room.flac": {
+      "decodesTo": "room.wav",
+      "wavSha256": "12eedfada1f3f6d84a969f5bf2c9e8466251f41312b08d3a72b2c26b6c95cc9c"
+    },
+    "stems/snare.flac": {
+      "decodesTo": "snare.wav",
+      "wavSha256": "0a7d39b54ef929718a2fe63be53a953c48bcb858de9d26fa747a8bbf26527e5f"
+    },
+    "stems/spring.flac": {
+      "decodesTo": "spring.wav",
+      "wavSha256": "4626b11d48cccc94bbc07376e2e0474f62507b705a7eac7cac212a53c4a01ab3"
+    },
+    "stems/tines.flac": {
+      "decodesTo": "tines.wav",
+      "wavSha256": "fb7742f2e1e90926307cc048af9eee4308ef5237f94fa930249e04042c19b3d7"
+    },
+    "stems/voice-2.flac": {
+      "decodesTo": "voice-2.wav",
+      "wavSha256": "f88986016a841657f62320d62b32eb052eeb5b8e77374b1ae82b6fa7f2c45c2d"
+    },
+    "stems/voice.flac": {
+      "decodesTo": "voice.wav",
+      "wavSha256": "70c930bbf3e1d333774384d7c7484b36cb41f5968ebebba6e048b4ee35e16232"
+    }
+  },
+  "package": {
+    "files": 72,
+    "sha256sums": "package-manifest/SHA256SUMS",
+    "note": "phrase WAVs are not committed; `node studio-001/rack/cli.ts bounce studio-001/scores/crossing.score.json NEW` regenerates them byte for byte (listed in package-manifest/SHA256SUMS)"
+  },
+  "license": "PENDING OWNER DECLARATION: no license is granted."
+}

@@ -1,0 +1,644 @@
+{
+  "schema": "daemonv12.signature-rack.registry/1",
+  "interfaceVersion": "1.0.0",
+  "rackVersion": "1.0.0",
+  "instruments": [
+    {
+      "id": "living-bass",
+      "family": "living-bass",
+      "name": "Living Bass",
+      "version": "1.0.0+mutation-001-A",
+      "macro": {
+        "id": "warm-machine",
+        "label": "warm → machine",
+        "from": "warm",
+        "to": "machine"
+      },
+      "description": "West Coast low-pass-gated complex oscillator over a phase-locked sine sub that turns, continuously and in tempo, into a folded, geared, driven machine with ratcheting servo slides and metal chassis strikes.",
+      "range": [
+        24,
+        60
+      ],
+      "articulations": {
+        "normal": "plucked through the low-pass gate (gate 90 %)",
+        "accent": "harder strike (velocity x1.15), chassis hit at the machine end",
+        "ghost": "soft (velocity x0.6), short (50 %)",
+        "staccato": "short (45 %)",
+        "legato": "no re-strike; travels from the previous pitch (slide, default 0.06 s)"
+      },
+      "controls": [
+        {
+          "name": "fold",
+          "min": 0,
+          "max": 1,
+          "description": "sine-folder gain: harmonic richness"
+        },
+        {
+          "name": "pm",
+          "min": 0,
+          "max": 1.5,
+          "description": "1:1 phase modulation: saw-like edge"
+        },
+        {
+          "name": "grind",
+          "min": 0,
+          "max": 1.15,
+          "description": "1:2 phase modulation: sub-octave grind"
+        },
+        {
+          "name": "gear",
+          "min": 0,
+          "max": 0.7,
+          "description": "phase-locked sub-octave chopper depth"
+        },
+        {
+          "name": "drive",
+          "min": 0,
+          "max": 1,
+          "description": "asymmetric tube drive"
+        },
+        {
+          "name": "bright",
+          "min": 0,
+          "max": 1,
+          "description": "low-pass-gate opening range"
+        },
+        {
+          "name": "hold",
+          "min": 0,
+          "max": 0.84,
+          "description": "gate opening while a note is held"
+        },
+        {
+          "name": "chassis",
+          "min": 0,
+          "max": 1,
+          "description": "metal chassis strikes and ratchet clicks"
+        },
+        {
+          "name": "ratchet",
+          "min": 0,
+          "max": 1,
+          "description": "slides step through semitones"
+        },
+        {
+          "name": "servo",
+          "min": 0,
+          "max": 1,
+          "description": "0 damped finger slide .. 1 overshooting servo"
+        },
+        {
+          "name": "motion",
+          "min": 0,
+          "max": 1,
+          "description": "depth of the tempo-synced modulation"
+        },
+        {
+          "name": "harm",
+          "min": 0,
+          "max": 1,
+          "description": "octave/fifth harmonic selector"
+        },
+        {
+          "name": "body",
+          "min": 0,
+          "max": 1,
+          "description": "harmonic body over the constant sub"
+        }
+      ],
+      "setup": [
+        {
+          "name": "seed",
+          "min": 0,
+          "max": 4294967295,
+          "description": "random seed for drift and chassis noise"
+        }
+      ],
+      "params": {
+        "scoop": "semitones to rise from on a fresh strike",
+        "dive": "semitones to dive at the end of the note",
+        "diveBeats": "length of the dive in beats"
+      },
+      "suggestedGainDb": -3
+    },
+    {
+      "id": "impossible-voice",
+      "family": "impossible-voice",
+      "name": "Impossible Voice",
+      "version": "1.0.0+mutation-001-B",
+      "macro": {
+        "id": "human-impossible",
+        "label": "human → impossible",
+        "from": "human",
+        "to": "impossible"
+      },
+      "description": "Additive source-filter voice (no words, no language, no real singer): vowels drift, breath and cries, then bent harmonic series, split formants, undertones, an overtone melody, spectral shimmer and a sympathetic glass halo tuned to the key.",
+      "range": [
+        43,
+        84
+      ],
+      "articulations": {
+        "sung": "fresh onset with a small scoop",
+        "legato": "glides from the previous note (slide in beats, default about 0.06 s)",
+        "detached": "shorter (80 %)",
+        "cry": "upward voice-break flip at the onset (param cry, semitones, default 1)",
+        "fall": "sighing fall at the end (param fall, semitones, default 0.8)",
+        "hum": "closed-mouth \"mm\" unless a vowel is given"
+      },
+      "controls": [
+        {
+          "name": "breath",
+          "min": 0,
+          "max": 1,
+          "description": "pitch-synchronous aspiration"
+        },
+        {
+          "name": "tilt",
+          "min": 0,
+          "max": 1,
+          "description": "source tilt: soft .. bright"
+        },
+        {
+          "name": "size",
+          "min": -1,
+          "max": 1,
+          "description": "tract scale (formants)"
+        },
+        {
+          "name": "split",
+          "min": 0,
+          "max": 0.3,
+          "description": "each formant divides into two peaks"
+        },
+        {
+          "name": "stretch",
+          "min": 0,
+          "max": 0.05,
+          "description": "harmonic n at n^(1+stretch): the series bends into a bell"
+        },
+        {
+          "name": "under",
+          "min": 0,
+          "max": 1,
+          "description": "undertone series under the voice"
+        },
+        {
+          "name": "whistle",
+          "min": 0,
+          "max": 1,
+          "description": "overtone-singing melody (overtone lane)"
+        },
+        {
+          "name": "glass",
+          "min": 0,
+          "max": 1,
+          "description": "send to the sympathetic glass halo"
+        },
+        {
+          "name": "shimmer",
+          "min": 0,
+          "max": 1,
+          "description": "vibrato migrates into the spectrum"
+        },
+        {
+          "name": "even",
+          "min": 0,
+          "max": 1,
+          "description": "even harmonics (1 = normal, 0 = hollow)"
+        },
+        {
+          "name": "disperse",
+          "min": 0,
+          "max": 1,
+          "description": "harmonics drift apart, high ones linger"
+        },
+        {
+          "name": "vib",
+          "min": 0,
+          "max": 1.5,
+          "description": "vibrato depth scale"
+        }
+      ],
+      "setup": [
+        {
+          "name": "size",
+          "min": -1,
+          "max": 1,
+          "description": "fixed tract scale (giant .. small)"
+        },
+        {
+          "name": "detune",
+          "min": -50,
+          "max": 50,
+          "description": "cents"
+        },
+        {
+          "name": "vibRate",
+          "min": 3,
+          "max": 8,
+          "description": "Hz"
+        },
+        {
+          "name": "vibCents",
+          "min": 0,
+          "max": 60,
+          "description": "vibrato depth"
+        },
+        {
+          "name": "vowelTau",
+          "min": 0.03,
+          "max": 0.6,
+          "description": "vowel glide time constant (s)"
+        },
+        {
+          "name": "seed",
+          "min": 0,
+          "max": 4294967295,
+          "description": "random seed"
+        },
+        {
+          "name": "haloDecay",
+          "min": 0.2,
+          "max": 3,
+          "description": "glass resonator decay (s)"
+        },
+        {
+          "name": "haloGain",
+          "min": 0,
+          "max": 3,
+          "description": "halo level scale"
+        }
+      ],
+      "params": {
+        "vowel": "one of mm, oo, oh, aw, ah, uh, eh, ee",
+        "to": "vowel reached by the end of the note",
+        "scoop": "semitones",
+        "cry": "semitones",
+        "fall": "semitones"
+      },
+      "suggestedGainDb": 0
+    },
+    {
+      "id": "mechanical-orchestra/bar",
+      "family": "mechanical-orchestra",
+      "name": "Modal bar",
+      "version": "1.0.0+mutation-001-C",
+      "macro": {
+        "id": "clockwork-alien",
+        "label": "clockwork → alien machinery",
+        "from": "clockwork",
+        "to": "alien machinery"
+      },
+      "description": "Mallet-struck modal bar; mode ratios travel from a consonant tuned bar (1:4:10, motor tremolo) through a free-free bar to an alien gong with beating twin modes. Consecutive notes hocket left/right (setup spread).",
+      "range": [
+        48,
+        96
+      ],
+      "articulations": {
+        "strike": "mallet",
+        "soft": "soft mallet",
+        "hard": "hard mallet",
+        "muted": "damped short",
+        "ring": "long ring"
+      },
+      "controls": [
+        {
+          "name": "hardness",
+          "min": 0,
+          "max": 1.2,
+          "description": "mallet hardness"
+        },
+        {
+          "name": "damp",
+          "min": 0.2,
+          "max": 1.5,
+          "description": "decay scale (default 0.75 - 0.2 macro)"
+        },
+        {
+          "name": "detune",
+          "min": -50,
+          "max": 50,
+          "description": "cents"
+        }
+      ],
+      "setup": [
+        {
+          "name": "seed",
+          "min": 0,
+          "max": 4294967295,
+          "description": "random seed"
+        },
+        {
+          "name": "spread",
+          "min": 0,
+          "max": 1,
+          "description": "stereo spread (default 0.45, alternating left/right)"
+        }
+      ],
+      "params": {
+        "hardness": "per-note mallet hardness",
+        "damp": "per-note decay scale"
+      },
+      "suggestedGainDb": -8
+    },
+    {
+      "id": "mechanical-orchestra/bow",
+      "family": "mechanical-orchestra",
+      "name": "Friction-bowed bar",
+      "version": "1.0.0+mutation-001-C",
+      "macro": {
+        "id": "clockwork-alien",
+        "label": "clockwork → alien machinery",
+        "from": "clockwork",
+        "to": "alien machinery"
+      },
+      "description": "The same bar driven by friction (stick-slip pulses plus rosin noise). Toward the alien end, bow overpressure skips slips: subharmonics an octave, then a twelfth, below.",
+      "range": [
+        43,
+        84
+      ],
+      "articulations": {
+        "swell": "slow bow (attack about 0.45 s)",
+        "bite": "fast attack, scratchier",
+        "overpressure": "octave subharmonic",
+        "fifth-under": "twelfth-below subharmonic"
+      },
+      "controls": [
+        {
+          "name": "sub",
+          "min": 0,
+          "max": 1,
+          "description": "overpressure (default from the macro)"
+        },
+        {
+          "name": "chatter",
+          "min": 0,
+          "max": 0.6,
+          "description": "irregular slips"
+        },
+        {
+          "name": "attack",
+          "min": 0.02,
+          "max": 2,
+          "description": "bow attack (s)"
+        }
+      ],
+      "setup": [
+        {
+          "name": "seed",
+          "min": 0,
+          "max": 4294967295,
+          "description": "random seed"
+        },
+        {
+          "name": "spread",
+          "min": 0,
+          "max": 1,
+          "description": "stereo spread (default 0.3, alternating left/right)"
+        }
+      ],
+      "params": {
+        "attack": "seconds"
+      },
+      "suggestedGainDb": -14
+    },
+    {
+      "id": "mechanical-orchestra/spring",
+      "family": "mechanical-orchestra",
+      "name": "Dispersive spring",
+      "version": "1.0.0+mutation-001-C",
+      "macro": {
+        "id": "clockwork-alien",
+        "label": "clockwork → alien machinery",
+        "from": "clockwork",
+        "to": "alien machinery"
+      },
+      "description": "Coil-spring waveguide with an all-pass dispersion chain, tuned on its low harmonics; from a near-harmonic plucked steel string to a long chirping laser spring.",
+      "range": [
+        28,
+        72
+      ],
+      "articulations": {
+        "pluck": "default",
+        "twang": "strong attack pitch bend",
+        "damped": "short, palm-muted",
+        "laser": "maximum dispersion regardless of the macro"
+      },
+      "controls": [
+        {
+          "name": "bend",
+          "min": 0,
+          "max": 0.3,
+          "description": "attack twang (default 0.02 + 0.08 macro)"
+        },
+        {
+          "name": "decay",
+          "min": 0.1,
+          "max": 4,
+          "description": "T60 seconds (default by pitch and macro)"
+        }
+      ],
+      "setup": [
+        {
+          "name": "seed",
+          "min": 0,
+          "max": 4294967295,
+          "description": "random seed"
+        },
+        {
+          "name": "spread",
+          "min": 0,
+          "max": 1,
+          "description": "stereo spread (default 0, alternating left/right)"
+        }
+      ],
+      "params": {},
+      "suggestedGainDb": -5
+    },
+    {
+      "id": "mechanical-orchestra/tine",
+      "family": "mechanical-orchestra",
+      "name": "Buzzing tine",
+      "version": "1.0.0+mutation-001-C",
+      "macro": {
+        "id": "clockwork-alien",
+        "label": "clockwork → alien machinery",
+        "from": "clockwork",
+        "to": "alien machinery"
+      },
+      "description": "Clamped steel tine (cantilever modes) with a sitar-like bridge-contact buzz that grows toward the alien end.",
+      "range": [
+        60,
+        100
+      ],
+      "articulations": {
+        "pluck": "default",
+        "clean": "no buzz",
+        "buzz": "full buzz"
+      },
+      "controls": [
+        {
+          "name": "buzz",
+          "min": 0,
+          "max": 1,
+          "description": "bridge buzz (default from the macro)"
+        },
+        {
+          "name": "detune",
+          "min": -50,
+          "max": 50,
+          "description": "cents"
+        }
+      ],
+      "setup": [
+        {
+          "name": "seed",
+          "min": 0,
+          "max": 4294967295,
+          "description": "random seed"
+        },
+        {
+          "name": "spread",
+          "min": 0,
+          "max": 1,
+          "description": "stereo spread (default 0.2, alternating left/right)"
+        }
+      ],
+      "params": {},
+      "suggestedGainDb": -11
+    },
+    {
+      "id": "mechanical-orchestra/clock",
+      "family": "mechanical-orchestra",
+      "name": "Escapement clock",
+      "version": "1.0.0+mutation-001-C",
+      "macro": {
+        "id": "clockwork-alien",
+        "label": "clockwork → alien machinery",
+        "from": "clockwork",
+        "to": "alien machinery"
+      },
+      "description": "Escapement tick (small high modes) or tock (lower modes). Toward the alien end accented ticks (velocity >= 0.5) sprout tiny high springs tuned to the note pitch.",
+      "range": [
+        60,
+        100
+      ],
+      "articulations": {
+        "tick": "high escapement tick",
+        "tock": "lower knock"
+      },
+      "controls": [
+        {
+          "name": "zip",
+          "min": 0,
+          "max": 1,
+          "description": "spring zips on accented ticks (default from the macro)"
+        }
+      ],
+      "setup": [
+        {
+          "name": "seed",
+          "min": 0,
+          "max": 4294967295,
+          "description": "random seed"
+        },
+        {
+          "name": "spread",
+          "min": 0,
+          "max": 1,
+          "description": "stereo spread (default 0.15, alternating left/right)"
+        }
+      ],
+      "params": {},
+      "suggestedGainDb": -14
+    },
+    {
+      "id": "mechanical-orchestra/bearings",
+      "family": "mechanical-orchestra",
+      "name": "Bearings",
+      "version": "1.0.0+mutation-001-C",
+      "macro": {
+        "id": "clockwork-alien",
+        "label": "clockwork → alien machinery",
+        "from": "clockwork",
+        "to": "alien machinery"
+      },
+      "description": "Tiny tuned metal pings (short bars) for textures; use a part `textures` block for seeded Poisson rain over chord tones.",
+      "range": [
+        72,
+        108
+      ],
+      "articulations": {
+        "ping": "default"
+      },
+      "controls": [],
+      "setup": [
+        {
+          "name": "seed",
+          "min": 0,
+          "max": 4294967295,
+          "description": "random seed"
+        },
+        {
+          "name": "spread",
+          "min": 0,
+          "max": 1,
+          "description": "stereo spread (default 0.8, random per note)"
+        }
+      ],
+      "params": {},
+      "suggestedGainDb": -22
+    },
+    {
+      "id": "context/kick",
+      "family": "context",
+      "name": "Context kick",
+      "version": "1.0.0+headliner-001",
+      "range": [
+        24,
+        48
+      ],
+      "macro": {
+        "id": "none",
+        "label": "none",
+        "from": "-",
+        "to": "-"
+      },
+      "description": "Tuned kick from the HEADLINER 001 toolkit (unchanged); pitch sets the body pitch. For musical-context mixes.",
+      "articulations": {
+        "hit": "default",
+        "short": "tighter body"
+      },
+      "controls": [],
+      "setup": [],
+      "params": {},
+      "suggestedGainDb": -8
+    },
+    {
+      "id": "context/snare",
+      "family": "context",
+      "name": "Context snare",
+      "version": "1.0.0+headliner-001",
+      "range": [
+        0,
+        127
+      ],
+      "macro": {
+        "id": "none",
+        "label": "none",
+        "from": "-",
+        "to": "-"
+      },
+      "description": "Snare/clap from the HEADLINER 001 toolkit (unchanged). Pitch is ignored. For musical-context mixes.",
+      "articulations": {
+        "snare": "snare with clap layer",
+        "ghost": "soft short snare",
+        "clap": "clap-forward"
+      },
+      "controls": [],
+      "setup": [],
+      "params": {},
+      "suggestedGainDb": -12
+    }
+  ]
+}

@@ -1,0 +1,764 @@
+{
+  "formatVersion": 1,
+  "title": "CROSSING (dry)",
+  "bpm": 84,
+  "timeSignature": "4/4",
+  "key": "C minor",
+  "bars": 18,
+  "seed": 11,
+  "description": "alien-night: alien machinery and the impossible voice: gong bars, laser springs, a bowed drone with a twelfth-below subharmonic, bearings, zipping clock; the theme as a fragment; arrival: the Living Bass enters warm with a West Coast groove; tines and clock wake; the voice sings the whole theme, still strange; crossing: voice and orchestra fall toward human and clockwork while the bass rises toward the machine; at bar 11 every macro is near 0.5 and voice and bars sing the theme in unison; exchange: roles exchanged: a human voice and a clockwork music box over a growling machine bass with triplet and thirty-second gear motion; coda: the machine bass relaxes back to warm inside one held low C; the human hum ends on C and the glass halo returns as an echo",
+  "render": {
+    "tail": {
+      "seconds": 2.4
+    }
+  },
+  "master": {
+    "gainDb": 1.5
+  },
+  "tracks": [
+    {
+      "id": "voice",
+      "description": "Impossible Voice (impossible-voice 1.0.0+mutation-001-B), human → impossible; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/voice/kit.json"
+      },
+      "mix": {
+        "gainDb": -2,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "alien-night"
+        },
+        {
+          "bar": 5,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 9,
+          "pattern": "crossing"
+        },
+        {
+          "bar": 13,
+          "pattern": "exchange"
+        },
+        {
+          "bar": 17,
+          "pattern": "coda"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "alien-night",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-alien-night",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-arrival",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "crossing",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-crossing",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "exchange",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-exchange",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "coda",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-coda",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "voice-2",
+      "description": "Impossible Voice (impossible-voice 1.0.0+mutation-001-B), human → impossible; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/voice-2/kit.json"
+      },
+      "mix": {
+        "gainDb": -8,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 9,
+          "pattern": "crossing"
+        },
+        {
+          "bar": 13,
+          "pattern": "exchange"
+        },
+        {
+          "bar": 17,
+          "pattern": "coda"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "crossing",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-crossing",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "exchange",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-exchange",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "coda",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-coda",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bass",
+      "description": "Living Bass (living-bass 1.0.0+mutation-001-A), warm → machine; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/bass/kit.json"
+      },
+      "mix": {
+        "gainDb": -3,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 5,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 9,
+          "pattern": "crossing"
+        },
+        {
+          "bar": 13,
+          "pattern": "exchange"
+        },
+        {
+          "bar": 17,
+          "pattern": "coda"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-arrival",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "crossing",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-crossing",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "exchange",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-exchange",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "coda",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-coda",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bars",
+      "description": "Modal bar (mechanical-orchestra/bar 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/bars/kit.json"
+      },
+      "mix": {
+        "gainDb": -9,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "alien-night"
+        },
+        {
+          "bar": 5,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 9,
+          "pattern": "crossing"
+        },
+        {
+          "bar": 13,
+          "pattern": "exchange"
+        },
+        {
+          "bar": 17,
+          "pattern": "coda"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "alien-night",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-alien-night",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-arrival",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "crossing",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-crossing",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "exchange",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-exchange",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "coda",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-coda",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tines",
+      "description": "Buzzing tine (mechanical-orchestra/tine 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/tines/kit.json"
+      },
+      "mix": {
+        "gainDb": -13,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 5,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 9,
+          "pattern": "crossing"
+        },
+        {
+          "bar": 13,
+          "pattern": "exchange"
+        },
+        {
+          "bar": 17,
+          "pattern": "coda"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-arrival",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "crossing",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-crossing",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "exchange",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-exchange",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "coda",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-coda",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spring",
+      "description": "Dispersive spring (mechanical-orchestra/spring 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/spring/kit.json"
+      },
+      "mix": {
+        "gainDb": -10,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "alien-night"
+        },
+        {
+          "bar": 5,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 9,
+          "pattern": "crossing"
+        },
+        {
+          "bar": 13,
+          "pattern": "exchange"
+        },
+        {
+          "bar": 17,
+          "pattern": "coda"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "alien-night",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-alien-night",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-arrival",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "crossing",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-crossing",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "exchange",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-exchange",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "coda",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-coda",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bow",
+      "description": "Friction-bowed bar (mechanical-orchestra/bow 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/bow/kit.json"
+      },
+      "mix": {
+        "gainDb": -14,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "alien-night"
+        },
+        {
+          "bar": 5,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 9,
+          "pattern": "crossing"
+        },
+        {
+          "bar": 13,
+          "pattern": "exchange"
+        },
+        {
+          "bar": 17,
+          "pattern": "coda"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "alien-night",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-alien-night",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-arrival",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "crossing",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-crossing",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "exchange",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-exchange",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "coda",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-coda",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clock",
+      "description": "Escapement clock (mechanical-orchestra/clock 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/clock/kit.json"
+      },
+      "mix": {
+        "gainDb": -15,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "alien-night"
+        },
+        {
+          "bar": 5,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 9,
+          "pattern": "crossing"
+        },
+        {
+          "bar": 13,
+          "pattern": "exchange"
+        },
+        {
+          "bar": 17,
+          "pattern": "coda"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "alien-night",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-alien-night",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-arrival",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "crossing",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-crossing",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "exchange",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-exchange",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "coda",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-coda",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bearings",
+      "description": "Bearings (mechanical-orchestra/bearings 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/bearings/kit.json"
+      },
+      "mix": {
+        "gainDb": -20,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "alien-night"
+        },
+        {
+          "bar": 5,
+          "pattern": "arrival"
+        },
+        {
+          "bar": 9,
+          "pattern": "crossing"
+        },
+        {
+          "bar": 13,
+          "pattern": "exchange"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "alien-night",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-alien-night",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "arrival",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-arrival",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "crossing",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-crossing",
+              "velocity": 1
+            }
+          ]
+        },
+        {
+          "id": "exchange",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-exchange",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
