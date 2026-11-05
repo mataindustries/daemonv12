@@ -150,6 +150,152 @@
           "mp3Sha256": "8c5bb086e9e251a420e6bc9adb9aeecd63541f8cca0afcde6e8ad54c3c68c3c6"
         }
       ]
+    },
+    "B-impossible-voice": {
+      "title": "IMPOSSIBLE VOICE",
+      "key": "B minor",
+      "bpm": 78,
+      "command": "node mutation-001/tools/b-impossible-voice.ts",
+      "node": "v22.23.4",
+      "generator": [
+        {
+          "file": "mutation-001/tools/dsp.ts",
+          "sha256": "594be2c4e5d59add7c520a30db0dbe4c853440f135653bbeb85f7ce6e2e762e4"
+        },
+        {
+          "file": "mutation-001/tools/instruments.ts",
+          "sha256": "03bd48ff0b857989d9e71fe342da0059404867f8106e0c86522294370c857c44"
+        },
+        {
+          "file": "mutation-001/tools/score.ts",
+          "sha256": "dab96ceaeb276b6fc05d11265ab57896c0648801f925576f62a21caf03f6dccf"
+        },
+        {
+          "file": "mutation-001/tools/lanes.ts",
+          "sha256": "f921b1cfb6b17d75a477d5ff98501a08f2b3d885cb6219b9bcec5d18b5c38837"
+        },
+        {
+          "file": "mutation-001/tools/living-bass.ts",
+          "sha256": "82baa1b24215e480261bb916a439553c14a9664982f07d3cc686e4ba9cab0c02"
+        },
+        {
+          "file": "mutation-001/tools/impossible-voice.ts",
+          "sha256": "9939fc2937990e46deef097357ccbf610aa0bfa51b920ddba67a9c86534e6948"
+        },
+        {
+          "file": "mutation-001/tools/deliver.ts",
+          "sha256": "b4dd44a8ae361f905ae2f4d65f04438609fea222a4c61e468322ba4adc924532"
+        },
+        {
+          "file": "mutation-001/tools/b-impossible-voice.ts",
+          "sha256": "78038936a280800258e1f952684657aa925da58f23b36cced604b08cb432dde1"
+        }
+      ],
+      "measurements": {
+        "note": "Plain signal measurements of the dry renders, mono fold-down (RMS re file peak, spectral centroid, energy share above 2 kHz; halo = glass-resonator energy relative to the voices). Not quality scores and not listening impressions.",
+        "b1PerPhrase": [
+          {
+            "segment": "phrase 1",
+            "from": 0,
+            "to": 6.15,
+            "rmsDb": -16.4,
+            "centroidHz": 631,
+            "above2000HzPct": 0.2,
+            "haloDb": -19.4
+          },
+          {
+            "segment": "phrase 2",
+            "from": 6.15,
+            "to": 12.31,
+            "rmsDb": -15.3,
+            "centroidHz": 664,
+            "above2000HzPct": 0.3,
+            "haloDb": -17.8
+          },
+          {
+            "segment": "phrase 3",
+            "from": 12.31,
+            "to": 18.46,
+            "rmsDb": -13.2,
+            "centroidHz": 886,
+            "above2000HzPct": 6.5,
+            "haloDb": -9.4
+          },
+          {
+            "segment": "phrase 4",
+            "from": 18.46,
+            "to": 26.15,
+            "rmsDb": -14.3,
+            "centroidHz": 900,
+            "above2000HzPct": 12.8,
+            "haloDb": -12.4
+          }
+        ],
+        "b3PerState": [
+          {
+            "segment": "morph 0",
+            "from": 0,
+            "to": 8.52,
+            "rmsDb": -16.2,
+            "centroidHz": 631,
+            "above2000HzPct": 0.2
+          },
+          {
+            "segment": "morph 0.5",
+            "from": 8.52,
+            "to": 17.04,
+            "rmsDb": -13.9,
+            "centroidHz": 931,
+            "above2000HzPct": 2.8
+          },
+          {
+            "segment": "morph 1",
+            "from": 17.04,
+            "to": 25.56,
+            "rmsDb": -15.4,
+            "centroidHz": 971,
+            "above2000HzPct": 15.4
+          }
+        ]
+      },
+      "files": [
+        {
+          "file": "b-impossible-voice/b1-impossible-voice-transformation-dry.wav",
+          "mp3": "b-impossible-voice/b1-impossible-voice-transformation-dry.mp3",
+          "role": "transformation, three voices + glass halo, no room (stereo)",
+          "seconds": 29.385,
+          "channels": 2,
+          "lufs": -19,
+          "lra": 6.3,
+          "truePeakDb": -6.6,
+          "wavSha256": "8ac7a4fa993fdfeb7c00b0094ba33db2f46545ab7f380203cf495594cde28855",
+          "mp3Sha256": "f0cdccc3e2caa6b4c400b8b4fa70b40cdc3e36fa038ef12215dcf48042b02254"
+        },
+        {
+          "file": "b-impossible-voice/b2-impossible-voice-transformation-context.wav",
+          "mp3": "b-impossible-voice/b2-impossible-voice-transformation-context.mp3",
+          "role": "same performance with hall, warm Living Bass roots and a heartbeat pulse, all fixed (stereo)",
+          "seconds": 29.985,
+          "channels": 2,
+          "lufs": -19,
+          "lra": 4.8,
+          "truePeakDb": -6.1,
+          "wavSha256": "964da2330e51552e5b8d7a70181cbd289d53d9d541cbc8a556c062b609f4a750",
+          "mp3Sha256": "abbcd8f7b45da8f20c1416228e2f3b83539f74a33dd530c8d007628a9399452c"
+        },
+        {
+          "file": "b-impossible-voice/b3-impossible-voice-states-dry.wav",
+          "mp3": "b-impossible-voice/b3-impossible-voice-states-dry.mp3",
+          "role": "phrase 1 three times: morph 0, 0.5, 1 (stereo)",
+          "seconds": 25.555,
+          "channels": 2,
+          "lufs": -19,
+          "lra": 11.8,
+          "truePeakDb": -7.6,
+          "wavSha256": "fd7b56954ad3c73543f5e9972625615e83d5bacddd63a55d75c4b16bd1b8dc2d",
+          "mp3Sha256": "c056553d10feb5f5b50e373495be480c3e9c0ec49271771e3da64fd3336e4778"
+        }
+      ]
     }
   }
 }

@@ -1,24 +1,17 @@
 # MUTATION 001 · checkpoint
 
 **Branch:** `claude/vigilant-turing-2r0d5f`, based on `main` (`e2962cc`). It is independent of the SODIUM HOURS branch: nothing there was
-merged, modified or copied except the two toolkit files listed below.
+merged or modified. The only things copied from it are the two toolkit files below, unmodified.
 
-## Done: A · LIVING BASS
+**Frozen files.** Never edit `dsp.ts`, `instruments.ts`, `score.ts`, `deliver.ts`, `living-bass.ts` or `a-living-bass.ts`. A's
+manifest records their SHA-256, and the owner approved A after listening. New helpers go in new files (`lanes.ts`). Each mutation
+script rewrites only its own section of `auditions/manifest.json` and `auditions/SHA256SUMS`. Check with
+`cd mutation-001/auditions && sha256sum -c SHA256SUMS`.
 
-| Item | Path |
-|---|---|
-| Instrument | `mutation-001/tools/living-bass.ts` (`livingBass(notes, { morph, motion, over })`, `bassMacro(m)`) |
-| Score helpers (shared) | `mutation-001/tools/score.ts` (`Grid` with swing, `pn`, `ramp`, `motionLane`) |
-| Delivery (shared) | `mutation-001/tools/deliver.ts` (`deliver()` −19 LUFS / −1 dBTP + MP3, `writeManifest()`, `segmentStats()`) |
-| Audition script | `mutation-001/tools/a-living-bass.ts` |
-| Vendored, unmodified | `mutation-001/tools/dsp.ts`, `mutation-001/tools/instruments.ts` (from `6b1ab7b:headliner-001/tools/`) |
-| Auditions | `mutation-001/auditions/a-living-bass/a1…a3 .wav/.mp3` |
-| Hashes / measurements | `mutation-001/auditions/SHA256SUMS`, `mutation-001/auditions/manifest.json` |
+## A · LIVING BASS: done, owner-approved
 
-Command: `node mutation-001/tools/a-living-bass.ts` (about 13 s). Verified: two runs give byte-identical WAV and MP3; `sha256sum -c` passes;
-the engine's `daemonv12 analyze` reports −19.16 / −19.16 / −18.99 LUFS and no clipping.
-
-SHA-256 of the A WAV files (the MP3 hashes are in `SHA256SUMS`):
+`tools/living-bass.ts` and `tools/a-living-bass.ts` → `auditions/a-living-bass/a1–a3`. Command: `node mutation-001/tools/a-living-bass.ts`.
+Owner feedback: "the warm sound has a beautiful soft side, and the machine transformation has a wicked crunchy bite". Do not regenerate.
 
 ```
 f90c6ea28a28370712332d1b25a57ff183232485b8f7f612cb6960c00ed9f9eb  a1-living-bass-transformation-dry.wav
@@ -26,39 +19,37 @@ bbd59b7e432685e34bdc8a1c628e99feb24b7805c210ed58601441a5fe9661c0  a2-living-bass
 1f2b236f9dc88b8a862cc7a35031acf304f2b1f9a3e474479c3e882601a5dab2  a3-living-bass-states-dry.wav
 ```
 
-**Do not regenerate A** unless `living-bass.ts`, `score.ts`, `deliver.ts` or `a-living-bass.ts` change. Running a B or C script only
-merges that mutation's own section into `manifest.json` and `SHA256SUMS`; A's entries stay as they are.
+## B · IMPOSSIBLE VOICE: done, waiting for the owner to listen
 
-**Open issues (A):** nobody has listened yet. The machine end may be harsh. The warm end is fundamental-heavy. The 25.6 Hz section may read as
-buzz. Nothing scanned for clicks.
+`tools/impossible-voice.ts` (additive source-filter voice and `glassHalo`), `tools/lanes.ts` (`steps`, `shifted`) and
+`tools/b-impossible-voice.ts` → `auditions/b-impossible-voice/b1–b3`. Command: `node mutation-001/tools/b-impossible-voice.ts`
+(about 21 s). Verified:
 
-## Next: B · IMPOSSIBLE VOICE (not started)
+- two runs give byte-identical WAV and MP3;
+- the engine's `analyze` reports −19.03 / −19.08 / −19.17 LUFS with no clipping;
+- the click scan is clean;
+- the overtone melody peaks track harmonics 4–5–6.
 
-1. New file `mutation-001/tools/impossible-voice.ts`. Start from `instruments.ts` `voicePhrase` (formant bank, portamento, breath)
-   and keep it continuous like `living-bass.ts`:
-   - Vowels are a **continuous 2-D position** (a lane), not the discrete `VOWELS` table. Interpolate formant frequencies,
-     bandwidths and gains along that path. Let a `size` lane scale the formants beyond the human range (an impossible vocal
-     tract), and add one or two inharmonic "throat" resonances that do not track a human vowel.
-   - Source morph lane: glottal pulse → phase-modulated / folded source (reuse the living-bass oscillator idea) → breath-only.
-   - Breath as its own instrument: inhale/exhale noise through the same formants, placed by the score between phrases.
-   - Harmony: 3–4 voices from one score with independent vibrato, drift and onset spread. Intervals come from a chord lane, not
-     parallel copies, so the voices move into and out of unison.
-   - No words and no language. Do not model any real singer.
-2. New file `mutation-001/tools/b-impossible-voice.ts`, modelled on `a-living-bass.ts`. Original phrase, about 25 s. Outputs:
-   `b1-impossible-voice-dry` (mono or stereo), `b2-…-context` (sparse pad and pulse, fixed), `b3-…-states`. Write them with
-   `deliver(join(root,'b-impossible-voice'), …)` and `writeManifest(root, 'B-impossible-voice', {...}, files, 'b-impossible-voice')`.
-3. Update `README.md` (the B section and the state table) and this file, then commit and push.
+```
+8ac7a4fa993fdfeb7c00b0094ba33db2f46545ab7f380203cf495594cde28855  b1-impossible-voice-transformation-dry.wav
+964da2330e51552e5b8d7a70181cbd289d53d9d541cbc8a556c062b609f4a750  b2-impossible-voice-transformation-context.wav
+fd7b56954ad3c73543f5e9972625615e83d5bacddd63a55d75c4b16bd1b8dc2d  b3-impossible-voice-states-dry.wav
+```
 
-## Then: C · MECHANICAL ORCHESTRA (not started)
+Tuning done before delivery, all measured:
 
-`mechanical-orchestra.ts`: playable, pitched resonant machines. Planned voices:
+- The halo was raised by about 23 dB; it had been inaudible at −33 to −43 dB re the voices.
+- The human-state tilt was brightened, upper formant bandwidths narrowed, and aspiration "air" doubled. The human state had been
+  0.1 % above 2 kHz.
+- Tails were trimmed so b1 and b2 fit within 30 s.
 
-- Modal bars and plates excited by mallet or bow, or by friction noise.
-- Springs: dispersive all-pass chains with a tuned feedback loop.
-- A plucked steel "tine" and a ratchet or escapement clock voice.
+Open issues: see the README risks list.
 
-Each takes pitch, velocity, damping and an articulation input. A score plays them as an ensemble that interlocks (call and response,
-hocket, a shared pulse with seeded micro-timing and velocity variation), not as a collage. The script is `c-mechanical-orchestra.ts`
-with outputs c1 dry ensemble, c2 context, c3 states or solos. It uses the same delivery and the same −19 LUFS target.
+## C · MECHANICAL ORCHESTRA: next
 
-Stop after the auditions. Human listening decides what gets promoted.
+Planned in `tools/mechanical-orchestra.ts`: playable, pitched machines, each taking pitch, velocity, damping and an articulation input.
+They share one ensemble score with seeded micro-timing, so the parts interlock (call and response, hocket, a shared pulse) rather than
+forming a collage. The script `tools/c-mechanical-orchestra.ts` writes c1 transformation dry, c2 context and c3 states/solos, using
+`deliver()` and `writeManifest(root, 'C-mechanical-orchestra', …)`.
+
+Stop after C for owner listening. Then open a draft PR with all auditions; do not merge or publish.
