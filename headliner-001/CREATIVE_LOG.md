@@ -149,3 +149,38 @@ Soft clip exceeds 1 dB of gain reduction on 9.7 % of loud samples, 3 dB on 0.4 %
    into Hook 2 on a tom fill; silences escalate: one beat (8), a hanging E♮ (32), total silence (52).
    Also still slightly dark (upper-mid 11.7 dB and highs 16.7 dB under the mids in the final):
    brighten hats/snare/keys a little.
+
+## 5. V3 — the reveal, the pocket, the edges (3:06.5)
+
+**Changes (mapped to the V2 critique).**
+1. The machine now states only the *call*; its answer breaks off after one cell (bar 7) and a stalled
+   A♭4. The complete answer, and its E♮, are first sung by the voice (bars 19–20).
+2. Keys comping gained a moving top line (G A♭ B♭ | A♭ G F E♭ | G F G | D C G A♭, nine voicings with A♭3 as
+   common tone) and +4 dB in the groove; bar 16 breaks the drums on beats 3–4 while bass and keys keep
+   talking. K-weighted keys level in the groove: −24.8 → −20.5 (within ~3 dB of kick, bass and snare).
+3. Bar-32 impact replaced by a reverse swell; bar 40 now runs into Hook 2 on a tom + ghost-snare fill
+   instead of a fourth silence. Silences now escalate: one beat (8), a hanging E♮ (32), total (52).
+4. The final's first pass is a new take (new seed, more vibrato and intensity) rather than a reuse of
+   hook 1's exact performance.
+5. Edges: the rain patch's freeway rumble halved (it painted a 50–150 Hz haze over the bass-less intro);
+   the last choir chord now fades its voices inside the sample and lets the hall decay naturally
+   (tail −27 → −96 dBFS over 182–185 s instead of a cliff); container trimmed to 186.5 s; master −4.0 dB.
+
+**Measured.** −11.3 LUFS, LRA 6.2 LU, −2.1 dBTP, sample peak −2.6 dBFS, no clipped samples anywhere.
+**Voice pitch check** (`analysis/pitch_check.py`, YIN on the dry voice stem vs the score): all 44 notes
+of hook 1 within ±13 cents, most within ±6; the larger values are sixteenth-note passing tones still
+settling from portamento.
+
+**Review checks (proxies; no listening).**
+- *Opening:* first sound is the machine's E♭5 at 0:00 inside rain at full level within 1 s; the call is
+  complete by ~3 s; the siren's distant cry answers from 5.2 s; bass and keys at bar 5.
+- *Impact:* Hook 2 arrival vs approach +4.6 dB RMS (sub +8.1, upper-mid +4.9, highs +7.9); final arrival
+  vs signal loss +1.3 dB RMS with mids +6.2 and side fraction 0.028 → 0.077; bar 64 (resolution) is the
+  loudest window (−10.0 dBFS) with no drums.
+- *Final 3 seconds:* low F hit, F-major pad and choir, the machine's last notes E→F; smooth decay, ~1 s of
+  silence, then a replay restarts on the minor-key machine call ("the night returns").
+- *Translation proxy:* mono fold-down costs 0.1–0.6 dB (mono-safe). In a 300 Hz–8 kHz band the hooks lose
+  ~5 dB (the voice carries them) but the groove loses 9.5 dB: on phones the pocket depends on snare,
+  hats, keys and bass harmonics. **Known risk**, accepted for a bass-led groove; flagged for owner listening.
+
+**Remaining weakness worth naming:** Hook 2 repeats Hook 1's phrases; only the arrangement changes.
