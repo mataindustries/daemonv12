@@ -1,0 +1,55 @@
+{
+  "title": "Open Window study",
+  "bpm": 120,
+  "key": "D major",
+  "seed": 12012,
+  "instruments": {
+    "wood": { "partials": [1, 0.23, 0.08], "attackSeconds": 0.004, "decaySeconds": 0.16, "sampleSeconds": 0.45, "noise": 0.015 },
+    "reed": { "partials": [0.7, 0.12, 0.16, 0.03], "attackSeconds": 0.025, "decaySeconds": 1.4, "sampleSeconds": 0.8, "noise": 0.008 }
+  },
+  "phrases": {
+    "lift": {
+      "instrument": "reed", "beats": 4,
+      "notes": [
+        { "beat": 0, "midi": 66, "durationBeats": 0.75, "velocity": 0.65, "expression": [0.7, 1] },
+        { "beat": 1, "midi": 69, "durationBeats": 1.25, "velocity": 0.7, "slideFrom": 68, "vibratoCents": 14 },
+        { "beat": 2.5, "midi": 71, "durationBeats": 1.5, "velocity": 0.6, "expression": [1, 0.2] }
+      ]
+    },
+    "settle": {
+      "instrument": "reed", "beats": 4,
+      "notes": [
+        { "beat": 0, "midi": 76, "durationBeats": 1, "velocity": 0.62, "vibratoCents": 10 },
+        { "beat": 1.5, "midi": 73, "durationBeats": 0.5, "velocity": 0.55 },
+        { "beat": 2.5, "midi": 74, "durationBeats": 1.5, "velocity": 0.7, "slideFrom": 73, "expression": [1, 0.1] }
+      ]
+    }
+  },
+  "sections": [
+    { "id": "question", "bars": 1, "development": "Sparse uneven wood intervals; phrase withheld." },
+    { "id": "lift", "bars": 1, "development": "Reed enters above the dyads; density increases." },
+    { "id": "space", "bars": 1, "development": "Accompaniment drops away; last wood response." },
+    { "id": "answer", "bars": 1, "development": "Higher phrase changes contour and settles on D." }
+  ],
+  "tracks": [
+    { "id": "wood", "instrument": "wood", "gainDb": -4, "pan": -0.25,
+      "sections": {
+        "question": [{ "beat": 0, "midi": 62, "velocity": 0.7 }, { "beat": 1.5, "midi": 69, "velocity": 0.6 }, { "beat": 3, "midi": 66, "velocity": 0.55 }],
+        "lift": [{ "beat": 0, "midi": 64, "velocity": 0.6 }, { "beat": 0, "midi": 71, "velocity": 0.5 }, { "beat": 2, "midi": 69, "velocity": 0.55 }],
+        "space": [{ "beat": 2, "midi": 73, "velocity": 0.5 }],
+        "answer": [{ "beat": 0, "midi": 62, "velocity": 0.65 }, { "beat": 0, "midi": 69, "velocity": 0.5 }, { "beat": 2.5, "midi": 66, "velocity": 0.55 }]
+      }
+    },
+    { "id": "low", "instrument": "wood", "gainDb": -5, "pan": 0,
+      "sections": {
+        "question": [{ "beat": 0, "midi": 50, "velocity": 0.7 }],
+        "lift": [{ "beat": 0, "midi": 52, "velocity": 0.65 }, { "beat": 2.5, "midi": 57, "velocity": 0.5 }],
+        "answer": [{ "beat": 0, "midi": 50, "velocity": 0.65 }]
+      }
+    },
+    { "id": "reed", "instrument": "reed", "gainDb": -3, "pan": 0.2,
+      "sections": { "lift": [{ "beat": 0, "phrase": "lift", "velocity": 0.8 }], "answer": [{ "beat": 0, "phrase": "settle", "velocity": 0.8 }] }
+    }
+  ],
+  "variations": { "reduced": { "omitTracks": ["reed"] } }
+}

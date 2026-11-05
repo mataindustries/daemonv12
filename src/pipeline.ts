@@ -29,14 +29,15 @@ function compile(loaded: LoadResult, kits: Kits = new Map()): Compilation {
     timeline: resolved.timeline, ...(loaded.bytes ? { projectBytes: loaded.bytes } : {}) };
 }
 export function compileProjectText(text: string, kits: Kits = new Map()): Compilation { return compile(parseProjectText(text), kits); }
-export function compileProjectFile(path: string): Compilation {
-  return compileWithAssets(loadProject(path), path);
+export interface CompilationOptions { reuseVoices?: boolean }
+export function compileProjectFile(path: string, options: CompilationOptions = {}): Compilation {
+  return compileWithAssets(loadProject(path), path, options);
 }
 // Validate proposed authoring bytes against the destination's assets without writing a file.
 export function compileProjectTextWithAssets(text: string, path: string): Compilation {
   return compileWithAssets(parseProjectText(text), path);
 }
-function compileWithAssets(loaded: LoadResult, path: string): Compilation {
+function compileWithAssets(loaded: LoadResult, path: string, options: CompilationOptions = {}): Compilation {
   if (loaded.diagnostics.length || (loaded.value as {formatVersion?:unknown}|null)?.formatVersion !== 1) return compile(loaded);
   const kitData=loadKits(loaded.value,path);
   if (kitData.diagnostics.length) return {project:null,timeline:null,...capDiagnostics(kitData.diagnostics)};
@@ -98,7 +99,7 @@ function compileWithAssets(loaded: LoadResult, path: string): Compilation {
     }
   }
   if(!compilation.diagnostics.some(d=>d.severity==='error')) {
-    const budget=playbackBudget({...compilation,kits:kitData.kits,assets},productionRoute(compilation.project));
+    const budget=playbackBudget({...compilation,kits:kitData.kits,assets},productionRoute(compilation.project),undefined,options.reuseVoices);
     if(budget)compilation.diagnostics.push(budget);
   }
   if(compilation.diagnostics.some(d=>d.severity==='error'))compilation.timeline=null;
@@ -116,7 +117,7 @@ export function summarize(project: Project, timeline: Timeline) {
 }
 
 export type Command = 'validate' | 'midi' | 'render' | 'analyze';
-export interface CommandOptions { outDir?: string; soundfont?: string; env?: NodeJS.ProcessEnv; timeoutMs?: number; stems?: boolean; format?: 'wav' | 'mp3' | 'wav,mp3' }
+export interface CommandOptions { outDir?: string; soundfont?: string; env?: NodeJS.ProcessEnv; timeoutMs?: number; stems?: boolean; format?: 'wav' | 'mp3' | 'wav,mp3'; reuseVoices?: boolean }
 export interface CommandResult {
   ok: boolean; command: Command | null; engineVersion: string; project: string | null;
   errors: Diagnostic[]; warnings: Diagnostic[]; summary: ReturnType<typeof summarize> | null;
@@ -201,7 +202,7 @@ export async function runCommand(command: Command, path: string, options: Comman
       try { protectedOutput=outputInAssets(path,options.outDir??'renders'); }
       catch(error) { diagnostics.push(writeFailure(options.outDir??'renders',error));protectedOutput=true; }
     }
-    compilation=compileProjectFile(path);
+    compilation=compileProjectFile(path,{reuseVoices:options.reuseVoices});
     diagnostics=[...compilation.diagnostics];
     result=resultFor(command,path,diagnostics,compilation.timeline?summarize(compilation.project!,compilation.timeline):null,compilation.omitted);
     failed=!compilation.timeline;
@@ -235,7 +236,7 @@ export async function runCommand(command: Command, path: string, options: Comman
           outputPath=paths.midi;
           atomicWrite(paths.midi,midi);result.artifacts.midi=paths.midi;
           if(command === 'render' && (hasSamples || production)) {
-            const sampled=await renderSampledProject({compilation,path,paths,stemDir,midi,stems:!!options.stems,renderer,soundfont,stemFileName,processor:production?processor:undefined});
+            const sampled=await renderSampledProject({compilation,path,paths,stemDir,midi,stems:!!options.stems,renderer,soundfont,stemFileName,processor:production?processor:undefined,reuseVoices:options.reuseVoices});
             diagnostics.push(...sampled.diagnostics);
             if(sampled.manifest) {
               outputPath=paths.manifest;

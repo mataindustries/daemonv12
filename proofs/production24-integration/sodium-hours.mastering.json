@@ -1,0 +1,633 @@
+{
+  "schema": "daemonv12.headliner-production24-mastering/1",
+  "status": "Technical production candidate; no subjective improvement or release approval asserted.",
+  "authoredMaster": {
+    "gainDb": -4,
+    "effects": [
+      {
+        "type": "highpass",
+        "frequencyHz": 28
+      },
+      {
+        "type": "compressor",
+        "thresholdDb": -11,
+        "ratio": 1.6,
+        "attackMs": 30,
+        "releaseMs": 250
+      },
+      {
+        "type": "saturation",
+        "driveDb": 6,
+        "mix": 1
+      },
+      {
+        "type": "saturation",
+        "driveDb": 0,
+        "mix": 1
+      }
+    ]
+  },
+  "authoredRender": {
+    "duration": {
+      "seconds": 186.5
+    },
+    "tail": "auto"
+  },
+  "authoredTracks": [
+    {
+      "trackId": "kick",
+      "mix": {
+        "gainDb": -11,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "saturation",
+          "driveDb": 5,
+          "mix": 0.85
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "snare",
+      "mix": {
+        "gainDb": -3.5,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "saturation",
+          "driveDb": 3,
+          "mix": 0.5
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "hats",
+      "mix": {
+        "gainDb": 6.5,
+        "pan": 0.32
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 400
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "metal",
+      "mix": {
+        "gainDb": -8,
+        "pan": -0.4
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 120
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "bass",
+      "mix": {
+        "gainDb": -9.5,
+        "pan": 0
+      },
+      "effects": [],
+      "automation": {}
+    },
+    {
+      "trackId": "grit",
+      "mix": {
+        "gainDb": -12,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "saturation",
+          "driveDb": 3,
+          "mix": 0.3
+        }
+      ],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "musical": "25:1"
+            },
+            "value": -15,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "41:1"
+            },
+            "value": -6.5,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "49:1"
+            },
+            "value": -6,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "53:1"
+            },
+            "value": -6,
+            "transition": "step"
+          }
+        ]
+      }
+    },
+    {
+      "trackId": "keys",
+      "mix": {
+        "gainDb": -4,
+        "pan": -0.35
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 160
+        }
+      ],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "musical": "1:1"
+            },
+            "value": -6,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "9:1"
+            },
+            "value": 1.5,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "17:1"
+            },
+            "value": -6,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "25:1"
+            },
+            "value": -2,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "33:1"
+            },
+            "value": -9,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "41:1"
+            },
+            "value": -8,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "65:1"
+            },
+            "value": -5,
+            "transition": "step"
+          }
+        ]
+      }
+    },
+    {
+      "trackId": "pad",
+      "mix": {
+        "gainDb": -7,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 190
+        }
+      ],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "musical": "1:1"
+            },
+            "value": -9,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "9:1"
+            },
+            "value": -7,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "17:1"
+            },
+            "value": -8,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "33:1"
+            },
+            "value": -11,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "41:1"
+            },
+            "value": -4.5,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "53:1"
+            },
+            "value": -3.5,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "64:1"
+            },
+            "value": -3.5,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "65:1"
+            },
+            "value": -7,
+            "transition": "step"
+          }
+        ]
+      }
+    },
+    {
+      "trackId": "pluck",
+      "mix": {
+        "gainDb": -11,
+        "pan": 0.35
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 180
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "pluck-space",
+      "mix": {
+        "gainDb": -8,
+        "pan": 0
+      },
+      "effects": [],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "musical": "1:1"
+            },
+            "value": -6,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "9:1"
+            },
+            "value": -8,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "33:1"
+            },
+            "value": -9,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "53:1"
+            },
+            "value": -6,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "65:1"
+            },
+            "value": -5,
+            "transition": "step"
+          }
+        ]
+      }
+    },
+    {
+      "trackId": "voice",
+      "mix": {
+        "gainDb": -3.5,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 150
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -20,
+          "ratio": 3,
+          "attackMs": 6,
+          "releaseMs": 120,
+          "makeupGainDb": 2
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "voice-space",
+      "mix": {
+        "gainDb": -8.5,
+        "pan": 0
+      },
+      "effects": [],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "musical": "17:1"
+            },
+            "value": -6,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "25:1"
+            },
+            "value": -4,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "33:1"
+            },
+            "value": -6,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "41:1"
+            },
+            "value": -4.5,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "49:1"
+            },
+            "value": -3,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "53:1"
+            },
+            "value": -4,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "61:1"
+            },
+            "value": -3.5,
+            "transition": "step"
+          }
+        ]
+      }
+    },
+    {
+      "trackId": "choir",
+      "mix": {
+        "gainDb": -6.5,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 170
+        }
+      ],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "musical": "33:1"
+            },
+            "value": -13,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "41:1"
+            },
+            "value": -6.5,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "53:1"
+            },
+            "value": -3.5,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "64:1"
+            },
+            "value": -4,
+            "transition": "step"
+          }
+        ]
+      }
+    },
+    {
+      "trackId": "atmos",
+      "mix": {
+        "gainDb": -8,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 90
+        }
+      ],
+      "automation": {
+        "gainDb": [
+          {
+            "at": {
+              "musical": "1:1"
+            },
+            "value": -6,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "musical": "5:1"
+            },
+            "value": -7,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "9:1"
+            },
+            "value": -13,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "17:1"
+            },
+            "value": -15,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "25:1"
+            },
+            "value": -14,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "33:1"
+            },
+            "value": -7,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "41:1"
+            },
+            "value": -15,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "49:1"
+            },
+            "value": -11,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "53:1"
+            },
+            "value": -15,
+            "transition": "step"
+          },
+          {
+            "at": {
+              "musical": "65:1"
+            },
+            "value": -7,
+            "transition": "linear"
+          },
+          {
+            "at": {
+              "musical": "71:1"
+            },
+            "value": -9,
+            "transition": "step"
+          }
+        ]
+      }
+    },
+    {
+      "trackId": "fx",
+      "mix": {
+        "gainDb": -10,
+        "pan": 0
+      },
+      "effects": [],
+      "automation": {}
+    }
+  ],
+  "additionalMastering": "None; original project gain, ordered effects and ducking are preserved.",
+  "export": {
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "dither": false,
+    "normalization": false
+  },
+  "analysis": {
+    "format": "pcm_s24le",
+    "frames": 8224650,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "durationSeconds": 186.5,
+    "peakDbfs": -2.583811,
+    "rmsDbfs": -12.671715,
+    "fullScaleSamples": 0,
+    "clipping": false,
+    "stereoCorrelation": 0.866879,
+    "monoFoldRmsDbfs": -12.970915,
+    "monoFoldChangeDb": -0.2992,
+    "nonzeroLowBytes": 16330131,
+    "integratedLufs": -11.35,
+    "loudnessRangeLu": 6.2,
+    "truePeakDbfs": -2.07
+  },
+  "headroom": {
+    "samplePeakDbfs": -2.583811,
+    "truePeakDbfs": -2.07,
+    "truePeakHeadroomDb": 2.07
+  },
+  "stems": "Aligned post-track/pre-master PCM24; independently quantized. Summing exported stems does not reproduce the Float64-summed, master-processed WAV byte for byte.",
+  "sourcePrecision": "Sources are PCM16. No lost source detail is recovered. Newly computed fractional processing detail is retained.",
+  "listening": {
+    "file": "listening/sodium-hours.24.mp3",
+    "sha256": "fd5c2d876f5626fccbc9968a4887b3a432fc243412ac76aae5958c4d69b63e52",
+    "bytes": 4477640,
+    "codec": "libmp3lame",
+    "bitrateKbps": 192,
+    "derivedFrom": {
+      "file": "masters/sodium-hours.24.wav",
+      "sha256": "93e08083ba191cb32ff0c3526712e35970d44cb0ba7135df505e953b92645f1c"
+    },
+    "processing": "Encoding only; no normalization, extra mastering, gain change or PCM16 intermediate."
+  },
+  "releaseBlockers": [
+    "Human listening approval remains pending.",
+    "Source, composition and generated-audio rights require owner review; no new license is granted.",
+    "Release-specific mastering approval remains pending."
+  ]
+}

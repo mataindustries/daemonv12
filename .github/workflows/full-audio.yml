@@ -1,7 +1,9 @@
 name: Full audio verification
-# Manual: downloads FluidSynth, a 148 MB SoundFont and FFmpeg, so it stays out of
-# ordinary CI. Run it before a release (Actions > Full audio verification > Run workflow).
-on: workflow_dispatch
+# Downloads FluidSynth, a 148 MB SoundFont and FFmpeg. Run manually before a release,
+# or reuse these same checks for pull requests changing the optional PCM24 workflow.
+on:
+  workflow_dispatch:
+  workflow_call:
 permissions:
   contents: read
 jobs:

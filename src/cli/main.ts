@@ -8,9 +8,9 @@ import { runSyncCli, syncUsage } from './sync.ts';
 const usage = `Usage:
   daemonv12 doctor [--soundfont <file.sf2>] [--json]
   daemonv12 init <new-workspace-directory> [--json]
-  daemonv12 validate <project.json> [--json]
+  daemonv12 validate <project.json> [--reuse-voices] [--json]
   daemonv12 midi <project.json> [--out-dir <dir>] [--json]
-  daemonv12 render <project.json> [--out-dir <dir>] [--soundfont <file.sf2>] [--stems] [--format wav|mp3|wav,mp3] [--json]
+  daemonv12 render <project.json> [--out-dir <dir>] [--soundfont <file.sf2>] [--stems] [--format wav|mp3|wav,mp3] [--reuse-voices] [--json]
   daemonv12 analyze <audio.wav> [--json]
 ${syncUsage.split('\n')[0]}
   daemonv12 help | --help | -h
@@ -49,15 +49,15 @@ async function main(): Promise<void> {
   let options: CommandOptions;
   try {
     const {positionals,values}=parseArgs({args:argv,strict:true,allowPositionals:true,options:{
-      json:{type:'boolean'},format:{type:'string'},stems:{type:'boolean'},'out-dir':{type:'string'},soundfont:{type:'string'},help:{type:'boolean',short:'h'},version:{type:'boolean',short:'v'},
+      json:{type:'boolean'},'reuse-voices':{type:'boolean'},format:{type:'string'},stems:{type:'boolean'},'out-dir':{type:'string'},soundfont:{type:'string'},help:{type:'boolean',short:'h'},version:{type:'boolean',short:'v'},
     }});
     const name=positionals[0];
     if(name==='validate'||name==='midi'||name==='render'||name==='analyze')command=name;
     project=positionals[1]??null;
-    if ((values.help || name==='help') && positionals.length <= (name==='help'?1:0) && !values.version && values['out-dir']===undefined && values.soundfont===undefined && values.stems===undefined && values.format===undefined) { process.stdout.write(usage+'\n');return; }
-    if(values.version && !positionals.length && !values.help && values['out-dir']===undefined && values.soundfont===undefined && values.stems===undefined && values.format===undefined){process.stdout.write(`daemonv12 ${ENGINE_VERSION}\n`);return;}
+    if ((values.help || name==='help') && positionals.length <= (name==='help'?1:0) && !values.version && values['out-dir']===undefined && values.soundfont===undefined && values.stems===undefined && values.format===undefined && values['reuse-voices']===undefined) { process.stdout.write(usage+'\n');return; }
+    if(values.version && !positionals.length && !values.help && values['out-dir']===undefined && values.soundfont===undefined && values.stems===undefined && values.format===undefined && values['reuse-voices']===undefined){process.stdout.write(`daemonv12 ${ENGINE_VERSION}\n`);return;}
     if(name==='init') {
-      if(positionals.length!==2 || values.help || values.version || values['out-dir']!==undefined || values.soundfont!==undefined || values.stems!==undefined || values.format!==undefined)throw new Error('Init accepts one new or empty directory and --json.');
+      if(positionals.length!==2 || values.help || values.version || values['out-dir']!==undefined || values.soundfont!==undefined || values.stems!==undefined || values.format!==undefined || values['reuse-voices']!==undefined)throw new Error('Init accepts one new or empty directory and --json.');
       const init=initWorkspace(positionals[1]!,process.env);
       if(json)process.stdout.write(JSON.stringify(init,null,2)+'\n');
       else if(init.ok)process.stdout.write(formatInit(init));
@@ -65,13 +65,13 @@ async function main(): Promise<void> {
       process.exitCode=exitCodeFor(init.errors);return;
     }
     if(name==='doctor') {
-      if(positionals.length!==1 || values.help || values.version || values['out-dir']!==undefined || values.stems!==undefined || values.format!==undefined)throw new Error('Doctor accepts only --json and --soundfont <file.sf2>.');
+      if(positionals.length!==1 || values.help || values.version || values['out-dir']!==undefined || values.stems!==undefined || values.format!==undefined || values['reuse-voices']!==undefined)throw new Error('Doctor accepts only --json and --soundfont <file.sf2>.');
       const report=await inspectEnvironment({env:process.env,soundfont:values.soundfont});
       process.stdout.write(json ? JSON.stringify(report,null,2)+'\n' : formatDoctor(report));
       process.exitCode=report.ok?0:3;return;
     }
-    if (!command || positionals.length!==2 || values.help || values.version || ((command==='validate'||command==='analyze') && values['out-dir']!==undefined) || (command!=='render' && (values.soundfont!==undefined || values.stems!==undefined || values.format!==undefined)) || (values.format!==undefined && !['wav','mp3','wav,mp3'].includes(values.format)))throw new Error('Invalid command, arguments, or command-specific flags.');
-    options={outDir:values['out-dir'],soundfont:values.soundfont,stems:values.stems,format:values.format as CommandOptions['format'],env:process.env};
+    if ((values['reuse-voices']!==undefined && command!=='render' && command!=='validate') || !command || positionals.length!==2 || values.help || values.version || ((command==='validate'||command==='analyze') && values['out-dir']!==undefined) || (command!=='render' && (values.soundfont!==undefined || values.stems!==undefined || values.format!==undefined)) || (values.format!==undefined && !['wav','mp3','wav,mp3'].includes(values.format)))throw new Error('Invalid command, arguments, or command-specific flags.');
+    options={reuseVoices:values['reuse-voices'],outDir:values['out-dir'],soundfont:values.soundfont,stems:values.stems,format:values.format as CommandOptions['format'],env:process.env};
   } catch(error) {
     // parseArgs rejects malformed argv before returning positionals; preserve identifiable context.
     if (!command && ['validate','midi','render','analyze'].includes(argv[0]??'')) {command=argv[0] as Command;project=argv[1]&&!argv[1].startsWith('-')?argv[1]:null;}

@@ -1,0 +1,698 @@
+{
+  "title": "DAEMON FORGE 003: continuous 180-second production proof",
+  "sourceMainCommit": "e2962cc1a443c841cd6ca7cb2cc56c5ebabf0e99",
+  "tools": {
+    "node": "v24.19.0",
+    "ffmpeg": "6.1.1"
+  },
+  "project": {
+    "file": "proofs/forge003/headliner-stress.project.json",
+    "sha256": "6d86022e51c0bedb66efbc031bc7d0704ba08dbc791ae5cf0b2c6312e2081746",
+    "tracks": 15,
+    "triggers": 3467,
+    "bars": 96,
+    "bpm": 128,
+    "frames": 7938000,
+    "seconds": 180
+  },
+  "sourceCode": {
+    "scripts/create-headliner-stress.ts": "9f1d6e06a58a0739323fc0fc3a680ad58b981e8b49c41e348d5b485cc28f7c8a",
+    "scripts/verify-headliner-stress.ts": "aeb96a5e17fb95429d9aed30feee4849fefc453fd761c72fa4091554a414f5cb"
+  },
+  "safety": {
+    "legacyDefaultRejectsInterpolationBudget": true,
+    "uncachedInterpolationTapEstimate": 3018018663,
+    "actualReuse": {
+      "algorithm": "exact-interpolation-reuse-v1",
+      "interpolationTaps": 343122898,
+      "cachedBytes": 64142336,
+      "uniqueVoices": 67,
+      "reusedVoices": 1344,
+      "workLimit": 1000000000,
+      "cacheBytesLimit": 134217728,
+      "scope": "one render; source PCM identity, playback rate/glide/offset, explicit endpoint and rendered frame count; velocity/envelope per onset; full continuous track/master processing"
+    },
+    "noBudgetIncreaseOrBypass": true
+  },
+  "determinism": {
+    "twoIndependentContinuousRendersIdentical": true,
+    "compared": [
+      {
+        "file": "headliner-stress.wav",
+        "sha256": "67b7209a189748027e2af258aea10a056938d1de8ae5e4a367ccc8b1e5fb7f58"
+      },
+      {
+        "file": "headliner-stress.mid",
+        "sha256": "f8896e094bf0ffd211ee7da0c95f8f51a7fd642f68857545fe0847ad311d0b6a"
+      },
+      {
+        "file": "headliner-stress.render.json",
+        "sha256": "6d2f1a00bfc4173722a71074a5d78d99a98d798101a20b7a7424aaf5f5b8b395"
+      },
+      {
+        "file": "headliner-stress.analysis.json",
+        "sha256": "34d1602233e98695f3fdc063f2f57cd89009c40fcf73910b58a1e2ac60447ae9"
+      },
+      {
+        "file": "headliner-stress.stems/kick.wav",
+        "sha256": "ee7e9e7f33f50af2265729dd7f2dc44818ade8bb61493a49d721cb563ea83001"
+      },
+      {
+        "file": "headliner-stress.stems/backbeat.wav",
+        "sha256": "34db05996b944d2e2e57b0069915d83326ed6b633f1e4349e2b1672ddaa3d285"
+      },
+      {
+        "file": "headliner-stress.stems/hats.wav",
+        "sha256": "a9064889b23fc22689b1e070a4c4658f83f5046727e96869b44ca863abbc4b38"
+      },
+      {
+        "file": "headliner-stress.stems/chrome.wav",
+        "sha256": "81300d2ad852132a1f61fd59e4999a0adfae018286c11679663232842ca66e4c"
+      },
+      {
+        "file": "headliner-stress.stems/abyss.wav",
+        "sha256": "de98cb3f7bd46d33c5cbcc87af84dd0bb929fae5a36526982cfbed39d5ce5dbf"
+      },
+      {
+        "file": "headliner-stress.stems/reactor.wav",
+        "sha256": "ad42c30ea6cf92013693ea9ade41e7067176f9a0631635bcfd11ee5f58110a75"
+      },
+      {
+        "file": "headliner-stress.stems/signal.wav",
+        "sha256": "6d66525b586d1a9e32803241c464066f58ce2d59405028d1765497e43de4e7ae"
+      },
+      {
+        "file": "headliner-stress.stems/phantom.wav",
+        "sha256": "9c19b6409334135f00c7a28cf4b98949f99ba8291d591828e4b46394f0585236"
+      },
+      {
+        "file": "headliner-stress.stems/horizon.wav",
+        "sha256": "11d444c0663a6726cbb755fdfae97d2264c5d39cfa48d9b94c48a29758d7b8b7"
+      },
+      {
+        "file": "headliner-stress.stems/afterglow.wav",
+        "sha256": "d2d1822d4b3f5fead2c50e4e15fd2ff950e20aa8dbd02a3b53b36f586fedd0f1"
+      },
+      {
+        "file": "headliner-stress.stems/specter.wav",
+        "sha256": "7053f0d790450c4f1f528978eb72312055a5b3856026109658b2c9db68e5e296"
+      },
+      {
+        "file": "headliner-stress.stems/ascension.wav",
+        "sha256": "12a2819c49dca1190bca2585334d6508f432c4a3e4680da0e6570b90b5f1e842"
+      },
+      {
+        "file": "headliner-stress.stems/convergence.wav",
+        "sha256": "8f5f2965cd4c001faef98f33f947e172b71e6b92cf11f773149b68b90250694f"
+      },
+      {
+        "file": "headliner-stress.stems/cable.wav",
+        "sha256": "25690ff0950baf17c49e9ac3d042a55f7d43eca443708b89a1ebfcc9341a4390"
+      },
+      {
+        "file": "headliner-stress.stems/ratchet.wav",
+        "sha256": "a7f53fa65c6389f00f87ec8472e93b8b0f37fcaa4a8633fc2ef2cca7a4af95aa"
+      }
+    ],
+    "mp3Compared": false,
+    "explanation": "MP3 is a listening copy. WAV, every stem, MIDI, manifest and analysis repeat byte for byte. Cache lifetime is one render; a repeated full render recomputes unique voices."
+  },
+  "continuousTimeline": {
+    "assembly": "No audio section concatenation. Full-length per-track buffers and all ordered effects run once from sample zero to frame 7,938,000; shared interpolation buffers contain no time-dependent track/master state.",
+    "reconstructedFromExportedStemsSha256": "67b7209a189748027e2af258aea10a056938d1de8ae5e4a367ccc8b1e5fb7f58",
+    "reconstructionEqualsGlobalMasterEverySample": true,
+    "allTriggerFramesMatchIndependentBigIntRounding": true,
+    "alignedStems": [
+      {
+        "trackId": "kick",
+        "frames": 7938000,
+        "sha256": "ee7e9e7f33f50af2265729dd7f2dc44818ade8bb61493a49d721cb563ea83001"
+      },
+      {
+        "trackId": "backbeat",
+        "frames": 7938000,
+        "sha256": "34db05996b944d2e2e57b0069915d83326ed6b633f1e4349e2b1672ddaa3d285"
+      },
+      {
+        "trackId": "hats",
+        "frames": 7938000,
+        "sha256": "a9064889b23fc22689b1e070a4c4658f83f5046727e96869b44ca863abbc4b38"
+      },
+      {
+        "trackId": "chrome",
+        "frames": 7938000,
+        "sha256": "81300d2ad852132a1f61fd59e4999a0adfae018286c11679663232842ca66e4c"
+      },
+      {
+        "trackId": "abyss",
+        "frames": 7938000,
+        "sha256": "de98cb3f7bd46d33c5cbcc87af84dd0bb929fae5a36526982cfbed39d5ce5dbf"
+      },
+      {
+        "trackId": "reactor",
+        "frames": 7938000,
+        "sha256": "ad42c30ea6cf92013693ea9ade41e7067176f9a0631635bcfd11ee5f58110a75"
+      },
+      {
+        "trackId": "signal",
+        "frames": 7938000,
+        "sha256": "6d66525b586d1a9e32803241c464066f58ce2d59405028d1765497e43de4e7ae"
+      },
+      {
+        "trackId": "phantom",
+        "frames": 7938000,
+        "sha256": "9c19b6409334135f00c7a28cf4b98949f99ba8291d591828e4b46394f0585236"
+      },
+      {
+        "trackId": "horizon",
+        "frames": 7938000,
+        "sha256": "11d444c0663a6726cbb755fdfae97d2264c5d39cfa48d9b94c48a29758d7b8b7"
+      },
+      {
+        "trackId": "afterglow",
+        "frames": 7938000,
+        "sha256": "d2d1822d4b3f5fead2c50e4e15fd2ff950e20aa8dbd02a3b53b36f586fedd0f1"
+      },
+      {
+        "trackId": "specter",
+        "frames": 7938000,
+        "sha256": "7053f0d790450c4f1f528978eb72312055a5b3856026109658b2c9db68e5e296"
+      },
+      {
+        "trackId": "ascension",
+        "frames": 7938000,
+        "sha256": "12a2819c49dca1190bca2585334d6508f432c4a3e4680da0e6570b90b5f1e842"
+      },
+      {
+        "trackId": "convergence",
+        "frames": 7938000,
+        "sha256": "8f5f2965cd4c001faef98f33f947e172b71e6b92cf11f773149b68b90250694f"
+      },
+      {
+        "trackId": "cable",
+        "frames": 7938000,
+        "sha256": "25690ff0950baf17c49e9ac3d042a55f7d43eca443708b89a1ebfcc9341a4390"
+      },
+      {
+        "trackId": "ratchet",
+        "frames": 7938000,
+        "sha256": "a7f53fa65c6389f00f87ec8472e93b8b0f37fcaa4a8633fc2ef2cca7a4af95aa"
+      }
+    ]
+  },
+  "master": {
+    "wavSha256": "67b7209a189748027e2af258aea10a056938d1de8ae5e4a367ccc8b1e5fb7f58",
+    "analysis": {
+      "durationSeconds": 180,
+      "frames": 7938000,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -7.481885,
+      "rmsDbfs": -22.234402,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -20.95,
+      "loudnessRangeLu": 11.3,
+      "truePeakDbfs": -7.38
+    },
+    "stereo": {
+      "peakDbfs": -7.481885,
+      "fullScaleSamples": 0,
+      "rmsDbfs": -22.234402,
+      "dc": -0.000008,
+      "correlation": 0.935758,
+      "monoFoldDownDb": -0.141824,
+      "lowBandCorrelation": 0.99614,
+      "lowBandMonoFoldDownDb": -0.008392,
+      "lowBandMethod": "Two cascaded causal one-pole low-pass filters at 150 Hz, continuous from sample zero; unweighted energy/correlation, no perceptual pass implied."
+    },
+    "masterClippedSamples": 0,
+    "trackClippedSamples": [
+      {
+        "trackId": "kick",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "backbeat",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "hats",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "chrome",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "abyss",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "reactor",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "signal",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "phantom",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "horizon",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "afterglow",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "specter",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "ascension",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "convergence",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "cable",
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "ratchet",
+        "clippedSamples": 0
+      }
+    ],
+    "lastSecondPeakDbfs": null,
+    "last100msPeakDbfs": null,
+    "last10msPeakDbfs": null,
+    "finalFramePcm16": [
+      0,
+      0
+    ]
+  },
+  "boundaries": [
+    {
+      "entering": "displaced drive",
+      "seconds": 15,
+      "frame": 661500,
+      "adjacentFrameDeltaPcm16": [
+        -14,
+        68
+      ],
+      "peakIn20msDbfs": -10.294245,
+      "dryVoicesCrossing": [
+        {
+          "trackId": "horizon",
+          "onsetFrame": 496125,
+          "endFrameExclusive": 679140
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 506461,
+          "endFrameExclusive": 666599
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 506461,
+          "endFrameExclusive": 666599
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 506461,
+          "endFrameExclusive": 666599
+        }
+      ],
+      "continuousEffects": [
+        "chrome",
+        "signal",
+        "phantom",
+        "afterglow",
+        "specter",
+        "cable"
+      ],
+      "excerpt": "work/headliner-stress/transition-excerpts/boundary-15s.wav"
+    },
+    {
+      "entering": "pressure",
+      "seconds": 45,
+      "frame": 1984500,
+      "adjacentFrameDeltaPcm16": [
+        -16,
+        81
+      ],
+      "peakIn20msDbfs": -10.043825,
+      "dryVoicesCrossing": [
+        {
+          "trackId": "horizon",
+          "onsetFrame": 1819125,
+          "endFrameExclusive": 2002140
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 1829461,
+          "endFrameExclusive": 1989599
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 1829461,
+          "endFrameExclusive": 1989599
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 1829461,
+          "endFrameExclusive": 1989599
+        }
+      ],
+      "continuousEffects": [
+        "chrome",
+        "signal",
+        "phantom",
+        "afterglow",
+        "specter",
+        "cable"
+      ],
+      "excerpt": "work/headliner-stress/transition-excerpts/boundary-45s.wav"
+    },
+    {
+      "entering": "first arrival",
+      "seconds": 60,
+      "frame": 2646000,
+      "adjacentFrameDeltaPcm16": [
+        -18,
+        79
+      ],
+      "peakIn20msDbfs": -11.700207,
+      "dryVoicesCrossing": [
+        {
+          "trackId": "horizon",
+          "onsetFrame": 2480625,
+          "endFrameExclusive": 2663640
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 2490961,
+          "endFrameExclusive": 2651099
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 2490961,
+          "endFrameExclusive": 2651099
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 2490961,
+          "endFrameExclusive": 2651099
+        }
+      ],
+      "continuousEffects": [
+        "chrome",
+        "signal",
+        "phantom",
+        "afterglow",
+        "specter",
+        "cable"
+      ],
+      "excerpt": "work/headliner-stress/transition-excerpts/boundary-60s.wav"
+    },
+    {
+      "entering": "ghost chamber",
+      "seconds": 90,
+      "frame": 3969000,
+      "adjacentFrameDeltaPcm16": [
+        -28,
+        77
+      ],
+      "peakIn20msDbfs": -17.314515,
+      "dryVoicesCrossing": [
+        {
+          "trackId": "phantom",
+          "onsetFrame": 3953496,
+          "endFrameExclusive": 3969124
+        },
+        {
+          "trackId": "horizon",
+          "onsetFrame": 3803625,
+          "endFrameExclusive": 3986640
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 3813961,
+          "endFrameExclusive": 3974099
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 3813961,
+          "endFrameExclusive": 3974099
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 3813961,
+          "endFrameExclusive": 3974099
+        }
+      ],
+      "continuousEffects": [
+        "chrome",
+        "signal",
+        "phantom",
+        "afterglow",
+        "specter",
+        "cable"
+      ],
+      "excerpt": "work/headliner-stress/transition-excerpts/boundary-90s.wav"
+    },
+    {
+      "entering": "reconstruction",
+      "seconds": 105,
+      "frame": 4630500,
+      "adjacentFrameDeltaPcm16": [
+        -7,
+        82
+      ],
+      "peakIn20msDbfs": -9.946644,
+      "dryVoicesCrossing": [
+        {
+          "trackId": "horizon",
+          "onsetFrame": 4465125,
+          "endFrameExclusive": 4648140
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 4475461,
+          "endFrameExclusive": 4635599
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 4475461,
+          "endFrameExclusive": 4635599
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 4475461,
+          "endFrameExclusive": 4635599
+        },
+        {
+          "trackId": "specter",
+          "onsetFrame": 4496133,
+          "endFrameExclusive": 4635599
+        }
+      ],
+      "continuousEffects": [
+        "chrome",
+        "signal",
+        "phantom",
+        "afterglow",
+        "specter",
+        "cable"
+      ],
+      "excerpt": "work/headliner-stress/transition-excerpts/boundary-105s.wav"
+    },
+    {
+      "entering": "second arrival and mutation",
+      "seconds": 120,
+      "frame": 5292000,
+      "adjacentFrameDeltaPcm16": [
+        -18,
+        79
+      ],
+      "peakIn20msDbfs": -10.616652,
+      "dryVoicesCrossing": [
+        {
+          "trackId": "horizon",
+          "onsetFrame": 5126625,
+          "endFrameExclusive": 5309640
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 5136961,
+          "endFrameExclusive": 5297099
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 5136961,
+          "endFrameExclusive": 5297099
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 5136961,
+          "endFrameExclusive": 5297099
+        }
+      ],
+      "continuousEffects": [
+        "chrome",
+        "signal",
+        "phantom",
+        "afterglow",
+        "specter",
+        "cable"
+      ],
+      "excerpt": "work/headliner-stress/transition-excerpts/boundary-120s.wav"
+    },
+    {
+      "entering": "dissolution and released tails",
+      "seconds": 165,
+      "frame": 7276500,
+      "adjacentFrameDeltaPcm16": [
+        -27,
+        75
+      ],
+      "peakIn20msDbfs": -18.921521,
+      "dryVoicesCrossing": [
+        {
+          "trackId": "phantom",
+          "onsetFrame": 7260996,
+          "endFrameExclusive": 7276624
+        },
+        {
+          "trackId": "horizon",
+          "onsetFrame": 7111125,
+          "endFrameExclusive": 7294140
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 7121461,
+          "endFrameExclusive": 7281599
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 7121461,
+          "endFrameExclusive": 7281599
+        },
+        {
+          "trackId": "afterglow",
+          "onsetFrame": 7121461,
+          "endFrameExclusive": 7281599
+        }
+      ],
+      "continuousEffects": [
+        "chrome",
+        "signal",
+        "phantom",
+        "afterglow",
+        "specter",
+        "cable"
+      ],
+      "excerpt": "work/headliner-stress/transition-excerpts/boundary-165s.wav"
+    }
+  ],
+  "sections": [
+    {
+      "name": "cold ignition",
+      "firstBar": 1,
+      "startSeconds": 0,
+      "endSeconds": 15,
+      "integratedLufs": -30.25,
+      "loudnessRangeLu": 8.5,
+      "truePeakDbfs": -12.8
+    },
+    {
+      "name": "displaced drive",
+      "firstBar": 9,
+      "startSeconds": 15,
+      "endSeconds": 45,
+      "integratedLufs": -21.5,
+      "loudnessRangeLu": 0.9,
+      "truePeakDbfs": -8.5
+    },
+    {
+      "name": "pressure",
+      "firstBar": 25,
+      "startSeconds": 45,
+      "endSeconds": 60,
+      "integratedLufs": -22.14,
+      "loudnessRangeLu": 2.7,
+      "truePeakDbfs": -8.53
+    },
+    {
+      "name": "first arrival",
+      "firstBar": 33,
+      "startSeconds": 60,
+      "endSeconds": 90,
+      "integratedLufs": -19.72,
+      "loudnessRangeLu": 1.2,
+      "truePeakDbfs": -7.57
+    },
+    {
+      "name": "ghost chamber",
+      "firstBar": 49,
+      "startSeconds": 90,
+      "endSeconds": 105,
+      "integratedLufs": -30.42,
+      "loudnessRangeLu": 1.5,
+      "truePeakDbfs": -15.43
+    },
+    {
+      "name": "reconstruction",
+      "firstBar": 57,
+      "startSeconds": 105,
+      "endSeconds": 120,
+      "integratedLufs": -22.16,
+      "loudnessRangeLu": 2.8,
+      "truePeakDbfs": -8.53
+    },
+    {
+      "name": "second arrival and mutation",
+      "firstBar": 65,
+      "startSeconds": 120,
+      "endSeconds": 165,
+      "integratedLufs": -19.62,
+      "loudnessRangeLu": 1.5,
+      "truePeakDbfs": -7.38
+    },
+    {
+      "name": "dissolution and released tails",
+      "firstBar": 89,
+      "startSeconds": 165,
+      "endSeconds": 180,
+      "integratedLufs": -23.71,
+      "loudnessRangeLu": 10.7,
+      "truePeakDbfs": -10.68
+    }
+  ],
+  "cost": {
+    "firstRenderSeconds": null,
+    "replayRenderSeconds": 243.880571,
+    "verifierProcessMaxRssKiB": 1630932,
+    "memoryScope": "Maximum resident set of the verifier Node process, including the independent replay render and all QC/reconstruction; FFmpeg child memory is excluded. Linux maxRSS is KiB.",
+    "timingAndMemoryAreHostSpecificAndNotPartOfDeterminismContract": true,
+    "outputBytes": 31752044,
+    "stemPcmBytes": 476280660
+  },
+  "licensing": "Owner-authorized internal technical proof using existing original Signature and MORPH assets unchanged. Their owner licensing declarations remain pending. No commercial clearance, publication or new license grant is asserted.",
+  "listening": "Analytical verification only. No human listening session or subjective quality result is claimed. Transition excerpts are retained for listening review; low adjacent-frame deltas and quiet tails are technical evidence, not proof of a clean perceptual seam or release quality.",
+  "limitations": [
+    "The original 15-track schema limit and 600-second render cap remain.",
+    "Repeated voice interpolation is shared only when all sample-generating parameters and rendered frame count match; novel sustained material can still exceed either original safety budget.",
+    "The existing production master/stems are PCM16. This file is not promoted to 24-bit by padding.",
+    "Full-duration arrays and exported stems still cost memory/disk; no streaming or persistent disk cache is implemented.",
+    "Intentional stress-range exceptions to pack recommendations: EVENT HORIZON reaches D2 and the mutated PHANTOM phrase reaches E6. Rates stay within supported engine bounds, but these choices are not a listening-approved extension of the recommended instrument range."
+  ]
+}

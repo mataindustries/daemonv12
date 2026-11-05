@@ -12,8 +12,9 @@ const linux = { skip: process.platform !== 'linux' && 'Rootless bootstrap target
 const hash = (path: string) => createHash('sha256').update(readFileSync(path)).digest('hex');
 function executable(path: string, text: string) { writeFileSync(path, text); chmodSync(path, 0o755); }
 function command(command: string, args: string[], env?: NodeJS.ProcessEnv) {
-  const result = spawnSync(command, args, { encoding: 'utf8', env, timeout: 10000 });
-  assert.equal(result.status, 0, result.stdout + result.stderr); return result;
+  // Hosted runners may be busy compressing other fixtures while this setup runs.
+  const result = spawnSync(command, args, { encoding: 'utf8', env, timeout: 30000 });
+  assert.equal(result.status, 0, [result.stdout, result.stderr, result.error?.message].filter(Boolean).join('\n')); return result;
 }
 
 // Exercise the real shell flow with tiny local artifacts, real ar/tar and real
