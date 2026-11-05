@@ -42,6 +42,9 @@ calling tools. DaemonV12 gives them a music format built for that:
 - **Sample articulation:** source endpoints make playable slices; musical gates,
   per-voice attack/release envelopes and track-local choke groups tighten
   percussion and control bass tails without writing new audio files.
+- **Full-length rendering:** opt-in `--reuse-voices` renders repeated pitched
+  voices once within explicit work/memory bounds, while processing the complete
+  song timeline and effect tails continuously. [Usage and limits](docs/FULL_LENGTH_RENDERING.md).
 - **Production:** track gain/pan and their automation; high-pass, low-pass,
   delay, compressor, reverb and saturation; master gain; voice-over ducking.
 - **Timing:** exact output durations in bars, musical time or seconds, with
@@ -193,8 +196,8 @@ for tests. The ONE SOUND before/after pair demonstrates
 |---|---|
 | `daemonv12 doctor [--json]` | Checks Node, FluidSynth, SoundFont, FFmpeg and MCP, and explains each capability. |
 | `daemonv12 init <dir>` | Creates a workspace with starter projects and sound packs; prints the MCP configuration. |
-| `daemonv12 validate <project.json>` | Checks structure, timing, references and assets; writes nothing. |
-| `daemonv12 render <project.json> [--stems] [--format wav\|mp3\|wav,mp3] [--out-dir <dir>]` | Writes MIDI, WAV, provenance and optional stems/MP3 (default `renders/`). |
+| `daemonv12 validate <project.json> [--reuse-voices]` | Checks structure, timing, references, assets and the selected render work budget; writes nothing. |
+| `daemonv12 render <project.json> [--stems] [--format wav\|mp3\|wav,mp3] [--reuse-voices] [--out-dir <dir>]` | Writes MIDI, WAV, provenance and optional stems/MP3 (default `renders/`). |
 | `daemonv12 midi <project.json>` | Writes canonical format-1 MIDI at 960 PPQ. |
 | `daemonv12 analyze <audio.wav>` | Reports format, peak, RMS, clipping, LUFS and true peak (needs FFmpeg). |
 | `daemonv12-mcp --root <dir>` | Stdio MCP server with nine tools. |
