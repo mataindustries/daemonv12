@@ -11,22 +11,25 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import type { Song } from './song.ts';
 
-const args = process.argv.slice(2), projectOnly = args.includes('--project-only'), [target, outDir] = args.filter(a => !a.startsWith('--'));
-if (!target || !outDir) { console.error('usage: build.ts <sketch-a|sketch-b|sketch-c|single> <outDir>'); process.exit(2); }
+const args = process.argv.slice(2), mode = args.includes('--project-only') ? 'project-only' : args.includes('--reuse') ? 'reuse' : 'full', [target, outDir] = args.filter(a => !a.startsWith('--'));
+if (!target || !outDir) { console.error('usage: build.ts <sketch-a|sketch-b|sketch-c|single|single-bed> <outDir> [--project-only|--reuse]'); process.exit(2); }
 const builders: Record<string, () => Promise<Song>> = {
   'sketch-a': async () => (await import('./sketch-a.ts')).buildSketchA(),
   'sketch-b': async () => (await import('./sketch-b.ts')).buildSketchB(),
   'sketch-c': async () => (await import('./sketch-c.ts')).buildSketchC(),
   'single': async () => (await import('./single.ts')).buildSingle(),
+  'single-bed': async () => (await import('./single.ts')).buildSingle({ bed: true }),
 };
 const make = builders[target];
 if (!make) { console.error(`unknown target ${target}`); process.exit(2); }
 const song = await make();
-const { project, catalog } = song.write(outDir, target, 'assets/sodium', projectOnly);
+const NAMES: Record<string, string> = { single: 'sodium-hours', 'single-bed': 'sodium-hours-bed' };
+const name = NAMES[target] ?? target, catalogName = target === 'single-bed' ? 'sodium-hours' : name;
+const { project, catalog } = song.write(outDir, name, 'assets/sodium', mode as 'full' | 'project-only' | 'reuse', catalogName);
 const toolHashes = ['dsp.ts', 'instruments.ts', 'kits.ts', 'song.ts', 'theory.ts', 'hook.ts', `${target}.ts`, 'build.ts']
   .map(f => { try { return { file: `headliner-001/tools/${f}`, sha256: createHash('sha256').update(readFileSync(new URL(f, import.meta.url))).digest('hex') }; } catch { return null; } })
   .filter(Boolean);
-writeFileSync(join(outDir, `${target}.catalog.json`), JSON.stringify({
+if (mode === 'full' || target !== 'single-bed') writeFileSync(join(outDir, `${catalogName}.catalog.json`), JSON.stringify({
   schema: 'headliner-001.catalog/1', target, title: song.title, bpm: song.bpm, bars: song.bars, key: song.key,
   provenance: 'Every WAV is synthesized by headliner-001/tools from numeric parameters and seeded PRNGs. No recordings, downloaded samples, SoundFonts, impulse responses, presets or third-party audio. Generated for this repository by an AI agent at the owner\'s request.',
   license: 'PENDING OWNER DECLARATION — no license is granted by this file.',

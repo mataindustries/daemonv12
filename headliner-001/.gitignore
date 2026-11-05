@@ -1,4 +1,6 @@
-# Regenerable build outputs (assets are rebuilt by tools/build.ts)
+# Regenerable build outputs (assets are rebuilt by tools/build.ts or restored by tools/flac.ts)
 build/
 *.tmp
 __pycache__/
+# Engine-readable WAVs are restored from the committed FLAC archive (exact bytes, SHA-256 verified)
+project/assets/**/*.wav

@@ -143,10 +143,25 @@ export class Song {
     }
     return true;
   }
-  write(dir: string, name: string, assetRoot = 'assets/sodium', projectOnly = false): { project: string; catalog: Record<string, unknown>[] } {
+  /** Every sound this score registers already exists, by name, in the kits on disk (used when a variant reuses assets). */
+  assetsCover(dir: string, assetRoot = 'assets/sodium'): boolean {
+    for (const kit of this.kits.values()) {
+      if (!kit.entries.length) continue;
+      const f = join(dir, assetRoot, kit.name, 'kit.json');
+      if (!existsSync(f)) return false;
+      const disk = new Set((JSON.parse(readFileSync(f, 'utf8')) as { samples: { name: string }[] }).samples.map(x => x.name));
+      if (kit.entries.some(e => !disk.has(e.name))) return false;
+    }
+    return true;
+  }
+  /** mode 'full' renders assets; 'project-only' requires identical kits on disk; 'reuse' requires the disk kits to cover
+   *  every registered sound (a variant such as the bed mix shares the main mix's exact assets). */
+  write(dir: string, name: string, assetRoot = 'assets/sodium', mode: 'full' | 'project-only' | 'reuse' = 'full', catalogName = name): { project: string; catalog: Record<string, unknown>[] } {
     mkdirSync(dir, { recursive: true });
-    if (projectOnly && !this.assetsMatch(dir, assetRoot)) throw new Error('--project-only refused: the score registers sounds that differ from the kits on disk; run a full build.');
-    const catalog = projectOnly ? (JSON.parse(readFileSync(join(dir, `${name}.catalog.json`), 'utf8')) as { sounds: Record<string, unknown>[] }).sounds : this.writeAssets(dir, assetRoot);
+    if (mode === 'project-only' && !this.assetsMatch(dir, assetRoot)) throw new Error('--project-only refused: the score registers sounds that differ from the kits on disk; run a full build.');
+    if (mode === 'reuse' && !this.assetsCover(dir, assetRoot)) throw new Error('--reuse refused: the kits on disk do not contain every sound this score uses.');
+    if (mode === 'reuse') this.tracks = this.tracks.filter(t => t.hits.length);
+    const catalog = mode !== 'full' ? (JSON.parse(readFileSync(join(dir, `${catalogName}.catalog.json`), 'utf8')) as { sounds: Record<string, unknown>[] }).sounds : this.writeAssets(dir, assetRoot);
     const project = join(dir, `${name}.json`);
     writeFileSync(project, JSON.stringify(this.projectJson(assetRoot), null, 2) + '\n');
     return { project, catalog };

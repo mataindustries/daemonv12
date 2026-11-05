@@ -27,9 +27,11 @@ const C = {
 const HOOK_PROG = ['db', 'eb', 'fm', 'c7'] as const;
 const ROOT: Record<string, string> = { db: 'Db3', eb: 'Eb3', fm: 'F3', c7: 'C3' };
 
-export function buildSingle(): Song {
-  const S = new Song('SODIUM HOURS', 92, 70, 'F minor',
-    'DAEMON//HEADLINER 001. A machine city learning to sing: the motif is heard as machine (LPG pluck), voice (talkbox), then choir. Original synthesis only.', 92);
+export function buildSingle(opts: { bed?: boolean } = {}): Song {
+  const BED = !!opts.bed;  // instrumental bed (alternate mix): no lead voice, no sung ensemble, no voice stutter
+  const S = new Song(BED ? 'SODIUM HOURS (instrumental bed)' : 'SODIUM HOURS', 92, 70, 'F minor',
+    BED ? 'DAEMON//HEADLINER 001 alternate mix: the full arrangement without the lead voice, its wet track and the sung ensemble (sync/TV bed). Same assets and mix as the main master.'
+      : 'DAEMON//HEADLINER 001. A machine city learning to sing: the motif is heard as machine (LPG pluck), voice (talkbox), then choir. Original synthesis only.', 92);
   const P = new Palette(S, 'single'), feel = new Feel(9201);
   const sections: [string, number, number][] = [['intro', 1, 8], ['groove', 9, 8], ['hook-1', 17, 8], ['verse', 25, 8], ['breakdown', 33, 8], ['hook-2', 41, 8], ['signal-loss', 49, 4], ['final', 53, 12], ['outro', 65, 6]];
   for (const [n, b, l] of sections) S.section(n, b, l);
@@ -114,6 +116,7 @@ export function buildSingle(): Song {
   };
   const phrase = (name: string, notes: HookNote[], originBar: number, v = 0.9, wet = 0.9, opts = {}) => {
     const { start, notes: vn } = toVoice(notes, 0);
+    if (BED) return { tick: at(originBar) + start, notes: vn };
     const hit = P.voicePhrase(name, vn, opts), tick = at(originBar) + start;
     both('voice', 'voice-space', { tick, hit, v }, wet);
     return { tick, notes: vn };
@@ -277,8 +280,10 @@ export function buildSingle(): Song {
   for (let b = 49; b <= 51; b++) for (let s = 1; s <= 16; s++) add('hats', { tick: at(b, s), hit: H.tk, v: s % 4 === 1 ? 0.4 : 0.22 });
   // voice stutter: the Ab5 cry sliced into sixteenth repeats, as if the signal is dropping out
   const cry = toVoice([...CALL, ...ANSWER], 0), cryOffset = Number(((cry.notes[7]!.t + 230) * S.tickSec).toFixed(6));
-  for (let s = 1; s <= 8; s++) add('voice', { tick: at(51, s), hit: 'hook-a', v: 0.85 - s * 0.04, offset: cryOffset, gate: 150, attack: 0.002, release: 0.012, choke: 'stutter' });
-  add('voice-space', { tick: at(51, 8), hit: 'hook-a', v: 0.9, offset: cryOffset, gate: 900, attack: 0.002, release: 0.5 });
+  if (!BED) {
+    for (let s = 1; s <= 8; s++) add('voice', { tick: at(51, s), hit: 'hook-a', v: 0.85 - s * 0.04, offset: cryOffset, gate: 150, attack: 0.002, release: 0.012, choke: 'stutter' });
+    add('voice-space', { tick: at(51, 8), hit: 'hook-a', v: 0.9, offset: cryOffset, gate: 900, attack: 0.002, release: 0.5 });
+  }
   for (const s of [9, 12, 15]) hitAll(51, s, 'F1', 0.85);
   add('fx', { tick: at(51, 9), hit: P.glitch(), v: 0.6 }); add('fx', { tick: at(50, 13), hit: P.glitch(), v: 0.45 });
   for (const s of [1, 4, 7]) hitAll(52, s, s === 7 ? 'C2' : 'F1', 0.9);
@@ -291,6 +296,7 @@ export function buildSingle(): Song {
   const fa = [...CALL, ...ANSWER], fp = [...CALL, ...ANSWER_PEAK], fr = [...CALL, ...RESOLVE];
   phrase('hook-a-final', fa.map(x => ({ ...x, v: Math.min(1, (x.v ?? 0.8) + 0.06), vib: (x.vib ?? 1) * 1.15 })), 52, 0.92, 0.95, { seed: 777, vibCents: 31 }); phrase('hook-peak', fp, 56, 0.95, 0.95); phrase('hook-final', fr, 60, 0.95, 1.05);
   const ens = (name: string, notes: HookNote[], originBar: number, v: number) => {
+    if (BED) return;
     const { start, notes: vn } = toVoice(notes, 0);
     add('choir', { tick: at(originBar) + start, hit: P.ensemble(name, vn, { vibCents: 22, breath: 0.07 }, 4, -12), v });
   };
