@@ -1,0 +1,155 @@
+{
+  "schema": "mutation-001.auditions/1",
+  "loudness": {
+    "targetLufs": -19,
+    "ceilingDbtp": -1,
+    "method": "single gain per file, FFmpeg ebur128 (EBU R128); no compression or limiting"
+  },
+  "provenance": "Every sound is synthesized by mutation-001/tools from numeric parameters and seeded PRNGs. No recordings, samples, SoundFonts, impulse responses, presets or third-party audio.",
+  "license": "PENDING OWNER DECLARATION: no license is granted by this file.",
+  "mutations": {
+    "A-living-bass": {
+      "title": "LIVING BASS",
+      "key": "D minor",
+      "bpm": 96,
+      "swing": 0.57,
+      "command": "node mutation-001/tools/a-living-bass.ts",
+      "node": "v22.23.4",
+      "generator": [
+        {
+          "file": "mutation-001/tools/dsp.ts",
+          "sha256": "594be2c4e5d59add7c520a30db0dbe4c853440f135653bbeb85f7ce6e2e762e4"
+        },
+        {
+          "file": "mutation-001/tools/instruments.ts",
+          "sha256": "03bd48ff0b857989d9e71fe342da0059404867f8106e0c86522294370c857c44"
+        },
+        {
+          "file": "mutation-001/tools/score.ts",
+          "sha256": "dab96ceaeb276b6fc05d11265ab57896c0648801f925576f62a21caf03f6dccf"
+        },
+        {
+          "file": "mutation-001/tools/living-bass.ts",
+          "sha256": "82baa1b24215e480261bb916a439553c14a9664982f07d3cc686e4ba9cab0c02"
+        },
+        {
+          "file": "mutation-001/tools/deliver.ts",
+          "sha256": "b4dd44a8ae361f905ae2f4d65f04438609fea222a4c61e468322ba4adc924532"
+        },
+        {
+          "file": "mutation-001/tools/a-living-bass.ts",
+          "sha256": "dd72fcefff0e7e89610c16ab578ed7e3649df1be452cf90f1a336cf2684e7831"
+        }
+      ],
+      "measurements": {
+        "note": "Plain signal measurements of the dry renders (RMS re file peak, spectral centroid, energy share above 150 Hz). Not quality scores and not listening impressions.",
+        "a1PerSection": [
+          {
+            "segment": "bars 1-2",
+            "from": 0,
+            "to": 5,
+            "rmsDb": -14.3,
+            "centroidHz": 59,
+            "above150HzPct": 3.8
+          },
+          {
+            "segment": "bars 3-4",
+            "from": 5,
+            "to": 10,
+            "rmsDb": -14.1,
+            "centroidHz": 100,
+            "above150HzPct": 16.2
+          },
+          {
+            "segment": "bars 5-6",
+            "from": 10,
+            "to": 15,
+            "rmsDb": -13.6,
+            "centroidHz": 141,
+            "above150HzPct": 32.3
+          },
+          {
+            "segment": "bars 7-8",
+            "from": 15,
+            "to": 20,
+            "rmsDb": -12.7,
+            "centroidHz": 240,
+            "above150HzPct": 38.3
+          },
+          {
+            "segment": "bars 9-10",
+            "from": 20,
+            "to": 25,
+            "rmsDb": -14.1,
+            "centroidHz": 243,
+            "above150HzPct": 39.9
+          }
+        ],
+        "a3PerState": [
+          {
+            "segment": "morph 0",
+            "from": 0,
+            "to": 6.07,
+            "rmsDb": -15,
+            "centroidHz": 59,
+            "above150HzPct": 3.7
+          },
+          {
+            "segment": "morph 0.5",
+            "from": 6.07,
+            "to": 12.14,
+            "rmsDb": -15.3,
+            "centroidHz": 128,
+            "above150HzPct": 29.8
+          },
+          {
+            "segment": "morph 1",
+            "from": 12.14,
+            "to": 18.21,
+            "rmsDb": -14.7,
+            "centroidHz": 227,
+            "above150HzPct": 37
+          }
+        ]
+      },
+      "files": [
+        {
+          "file": "a-living-bass/a1-living-bass-transformation-dry.wav",
+          "mp3": "a-living-bass/a1-living-bass-transformation-dry.mp3",
+          "role": "transformation, dry (mono)",
+          "seconds": 26.037,
+          "channels": 1,
+          "lufs": -19,
+          "lra": 4.2,
+          "truePeakDb": -2.4,
+          "wavSha256": "f90c6ea28a28370712332d1b25a57ff183232485b8f7f612cb6960c00ed9f9eb",
+          "mp3Sha256": "949800bf5839c5254d119dd94de01af524845ccad14547fa870af13ad81a883f"
+        },
+        {
+          "file": "a-living-bass/a2-living-bass-transformation-context.wav",
+          "mp3": "a-living-bass/a2-living-bass-transformation-context.mp3",
+          "role": "transformation inside a fixed drum + keys groove (stereo)",
+          "seconds": 26.837,
+          "channels": 2,
+          "lufs": -19,
+          "lra": 1.5,
+          "truePeakDb": -4.5,
+          "wavSha256": "bbd59b7e432685e34bdc8a1c628e99feb24b7805c210ed58601441a5fe9661c0",
+          "mp3Sha256": "e1398415d16b67e74b183a7929e34805f5437a2d53484446bd9059b04c6b2996"
+        },
+        {
+          "file": "a-living-bass/a3-living-bass-states-dry.wav",
+          "mp3": "a-living-bass/a3-living-bass-states-dry.mp3",
+          "role": "opening riff three times: morph 0, 0.5, 1 (mono)",
+          "seconds": 18.206,
+          "channels": 1,
+          "lufs": -19,
+          "lra": 4.5,
+          "truePeakDb": -1.5,
+          "wavSha256": "1f2b236f9dc88b8a862cc7a35031acf304f2b1f9a3e474479c3e882601a5dab2",
+          "mp3Sha256": "8c5bb086e9e251a420e6bc9adb9aeecd63541f8cca0afcde6e8ad54c3c68c3c6"
+        }
+      ]
+    }
+  }
+}
