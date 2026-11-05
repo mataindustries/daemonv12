@@ -1,6 +1,6 @@
 import { test, type TestContext } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -73,6 +73,25 @@ test('opt-in budget charges unique real interpolation work and the aggregate cac
   value.tracks[0].patterns[0].notes[1].playbackRate = 0.75; w.save(value);
   const distinct = compileProjectFile(w.path, { reuseVoices: true });
   assert.equal(metric(playbackBudget(distinct, false, { work: PLAYBACK_WORK_LIMIT, bytes: cost.bytes }, true)), 'interpolationCacheBytes');
+});
+
+test('real aggregate cache overflow fails before audio tools and removes stale outputs without allocating voices', async t => {
+  const w = workspace(t);
+  writeFileSync(join(w.root, 'assets/one.wav'), wav(new Int16Array(88200).fill(1000), 2));
+  w.save(project(Array.from({ length: 100 }, (_, i) => ({ start: '1:1', playbackRate: 0.5, offsetSeconds: Number((i / 10000).toFixed(4)) })),
+    { master: { gainDb: -6 } }));
+  assert.ok(compileProjectFile(w.path).timeline, 'uncached sequential voice allocation fits the original bounds');
+  const compiled = compileProjectFile(w.path, { reuseVoices: true });
+  assert.equal(compiled.timeline, null); assert.equal(metric(compiled.diagnostics[0]), 'interpolationCacheBytes');
+  const outDir = join(w.root, 'out'); mkdirSync(join(outDir, 'cue.stems'), { recursive: true });
+  for (const name of ['cue.wav', 'cue.mid', 'cue.render.json', 'cue.wav.tmp']) writeFileSync(join(outDir, name), 'stale');
+  writeFileSync(join(outDir, 'cue.stems/one.wav'), 'stale');
+  const outcome = await runCommand('render', w.path, { outDir, stems: true, reuseVoices: true,
+    env: { DAEMONV12_FFMPEG: '/missing/ffmpeg', DAEMONV12_FLUIDSYNTH: '/missing/fluidsynth' } });
+  assert.equal(outcome.exitCode, 1); assert.equal(metric(outcome.result.errors[0]), 'interpolationCacheBytes');
+  assert.equal(outcome.result.errors.some(d => /AUDIO_TOOL|INTERNAL_ERROR/.test(d.code)), false);
+  assert.deepEqual(outcome.result.artifacts, {}); assert.equal(outcome.result.manifest, null);
+  assert.deepEqual(readdirSync(outDir), []);
 });
 
 test('reuse PCM mode is byte-identical to historical summing and records deterministic bounded work', async t => {
