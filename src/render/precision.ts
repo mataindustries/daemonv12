@@ -4,25 +4,28 @@ import { MAX_PCM_FRAMES, PCM_RATE, type PcmTrigger } from './pcm.ts';
 import { voiceFrames, voiceSamples, voiceGain, voiceCost, PLAYBACK_WORK_LIMIT, PLAYBACK_VOICE_BYTES_LIMIT } from './playback.ts';
 import { dbfs } from './production.ts';
 import { readWavInfo } from './wav.ts';
+import type { VoiceSampleCache } from './voice-cache.ts';
 
 function checkLength(samples: Float64Array): void {
   if (!samples.length || samples.length % 2 || samples.length / 2 > MAX_PCM_FRAMES)
     throw new RangeError('Expected nonempty stereo audio of at most 600 seconds.');
 }
-export function sumFloatPrecise(triggers: PcmTrigger[], minimumFrames: number, maximumFrames = Infinity): Float64Array {
+export function sumFloatPrecise(triggers: PcmTrigger[], minimumFrames: number, maximumFrames = Infinity, cache?: VoiceSampleCache): Float64Array {
   const frames = Math.min(maximumFrames, triggers.reduce((n, t) => Math.max(n, t.frame + voiceFrames(t.pcm, t.playback, t.articulation)), minimumFrames));
   if (!Number.isSafeInteger(frames) || frames < 1 || frames > MAX_PCM_FRAMES) throw new RangeError('Precision render exceeds the 600 second frame limit.');
   let work = 0;
   for (const t of triggers) {
     if (!Number.isSafeInteger(t.frame) || t.frame < 0 || !Number.isFinite(t.velocity) || t.velocity <= 0 || t.velocity > 1) throw new RangeError('Invalid PCM trigger.');
     const cost = voiceCost(t.pcm, t.playback, frames - t.frame, t.articulation);
-    work += cost.work;
+    // A shared cache enforces its total unique-work budget across all tracks at runtime.
+    // Project orchestration preflights the same cache keys before any audio processing.
+    if (!cache) work += cost.work;
     if (cost.bytes > PLAYBACK_VOICE_BYTES_LIMIT || work > PLAYBACK_WORK_LIMIT) throw new RangeError('Precision render exceeds the existing sample-performance budget.');
   }
   const output = new Float64Array(frames * 2);
   for (const t of triggers) {
     if (t.frame >= frames) continue;
-    const voice = voiceSamples(t.pcm, t.playback, frames - t.frame, t.articulation);
+    const voice = cache ? cache.samples(t.pcm, t.playback, frames - t.frame, t.articulation) : voiceSamples(t.pcm, t.playback, frames - t.frame, t.articulation);
     const count = Math.min(voice.length / t.pcm.channels, frames - t.frame);
     for (let n = 0; n < count; n++) {
       const gain = t.velocity * voiceGain(t.articulation, n, count);

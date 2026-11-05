@@ -7,6 +7,8 @@ change is included.
 
 ```sh
 node scripts/render-production24.ts path/to/project.json work/new-production24
+# Dense repeated performances, with the full-length rendering milestone:
+node scripts/render-production24.ts path/to/project.json work/new-production24-cached --reuse-voices
 node tests/precision.test.ts
 npm run typecheck
 ```
@@ -74,8 +76,13 @@ The independent milestone retains the existing one-billion interpolation-tap,
 not bypass validation. It renders whole tracks, preserving voice phase, absolute
 sample timing, automation and effect state; it does not concatenate section WAVs.
 Processing uses several full-length Float64 arrays and is not a streaming mixer.
-Repeated-voice cache support belongs to the separate full-length milestone;
-dense scores rejected here need that milestone or documented intermediate assets.
+On this branch, the separate full-length milestone is a dependency. Optional
+`--reuse-voices` uses its exact unrounded interpolation cache across tracks;
+both compilation and runtime enforce one billion **unique** interpolation taps
+and 128 MiB **total** cache storage. Per-onset velocity/envelopes remain independent.
+Without the flag, the ordinary total-tap budget applies. Unique performances
+which exceed either bound still require shorter voices, fewer variations or
+documented independent intermediate assets. No eviction/recomputation bypass exists.
 
 No asset license is inferred from this workflow. Source provenance and owner
 licensing declarations continue to apply; code licensing remains an owner decision.

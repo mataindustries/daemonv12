@@ -4,13 +4,14 @@ import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync, readdirSyn
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { encodePcm } from '../src/render/pcm.ts';
-import { quantize } from '../src/render/production.ts';
+import { quantize, gainPan } from '../src/render/production.ts';
 import { readWavInfo } from '../src/render/wav.ts';
 import { sumFloatPrecise, quantize24, fitPcm24, analyzePcm24 } from '../src/render/precision.ts';
 import { renderProduction24 } from '../src/precision-render.ts';
 import { diagnostic } from '../src/diagnostics.ts';
 import { builtinEffect } from '../src/render/dynamics.ts';
 import { createAudioProcessor, type AudioProcessor } from '../src/render/ffmpeg.ts';
+import { VoiceSampleCache } from '../src/render/voice-cache.ts';
 
 const processor: AudioProcessor = { identity: {name:'test-float-pass-through',version:'1'},
   async effects(samples, effects, limit) { let value = samples; for (const effect of effects) {
@@ -41,6 +42,16 @@ test('real fractional voice detail survives PCM24 while the PCM16 route discards
   for(const v of [NaN,Infinity,-Infinity]) assert.throws(()=>quantize24(new Float64Array([v,0])));
   assert.throws(()=>quantize24(new Float64Array(3))); assert.throws(()=>quantize24(new Float64Array()));
 });
+test('PCM24 quantization stays within half a24bit step of a known fractional sine mix', () => {
+  const source=Int16Array.from({length:44100},(_,i)=>Math.round(10000*Math.sin(2*Math.PI*997*i/44100)));
+  const samples=gainPan(gainPan(sumFloatPrecise([{pcm:{frames:44100,channels:1,samples:source},frame:0,velocity:0.731}],44100),-7.3),-3.1);
+  const high=quantize24(samples).bytes, low=quantize(samples).bytes;let highError=0,lowError=0;
+  for(let i=0;i<samples.length;i++) {
+    const err24=high.readIntLE(44+i*3,3)/256-samples[i]!,err16=low.readInt16LE(44+i*2)-samples[i]!;
+    assert.ok(Math.abs(err24)<=1/512);highError+=err24*err24;lowError+=err16*err16;
+  }
+  assert.ok(lowError/highError>50000,'PCM24 retains at least46.99dB more calculated detail for this reference signal.');
+});
 test('PCM24 saturation, padding, mono cancellation and stereo statistics are explicit', () => {
   const clip=quantize24(new Float64Array([40000,-40000])); assert.equal(clip.clippedSamples,2);
   assert.equal(clip.bytes.readIntLE(44,3),8388607); assert.equal(clip.bytes.readIntLE(47,3),-8388608);
@@ -48,6 +59,13 @@ test('PCM24 saturation, padding, mono cancellation and stereo statistics are exp
   const analysis=analyzePcm24(clean.bytes); assert.equal(analysis.stereoCorrelation,-1); assert.equal(analysis.monoFoldRmsDbfs,null); assert.equal(analysis.monoFoldChangeDb,null);
   const fitted=fitPcm24(clean.bytes,4); assert.deepEqual(fitted.subarray(44,56),clean.bytes.subarray(44)); assert.ok(fitted.subarray(56).every(v=>v===0));
   assert.deepEqual(fitPcm24(fitted,2),clean.bytes); assert.equal(analyzePcm24(quantize24(new Float64Array(4)).bytes).stereoCorrelation,null);
+});
+test('precision interpolation reuse preserves fractional performance and per-onset expression exactly', () => {
+  const pcm={frames:100,channels:1,samples:Int16Array.from({length:100},(_,i)=>Math.round(1000*Math.sin(i/5)))};
+  const triggers=Array.from({length:6},(_,i)=>({pcm,frame:i*200,velocity:0.1+i/20,playback:{rate:1.1,offset:0},
+    articulation:{attack:3+i,release:8,stop:50}}));
+  const cache=new VoiceSampleCache(); const a=sumFloatPrecise(triggers,1300); const b=sumFloatPrecise(triggers,1300,Infinity,cache);
+  assert.deepEqual(a,b);assert.equal(cache.provenance().uniqueVoices,1);assert.equal(cache.provenance().reusedVoices,5);
 });
 test('native opt-in render retains fractional track gain, master gain and nonlinear effect detail; deterministic aligned24 stems',async t=>{
   const f=fixture(t); f.project.tracks[0].effects=[{type:'saturation',driveDb:6,mix:0.5}]; f.save();

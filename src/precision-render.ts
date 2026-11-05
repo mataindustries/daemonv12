@@ -12,18 +12,19 @@ import { applyDucking } from './render/dynamics.ts';
 import { MAX_PCM_FRAMES } from './render/pcm.ts';
 import { renderPlan, automationFrames } from './timing/render-plan.ts';
 import { ENGINE_VERSION } from './version.ts';
+import { VoiceSampleCache } from './render/voice-cache.ts';
 
 const hash = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex');
 const identity = (file: string, bytes: Buffer) => ({ file, sha256: hash(bytes), bytes: bytes.length });
 
 export async function renderProduction24(projectPath: string, outputDirectory: string,
-  options: { env?: NodeJS.ProcessEnv; processor?: AudioProcessor } = {}) {
-  const compilation = compileProjectFile(projectPath);
+  options: { env?: NodeJS.ProcessEnv; processor?: AudioProcessor; reuseVoices?: boolean } = {}) {
+  const compilation = compileProjectFile(projectPath, {reuseVoices: options.reuseVoices});
   const errors = compilation.diagnostics.filter(d => d.severity === 'error');
   if (errors.length || !compilation.project || !compilation.timeline) throw new Error(`Invalid project: ${JSON.stringify(errors)}`);
   const project = compilation.project, timeline = compilation.timeline;
   if (timeline.tracks.some(t => t.instrument.type === 'gm')) throw new Error('Production24 currently supports sampler/drumkit tracks only. GM output remains PCM16; use the existing render path.');
-  const budget = playbackBudget(compilation, true);
+  const budget = playbackBudget(compilation, true, undefined, options.reuseVoices);
   if (budget) throw new Error(`Sample-performance budget: ${JSON.stringify(budget)}`);
   const out = resolve(outputDirectory);
   if (existsSync(out)) throw new Error('Choose a new output directory; Production24 never replaces an existing render.');
@@ -31,6 +32,7 @@ export async function renderProduction24(projectPath: string, outputDirectory: s
   const created = options.processor ? { value: options.processor } : await createAudioProcessor({ env: options.env ?? process.env });
   if (!created.value) throw new Error(`FFmpeg unavailable: ${JSON.stringify(created.diagnostic)}`);
   const processor = created.value, plan = renderPlan(project), cap = plan.audioEndFrames ?? Infinity;
+  const cache = options.reuseVoices ? new VoiceSampleCache() : undefined;
   if (plan.minimumFrames < 1 || plan.minimumFrames > MAX_PCM_FRAMES || (Number.isFinite(cap) && cap > MAX_PCM_FRAMES)) throw new RangeError('Production24 supports at most 600 seconds including tails.');
   mkdirSync(dirname(out), { recursive: true });
   const temporary = mkdtempSync(join(dirname(out), '.production24-'));
@@ -40,7 +42,7 @@ export async function renderProduction24(projectPath: string, outputDirectory: s
     for (const track of timeline.tracks) {
       const authored = project.tracks[track.index]!;
       const automation = { gainDb: automationFrames(authored.automation?.gainDb, project), pan: automationFrames(authored.automation?.pan, project) };
-      const source = sumFloatPrecise(sampleTriggers(compilation, track, cap), plan.minimumFrames, cap);
+      const source = sumFloatPrecise(sampleTriggers(compilation, track, cap), plan.minimumFrames, cap, cache);
       const processed = await processor.effects(automatedGainPan(source, authored.mix?.gainDb, authored.mix?.pan, automation), authored.effects ?? [], Number.isFinite(cap) ? cap : undefined);
       if (processed.diagnostic) throw new Error(`Track ${track.id}: ${JSON.stringify(processed.diagnostic)}`);
       const samples = processed.value.length / 2 > cap ? fitFloat(processed.value, cap) : processed.value;
@@ -78,6 +80,7 @@ export async function renderProduction24(projectPath: string, outputDirectory: s
       stems: stems.map(stem => ({ ...stem, precision: 'post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization' })),
       sources: [...compilation.assets!].sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([file, asset]) => ({ ...identity(file, asset.bytes), bitsPerSample: asset.pcm ? 16 : null })),
       limits: { maximumSeconds: 600, interpolationTaps: 1_000_000_000, performedVoiceBytes: 134217728, tracks: 15 },
+      ...(cache ? {interpolationReuse: cache.provenance()} : {}),
       export: { sampleRate: 44100, channels: 2, bitsPerSample: 24, dither: false, normalization: false },
       master: { ...identity(masterFile, encoded.bytes), frames: encoded.frames, clippedSamples: encoded.clippedSamples, preClipPeakDbfs: encoded.preClipPeakDbfs,
         analysis: { ...analyzePcm24(encoded.bytes), ...loudness.value }, ...(ducking ? { ducking } : {}) },
