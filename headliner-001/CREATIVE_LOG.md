@@ -184,3 +184,27 @@ settling from portamento.
   hats, keys and bass harmonics. **Known risk**, accepted for a bass-led groove; flagged for owner listening.
 
 **Remaining weakness worth naming:** Hook 2 repeats Hook 1's phrases; only the arrangement changes.
+
+## 6. Risk Pass (V4) and V5
+
+**V4 — Risk Pass: half-time cadence.** *Hypothesis:* switching bars 61–63 (D♭ → E♭ → G♭ Neapolitan → C7)
+to half time — kick on 1, hall snare + clap on beat 3, long bass roots — broadens the approach to the
+F-major resolution like a ritardando without changing tempo, so bar 64 lands as the end of a
+deceleration and the last pass differs from every earlier one. *Risk:* momentum loss before the payoff;
+syncopations fighting the new accents. *Cost:* one score edit, one render. *Evidence and result:*
+the half-time accents coincide with structural melody notes (kick under the A♭5 cry at 62:1; snare on
+the call's turn E♭5 at 61:3, its closing F5 at 62:3, and the C7 arrival under C5 at 63:3). Bars 61–63:
+−11.0 dBFS RMS vs −10.8 for 57–60 (no energy hole); upper-mid −1.7 dB and highs −3.3 dB vs V3 (fewer
+transients, as intended); sub unchanged. **Kept** on score reasoning and measurement; V3 is preserved
+for an owner A/B because only listening can confirm the momentum trade-off.
+
+**V5 — the climbing ceiling.** *Hypothesis:* Hook 2 reused Hook 1's phrases. A new second answer for
+Hook 2 that peaks on B♭5 makes the song's melodic ceiling climb chorus by chorus — A♭5 (hook 1) →
+B♭5 (hook 2) → C6 (final) — giving Hook 2 its own identity and turning the final summit into the third
+step of a staircase. *Cost:* one new phrase, one render. *Keep if* the pitch check passes and the line
+fits C7♭9 (B♭ = ♭7). *Result:* B♭5 +1.3 cents, C6 +1.3, A♭5 +2.6; the only outlier (−34 cents) is the
+sixteenth-note A♭5 passing tone gliding into the summit slide, present identically in V3. **Kept.**
+
+**Stop decision.** V5 is the fifth serious version, the default budget. Remaining ideas (e.g. grit
+answers in Hook 2's rests — the bass and grit already pop there) are speculative; the record is locked
+at V5. Final measurements are in `delivery/`.

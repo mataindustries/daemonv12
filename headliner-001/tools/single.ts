@@ -14,7 +14,7 @@
  */
 import { Song, type Track, type Hit } from './song.ts';
 import { Palette } from './kits.ts';
-import { CALL, ANSWER, ANSWER2, ANSWER_PEAK, RESOLVE, FRAGMENTS, augment, toVoice, toMachine, SWING, type HookNote } from './hook.ts';
+import { CALL, ANSWER, ANSWER2, ANSWER3, ANSWER_PEAK, RESOLVE, FRAGMENTS, augment, toVoice, toMachine, SWING, type HookNote } from './hook.ts';
 import { m, ms, semis, swung, Feel } from './theory.ts';
 
 const C = {
@@ -256,7 +256,7 @@ export function buildSingle(): Song {
   // ================================================================ 6. HOOK 2 "freeway" (41-48): heaviest
   add('kick', { tick: at(41), hit: K.boom, v: 0.72 }); add('fx', { tick: at(41), hit: P.impact(), v: 0.8 });
   phrase('hook-a', [...CALL, ...ANSWER], 40);
-  phrase('hook-b', [...CALL, ...ANSWER2], 44);
+  phrase('hook-c', [...CALL, ...ANSWER3], 44);  // V5: the ceiling climbs Ab5 (hook 1) -> Bb5 (hook 2) -> C6 (final)
   for (let b = 41; b <= 48; b++) {
     const c = HOOK_PROG[(b - 41) % 4]!, kind = b % 2 ? 'FA' : 'FB';
     drums(b, kind, { hats: 1, metal: ROOT[c], clap: true });
@@ -296,8 +296,30 @@ export function buildSingle(): Song {
   };
   ens('ens-a', fa, 52, 0.82); ens('ens-peak', fp, 56, 0.88); ens('ens-final', fr, 60, 0.92);
   const FINAL_HARM = ['db', 'eb', 'fm', 'c7', 'db', 'eb', 'fm', 'c7', 'db', 'eb'] as const;
+  // RISK PASS (V4): the final cadence (61-63) broadens into half time — kick on 1, hall snare + clap on beat 3,
+  // long bass roots — while tempo, voice and ensemble continue. Accents land on structural melody notes.
+  const HALF_TIME_CADENCE = true;
+  const halfDrums = (bar: number, kicks: number[], root: string) => {
+    for (const s of kicks) kick(bar, s, s === 1 ? 1 : 0.76);
+    add('snare', { tick: at(bar, 9, 12), hit: SN.verb, v: 0.92 }); add('snare', { tick: at(bar, 9, 16), hit: SN.clap, v: 0.62 });
+    for (const s of [1, 3, 5, 9, 11, 13]) hat(bar, s, (s % 4 === 1 ? 0.56 : 0.42) * 1.05);
+    for (const s of [7, 15]) hat(bar, s, 0.42, H.o);
+    const pipe = P.pipeAt(m(root));
+    for (const [s, hit, v] of [[1, pipe, 0.62], [4, MT.anvil, 0.32], [7, pipe, 0.5], [9, pipe, 0.58], [12, MT.anvil, 0.36], [15, pipe, 0.48]] as [number, string, number][]) add('metal', { tick: at(bar, s), hit, v });
+  };
+  const HALF_BASS: BN[][] = [
+    [[1, 8, 'Db2', 0.95], [9, 6, 'Ab1', 0.86], [15, 2, 'D2', 0.72]],
+    [[1, 8, 'Eb2', 0.95], [9, 4, 'Bb1', 0.86], [13, 2, 'Eb2', 0.7], [15, 2, 'F1', 0.78]],
+    [[1, 8, 'Gb1', 0.96], [9, 6, 'C2', 0.95], [15, 2, 'E2', 0.8]],
+  ];
   for (let b = 53; b <= 62; b++) {
     const c = FINAL_HARM[b - 53]!, kind = b % 2 ? 'FA' : 'FB';
+    if (HALF_TIME_CADENCE && b >= 61) {
+      halfDrums(b, b === 61 ? [1, 11] : [1, 8, 11], ROOT[c]!);
+      bass(b, HALF_BASS[b - 61]!, [1, 8, 11], 'all');
+      pad(b, c, 0.74);
+      continue;
+    }
     drums(b, kind, { hats: 1.08, metal: ROOT[c], clap: true, lift: true });
     if (b <= 60) add('choir', { tick: at(b), hit: P.choirChord(`ch-${c}`, C[c].map(x => x + 12), 'a', 6), v: 0.4, gate: 3840, attack: 0.12, release: 0.6, choke: 'choir-c' });
     const toGb: BN[] = [[1, 6, 'Eb2', 0.92], [8, 2, 'Bb1', 0.8], [11, 2, 'Eb2', 0.88], [13, 1, 'Eb3', 0.55], [15, 2, 'F1', 0.8]];
@@ -306,8 +328,11 @@ export function buildSingle(): Song {
   }
   for (const b of [57, 61]) add('fx', { tick: at(b), hit: P.impact(), v: 0.5 });
   // bar 63: Neapolitan Gbmaj7 (beats 1-2) -> C7b9 (beats 3-4); bar 64: F MAJOR
-  drums(63, 'FA', { hats: 1.08, metal: 'C3', clap: true, lift: true });
-  bass(63, [[1, 6, 'Gb1', 0.95], [8, 1, 'Db2', 0.8], [9, 6, 'C2', 0.95], [15, 2, 'E2', 0.8]], [1, 3, 8, 11], 'all');
+  if (HALF_TIME_CADENCE) { halfDrums(63, [1, 11, 15], 'C3'); bass(63, HALF_BASS[2]!, [1, 11, 15], 'all'); }
+  else {
+    drums(63, 'FA', { hats: 1.08, metal: 'C3', clap: true, lift: true });
+    bass(63, [[1, 6, 'Gb1', 0.95], [8, 1, 'Db2', 0.8], [9, 6, 'C2', 0.95], [15, 2, 'E2', 0.8]], [1, 3, 8, 11], 'all');
+  }
   add('pad', { tick: at(63), hit: P.padChord('pad-gb', C.gb, 5.6), v: 0.72, gate: 1920, attack: 0.05, release: 0.35, choke: 'pad' });
   add('pad', { tick: at(63, 9), hit: P.padChord('pad-c7', C.c7, 5.6), v: 0.72, gate: 1920, attack: 0.05, release: 0.35, choke: 'pad' });
   add('choir', { tick: at(63), hit: P.choirChord('ch-gb', C.gb.map(x => x + 12), 'a', 6), v: 0.5, gate: 1920, attack: 0.1, release: 0.4, choke: 'choir-c' });

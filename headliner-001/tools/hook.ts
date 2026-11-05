@@ -103,3 +103,15 @@ export function augment(notes: HookNote[], originBar = 0): HookNote[] {
     return { ...x, bar: originBar + Math.floor(idx / 16), step: (idx % 16) + 1, len: x.len * 2, slide: x.slide ? x.slide * 1.8 : x.slide, vib: (x.vib ?? 1) * 1.15 };
   });
 }
+
+/** Hook 2's second answer: the ceiling climbs one step (Ab5 -> Bb5), preparing the final's C6 summit. */
+export const ANSWER3: HookNote[] = [
+  ...ANSWER.slice(0, 4),
+  { bar: 3, step: 13, len: 2, p: 'Eb5', vowel: 'a', v: 0.82 },
+  { bar: 3, step: 15, len: 1, p: 'F5', vowel: 'a', v: 0.85 },
+  { bar: 3, step: 16, len: 1, p: 'Ab5', vowel: 'a', v: 0.88 },
+  { bar: 4, step: 1, len: 4, p: 'Bb5', vowel: 'u', to: 'a', slide: 160, vib: 1.25, v: 0.97 },
+  { bar: 4, step: 5, len: 2, p: 'Ab5', vowel: 'o', v: 0.84 },
+  { bar: 4, step: 7, len: 2, p: 'G5', vowel: 'a', v: 0.82 },
+  { bar: 4, step: 9, len: 6, p: 'E5', vowel: 'u', to: 'a', vib: 1.4, v: 0.93 },
+];
