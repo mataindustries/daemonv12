@@ -86,6 +86,26 @@ are copied with the candidate. The original branch's tracked tree and locked
 master must remain unchanged before and after all measurements. The committed
 proof report and measured results accompany this document.
 
+## Completed local SODIUM HOURS result
+
+Both production packages match all **221 files** byte for byte, including the
+master, 15 stems, MP3, canonical sources and metadata. The unchanged project has
+15 tracks, 2,223 triggers and 163 canonical PCM16 sounds. Both masters are exactly
+8,224,650 frames / 186.5 seconds; the measured best lag is zero frames.
+
+The PCM24 master SHA-256 is
+`93e08083ba191cb32ff0c3526712e35970d44cb0ba7135df505e953b92645f1c`.
+Both versions measure -11.35 LUFS, 6.2 LU loudness range and -2.07 dBTP at the
+analyzer's reported precision. No master or exported stem clips. The unfitted,
+sample-aligned residual measures -89.079711 dBFS RMS / -72.353880 dBFS peak.
+PCM24 retains a low-level tail during the final second (-98.217054 dBFS peak)
+where the PCM16 output is zero; both final 100 ms are exact silence.
+
+See [the detailed measured comparison](PRODUCTION24_SODIUM_RESULTS.md) and
+[machine-readable evidence](../proofs/production24-integration/sodium-hours.ab.json).
+These measurements do not establish subjective improvement or additional source
+resolution.
+
 ## Verification and release boundaries
 
 Portable CI runs the existing Node 22/24 and package Linux/macOS matrix. A narrowly
@@ -95,6 +115,22 @@ the full suite with real tools, build checks, installed-package checks, hidden-t
 smoke, Python CPU proofs, independent legacy comparison, and focused adapter/A/B
 tests. Sandbox child-process I/O initially failed with EPERM; successful reruns used
 an execution context permitting subprocess I/O, with assertions unchanged.
+
+Local suite coverage: 347 cases, with 345 distinct cases exercised successfully
+and zero failures after resolving six PATH-dependent discovery skips. The two
+historical FFmpeg-build gates remain unavailable; the SIGNATURE test's recorded
+byte subcomparison has the same build limitation. Five additional adapter/A/B/
+output-preservation tests pass. Full-audio installed package checks pass 10/10;
+hidden-audio package checks pass 9 with the intentionally unavailable full-audio
+case covered by the full run. Python CPU proofs pass 53/53. Four independent main/
+integration legacy comparisons preserve four masters, 25 stems, MIDI and default
+manifests, plus 80 adversarial cache cases. Source and build typechecks pass.
+
+**Remote status:** no branch was uploaded. Automatic approval review rejected
+the push as conflicting with the request to stop before publishing. A concrete
+local branch, draft PR text and delivery are prepared for approval; no GitHub PR
+or remote CI result is claimed. Node 22/Linux, macOS and the remote apt/rootless
+audio matrix remain required before merge/release.
 
 Boundaries and release blockers:
 
@@ -112,5 +148,9 @@ Boundaries and release blockers:
   memory. It is not a streaming workflow.
 - Exact output hashes are specific to the recorded runtime/toolchain. Cross-platform
   bit identity is not certified. MP3 is a listening format with encoder delay.
+- Historical GLASSHOUSE/GLASS//FIRE golden gates and the SIGNATURE prerecorded
+  byte subcomparison require FFmpeg `6.1.1-3ubuntu5`; this runner identifies as
+  `6.1.1`. The assertions and fixtures remain unchanged. Complete those gates and
+  remote CI after branch-upload approval.
 - Stop before merge, release or publication. The draft PR and local delivery are
   review artifacts, not authorization to distribute the song.
