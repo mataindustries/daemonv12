@@ -19,7 +19,17 @@
       "version": "6.1.1"
     }
   },
-  "preservedImportedFiles": 173,
+  "verifiedImportedFiles": 173,
+  "preservedImportedFiles": 172,
+  "ciAdjustments": [
+    {
+      "file": ".github/workflows/check.yml",
+      "originalSha256": "8366cdd99506c6eef27473f48cc50eb0a2edec15b8b2bfb957633b7a59f1a24b",
+      "integrationSha256": "bdf277a6cba4a5edc1c8297802b8867d3c28a6565e0576878c1678c612b8ec3f",
+      "reason": "GitHub retired macOS 14 on 2026-11-02; macos-14 jobs cancel before runner assignment (unsupported macos-14-arm64-us-default). Move the unchanged Node 24 package clean-room test to the supported macos-15-intel label, retaining Intel macOS coverage.",
+      "documentation": "https://github.com/actions/runner-images/issues/15226"
+    }
+  ],
   "frozenFiles": 31,
   "freezeSha256": "15f8a55e504a3e23ff2ca313109da7c703bd015c5fad46b1fa17b4b8c95ef338",
   "scoreSha256": "e25b2b4489eb2a11790ec4f83822ddd4447cc57260b572c9cd46744c5b36a865",
@@ -110,7 +120,7 @@
     "nativeFiles": 28,
     "independentProductionPackagesIdentical": true,
     "completeReplayIdentical": true,
-    "comparedFilesPerPackage": 66
+    "comparedFilesPerPackage": 67
   },
   "provenance": {
     "nativeSourcesByteIdentical": true,
@@ -139,7 +149,7 @@
       "room": "8c37c54616ecb18e15f9d39f2b419529d757367f5dd4a682ece3de5136e24d53"
     },
     "nativeSha256sums": "9ec1e2f2620120fd8ccb74f1efba688ff09a0afedbfc2027c92612948cb24ae3",
-    "production24Sha256sums": "983d53b8648109127aa72a07088e1d1bd12e33b0500bc20b5d60ffde608d29de"
+    "production24Sha256sums": "971bf44731ff6c51b88537e64a39e5c4cf1f6a9ee49af759b2600445c484e310"
   },
   "status": "Technical integration review. Await owner approval before merge. No release, publication, licensing change or listening approval is asserted."
 }

@@ -26,6 +26,7 @@ interface InputRecord {
   integrationOrder: number[];
   inputs: Record<string, { head: string; tree: string; files: { file: string; sha256: string }[] }>;
 }
+interface IntegrationChange { file: string; originalSha256: string; integrationSha256: string; reason: string }
 interface NativeCatalog {
   frames: number;
   generator: { file: string; sha256: string }[];
@@ -35,14 +36,18 @@ interface NativeCatalog {
 /** Hash every imported file against the exact reviewed Git blob, including all approved audio. */
 export function verifyV08Inputs() {
   const inputs = read<InputRecord>(join(ROOT, PROOF, 'inputs.json'));
+  const changes = read<IntegrationChange[]>(join(ROOT, PROOF, 'ci-adjustments.json'));
+  assert.deepEqual(changes.map(c => c.file), ['.github/workflows/check.yml'], 'only the documented runner migration may alter an imported file');
   assert.deepEqual(inputs.integrationOrder, [44, 43]);
   assert.deepEqual(verifyFrozen(), []);
   let checked = 0;
   for (const pr of inputs.integrationOrder) for (const entry of inputs.inputs[pr]!.files) {
-    assert.equal(digest(join(ROOT, entry.file)), entry.sha256, `PR #${pr} changed: ${entry.file}`);
+    const change = changes.find(c => c.file === entry.file);
+    if (change) assert.equal(change.originalSha256, entry.sha256, 'CI adjustment must identify the reviewed Git blob');
+    assert.equal(digest(join(ROOT, entry.file)), change?.integrationSha256 ?? entry.sha256, `PR #${pr} changed: ${entry.file}`);
     checked++;
   }
-  return { inputs, checked, frozenFiles: readFreeze().files.length };
+  return { inputs, checked, unchanged: checked - changes.length, changes, frozenFiles: readFreeze().files.length };
 }
 
 function identical(a: string, b: string): number {
@@ -152,7 +157,7 @@ async function verifyCrossing(scratch: string) {
   const demo = read<{ stems: Record<string, { decodesTo: string; wavSha256: string }> }>(join(ROOT, 'studio-001/demo/DEMO.json'));
   const masters: Record<string, string> = {};
   for (const name of ['main', 'dry']) {
-    const result = await runCommand('render', join(native, `${name}.json`), { outDir: join(scratch, `crossing-${name}`), stems: true, format: 'wav' });
+    const result = await runCommand('render', join(native, `${name}.json`), { outDir: join(scratch, `crossing-${name}`), stems: true, format: 'wav', env: process.env });
     assert.equal(result.exitCode, 0, JSON.stringify(result.result));
     const original = join(ROOT, 'studio-001/demo', name === 'main' ? 'crossing.wav' : 'crossing-dry.wav');
     assert.ok(result.result.artifacts.wav);
@@ -188,6 +193,7 @@ export async function verifyV08Studio(output: string) {
       ...readFreeze().files.filter(f => f.role === 'engine' || f.role === 'audition-script').map(f => ({ path: join(ROOT, f.path), file: `generators/${f.path}` })),
       { path: fileURLToPath(import.meta.url), file: 'generators/scripts/verify-v08-studio.ts' },
       { path: join(ROOT, PROOF, 'inputs.json'), file: 'generators/integration-inputs.json' },
+      { path: join(ROOT, PROOF, 'ci-adjustments.json'), file: 'generators/ci-adjustments.json' },
     ];
     const provenance = { base: protectedInputs.inputs.base,
       integrationOrder: protectedInputs.inputs.integrationOrder.map(pr => ({ pr, head: protectedInputs.inputs.inputs[pr]!.head })),
@@ -226,7 +232,8 @@ export async function verifyV08Studio(output: string) {
     verifyV08Inputs();
     const report = { schema: 'daemonv12.v08-studio-verification/1', title: score.title,
       sourceHeads: provenance.integrationOrder, base: provenance.base, runtime: a.manifest.runtime,
-      preservedImportedFiles: protectedInputs.checked, frozenFiles: protectedInputs.frozenFiles,
+      verifiedImportedFiles: protectedInputs.checked, preservedImportedFiles: protectedInputs.unchanged,
+      ciAdjustments: protectedInputs.changes, frozenFiles: protectedInputs.frozenFiles,
       freezeSha256: provenance.frozenManifestSha256, scoreSha256: provenance.scoreSha256,
       route: 'Unmodified approved rack native bounce -> packageProduction24 with bounded voice reuse -> Float64 processing and master sum -> independent PCM24 exports; MP3 directly from the final PCM24 master.',
       sourcePrecision: a.manifest.sourcePrecision, export: a.manifest.export,

@@ -17,9 +17,12 @@ and `8b0af15638414e0aa4aba39c7c75c229507c46b4`. Both merges were clean.
 PRs #39, #41 and #42 are already ancestors of #44 and were not merged separately.
 
 [inputs.json](../proofs/v08-studio-integration/inputs.json) hashes the exact Git
-blob bytes of all 173 files imported by the two source PRs. Every one remains
-unchanged, including the instruments, rack, auditions, CROSSING, HEADLINER and
-SODIUM HOURS verification evidence. The approved freeze manifest still verifies
+blob bytes of all 173 files imported by the two source PRs. Of these, 172 remain
+unchanged, including the instruments, engine, rack, auditions, CROSSING, HEADLINER
+and SODIUM HOURS verification evidence. The sole adjustment is recorded in
+[ci-adjustments.json](../proofs/v08-studio-integration/ci-adjustments.json): GitHub
+retired macOS 14 on November 2, so its package check uses `macos-15-intel`, retaining
+Intel macOS coverage with the same tests. The approved freeze manifest still verifies
 all 31 entries: engines, audition scripts, 18 audio files and their manifests.
 The SODIUM HOURS source/delivery is outside these two PRs; this candidate preserves
 #44's sealed SODIUM evidence and does not regenerate or modify that composition.
@@ -62,7 +65,7 @@ sources. The unity-gain room stem needs no additional fractional detail.
   −13.33 dBTP. No normalization, dither or additional mastering was applied.
 - Two independent native bounces, one in a fresh process, match all 28 files.
   Independent production packages and a fresh-process complete replay match all
-  **66 files** per package, including metadata, sources, stems, master and MP3.
+  **67 files** per package, including metadata, sources, stems, master and MP3.
 - Source bytes, rack generators, frozen engines, engine sources, adapter and
   MP3 derivation are verified against their recorded hashes.
 
@@ -74,7 +77,11 @@ The separate PCM16 regression report is
 An independent archive of main, the integrated default renderer and opt-in voice
 reuse produce identical audio for four existing projects: four masters and
 25 stems, plus MIDI. Default manifests are byte-identical too. All 80 adversarial
-cache comparisons pass.
+cache comparisons pass. `scripts/verify-v08-pcm16.mjs` prepares these renders with
+the configured audio environment, then invokes #44's unchanged comparator with
+`--existing`, which hashes the actual output bytes. The CROSSING check also forwards
+the configured environment explicitly; the new verifier never relies on a system
+FFmpeg installation.
 
 CROSSING is re-bounced into scratch space, without invoking its delivery builder.
 All 53 native phrase WAVs match the approved package manifest; both PCM16 masters

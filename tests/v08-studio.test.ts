@@ -6,9 +6,10 @@ import { sha256, verifyPackage } from '../production/headliner/build.ts';
 import { analyzePcm24 } from '../src/render/index.ts';
 import { normalizeScore } from '../studio-001/rack/score.ts';
 
-test('v0.8 keeps both exact approved source sets and the short three-family PCM24 review master intact', () => {
+test('v0.8 preserves approved sources and audio with only the documented CI runner migration', () => {
   const inputs = verifyV08Inputs();
   assert.equal(inputs.checked, 173);
+  assert.equal(inputs.unchanged, 172);
   assert.equal(inputs.frozenFiles, 31);
   const scoreBytes = readFileSync('production/v08-studio/relay.score.json');
   const score = normalizeScore(JSON.parse(scoreBytes.toString()));

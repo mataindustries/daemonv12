@@ -6,6 +6,7 @@ on:
       - 'production/v08-studio/**'
       - 'proofs/v08-studio-integration/**'
       - 'scripts/verify-v08-studio.ts'
+      - 'scripts/verify-v08-pcm16.mjs'
       - 'scripts/headliner-production24.ts'
       - 'scripts/verify-voice-reuse-legacy.mjs'
       - 'studio-001/**'
@@ -41,7 +42,7 @@ jobs:
           mkdir "$legacy_source"
           git archive e2962cc1a443c841cd6ca7cb2cc56c5ebabf0e99 | tar -x -C "$legacy_source"
           ln -s "$GITHUB_WORKSPACE/node_modules" "$legacy_source/node_modules"
-          node scripts/verify-voice-reuse-legacy.mjs "$legacy_source" "$RUNNER_TEMP/v08-legacy"
+          node scripts/verify-v08-pcm16.mjs "$legacy_source" "$RUNNER_TEMP/v08-legacy"
           cp "$RUNNER_TEMP/v08-legacy-verification.json" "$RUNNER_TEMP/v08-studio/pcm16-verification.json"
       - name: Retain the sealed technical review delivery and verification reports
         uses: actions/upload-artifact@v4
