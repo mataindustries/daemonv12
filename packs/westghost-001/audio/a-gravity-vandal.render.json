@@ -1,0 +1,3915 @@
+{
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "a-gravity-vandal.json",
+    "sha256": "59df4132ab8d1beac6b58eacdb683d2fb48c175bd0130abf8883ab0ce49ab63a",
+    "formatVersion": 1,
+    "seed": 12003
+  },
+  "midi": {
+    "file": "a-gravity-vandal.mid",
+    "sha256": "ea286d9035820173a1f5b359fc97fd61cf1eac66d9e6513a95d9ed128febf1da",
+    "bytes": 86,
+    "ppq": 960,
+    "durationTicks": 61440,
+    "durationSeconds": 32,
+    "notes": 0
+  },
+  "renderer": {
+    "name": "daemonv12-production",
+    "version": "2",
+    "settings": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "panLaw": "linear stereo balance; unity center",
+      "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+      "normalization": false,
+      "dither": false,
+      "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+      "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+      "saturation": "tanh-v1; no output compensation",
+      "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+    }
+  },
+  "gmRenderer": null,
+  "gmSource": null,
+  "soundfont": null,
+  "samples": {
+    "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+    "assets": [
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-0d4d6023a51270eb.wav",
+        "sha256": "74fa8f91c64a7d99378d22a9eda54ce740c9d7ba219a280b1a54a3a10ccadc8c",
+        "bytes": 20772,
+        "frames": 10364,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-14d8c5e7292b401d.wav",
+        "sha256": "18e74abdd8ea79a72dc7f35ad8362d1a386e26cbfb3a1181c3167eb056eb0c46",
+        "bytes": 20772,
+        "frames": 10364,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-186ac9ce659281c5.wav",
+        "sha256": "1ee0bfadf6e8d19981b96978907981cd5f67b6af455ae294aaa87385140520c3",
+        "bytes": 24300,
+        "frames": 12128,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-35ecf927f9e953ea.wav",
+        "sha256": "29937618f13a6b5ad8cdfe86d52d700348934747aa32e7d47c42bcada71e4c55",
+        "bytes": 20772,
+        "frames": 10364,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-58fb3ed378437389.wav",
+        "sha256": "d75452e45fa9bf5bd22a4c63e04f055b3f5dc32ee5211f9ead728a37cc484b2a",
+        "bytes": 24300,
+        "frames": 12128,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-5e3937767a9d6805.wav",
+        "sha256": "e9ea2920e86a80bfbfe730df6e5172473d4fa4ca5e54d16590f43d1e4b1fb020",
+        "bytes": 20772,
+        "frames": 10364,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-69c63a3aa4f71025.wav",
+        "sha256": "a72acaf4521702162c35decf95098db2f93f4810ee3a4c238248e48e62899f8a",
+        "bytes": 20772,
+        "frames": 10364,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-6f07194c63917b4a.wav",
+        "sha256": "79d96099298f404e0b89fbfd22b851524d285233bbffee9a1e4535e6cafe8938",
+        "bytes": 20772,
+        "frames": 10364,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-76474a0293bf3901.wav",
+        "sha256": "a4b4e7a953e07475fae784dc8f1d790c776cf6148608a0efdb14f61df91701f1",
+        "bytes": 24300,
+        "frames": 12128,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-86194a3eb8ab311e.wav",
+        "sha256": "014fa8bc3ddb8e50e060540f484ae1eb7a944163452ebd88f49523b9278ce314",
+        "bytes": 291104,
+        "frames": 145530,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+        "sha256": "a8572c2c994a406ef729cf1f768555d5e0c48fed9dac51156526596b72f1ddb6",
+        "bytes": 20772,
+        "frames": 10364,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-c613a33175b77827.wav",
+        "sha256": "8e46e9436844459d038fbf416a75617b64afa9357ed415b8ae096ccdb9d30a8b",
+        "bytes": 20772,
+        "frames": 10364,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+        "sha256": "ec48f532759ef3fbf90a3117622dcd327c3da6b4cf82fb86d82ceca19a5801a7",
+        "bytes": 20772,
+        "frames": 10364,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-ef7edd5feea55aab.wav",
+        "sha256": "bd907e3bbac4704c5a8556a8856dfbf82732f24c9791c03a7e59b40835b8d9f2",
+        "bytes": 20772,
+        "frames": 10364,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity-fca674e541e67a1e.wav",
+        "sha256": "c850b67e4c392ddd5fb626bc12791b582e020fa07197677bd488047d13bf7861",
+        "bytes": 24300,
+        "frames": 12128,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/gravity.kit.json",
+        "sha256": "fc6fac599970656b47b174a360c1917b447c529fe5c8e056c030f169987653fd",
+        "bytes": 1729,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+        "sha256": "3d90a6ede9ba7c75d5265fa878206c3d7482efe4c406dc3f8cca7a4eff4e6842",
+        "bytes": 15038,
+        "frames": 7497,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+        "sha256": "96cb363a1b378e6b482397e5654db29377cdd30e5c6d157e70ebafb741478d6c",
+        "bytes": 15038,
+        "frames": 7497,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/impact.kit.json",
+        "sha256": "ff6add707fd9e060b3e5108698b70a7bdf2d0cafbf7938c58c2d985a901813e1",
+        "bytes": 266,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-0c0db74807855e81.wav",
+        "sha256": "c186fb6863445d99ece5e2a628be122bbcb71103cb47e255bd51559752a6b945",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-1a6d7157e2c67c25.wav",
+        "sha256": "1daae89efe00780cee5dd942c933664e7c70681fb41878a75e489c54816f75ab",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-3946c49f0c30a9ed.wav",
+        "sha256": "ce323ac2040b6e2ba828dcb58ba9917ac18c6ab3332ae71af2bbacc82d6d04e0",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-4329c46073c86852.wav",
+        "sha256": "047136e07333721d941107628e53e4defcb0ee165cac27ac336e7c646f6e30db",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-761e3eb0845d820b.wav",
+        "sha256": "5160505d8eff3424bf06592a2a349b923a75620efa77500dc09b3bb00efc3c98",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-77089f19c1ee484d.wav",
+        "sha256": "96ee37afcd73aedb30b7abf3127029392ecb4845021598dac866ac4e950396cb",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-7d16f137656c77bc.wav",
+        "sha256": "a49f89634094db48a290630458c405d20ba75997a093d58b7898827fafac14a3",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-8f30a17898bd639d.wav",
+        "sha256": "0504124db7f709532fd25c48e2b83e90e09834e4b7617a4b90fb97d4212f6222",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-9feea1c95130f8fe.wav",
+        "sha256": "f351bf1f174a7b06b75916202859aebc3dffc61fa67cb7a7575dca126e8894ed",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-c2937539d7a3e1ed.wav",
+        "sha256": "027ac48fbfc38d149b04803faec257f96efc68375fe7373d0ce101b417ed391a",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-c41069f04de8280e.wav",
+        "sha256": "69151ac5b6f300c3ed3abb53212c80a17e07d41a215a04aa79c14788a71b0682",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-c85cd9b6782b1d42.wav",
+        "sha256": "02027641cc0c4a1a01d1c65bb937d9217a10bc6b1b99780065b4e3607c2d8bec",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-ccaeca20683a6a79.wav",
+        "sha256": "51c8a72b57174611ed5b81475084df913b6e827afca9e4889092e47aa5dcff0b",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal-e60327dc74b1fc54.wav",
+        "sha256": "bc930a04d75b646d134463e84ffabdf71ddafa825b95e8a0c2f7d7b21f5fdf2d",
+        "bytes": 22536,
+        "frames": 11246,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/metal.kit.json",
+        "sha256": "340b5965d219c43e9fceed31182a6275746db154446997fc68c24d40c1d5b8ae",
+        "bytes": 1588,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+        "sha256": "cdbde80279ba7788bfc79a77059a505e00e4f891057eda4ee58baa7bf5ae1e53",
+        "bytes": 4454,
+        "frames": 2205,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+        "sha256": "8db323e950f5c77e84a40ae470a99589d6bb445904f1f226ab1c67a110cbae32",
+        "bytes": 4454,
+        "frames": 2205,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+        "sha256": "bb6646145ceca50e7b44f5425717844806a9b1e5eb94454438a124cbea8b4e1a",
+        "bytes": 4454,
+        "frames": 2205,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+        "sha256": "6648c428e0f63e645e4204b361182e887b7edc5ffb1da222dcc614d48d2645c5",
+        "bytes": 4454,
+        "frames": 2205,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+        "sha256": "fff294b3b072ab7359e2804e6bfca9adcdd90d4119766991835e9cdefa321a1b",
+        "bytes": 4454,
+        "frames": 2205,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+        "sha256": "34d95ef61f8b7080f7707ccb7b06b67ac2d2602353dff3075610bf95f9b6fbf8",
+        "bytes": 4454,
+        "frames": 2205,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+        "sha256": "5949a494c3274a09fc772f3bfb29417e34663d0be896f4f491a34c72a1c6d7bc",
+        "bytes": 4454,
+        "frames": 2205,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+        "sha256": "8a6429ab45c3a36947637123b780aa84f755223831a4be1eee26fb1a61d4b071",
+        "bytes": 4454,
+        "frames": 2205,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/ticks.kit.json",
+        "sha256": "6367090a9dd7a5b09d818aaa1773d5893438ec245c9e418e1fdfe209daa50dbc",
+        "bytes": 924,
+        "kind": "drumkit"
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-01b332757b9d0c32.wav",
+        "sha256": "0e91615fd990e2819b5a7cd5f61d7687d32a9706dafa200472d97272e9980122",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-10534b6f36472901.wav",
+        "sha256": "243906ebe8db2bb8f132bc6e9461363eb423066183faa0576561ae2b5be8c328",
+        "bytes": 34442,
+        "frames": 17199,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-13fe1b4cc93e155c.wav",
+        "sha256": "6c32b4e7b80c72d4ba317650ef950e12675834a850697e5328698161e5e8e45d",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-14303b460d3bd9d5.wav",
+        "sha256": "8215e1c394135a7aa5c8fb8100c64ce464fb246997f4d1587939139a176d08d0",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-2715af550673d637.wav",
+        "sha256": "44f855569cd531a9df0273b5e88039da20a5d2482385b8d2ac537cd37da4845e",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-27910e5539225449.wav",
+        "sha256": "82d2f40cc52ea884f6a07bb9f9d41e03ad9b27c9ce8263bfff21bad86b026dcf",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-29ca06160a7b4ecd.wav",
+        "sha256": "338f7292a52feac2dd35a592c5827a986d056242e34750e194aa4e6d5a086067",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-2c1b18946983f573.wav",
+        "sha256": "df030b3bbe12f61c31641152bcce9cdebe9baf2d514acf41099ab5952ab306d4",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-2cafc405674104a3.wav",
+        "sha256": "bf04e24b35347e50f5ce7f7c324bae7f63f54741cba589d30a31cc61163d2dc2",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-412e95a5e9ea6872.wav",
+        "sha256": "f7d3f5ae3f4fb2e90aad37d70bd993932d2cb30d7911e6f237ad9a9225402312",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-5156179a71a9c4b0.wav",
+        "sha256": "ab62555c2f47c276b817b8e4f1e67c587f16acb5b32964e8ec1a772edcce50c8",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-5b907002cea5e653.wav",
+        "sha256": "49386956ecc2035c28cbec1bac07e075a5d7c99aa5e69cabb40e4dd33f06ec94",
+        "bytes": 34442,
+        "frames": 17199,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-62f9cead841c391d.wav",
+        "sha256": "d46b13e007057860180d7a2b09797250bb44d7ff8d2a680e8cfa8e634dd430a3",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-63a5acf41f807381.wav",
+        "sha256": "171d90bdb55d0b2830e1cc7e12743c03b1b2a1f9cc60b813bf6771f904fe05ff",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-63e1748c0c0eab77.wav",
+        "sha256": "d8fdcdb7bc4aede742af051f7b378f073a163cd874a443aea94360fc8a0d6ebb",
+        "bytes": 185264,
+        "frames": 92610,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-7031d8b1bb433f0f.wav",
+        "sha256": "f2e9adb5ee4a2448da74e285acf0e27eeab7aae8acd081d11cd91084201895ea",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-7048a18e916d1859.wav",
+        "sha256": "87e5a52ff8acbeb950fbf1e33a33732fff1433f89a9df915a1a45169f529753a",
+        "bytes": 34442,
+        "frames": 17199,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-740f1118439dbcd9.wav",
+        "sha256": "02a33acdb95a79b9dc63393eddd2a2ee175c55577d035fdef6ca21af5c3dcdfe",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-81665ed8be420656.wav",
+        "sha256": "6083fdf3d4f5a0312df568d3740a6cd35501d3780a0c24dfd0626687ce5aad04",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-846034f7a04afbda.wav",
+        "sha256": "0321206e27d2ad9e6e89a172075cf692443cacf15346e92d6c884418a74cfe10",
+        "bytes": 34442,
+        "frames": 17199,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-8f7589029c42befd.wav",
+        "sha256": "be97db64d07da91630840d956af9b304950d7737fd5be0f46c81473fe280b0e9",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-9409e579df84efad.wav",
+        "sha256": "df030b3bbe12f61c31641152bcce9cdebe9baf2d514acf41099ab5952ab306d4",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-941eec29b66ba34a.wav",
+        "sha256": "d46b13e007057860180d7a2b09797250bb44d7ff8d2a680e8cfa8e634dd430a3",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-96a2a279c5c8e2b6.wav",
+        "sha256": "0f54b324b195d6b275c0d93345776f54ee4602446d34250422dddc709b0a8c5a",
+        "bytes": 34442,
+        "frames": 17199,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-9d30ede6c8103c8f.wav",
+        "sha256": "33be8f9b943b3a4d7abfc016067fd3759d1b81dabb7b3632b83c30a067ff62dc",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-9f664689169f118e.wav",
+        "sha256": "3eabea57a1c10cebc8d431b32168a5c435b3fc346cbc20e915f75b9ed188c5b1",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-a8f5dc6cb16bd8b6.wav",
+        "sha256": "cffe30c1f8df08ca3f650c87ac634c4f5efdfd15845a9a35caaec845c44f7362",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-b0b90fe8e7f28bce.wav",
+        "sha256": "44f855569cd531a9df0273b5e88039da20a5d2482385b8d2ac537cd37da4845e",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-b6e08e8d69baced0.wav",
+        "sha256": "7f3e019c47afeb0105f528b6cf85e7b70380d278013cbeb16471bac1da4f954d",
+        "bytes": 34442,
+        "frames": 17199,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-ba58209f76c56281.wav",
+        "sha256": "1e160748697b374ba419ab8ae2d48c0d6245a8e818eefa51ef1d5c182391ecb7",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-c04fd79e12b490b2.wav",
+        "sha256": "48843bdc07decc644c36fd975139423eae40e8abe4811a7a3fcd7b3c56b0ac1e",
+        "bytes": 34442,
+        "frames": 17199,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-c10aa90ecb3f4cad.wav",
+        "sha256": "174a0628f983159035e17b8e1673a320985550dd6ffc6ac1592799c8bddaa03d",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-cb034a53d588caf1.wav",
+        "sha256": "a7e31091dfcc9421a894e0029632c4dced55877f6492b4d9e63fd3e706cb2f8a",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-ceaffa61bcc8b916.wav",
+        "sha256": "8215e1c394135a7aa5c8fb8100c64ce464fb246997f4d1587939139a176d08d0",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-d4d7b311235072f5.wav",
+        "sha256": "d46b13e007057860180d7a2b09797250bb44d7ff8d2a680e8cfa8e634dd430a3",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-d74d36c6949b7406.wav",
+        "sha256": "28718d4e797a36763a3bb99a975045623586fb17936337a5e930ab1bd9ea75cd",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-d9d6c948002d1dae.wav",
+        "sha256": "2dcf749450f81beb9250e67a345437f8ae3a4ee361c10ab7759891a42f70f39a",
+        "bytes": 34442,
+        "frames": 17199,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-da1a9a6323fc482f.wav",
+        "sha256": "f0db16f4442fa2c6948226ba1e9bf6b8b7af1a4bf5738e4b9fb65005ee921b73",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-e6a99599149c9201.wav",
+        "sha256": "0321206e27d2ad9e6e89a172075cf692443cacf15346e92d6c884418a74cfe10",
+        "bytes": 34442,
+        "frames": 17199,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal-e8192a661e8a1587.wav",
+        "sha256": "d04573aff8a8d6b1c2c4b355c2c09492563d64950927b6d1ccb29459b63a4440",
+        "bytes": 22094,
+        "frames": 11025,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/a-gravity-vandal/vandal.kit.json",
+        "sha256": "a6b2180eddff927535c04ca3c3bc18afb3286211b448b29fa50c2fbea3751926",
+        "bytes": 4514,
+        "kind": "drumkit"
+      }
+    ],
+    "tracks": [
+      {
+        "trackId": "gravity",
+        "trackIndex": 0,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/a-gravity-vandal/gravity.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 720,
+            "frame": 16538,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+            "tick": 2880,
+            "frame": 66150,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 4560,
+            "frame": 104738,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+            "tick": 6720,
+            "frame": 154350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-5e3937767a9d6805.wav",
+            "tick": 8160,
+            "frame": 187425,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-6f07194c63917b4a.wav",
+            "tick": 8880,
+            "frame": 203963,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-6f07194c63917b4a.wav",
+            "tick": 9600,
+            "frame": 220500,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-fca674e541e67a1e.wav",
+            "tick": 10800,
+            "frame": 248063,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-0d4d6023a51270eb.wav",
+            "tick": 12240,
+            "frame": 281138,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-14d8c5e7292b401d.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-ef7edd5feea55aab.wav",
+            "tick": 15840,
+            "frame": 363825,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-35ecf927f9e953ea.wav",
+            "tick": 16560,
+            "frame": 380363,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-35ecf927f9e953ea.wav",
+            "tick": 17280,
+            "frame": 396900,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-58fb3ed378437389.wav",
+            "tick": 18480,
+            "frame": 424463,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+            "tick": 19680,
+            "frame": 452025,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 20400,
+            "frame": 468563,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 21120,
+            "frame": 485100,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-76474a0293bf3901.wav",
+            "tick": 22320,
+            "frame": 512663,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-c613a33175b77827.wav",
+            "tick": 23520,
+            "frame": 540225,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-69c63a3aa4f71025.wav",
+            "tick": 24240,
+            "frame": 556763,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-69c63a3aa4f71025.wav",
+            "tick": 24960,
+            "frame": 573300,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-186ac9ce659281c5.wav",
+            "tick": 26160,
+            "frame": 600863,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-0d4d6023a51270eb.wav",
+            "tick": 27600,
+            "frame": 633938,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-14d8c5e7292b401d.wav",
+            "tick": 29760,
+            "frame": 683550,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+            "tick": 31200,
+            "frame": 716625,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 31920,
+            "frame": 733163,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 32640,
+            "frame": 749700,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-76474a0293bf3901.wav",
+            "tick": 33840,
+            "frame": 777263,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-5e3937767a9d6805.wav",
+            "tick": 35040,
+            "frame": 804825,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-6f07194c63917b4a.wav",
+            "tick": 35760,
+            "frame": 821363,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-6f07194c63917b4a.wav",
+            "tick": 36480,
+            "frame": 837900,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-fca674e541e67a1e.wav",
+            "tick": 37680,
+            "frame": 865463,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-ef7edd5feea55aab.wav",
+            "tick": 38880,
+            "frame": 893025,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-35ecf927f9e953ea.wav",
+            "tick": 39600,
+            "frame": 909563,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-35ecf927f9e953ea.wav",
+            "tick": 40320,
+            "frame": 926100,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-58fb3ed378437389.wav",
+            "tick": 41520,
+            "frame": 953663,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-0d4d6023a51270eb.wav",
+            "tick": 42960,
+            "frame": 986738,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-14d8c5e7292b401d.wav",
+            "tick": 45120,
+            "frame": 1036350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+            "tick": 46560,
+            "frame": 1069425,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 47280,
+            "frame": 1085963,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 48000,
+            "frame": 1102500,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-76474a0293bf3901.wav",
+            "tick": 49200,
+            "frame": 1130063,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-c613a33175b77827.wav",
+            "tick": 50400,
+            "frame": 1157625,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-69c63a3aa4f71025.wav",
+            "tick": 51120,
+            "frame": 1174163,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-69c63a3aa4f71025.wav",
+            "tick": 51840,
+            "frame": 1190700,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-186ac9ce659281c5.wav",
+            "tick": 53040,
+            "frame": 1218263,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-86194a3eb8ab311e.wav",
+            "tick": 53760,
+            "frame": 1234800,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "vandal",
+        "trackIndex": 1,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/a-gravity-vandal/vandal.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-a8f5dc6cb16bd8b6.wav",
+            "tick": 8400,
+            "frame": 192938,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-d9d6c948002d1dae.wav",
+            "tick": 9360,
+            "frame": 214988,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-8f7589029c42befd.wav",
+            "tick": 10320,
+            "frame": 237038,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-63a5acf41f807381.wav",
+            "tick": 11040,
+            "frame": 253575,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-62f9cead841c391d.wav",
+            "tick": 12480,
+            "frame": 286650,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-62f9cead841c391d.wav",
+            "tick": 14160,
+            "frame": 325238,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-d74d36c6949b7406.wav",
+            "tick": 16080,
+            "frame": 369338,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-7048a18e916d1859.wav",
+            "tick": 17040,
+            "frame": 391388,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-13fe1b4cc93e155c.wav",
+            "tick": 18000,
+            "frame": 413438,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-2cafc405674104a3.wav",
+            "tick": 18720,
+            "frame": 429975,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-740f1118439dbcd9.wav",
+            "tick": 19920,
+            "frame": 457538,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-10534b6f36472901.wav",
+            "tick": 20880,
+            "frame": 479588,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-da1a9a6323fc482f.wav",
+            "tick": 21840,
+            "frame": 501638,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-7031d8b1bb433f0f.wav",
+            "tick": 22560,
+            "frame": 518175,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-5156179a71a9c4b0.wav",
+            "tick": 23760,
+            "frame": 545738,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-5b907002cea5e653.wav",
+            "tick": 24720,
+            "frame": 567788,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-e8192a661e8a1587.wav",
+            "tick": 25680,
+            "frame": 589838,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-01b332757b9d0c32.wav",
+            "tick": 26400,
+            "frame": 606375,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-941eec29b66ba34a.wav",
+            "tick": 27840,
+            "frame": 639450,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-941eec29b66ba34a.wav",
+            "tick": 29520,
+            "frame": 678038,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-2715af550673d637.wav",
+            "tick": 31440,
+            "frame": 722138,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-846034f7a04afbda.wav",
+            "tick": 32400,
+            "frame": 744188,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-14303b460d3bd9d5.wav",
+            "tick": 33360,
+            "frame": 766238,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-9409e579df84efad.wav",
+            "tick": 34080,
+            "frame": 782775,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-412e95a5e9ea6872.wav",
+            "tick": 35280,
+            "frame": 810338,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-c04fd79e12b490b2.wav",
+            "tick": 36240,
+            "frame": 832388,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-29ca06160a7b4ecd.wav",
+            "tick": 37200,
+            "frame": 854438,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-81665ed8be420656.wav",
+            "tick": 37920,
+            "frame": 870975,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-ba58209f76c56281.wav",
+            "tick": 39120,
+            "frame": 898538,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-96a2a279c5c8e2b6.wav",
+            "tick": 40080,
+            "frame": 920588,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-cb034a53d588caf1.wav",
+            "tick": 41040,
+            "frame": 942638,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-c10aa90ecb3f4cad.wav",
+            "tick": 41760,
+            "frame": 959175,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-d4d7b311235072f5.wav",
+            "tick": 43200,
+            "frame": 992250,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-d4d7b311235072f5.wav",
+            "tick": 44880,
+            "frame": 1030838,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-b0b90fe8e7f28bce.wav",
+            "tick": 46800,
+            "frame": 1074938,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-e6a99599149c9201.wav",
+            "tick": 47760,
+            "frame": 1096988,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-ceaffa61bcc8b916.wav",
+            "tick": 48720,
+            "frame": 1119038,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-2c1b18946983f573.wav",
+            "tick": 49440,
+            "frame": 1135575,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-9d30ede6c8103c8f.wav",
+            "tick": 50640,
+            "frame": 1163138,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-b6e08e8d69baced0.wav",
+            "tick": 51600,
+            "frame": 1185188,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-9f664689169f118e.wav",
+            "tick": 52560,
+            "frame": 1207238,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-27910e5539225449.wav",
+            "tick": 53280,
+            "frame": 1223775,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-63e1748c0c0eab77.wav",
+            "tick": 54480,
+            "frame": 1251338,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "impact",
+        "trackIndex": 2,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/a-gravity-vandal/impact.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 2160,
+            "frame": 49613,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 3840,
+            "frame": 88200,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 6000,
+            "frame": 137813,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 9120,
+            "frame": 209475,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 10080,
+            "frame": 231525,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 13680,
+            "frame": 314213,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 16800,
+            "frame": 385875,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 17760,
+            "frame": 407925,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 19200,
+            "frame": 441000,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 20640,
+            "frame": 474075,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 21600,
+            "frame": 496125,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 23040,
+            "frame": 529200,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 24480,
+            "frame": 562275,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 25440,
+            "frame": 584325,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 26880,
+            "frame": 617400,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 29040,
+            "frame": 667013,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 30720,
+            "frame": 705600,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 32160,
+            "frame": 738675,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 33120,
+            "frame": 760725,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 34560,
+            "frame": 793800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 36000,
+            "frame": 826875,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 36960,
+            "frame": 848925,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 38400,
+            "frame": 882000,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 39840,
+            "frame": 915075,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 40800,
+            "frame": 937125,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 42240,
+            "frame": 970200,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 44400,
+            "frame": 1019813,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 46080,
+            "frame": 1058400,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 47520,
+            "frame": 1091475,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 48480,
+            "frame": 1113525,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 49920,
+            "frame": 1146600,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 51360,
+            "frame": 1179675,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 52320,
+            "frame": 1201725,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "metal",
+        "trackIndex": 3,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/a-gravity-vandal/metal.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-9feea1c95130f8fe.wav",
+            "tick": 960,
+            "frame": 22050,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-9feea1c95130f8fe.wav",
+            "tick": 2880,
+            "frame": 66150,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c85cd9b6782b1d42.wav",
+            "tick": 4800,
+            "frame": 110250,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c85cd9b6782b1d42.wav",
+            "tick": 6720,
+            "frame": 154350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-8f30a17898bd639d.wav",
+            "tick": 8640,
+            "frame": 198450,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-8f30a17898bd639d.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-7d16f137656c77bc.wav",
+            "tick": 12480,
+            "frame": 286650,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-7d16f137656c77bc.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-4329c46073c86852.wav",
+            "tick": 16320,
+            "frame": 374850,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-4329c46073c86852.wav",
+            "tick": 18240,
+            "frame": 418950,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-761e3eb0845d820b.wav",
+            "tick": 20160,
+            "frame": 463050,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-761e3eb0845d820b.wav",
+            "tick": 22080,
+            "frame": 507150,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-ccaeca20683a6a79.wav",
+            "tick": 24000,
+            "frame": 551250,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-ccaeca20683a6a79.wav",
+            "tick": 25920,
+            "frame": 595350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-1a6d7157e2c67c25.wav",
+            "tick": 27840,
+            "frame": 639450,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-1a6d7157e2c67c25.wav",
+            "tick": 29760,
+            "frame": 683550,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-77089f19c1ee484d.wav",
+            "tick": 31680,
+            "frame": 727650,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-77089f19c1ee484d.wav",
+            "tick": 33600,
+            "frame": 771750,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-e60327dc74b1fc54.wav",
+            "tick": 35520,
+            "frame": 815850,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-e60327dc74b1fc54.wav",
+            "tick": 37440,
+            "frame": 859950,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c2937539d7a3e1ed.wav",
+            "tick": 39360,
+            "frame": 904050,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c2937539d7a3e1ed.wav",
+            "tick": 41280,
+            "frame": 948150,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c41069f04de8280e.wav",
+            "tick": 43200,
+            "frame": 992250,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c41069f04de8280e.wav",
+            "tick": 45120,
+            "frame": 1036350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-3946c49f0c30a9ed.wav",
+            "tick": 47040,
+            "frame": 1080450,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-3946c49f0c30a9ed.wav",
+            "tick": 48960,
+            "frame": 1124550,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-0c0db74807855e81.wav",
+            "tick": 50880,
+            "frame": 1168650,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-0c0db74807855e81.wav",
+            "tick": 52800,
+            "frame": 1212750,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "ticks",
+        "trackIndex": 4,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/a-gravity-vandal/ticks.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+            "tick": 480,
+            "frame": 11025,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 1680,
+            "frame": 38588,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+            "tick": 3360,
+            "frame": 77175,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+            "tick": 4320,
+            "frame": 99225,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 5520,
+            "frame": 126788,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+            "tick": 7200,
+            "frame": 165375,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 7920,
+            "frame": 181913,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 8400,
+            "frame": 192938,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 9360,
+            "frame": 214988,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 9840,
+            "frame": 226013,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 10320,
+            "frame": 237038,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 11280,
+            "frame": 259088,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+            "tick": 12000,
+            "frame": 275625,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 13200,
+            "frame": 303188,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+            "tick": 14880,
+            "frame": 341775,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 15600,
+            "frame": 358313,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 16080,
+            "frame": 369338,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 17040,
+            "frame": 391388,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 17520,
+            "frame": 402413,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 18000,
+            "frame": 413438,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 18960,
+            "frame": 435488,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 19440,
+            "frame": 446513,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 19920,
+            "frame": 457538,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 20880,
+            "frame": 479588,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 21360,
+            "frame": 490613,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 21840,
+            "frame": 501638,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 22800,
+            "frame": 523688,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 23280,
+            "frame": 534713,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 23760,
+            "frame": 545738,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 24720,
+            "frame": 567788,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 25200,
+            "frame": 578813,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 25680,
+            "frame": 589838,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 26640,
+            "frame": 611888,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+            "tick": 27360,
+            "frame": 628425,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 28560,
+            "frame": 655988,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+            "tick": 30240,
+            "frame": 694575,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 30960,
+            "frame": 711113,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 31440,
+            "frame": 722138,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 32400,
+            "frame": 744188,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 32880,
+            "frame": 755213,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 33360,
+            "frame": 766238,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 34320,
+            "frame": 788288,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 34800,
+            "frame": 799313,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 35280,
+            "frame": 810338,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 36240,
+            "frame": 832388,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 36720,
+            "frame": 843413,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 37200,
+            "frame": 854438,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 38160,
+            "frame": 876488,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 38640,
+            "frame": 887513,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 39120,
+            "frame": 898538,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 40080,
+            "frame": 920588,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 40560,
+            "frame": 931613,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 41040,
+            "frame": 942638,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 42000,
+            "frame": 964688,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+            "tick": 42720,
+            "frame": 981225,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 43920,
+            "frame": 1008788,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+            "tick": 45600,
+            "frame": 1047375,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 46320,
+            "frame": 1063913,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 46800,
+            "frame": 1074938,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 47760,
+            "frame": 1096988,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 48240,
+            "frame": 1108013,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 48720,
+            "frame": 1119038,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 49680,
+            "frame": 1141088,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 50160,
+            "frame": 1152113,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 50640,
+            "frame": 1163138,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 51600,
+            "frame": 1185188,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 52080,
+            "frame": 1196213,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 52560,
+            "frame": 1207238,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 53520,
+            "frame": 1229288,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      }
+    ]
+  },
+  "timeline": {
+    "authoredDurationTicks": 61440,
+    "authoredFrames": 1411200,
+    "duration": {
+      "bars": 16
+    },
+    "tail": "none",
+    "requestedFinalFrames": 1411200,
+    "audioEndFrames": 1411200,
+    "resultingFrames": 1411200,
+    "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+  },
+  "production": {
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v24.19.0"
+    },
+    "tracks": [
+      {
+        "trackId": "gravity",
+        "gainDb": -4,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -12.810477
+      },
+      {
+        "trackId": "vandal",
+        "gainDb": -3,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -11.116078
+      },
+      {
+        "trackId": "impact",
+        "gainDb": -5,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -13.202202
+      },
+      {
+        "trackId": "metal",
+        "gainDb": -9,
+        "pan": 0.12,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -19.465884
+      },
+      {
+        "trackId": "ticks",
+        "gainDb": -16,
+        "pan": -0.2,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -26.675344
+      }
+    ],
+    "master": {
+      "gainDb": 0,
+      "effects": [],
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -5.955109
+    },
+    "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+  },
+  "mix": {
+    "clippedSamples": 0,
+    "gm": "sum processed independent tracks",
+    "samples": "sum exported track PCM"
+  },
+  "wav": {
+    "file": "a-gravity-vandal.wav",
+    "sha256": "dde32c14796d26e367677aa3a0b16ea59565a85ea1da575b389cb8794c481d1a",
+    "bytes": 5644844,
+    "frames": 1411200,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 16,
+    "durationSeconds": 32
+  },
+  "stems": [
+    {
+      "trackId": "gravity",
+      "trackIndex": 0,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/a-gravity-vandal/gravity.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 720,
+            "frame": 16538,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+            "tick": 2880,
+            "frame": 66150,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 4560,
+            "frame": 104738,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+            "tick": 6720,
+            "frame": 154350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-5e3937767a9d6805.wav",
+            "tick": 8160,
+            "frame": 187425,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-6f07194c63917b4a.wav",
+            "tick": 8880,
+            "frame": 203963,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-6f07194c63917b4a.wav",
+            "tick": 9600,
+            "frame": 220500,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-fca674e541e67a1e.wav",
+            "tick": 10800,
+            "frame": 248063,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-0d4d6023a51270eb.wav",
+            "tick": 12240,
+            "frame": 281138,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-14d8c5e7292b401d.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-ef7edd5feea55aab.wav",
+            "tick": 15840,
+            "frame": 363825,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-35ecf927f9e953ea.wav",
+            "tick": 16560,
+            "frame": 380363,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-35ecf927f9e953ea.wav",
+            "tick": 17280,
+            "frame": 396900,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-58fb3ed378437389.wav",
+            "tick": 18480,
+            "frame": 424463,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+            "tick": 19680,
+            "frame": 452025,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 20400,
+            "frame": 468563,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 21120,
+            "frame": 485100,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-76474a0293bf3901.wav",
+            "tick": 22320,
+            "frame": 512663,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-c613a33175b77827.wav",
+            "tick": 23520,
+            "frame": 540225,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-69c63a3aa4f71025.wav",
+            "tick": 24240,
+            "frame": 556763,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-69c63a3aa4f71025.wav",
+            "tick": 24960,
+            "frame": 573300,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-186ac9ce659281c5.wav",
+            "tick": 26160,
+            "frame": 600863,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-0d4d6023a51270eb.wav",
+            "tick": 27600,
+            "frame": 633938,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-14d8c5e7292b401d.wav",
+            "tick": 29760,
+            "frame": 683550,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+            "tick": 31200,
+            "frame": 716625,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 31920,
+            "frame": 733163,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 32640,
+            "frame": 749700,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-76474a0293bf3901.wav",
+            "tick": 33840,
+            "frame": 777263,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-5e3937767a9d6805.wav",
+            "tick": 35040,
+            "frame": 804825,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-6f07194c63917b4a.wav",
+            "tick": 35760,
+            "frame": 821363,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-6f07194c63917b4a.wav",
+            "tick": 36480,
+            "frame": 837900,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-fca674e541e67a1e.wav",
+            "tick": 37680,
+            "frame": 865463,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-ef7edd5feea55aab.wav",
+            "tick": 38880,
+            "frame": 893025,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-35ecf927f9e953ea.wav",
+            "tick": 39600,
+            "frame": 909563,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-35ecf927f9e953ea.wav",
+            "tick": 40320,
+            "frame": 926100,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-58fb3ed378437389.wav",
+            "tick": 41520,
+            "frame": 953663,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-0d4d6023a51270eb.wav",
+            "tick": 42960,
+            "frame": 986738,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-14d8c5e7292b401d.wav",
+            "tick": 45120,
+            "frame": 1036350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-bd933332b644b7da.wav",
+            "tick": 46560,
+            "frame": 1069425,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 47280,
+            "frame": 1085963,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-df88fe8325e1105d.wav",
+            "tick": 48000,
+            "frame": 1102500,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-76474a0293bf3901.wav",
+            "tick": 49200,
+            "frame": 1130063,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-c613a33175b77827.wav",
+            "tick": 50400,
+            "frame": 1157625,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-69c63a3aa4f71025.wav",
+            "tick": 51120,
+            "frame": 1174163,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-69c63a3aa4f71025.wav",
+            "tick": 51840,
+            "frame": 1190700,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-186ac9ce659281c5.wav",
+            "tick": 53040,
+            "frame": 1218263,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/gravity-86194a3eb8ab311e.wav",
+            "tick": 53760,
+            "frame": 1234800,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "a-gravity-vandal.stems/gravity.wav",
+        "sha256": "d00626a8cf4ce4939f3cc0d2e9e96f66566788b2b473f7cbeda09f23a4f20d2d",
+        "bytes": 5644844,
+        "frames": 1411200,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 32
+      }
+    },
+    {
+      "trackId": "vandal",
+      "trackIndex": 1,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/a-gravity-vandal/vandal.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-a8f5dc6cb16bd8b6.wav",
+            "tick": 8400,
+            "frame": 192938,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-d9d6c948002d1dae.wav",
+            "tick": 9360,
+            "frame": 214988,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-8f7589029c42befd.wav",
+            "tick": 10320,
+            "frame": 237038,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-63a5acf41f807381.wav",
+            "tick": 11040,
+            "frame": 253575,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-62f9cead841c391d.wav",
+            "tick": 12480,
+            "frame": 286650,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-62f9cead841c391d.wav",
+            "tick": 14160,
+            "frame": 325238,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-d74d36c6949b7406.wav",
+            "tick": 16080,
+            "frame": 369338,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-7048a18e916d1859.wav",
+            "tick": 17040,
+            "frame": 391388,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-13fe1b4cc93e155c.wav",
+            "tick": 18000,
+            "frame": 413438,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-2cafc405674104a3.wav",
+            "tick": 18720,
+            "frame": 429975,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-740f1118439dbcd9.wav",
+            "tick": 19920,
+            "frame": 457538,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-10534b6f36472901.wav",
+            "tick": 20880,
+            "frame": 479588,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-da1a9a6323fc482f.wav",
+            "tick": 21840,
+            "frame": 501638,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-7031d8b1bb433f0f.wav",
+            "tick": 22560,
+            "frame": 518175,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-5156179a71a9c4b0.wav",
+            "tick": 23760,
+            "frame": 545738,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-5b907002cea5e653.wav",
+            "tick": 24720,
+            "frame": 567788,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-e8192a661e8a1587.wav",
+            "tick": 25680,
+            "frame": 589838,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-01b332757b9d0c32.wav",
+            "tick": 26400,
+            "frame": 606375,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-941eec29b66ba34a.wav",
+            "tick": 27840,
+            "frame": 639450,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-941eec29b66ba34a.wav",
+            "tick": 29520,
+            "frame": 678038,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-2715af550673d637.wav",
+            "tick": 31440,
+            "frame": 722138,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-846034f7a04afbda.wav",
+            "tick": 32400,
+            "frame": 744188,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-14303b460d3bd9d5.wav",
+            "tick": 33360,
+            "frame": 766238,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-9409e579df84efad.wav",
+            "tick": 34080,
+            "frame": 782775,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-412e95a5e9ea6872.wav",
+            "tick": 35280,
+            "frame": 810338,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-c04fd79e12b490b2.wav",
+            "tick": 36240,
+            "frame": 832388,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-29ca06160a7b4ecd.wav",
+            "tick": 37200,
+            "frame": 854438,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-81665ed8be420656.wav",
+            "tick": 37920,
+            "frame": 870975,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-ba58209f76c56281.wav",
+            "tick": 39120,
+            "frame": 898538,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-96a2a279c5c8e2b6.wav",
+            "tick": 40080,
+            "frame": 920588,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-cb034a53d588caf1.wav",
+            "tick": 41040,
+            "frame": 942638,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-c10aa90ecb3f4cad.wav",
+            "tick": 41760,
+            "frame": 959175,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-d4d7b311235072f5.wav",
+            "tick": 43200,
+            "frame": 992250,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-d4d7b311235072f5.wav",
+            "tick": 44880,
+            "frame": 1030838,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-b0b90fe8e7f28bce.wav",
+            "tick": 46800,
+            "frame": 1074938,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-e6a99599149c9201.wav",
+            "tick": 47760,
+            "frame": 1096988,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-ceaffa61bcc8b916.wav",
+            "tick": 48720,
+            "frame": 1119038,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-2c1b18946983f573.wav",
+            "tick": 49440,
+            "frame": 1135575,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-9d30ede6c8103c8f.wav",
+            "tick": 50640,
+            "frame": 1163138,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-b6e08e8d69baced0.wav",
+            "tick": 51600,
+            "frame": 1185188,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-9f664689169f118e.wav",
+            "tick": 52560,
+            "frame": 1207238,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-27910e5539225449.wav",
+            "tick": 53280,
+            "frame": 1223775,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/vandal-63e1748c0c0eab77.wav",
+            "tick": 54480,
+            "frame": 1251338,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "a-gravity-vandal.stems/vandal.wav",
+        "sha256": "0c950f529dad7a6b580aad4da5d56fb610835e34f0cd9d2690de50e12fdbcd35",
+        "bytes": 5644844,
+        "frames": 1411200,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 32
+      }
+    },
+    {
+      "trackId": "impact",
+      "trackIndex": 2,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/a-gravity-vandal/impact.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 2160,
+            "frame": 49613,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 3840,
+            "frame": 88200,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 6000,
+            "frame": 137813,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 9120,
+            "frame": 209475,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 10080,
+            "frame": 231525,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 11520,
+            "frame": 264600,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 13680,
+            "frame": 314213,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 16800,
+            "frame": 385875,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 17760,
+            "frame": 407925,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 19200,
+            "frame": 441000,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 20640,
+            "frame": 474075,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 21600,
+            "frame": 496125,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 23040,
+            "frame": 529200,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 24480,
+            "frame": 562275,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 25440,
+            "frame": 584325,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 26880,
+            "frame": 617400,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 29040,
+            "frame": 667013,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 30720,
+            "frame": 705600,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 32160,
+            "frame": 738675,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 33120,
+            "frame": 760725,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 34560,
+            "frame": 793800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 36000,
+            "frame": 826875,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 36960,
+            "frame": 848925,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 38400,
+            "frame": 882000,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 39840,
+            "frame": 915075,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 40800,
+            "frame": 937125,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 42240,
+            "frame": 970200,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 44400,
+            "frame": 1019813,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 46080,
+            "frame": 1058400,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 47520,
+            "frame": 1091475,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 48480,
+            "frame": 1113525,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-533aad3464d27299.wav",
+            "tick": 49920,
+            "frame": 1146600,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 51360,
+            "frame": 1179675,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/impact-2003a0717f36933a.wav",
+            "tick": 52320,
+            "frame": 1201725,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "a-gravity-vandal.stems/impact.wav",
+        "sha256": "3220238333318d776b92937f8f21f1e458b745a75bc570e3ff2bd5413c8c3ee8",
+        "bytes": 5644844,
+        "frames": 1411200,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 32
+      }
+    },
+    {
+      "trackId": "metal",
+      "trackIndex": 3,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/a-gravity-vandal/metal.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-9feea1c95130f8fe.wav",
+            "tick": 960,
+            "frame": 22050,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-9feea1c95130f8fe.wav",
+            "tick": 2880,
+            "frame": 66150,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c85cd9b6782b1d42.wav",
+            "tick": 4800,
+            "frame": 110250,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c85cd9b6782b1d42.wav",
+            "tick": 6720,
+            "frame": 154350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-8f30a17898bd639d.wav",
+            "tick": 8640,
+            "frame": 198450,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-8f30a17898bd639d.wav",
+            "tick": 10560,
+            "frame": 242550,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-7d16f137656c77bc.wav",
+            "tick": 12480,
+            "frame": 286650,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-7d16f137656c77bc.wav",
+            "tick": 14400,
+            "frame": 330750,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-4329c46073c86852.wav",
+            "tick": 16320,
+            "frame": 374850,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-4329c46073c86852.wav",
+            "tick": 18240,
+            "frame": 418950,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-761e3eb0845d820b.wav",
+            "tick": 20160,
+            "frame": 463050,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-761e3eb0845d820b.wav",
+            "tick": 22080,
+            "frame": 507150,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-ccaeca20683a6a79.wav",
+            "tick": 24000,
+            "frame": 551250,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-ccaeca20683a6a79.wav",
+            "tick": 25920,
+            "frame": 595350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-1a6d7157e2c67c25.wav",
+            "tick": 27840,
+            "frame": 639450,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-1a6d7157e2c67c25.wav",
+            "tick": 29760,
+            "frame": 683550,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-77089f19c1ee484d.wav",
+            "tick": 31680,
+            "frame": 727650,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-77089f19c1ee484d.wav",
+            "tick": 33600,
+            "frame": 771750,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-e60327dc74b1fc54.wav",
+            "tick": 35520,
+            "frame": 815850,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-e60327dc74b1fc54.wav",
+            "tick": 37440,
+            "frame": 859950,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c2937539d7a3e1ed.wav",
+            "tick": 39360,
+            "frame": 904050,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c2937539d7a3e1ed.wav",
+            "tick": 41280,
+            "frame": 948150,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c41069f04de8280e.wav",
+            "tick": 43200,
+            "frame": 992250,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-c41069f04de8280e.wav",
+            "tick": 45120,
+            "frame": 1036350,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-3946c49f0c30a9ed.wav",
+            "tick": 47040,
+            "frame": 1080450,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-3946c49f0c30a9ed.wav",
+            "tick": 48960,
+            "frame": 1124550,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-0c0db74807855e81.wav",
+            "tick": 50880,
+            "frame": 1168650,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/metal-0c0db74807855e81.wav",
+            "tick": 52800,
+            "frame": 1212750,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "a-gravity-vandal.stems/metal.wav",
+        "sha256": "e11b39ed398ea057dc1e8d492c8023bd54b7671584d99e6e89b332177c0f38b8",
+        "bytes": 5644844,
+        "frames": 1411200,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 32
+      }
+    },
+    {
+      "trackId": "ticks",
+      "trackIndex": 4,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/a-gravity-vandal/ticks.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+            "tick": 480,
+            "frame": 11025,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 1680,
+            "frame": 38588,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+            "tick": 3360,
+            "frame": 77175,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+            "tick": 4320,
+            "frame": 99225,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 5520,
+            "frame": 126788,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+            "tick": 7200,
+            "frame": 165375,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 7920,
+            "frame": 181913,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 8400,
+            "frame": 192938,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 9360,
+            "frame": 214988,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 9840,
+            "frame": 226013,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 10320,
+            "frame": 237038,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 11280,
+            "frame": 259088,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+            "tick": 12000,
+            "frame": 275625,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 13200,
+            "frame": 303188,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+            "tick": 14880,
+            "frame": 341775,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 15600,
+            "frame": 358313,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 16080,
+            "frame": 369338,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 17040,
+            "frame": 391388,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 17520,
+            "frame": 402413,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 18000,
+            "frame": 413438,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 18960,
+            "frame": 435488,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 19440,
+            "frame": 446513,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 19920,
+            "frame": 457538,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 20880,
+            "frame": 479588,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 21360,
+            "frame": 490613,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 21840,
+            "frame": 501638,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 22800,
+            "frame": 523688,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 23280,
+            "frame": 534713,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 23760,
+            "frame": 545738,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 24720,
+            "frame": 567788,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 25200,
+            "frame": 578813,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 25680,
+            "frame": 589838,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 26640,
+            "frame": 611888,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+            "tick": 27360,
+            "frame": 628425,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 28560,
+            "frame": 655988,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+            "tick": 30240,
+            "frame": 694575,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 30960,
+            "frame": 711113,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 31440,
+            "frame": 722138,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 32400,
+            "frame": 744188,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 32880,
+            "frame": 755213,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 33360,
+            "frame": 766238,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 34320,
+            "frame": 788288,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 34800,
+            "frame": 799313,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 35280,
+            "frame": 810338,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 36240,
+            "frame": 832388,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 36720,
+            "frame": 843413,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 37200,
+            "frame": 854438,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 38160,
+            "frame": 876488,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 38640,
+            "frame": 887513,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 39120,
+            "frame": 898538,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 40080,
+            "frame": 920588,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 40560,
+            "frame": 931613,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 41040,
+            "frame": 942638,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 42000,
+            "frame": 964688,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-70f03770a211f9cd.wav",
+            "tick": 42720,
+            "frame": 981225,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 43920,
+            "frame": 1008788,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-a75cffbc41938384.wav",
+            "tick": 45600,
+            "frame": 1047375,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 46320,
+            "frame": 1063913,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 46800,
+            "frame": 1074938,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 47760,
+            "frame": 1096988,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 48240,
+            "frame": 1108013,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 48720,
+            "frame": 1119038,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 49680,
+            "frame": 1141088,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-06d85bac9a9b9790.wav",
+            "tick": 50160,
+            "frame": 1152113,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-1f003f526c027ec6.wav",
+            "tick": 50640,
+            "frame": 1163138,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-f8648f073bf6b593.wav",
+            "tick": 51600,
+            "frame": 1185188,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-767f182ee6a5009b.wav",
+            "tick": 52080,
+            "frame": 1196213,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3e7071e9fb351782.wav",
+            "tick": 52560,
+            "frame": 1207238,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/a-gravity-vandal/ticks-3101e52ab9ac4ff7.wav",
+            "tick": 53520,
+            "frame": 1229288,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "a-gravity-vandal.stems/ticks.wav",
+        "sha256": "b8bb50af0a1134656003e70b455454040179bb1fbf2460d21b67fceb2705f913",
+        "bytes": 5644844,
+        "frames": 1411200,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 32
+      }
+    }
+  ],
+  "audioTool": {
+    "name": "ffmpeg",
+    "version": "6.1.1"
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 32,
+      "frames": 1411200,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -5.955109,
+      "rmsDbfs": -19.045578,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -19.51,
+      "loudnessRangeLu": 3.6,
+      "truePeakDbfs": -5.95
+    },
+    "tracks": [
+      {
+        "trackId": "gravity",
+        "analysis": {
+          "durationSeconds": 32,
+          "frames": 1411200,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -12.81009,
+          "rmsDbfs": -21.011122,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -21.7,
+          "loudnessRangeLu": 6.5,
+          "truePeakDbfs": -12.81
+        }
+      },
+      {
+        "trackId": "vandal",
+        "analysis": {
+          "durationSeconds": 32,
+          "frames": 1411200,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -11.115771,
+          "rmsDbfs": -27.044432,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -23.1,
+          "loudnessRangeLu": 3.1,
+          "truePeakDbfs": -11.11
+        }
+      },
+      {
+        "trackId": "impact",
+        "analysis": {
+          "durationSeconds": 32,
+          "frames": 1411200,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -13.202251,
+          "rmsDbfs": -27.111175,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -26.71,
+          "loudnessRangeLu": 2.4,
+          "truePeakDbfs": -13.2
+        }
+      },
+      {
+        "trackId": "metal",
+        "analysis": {
+          "durationSeconds": 32,
+          "frames": 1411200,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -19.464943,
+          "rmsDbfs": -37.582377,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -31.01,
+          "loudnessRangeLu": 0,
+          "truePeakDbfs": -19.46
+        }
+      },
+      {
+        "trackId": "ticks",
+        "analysis": {
+          "durationSeconds": 32,
+          "frames": 1411200,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -26.677843,
+          "rmsDbfs": -49.452491,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -43.79,
+          "loudnessRangeLu": 2.1,
+          "truePeakDbfs": -26.69
+        }
+      }
+    ]
+  },
+  "mp3": {
+    "file": "a-gravity-vandal.mp3",
+    "sha256": "86aa81c199b55db5e3d9f351b4fb47bff4e75a640c99d748a877b70e2b363c2f",
+    "bytes": 769297,
+    "codec": "libmp3lame",
+    "bitrateKbps": 192
+  }
+}
