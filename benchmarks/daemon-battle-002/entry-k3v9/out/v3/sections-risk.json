@@ -1,0 +1,279 @@
+{
+  "wav": {
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 28
+  },
+  "method": {
+    "fftFrames": 2048,
+    "fftHopFrames": 1024,
+    "window": "sqrt-periodic-Hann, padded boundaries, unit squared-weight coverage",
+    "bands": [
+      {
+        "name": "sub",
+        "lowHz": 20,
+        "highHz": 120,
+        "available": true
+      },
+      {
+        "name": "lowMid",
+        "lowHz": 120,
+        "highHz": 500,
+        "available": true
+      },
+      {
+        "name": "mid",
+        "lowHz": 500,
+        "highHz": 2000,
+        "available": true
+      },
+      {
+        "name": "upperMid",
+        "lowHz": 2000,
+        "highHz": 6000,
+        "available": true
+      },
+      {
+        "name": "high",
+        "lowHz": 6000,
+        "highHz": 22050,
+        "available": true
+      }
+    ],
+    "activityWindowMs": 10,
+    "rmsRiseDb": 6,
+    "rmsRiseFloorDbfs": -60,
+    "comparisonReference": "V-bar13",
+    "note": "Approximate section evidence, not musical quality. Correlation and side energy do not prove stereo arrangement or device translation."
+  },
+  "sections": [
+    {
+      "name": "V-bar13",
+      "start": 20.57142857,
+      "end": 22.28571429,
+      "duration": 1.714285714,
+      "rms": 0.2000939611,
+      "peak": 0.8218688965,
+      "rmsDbfs": -13.97532037,
+      "peakDbfs": -1.703949101,
+      "bandRms": {
+        "sub": 0.1605786044,
+        "lowMid": 0.09271519135,
+        "mid": 0.06719297129,
+        "upperMid": 0.02787395433,
+        "high": 0.01792205899
+      },
+      "activity": {
+        "rmsRisesPerSecond": 0
+      },
+      "stereo": {
+        "correlation": 0.9068012489,
+        "midRms": 0.1953756901,
+        "sideRms": 0.04319644624,
+        "sideEnergyFraction": 0.04660452382
+      },
+      "relativeToFirst": {
+        "rmsDb": 0,
+        "peakDb": 0,
+        "bandDb": {
+          "sub": 0,
+          "lowMid": 0,
+          "mid": 0,
+          "upperMid": 0,
+          "high": 0
+        },
+        "sideEnergyFractionDelta": 0
+      }
+    },
+    {
+      "name": "V-bar14-approach",
+      "start": 22.28571429,
+      "end": 24,
+      "duration": 1.714285714,
+      "rms": 0.2172539865,
+      "peak": 0.7399291992,
+      "rmsDbfs": -13.26064492,
+      "peakDbfs": -2.616196683,
+      "bandRms": {
+        "sub": 0.1720232002,
+        "lowMid": 0.07496372185,
+        "mid": 0.09222732108,
+        "upperMid": 0.05267196692,
+        "high": 0.02473272559
+      },
+      "activity": {
+        "rmsRisesPerSecond": 0
+      },
+      "stereo": {
+        "correlation": 0.8820714827,
+        "midRms": 0.2107505896,
+        "sideRms": 0.0527587301,
+        "sideEnergyFraction": 0.05897299151
+      },
+      "relativeToFirst": {
+        "rmsDb": 0.7146754518,
+        "peakDb": -0.9122475819,
+        "bandDb": {
+          "sub": 0.5979868721,
+          "lowMid": -1.845995168,
+          "mid": 2.750714956,
+          "upperMid": 5.527619046,
+          "high": 2.797681531
+        },
+        "sideEnergyFractionDelta": 0.01236846769
+      }
+    },
+    {
+      "name": "VI-first-bar",
+      "start": 24,
+      "end": 25.71428571,
+      "duration": 1.714285714,
+      "rms": 0.1816306259,
+      "peak": 0.7960510254,
+      "rmsDbfs": -14.81621841,
+      "peakDbfs": -1.981181878,
+      "bandRms": {
+        "sub": 0.1348968995,
+        "lowMid": 0.06228021541,
+        "mid": 0.08911208876,
+        "upperMid": 0.05087120808,
+        "high": 0.01888690019
+      },
+      "activity": {
+        "rmsRisesPerSecond": 0
+      },
+      "stereo": {
+        "correlation": 0.8349349343,
+        "midRms": 0.1739718745,
+        "sideRms": 0.05218688678,
+        "sideEnergyFraction": 0.0825552354
+      },
+      "relativeToFirst": {
+        "rmsDb": -0.8408980432,
+        "peakDb": -0.277232777,
+        "bandDb": {
+          "sub": -1.513714225,
+          "lowMid": -3.456015859,
+          "mid": 2.452255548,
+          "upperMid": 5.225469343,
+          "high": 0.4554556557
+        },
+        "sideEnergyFractionDelta": 0.03595071158
+      }
+    },
+    {
+      "name": "VI-first-500ms",
+      "start": 24,
+      "end": 24.5,
+      "duration": 0.5,
+      "rms": 0.2375946563,
+      "peak": 0.7960510254,
+      "rmsDbfs": -12.48326662,
+      "peakDbfs": -1.981181878,
+      "bandRms": {
+        "sub": 0.1998746197,
+        "lowMid": 0.07772733245,
+        "mid": 0.0895753516,
+        "upperMid": 0.04650023318,
+        "high": 0.01361340048
+      },
+      "activity": {
+        "rmsRisesPerSecond": 0
+      },
+      "stereo": {
+        "correlation": 0.9121606737,
+        "midRms": 0.232309989,
+        "sideRms": 0.04983261723,
+        "sideEnergyFraction": 0.04399000958
+      },
+      "relativeToFirst": {
+        "rmsDb": 1.492053742,
+        "peakDb": -0.277232777,
+        "bandDb": {
+          "sub": 1.901399426,
+          "lowMid": -1.531542714,
+          "mid": 2.497293508,
+          "upperMid": 4.445130931,
+          "high": -2.388425633
+        },
+        "sideEnergyFractionDelta": -0.00261451424
+      }
+    },
+    {
+      "name": "IV-first-bar",
+      "start": 13.71428571,
+      "end": 15.42857143,
+      "duration": 1.714285714,
+      "rms": 0.2532517215,
+      "peak": 0.8870239258,
+      "rmsDbfs": -11.92895188,
+      "peakDbfs": -1.041293315,
+      "bandRms": {
+        "sub": 0.1891685786,
+        "lowMid": 0.1213764852,
+        "mid": 0.1008144355,
+        "upperMid": 0.05287306335,
+        "high": 0.02485337684
+      },
+      "activity": {
+        "rmsRisesPerSecond": 0
+      },
+      "stereo": {
+        "correlation": 0.8545164212,
+        "midRms": 0.2438600654,
+        "sideRms": 0.06832790755,
+        "sideEnergyFraction": 0.07279330371
+      },
+      "relativeToFirst": {
+        "rmsDb": 2.04636849,
+        "peakDb": 0.6626557863,
+        "bandDb": {
+          "sub": 1.42322643,
+          "lowMid": 2.339673163,
+          "mid": 3.523977531,
+          "upperMid": 5.560717781,
+          "high": 2.839950048
+        },
+        "sideEnergyFractionDelta": 0.02618877989
+      }
+    },
+    {
+      "name": "last-3s",
+      "start": 25,
+      "end": 28,
+      "duration": 3,
+      "rms": 0.09115372462,
+      "peak": 0.4856262207,
+      "rmsDbfs": -20.80451162,
+      "peakDbfs": -6.273957444,
+      "bandRms": {
+        "sub": 0.06164734915,
+        "lowMid": 0.033701783,
+        "mid": 0.04890059239,
+        "upperMid": 0.02912404132,
+        "high": 0.01143630983
+      },
+      "activity": {
+        "rmsRisesPerSecond": 0
+      },
+      "stereo": {
+        "correlation": 0.7813500073,
+        "midRms": 0.08601692229,
+        "sideRms": 0.03016770778,
+        "sideEnergyFraction": 0.1095306808
+      },
+      "relativeToFirst": {
+        "rmsDb": -6.829191254,
+        "peakDb": -4.570008343,
+        "bandDb": {
+          "sub": -8.315465451,
+          "lowMid": -8.789960421,
+          "mid": -2.760194517,
+          "upperMid": 0.381061088,
+          "high": -3.902039796
+        },
+        "sideEnergyFractionDelta": 0.06292615698
+      }
+    }
+  ]
+}
