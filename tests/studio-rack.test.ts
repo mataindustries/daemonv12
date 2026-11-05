@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { appendFileSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync, existsSync, unlinkSync } from 'node:fs';
+import { appendFileSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync, existsSync, unlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
@@ -231,7 +231,12 @@ test('committed CROSSING demo and example listening copies match their manifests
   const sums = readFileSync(`${demo}/package-manifest/SHA256SUMS`, 'utf8').trim().split('\n').map(l => l.split('  ') as [string, string]);
   for (const [h, f] of sums) if (!f.endsWith('.wav')) assert.equal(sha256(readFileSync(`${demo}/package-manifest/${f}`)), h, f);
   assert.ok(sums.filter(([, f]) => f.endsWith('.wav')).length >= 30);
+  // the committed demo was bounced by exactly the current rack sources (any rack change requires node studio-001/demo/build.ts)
+  const cat = JSON.parse(readFileSync(`${demo}/package-manifest/catalog.json`, 'utf8')) as { generator: { file: string; sha256: string }[] };
+  const rackFiles = readdirSync('studio-001/rack').filter(f => f.endsWith('.ts')).map(f => `studio-001/rack/${f}`).concat('studio-001/rack/frozen.json').sort();
+  assert.deepEqual(cat.generator.map(g => g.file).sort(), rackFiles);
+  for (const g of cat.generator) assert.equal(sha256(readFileSync(g.file)), g.sha256, `${g.file} changed after the demo was built`);
   normalizeScore(JSON.parse(readFileSync('studio-001/scores/crossing.score.json', 'utf8')));
-  const ex = JSON.parse(readFileSync('studio-001/scores/examples/renders/EXAMPLES.json', 'utf8')) as { files: Record<string, { mp3Sha256: string; score: string }> };
-  for (const [f, v] of Object.entries(ex.files)) { assert.equal(sha256(readFileSync(`studio-001/scores/examples/renders/${f}`)), v.mp3Sha256, f); assert.ok(existsSync(v.score)); normalizeScore(JSON.parse(readFileSync(v.score, 'utf8'))); }
+  const ex = JSON.parse(readFileSync('studio-001/scores/examples/audio/EXAMPLES.json', 'utf8')) as { files: Record<string, { mp3Sha256: string; score: string }> };
+  for (const [f, v] of Object.entries(ex.files)) { assert.equal(sha256(readFileSync(`studio-001/scores/examples/audio/${f}`)), v.mp3Sha256, f); assert.ok(existsSync(v.score)); normalizeScore(JSON.parse(readFileSync(v.score, 'utf8'))); }
 });

@@ -28,7 +28,7 @@ The per-instrument reference (controls, ranges, articulations, per-note paramete
 | `stems/*.flac` | The engine's 12 aligned stems of the main mix (lossless; `node studio-001/demo/restore-stems.ts NEW_DIR` restores the exact engine WAV bytes) |
 | `DEMO.json`, `SHA256SUMS`, `package-manifest/` | Loudness, determinism checks, hashes, and the bounced package's projects, kits, catalog, scores and complete SHA256SUMS |
 
-| Example (in [`scores/examples/renders/`](scores/examples/renders), -16 LUFS each) | Key, tempo | Families |
+| Example (in [`scores/examples/audio/`](scores/examples/audio), -16 LUFS each) | Key, tempo | Families |
 |---|---|---|
 | `bass-groove.mp3` | E minor, 104 BPM | Living Bass + context drums: a new riff played warm, then as the machine |
 | `bass-groove-a-minor-92bpm.mp3` | A minor, 92 BPM | **The same score file**, rendered with `--transpose 5 --bpm 92` |

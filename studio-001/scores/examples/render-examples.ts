@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { renderToDirectory } from '../../rack/cli.ts';
 import { sha256 } from '../../rack/frozen.ts';
 
-const here = dirname(fileURLToPath(import.meta.url)), build = join(here, '..', '..', 'demo', 'build', 'examples'), out = join(here, 'renders');
+const here = dirname(fileURLToPath(import.meta.url)), build = join(here, '..', '..', 'demo', 'build', 'examples'), out = join(here, 'audio');
 rmSync(build, { recursive: true, force: true }); rmSync(out, { recursive: true, force: true }); mkdirSync(out, { recursive: true });
 const jobs: [string, string, { transpose?: number; bpm?: number }][] = [
   ['bass-groove', 'bass-groove', {}], ['bass-groove', 'bass-groove-a-minor-92bpm', { transpose: 5, bpm: 92 }],
