@@ -1,0 +1,20 @@
+{
+  "schema": "daemonv12.signature-rack.score/1",
+  "title": "Clockwork (D major, 132 BPM)",
+  "bpm": 132, "key": "D major", "seed": 21, "tailSeconds": 2, "masterGainDb": 0,
+  "description": "Mechanical Orchestra example: a new music-box theme played three times while the machines turn from clockwork to alien machinery.",
+  "sections": [ { "id": "clockwork", "bars": 2 }, { "id": "turning", "bars": 2 }, { "id": "alien", "bars": 2 } ],
+  "parts": [
+    { "id": "bars", "instrument": "mechanical-orchestra/bar", "gainDb": -8, "room": 0.2, "macro": [[0, 0], [8, 0], [16, 1], [24, 1]], "setup": { "spread": 0.45 },
+      "repeats": [ { "fromBeat": 0, "toBeat": 24, "lengthBeats": 8, "notes": [
+        [0, 0.5, "D5", 0.7], [0.5, 0.5, "A5", 0.55], [1, 0.5, "F#5", 0.6], [1.5, 0.5, "A5", 0.55], [2, 0.5, "B5", 0.65], [2.5, 0.5, "A5", 0.55], [3, 0.5, "F#5", 0.6], [3.5, 0.5, "E5", 0.55],
+        [4, 0.5, "D5", 0.7], [4.5, 0.5, "A5", 0.55], [5, 0.5, "F#5", 0.6], [5.5, 0.5, "D6", 0.6], [6, 0.5, "C#6", 0.65], [6.5, 0.5, "A5", 0.55], [7, 0.5, "E5", 0.6], [7.5, 0.5, "F#5", 0.55] ] } ] },
+    { "id": "tines", "instrument": "mechanical-orchestra/tine", "gainDb": -12, "room": 0.2, "macro": [[0, 0], [8, 0], [16, 1], [24, 1]],
+      "repeats": [ { "fromBeat": 0, "toBeat": 24, "lengthBeats": 3, "notes": [[0, 0.5, "D6", 0.7], [0.75, 0.5, "F#6", 0.55], [1.5, 0.5, "A6", 0.55], [2.25, 0.5, "E7", 0.5]] } ] },
+    { "id": "spring", "instrument": "mechanical-orchestra/spring", "gainDb": -7, "room": 0.15, "macro": [[0, 0], [8, 0], [16, 1], [24, 1]],
+      "repeats": [ { "fromBeat": 0, "toBeat": 24, "lengthBeats": 8, "notes": [[0, 1, "D2", 0.8], [1.5, 0.5, "A2", 0.5], [3, 1, "D2", 0.6], [4, 1, "G2", 0.8], [5.5, 0.5, "D3", 0.5], [6, 1, "A2", 0.7], [7.5, 0.5, "A1", 0.5]] } ] },
+    { "id": "clock", "instrument": "mechanical-orchestra/clock", "gainDb": -14, "macro": [[0, 0], [8, 0], [16, 1], [24, 1]], "humanize": { "timingMs": 2, "velocity": 0.1 },
+      "repeats": [ { "fromBeat": 0, "toBeat": 24, "lengthBeats": 1, "notes": [[0, 0.1, "D7", 1, { "articulation": "tock" }], [0.25, 0.1, "A6", 0.32], [0.5, 0.1, "F#6", 0.55], [0.75, 0.1, "A6", 0.32]] } ] },
+    { "id": "bow", "instrument": "mechanical-orchestra/bow", "gainDb": -13, "room": 0.3, "macro": [[0, 0], [8, 0], [16, 1], [24, 1]], "notes": [[8, 16, "D3", 0.6], [8, 16, "A3", 0.5]] }
+  ]
+}

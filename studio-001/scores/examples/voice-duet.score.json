@@ -1,0 +1,27 @@
+{
+  "schema": "daemonv12.signature-rack.score/1",
+  "title": "Voice duet (Ab major, 66 BPM)",
+  "bpm": 66, "key": "Ab major", "seed": 9, "tailSeconds": 2, "masterGainDb": 0,
+  "description": "Impossible Voice example: a new melody and a second voice over bowed bars; human for two bars, then impossible (overtone melody, bent harmonics, glass halo in A-flat major).",
+  "sections": [ { "id": "human", "bars": 2, "development": "hum opening into a restrained line, second voice beneath" }, { "id": "impossible", "bars": 2, "development": "the same voices turn impossible; overtone melody above the cry" } ],
+  "parts": [
+    { "id": "voice", "instrument": "impossible-voice", "gainDb": 0, "pan": 0.08, "room": 0.22,
+      "macro": [[0, 0], [6, 0], [12, 1], [16, 1]], "expression": [[0, 0.6], [10, 0.85], [16, 0.6]],
+      "overtone": { "steps": [[8, 4], [9.5, 6], [10, 2], [11, 3], [12, 4], [13, 3], [14, 4]], "glide": 0.1 },
+      "breaths": [ { "beat": 0, "beats": 0.45, "kind": "in" }, { "beat": 7.5, "beats": 0.45, "kind": "in" } ],
+      "notes": [
+        [0.5, 1.5, "Eb4", 0.6, { "vowel": "mm", "to": "oo", "articulation": "hum" }], [2, 1, "Ab4", 0.65, { "vowel": "oo", "to": "oh" }], [3, 1, "C5", 0.7, { "vowel": "oh", "slide": 0.1 }],
+        [4, 2, "Bb4", 0.72, { "vowel": "oh", "to": "ah" }], [6, 1, "Ab4", 0.62, { "vowel": "ah" }], [7, 0.45, "F4", 0.6, { "vowel": "ah", "to": "oh" }],
+        [8, 1.5, "Eb4", 0.62, { "vowel": "oh" }], [9.5, 0.5, "F4", 0.6, { "vowel": "oh" }], [10, 2, "Eb5", 0.8, { "vowel": "ah", "articulation": "cry", "cry": 1 }],
+        [12, 1, "Db5", 0.7, { "vowel": "ah", "to": "eh", "slide": 0.1 }], [13, 2.8, "C5", 0.65, { "vowel": "eh", "to": "oo", "articulation": "fall", "fall": 0.5 }]
+      ] },
+    { "id": "voice-2", "instrument": "impossible-voice", "gainDb": -7, "pan": -0.3, "room": 0.25,
+      "macro": [[0, 0], [6, 0], [12, 1], [16, 1]], "controls": { "whistle": 0 }, "setup": { "size": -0.15, "detune": -4, "vibRate": 4.7, "vibCents": 22 },
+      "notes": [
+        [2, 2, "C4", 0.45, { "vowel": "oo" }], [4, 2, "Db4", 0.45, { "vowel": "oo", "to": "oh", "slide": 0.2 }], [6, 2, "C4", 0.45, { "vowel": "oh" }],
+        [8, 2, "Bb3", 0.45, { "vowel": "oh" }], [10, 2, "C4", 0.5, { "vowel": "oh", "to": "ah", "slide": 0.2 }], [12, 1, "Bb3", 0.45, { "vowel": "ah" }], [13, 2.8, "Ab3", 0.45, { "vowel": "oo", "slide": 0.2 }]
+      ] },
+    { "id": "bow", "instrument": "mechanical-orchestra/bow", "gainDb": -15, "room": 0.3, "macro": [[0, 0], [6, 0], [12, 1], [16, 1]],
+      "notes": [[0, 8, "Ab3", 0.5], [0, 8, "Eb4", 0.45], [8, 8, "Db4", 0.5], [8, 8, "F4", 0.45]] }
+  ]
+}

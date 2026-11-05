@@ -10,8 +10,11 @@ song: each audition is a short, original phrase.
 | Mutation | State |
 |---|---|
 | **A · LIVING BASS** | **Approved by the owner after listening.** Three auditions, WAV + MP3; frozen |
-| **B · IMPOSSIBLE VOICE** | Done: three auditions, WAV + MP3; waiting for the owner to listen |
-| **C · MECHANICAL ORCHESTRA** | Done: three auditions, WAV + MP3; waiting for the owner to listen |
+| **B · IMPOSSIBLE VOICE** | **Approved by the owner after listening.** Three auditions, WAV + MP3; frozen |
+| **C · MECHANICAL ORCHESTRA** | **Approved by the owner after listening.** Three auditions, WAV + MP3; frozen |
+
+All three families are now playable from new scores through the Signature Instrument Rack in [`../studio-001/`](../studio-001/README.md).
+The engines, audition scripts and the nine auditions listed in `studio-001/rack/frozen.json` are frozen (SHA-256 verified before every load).
 
 ## A · LIVING BASS
 
