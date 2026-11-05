@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { test } from 'node:test';
+import { verifyV08Inputs } from '../scripts/verify-v08-studio.ts';
+import { sha256, verifyPackage } from '../production/headliner/build.ts';
+import { analyzePcm24 } from '../src/render/index.ts';
+import { normalizeScore } from '../studio-001/rack/score.ts';
+
+test('v0.8 keeps both exact approved source sets and the short three-family PCM24 review master intact', () => {
+  const inputs = verifyV08Inputs();
+  assert.equal(inputs.checked, 173);
+  assert.equal(inputs.frozenFiles, 31);
+  const scoreBytes = readFileSync('production/v08-studio/relay.score.json');
+  const score = normalizeScore(JSON.parse(scoreBytes.toString()));
+  assert.deepEqual([...new Set(score.parts.map(p => p.instrument.family))].sort(), ['impossible-voice', 'living-bass', 'mechanical-orchestra']);
+  assert.equal(score.bars, 6);
+  const report = JSON.parse(readFileSync('proofs/v08-studio-integration/verification.json', 'utf8'));
+  assert.equal(report.scoreSha256, sha256(scoreBytes));
+  const delivery = 'production/v08-studio/delivery';
+  assert.ok(verifyPackage(delivery) > 50);
+  const master = readFileSync(`${delivery}/masters/main.24.wav`);
+  assert.equal(sha256(master), report.hashes.master);
+  assert.equal(sha256(readFileSync(`${delivery}/listening/main.24.mp3`)), report.hashes.mp3);
+  const analysis = analyzePcm24(master);
+  assert.equal(analysis.frames, 749700);
+  assert.equal(analysis.fullScaleSamples, 0);
+  assert.ok(analysis.nonzeroLowBytes > 10000);
+  assert.equal(report.alignment.masterMaximumErrorPcm24Lsb, 0);
+  assert.ok(report.determinism.completeReplayIdentical);
+});

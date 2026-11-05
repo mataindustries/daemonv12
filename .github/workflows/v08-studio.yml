@@ -1,0 +1,52 @@
+name: v0.8 Studio integration
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'production/v08-studio/**'
+      - 'proofs/v08-studio-integration/**'
+      - 'scripts/verify-v08-studio.ts'
+      - 'scripts/headliner-production24.ts'
+      - 'scripts/verify-voice-reuse-legacy.mjs'
+      - 'studio-001/**'
+      - 'mutation-001/**'
+      - 'src/**'
+      - 'tests/v08-studio.test.ts'
+      - '.github/workflows/v08-studio.yml'
+permissions:
+  contents: read
+jobs:
+  studio:
+    name: Native rack, PCM24 replay and PCM16 preservation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: ./scripts/bootstrap-audio-tools.sh --prefix "$RUNNER_TEMP/daemonv12-audio-tools"
+      - name: Native bounce, independent production package, fresh-process replay, alignment, precision, provenance, freeze and CROSSING
+        run: |
+          source "$RUNNER_TEMP/daemonv12-audio-tools/env.sh"
+          node scripts/verify-v08-studio.ts "$RUNNER_TEMP/v08-studio"
+      - name: Archived-main PCM16 master, stem, MIDI and manifest regression comparison
+        run: |
+          source "$RUNNER_TEMP/daemonv12-audio-tools/env.sh"
+          legacy_source="$RUNNER_TEMP/v08-main-source"
+          mkdir "$legacy_source"
+          git archive e2962cc1a443c841cd6ca7cb2cc56c5ebabf0e99 | tar -x -C "$legacy_source"
+          ln -s "$GITHUB_WORKSPACE/node_modules" "$legacy_source/node_modules"
+          node scripts/verify-voice-reuse-legacy.mjs "$legacy_source" "$RUNNER_TEMP/v08-legacy"
+          cp "$RUNNER_TEMP/v08-legacy-verification.json" "$RUNNER_TEMP/v08-studio/pcm16-verification.json"
+      - name: Retain the sealed technical review delivery and verification reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: v08-studio-review-${{ github.sha }}
+          path: ${{ runner.temp }}/v08-studio/
+          if-no-files-found: error
+          retention-days: 14

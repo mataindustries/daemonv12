@@ -1,0 +1,145 @@
+{
+  "schema": "daemonv12.v08-studio-verification/1",
+  "title": "RELAY — v0.8 studio integration study",
+  "sourceHeads": [
+    {
+      "pr": 44,
+      "head": "713ab8b48da363975a993d4478dca7b01e66d2e2"
+    },
+    {
+      "pr": 43,
+      "head": "bdf78bd23dc1d994f3df2ef58d37a8610a7d4e29"
+    }
+  ],
+  "base": "e2962cc1a443c841cd6ca7cb2cc56c5ebabf0e99",
+  "runtime": {
+    "node": "v24.19.0",
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1"
+    }
+  },
+  "preservedImportedFiles": 173,
+  "frozenFiles": 31,
+  "freezeSha256": "15f8a55e504a3e23ff2ca313109da7c703bd015c5fad46b1fa17b4b8c95ef338",
+  "scoreSha256": "e25b2b4489eb2a11790ec4f83822ddd4447cc57260b572c9cd46744c5b36a865",
+  "route": "Unmodified approved rack native bounce -> packageProduction24 with bounded voice reuse -> Float64 processing and master sum -> independent PCM24 exports; MP3 directly from the final PCM24 master.",
+  "sourcePrecision": "Sources are PCM16. No lost source detail is recovered. Newly computed fractional processing detail is retained.",
+  "export": {
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "dither": false,
+    "normalization": false
+  },
+  "alignment": {
+    "frames": 749700,
+    "seconds": 17,
+    "phraseTriggers": 15,
+    "masterFrameLag": 0,
+    "masterMaximumErrorPcm24Lsb": 0,
+    "stems": [
+      {
+        "trackId": "bass",
+        "frames": 749700,
+        "firstFrame": 5,
+        "lastFrame": 657602,
+        "frameLag": 0,
+        "maximumErrorPcm24Lsb": 0,
+        "nonzeroLowBytes": 1295430
+      },
+      {
+        "trackId": "voice",
+        "frames": 749700,
+        "firstFrame": 42285,
+        "lastFrame": 697562,
+        "frameLag": 0,
+        "maximumErrorPcm24Lsb": 0,
+        "nonzeroLowBytes": 1293838
+      },
+      {
+        "trackId": "bars",
+        "frames": 749700,
+        "firstFrame": 1,
+        "lastFrame": 749699,
+        "frameLag": 0,
+        "maximumErrorPcm24Lsb": 0,
+        "nonzeroLowBytes": 1493156
+      },
+      {
+        "trackId": "clock",
+        "frames": 749700,
+        "firstFrame": 1,
+        "lastFrame": 562233,
+        "frameLag": 0,
+        "maximumErrorPcm24Lsb": 0,
+        "nonzeroLowBytes": 303821
+      },
+      {
+        "trackId": "room",
+        "frames": 749700,
+        "firstFrame": 116425,
+        "lastFrame": 629089,
+        "frameLag": 0,
+        "maximumErrorPcm24Lsb": 0,
+        "nonzeroLowBytes": 0
+      }
+    ]
+  },
+  "analysis": {
+    "format": "pcm_s24le",
+    "frames": 749700,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "durationSeconds": 17,
+    "peakDbfs": -13.329426,
+    "rmsDbfs": -26.423399,
+    "fullScaleSamples": 0,
+    "clipping": false,
+    "stereoCorrelation": 0.990528,
+    "monoFoldRmsDbfs": -26.446512,
+    "monoFoldChangeDb": -0.023113,
+    "nonzeroLowBytes": 1493641,
+    "integratedLufs": -23.93,
+    "loudnessRangeLu": 9.8,
+    "truePeakDbfs": -13.33
+  },
+  "determinism": {
+    "independentBouncesIdentical": true,
+    "nativeFiles": 28,
+    "independentProductionPackagesIdentical": true,
+    "completeReplayIdentical": true,
+    "comparedFilesPerPackage": 66
+  },
+  "provenance": {
+    "nativeSourcesByteIdentical": true,
+    "sourceInventoryVerified": true,
+    "rackGeneratorHashesVerified": true,
+    "frozenEngineHashesVerified": true,
+    "engineAndAdapterHashesVerified": true,
+    "mp3DerivedFromFinalPcm24": true
+  },
+  "crossing": {
+    "nativePhrasesIdentical": 53,
+    "masters": {
+      "main": "9f53c08ca28d8e91c4ccc4aad9c6950dc4111ff1f1176019208708bbab73e577",
+      "dry": "fb5b9ddbc6aa75de6fb125b61f9890d81abd607d22bc195e35e6d2cc028df713"
+    },
+    "stemsIdentical": 12
+  },
+  "hashes": {
+    "master": "ff723b7262c416d21acc5e95a61afd7e5dcf05689895398c122842e2c81bb5d3",
+    "mp3": "9343d3cbbc805b423552af4012a2380bc08dfc77f011d81c47587ee65d27f8aa",
+    "stems": {
+      "bass": "98479078f70b43b990952beaf96f468dccbd75c9ea13b9919d9db80d0ef2233e",
+      "voice": "645ae9da73be2f4e29cfeff0c4a914fc5ab62c4accc372812d327c152bbf865f",
+      "bars": "59439df85f58fba8d21c448f1aab3200e223650df6144bc803fcc6d362222438",
+      "clock": "1684114345eefced3d282d723d8ffd7802f07e987abf138a105fc210f6ee9668",
+      "room": "8c37c54616ecb18e15f9d39f2b419529d757367f5dd4a682ece3de5136e24d53"
+    },
+    "nativeSha256sums": "9ec1e2f2620120fd8ccb74f1efba688ff09a0afedbfc2027c92612948cb24ae3",
+    "production24Sha256sums": "983d53b8648109127aa72a07088e1d1bd12e33b0500bc20b5d60ffde608d29de"
+  },
+  "status": "Technical integration review. Await owner approval before merge. No release, publication, licensing change or listening approval is asserted."
+}

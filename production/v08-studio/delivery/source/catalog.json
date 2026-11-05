@@ -1,0 +1,324 @@
+{
+  "schema": "daemonv12.signature-rack.package/1",
+  "interfaceVersion": "1.0.0",
+  "rackVersion": "1.0.0",
+  "engineBase": "e2962cc1a443c841cd6ca7cb2cc56c5ebabf0e99",
+  "node": "v24.19.0",
+  "title": "RELAY — v0.8 studio integration study",
+  "bpm": 96,
+  "key": "D minor",
+  "transpose": 0,
+  "frames": 749700,
+  "sections": [
+    {
+      "id": "signal",
+      "bars": 2,
+      "development": "Bars introduce the figure; the voice answers over a warm bass.",
+      "startBeat": 0
+    },
+    {
+      "id": "relay",
+      "bars": 2,
+      "development": "The voice takes the figure while the bass and clock turn mechanical.",
+      "startBeat": 8
+    },
+    {
+      "id": "home",
+      "bars": 2,
+      "development": "A shorter answer returns to D; the transformations relax into the tail.",
+      "startBeat": 16
+    }
+  ],
+  "scoreSha256": "7a5a774ebf13619618347c61681d4ec1e9c3e266654467b3f3e08275563c884d",
+  "generator": [
+    {
+      "file": "studio-001/rack/cli.ts",
+      "sha256": "639fbf74a77f4fbba272a929f2293f301a80c0006e0b067439838c2beef0a108"
+    },
+    {
+      "file": "studio-001/rack/curves.ts",
+      "sha256": "2ad95943ef9036bc8a03ddb6fcb8ddd39dd2c884ead74406bbb270abd37a10e0"
+    },
+    {
+      "file": "studio-001/rack/docs.ts",
+      "sha256": "e9de80e573f4c9da1d008a78dabce4210707be7956306ecf59dda57644ad50dc"
+    },
+    {
+      "file": "studio-001/rack/frozen.ts",
+      "sha256": "6167ecc9eb3ca4ffdc79b91274353010db41e14c8fe2cb8e14aa889c0bb6cbef"
+    },
+    {
+      "file": "studio-001/rack/index.ts",
+      "sha256": "bd10c8a2ef42716b9cac8ee2f4136b1d8c84cb762e5fbf78823e6bd4e69f63aa"
+    },
+    {
+      "file": "studio-001/rack/instruments.ts",
+      "sha256": "f71204903745305649b365d986f2a093a0d43628757b478797b95f9d06789700"
+    },
+    {
+      "file": "studio-001/rack/package.ts",
+      "sha256": "ec2746876885d63e86f17ffdf9c599d6cad8921d405996850c5c9272a545d151"
+    },
+    {
+      "file": "studio-001/rack/registry.ts",
+      "sha256": "c8f773b0c23b59878e2f86769614d088c6128caaa8454e1decfe50facd934c19"
+    },
+    {
+      "file": "studio-001/rack/render.ts",
+      "sha256": "952a3c54dc08b1e0e9da5b0a6408db5e3b54fc20176b7eb350e241f9471e8d91"
+    },
+    {
+      "file": "studio-001/rack/score.ts",
+      "sha256": "be6d52b5a19d60af3fd5b706f54e3d1be549ded7d6b811b890083a53937e1db8"
+    },
+    {
+      "file": "studio-001/rack/types.ts",
+      "sha256": "a1b5fb48a6419f17fdcaddded0ee748cb8a929a3be30aa86c54516309e733955"
+    },
+    {
+      "file": "studio-001/rack/frozen.json",
+      "sha256": "15f8a55e504a3e23ff2ca313109da7c703bd015c5fad46b1fa17b4b8c95ef338"
+    }
+  ],
+  "frozenEngines": "studio-001/rack/frozen.json",
+  "projects": {
+    "main": "all parts, context parts and the room",
+    "dry": "instrument parts only, no context parts, no room"
+  },
+  "provenance": "Every sound is synthesized by the owner-approved MUTATION 001 engines (hash-verified, unmodified) and the HEADLINER 001 toolkit from numeric parameters and seeded PRNGs. No recordings, samples, SoundFonts, impulse responses, presets or third-party audio.",
+  "license": "PENDING OWNER DECLARATION: no license is granted by this package.",
+  "tracks": [
+    {
+      "id": "bass",
+      "phrases": 3,
+      "gainDb": -4.65,
+      "assetGainDb": 0,
+      "peak": 0.27127
+    },
+    {
+      "id": "voice",
+      "phrases": 3,
+      "gainDb": -2.15,
+      "assetGainDb": 0,
+      "peak": 0.23191
+    },
+    {
+      "id": "bars",
+      "phrases": 3,
+      "gainDb": -10.7,
+      "assetGainDb": 0,
+      "peak": 0.35148
+    },
+    {
+      "id": "clock",
+      "phrases": 3,
+      "gainDb": -18.45,
+      "assetGainDb": 0,
+      "peak": 0.35847
+    },
+    {
+      "id": "room",
+      "phrases": 3,
+      "gainDb": 0,
+      "assetGainDb": 0,
+      "peak": 0.00003
+    }
+  ],
+  "sounds": [
+    {
+      "file": "assets/bass/phrase-signal.wav",
+      "sha256": "5555697b064ecb82a8e6189f41c416930609f588173ccea3a85d33e095e0d5d2",
+      "frames": 220500,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "bass",
+      "section": "signal",
+      "fromFrame": 0,
+      "toFrame": 220500,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/bass/phrase-relay.wav",
+      "sha256": "b13f6d4f3046b32a6960d3d8b87e7ec0f3e5bead1c0a5068c55d67b419e3279f",
+      "frames": 220500,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "bass",
+      "section": "relay",
+      "fromFrame": 220500,
+      "toFrame": 441000,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/bass/phrase-home.wav",
+      "sha256": "fde0ed144e663be707989c0408892bf7133401dc854e4b48263ef798d4f5505a",
+      "frames": 308700,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "bass",
+      "section": "home",
+      "fromFrame": 441000,
+      "toFrame": 749700,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/voice/phrase-signal.wav",
+      "sha256": "0c0fe9ab3350c22858e5f0dbdbe2c6d5eed075d4c34614b512bc68c959b272b9",
+      "frames": 220500,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "voice",
+      "section": "signal",
+      "fromFrame": 0,
+      "toFrame": 220500,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/voice/phrase-relay.wav",
+      "sha256": "04eea429dbc3bc2194eeab6f56e7dbe2947ce07884fd0fb929415cd565b10353",
+      "frames": 220500,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "voice",
+      "section": "relay",
+      "fromFrame": 220500,
+      "toFrame": 441000,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/voice/phrase-home.wav",
+      "sha256": "753cf94f6a2d522c8e5bad7b702edc5fc617f5e84892ecafad1127cac4fcd19a",
+      "frames": 308700,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "voice",
+      "section": "home",
+      "fromFrame": 441000,
+      "toFrame": 749700,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/bars/phrase-signal.wav",
+      "sha256": "3f28e5e5e22834c059a5b682de5ee4367c7fa4b4077308b60c2b7a0e4b9eec6b",
+      "frames": 220500,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "bars",
+      "section": "signal",
+      "fromFrame": 0,
+      "toFrame": 220500,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/bars/phrase-relay.wav",
+      "sha256": "358c6ef5560e95064c430a93e4b5abf54c6de46e4f22d62aae0be5dd56087b06",
+      "frames": 220500,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "bars",
+      "section": "relay",
+      "fromFrame": 220500,
+      "toFrame": 441000,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/bars/phrase-home.wav",
+      "sha256": "9d11252230bc19f9955bfa54b6345aa3f2c57e29eea47629648e5719172b7f7f",
+      "frames": 308700,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "bars",
+      "section": "home",
+      "fromFrame": 441000,
+      "toFrame": 749700,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/clock/phrase-signal.wav",
+      "sha256": "9cbad7065370d21c5d9f168167c05729cf810da330665dd0f9ba4392c467d109",
+      "frames": 220500,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "clock",
+      "section": "signal",
+      "fromFrame": 0,
+      "toFrame": 220500,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/clock/phrase-relay.wav",
+      "sha256": "f28dc4d7622eedf3e1bc08070a5108347c9b672a196c65f1381ded2d94dd65d7",
+      "frames": 220500,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "clock",
+      "section": "relay",
+      "fromFrame": 220500,
+      "toFrame": 441000,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/clock/phrase-home.wav",
+      "sha256": "422aaf0d703c041a550970189e175737920bf3138fd8a2227182e52fb8a43059",
+      "frames": 308700,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "clock",
+      "section": "home",
+      "fromFrame": 441000,
+      "toFrame": 749700,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/room/phrase-signal.wav",
+      "sha256": "ebe45a6e52ced68e72a4906cbb4a8c5e3c2a3638de6316fc6349879a0c9d5242",
+      "frames": 220500,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "room",
+      "section": "signal",
+      "fromFrame": 0,
+      "toFrame": 220500,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/room/phrase-relay.wav",
+      "sha256": "fd165b5d7c5b5a41eda3f9171d490c11491163b483f3200c6a8d04bc4f507839",
+      "frames": 220500,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "room",
+      "section": "relay",
+      "fromFrame": 220500,
+      "toFrame": 441000,
+      "assetGainDb": 0
+    },
+    {
+      "file": "assets/room/phrase-home.wav",
+      "sha256": "461db52d905dd85262b4b4896cfd8893f8f2b856212e5223a985735cd4bd34ec",
+      "frames": 308700,
+      "channels": 2,
+      "sampleRate": 44100,
+      "bitsPerSample": 16,
+      "track": "room",
+      "section": "home",
+      "fromFrame": 441000,
+      "toFrame": 749700,
+      "assetGainDb": 0
+    }
+  ]
+}
