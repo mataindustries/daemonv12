@@ -1,0 +1,5354 @@
+{
+  "kind": "daemonv12-production24",
+  "version": 1,
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "headliner-stress.json",
+    "sha256": "6d86022e51c0bedb66efbc031bc7d0704ba08dbc791ae5cf0b2c6312e2081746"
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1"
+    }
+  },
+  "signalPath": "PCM16 source; unrounded Float64 interpolation/velocity/envelope, gain/pan automation and ordered track effects; Float64 sum, master gain/effects/ducking; single PCM24 quantization per export",
+  "sourcePrecision": "Sources are PCM16. No lost source detail is recovered. Newly computed fractional processing detail is retained.",
+  "stems": [
+    {
+      "trackId": "kick",
+      "file": "kick.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -8.260123,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -5.5,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -5.5,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [],
+      "sha256": "1ad2507b625913adb078ab41bcd37972b160855587d668c61be58a7ced7f37f2",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -8.260124,
+        "rmsDbfs": -23.520843,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 1,
+        "monoFoldRmsDbfs": -23.520843,
+        "monoFoldChangeDb": 0,
+        "nonzeroLowBytes": 3841886
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "backbeat",
+      "file": "backbeat.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -14.036326,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -7.5,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -7.5,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [],
+      "sha256": "b0d8c7d4e9cc808e8b64fe1c4c17365fc9b26eefea4ddc33b95c0f16653a2779",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -14.036326,
+        "rmsDbfs": -37.284678,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.936971,
+        "monoFoldRmsDbfs": -37.423748,
+        "monoFoldChangeDb": -0.13907,
+        "nonzeroLowBytes": 4030956
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "hats",
+      "file": "hats.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -21.680484,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -9,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -9,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [],
+      "sha256": "426421d638063df8bfb302b3a56004b6b0522eee8031dd6c0e787ee928ceb184",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -21.680479,
+        "rmsDbfs": -45.627418,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.950794,
+        "monoFoldRmsDbfs": -45.751431,
+        "monoFoldChangeDb": -0.124014,
+        "nonzeroLowBytes": 7914890
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "chrome",
+      "file": "chrome.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -13.918402,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -9,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -9,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "delay",
+          "timeMs": 351.5625,
+          "wet": 0.15
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.7,
+          "decaySeconds": 2.6,
+          "wet": 0.26
+        }
+      ],
+      "sha256": "6994a7d9de70f8f88545b64df1bea63e7b646594cc7957c1102aeb8fe5832e5f",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -13.918403,
+        "rmsDbfs": -44.695363,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.552913,
+        "monoFoldRmsDbfs": -45.805124,
+        "monoFoldChangeDb": -1.109761,
+        "nonzeroLowBytes": 4830653
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "abyss",
+      "file": "abyss.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -16.741887,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 660208,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 661500,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 667960,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 680880,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 682172,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 688632,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 701552,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 702844,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 709304,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 722224,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 723516,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 729976,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 742896,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 744188,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 750647,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 763567,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 764859,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 771319,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 784239,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 785531,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 791991,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 804911,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 806203,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 812663,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 825583,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 826875,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 833335,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 846255,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 847547,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 854007,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 866927,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 868219,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 874679,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 887599,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 888891,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 895351,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 908271,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 909563,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 916022,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 928942,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 930234,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 936694,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 949614,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 950906,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 957366,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 970286,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 971578,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 978038,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 990958,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 992250,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 998710,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1011630,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1012922,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1019382,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1032302,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1033594,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1040054,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1052974,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1054266,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1060726,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1073646,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1074938,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1081397,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1094317,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1095609,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1102069,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1114989,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1116281,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1122741,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1135661,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1136953,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1143413,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1156333,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1157625,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1164085,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1177005,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1178297,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1184757,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1197677,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1198969,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1205429,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1218349,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1219641,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1226101,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1239021,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1240313,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1246772,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1259692,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1260984,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1267444,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1280364,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1281656,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1288116,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1301036,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1302328,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1308788,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1321708,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1323000,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1329460,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1342380,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1343672,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1350132,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1363052,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1364344,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1370804,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1383724,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1385016,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1391476,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1404396,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1405688,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1412147,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1425067,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1426359,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1432819,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1445739,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1447031,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1453491,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1466411,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1467703,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1474163,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1487083,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1488375,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1494835,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1507755,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1509047,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1515507,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1528427,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1529719,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1536179,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1549099,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1550391,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1556851,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1569771,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1571063,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1577522,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1590442,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1591734,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1598194,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1611114,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1612406,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1618866,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1631786,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1633078,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1639538,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1652458,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1653750,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1660210,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1673130,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1674422,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1680882,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1693802,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1695094,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1701554,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1714474,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1715766,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1722226,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1735146,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1736438,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1742897,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1755817,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1757109,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1763569,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1776489,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1777781,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1784241,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1797161,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1798453,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1804913,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1817833,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1819125,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1825585,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1838505,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1839797,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1846257,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1859177,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1860469,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1866929,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1879849,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1881141,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1887601,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1900521,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1901813,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1908272,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1921192,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1922484,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1928944,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1941864,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1943156,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1949616,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1962536,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1963828,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1970288,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1983208,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 1984500,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 1990960,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2003880,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2005172,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2011632,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2024552,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2025844,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2032304,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2045224,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2046516,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2052976,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2065896,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2067188,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2073647,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2086567,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2087859,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2094319,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2107239,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2108531,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2114991,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2127911,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2129203,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2135663,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2148583,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2149875,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2156335,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2169255,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2170547,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2177007,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2189927,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2191219,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2197679,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2210599,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2211891,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2218351,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2231271,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2232563,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2239022,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2251942,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2253234,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2259694,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2272614,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2273906,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2280366,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2293286,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2294578,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2301038,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2313958,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2315250,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2321710,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2334630,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2335922,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2342382,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2355302,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2356594,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2363054,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2375974,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2377266,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2383726,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2396646,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2397938,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2404397,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2417317,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2418609,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2425069,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2437989,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2439281,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2445741,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2458661,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2459953,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2466413,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2479333,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2480625,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2487085,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2500005,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2501297,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2507757,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2520677,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2521969,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2528429,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2541349,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2542641,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2549101,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2562021,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2563313,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2569772,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2582692,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2583984,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2590444,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2603364,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2604656,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2611116,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2624036,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2625328,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2631788,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2644708,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2646000,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2652460,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2665380,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2666672,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2673132,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2686052,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2687344,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2693804,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2706724,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2708016,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2714476,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2727396,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2728688,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2735147,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2748067,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2749359,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2755819,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2768739,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2770031,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2776491,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2789411,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2790703,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2797163,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2810083,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2811375,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2817835,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2830755,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2832047,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2838507,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2851427,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2852719,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2859179,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2872099,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2873391,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2879851,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2892771,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2894063,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2900522,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2913442,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2914734,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2921194,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2934114,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2935406,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2941866,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2954786,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2956078,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2962538,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2975458,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2976750,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 2983210,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2996130,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 2997422,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3003882,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3016802,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3018094,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3024554,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3037474,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3038766,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3045226,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3058146,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3059438,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3065897,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3078817,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3080109,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3086569,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3099489,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3100781,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3107241,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3120161,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3121453,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3127913,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3140833,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3142125,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3148585,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3161505,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3162797,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3169257,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3182177,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3183469,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3189929,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3202849,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3204141,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3210601,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3223521,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3224813,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3231272,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3244192,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3245484,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3251944,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3264864,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3266156,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3272616,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3285536,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3286828,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3293288,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3306208,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3307500,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3313960,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3326880,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3328172,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3334632,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3347552,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3348844,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3355304,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3368224,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3369516,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3375976,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3388896,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3390188,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3396647,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3409567,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3410859,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3417319,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3430239,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3431531,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3437991,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3450911,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3452203,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3458663,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3471583,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3472875,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3479335,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3492255,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3493547,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3500007,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3512927,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3514219,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3520679,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3533599,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3534891,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3541351,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3554271,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3555563,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3562022,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3574942,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3576234,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3582694,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3595614,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3596906,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3603366,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3616286,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3617578,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3624038,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3636958,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3638250,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3644710,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3657630,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3658922,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3665382,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3678302,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3679594,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3686054,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3698974,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3700266,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3706726,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3719646,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3720938,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3727397,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3740317,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3741609,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3748069,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3760989,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3762281,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3768741,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3781661,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3782953,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3789413,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3802333,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3803625,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3810085,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3823005,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3824297,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3830757,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3843677,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3844969,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3851429,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3864349,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3865641,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3872101,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3885021,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3886313,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3892772,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3905692,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3906984,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3913444,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3926364,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3927656,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3934116,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3947036,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 3948328,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 3954788,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4629208,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4630500,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4636960,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4649880,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4651172,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4657632,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4670552,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4671844,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4678304,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4691224,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4692516,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4698976,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4711896,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4713188,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4719647,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4732567,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4733859,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4740319,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4753239,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4754531,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4760991,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4773911,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4775203,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4781663,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4794583,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4795875,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4802335,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4815255,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4816547,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4823007,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4835927,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4837219,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4843679,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4856599,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4857891,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4864351,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4877271,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4878563,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4885022,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4897942,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4899234,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4905694,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4918614,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4919906,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4926366,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4939286,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4940578,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4947038,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4959958,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4961250,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4967710,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4980630,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 4981922,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 4988382,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5001302,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5002594,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5009054,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5021974,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5023266,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5029726,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5042646,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5043938,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5050397,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5063317,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5064609,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5071069,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5083989,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5085281,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5091741,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5104661,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5105953,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5112413,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5125333,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5126625,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5133085,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5146005,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5147297,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5153757,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5166677,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5167969,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5174429,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5187349,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5188641,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5195101,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5208021,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5209313,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5215772,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5228692,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5229984,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5236444,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5249364,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5250656,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5257116,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5270036,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5271328,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5277788,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5290708,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5292000,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5298460,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5311380,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5312672,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5319132,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5332052,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5333344,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5339804,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5352724,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5354016,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5360476,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5373396,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5374688,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5381147,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5394067,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5395359,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5401819,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5414739,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5416031,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5422491,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5435411,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5436703,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5443163,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5456083,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5457375,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5463835,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5476755,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5478047,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5484507,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5497427,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5498719,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5505179,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5518099,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5519391,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5525851,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5538771,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5540063,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5546522,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5559442,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5560734,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5567194,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5580114,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5581406,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5587866,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5600786,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5602078,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5608538,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5621458,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5622750,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5629210,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5642130,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5643422,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5649882,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5662802,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5664094,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5670554,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5683474,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5684766,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5691226,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5704146,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5705438,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5711897,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5724817,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5726109,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5732569,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5745489,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5746781,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5753241,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5766161,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5767453,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5773913,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5786833,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5788125,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5794585,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5807505,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5808797,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5815257,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5828177,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5829469,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5835929,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5848849,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5850141,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5856601,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5869521,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5870813,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5877272,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5890192,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5891484,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5897944,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5910864,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5912156,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5918616,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5931536,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5932828,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5939288,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5952208,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5953500,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5959960,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5972880,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5974172,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 5980632,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5993552,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 5994844,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6001304,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6014224,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6015516,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6021976,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6034896,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6036188,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6042647,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6055567,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6056859,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6063319,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6076239,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6077531,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6083991,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6096911,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6098203,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6104663,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6117583,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6118875,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6125335,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6138255,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6139547,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6146007,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6158927,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6160219,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6166679,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6179599,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6180891,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6187351,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6200271,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6201563,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6208022,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6220942,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6222234,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6228694,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6241614,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6242906,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6249366,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6262286,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6263578,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6270038,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6282958,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6284250,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6290710,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6303630,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6304922,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6311382,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6324302,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6325594,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6332054,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6344974,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6346266,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6352726,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6365646,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6366938,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6373397,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6386317,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6387609,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6394069,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6406989,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6408281,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6414741,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6427661,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6428953,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6435413,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6448333,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6449625,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6456085,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6469005,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6470297,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6476757,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6489677,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6490969,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6497429,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6510349,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6511641,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6518101,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6531021,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6532313,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6538772,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6551692,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6552984,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6559444,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6572364,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6573656,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6580116,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6593036,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6594328,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6600788,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6613708,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6615000,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6621460,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6634380,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6635672,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6642132,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6655052,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6656344,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6662804,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6675724,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6677016,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6683476,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6696396,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6697688,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6704147,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6717067,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6718359,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6724819,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6737739,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6739031,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6745491,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6758411,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6759703,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6766163,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6779083,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6780375,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6786835,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6799755,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6801047,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6807507,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6820427,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6821719,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6828179,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6841099,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6842391,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6848851,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6861771,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6863063,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6869522,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6882442,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6883734,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6890194,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6903114,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6904406,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6910866,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6923786,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6925078,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6931538,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6944458,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6945750,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6952210,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6965130,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6966422,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6972882,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6985802,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 6987094,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 6993554,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7006474,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7007766,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7014226,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7027146,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7028438,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7034897,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7047817,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7049109,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7055569,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7068489,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7069781,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7076241,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7089161,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7090453,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7096913,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7109833,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7111125,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7117585,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7130505,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7131797,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7138257,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7151177,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7152469,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7158929,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7171849,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7173141,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7179601,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7192521,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7193813,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7200272,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7213192,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7214484,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7220944,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7233864,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7235156,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7241616,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7254536,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7255828,
+            "value": -16,
+            "transition": "linear"
+          },
+          {
+            "frame": 7262288,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7276500,
+            "value": -8,
+            "transition": "linear"
+          },
+          {
+            "frame": 7689938,
+            "value": -30,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [],
+      "sha256": "d36df5cc84a04758341f55f78a593049203af42a8e74740704804906e5092b5c",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -16.74189,
+        "rmsDbfs": -25.62034,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 1,
+        "monoFoldRmsDbfs": -25.62034,
+        "monoFoldChangeDb": 0,
+        "nonzeroLowBytes": 8294028
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "reactor",
+      "file": "reactor.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -18.630918,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -10,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -10,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 120
+        },
+        {
+          "type": "saturation",
+          "driveDb": 4,
+          "mix": 0.22
+        }
+      ],
+      "sha256": "a2ec08c43f1287ee97e10c535ca4e66f1eadb49b389dbb5ee87b89e1d42b2a3e",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -18.630914,
+        "rmsDbfs": -39.537347,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.538265,
+        "monoFoldRmsDbfs": -40.68088,
+        "monoFoldChangeDb": -1.143532,
+        "nonzeroLowBytes": 5468481
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "signal",
+      "file": "signal.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -21.119726,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -14,
+            "transition": "linear"
+          },
+          {
+            "frame": 2625328,
+            "value": -14,
+            "transition": "linear"
+          },
+          {
+            "frame": 2646000,
+            "value": -17,
+            "transition": "linear"
+          },
+          {
+            "frame": 3886313,
+            "value": -17,
+            "transition": "linear"
+          },
+          {
+            "frame": 3969000,
+            "value": -24,
+            "transition": "linear"
+          },
+          {
+            "frame": 4630500,
+            "value": -14,
+            "transition": "linear"
+          },
+          {
+            "frame": 5271328,
+            "value": -14,
+            "transition": "linear"
+          },
+          {
+            "frame": 5292000,
+            "value": -17,
+            "transition": "linear"
+          },
+          {
+            "frame": 7193813,
+            "value": -17,
+            "transition": "linear"
+          },
+          {
+            "frame": 7276500,
+            "value": -24,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "delay",
+          "timeMs": 351.5625,
+          "wet": 0.23
+        }
+      ],
+      "sha256": "737956781a044a9802c539f16896d01cf507ee986876bb518130990e3397564b",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -21.119724,
+        "rmsDbfs": -36.019373,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.91687,
+        "monoFoldRmsDbfs": -36.209575,
+        "monoFoldChangeDb": -0.190203,
+        "nonzeroLowBytes": 12109153
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "phantom",
+      "file": "phantom.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -18.192445,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -9.5,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -9.5,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "delay",
+          "timeMs": 234.375,
+          "wet": 0.13
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.65,
+          "decaySeconds": 2.1,
+          "wet": 0.17
+        }
+      ],
+      "sha256": "995de4814f17d9e7f6ad848ab60c23e6fc0d64ac2ada666725f79e72751a530c",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -18.192447,
+        "rmsDbfs": -32.055112,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.623816,
+        "monoFoldRmsDbfs": -32.960046,
+        "monoFoldChangeDb": -0.904934,
+        "nonzeroLowBytes": 7462547
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "horizon",
+      "file": "horizon.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -24.282116,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -12,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -12,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 95
+        }
+      ],
+      "sha256": "65c7e2cf36bbe6c84c1e4c3fb03452b88e2fe687312920789f05fdfc6e47077e",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -24.282124,
+        "rmsDbfs": -37.934579,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.778269,
+        "monoFoldRmsDbfs": -38.450347,
+        "monoFoldChangeDb": -0.515768,
+        "nonzeroLowBytes": 15080051
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "afterglow",
+      "file": "afterglow.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -19.186375,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -14,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -14,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 150
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.6,
+          "decaySeconds": 1.5,
+          "wet": 0.15
+        }
+      ],
+      "sha256": "b3bef102a68eef492f30ee744eb15b7c85859a68982de9a9a9f894f3d07f8e55",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -19.186371,
+        "rmsDbfs": -34.203955,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.656109,
+        "monoFoldRmsDbfs": -35.030438,
+        "monoFoldChangeDb": -0.826483,
+        "nonzeroLowBytes": 14531366
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "specter",
+      "file": "specter.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -22.148252,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -15,
+            "transition": "linear"
+          },
+          {
+            "frame": 3969000,
+            "value": -10,
+            "transition": "linear"
+          },
+          {
+            "frame": 4630500,
+            "value": -15,
+            "transition": "linear"
+          },
+          {
+            "frame": 7276500,
+            "value": -13,
+            "transition": "linear"
+          },
+          {
+            "frame": 7772625,
+            "value": -36,
+            "transition": "linear"
+          }
+        ],
+        "pan": [
+          {
+            "frame": 0,
+            "value": -0.15,
+            "transition": "linear"
+          },
+          {
+            "frame": 2646000,
+            "value": 0.15,
+            "transition": "linear"
+          },
+          {
+            "frame": 3969000,
+            "value": -0.2,
+            "transition": "linear"
+          },
+          {
+            "frame": 5292000,
+            "value": 0.2,
+            "transition": "linear"
+          },
+          {
+            "frame": 7276500,
+            "value": 0,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 170
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.75,
+          "decaySeconds": 2.8,
+          "wet": 0.28
+        }
+      ],
+      "sha256": "e14d420f67640f84fc56d2c02a500485a7a1545c045df87a5fb5e47a1b42948a",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -22.148256,
+        "rmsDbfs": -47.728096,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.552119,
+        "monoFoldRmsDbfs": -48.829749,
+        "monoFoldChangeDb": -1.101653,
+        "nonzeroLowBytes": 6589764
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "ascension",
+      "file": "ascension.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -21.350299,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -12,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -12,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [],
+      "sha256": "cb71fa17175ea66654fb425541b04e6babf6287e3c5c7a9dfbc43a8b0d17e533",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -21.350305,
+        "rmsDbfs": -53.126379,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.660527,
+        "monoFoldRmsDbfs": -53.934461,
+        "monoFoldChangeDb": -0.808082,
+        "nonzeroLowBytes": 1318328
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "convergence",
+      "file": "convergence.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -19.741821,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -12,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -12,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [],
+      "sha256": "d03e4bc695b3eae39ebb40cdd635e86d54a1ee2cd1d5a79acd10fbb082d2fc1c",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -19.741824,
+        "rmsDbfs": -39.118736,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.735382,
+        "monoFoldRmsDbfs": -39.738659,
+        "monoFoldChangeDb": -0.619923,
+        "nonzeroLowBytes": 2185077
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "cable",
+      "file": "cable.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -32.200892,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -12,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -12,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 210
+        },
+        {
+          "type": "delay",
+          "timeMs": 234.375,
+          "wet": 0.18
+        }
+      ],
+      "sha256": "3e9497782b606b69048de31e03818019fdbd0cb29dacb8092a69cacf1ee10afa",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -32.200882,
+        "rmsDbfs": -60.588842,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 1,
+        "monoFoldRmsDbfs": -60.654682,
+        "monoFoldChangeDb": -0.065841,
+        "nonzeroLowBytes": 2490790
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "ratchet",
+      "file": "ratchet.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -33.947783,
+      "automation": {
+        "gainDb": [
+          {
+            "frame": 0,
+            "value": -14,
+            "transition": "linear"
+          },
+          {
+            "frame": 7607250,
+            "value": -14,
+            "transition": "linear"
+          },
+          {
+            "frame": 7917328,
+            "value": -60,
+            "transition": "linear"
+          }
+        ]
+      },
+      "effects": [],
+      "sha256": "1b3c11140b8bae26bc0090468186c905cc6d504808462689d342d01dacbfabac",
+      "bytes": 47628044,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 7938000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 180,
+        "peakDbfs": -33.947782,
+        "rmsDbfs": -62.864024,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 1,
+        "monoFoldRmsDbfs": -62.884962,
+        "monoFoldChangeDb": -0.020938,
+        "nonzeroLowBytes": 652616
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    }
+  ],
+  "sources": [
+    {
+      "file": "assets/morph-v1/cable-pluck.wav",
+      "sha256": "899a5345fa40df54fbadd1e4ee31bf1d9c876d53cbb16501ac7bbd3ea450e48d",
+      "bytes": 57374,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/morph-v1/cable-slap.wav",
+      "sha256": "a93582eb06f9b69cceb890d2bf25b0ba3046b0200b6d022d36339e19e97adc27",
+      "bytes": 35324,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/morph-v1/kit.json",
+      "sha256": "6c5408ad6fedfe31e21b2350ab90abdcb71c054de13d614c35794a75098d9728",
+      "bytes": 420,
+      "bitsPerSample": null
+    },
+    {
+      "file": "assets/morph-v1/ratchet-open.wav",
+      "sha256": "7e1696400651d04307e86bbc3b5e4f122985e5ac906ec142d6fc2bf57b2324c6",
+      "bytes": 14156,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/morph-v1/ratchet-tight.wav",
+      "sha256": "d3efb3c62c14a59d398f812d03986685c2169d89dc307d0ba1398f29d8f87ff4",
+      "bytes": 7100,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/01-sub-hammer.wav",
+      "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+      "bytes": 83834,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/02-iron-pulse.wav",
+      "sha256": "504facd29ca2f4655420804c3f76c531173b1a6f03f33eb5cc11a0a18b96651a",
+      "bytes": 39734,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/03-titanium-crack.wav",
+      "sha256": "ffe6cee44f204c203a81d3e65ce58a97b3a58d910d0a54eedb15c089cd0781df",
+      "bytes": 105884,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/04-neon-clap.wav",
+      "sha256": "b9597ef83f5fd72fc58d19316e7b826d8bb9c263f5c39b2fe4c52a7bcce6187c",
+      "bytes": 114704,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/05-ghost-tick.wav",
+      "sha256": "f32ff937cb2209776f882e59f40cd27e0e1fadca9c67cabb0ed7465f8cc473f8",
+      "bytes": 10628,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/06-open-circuit.wav",
+      "sha256": "a12955f3184c3dc0f211826f4964a1c7cc0495961dce0d866ae777b71afa4f1b",
+      "bytes": 176444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/07-abyss.wav",
+      "sha256": "5d6e52ee847aeaebb24d10cd642f9e03de6da21a51c1917cca494d1e1d47b03a",
+      "bytes": 705644,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/08-reactor.wav",
+      "sha256": "1afa9ad35a055204305b7f02cbef6df8a14952758cdc4456cf8ca4d3010c2aa2",
+      "bytes": 970244,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/09-signal.wav",
+      "sha256": "784cbb24dc06c92b3c63e18564198d1ab5055a1d83c3808f75c8e73abba6fdb9",
+      "bytes": 793844,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/10-phantom.wav",
+      "sha256": "f664148e85efa54638926b5e3ad918e3f438faf7815db68bc9842179467d6a9e",
+      "bytes": 1058444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/11-event-horizon.wav",
+      "sha256": "c881ec16051024dd23769c2fc279f9b8b6a641d69075ab00942adf2398439025",
+      "bytes": 1764044,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/12-afterglow.wav",
+      "sha256": "404d9ca4617e47ffa57c6c3b00360f56c3043742344221f23559e601f84133ae",
+      "bytes": 1411244,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/13-specter.wav",
+      "sha256": "82ed2ab5ab914d0a44a8db0c306aa17a8f85d4123a4fc8f796d6bd9c32105488",
+      "bytes": 1146644,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/14-chrome-strike.wav",
+      "sha256": "924b61722f7743bc6d53843622fcdc516a703b87062fb60e4222a5c4ccb548ea",
+      "bytes": 458684,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/15-ascension.wav",
+      "sha256": "4bb595205e10f873b347438df59300a07001e8196e3e82917aa9eaf31bd329e7",
+      "bytes": 1058444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/16-convergence.wav",
+      "sha256": "bdaa8658443025b031b2f05a8febbebe9700285c428b9eb5392bb7ab8a44ed2c",
+      "bytes": 882044,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "assets/v12-signature/kit.json",
+      "sha256": "8dd125f4b43af5f0a908cecce961c2c033d4035cb1cc57277de1c0f6bc7efb86",
+      "bytes": 718,
+      "bitsPerSample": null
+    }
+  ],
+  "limits": {
+    "maximumSeconds": 600,
+    "interpolationTaps": 1000000000,
+    "performedVoiceBytes": 134217728,
+    "tracks": 15
+  },
+  "interpolationReuse": {
+    "algorithm": "exact-interpolation-reuse-v1",
+    "interpolationTaps": 343122898,
+    "cachedBytes": 64142336,
+    "uniqueVoices": 67,
+    "reusedVoices": 1344,
+    "workLimit": 1000000000,
+    "cacheBytesLimit": 134217728,
+    "scope": "one render; source PCM identity, playback rate/glide/offset, explicit endpoint and rendered frame count; velocity/envelope per onset; full continuous track/master processing"
+  },
+  "export": {
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "dither": false,
+    "normalization": false
+  },
+  "master": {
+    "file": "headliner-stress.24.wav",
+    "sha256": "21c72595aa9e0f297aec298651d404086d889ee3307a888cf23c1986b1f319c1",
+    "bytes": 47628044,
+    "frames": 7938000,
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -7.481338,
+    "analysis": {
+      "format": "pcm_s24le",
+      "frames": 7938000,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 24,
+      "durationSeconds": 180,
+      "peakDbfs": -7.481338,
+      "rmsDbfs": -22.234403,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "stereoCorrelation": 0.935758,
+      "monoFoldRmsDbfs": -22.376227,
+      "monoFoldChangeDb": -0.141824,
+      "nonzeroLowBytes": 15430798,
+      "integratedLufs": -20.95,
+      "loudnessRangeLu": 11.3,
+      "truePeakDbfs": -7.38
+    }
+  },
+  "warnings": [
+    "Metrics do not certify musical quality or mono translation. Human listening remains pending."
+  ]
+}

@@ -13,6 +13,10 @@ node tests/precision.test.ts
 npm run typecheck
 ```
 
+The completed [180-second proof and reproduction commands](PRODUCTION24_VERIFICATION.md)
+include a real PCM24 master, all-stem alignment checks and a byte-identical
+independent replay. The original 28-second proof is also retained locally.
+
 Choose a **new** output directory. The command writes a stereo 44.1 kHz
 `PROJECT.24.wav`, one sample-aligned PCM24 WAV per track and
 `PROJECT.24.render.json`. It publishes the directory only after processing and
