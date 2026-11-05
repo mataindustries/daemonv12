@@ -50,6 +50,10 @@ calling tools. DaemonV12 gives them a music format built for that:
   integer sample crops and provenance. The [MORPH sync pack](docs/MORPH_SYNC_PACK.md)
   includes five prototype sounds and an eight-second synchronized composition.
 
+For reusable original-source production, see the [HEADLINER foundation](production/headliner/README.md):
+deterministic instruments, native multisamples, expressive phrase bounces, sections,
+variations and hash-verified project packaging, with a nine-second v0.7 proof.
+
 Measured examples (Linux; Ubuntu's FluidSynth 2.3.4, FluidR3_GM and FFmpeg 6.1.1):
 
 | Demo | What it is | Result |
