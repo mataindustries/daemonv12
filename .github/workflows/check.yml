@@ -29,8 +29,12 @@ jobs:
       - name: CPU proof regression tests (synthetic media, no production rendering)
         if: matrix.node == '22.18.0'
         run: |
-          source "$RUNNER_TEMP/daemonv12-audio-tools/env.sh"
-          export PATH="$(dirname "$DAEMONV12_FFMPEG"):$PATH"
+          # CPU media proofs require the system build's SOXR resampler.
+          # Hosted Ubuntu already supplies it; provision only when absent.
+          if ! command -v ffmpeg >/dev/null; then
+            sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update -qq
+            sudo apt-get install -y --no-install-recommends ffmpeg
+          fi
           python -c "from pathlib import Path; p=Path('tools/angeles2099_actions/requirements.lock'); Path('work').mkdir(exist_ok=True); Path('work/numpy.lock').write_text(next(s for s in p.read_text().splitlines() if s.startswith('numpy=='))+'\n')"
           python -m pip install --only-binary=:all: --no-deps --require-hashes -r work/numpy.lock
           python -m unittest discover -s tools/angeles2099_actions/tests -v
