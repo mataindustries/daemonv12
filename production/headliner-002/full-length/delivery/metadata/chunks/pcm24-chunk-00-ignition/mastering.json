@@ -1,0 +1,83 @@
+{
+  "schema": "daemonv12.headliner-production24-mastering/1",
+  "status": "Technical production candidate; no subjective improvement or release approval asserted.",
+  "authoredMaster": {
+    "gainDb": 2.2
+  },
+  "authoredRender": {
+    "tail": {
+      "seconds": 1
+    }
+  },
+  "authoredTracks": [
+    {
+      "trackId": "bass",
+      "mix": {
+        "gainDb": -2,
+        "pan": 0
+      },
+      "effects": [],
+      "automation": {}
+    },
+    {
+      "trackId": "room",
+      "mix": {
+        "gainDb": 0,
+        "pan": 0
+      },
+      "effects": [],
+      "automation": {}
+    }
+  ],
+  "additionalMastering": "None; original project gain, ordered effects and ducking are preserved.",
+  "export": {
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "dither": false,
+    "normalization": false
+  },
+  "analysis": {
+    "format": "pcm_s24le",
+    "frames": 260100,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "durationSeconds": 5.897959,
+    "peakDbfs": -12.196129,
+    "rmsDbfs": -22.890426,
+    "fullScaleSamples": 0,
+    "clipping": false,
+    "stereoCorrelation": 0.999929,
+    "monoFoldRmsDbfs": -22.890588,
+    "monoFoldChangeDb": -0.000162,
+    "nonzeroLowBytes": 441786,
+    "integratedLufs": -21.26,
+    "loudnessRangeLu": 2.5,
+    "truePeakDbfs": -12.19
+  },
+  "headroom": {
+    "samplePeakDbfs": -12.196129,
+    "truePeakDbfs": -12.19,
+    "truePeakHeadroomDb": 12.19
+  },
+  "stems": "Aligned post-track/pre-master PCM24; independently quantized. Summing exported stems does not reproduce the Float64-summed, master-processed WAV byte for byte.",
+  "sourcePrecision": "Sources are PCM16. No lost source detail is recovered. Newly computed fractional processing detail is retained.",
+  "listening": {
+    "file": "listening/main.24.mp3",
+    "sha256": "dbf6966c8464e89554c395d947a80537577b7d4216480243968dd64b369153db",
+    "bytes": 142986,
+    "codec": "libmp3lame",
+    "bitrateKbps": 192,
+    "derivedFrom": {
+      "file": "masters/main.24.wav",
+      "sha256": "ea53f7fa9712622bb36f8c033f9115a05d7baa4bd8d166922230482ecf3df355"
+    },
+    "processing": "Encoding only; no normalization, extra mastering, gain change or PCM16 intermediate."
+  },
+  "releaseBlockers": [
+    "Human listening approval remains pending.",
+    "Source, composition and generated-audio rights require owner review; no new license is granted.",
+    "Release-specific mastering approval remains pending."
+  ]
+}

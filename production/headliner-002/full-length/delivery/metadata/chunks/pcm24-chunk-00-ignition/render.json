@@ -1,0 +1,146 @@
+{
+  "kind": "daemonv12-production24",
+  "version": 1,
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "source/main.json",
+    "sha256": "185e66ca81963eeae2946166fa63b8a046ab7301242d3c1e0772575b235e1c4f"
+  },
+  "runtime": {
+    "node": "v24.22.2",
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1-3ubuntu5"
+    }
+  },
+  "signalPath": "PCM16 source; unrounded Float64 interpolation/velocity/envelope, gain/pan automation and ordered track effects; Float64 sum, master gain/effects/ducking; single PCM24 quantization per export",
+  "sourcePrecision": "Sources are PCM16. No lost source detail is recovered. Newly computed fractional processing detail is retained.",
+  "stems": [
+    {
+      "trackId": "bass",
+      "file": "stems/bass.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -14.396129,
+      "automation": {},
+      "effects": [],
+      "sha256": "e7684fb75674aba4b65549f58a8111b50b267370715910d5873b6839c1041c4b",
+      "bytes": 1560644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 260100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 5.897959,
+        "peakDbfs": -14.396128,
+        "rmsDbfs": -25.081957,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 1,
+        "monoFoldRmsDbfs": -25.081957,
+        "monoFoldChangeDb": 0,
+        "nonzeroLowBytes": 399848
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "room",
+      "file": "stems/room.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -52.924364,
+      "automation": {},
+      "effects": [],
+      "sha256": "71d0f988e9af2283d0108dcaa32f6937196297df2bfa83264a8b6931955d5172",
+      "bytes": 1560644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 260100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 5.897959,
+        "peakDbfs": -52.924364,
+        "rmsDbfs": -67.048494,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": -0.17299,
+        "monoFoldRmsDbfs": -70.867654,
+        "monoFoldChangeDb": -3.819159,
+        "nonzeroLowBytes": 0
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    }
+  ],
+  "sources": [
+    {
+      "file": "source/assets/bass/kit.json",
+      "sha256": "ad55eecade05381f58996a393cae1f02bf5a3c235b364e787523018e343e3e4a",
+      "bytes": 144,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/bass/phrase-ignition.wav",
+      "sha256": "04e28b8d8910c3e7669cb58df48541b9d3e2281b8832f24abe3f2aacf4cfef2a",
+      "bytes": 1040444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "source/assets/room/kit.json",
+      "sha256": "ad55eecade05381f58996a393cae1f02bf5a3c235b364e787523018e343e3e4a",
+      "bytes": 144,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/room/phrase-ignition.wav",
+      "sha256": "92f8d3d95f15b292aba3f2eac7e88aa4b5cbbe777fd850d3f904401fc320249a",
+      "bytes": 1040444,
+      "bitsPerSample": 16
+    }
+  ],
+  "limits": {
+    "maximumSeconds": 600,
+    "interpolationTaps": 1000000000,
+    "performedVoiceBytes": 134217728,
+    "tracks": 15
+  },
+  "export": {
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "dither": false,
+    "normalization": false
+  },
+  "master": {
+    "file": "masters/main.24.wav",
+    "sha256": "ea53f7fa9712622bb36f8c033f9115a05d7baa4bd8d166922230482ecf3df355",
+    "bytes": 1560644,
+    "frames": 260100,
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -12.196129,
+    "analysis": {
+      "format": "pcm_s24le",
+      "frames": 260100,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 24,
+      "durationSeconds": 5.897959,
+      "peakDbfs": -12.196129,
+      "rmsDbfs": -22.890426,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "stereoCorrelation": 0.999929,
+      "monoFoldRmsDbfs": -22.890588,
+      "monoFoldChangeDb": -0.000162,
+      "nonzeroLowBytes": 441786,
+      "integratedLufs": -21.26,
+      "loudnessRangeLu": 2.5,
+      "truePeakDbfs": -12.19
+    }
+  },
+  "warnings": [
+    "Metrics do not certify musical quality or mono translation. Human listening remains pending."
+  ]
+}

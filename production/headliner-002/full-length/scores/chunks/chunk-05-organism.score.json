@@ -1,0 +1,1091 @@
+{
+  "schema": "daemonv12.signature-rack.score/1",
+  "title": "CHROME STALLION \u2014 Full Length [chunk 5 organism]",
+  "bpm": 98,
+  "key": "G minor",
+  "timeSignature": "4/4",
+  "swing": 0.58,
+  "seed": 202,
+  "tailSeconds": 1.0,
+  "masterGainDb": 2.2,
+  "description": "Full-length original development of sketch B: futuristic West Coast x industrial funk. The signature bass cell recurs through changing harmony, a haunting voice melody, a displaced evolution, a half-time ORGANISM rupture where mechanical percussion takes over the riff rhythm, an evolved heavy return, a high-register machine payoff, and a warm coda.",
+  "sections": [
+    {
+      "id": "organism",
+      "bars": 10,
+      "development": "half-time: bass becomes long machine notes while clock/tines/bars play the riff rhythm; 2-bar negative space (bow subharmonic + hum); stop-time return"
+    }
+  ],
+  "room": {
+    "rt60": 1.9,
+    "size": 1.05,
+    "damp": 5800,
+    "predelayMs": 14,
+    "lowCut": 240
+  },
+  "parts": [
+    {
+      "id": "bass",
+      "instrument": "living-bass",
+      "gainDb": -2,
+      "room": 0.04,
+      "macro": [
+        [
+          0,
+          0.6
+        ],
+        [
+          0,
+          0.6
+        ],
+        [
+          16,
+          0.85
+        ],
+        [
+          20,
+          0.4
+        ],
+        [
+          28,
+          0.95
+        ]
+      ],
+      "expression": [
+        [
+          0,
+          0.8722
+        ]
+      ],
+      "humanize": {
+        "timingMs": 4,
+        "velocity": 0.06,
+        "seed": 7
+      },
+      "motion": [
+        {
+          "fromBeat": 0,
+          "toBeat": 8,
+          "preset": "triplets"
+        },
+        {
+          "fromBeat": 8,
+          "toBeat": 16,
+          "preset": "revving"
+        },
+        {
+          "fromBeat": 16,
+          "toBeat": 20,
+          "preset": "thirty-seconds"
+        },
+        {
+          "fromBeat": 28,
+          "toBeat": 36,
+          "preset": "thirty-seconds"
+        },
+        {
+          "fromBeat": 36,
+          "toBeat": 40,
+          "preset": "growl"
+        }
+      ],
+      "notes": [
+        [
+          0,
+          7,
+          "G1",
+          0.95,
+          {
+            "articulation": "accent",
+            "scoop": 2
+          }
+        ],
+        [
+          8,
+          7,
+          "Eb1",
+          0.95,
+          {
+            "articulation": "accent",
+            "scoop": 1.5
+          }
+        ],
+        [
+          16,
+          3.5,
+          "G1",
+          0.92,
+          {
+            "articulation": "accent"
+          }
+        ],
+        [
+          28,
+          1,
+          "G1",
+          0.98,
+          {
+            "articulation": "accent",
+            "scoop": 2
+          }
+        ],
+        [
+          30.5,
+          0.5,
+          "G1",
+          0.9,
+          {
+            "articulation": "accent"
+          }
+        ],
+        [
+          32,
+          2.5,
+          "Eb1",
+          0.95,
+          {
+            "articulation": "accent",
+            "scoop": 1.5
+          }
+        ],
+        [
+          35,
+          0.5,
+          "F1",
+          0.9,
+          {
+            "articulation": "accent"
+          }
+        ],
+        [
+          36,
+          3.5,
+          "G1",
+          0.95,
+          {
+            "slide": 0.1
+          }
+        ]
+      ]
+    },
+    {
+      "id": "voice",
+      "instrument": "impossible-voice",
+      "gainDb": -3.5,
+      "pan": -0.12,
+      "room": 0.2,
+      "macro": [
+        [
+          0,
+          0.3222
+        ]
+      ],
+      "controls": {
+        "glass": [
+          [
+            0,
+            0.5405
+          ]
+        ],
+        "whistle": [
+          [
+            0,
+            0.4817
+          ]
+        ]
+      },
+      "expression": [
+        [
+          0,
+          0.5738
+        ]
+      ],
+      "breaths": [
+        {
+          "beat": 21.19999999999999,
+          "beats": 0.5,
+          "kind": "in",
+          "velocity": 0.3
+        }
+      ],
+      "notes": [
+        [
+          22,
+          5,
+          "G3",
+          0.5,
+          {
+            "vowel": "mm",
+            "articulation": "hum"
+          }
+        ],
+        [
+          28,
+          1,
+          "D5",
+          0.66,
+          {
+            "vowel": "ah",
+            "articulation": "cry",
+            "cry": 1.5
+          }
+        ]
+      ]
+    },
+    {
+      "id": "voice-2",
+      "instrument": "impossible-voice",
+      "gainDb": -11.5,
+      "pan": 0.25,
+      "room": 0.25,
+      "macro": [
+        [
+          0,
+          0.3
+        ]
+      ],
+      "controls": {
+        "whistle": 0,
+        "glass": 0.1
+      },
+      "setup": {
+        "size": -0.15,
+        "detune": -4,
+        "vibRate": 4.7,
+        "vibCents": 22,
+        "seed": 47
+      },
+      "notes": []
+    },
+    {
+      "id": "tines",
+      "instrument": "mechanical-orchestra/tine",
+      "gainDb": -12,
+      "pan": 0.25,
+      "room": 0.18,
+      "macro": [
+        [
+          0,
+          0.55
+        ],
+        [
+          0,
+          0.55
+        ]
+      ],
+      "expression": [
+        [
+          0,
+          0.885
+        ]
+      ],
+      "setup": {
+        "spread": 0.25
+      },
+      "humanize": {
+        "timingMs": 3,
+        "velocity": 0.08,
+        "seed": 8
+      },
+      "notes": [
+        [
+          0,
+          0.3,
+          "G5",
+          0.42
+        ],
+        [
+          1.25,
+          0.3,
+          "Bb5",
+          0.5
+        ],
+        [
+          1.5,
+          0.3,
+          "D6",
+          0.58
+        ],
+        [
+          2,
+          0.3,
+          "G6",
+          0.42
+        ],
+        [
+          3,
+          0.3,
+          "G5",
+          0.5
+        ],
+        [
+          3.5,
+          0.3,
+          "Bb5",
+          0.58
+        ],
+        [
+          4,
+          0.3,
+          "D6",
+          0.42
+        ],
+        [
+          5.25,
+          0.3,
+          "G6",
+          0.5
+        ],
+        [
+          5.5,
+          0.3,
+          "G5",
+          0.58
+        ],
+        [
+          6,
+          0.3,
+          "Bb5",
+          0.42
+        ],
+        [
+          8,
+          0.3,
+          "G5",
+          0.42
+        ],
+        [
+          9.25,
+          0.3,
+          "Bb5",
+          0.5
+        ],
+        [
+          9.5,
+          0.3,
+          "D6",
+          0.58
+        ],
+        [
+          10,
+          0.3,
+          "G6",
+          0.42
+        ],
+        [
+          11,
+          0.3,
+          "G5",
+          0.5
+        ],
+        [
+          11.5,
+          0.3,
+          "Bb5",
+          0.58
+        ],
+        [
+          12,
+          0.3,
+          "D6",
+          0.42
+        ],
+        [
+          13.25,
+          0.3,
+          "G6",
+          0.5
+        ],
+        [
+          13.5,
+          0.3,
+          "G5",
+          0.58
+        ],
+        [
+          14,
+          0.3,
+          "Bb5",
+          0.42
+        ],
+        [
+          16,
+          0.3,
+          "G5",
+          0.42
+        ],
+        [
+          17.25,
+          0.3,
+          "Bb5",
+          0.5
+        ],
+        [
+          17.5,
+          0.3,
+          "D6",
+          0.58
+        ],
+        [
+          18,
+          0.3,
+          "G6",
+          0.42
+        ],
+        [
+          19,
+          0.3,
+          "G5",
+          0.5
+        ],
+        [
+          19.5,
+          0.3,
+          "Bb5",
+          0.58
+        ],
+        [
+          20,
+          0.3,
+          "D6",
+          0.42
+        ],
+        [
+          21.25,
+          0.3,
+          "G6",
+          0.5
+        ],
+        [
+          21.5,
+          0.3,
+          "G5",
+          0.58
+        ],
+        [
+          22,
+          0.3,
+          "Bb5",
+          0.42
+        ]
+      ]
+    },
+    {
+      "id": "bars",
+      "instrument": "mechanical-orchestra/bar",
+      "gainDb": -10,
+      "pan": -0.2,
+      "room": 0.22,
+      "macro": [
+        [
+          0,
+          0.6
+        ],
+        [
+          0,
+          0.6
+        ]
+      ],
+      "setup": {
+        "spread": 0.5
+      },
+      "humanize": {
+        "timingMs": 3,
+        "velocity": 0.08,
+        "seed": 12
+      },
+      "notes": [
+        [
+          0,
+          0.4,
+          "G4",
+          0.5
+        ],
+        [
+          1.5,
+          0.4,
+          "Bb4",
+          0.5
+        ],
+        [
+          3,
+          0.4,
+          "G4",
+          0.5
+        ],
+        [
+          4,
+          0.4,
+          "Bb4",
+          0.5
+        ],
+        [
+          5.5,
+          0.4,
+          "G4",
+          0.5
+        ],
+        [
+          8,
+          0.4,
+          "G4",
+          0.5
+        ],
+        [
+          9.5,
+          0.4,
+          "Bb4",
+          0.5
+        ],
+        [
+          11,
+          0.4,
+          "G4",
+          0.5
+        ],
+        [
+          12,
+          0.4,
+          "Bb4",
+          0.5
+        ],
+        [
+          13.5,
+          0.4,
+          "G4",
+          0.5
+        ],
+        [
+          16,
+          0.4,
+          "G4",
+          0.5
+        ],
+        [
+          17.5,
+          0.4,
+          "Bb4",
+          0.5
+        ],
+        [
+          19,
+          0.4,
+          "G4",
+          0.5
+        ],
+        [
+          20,
+          0.4,
+          "Bb4",
+          0.5
+        ],
+        [
+          21.5,
+          0.4,
+          "G4",
+          0.5
+        ]
+      ]
+    },
+    {
+      "id": "bow",
+      "instrument": "mechanical-orchestra/bow",
+      "gainDb": -15,
+      "room": 0.35,
+      "macro": [
+        [
+          0,
+          0.719
+        ],
+        [
+          20,
+          0.85
+        ]
+      ],
+      "setup": {
+        "spread": 0.3
+      },
+      "notes": [
+        [
+          20,
+          8,
+          "G3",
+          0.5,
+          {
+            "articulation": "overpressure"
+          }
+        ],
+        [
+          20,
+          8,
+          "D3",
+          0.4,
+          {
+            "articulation": "swell"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "spring",
+      "instrument": "mechanical-orchestra/spring",
+      "gainDb": -9,
+      "pan": -0.3,
+      "room": 0.2,
+      "macro": [
+        [
+          0,
+          0.4935
+        ],
+        [
+          28,
+          0.6
+        ]
+      ],
+      "notes": [
+        [
+          28,
+          1,
+          "G2",
+          0.65,
+          {
+            "articulation": "twang"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "clock",
+      "instrument": "mechanical-orchestra/clock",
+      "gainDb": -16,
+      "pan": -0.15,
+      "room": 0.1,
+      "macro": [
+        [
+          0,
+          0.65
+        ],
+        [
+          0,
+          0.65
+        ]
+      ],
+      "humanize": {
+        "timingMs": 2.5,
+        "velocity": 0.12,
+        "seed": 9
+      },
+      "repeats": [
+        {
+          "fromBeat": 0,
+          "toBeat": 20,
+          "lengthBeats": 8,
+          "notes": [
+            [
+              0,
+              0.1,
+              "G6",
+              0.5,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              1.25,
+              0.1,
+              "D7",
+              0.62,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              1.5,
+              0.1,
+              "G6",
+              0.74,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              2,
+              0.1,
+              "D7",
+              0.5,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              3,
+              0.1,
+              "G6",
+              0.62,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              3.5,
+              0.1,
+              "D7",
+              0.74,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              4,
+              0.1,
+              "G6",
+              0.5,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              5.25,
+              0.1,
+              "D7",
+              0.62,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              5.5,
+              0.1,
+              "G6",
+              0.74,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              6,
+              0.1,
+              "D7",
+              0.5,
+              {
+                "articulation": "tock"
+              }
+            ]
+          ]
+        },
+        {
+          "fromBeat": 32,
+          "toBeat": 40,
+          "lengthBeats": 8,
+          "notes": [
+            [
+              0,
+              0.1,
+              "G6",
+              0.55,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              1.25,
+              0.1,
+              "D7",
+              0.67,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              1.5,
+              0.1,
+              "G6",
+              0.79,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              2,
+              0.1,
+              "D7",
+              0.55,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              3,
+              0.1,
+              "G6",
+              0.67,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              3.5,
+              0.1,
+              "D7",
+              0.79,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              4,
+              0.1,
+              "G6",
+              0.55,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              5.25,
+              0.1,
+              "D7",
+              0.67,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              5.5,
+              0.1,
+              "G6",
+              0.79,
+              {
+                "articulation": "tock"
+              }
+            ],
+            [
+              6,
+              0.1,
+              "D7",
+              0.55,
+              {
+                "articulation": "tock"
+              }
+            ]
+          ]
+        }
+      ],
+      "notes": [
+        [
+          27.5,
+          0.1,
+          "G6",
+          0.3,
+          {
+            "articulation": "tock"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "bearings",
+      "instrument": "mechanical-orchestra/bearings",
+      "gainDb": -22,
+      "room": 0.4,
+      "macro": [
+        [
+          0,
+          0.5286
+        ],
+        [
+          20,
+          0.6
+        ]
+      ],
+      "textures": [
+        {
+          "fromBeat": 16,
+          "toBeat": 28,
+          "density": [
+            [
+              0,
+              2
+            ],
+            [
+              16,
+              2
+            ],
+            [
+              22,
+              0.4
+            ],
+            [
+              28,
+              1
+            ]
+          ],
+          "pitches": [
+            "G6",
+            "D7",
+            "Bb6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kick",
+      "instrument": "context/kick",
+      "gainDb": -5,
+      "context": true,
+      "humanize": {
+        "timingMs": 2,
+        "velocity": 0.05,
+        "seed": 10
+      },
+      "notes": [
+        [
+          0,
+          0.5,
+          "G1",
+          1
+        ],
+        [
+          4,
+          0.5,
+          "G1",
+          1
+        ],
+        [
+          8,
+          0.5,
+          "G1",
+          1
+        ],
+        [
+          12,
+          0.5,
+          "G1",
+          1
+        ],
+        [
+          16,
+          0.5,
+          "G1",
+          1
+        ],
+        [
+          28,
+          0.5,
+          "G1",
+          1
+        ],
+        [
+          30.5,
+          0.5,
+          "G1",
+          0.9
+        ],
+        [
+          32,
+          0.5,
+          "G1",
+          1
+        ],
+        [
+          35,
+          0.5,
+          "G1",
+          0.9
+        ],
+        [
+          36,
+          0.5,
+          "G1",
+          1
+        ]
+      ]
+    },
+    {
+      "id": "snare",
+      "instrument": "context/snare",
+      "gainDb": -8,
+      "room": 0.18,
+      "context": true,
+      "humanize": {
+        "timingMs": 3,
+        "velocity": 0.06,
+        "seed": 11
+      },
+      "notes": [
+        [
+          2,
+          0.5,
+          "C4",
+          0.95,
+          {
+            "articulation": "snare"
+          }
+        ],
+        [
+          6,
+          0.5,
+          "C4",
+          0.95,
+          {
+            "articulation": "snare"
+          }
+        ],
+        [
+          10,
+          0.5,
+          "C4",
+          0.95,
+          {
+            "articulation": "snare"
+          }
+        ],
+        [
+          14,
+          0.5,
+          "C4",
+          0.95,
+          {
+            "articulation": "snare"
+          }
+        ],
+        [
+          18,
+          0.5,
+          "C4",
+          0.95,
+          {
+            "articulation": "snare"
+          }
+        ],
+        [
+          28,
+          0.5,
+          "C4",
+          0.9,
+          {
+            "articulation": "snare"
+          }
+        ],
+        [
+          32,
+          0.5,
+          "C4",
+          0.9,
+          {
+            "articulation": "snare"
+          }
+        ],
+        [
+          36,
+          0.5,
+          "C4",
+          0.95,
+          {
+            "articulation": "snare"
+          }
+        ]
+      ]
+    }
+  ]
+}

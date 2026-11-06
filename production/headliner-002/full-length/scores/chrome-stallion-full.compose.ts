@@ -49,7 +49,7 @@ const bass: N[] = [
   [264, 1, 'G1', 0.98, { articulation: 'accent', scoop: 2 }], [265.25, 0.25, 'G1', 0.55, { articulation: 'ghost' }], [265.5, 0.5, 'Bb1', 0.8], [266, 0.75, 'G1', 0.9, { slide: 0.08 }], [267, 0.5, 'F1', 0.75], [267.5, 0.5, 'G1', 0.8], [268, 3.5, 'G1', 0.95, { slide: 0.1, dive: 5, diveBeats: 1.5 }],
   // coda (272-304): warm fragments, then one held G: machine -> warm inside the note
   [272, 1.5, 'G1', 0.85, { articulation: 'accent', scoop: 1.5 }], [274, 1, 'Bb1', 0.65], [275.5, 2, 'G1', 0.75, { slide: 0.1 }], [280, 1.5, 'Eb2', 0.7], [282, 2, 'D2', 0.65, { slide: 0.12 }],
-  [288, 8, 'G1', 0.85, { articulation: 'accent', scoop: 1 }],
+  [288, 8, 'G1', 0.85, { articulation: 'accent', scoop: 1 }], [300, 2.5, 'G1', 0.55, { articulation: 'accent', scoop: 1 }],
 ];
 
 // drums: sketch pocket (kick 0/1.75/2.5, snare 1/3 + ghost), with section-aware ranges
@@ -84,7 +84,7 @@ for (const start of [136, 144, 152]) RIFF_OFF.forEach((o, i) => { tines.push([st
 // bars: break melody + organism transfer (low rotation) + heavy-return accents
 const bars: N[] = [
   [74, 1, 'D6', 0.4, { articulation: 'soft' }], [82, 1, 'Bb5', 0.38, { articulation: 'soft' }], [90, 1, 'F6', 0.38, { articulation: 'soft' }], [98, 1, 'D6', 0.4, { articulation: 'soft' }],
-  [270, 1, 'G6', 0.45], [296, 2, 'G6', 0.4, { articulation: 'ring' }],
+  [270, 1, 'G6', 0.45], [300, 2, 'G6', 0.38, { articulation: 'ring' }],
 ];
 for (const start of [136, 144, 152]) RIFF_OFF.forEach((o, i) => { if (i % 2 === 0) bars.push([start + o, 0.4, ['G4', 'Eb5', 'Bb4', 'D5'][i % 4]!, 0.5]); });
 for (const b of [192, 200, 224, 232]) bars.push([b, 0.5, 'G5', 0.5], [b + 4, 0.5, 'Eb5', 0.45]);
@@ -104,7 +104,7 @@ voice.push(
   // organism: one hum in the negative space, one cry on the stop-time return
   [158, 5, 'G3', 0.5, { vowel: 'mm', articulation: 'hum' }], [164, 1, 'D5', 0.66, { vowel: 'ah', articulation: 'cry', cry: 1.5 }],
   // heavy return: melody fragment an octave of feeling higher
-  [208, 2, 'D5', 0.66, { vowel: 'oo', to: 'ah' }], [210, 1.5, 'Bb4', 0.62, { slide: 0.08 }], [211.5, 0.5, 'A4', 0.6, { slide: 0.06 }], [212, 2.5, 'G4', 0.66, { vowel: 'ah', articulation: 'fall', fall: 0.6 }],
+  [208, 2, 'D5', 0.56, { vowel: 'oo', to: 'ah' }], [210, 1.5, 'Bb4', 0.54, { slide: 0.08 }], [211.5, 0.5, 'A4', 0.52, { slide: 0.06 }], [212, 2.5, 'G4', 0.56, { vowel: 'ah', articulation: 'fall', fall: 0.6 }],
   // payoff: held root, the overtone lane sings (see overtone steps)
   [240, 7, 'G4', 0.62, { vowel: 'oo', to: 'oh', articulation: 'hum' }], [248, 7, 'G4', 0.6, { vowel: 'oh', to: 'ah', articulation: 'hum' }], [256, 3, 'Bb4', 0.64, { vowel: 'ah', articulation: 'cry', cry: 1 }],
   // coda resolution
@@ -121,7 +121,7 @@ const bow: N[] = [
 const spring: N[] = [[72, 1, 'G2', 0.6, { articulation: 'pluck' }], [80, 1, 'Eb2', 0.55], [88, 1, 'Bb2', 0.55], [96, 1, 'F2', 0.58], [164, 1, 'G2', 0.65, { articulation: 'twang' }]];
 
 const score = {
-  schema: 'daemonv12.signature-rack.score/1', title: 'CHROME STALLION — Full Length', bpm: 98, key: 'G minor', timeSignature: '4/4', swing: 0.58, seed: 202, tailSeconds: 2.5, masterGainDb: 0,
+  schema: 'daemonv12.signature-rack.score/1', title: 'CHROME STALLION — Full Length', bpm: 98, key: 'G minor', timeSignature: '4/4', swing: 0.58, seed: 202, tailSeconds: 2.0, masterGainDb: 2.2,
   description: 'Full-length original development of sketch B: futuristic West Coast x industrial funk. The signature bass cell recurs through changing harmony, a haunting voice melody, a displaced evolution, a half-time ORGANISM rupture where mechanical percussion takes over the riff rhythm, an evolved heavy return, a high-register machine payoff, and a warm coda.',
   sections: [
     { id: 'ignition', bars: 2, development: 'stretched first gesture of the riff, bass alone with sparse clock' },
@@ -138,21 +138,21 @@ const score = {
   parts: [
     { id: 'bass', instrument: 'living-bass', gainDb: -2, room: 0.04,
       macro: [[0, 0.3], [8, 0.08], [40, 0.15], [72, 0.05], [104, 0.35], [120, 0.5], [136, 0.6], [152, 0.85], [156, 0.4], [164, 0.95], [176, 0.75], [208, 0.85], [240, 0.9], [264, 1], [272, 0.5], [288, 0.65], [296, 0.05], [304, 0.02]],
-      expression: [[0, 0.8], [72, 0.6], [104, 0.85], [176, 0.9], [272, 0.7], [304, 0.55]],
+      expression: [[0, 0.8], [72, 0.48], [104, 0.85], [176, 0.9], [240, 0.97], [272, 0.7], [304, 0.55]],
       humanize: { timingMs: 4, velocity: 0.06, seed: 7 },
       motion: [{ fromBeat: 8, toBeat: 72, preset: 'eighths' }, { fromBeat: 104, toBeat: 136, preset: 'sixteenths' }, { fromBeat: 136, toBeat: 144, preset: 'triplets' }, { fromBeat: 144, toBeat: 152, preset: 'revving' }, { fromBeat: 152, toBeat: 156, preset: 'thirty-seconds' }, { fromBeat: 164, toBeat: 172, preset: 'thirty-seconds' }, { fromBeat: 172, toBeat: 176, preset: 'growl' }, { fromBeat: 176, toBeat: 240, preset: 'sixteenths' }, { fromBeat: 240, toBeat: 256, preset: 'sixteenths' }, { fromBeat: 256, toBeat: 268, preset: 'growl' }],
       notes: bass },
-    { id: 'voice', instrument: 'impossible-voice', gainDb: -3, pan: -0.12, room: 0.2,
+    { id: 'voice', instrument: 'impossible-voice', gainDb: -3.5, pan: -0.12, room: 0.2,
       macro: [[40, 0.15], [72, 0.2], [88, 0.45], [104, 0.3], [176, 0.35], [208, 0.6], [240, 0.85], [272, 0.25], [288, 0.1], [304, 0.05]],
       controls: { glass: [[40, 0.15], [72, 0.35], [240, 0.85], [272, 0.3]], whistle: [[0, 0], [240, 0.85], [256, 0.4], [272, 0]] },
-      expression: [[40, 0.65], [72, 0.6], [176, 0.75], [272, 0.55]],
+      expression: [[40, 0.65], [72, 0.5], [176, 0.62], [240, 0.8], [272, 0.55]],
       overtone: { steps: [[240, 3], [242, 5], [244, 4], [246, 6], [248, 5], [250, 8], [252, 6], [254, 4]], glide: 0.12 },
       breaths: [{ beat: 39.2, beats: 0.5, kind: 'in', velocity: 0.35 }, { beat: 71.2, beats: 0.6, kind: 'in', velocity: 0.35 }, { beat: 157.2, beats: 0.5, kind: 'in', velocity: 0.3 }, { beat: 271.2, beats: 0.6, kind: 'in', velocity: 0.3 }],
       notes: voice },
-    { id: 'voice-2', instrument: 'impossible-voice', gainDb: -9, pan: 0.25, room: 0.25,
+    { id: 'voice-2', instrument: 'impossible-voice', gainDb: -11.5, pan: 0.25, room: 0.25,
       macro: [[176, 0.3], [240, 0.5]], controls: { whistle: 0, glass: 0.1 }, setup: { size: -0.15, detune: -4, vibRate: 4.7, vibCents: 22, seed: 47 }, notes: voice2 },
     { id: 'tines', instrument: 'mechanical-orchestra/tine', gainDb: -12, pan: 0.25, room: 0.18,
-      macro: [[0, 0.2], [136, 0.55], [176, 0.6], [240, 0.75]], setup: { spread: 0.25 }, humanize: { timingMs: 3, velocity: 0.08, seed: 8 }, notes: tines },
+      macro: [[0, 0.2], [136, 0.55], [176, 0.6], [240, 0.75]], expression: [[0, 0.8], [240, 0.95], [272, 0.7]], setup: { spread: 0.25 }, humanize: { timingMs: 3, velocity: 0.08, seed: 8 }, notes: tines },
     { id: 'bars', instrument: 'mechanical-orchestra/bar', gainDb: -10, pan: -0.2, room: 0.22,
       macro: [[72, 0.25], [136, 0.6], [176, 0.55], [272, 0.3]], setup: { spread: 0.5 }, humanize: { timingMs: 3, velocity: 0.08, seed: 12 }, notes: bars },
     { id: 'bow', instrument: 'mechanical-orchestra/bow', gainDb: -15, room: 0.35,

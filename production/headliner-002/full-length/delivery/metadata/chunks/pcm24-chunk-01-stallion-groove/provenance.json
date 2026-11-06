@@ -1,0 +1,237 @@
+{
+  "schema": "daemonv12.headliner-production24-provenance/1",
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "runtime": {
+    "node": "v24.22.2",
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1-3ubuntu5"
+    }
+  },
+  "adapter": {
+    "file": "scripts/headliner-production24.ts",
+    "sha256": "2947705aa87b1930d450950b8ee4b9cdde608cd996be8330affb69e5756a6ea2",
+    "bytes": 13252
+  },
+  "engineSources": [
+    {
+      "file": "src/audio-types.ts",
+      "sha256": "4aa91de83e99b2e68caa923628810a8d16f49c7a508f43f9ce91e3b0b96ceb5b",
+      "bytes": 1676
+    },
+    {
+      "file": "src/cli/init.ts",
+      "sha256": "070c22aa38d137fad5ecce8beed6b02a8af2cad2102bdc7cd5d7dc77bb18df57",
+      "bytes": 6644
+    },
+    {
+      "file": "src/cli/main.ts",
+      "sha256": "6a1b90b5e9324e5e376df77b308742e014f2d84a7e92c957d7ef8fd4df6b2071",
+      "bytes": 6963
+    },
+    {
+      "file": "src/cli/sync.ts",
+      "sha256": "4366fd47d61574c3ea595261777249c2080db14a36bba7be8b98a9be280b7068",
+      "bytes": 7092
+    },
+    {
+      "file": "src/diagnostics.ts",
+      "sha256": "6df99c01cec7a47b2c421086f5befa308b975563cdfa19410f297ee6f4d704da",
+      "bytes": 4948
+    },
+    {
+      "file": "src/doctor.ts",
+      "sha256": "460cf7d0ebc7753950b3c548eee61427f720c3e505aa5bbf95f189aa8b3d0690",
+      "bytes": 10760
+    },
+    {
+      "file": "src/installation.ts",
+      "sha256": "863dc334032d76789db6ae404efd2954ed907ddc5cf123926cc2f2f9f3fd4d50",
+      "bytes": 1067
+    },
+    {
+      "file": "src/midi/smf.ts",
+      "sha256": "cf41625c0efd289d57c7c3b50a94d02699996e63340eee2f14dec6c2ff8c1a1c",
+      "bytes": 2998
+    },
+    {
+      "file": "src/pipeline.ts",
+      "sha256": "d0a5ade5911a6687a2be117b4ae6110858efee622233a988a52ae2825948a229",
+      "bytes": 22914
+    },
+    {
+      "file": "src/precision-render.ts",
+      "sha256": "eeedfa4815252d521a2daf673a18652a8cae6d9dd9fa6d83e3139d38aaa02703",
+      "bytes": 8333
+    },
+    {
+      "file": "src/project/assets.ts",
+      "sha256": "ba7c3f468c78a171780154845a7b638ba3d9f3f1684f22326105eb7f0724da45",
+      "bytes": 4566
+    },
+    {
+      "file": "src/project/gm-programs.ts",
+      "sha256": "b92215ff5ceeafeacb853e14109de4b1a8c1d0ead06befef0d0ffffe0a0386fa",
+      "bytes": 3575
+    },
+    {
+      "file": "src/project/key.ts",
+      "sha256": "d9c96ae82a94fed0e47a0adcaf66e3428fa52f20d73afd506a1a35de546b988e",
+      "bytes": 1648
+    },
+    {
+      "file": "src/project/load.ts",
+      "sha256": "3f96d8f4434899bcbb24433874a4286bd6ca3bfc00564ca347037b6851c39905",
+      "bytes": 1695
+    },
+    {
+      "file": "src/project/pitch.ts",
+      "sha256": "be7b5c89605f9245a967e81826ac4583fa0a184babed517607f3a2fdea7913ce",
+      "bytes": 1354
+    },
+    {
+      "file": "src/project/sample-schema.ts",
+      "sha256": "39180061308da55b749483347e5e4ee165d4d27ad21155f10481dac450621476",
+      "bytes": 2932
+    },
+    {
+      "file": "src/project/types.ts",
+      "sha256": "dd37f36eb31cd20e715f3bc8ea475d1f4bc80fbdfcd404d1c5e5ad964fe3be7f",
+      "bytes": 2226
+    },
+    {
+      "file": "src/project/validate.ts",
+      "sha256": "a58ca1fb1e881158dbfd562d2679711efc3cacbd3e336b32ce398631af352344",
+      "bytes": 28546
+    },
+    {
+      "file": "src/render/analysis.ts",
+      "sha256": "cdbfefed758d24f800dc32675f38a3d9f9cb127af367515f12687991c32b1674",
+      "bytes": 1809
+    },
+    {
+      "file": "src/render/clip.ts",
+      "sha256": "8098b28c0088d96283ea97c8e17ce5805b82ee7caff698f3b479adfaf756d1a6",
+      "bytes": 1491
+    },
+    {
+      "file": "src/render/dynamics.ts",
+      "sha256": "ddd2bc35d07f483b3faeace56f90473d8d57470ae3fea7ac81fb8a8624a74e4c",
+      "bytes": 3979
+    },
+    {
+      "file": "src/render/environment.ts",
+      "sha256": "2bb76811a9adf7a10ec9acd3990bb282567a6e127a6296c20d8c3ae600285e2e",
+      "bytes": 1042
+    },
+    {
+      "file": "src/render/ffmpeg.ts",
+      "sha256": "27ad403e021a2c475e7f6ce15444ad3c37f5845d2bcf5ceb4faccd56c87d6d89",
+      "bytes": 9925
+    },
+    {
+      "file": "src/render/fluidsynth.ts",
+      "sha256": "3607e2983ff8b71ce1f5e179e909053bb38ff47da3e1876d071cd4146cbe9bf7",
+      "bytes": 5584
+    },
+    {
+      "file": "src/render/index.ts",
+      "sha256": "cc3a761b423e7f8feb3aa523998c3bb7816152cc35a390e6ba1c144e98896633",
+      "bytes": 1362
+    },
+    {
+      "file": "src/render/pcm.ts",
+      "sha256": "9164c53cedc2bda9c0813e9c2430c48327916f00af6b23e62ff4a3d89de0aa45",
+      "bytes": 3558
+    },
+    {
+      "file": "src/render/playback.ts",
+      "sha256": "3b67dec552a46b6fca9987a0f8d0227ff173b93d125a1acccbe4a8e406aa3bba",
+      "bytes": 12823
+    },
+    {
+      "file": "src/render/precision.ts",
+      "sha256": "f34383eaaf6075eb45acf9ef9943472e853aefe23dc4b0d3cc63e33cd6176500",
+      "bytes": 6019
+    },
+    {
+      "file": "src/render/production.ts",
+      "sha256": "ff60bfd3aa979aeabf65e39dd1ef8ffd97f50f9054a9c086328f96d3745b8ffe",
+      "bytes": 6042
+    },
+    {
+      "file": "src/render/renderer.ts",
+      "sha256": "b6e6bda291b6240da9380d6696ac5700599438c64cec3531d1aaed24cdecacfb",
+      "bytes": 734
+    },
+    {
+      "file": "src/render/soundfont.ts",
+      "sha256": "a9a7a0eb2c6911da296f31a11b63d0b3f3ecab0c66bc2973e3f5f4587cc15d43",
+      "bytes": 2682
+    },
+    {
+      "file": "src/render/voice-cache.ts",
+      "sha256": "307abbd9cc4ca7cc488a79c1d0cc513d1d2df43c73748741360a1949457d0cd5",
+      "bytes": 2677
+    },
+    {
+      "file": "src/render/wav.ts",
+      "sha256": "9c0441df7380d31c9e10f296568fdca10b8ee7f8f27f099edb12719ad013d84c",
+      "bytes": 2392
+    },
+    {
+      "file": "src/sample-render.ts",
+      "sha256": "41452bed3ec4cf267023cc339875abb1484c06113dce1126d5d15a4605442f1f",
+      "bytes": 19079
+    },
+    {
+      "file": "src/sync-timeline.ts",
+      "sha256": "8307fd97e5c5619a5055584d7fcc58cdcd359a78578ae98498093c2ca0616c06",
+      "bytes": 927
+    },
+    {
+      "file": "src/sync/index.ts",
+      "sha256": "2d49485db7e971cb682bb5b6bcf8be664158ee9d5af552e1316388b1eefbf42e",
+      "bytes": 17689
+    },
+    {
+      "file": "src/timing/musical-time.ts",
+      "sha256": "cf1f1fb0611faeac1d950c3f9ac2d43bb3a933d6e8b18e14da44c043f2f59626",
+      "bytes": 4930
+    },
+    {
+      "file": "src/timing/render-plan.ts",
+      "sha256": "fb80761bbb153fdc4e7bbf6c761f8b13e7489d78cd5ee61045f270fc02c540ca",
+      "bytes": 2131
+    },
+    {
+      "file": "src/timing/resolve.ts",
+      "sha256": "0d29fba12bafc36f5cdb7a27949e6dbdc67da9d07cce717afaff311043582712",
+      "bytes": 3383
+    },
+    {
+      "file": "src/timing/timeline.ts",
+      "sha256": "70537470c2f0204676dd1a606d35be20a74763b30625ed23360b37edd36a3bb3",
+      "bytes": 731
+    },
+    {
+      "file": "src/timing/wall-time.ts",
+      "sha256": "581f24a6315a3373b151ca2c695c5edf2c9bf0b46f7c832bb225e200ed359231",
+      "bytes": 710
+    },
+    {
+      "file": "src/version.ts",
+      "sha256": "415553e7963724549b95a567f509bc1951000fc3840eaa317902b0f35b1df4c7",
+      "bytes": 39
+    }
+  ],
+  "project": {
+    "file": "source/main.json",
+    "sha256": "0d844ba7cdff07b8f7ea1f6a12a41eda0f2546f1a05aeb6438fb7b9dfc744c9a"
+  },
+  "sourcePolicy": "Canonical project and asset bytes copied unchanged; no arrangement, instrument, source generation or mastering parameters rewritten.",
+  "caller": {}
+}

@@ -1,0 +1,162 @@
+{
+  "schema": "headliner-002.full-validation/1",
+  "note": "Signal measurements only; producer cannot hear audio. Final master assembled from 9 section-wise native bounces rendered through the Float64/PCM24 route (scripts/headliner-production24.ts), each trimmed to its exact section duration and concatenated sample-accurately; stems silence-padded where a part is absent in a section. Chunk-00 PCM24 package replay reproduced its master byte-identically.",
+  "masterLoudnormFfmpeg": {
+    "integratedLufs": -18.21,
+    "truePeakDb": -0.33,
+    "lraLu": 7.4
+  },
+  "mp3LoudnormFfmpeg": {
+    "integratedLufs": -18.48,
+    "truePeakDb": -0.67
+  },
+  "result": {
+    "master": {
+      "frames": 8296200,
+      "durationSec": 188.122,
+      "sampleRate": 44100,
+      "bits": 24,
+      "peakDbfs": -0.36,
+      "stereoCorrelation": 0.981,
+      "monoFoldChangeDb": -0.04,
+      "final0.5sRmsDb": -58.2,
+      "sha256": "a0f4cb961c6130678340d8837779d0a5a37cfed8fa53b93001fe4fe6580bf214"
+    },
+    "sections": [
+      {
+        "id": "ignition",
+        "startSec": 0.0,
+        "rmsDb": -22.1,
+        "peakDb": -12.2,
+        "lowBandPct": 75.3,
+        "highBandPct": 0.0
+      },
+      {
+        "id": "stallion-groove",
+        "startSec": 4.9,
+        "rmsDb": -19.8,
+        "peakDb": -4.8,
+        "lowBandPct": 81.0,
+        "highBandPct": 1.6
+      },
+      {
+        "id": "development",
+        "startSec": 24.5,
+        "rmsDb": -20.1,
+        "peakDb": -5.29,
+        "lowBandPct": 59.2,
+        "highBandPct": 1.8
+      },
+      {
+        "id": "strange-beauty",
+        "startSec": 44.1,
+        "rmsDb": -21.4,
+        "peakDb": -5.89,
+        "lowBandPct": 46.9,
+        "highBandPct": 0.7
+      },
+      {
+        "id": "evolution",
+        "startSec": 63.7,
+        "rmsDb": -19.7,
+        "peakDb": -5.61,
+        "lowBandPct": 57.2,
+        "highBandPct": 1.7
+      },
+      {
+        "id": "organism",
+        "startSec": 83.3,
+        "rmsDb": -21.1,
+        "peakDb": -4.04,
+        "lowBandPct": 55.9,
+        "highBandPct": 2.1
+      },
+      {
+        "id": "heavy-return",
+        "startSec": 107.8,
+        "rmsDb": -18.0,
+        "peakDb": -0.36,
+        "lowBandPct": 43.6,
+        "highBandPct": 1.2
+      },
+      {
+        "id": "payoff",
+        "startSec": 146.9,
+        "rmsDb": -18.0,
+        "peakDb": -3.78,
+        "lowBandPct": 38.9,
+        "highBandPct": 2.7
+      },
+      {
+        "id": "coda",
+        "startSec": 166.5,
+        "rmsDb": -23.2,
+        "peakDb": -8.94,
+        "lowBandPct": 54.6,
+        "highBandPct": 0.1
+      }
+    ],
+    "stems": {
+      "bars.wav": {
+        "frames": 8296200,
+        "rmsDb": -43.8,
+        "peakDb": -21.3
+      },
+      "bass.wav": {
+        "frames": 8296200,
+        "rmsDb": -24.3,
+        "peakDb": -8.32
+      },
+      "bearings.wav": {
+        "frames": 8296200,
+        "rmsDb": -59.7,
+        "peakDb": -31.48
+      },
+      "bow.wav": {
+        "frames": 8296200,
+        "rmsDb": -46.6,
+        "peakDb": -24.98
+      },
+      "clock.wav": {
+        "frames": 8296200,
+        "rmsDb": -46.4,
+        "peakDb": -21.28
+      },
+      "kick.wav": {
+        "frames": 8296200,
+        "rmsDb": -31.9,
+        "peakDb": -20.16
+      },
+      "room.wav": {
+        "frames": 8296200,
+        "rmsDb": -49.1,
+        "peakDb": -26.1
+      },
+      "snare.wav": {
+        "frames": 8296200,
+        "rmsDb": -36.4,
+        "peakDb": -15.62
+      },
+      "spring.wav": {
+        "frames": 8296200,
+        "rmsDb": -51.3,
+        "peakDb": -12.39
+      },
+      "tines.wav": {
+        "frames": 8296200,
+        "rmsDb": -43.3,
+        "peakDb": -16.8
+      },
+      "voice-2.wav": {
+        "frames": 8296200,
+        "rmsDb": -46.3,
+        "peakDb": -28.6
+      },
+      "voice.wav": {
+        "frames": 8296200,
+        "rmsDb": -28.0,
+        "peakDb": -5.41
+      }
+    }
+  }
+}

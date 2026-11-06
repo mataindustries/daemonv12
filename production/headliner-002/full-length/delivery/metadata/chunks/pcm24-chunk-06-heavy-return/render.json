@@ -1,0 +1,419 @@
+{
+  "kind": "daemonv12-production24",
+  "version": 1,
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "source/main.json",
+    "sha256": "d1e8f7b062d7408bbc614fb4c22b28b1bb4fd0f409b2a0a1152f56d2046e4b38"
+  },
+  "runtime": {
+    "node": "v24.22.2",
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1-3ubuntu5"
+    }
+  },
+  "signalPath": "PCM16 source; unrounded Float64 interpolation/velocity/envelope, gain/pan automation and ordered track effects; Float64 sum, master gain/effects/ducking; single PCM24 quantization per export",
+  "sourcePrecision": "Sources are PCM16. No lost source detail is recovered. Newly computed fractional processing detail is retained.",
+  "stems": [
+    {
+      "trackId": "bass",
+      "file": "stems/bass.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -8.898484,
+      "automation": {},
+      "effects": [],
+      "sha256": "461575bb108b4d13b3a7c5c3071072836907774ce7b0da3cea5489b3459a5e92",
+      "bytes": 10632644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 1772100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 40.183673,
+        "peakDbfs": -8.898484,
+        "rmsDbfs": -23.273195,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 1,
+        "monoFoldRmsDbfs": -23.273195,
+        "monoFoldChangeDb": 0,
+        "nonzeroLowBytes": 3449096
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "voice",
+      "file": "stems/voice.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -5.413848,
+      "automation": {},
+      "effects": [],
+      "sha256": "84780216e0263b54d8d02436519fdd8415263b53479ab1059948ec74ef3cb219",
+      "bytes": 10632644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 1772100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 40.183673,
+        "peakDbfs": -5.413847,
+        "rmsDbfs": -25.188476,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.929944,
+        "monoFoldRmsDbfs": -25.437231,
+        "monoFoldChangeDb": -0.248756,
+        "nonzeroLowBytes": 1744364
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "voice-2",
+      "file": "stems/voice-2.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -28.603075,
+      "automation": {},
+      "effects": [],
+      "sha256": "33b71725ba2ad611369db9a103373611e74e85245f8c2efa89c41c36eb325860",
+      "bytes": 10632644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 1772100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 40.183673,
+        "peakDbfs": -28.603076,
+        "rmsDbfs": -39.635492,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.999891,
+        "monoFoldRmsDbfs": -39.722996,
+        "monoFoldChangeDb": -0.087504,
+        "nonzeroLowBytes": 3423687
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "tines",
+      "file": "stems/tines.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -18.263593,
+      "automation": {},
+      "effects": [],
+      "sha256": "62eed415f2382f6ad02ec17464aced70b796e66e43de3a30b726df55f8173b4f",
+      "bytes": 10632644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 1772100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 40.183673,
+        "peakDbfs": -18.263593,
+        "rmsDbfs": -42.234024,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.959935,
+        "monoFoldRmsDbfs": -42.408846,
+        "monoFoldChangeDb": -0.174822,
+        "nonzeroLowBytes": 2462744
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "bars",
+      "file": "stems/bars.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -23.277717,
+      "automation": {},
+      "effects": [],
+      "sha256": "ed02877d842a041096faa275138a70745fca742eedb3bcf787c42f7c1eede8e1",
+      "bytes": 10632644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 1772100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 40.183673,
+        "peakDbfs": -23.277722,
+        "rmsDbfs": -43.349743,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.801339,
+        "monoFoldRmsDbfs": -43.878172,
+        "monoFoldChangeDb": -0.528429,
+        "nonzeroLowBytes": 2170254
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "clock",
+      "file": "stems/clock.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -21.669418,
+      "automation": {},
+      "effects": [],
+      "sha256": "e857da9f3ca5590601d4d1e05d0417be600d94ba96871a2249c012792a887fb8",
+      "bytes": 10632644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 1772100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 40.183673,
+        "peakDbfs": -21.669417,
+        "rmsDbfs": -45.045437,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.996445,
+        "monoFoldRmsDbfs": -45.14896,
+        "monoFoldChangeDb": -0.103522,
+        "nonzeroLowBytes": 1800901
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "kick",
+      "file": "stems/kick.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -20.161078,
+      "automation": {},
+      "effects": [],
+      "sha256": "7518dcc53870a2c2c8fa3195fb708cf5c30e28476e33b8a8fdc87f6354dd6f77",
+      "bytes": 10632644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 1772100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 40.183673,
+        "peakDbfs": -20.161074,
+        "rmsDbfs": -30.540778,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 1,
+        "monoFoldRmsDbfs": -30.540778,
+        "monoFoldChangeDb": 0,
+        "nonzeroLowBytes": 2354586
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "snare",
+      "file": "stems/snare.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -15.934448,
+      "automation": {},
+      "effects": [],
+      "sha256": "8d85ee41104555e53d3cddeb84bc688d6df673b46733ee5de614b468d2d2193d",
+      "bytes": 10632644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 1772100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 40.183673,
+        "peakDbfs": -15.934451,
+        "rmsDbfs": -35.040159,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.998835,
+        "monoFoldRmsDbfs": -35.042717,
+        "monoFoldChangeDb": -0.002558,
+        "nonzeroLowBytes": 1666182
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    },
+    {
+      "trackId": "room",
+      "file": "stems/room.wav",
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -26.102628,
+      "automation": {},
+      "effects": [],
+      "sha256": "1f293097f380787e2ba7e1fc3945e1128ecce8c44d5835791b0c1eb6f224a248",
+      "bytes": 10632644,
+      "analysis": {
+        "format": "pcm_s24le",
+        "frames": 1772100,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 24,
+        "durationSeconds": 40.183673,
+        "peakDbfs": -26.102628,
+        "rmsDbfs": -46.101102,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "stereoCorrelation": 0.493799,
+        "monoFoldRmsDbfs": -47.408386,
+        "monoFoldChangeDb": -1.307283,
+        "nonzeroLowBytes": 0
+      },
+      "precision": "post-track, pre-master; each stem quantized independently to PCM24; master sums floats before this quantization"
+    }
+  ],
+  "sources": [
+    {
+      "file": "source/assets/bars/kit.json",
+      "sha256": "cfbc014e30b7296d4de29531d034f70b88b4c5a23f2bc4ba0e18f96f808d625c",
+      "bytes": 152,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/bars/phrase-heavy-return.wav",
+      "sha256": "37e84be77e21881e78c60bd54f636e40d7ae9aa800ed5507febee1c3c9f8b017",
+      "bytes": 7088444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "source/assets/bass/kit.json",
+      "sha256": "cfbc014e30b7296d4de29531d034f70b88b4c5a23f2bc4ba0e18f96f808d625c",
+      "bytes": 152,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/bass/phrase-heavy-return.wav",
+      "sha256": "4589c063ed435533a7995fea2632716c86214267dc9c087ccac2c6872cd81540",
+      "bytes": 7088444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "source/assets/clock/kit.json",
+      "sha256": "cfbc014e30b7296d4de29531d034f70b88b4c5a23f2bc4ba0e18f96f808d625c",
+      "bytes": 152,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/clock/phrase-heavy-return.wav",
+      "sha256": "261cf226a5083fe8f978ba5123692b4af6a9355fcaf0a1f25f6e3be153f23126",
+      "bytes": 7088444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "source/assets/kick/kit.json",
+      "sha256": "cfbc014e30b7296d4de29531d034f70b88b4c5a23f2bc4ba0e18f96f808d625c",
+      "bytes": 152,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/kick/phrase-heavy-return.wav",
+      "sha256": "b17366eaca5d5cac7a8cbcb279ff43659b59d90c8b0ba9eb2524404729d172a4",
+      "bytes": 7088444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "source/assets/room/kit.json",
+      "sha256": "cfbc014e30b7296d4de29531d034f70b88b4c5a23f2bc4ba0e18f96f808d625c",
+      "bytes": 152,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/room/phrase-heavy-return.wav",
+      "sha256": "fad644baf93a72b6fa1cc421133a9b7a4d48ba56819a40aefdd2002dc731cce8",
+      "bytes": 7088444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "source/assets/snare/kit.json",
+      "sha256": "cfbc014e30b7296d4de29531d034f70b88b4c5a23f2bc4ba0e18f96f808d625c",
+      "bytes": 152,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/snare/phrase-heavy-return.wav",
+      "sha256": "fc31ca895af20cf2da7c9c45dda95d57a31659b27953e72ef203ed4efe5ad55c",
+      "bytes": 7088444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "source/assets/tines/kit.json",
+      "sha256": "cfbc014e30b7296d4de29531d034f70b88b4c5a23f2bc4ba0e18f96f808d625c",
+      "bytes": 152,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/tines/phrase-heavy-return.wav",
+      "sha256": "debb6233f08398c0181a860d8bdd821fd383d52f096e9693a53ba0348fa619f4",
+      "bytes": 7088444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "source/assets/voice-2/kit.json",
+      "sha256": "cfbc014e30b7296d4de29531d034f70b88b4c5a23f2bc4ba0e18f96f808d625c",
+      "bytes": 152,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/voice-2/phrase-heavy-return.wav",
+      "sha256": "a5964885704c1389180fbdead4bed0dbae45b18aaf31edd254cf837091762d25",
+      "bytes": 7088444,
+      "bitsPerSample": 16
+    },
+    {
+      "file": "source/assets/voice/kit.json",
+      "sha256": "cfbc014e30b7296d4de29531d034f70b88b4c5a23f2bc4ba0e18f96f808d625c",
+      "bytes": 152,
+      "bitsPerSample": null
+    },
+    {
+      "file": "source/assets/voice/phrase-heavy-return.wav",
+      "sha256": "dafc5506e64b6f4ac5cb946a0af9f4dbca6e8d9c55fd1233f7ffb7ac7943d219",
+      "bytes": 7088444,
+      "bitsPerSample": 16
+    }
+  ],
+  "limits": {
+    "maximumSeconds": 600,
+    "interpolationTaps": 1000000000,
+    "performedVoiceBytes": 134217728,
+    "tracks": 15
+  },
+  "export": {
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "dither": false,
+    "normalization": false
+  },
+  "master": {
+    "file": "masters/main.24.wav",
+    "sha256": "5277639ab19ff59fb3fc9f40fb602eefbded27e84250ebff5b236440dc666717",
+    "bytes": 10632644,
+    "frames": 1772100,
+    "clippedSamples": 0,
+    "preClipPeakDbfs": -0.357411,
+    "analysis": {
+      "format": "pcm_s24le",
+      "frames": 1772100,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 24,
+      "durationSeconds": 40.183673,
+      "peakDbfs": -0.357411,
+      "rmsDbfs": -18.062709,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "stereoCorrelation": 0.968822,
+      "monoFoldRmsDbfs": -18.141851,
+      "monoFoldChangeDb": -0.079142,
+      "nonzeroLowBytes": 3530216,
+      "integratedLufs": -16.35,
+      "loudnessRangeLu": 8,
+      "truePeakDbfs": -0.33
+    }
+  },
+  "warnings": [
+    "Metrics do not certify musical quality or mono translation. Human listening remains pending."
+  ]
+}
