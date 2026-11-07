@@ -1,0 +1,293 @@
+{
+  "schema": "enm.stairwell.opus55.qa/1",
+  "title": "THE IMPOSSIBLE STAIRWELL (Opus 5.5 candidate, 10-second loop)",
+  "clock": {
+    "bpm": 96,
+    "bars": 4,
+    "beats": 16,
+    "seconds": 10,
+    "frames": 441000,
+    "fps": 24,
+    "pictureFrames": 240,
+    "pictureFramesPerBeat": 15
+  },
+  "master": {
+    "file": "delivery/masters/stairwell.24.wav",
+    "sha256": "99f6c547c84d479189aa2ef020f3dc226fdef3508ac2c3fdf6b6d79d1f60b6c1",
+    "format": "WAV PCM 24-bit stereo 44,100 Hz",
+    "frames": 441000,
+    "seconds": 10,
+    "clippedSamples": 0,
+    "analysis": {
+      "format": "pcm_s24le",
+      "frames": 441000,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 24,
+      "durationSeconds": 10,
+      "peakDbfs": -4.552994,
+      "rmsDbfs": -18.55041,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "stereoCorrelation": 0.866848,
+      "monoFoldRmsDbfs": -18.852991,
+      "monoFoldChangeDb": -0.302582,
+      "nonzeroLowBytes": 878562,
+      "integratedLufs": -16.24,
+      "loudnessRangeLu": 2.5,
+      "truePeakDbfs": -4.55
+    }
+  },
+  "loudness": {
+    "integratedLufs": -16,
+    "lraLu": 2.2,
+    "ffmpegTruePeakDbtp": -4.6,
+    "engineTruePeakDbfs": -4.55,
+    "firstSecondMomentaryLufs": [
+      -17.4,
+      -16.7
+    ],
+    "momentaryRangeLufs": [
+      -19.8,
+      -13.5
+    ]
+  },
+  "form": [
+    {
+      "bar": 1,
+      "seconds": [
+        0,
+        2.5
+      ],
+      "pictureFrames": [
+        0,
+        59
+      ],
+      "rmsDbfs": -19
+    },
+    {
+      "bar": 2,
+      "seconds": [
+        2.5,
+        5
+      ],
+      "pictureFrames": [
+        60,
+        119
+      ],
+      "rmsDbfs": -18.6
+    },
+    {
+      "bar": 3,
+      "seconds": [
+        5,
+        7.5
+      ],
+      "pictureFrames": [
+        120,
+        179
+      ],
+      "rmsDbfs": -17
+    },
+    {
+      "bar": 4,
+      "seconds": [
+        7.5,
+        10
+      ],
+      "pictureFrames": [
+        180,
+        239
+      ],
+      "rmsDbfs": -20.1
+    }
+  ],
+  "mono": {
+    "correlation": 0.867,
+    "worst100msCorrelation": 0.747,
+    "windowsBelowZero": 0,
+    "monoFoldDownChangeDb": -0.3,
+    "monoIntegratedLufs": -16.3,
+    "monoMinusStereoLufs": -0.3
+  },
+  "boundary": {
+    "lastToFirstJump": {
+      "left": 0.001385,
+      "right": 0.00257
+    },
+    "sampleStepPercentile": {
+      "p50": 0.007443,
+      "p99": 0.039788,
+      "max": 0.088312
+    },
+    "jumpPercentileRank": 0.1891,
+    "highPassEnergyAtSeamsDbOverMedian": [
+      3.04,
+      3.84
+    ],
+    "highPassEnergy999thPercentileDbOverMedian": 11.31,
+    "fold": {
+      "tailSeconds": 6,
+      "renderFrames": 705600,
+      "foldedFrames": 264600,
+      "lastTailWindowRmsDbfs": -89,
+      "cycleRmsDbfs": -18.6,
+      "meaning": "Phrase frames beyond 10 s are laid over the opening (offsetSeconds 10). The render ends after the tail; its final 100 ms shows what the fold leaves out."
+    },
+    "reconstruction": {
+      "maximumErrorPcm24Lsb": 0.5,
+      "meaning": "Master vs. an independent sum of the folded PCM16 phrases (track and master gain only). <= 0.5 LSB means the engine applied exactly the fold and nothing else."
+    }
+  },
+  "repeatedPlayback": {
+    "passes": 3,
+    "sampleExactConcatenation": true,
+    "integratedLufs": -16,
+    "truePeakDbtp": -4.6,
+    "meanMomentaryLufsPerPass": [
+      -16.18,
+      -16.19,
+      -16.19
+    ],
+    "listening": "qa/stairwell-loop-x3.mp3"
+  },
+  "stems": {
+    "count": 13,
+    "aligned": true,
+    "note": "Post-track, pre-master PCM24 (pan baked into each phrase). The room stem is the shared wet FDN. Apply the project master gain to reconstruct a mix.",
+    "list": [
+      {
+        "trackId": "stone-sub",
+        "file": "delivery/stems/stone-sub.wav",
+        "frames": 441000,
+        "rmsDbfs": -30.7,
+        "clippedSamples": 0,
+        "sha256": "a59f637d8d10b683c3c390fcf3d3dd2f74316b7867e9236e2f7d18a1eb9b4189"
+      },
+      {
+        "trackId": "stone-bow",
+        "file": "delivery/stems/stone-bow.wav",
+        "frames": 441000,
+        "rmsDbfs": -31.7,
+        "clippedSamples": 0,
+        "sha256": "a3e5806065e236fd469efc96bc03bd2f76bda8dace2e5225b5491060f6a348ba"
+      },
+      {
+        "trackId": "lift",
+        "file": "delivery/stems/lift.wav",
+        "frames": 441000,
+        "rmsDbfs": -29.5,
+        "clippedSamples": 0,
+        "sha256": "4914d6aedb519e306688b0cb77a8b4997e75c8062d0fa81d307e2ba64b49f055"
+      },
+      {
+        "trackId": "escapement",
+        "file": "delivery/stems/escapement.wav",
+        "frames": 441000,
+        "rmsDbfs": -44.8,
+        "clippedSamples": 0,
+        "sha256": "b281b32609fe74c486118faa037e1d5aecade870408002abd93300ee7eee2ca3"
+      },
+      {
+        "trackId": "dust",
+        "file": "delivery/stems/dust.wav",
+        "frames": 441000,
+        "rmsDbfs": -44.6,
+        "clippedSamples": 0,
+        "sha256": "27f191b27711d6e11ee1487b69598a470c8fc528d2f55ecbc5ebe23f8911551d"
+      },
+      {
+        "trackId": "witness-upper",
+        "file": "delivery/stems/witness-upper.wav",
+        "frames": 441000,
+        "rmsDbfs": -25.6,
+        "clippedSamples": 0,
+        "sha256": "8b2f0e8153e0d77ed048b85554bcacccba723a6608fccfd57c4994e192fdb0c6"
+      },
+      {
+        "trackId": "witness-lower",
+        "file": "delivery/stems/witness-lower.wav",
+        "frames": 441000,
+        "rmsDbfs": -26.2,
+        "clippedSamples": 0,
+        "sha256": "5e1e34bc7f91ffa3f97bec97a963a7da6d6911518d0de453baa44c2870bdf5b9"
+      },
+      {
+        "trackId": "echo-near",
+        "file": "delivery/stems/echo-near.wav",
+        "frames": 441000,
+        "rmsDbfs": -33.4,
+        "clippedSamples": 0,
+        "sha256": "f0d192d39d62e891c45dbb04f807104f0dba176c01e6c7abf3c7ffef7a26939f"
+      },
+      {
+        "trackId": "echo-far",
+        "file": "delivery/stems/echo-far.wav",
+        "frames": 441000,
+        "rmsDbfs": -36.9,
+        "clippedSamples": 0,
+        "sha256": "145044b3f33fcae3cfad534290121872a62cdc7761077d76ae45243ecd7518ba"
+      },
+      {
+        "trackId": "echo-deep",
+        "file": "delivery/stems/echo-deep.wav",
+        "frames": 441000,
+        "rmsDbfs": -31.7,
+        "clippedSamples": 0,
+        "sha256": "9c31e73beb35390c0bd725f722166ef1d3bf7e60842bc86eed210c4dafe4d88b"
+      },
+      {
+        "trackId": "crowd-left",
+        "file": "delivery/stems/crowd-left.wav",
+        "frames": 441000,
+        "rmsDbfs": -35.4,
+        "clippedSamples": 0,
+        "sha256": "441a22cf9ca12b431094985998f6a7a82819810c120294fcee9365e65a18228e"
+      },
+      {
+        "trackId": "crowd-right",
+        "file": "delivery/stems/crowd-right.wav",
+        "frames": 441000,
+        "rmsDbfs": -36.6,
+        "clippedSamples": 0,
+        "sha256": "07c6aa92ed89c9f3a8c8d172d25319d16ba43e1c77782e289fed5a98208b28c4"
+      },
+      {
+        "trackId": "room",
+        "file": "delivery/stems/room.wav",
+        "frames": 441000,
+        "rmsDbfs": -34.4,
+        "clippedSamples": 0,
+        "sha256": "e567e8ed1f01bb4f830987cfcb346d20659dd39f35bb6ea478bf9d56860181ae"
+      }
+    ]
+  },
+  "determinism": {
+    "freshProcessReplayIdenticalFiles": 56,
+    "replayFiles": 56,
+    "replayDiffers": [],
+    "freshProcessRackRebounceAscentPhrasesIdentical": 13,
+    "rebounceDiffers": []
+  },
+  "package": {
+    "directory": "delivery",
+    "members": 55,
+    "sealed": "delivery/SHA256SUMS (exact file set)"
+  },
+  "assets": {
+    "soundFontUsed": false,
+    "fluidR3Used": false,
+    "externalSamples": false,
+    "statement": "Every sound is synthesized by the hash-verified, unmodified Signature Rack engines (MUTATION 001) from numeric parameters and seeded PRNGs. No SoundFont, FluidR3, recording or third-party sample."
+  },
+  "gates": {
+    "exactFrames": true,
+    "noClipping": true,
+    "truePeakAtMostMinus1Dbtp": true,
+    "monoFoldDownWithin3Db": true,
+    "seamWithinOrdinaryMotion": true,
+    "deterministicReplay": true,
+    "deterministicRackBounce": true
+  },
+  "status": "Technical QA by measurement. The composer (an AI agent) cannot hear audio: human listening approval, rights declaration and release mastering remain pending."
+}

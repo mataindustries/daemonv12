@@ -1,0 +1,423 @@
+{
+  "formatVersion": 1,
+  "title": "THE IMPOSSIBLE STAIRWELL — Opus 5.5 candidate (main)",
+  "bpm": 96,
+  "timeSignature": "4/4",
+  "key": "D minor",
+  "bars": 4,
+  "seed": 5505,
+  "description": "ascent: The delivered cycle: D minor (identity in the first second: bell, tock, stone, and the sigh), F minor (the presences gather), A-flat minor (crest: the sigh becomes a cry, the machine turns alien, the floor falls away), B minor (withdrawal; the building inhales; the key turns back to D).",
+  "render": {
+    "tail": {
+      "seconds": 6
+    }
+  },
+  "master": {
+    "gainDb": 1.5
+  },
+  "tracks": [
+    {
+      "id": "stone-sub",
+      "description": "Living Bass (living-bass 1.0.0+mutation-001-A), warm → machine; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/stone-sub/kit.json"
+      },
+      "mix": {
+        "gainDb": -7.5,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stone-bow",
+      "description": "Friction-bowed bar (mechanical-orchestra/bow 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/stone-bow/kit.json"
+      },
+      "mix": {
+        "gainDb": -7,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lift",
+      "description": "Modal bar (mechanical-orchestra/bar 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/lift/kit.json"
+      },
+      "mix": {
+        "gainDb": -6.5,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "escapement",
+      "description": "Escapement clock (mechanical-orchestra/clock 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/escapement/kit.json"
+      },
+      "mix": {
+        "gainDb": -8,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dust",
+      "description": "Bearings (mechanical-orchestra/bearings 1.0.0+mutation-001-C), clockwork → alien machinery; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/dust/kit.json"
+      },
+      "mix": {
+        "gainDb": -19,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "witness-upper",
+      "description": "Impossible Voice (impossible-voice 1.0.0+mutation-001-B), human → impossible; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/witness-upper/kit.json"
+      },
+      "mix": {
+        "gainDb": -3.5,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "witness-lower",
+      "description": "Impossible Voice (impossible-voice 1.0.0+mutation-001-B), human → impossible; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/witness-lower/kit.json"
+      },
+      "mix": {
+        "gainDb": -4,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "echo-near",
+      "description": "Impossible Voice (impossible-voice 1.0.0+mutation-001-B), human → impossible; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/echo-near/kit.json"
+      },
+      "mix": {
+        "gainDb": 0,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "echo-far",
+      "description": "Impossible Voice (impossible-voice 1.0.0+mutation-001-B), human → impossible; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/echo-far/kit.json"
+      },
+      "mix": {
+        "gainDb": -3,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "echo-deep",
+      "description": "Impossible Voice (impossible-voice 1.0.0+mutation-001-B), human → impossible; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/echo-deep/kit.json"
+      },
+      "mix": {
+        "gainDb": -7,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crowd-left",
+      "description": "Impossible Voice (impossible-voice 1.0.0+mutation-001-B), human → impossible; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/crowd-left/kit.json"
+      },
+      "mix": {
+        "gainDb": -6.5,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crowd-right",
+      "description": "Impossible Voice (impossible-voice 1.0.0+mutation-001-B), human → impossible; pan baked into the stereo phrases.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/crowd-right/kit.json"
+      },
+      "mix": {
+        "gainDb": -5,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "room",
+      "description": "Wet-only room: FDN reverb of the per-part sends (post gain), rendered by the rack.",
+      "instrument": {
+        "type": "drumkit",
+        "kit": "assets/room/kit.json"
+      },
+      "mix": {
+        "gainDb": 0,
+        "pan": 0
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "ascent"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "ascent",
+          "bars": 4,
+          "notes": [
+            {
+              "start": "1:1",
+              "pitch": "phrase-ascent",
+              "velocity": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
