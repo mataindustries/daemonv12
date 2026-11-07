@@ -1,0 +1,863 @@
+{
+  "ok": true,
+  "command": "render",
+  "engineVersion": "0.7.0",
+  "project": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/the-landing-remembers.json",
+  "errors": [],
+  "warnings": [],
+  "summary": {
+    "title": "THE LANDING REMEMBERS",
+    "bars": 4,
+    "timeSignature": "4/4",
+    "bpm": 96,
+    "key": "D minor",
+    "tracks": 6,
+    "notes": 6,
+    "durationTicks": 15360,
+    "durationSeconds": 10
+  },
+  "artifacts": {
+    "midi": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.mid",
+    "wav": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.wav",
+    "manifest": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.render.json",
+    "stems": [
+      {
+        "trackId": "stone-melody",
+        "wav": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.stems/stone-melody.wav"
+      },
+      {
+        "trackId": "distant-memory",
+        "wav": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.stems/distant-memory.wav"
+      },
+      {
+        "trackId": "someone-close",
+        "wav": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.stems/someone-close.wav"
+      },
+      {
+        "trackId": "harmonic-stone",
+        "wav": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.stems/harmonic-stone.wav"
+      },
+      {
+        "trackId": "walnut-foundation",
+        "wav": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.stems/walnut-foundation.wav"
+      },
+      {
+        "trackId": "room",
+        "wav": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.stems/room.wav"
+      }
+    ],
+    "mp3": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.mp3",
+    "analysis": "/workspace/daemonv12/production/infinite-stairwell/sol-max/delivery/audio/the-landing-remembers.analysis.json"
+  },
+  "manifest": {
+    "engine": {
+      "name": "daemonv12",
+      "version": "0.7.0"
+    },
+    "project": {
+      "file": "the-landing-remembers.json",
+      "sha256": "e789af001db0e36a2cdc3b12bb231237d8f896e39c43c7265ed38d6710847eab",
+      "formatVersion": 1,
+      "seed": 193018
+    },
+    "midi": {
+      "file": "the-landing-remembers.mid",
+      "sha256": "11830fd01d519b5fbea198854c6259f58cc959f5e93ba0e5577ad670ef983cc5",
+      "bytes": 73,
+      "ppq": 960,
+      "durationTicks": 15360,
+      "durationSeconds": 10,
+      "notes": 0
+    },
+    "renderer": {
+      "name": "daemonv12-production",
+      "version": "2",
+      "settings": {
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "panLaw": "linear stereo balance; unity center",
+        "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+        "normalization": false,
+        "dither": false,
+        "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+        "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+        "saturation": "tanh-v1; no output compensation",
+        "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+      }
+    },
+    "gmRenderer": null,
+    "gmSource": null,
+    "soundfont": null,
+    "samples": {
+      "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+      "assets": [
+        {
+          "file": "assets/distant-memory.wav",
+          "sha256": "df518928906fcc33979a5e0880fa7f59041b437dbbb03e97294217dee7adb783",
+          "bytes": 1764044,
+          "frames": 441000,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        },
+        {
+          "file": "assets/harmonic-stone.wav",
+          "sha256": "7061267f31d0d78d6666e15331522db30f407a5ca08880effb26b349ec9244d3",
+          "bytes": 1764044,
+          "frames": 441000,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        },
+        {
+          "file": "assets/room.wav",
+          "sha256": "7c8edcc8d9c02799ccde4defe1cd60436ddc700dfae96b9db37b9fee688de09e",
+          "bytes": 1764044,
+          "frames": 441000,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        },
+        {
+          "file": "assets/someone-close.wav",
+          "sha256": "c7c0f1cc08385d965b8abc57987b298cd236611d017306170b50eec7c343f915",
+          "bytes": 1764044,
+          "frames": 441000,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        },
+        {
+          "file": "assets/stone-melody.wav",
+          "sha256": "fd9a3c1849d0435f5c3bad6dc8305a511699df74dd588a23264583b7f81c5464",
+          "bytes": 1764044,
+          "frames": 441000,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        },
+        {
+          "file": "assets/walnut-foundation.wav",
+          "sha256": "9d566bfe667ac3bdbe84f21d51d7e029b8e5e374c198d2b042165cb9929a0717",
+          "bytes": 1764044,
+          "frames": 441000,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        }
+      ],
+      "tracks": [
+        {
+          "trackId": "stone-melody",
+          "trackIndex": 0,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/stone-melody.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/stone-melody.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        {
+          "trackId": "distant-memory",
+          "trackIndex": 1,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/distant-memory.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/distant-memory.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        {
+          "trackId": "someone-close",
+          "trackIndex": 2,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/someone-close.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/someone-close.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        {
+          "trackId": "harmonic-stone",
+          "trackIndex": 3,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/harmonic-stone.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/harmonic-stone.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        {
+          "trackId": "walnut-foundation",
+          "trackIndex": 4,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/walnut-foundation.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/walnut-foundation.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        {
+          "trackId": "room",
+          "trackIndex": 5,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/room.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/room.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        }
+      ]
+    },
+    "timeline": {
+      "authoredDurationTicks": 15360,
+      "authoredFrames": 441000,
+      "duration": {
+        "seconds": 10
+      },
+      "tail": "none",
+      "requestedFinalFrames": 441000,
+      "audioEndFrames": 441000,
+      "resultingFrames": 441000,
+      "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+    },
+    "production": {
+      "processor": {
+        "name": "ffmpeg",
+        "version": "6.1.1"
+      },
+      "runtime": {
+        "name": "node",
+        "version": "v24.19.0"
+      },
+      "tracks": [
+        {
+          "trackId": "stone-melody",
+          "gainDb": 0,
+          "pan": 0,
+          "effects": [],
+          "clippedSamples": 0,
+          "preClipPeakDbfs": -5.707176
+        },
+        {
+          "trackId": "distant-memory",
+          "gainDb": 0,
+          "pan": 0,
+          "effects": [],
+          "clippedSamples": 0,
+          "preClipPeakDbfs": -8.763821
+        },
+        {
+          "trackId": "someone-close",
+          "gainDb": 0,
+          "pan": 0,
+          "effects": [],
+          "clippedSamples": 0,
+          "preClipPeakDbfs": -8.889043
+        },
+        {
+          "trackId": "harmonic-stone",
+          "gainDb": 0,
+          "pan": 0,
+          "effects": [],
+          "clippedSamples": 0,
+          "preClipPeakDbfs": -20.395337
+        },
+        {
+          "trackId": "walnut-foundation",
+          "gainDb": 0,
+          "pan": 0,
+          "effects": [],
+          "clippedSamples": 0,
+          "preClipPeakDbfs": -14.859631
+        },
+        {
+          "trackId": "room",
+          "gainDb": 0,
+          "pan": 0,
+          "effects": [],
+          "clippedSamples": 0,
+          "preClipPeakDbfs": -18.521178
+        }
+      ],
+      "master": {
+        "gainDb": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -2.500189
+      },
+      "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+    },
+    "mix": {
+      "clippedSamples": 0,
+      "gm": "sum processed independent tracks",
+      "samples": "sum exported track PCM"
+    },
+    "wav": {
+      "file": "the-landing-remembers.wav",
+      "sha256": "6b55c97160f1201a09086a470b03e19bee447de2dd88bf6efc671e632852e2b8",
+      "bytes": 1764044,
+      "frames": 441000,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "durationSeconds": 10
+    },
+    "stems": [
+      {
+        "trackId": "stone-melody",
+        "trackIndex": 0,
+        "sample": {
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/stone-melody.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/stone-melody.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        "renderer": {
+          "name": "daemonv12-pcm",
+          "version": "1",
+          "settings": {
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "velocity": "round(sample * velocity)",
+            "mix": "integer sum, saturate s16",
+            "resampling": false
+          }
+        },
+        "wav": {
+          "file": "the-landing-remembers.stems/stone-melody.wav",
+          "sha256": "fd9a3c1849d0435f5c3bad6dc8305a511699df74dd588a23264583b7f81c5464",
+          "bytes": 1764044,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "durationSeconds": 10
+        }
+      },
+      {
+        "trackId": "distant-memory",
+        "trackIndex": 1,
+        "sample": {
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/distant-memory.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/distant-memory.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        "renderer": {
+          "name": "daemonv12-pcm",
+          "version": "1",
+          "settings": {
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "velocity": "round(sample * velocity)",
+            "mix": "integer sum, saturate s16",
+            "resampling": false
+          }
+        },
+        "wav": {
+          "file": "the-landing-remembers.stems/distant-memory.wav",
+          "sha256": "df518928906fcc33979a5e0880fa7f59041b437dbbb03e97294217dee7adb783",
+          "bytes": 1764044,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "durationSeconds": 10
+        }
+      },
+      {
+        "trackId": "someone-close",
+        "trackIndex": 2,
+        "sample": {
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/someone-close.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/someone-close.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        "renderer": {
+          "name": "daemonv12-pcm",
+          "version": "1",
+          "settings": {
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "velocity": "round(sample * velocity)",
+            "mix": "integer sum, saturate s16",
+            "resampling": false
+          }
+        },
+        "wav": {
+          "file": "the-landing-remembers.stems/someone-close.wav",
+          "sha256": "c7c0f1cc08385d965b8abc57987b298cd236611d017306170b50eec7c343f915",
+          "bytes": 1764044,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "durationSeconds": 10
+        }
+      },
+      {
+        "trackId": "harmonic-stone",
+        "trackIndex": 3,
+        "sample": {
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/harmonic-stone.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/harmonic-stone.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        "renderer": {
+          "name": "daemonv12-pcm",
+          "version": "1",
+          "settings": {
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "velocity": "round(sample * velocity)",
+            "mix": "integer sum, saturate s16",
+            "resampling": false
+          }
+        },
+        "wav": {
+          "file": "the-landing-remembers.stems/harmonic-stone.wav",
+          "sha256": "7061267f31d0d78d6666e15331522db30f407a5ca08880effb26b349ec9244d3",
+          "bytes": 1764044,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "durationSeconds": 10
+        }
+      },
+      {
+        "trackId": "walnut-foundation",
+        "trackIndex": 4,
+        "sample": {
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/walnut-foundation.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/walnut-foundation.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        "renderer": {
+          "name": "daemonv12-pcm",
+          "version": "1",
+          "settings": {
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "velocity": "round(sample * velocity)",
+            "mix": "integer sum, saturate s16",
+            "resampling": false
+          }
+        },
+        "wav": {
+          "file": "the-landing-remembers.stems/walnut-foundation.wav",
+          "sha256": "9d566bfe667ac3bdbe84f21d51d7e029b8e5e374c198d2b042165cb9929a0717",
+          "bytes": 1764044,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "durationSeconds": 10
+        }
+      },
+      {
+        "trackId": "room",
+        "trackIndex": 5,
+        "sample": {
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/room.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/room.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 1
+            }
+          ],
+          "clippedSamples": 0
+        },
+        "renderer": {
+          "name": "daemonv12-pcm",
+          "version": "1",
+          "settings": {
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "velocity": "round(sample * velocity)",
+            "mix": "integer sum, saturate s16",
+            "resampling": false
+          }
+        },
+        "wav": {
+          "file": "the-landing-remembers.stems/room.wav",
+          "sha256": "7c8edcc8d9c02799ccde4defe1cd60436ddc700dfae96b9db37b9fee688de09e",
+          "bytes": 1764044,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "durationSeconds": 10
+        }
+      }
+    ],
+    "audioTool": {
+      "name": "ffmpeg",
+      "version": "6.1.1"
+    },
+    "analysis": {
+      "master": {
+        "durationSeconds": 10,
+        "frames": 441000,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "format": "pcm_s16le",
+        "peakDbfs": -2.500189,
+        "rmsDbfs": -16.349696,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "integratedLufs": -14.44,
+        "loudnessRangeLu": 2.7,
+        "truePeakDbfs": -2.47
+      },
+      "tracks": [
+        {
+          "trackId": "stone-melody",
+          "analysis": {
+            "durationSeconds": 10,
+            "frames": 441000,
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "format": "pcm_s16le",
+            "peakDbfs": -5.707176,
+            "rmsDbfs": -22.596268,
+            "fullScaleSamples": 0,
+            "clipping": false,
+            "integratedLufs": -18.48,
+            "loudnessRangeLu": 9.7,
+            "truePeakDbfs": -5.69
+          }
+        },
+        {
+          "trackId": "distant-memory",
+          "analysis": {
+            "durationSeconds": 10,
+            "frames": 441000,
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "format": "pcm_s16le",
+            "peakDbfs": -8.763821,
+            "rmsDbfs": -23.025058,
+            "fullScaleSamples": 0,
+            "clipping": false,
+            "integratedLufs": -17.54,
+            "loudnessRangeLu": 7.6,
+            "truePeakDbfs": -8.76
+          }
+        },
+        {
+          "trackId": "someone-close",
+          "analysis": {
+            "durationSeconds": 10,
+            "frames": 441000,
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "format": "pcm_s16le",
+            "peakDbfs": -8.889043,
+            "rmsDbfs": -20.278876,
+            "fullScaleSamples": 0,
+            "clipping": false,
+            "integratedLufs": -15.56,
+            "loudnessRangeLu": 4.7,
+            "truePeakDbfs": -8.89
+          }
+        },
+        {
+          "trackId": "harmonic-stone",
+          "analysis": {
+            "durationSeconds": 10,
+            "frames": 441000,
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "format": "pcm_s16le",
+            "peakDbfs": -20.395337,
+            "rmsDbfs": -32.961759,
+            "fullScaleSamples": 0,
+            "clipping": false,
+            "integratedLufs": -30.82,
+            "loudnessRangeLu": 1.8,
+            "truePeakDbfs": -20.39
+          }
+        },
+        {
+          "trackId": "walnut-foundation",
+          "analysis": {
+            "durationSeconds": 10,
+            "frames": 441000,
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "format": "pcm_s16le",
+            "peakDbfs": -14.859631,
+            "rmsDbfs": -25.916457,
+            "fullScaleSamples": 0,
+            "clipping": false,
+            "integratedLufs": -24.93,
+            "loudnessRangeLu": 3.5,
+            "truePeakDbfs": -14.86
+          }
+        },
+        {
+          "trackId": "room",
+          "analysis": {
+            "durationSeconds": 10,
+            "frames": 441000,
+            "sampleRate": 44100,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "format": "pcm_s16le",
+            "peakDbfs": -18.521178,
+            "rmsDbfs": -33.999072,
+            "fullScaleSamples": 0,
+            "clipping": false,
+            "integratedLufs": -30.03,
+            "loudnessRangeLu": 15.4,
+            "truePeakDbfs": -18.51
+          }
+        }
+      ]
+    },
+    "mp3": {
+      "file": "the-landing-remembers.mp3",
+      "sha256": "73522bf5da366f9c907aa2527daaf0d5e848aaa548a6c16684dee4a4362fccc9",
+      "bytes": 241415,
+      "codec": "libmp3lame",
+      "bitrateKbps": 192
+    }
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 10,
+      "frames": 441000,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -2.500189,
+      "rmsDbfs": -16.349696,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -14.44,
+      "loudnessRangeLu": 2.7,
+      "truePeakDbfs": -2.47
+    },
+    "tracks": [
+      {
+        "trackId": "stone-melody",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -5.707176,
+          "rmsDbfs": -22.596268,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -18.48,
+          "loudnessRangeLu": 9.7,
+          "truePeakDbfs": -5.69
+        }
+      },
+      {
+        "trackId": "distant-memory",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -8.763821,
+          "rmsDbfs": -23.025058,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -17.54,
+          "loudnessRangeLu": 7.6,
+          "truePeakDbfs": -8.76
+        }
+      },
+      {
+        "trackId": "someone-close",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -8.889043,
+          "rmsDbfs": -20.278876,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -15.56,
+          "loudnessRangeLu": 4.7,
+          "truePeakDbfs": -8.89
+        }
+      },
+      {
+        "trackId": "harmonic-stone",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -20.395337,
+          "rmsDbfs": -32.961759,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -30.82,
+          "loudnessRangeLu": 1.8,
+          "truePeakDbfs": -20.39
+        }
+      },
+      {
+        "trackId": "walnut-foundation",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -14.859631,
+          "rmsDbfs": -25.916457,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -24.93,
+          "loudnessRangeLu": 3.5,
+          "truePeakDbfs": -14.86
+        }
+      },
+      {
+        "trackId": "room",
+        "analysis": {
+          "durationSeconds": 10,
+          "frames": 441000,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -18.521178,
+          "rmsDbfs": -33.999072,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -30.03,
+          "loudnessRangeLu": 15.4,
+          "truePeakDbfs": -18.51
+        }
+      }
+    ]
+  }
+}
