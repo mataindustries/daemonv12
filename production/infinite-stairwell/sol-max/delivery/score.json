@@ -1,0 +1,664 @@
+{
+  "schema": "daemonv12.signature-rack.score/1",
+  "title": "THE LANDING REMEMBERS",
+  "description": "ENM STUDIO / INFINITE STAIRWELL. A rising fifth, a semitone of hesitation, a falling fourth: stone learns to sing. D minor becomes D major in the mouth of one close voice, then the staircase asks again. Original four-bar film loop.",
+  "bpm": 96,
+  "key": "D minor",
+  "timeSignature": "4/4",
+  "swing": 0.5,
+  "seed": 193018,
+  "tailSeconds": 10,
+  "masterGainDb": 0,
+  "sections": [
+    {
+      "id": "stone",
+      "bars": 1,
+      "development": "D minor/add9. The D-A-Bb-F motif, with an answering voice below the struck bars."
+    },
+    {
+      "id": "memory",
+      "bars": 1,
+      "development": "Bb major9/#11. The same outline returns; its last note opens into E instead of F."
+    },
+    {
+      "id": "someone",
+      "bars": 1,
+      "development": "D major9/F#. Metal falls silent. A close human-scale voice changes Bb to B and F to F#. The building remembers warmth."
+    },
+    {
+      "id": "upstairs",
+      "bars": 1,
+      "development": "A7sus/b9 to A7. G-E-C# descends as the final A pickup reaches back to the opening D. Tails continue around the loop."
+    }
+  ],
+  "room": {
+    "rt60": 3.1,
+    "size": 1.7,
+    "damp": 3900,
+    "predelayMs": 47,
+    "lowCut": 250
+  },
+  "parts": [
+    {
+      "id": "stone-melody",
+      "instrument": "mechanical-orchestra/bar",
+      "gainDb": -7,
+      "pan": 0,
+      "room": 0.42,
+      "macro": 0.12,
+      "setup": {
+        "spread": 0.47,
+        "seed": 1930
+      },
+      "controls": {
+        "hardness": 0.23,
+        "damp": 0.6
+      },
+      "notes": [
+        [
+          0,
+          0.6,
+          "D5",
+          0.83,
+          {
+            "articulation": "soft"
+          }
+        ],
+        [
+          0.75,
+          0.4,
+          "A5",
+          0.66,
+          {
+            "articulation": "soft"
+          }
+        ],
+        [
+          1.25,
+          0.95,
+          "Bb5",
+          0.73,
+          {
+            "articulation": "soft"
+          }
+        ],
+        [
+          2.5,
+          0.9,
+          "F5",
+          0.62,
+          {
+            "articulation": "soft"
+          }
+        ],
+        [
+          4,
+          0.6,
+          "D5",
+          0.72,
+          {
+            "articulation": "soft"
+          }
+        ],
+        [
+          4.75,
+          0.4,
+          "A5",
+          0.6,
+          {
+            "articulation": "soft"
+          }
+        ],
+        [
+          5.25,
+          0.95,
+          "Bb5",
+          0.68,
+          {
+            "articulation": "soft"
+          }
+        ],
+        [
+          6.5,
+          0.9,
+          "E5",
+          0.58,
+          {
+            "articulation": "soft"
+          }
+        ],
+        [
+          14.75,
+          0.45,
+          "C#5",
+          0.37,
+          {
+            "articulation": "soft",
+            "damp": 0.35
+          }
+        ],
+        [
+          15.5,
+          0.6,
+          "A4",
+          0.56,
+          {
+            "articulation": "soft",
+            "damp": 0.65
+          }
+        ]
+      ]
+    },
+    {
+      "id": "distant-memory",
+      "instrument": "impossible-voice",
+      "gainDb": -5,
+      "pan": -0.22,
+      "room": 0.7,
+      "macro": [
+        [
+          0,
+          0.5
+        ],
+        [
+          4,
+          0.4
+        ],
+        [
+          7.5,
+          0.24
+        ]
+      ],
+      "setup": {
+        "size": 0.1,
+        "detune": -3,
+        "vibRate": 4.7,
+        "vibCents": 17,
+        "vowelTau": 0.17,
+        "haloDecay": 0.7,
+        "haloGain": 0.14,
+        "seed": 1800
+      },
+      "controls": {
+        "whistle": 0,
+        "under": 0,
+        "stretch": 0.003,
+        "split": 0.055,
+        "glass": 0.06,
+        "breath": 0.18,
+        "disperse": 0.05
+      },
+      "expression": [
+        [
+          0,
+          0.58
+        ],
+        [
+          2.5,
+          0.68
+        ],
+        [
+          4,
+          0.54
+        ],
+        [
+          7.5,
+          0.6
+        ]
+      ],
+      "notes": [
+        [
+          0.125,
+          1.1,
+          "D4",
+          0.62,
+          {
+            "articulation": "hum",
+            "vowel": "oo",
+            "to": "oh",
+            "scoop": 0.08
+          }
+        ],
+        [
+          1.5,
+          0.45,
+          "A4",
+          0.57,
+          {
+            "articulation": "sung",
+            "vowel": "oo",
+            "scoop": 0.05
+          }
+        ],
+        [
+          2,
+          0.5,
+          "Bb4",
+          0.59,
+          {
+            "articulation": "legato",
+            "vowel": "oh",
+            "slide": 0.035
+          }
+        ],
+        [
+          2.75,
+          1,
+          "F4",
+          0.61,
+          {
+            "articulation": "fall",
+            "vowel": "oo",
+            "fall": 0.12
+          }
+        ],
+        [
+          4.25,
+          1,
+          "F4",
+          0.59,
+          {
+            "articulation": "sung",
+            "vowel": "oh",
+            "to": "oo",
+            "scoop": 0.06
+          }
+        ],
+        [
+          5.5,
+          0.7,
+          "E4",
+          0.55,
+          {
+            "articulation": "legato",
+            "vowel": "oo",
+            "slide": 0.04
+          }
+        ],
+        [
+          6.5,
+          0.85,
+          "D4",
+          0.51,
+          {
+            "articulation": "hum",
+            "vowel": "mm"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "someone-close",
+      "instrument": "impossible-voice",
+      "gainDb": -6,
+      "pan": 0,
+      "room": 0.035,
+      "macro": 0,
+      "setup": {
+        "size": 0.18,
+        "detune": 0,
+        "vibRate": 4.9,
+        "vibCents": 12,
+        "vowelTau": 0.1,
+        "haloGain": 0,
+        "seed": 193018
+      },
+      "controls": {
+        "breath": 0.2,
+        "tilt": 0.42,
+        "stretch": 0,
+        "split": 0,
+        "under": 0,
+        "whistle": 0,
+        "glass": 0,
+        "disperse": 0,
+        "shimmer": 0,
+        "vib": 0.55
+      },
+      "expression": [
+        [
+          0,
+          0.65
+        ],
+        [
+          8,
+          0.73
+        ],
+        [
+          9.25,
+          0.8
+        ],
+        [
+          10.5,
+          0.68
+        ],
+        [
+          12,
+          0.62
+        ],
+        [
+          15.5,
+          0.58
+        ]
+      ],
+      "notes": [
+        [
+          8,
+          0.65,
+          "D4",
+          0.76,
+          {
+            "articulation": "hum",
+            "vowel": "mm",
+            "to": "oo",
+            "scoop": 0
+          }
+        ],
+        [
+          8.75,
+          0.4,
+          "A4",
+          0.72,
+          {
+            "articulation": "sung",
+            "vowel": "oo",
+            "scoop": 0.08
+          }
+        ],
+        [
+          9.25,
+          1.05,
+          "B4",
+          0.73,
+          {
+            "articulation": "sung",
+            "vowel": "oh",
+            "to": "ah",
+            "scoop": 0.04
+          }
+        ],
+        [
+          10.5,
+          1.25,
+          "F#4",
+          0.76,
+          {
+            "articulation": "hum",
+            "vowel": "oo",
+            "to": "mm"
+          }
+        ],
+        [
+          12,
+          1.05,
+          "G4",
+          0.66,
+          {
+            "articulation": "hum",
+            "vowel": "mm",
+            "to": "oo"
+          }
+        ],
+        [
+          13.25,
+          0.85,
+          "E4",
+          0.64,
+          {
+            "articulation": "sung",
+            "vowel": "oo",
+            "scoop": 0.02
+          }
+        ],
+        [
+          14.5,
+          0.85,
+          "C#4",
+          0.58,
+          {
+            "articulation": "hum",
+            "vowel": "mm"
+          }
+        ],
+        [
+          15.5,
+          0.58,
+          "A4",
+          0.48,
+          {
+            "articulation": "sung",
+            "vowel": "oo",
+            "scoop": 0.03
+          }
+        ]
+      ]
+    },
+    {
+      "id": "harmonic-stone",
+      "instrument": "mechanical-orchestra/bow",
+      "gainDb": -18,
+      "pan": 0.06,
+      "room": 0.35,
+      "macro": 0.04,
+      "setup": {
+        "spread": 0.32,
+        "seed": 180
+      },
+      "controls": {
+        "sub": 0,
+        "chatter": 0.018,
+        "attack": 0.28
+      },
+      "notes": [
+        [
+          0,
+          3.2,
+          "A3",
+          0.51,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          0,
+          3.2,
+          "E4",
+          0.4,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          0.125,
+          3,
+          "F4",
+          0.4,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          4,
+          2.8,
+          "A3",
+          0.47,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          4,
+          2.8,
+          "D4",
+          0.44,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          4.125,
+          2.6,
+          "E4",
+          0.38,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          8,
+          3.3,
+          "A3",
+          0.41,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          8,
+          3.3,
+          "C#4",
+          0.45,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          8.125,
+          3.1,
+          "E4",
+          0.37,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          12,
+          1.8,
+          "G3",
+          0.43,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          12,
+          1.8,
+          "Bb3",
+          0.35,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          12.125,
+          3.7,
+          "E4",
+          0.34,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          14.25,
+          1.6,
+          "G3",
+          0.36,
+          {
+            "articulation": "swell"
+          }
+        ],
+        [
+          14.25,
+          1.6,
+          "C#4",
+          0.38,
+          {
+            "articulation": "swell"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "walnut-foundation",
+      "instrument": "living-bass",
+      "gainDb": -11,
+      "pan": 0,
+      "room": 0.02,
+      "macro": 0,
+      "setup": {
+        "seed": 118
+      },
+      "controls": {
+        "motion": 0,
+        "chassis": 0,
+        "gear": 0,
+        "bright": 0.24,
+        "hold": 0.36,
+        "body": 0.62
+      },
+      "motion": [
+        {
+          "fromBeat": 0,
+          "toBeat": 16,
+          "preset": "none"
+        }
+      ],
+      "notes": [
+        [
+          0,
+          2.2,
+          "D2",
+          0.65,
+          {
+            "articulation": "normal"
+          }
+        ],
+        [
+          4,
+          2,
+          "Bb1",
+          0.62,
+          {
+            "articulation": "normal"
+          }
+        ],
+        [
+          8,
+          2.35,
+          "F#2",
+          0.59,
+          {
+            "articulation": "normal"
+          }
+        ],
+        [
+          12,
+          2.1,
+          "A1",
+          0.59,
+          {
+            "articulation": "normal"
+          }
+        ],
+        [
+          14.5,
+          0.55,
+          "E2",
+          0.41,
+          {
+            "articulation": "staccato"
+          }
+        ],
+        [
+          15.25,
+          0.4,
+          "A2",
+          0.4,
+          {
+            "articulation": "staccato"
+          }
+        ]
+      ]
+    }
+  ]
+}
