@@ -1,0 +1,1906 @@
+{
+  "ok": true,
+  "command": "render",
+  "engineVersion": "0.7.0",
+  "project": "hook-b-grouped-ostinato.json",
+  "errors": [],
+  "warnings": [],
+  "summary": {
+    "title": "hook-b-grouped-ostinato",
+    "bars": 4,
+    "timeSignature": "4/4",
+    "bpm": 140,
+    "key": "B minor",
+    "tracks": 4,
+    "notes": 76,
+    "durationTicks": 15360,
+    "durationSeconds": 6.857136
+  },
+  "artifacts": {
+    "midi": "sketches/hook-b-grouped-ostinato/hook-b-grouped-ostinato.mid",
+    "wav": "sketches/hook-b-grouped-ostinato/hook-b-grouped-ostinato.wav",
+    "manifest": "sketches/hook-b-grouped-ostinato/hook-b-grouped-ostinato.render.json"
+  },
+  "manifest": {
+    "engine": {
+      "name": "daemonv12",
+      "version": "0.7.0"
+    },
+    "project": {
+      "file": "hook-b-grouped-ostinato.json",
+      "sha256": "d62e6291b43103cc1e3a7c3c5b7afb8c8e087e8e12f6e5dff50f4627eb3a7b64",
+      "formatVersion": 1,
+      "seed": 0
+    },
+    "midi": {
+      "file": "hook-b-grouped-ostinato.mid",
+      "sha256": "a5c14bcb0b2fdda01acf4e7aa3483e0fa4308bfccddce163cd4b801f57e60eeb",
+      "bytes": 75,
+      "ppq": 960,
+      "durationTicks": 15360,
+      "durationSeconds": 6.857136,
+      "notes": 0
+    },
+    "renderer": {
+      "name": "daemonv12-pcm",
+      "version": "1",
+      "settings": {
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "velocity": "round(sample * velocity)",
+        "mix": "integer sum, saturate s16",
+        "resampling": false
+      }
+    },
+    "gmRenderer": null,
+    "gmSource": null,
+    "soundfont": null,
+    "samples": {
+      "timing": "nearest frame, ties later; ceil project end; absolute tick * usPerQuarter * 44100 / 960000000",
+      "assets": [
+        {
+          "file": "assets/v12-signature/01-sub-hammer.wav",
+          "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+          "bytes": 83834,
+          "frames": 41895,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        },
+        {
+          "file": "assets/v12-signature/07-abyss.wav",
+          "sha256": "5d6e52ee847aeaebb24d10cd642f9e03de6da21a51c1917cca494d1e1d47b03a",
+          "bytes": 705644,
+          "frames": 352800,
+          "channels": 1,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        },
+        {
+          "file": "assets/v12-signature/09-signal.wav",
+          "sha256": "784cbb24dc06c92b3c63e18564198d1ab5055a1d83c3808f75c8e73abba6fdb9",
+          "bytes": 793844,
+          "frames": 198450,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        },
+        {
+          "file": "assets/v12-signature/11-event-horizon.wav",
+          "sha256": "c881ec16051024dd23769c2fc279f9b8b6a641d69075ab00942adf2398439025",
+          "bytes": 1764044,
+          "frames": 441000,
+          "channels": 2,
+          "sampleRate": 44100,
+          "bitsPerSample": 16
+        }
+      ],
+      "tracks": [
+        {
+          "trackId": "lead",
+          "trackIndex": 0,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/v12-signature/09-signal.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 240,
+              "frame": 4725,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 480,
+              "frame": 9450,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.33484,
+                "voiceFrames": 148670
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 720,
+              "frame": 14175,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 960,
+              "frame": 18900,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 1200,
+              "frame": 23625,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.498307,
+                "voiceFrames": 132450
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 1440,
+              "frame": 28350,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 1680,
+              "frame": 33075,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 1920,
+              "frame": 37800,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.681793,
+                "voiceFrames": 118000
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 2160,
+              "frame": 42525,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 2400,
+              "frame": 47250,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 2640,
+              "frame": 51975,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.781797,
+                "voiceFrames": 111377
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 2880,
+              "frame": 56700,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 3120,
+              "frame": 61425,
+              "velocity": 0.7,
+              "playback": {
+                "rate": 1.681793,
+                "voiceFrames": 118000
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 3360,
+              "frame": 66150,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 3600,
+              "frame": 70875,
+              "velocity": 0.7,
+              "playback": {
+                "rate": 1.33484,
+                "voiceFrames": 148670
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 3840,
+              "frame": 75600,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 4080,
+              "frame": 80325,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 4320,
+              "frame": 85050,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.781797,
+                "voiceFrames": 111377
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 4560,
+              "frame": 89775,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 4800,
+              "frame": 94500,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 5040,
+              "frame": 99225,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.681793,
+                "voiceFrames": 118000
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 5280,
+              "frame": 103950,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 5520,
+              "frame": 108675,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 5760,
+              "frame": 113400,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.498307,
+                "voiceFrames": 132450
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 6000,
+              "frame": 118125,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 6240,
+              "frame": 122850,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 6480,
+              "frame": 127575,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.259921,
+                "voiceFrames": 157510
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 6720,
+              "frame": 132300,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 6960,
+              "frame": 137025,
+              "velocity": 0.7,
+              "playback": {
+                "rate": 1.33484,
+                "voiceFrames": 148670
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 7200,
+              "frame": 141750,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 7440,
+              "frame": 146475,
+              "velocity": 0.7,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 7680,
+              "frame": 151200,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 7920,
+              "frame": 155925,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 8160,
+              "frame": 160650,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.33484,
+                "voiceFrames": 148670
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 8400,
+              "frame": 165375,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 8640,
+              "frame": 170100,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 8880,
+              "frame": 174825,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.498307,
+                "voiceFrames": 132450
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 9120,
+              "frame": 179550,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 9360,
+              "frame": 184275,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 9600,
+              "frame": 189000,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.681793,
+                "voiceFrames": 118000
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 9840,
+              "frame": 193725,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 10080,
+              "frame": 198450,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 10320,
+              "frame": 203175,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.781797,
+                "voiceFrames": 111377
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 10560,
+              "frame": 207900,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 10800,
+              "frame": 212625,
+              "velocity": 0.7,
+              "playback": {
+                "rate": 1.681793,
+                "voiceFrames": 118000
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 11040,
+              "frame": 217350,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 11280,
+              "frame": 222075,
+              "velocity": 0.7,
+              "playback": {
+                "rate": 1.33484,
+                "voiceFrames": 148670
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 11520,
+              "frame": 226800,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 11760,
+              "frame": 231525,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 12000,
+              "frame": 236250,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.781797,
+                "voiceFrames": 111377
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 12240,
+              "frame": 240975,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 12480,
+              "frame": 245700,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 12720,
+              "frame": 250425,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.681793,
+                "voiceFrames": 118000
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 12960,
+              "frame": 255150,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 13200,
+              "frame": 259875,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 13440,
+              "frame": 264600,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.498307,
+                "voiceFrames": 132450
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 13680,
+              "frame": 269325,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 13920,
+              "frame": 274050,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 14160,
+              "frame": 278775,
+              "velocity": 0.78,
+              "playback": {
+                "rate": 1.259921,
+                "voiceFrames": 157510
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 14400,
+              "frame": 283500,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 14640,
+              "frame": 288225,
+              "velocity": 0.7,
+              "playback": {
+                "rate": 1.33484,
+                "voiceFrames": 148670
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 14880,
+              "frame": 292950,
+              "velocity": 0.5,
+              "playback": {
+                "rate": 0.561231,
+                "voiceFrames": 353598
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            },
+            {
+              "file": "assets/v12-signature/09-signal.wav",
+              "tick": 15120,
+              "frame": 297675,
+              "velocity": 0.7,
+              "playback": {
+                "rate": 0.840896,
+                "voiceFrames": 235999
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "1/16",
+                  "frames": 4725
+                },
+                "envelope": {
+                  "attackSeconds": 0.001,
+                  "attackFrames": 44,
+                  "releaseSeconds": 0.04,
+                  "releaseFrames": 1764
+                },
+                "voiceFrames": 6489,
+                "renderedFrames": 6489
+              }
+            }
+          ],
+          "clippedSamples": 0
+        },
+        {
+          "trackId": "pad",
+          "trackIndex": 1,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/v12-signature/11-event-horizon.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/v12-signature/11-event-horizon.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 0.4,
+              "playback": {
+                "rate": 1.122462,
+                "offset": {
+                  "seconds": 1.6,
+                  "frames": 70560
+                },
+                "voiceFrames": 330025
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "2/1",
+                  "frames": 151200
+                },
+                "envelope": {
+                  "attackSeconds": 0.15,
+                  "attackFrames": 6615,
+                  "releaseSeconds": 0.9,
+                  "releaseFrames": 39690
+                },
+                "voiceFrames": 190890,
+                "renderedFrames": 190890
+              }
+            },
+            {
+              "file": "assets/v12-signature/11-event-horizon.wav",
+              "tick": 7680,
+              "frame": 151200,
+              "velocity": 0.4,
+              "playback": {
+                "rate": 0.890899,
+                "offset": {
+                  "seconds": 1.6,
+                  "frames": 70560
+                },
+                "voiceFrames": 415805
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "2/1",
+                  "frames": 151200
+                },
+                "envelope": {
+                  "attackSeconds": 0.15,
+                  "attackFrames": 6615,
+                  "releaseSeconds": 1.2,
+                  "releaseFrames": 52920
+                },
+                "voiceFrames": 204120,
+                "renderedFrames": 204120
+              }
+            }
+          ],
+          "clippedSamples": 0
+        },
+        {
+          "trackId": "sub",
+          "trackIndex": 2,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/v12-signature/07-abyss.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/v12-signature/07-abyss.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 1.122462,
+                "voiceFrames": 314310
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "31/16",
+                  "frames": 146475
+                },
+                "envelope": {
+                  "attackSeconds": 0.004,
+                  "attackFrames": 176,
+                  "releaseSeconds": 0.08,
+                  "releaseFrames": 3528
+                },
+                "voiceFrames": 150003,
+                "renderedFrames": 150003
+              }
+            },
+            {
+              "file": "assets/v12-signature/07-abyss.wav",
+              "tick": 7680,
+              "frame": 151200,
+              "velocity": 0.42,
+              "playback": {
+                "rate": 0.890899,
+                "voiceFrames": 396005
+              },
+              "articulation": {
+                "gate": {
+                  "duration": "31/16",
+                  "frames": 146475
+                },
+                "envelope": {
+                  "attackSeconds": 0.004,
+                  "attackFrames": 176,
+                  "releaseSeconds": 0.08,
+                  "releaseFrames": 3528
+                },
+                "voiceFrames": 150003,
+                "renderedFrames": 150003
+              }
+            }
+          ],
+          "clippedSamples": 0
+        },
+        {
+          "trackId": "kick",
+          "trackIndex": 3,
+          "instrument": {
+            "type": "sampler",
+            "sample": "assets/v12-signature/01-sub-hammer.wav"
+          },
+          "triggers": [
+            {
+              "file": "assets/v12-signature/01-sub-hammer.wav",
+              "tick": 0,
+              "frame": 0,
+              "velocity": 0.6,
+              "playback": {
+                "rate": 1.122462,
+                "voiceFrames": 37325
+              }
+            },
+            {
+              "file": "assets/v12-signature/01-sub-hammer.wav",
+              "tick": 1920,
+              "frame": 37800,
+              "velocity": 0.6,
+              "playback": {
+                "rate": 1.122462,
+                "voiceFrames": 37325
+              }
+            },
+            {
+              "file": "assets/v12-signature/01-sub-hammer.wav",
+              "tick": 3840,
+              "frame": 75600,
+              "velocity": 0.6,
+              "playback": {
+                "rate": 1.122462,
+                "voiceFrames": 37325
+              }
+            },
+            {
+              "file": "assets/v12-signature/01-sub-hammer.wav",
+              "tick": 5760,
+              "frame": 113400,
+              "velocity": 0.6,
+              "playback": {
+                "rate": 1.122462,
+                "voiceFrames": 37325
+              }
+            },
+            {
+              "file": "assets/v12-signature/01-sub-hammer.wav",
+              "tick": 7680,
+              "frame": 151200,
+              "velocity": 0.6,
+              "playback": {
+                "rate": 0.890899,
+                "voiceFrames": 47026
+              }
+            },
+            {
+              "file": "assets/v12-signature/01-sub-hammer.wav",
+              "tick": 9600,
+              "frame": 189000,
+              "velocity": 0.6,
+              "playback": {
+                "rate": 0.890899,
+                "voiceFrames": 47026
+              }
+            },
+            {
+              "file": "assets/v12-signature/01-sub-hammer.wav",
+              "tick": 11520,
+              "frame": 226800,
+              "velocity": 0.6,
+              "playback": {
+                "rate": 0.890899,
+                "voiceFrames": 47026
+              }
+            },
+            {
+              "file": "assets/v12-signature/01-sub-hammer.wav",
+              "tick": 13440,
+              "frame": 264600,
+              "velocity": 0.6,
+              "playback": {
+                "rate": 0.890899,
+                "voiceFrames": 47026
+              }
+            }
+          ],
+          "clippedSamples": 0
+        }
+      ],
+      "playback": {
+        "name": "daemonv12-playback",
+        "version": "1",
+        "settings": {
+          "rate": "0.25 through 4; pitch and duration change together; no time-stretching",
+          "interpolation": "band-limited Kaiser-windowed sinc, 32 zero crossings per side, beta 8.5, 512 table steps per crossing with linear table interpolation; cutoff 0.92 x min(1, 1/rate) of source Nyquist; weights normalized to unity DC gain; silence outside the source; kernel from IEEE-754 basic arithmetic",
+          "glide": "rate linear in output frames from playbackRate to glide.to over the glide frames, then held; read position is the closed-form integral per frame",
+          "offset": "whole source frame: offsetSeconds as microseconds * 44100 / 1000000, nearest frame, ties later",
+          "exactPath": "rate 1 without glide copies source frames from the offset; no interpolation",
+          "end": "voice stops at the first output frame whose read position reaches the source length; no fades",
+          "velocity": "round(value * velocity) per voice sample, as for unperformed voices"
+        }
+      },
+      "articulation": {
+        "name": "daemonv12-articulation",
+        "version": "1",
+        "settings": {
+          "source": "exclusive source end; explicit slice silences interpolation taps outside [offset,end); V0.6 interpolation unchanged otherwise",
+          "envelope": "linear output-frame attack from zero; a scheduled gate/choke release freezes attack gain at its onset; source/output exhaustion compresses overlapping fades proportionally, retaining the authored attack level at the peak and never delaying a gate; last rendered frame reaches zero; defaults 1ms attack, 5ms release; explicit zero disables a fade",
+          "stop": "gate or earliest later same-track choke onset starts release; stop + release capped by source exhaustion and permitted audio boundary; no source extension",
+          "choke": "track-local group; equal output-frame onsets coexist; each older voice uses its own release; a release already started is never restarted",
+          "rounding": "seconds to exact microseconds then nearest frame, ties later; gate via difference of rounded absolute musical boundaries"
+        }
+      }
+    },
+    "mix": {
+      "clippedSamples": 0,
+      "gm": "full-score render",
+      "samples": "sum exported track PCM"
+    },
+    "wav": {
+      "file": "hook-b-grouped-ostinato.wav",
+      "sha256": "3b37c1779c9c57e03ac4f1eba46e10d238120f27d00722b14fe41d1daf4eed29",
+      "bytes": 1421324,
+      "frames": 355320,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "durationSeconds": 8.057143
+    }
+  }
+}
