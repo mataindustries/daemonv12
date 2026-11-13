@@ -6,7 +6,7 @@
  */
 import { frozen, type BassNote, type MotionSegment, type VoiceNote, type Wave } from './frozen.ts';
 import { RATE, curveAt, laneOf, clamp, smooth, haloPitches } from './curves.ts';
-import type { ControlSpec, Curve, NoteEvent, PartPerformance, RackInstrument, RenderContext } from './types.ts';
+import type { ControlSpec, Curve, Gesture, GestureMap, NoteEvent, PartPerformance, RackInstrument, RenderContext } from './types.ts';
 
 const ADAPTER = '1.0.0';
 const NOMINAL_RMS = 0.1; // -20 dBFS
@@ -34,6 +34,25 @@ function controlLane(perf: PartPerformance, ctx: RenderContext, c: ControlSpec, 
   return (t: number) => clamp((macroMap(clamp(morph(t), 0, 1))[c.name] ?? 0) + o(t), c.min, c.max);
 }
 const spec = (name: string, min: number, max: number, description: string): ControlSpec => ({ name, min, max, description });
+
+// ============================================================ PORTABLE GESTURES (v0.9, data only)
+// How each of the six motif gestures is played per instrument, using only articulations and per-note params that
+// already exist. A missing gesture leaves the note as written. Nothing here changes how any instrument renders.
+type Gestures = Partial<Record<Gesture, GestureMap>>;
+const PLAIN_GESTURES: Gestures = { accent: { velocity: 1.15 }, soft: { velocity: 0.7 }, short: { beats: 0.5 } };
+const GESTURE_TABLE: Record<string, Gestures> = {
+  'living-bass': { accent: { articulation: 'accent' }, soft: { articulation: 'ghost' }, short: { articulation: 'staccato' }, legato: { articulation: 'legato' },
+    lift: { articulation: 'normal', params: { scoop: 2 } }, fall: { articulation: 'normal', params: { dive: 2 } } },
+  'impossible-voice': { accent: { articulation: 'sung', velocity: 1.12 }, soft: { articulation: 'hum', velocity: 0.7 }, short: { articulation: 'detached' }, legato: { articulation: 'legato' },
+    lift: { articulation: 'sung', params: { cry: 1 } }, fall: { articulation: 'fall', params: { fall: 0.8 } } },
+  'mechanical-orchestra/bar': { accent: { articulation: 'hard' }, soft: { articulation: 'soft' }, short: { articulation: 'muted' }, legato: { articulation: 'ring' },
+    lift: { articulation: 'strike', params: { hardness: 0.7 } }, fall: { articulation: 'ring', params: { damp: 1.2 } } },
+  'mechanical-orchestra/bow': { accent: { articulation: 'bite' }, soft: { articulation: 'swell', velocity: 0.7 }, short: { articulation: 'bite', beats: 0.5 }, legato: { articulation: 'swell' },
+    lift: { articulation: 'swell' }, fall: { articulation: 'swell' } },
+  'mechanical-orchestra/spring': { accent: { articulation: 'twang' }, soft: { articulation: 'pluck', velocity: 0.7 }, short: { articulation: 'damped' }, lift: { articulation: 'twang' } },
+  'mechanical-orchestra/tine': { accent: { articulation: 'buzz' }, soft: { articulation: 'clean', velocity: 0.7 }, short: { articulation: 'clean', beats: 0.5 } },
+  'mechanical-orchestra/clock': PLAIN_GESTURES, 'mechanical-orchestra/bearings': PLAIN_GESTURES, 'context/kick': PLAIN_GESTURES, 'context/snare': PLAIN_GESTURES,
+};
 
 // ============================================================ LIVING BASS (warm -> machine)
 // Ranges are the envelope the approved warm -> machine macro spans. Measured: past hold 0.84 or bright 1 (with motion)
@@ -318,5 +337,5 @@ const mono = (w: Wave[]) => w.length === 1 ? w[0]! : w[0]!.map((v, i) => 0.5 * (
 
 /** All rack instruments (registry order). */
 export function instrumentList(): RackInstrument[] {
-  return [livingBass, impossibleVoice, ...MACHINES.map(machine), contextKick, contextSnare];
+  return [livingBass, impossibleVoice, ...MACHINES.map(machine), contextKick, contextSnare].map(i => ({ ...i, gestures: GESTURE_TABLE[i.id] ?? {} }));
 }

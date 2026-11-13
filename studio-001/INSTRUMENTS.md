@@ -1,6 +1,6 @@
 # Signature Rack · instrument reference
 
-Generated from the registry by `node studio-001/rack/docs.ts` (rack 1.0.0, interface 1.0.0). Do not edit by hand.
+Generated from the registry by `node studio-001/rack/docs.ts` (rack 1.0.0, interface 1.1.0). Do not edit by hand.
 
 Every instrument renders at a calibrated nominal level: a reference note at macro 0 and velocity 0.8 measures -20 dBFS RMS, so part gains compare across families. `Suggested gain` is the balance of the approved auditions. Controls accept a constant, `[[beat, value], ...]` ramps or `{ "steps": [[beat, value], ...], "glide": beats }`, either absolute (`controls`) or added to the macro mapping (`offsets`); values are clamped to the listed range.
 
@@ -40,6 +40,15 @@ Setup (per part): `seed` (0 … 4294967295: random seed for drift and chassis no
 
 Per-note parameters: `scoop` (semitones to rise from on a fresh strike); `dive` (semitones to dive at the end of the note); `diveBeats` (length of the dive in beats).
 
+| Gesture (score/2 motifs) | Played as |
+|---|---|
+| `accent` | `accent` |
+| `soft` | `ghost` |
+| `short` | `staccato` |
+| `legato` | `legato` |
+| `lift` | `normal`, scoop 2 |
+| `fall` | `normal`, dive 2 |
+
 ## human → impossible · impossible-voice
 
 ### `impossible-voice` · Impossible Voice
@@ -76,6 +85,15 @@ Setup (per part): `size` (-1 … 1: fixed tract scale (giant .. small)); `detune
 
 Per-note parameters: `vowel` (one of mm, oo, oh, aw, ah, uh, eh, ee); `to` (vowel reached by the end of the note); `scoop` (semitones); `cry` (semitones); `fall` (semitones).
 
+| Gesture (score/2 motifs) | Played as |
+|---|---|
+| `accent` | `sung`, velocity ×1.12 |
+| `soft` | `hum`, velocity ×0.7 |
+| `short` | `detached` |
+| `legato` | `legato` |
+| `lift` | `sung`, cry 1 |
+| `fall` | `fall`, fall 0.8 |
+
 ## clockwork → alien machinery · mechanical-orchestra
 
 ### `mechanical-orchestra/bar` · Modal bar
@@ -102,6 +120,15 @@ Setup (per part): `seed` (0 … 4294967295: random seed); `spread` (0 … 1: ste
 
 Per-note parameters: `hardness` (per-note mallet hardness); `damp` (per-note decay scale).
 
+| Gesture (score/2 motifs) | Played as |
+|---|---|
+| `accent` | `hard` |
+| `soft` | `soft` |
+| `short` | `muted` |
+| `legato` | `ring` |
+| `lift` | `strike`, hardness 0.7 |
+| `fall` | `ring`, damp 1.2 |
+
 ### `mechanical-orchestra/bow` · Friction-bowed bar
 
 The same bar driven by friction (stick-slip pulses plus rosin noise). Toward the alien end, bow overpressure skips slips: subharmonics an octave, then a twelfth, below.
@@ -125,6 +152,15 @@ Setup (per part): `seed` (0 … 4294967295: random seed); `spread` (0 … 1: ste
 
 Per-note parameters: `attack` (seconds).
 
+| Gesture (score/2 motifs) | Played as |
+|---|---|
+| `accent` | `bite` |
+| `soft` | `swell`, velocity ×0.7 |
+| `short` | `bite`, length ×0.5 |
+| `legato` | `swell` |
+| `lift` | `swell` |
+| `fall` | `swell` |
+
 ### `mechanical-orchestra/spring` · Dispersive spring
 
 Coil-spring waveguide with an all-pass dispersion chain, tuned on its low harmonics; from a near-harmonic plucked steel string to a long chirping laser spring.
@@ -145,6 +181,13 @@ Version `1.0.0+mutation-001-C` · range E1–C5 (MIDI 28–72) · suggested gain
 
 Setup (per part): `seed` (0 … 4294967295: random seed); `spread` (0 … 1: stereo spread (default 0, alternating left/right)).
 
+| Gesture (score/2 motifs) | Played as |
+|---|---|
+| `accent` | `twang` |
+| `soft` | `pluck`, velocity ×0.7 |
+| `short` | `damped` |
+| `lift` | `twang` |
+
 ### `mechanical-orchestra/tine` · Buzzing tine
 
 Clamped steel tine (cantilever modes) with a sitar-like bridge-contact buzz that grows toward the alien end.
@@ -164,6 +207,12 @@ Version `1.0.0+mutation-001-C` · range C4–E7 (MIDI 60–100) · suggested gai
 
 Setup (per part): `seed` (0 … 4294967295: random seed); `spread` (0 … 1: stereo spread (default 0.2, alternating left/right)).
 
+| Gesture (score/2 motifs) | Played as |
+|---|---|
+| `accent` | `buzz` |
+| `soft` | `clean`, velocity ×0.7 |
+| `short` | `clean`, length ×0.5 |
+
 ### `mechanical-orchestra/clock` · Escapement clock
 
 Escapement tick (small high modes) or tock (lower modes). Toward the alien end accented ticks (velocity >= 0.5) sprout tiny high springs tuned to the note pitch.
@@ -181,6 +230,12 @@ Version `1.0.0+mutation-001-C` · range C4–E7 (MIDI 60–100) · suggested gai
 
 Setup (per part): `seed` (0 … 4294967295: random seed); `spread` (0 … 1: stereo spread (default 0.15, alternating left/right)).
 
+| Gesture (score/2 motifs) | Played as |
+|---|---|
+| `accent` | velocity ×1.15 |
+| `soft` | velocity ×0.7 |
+| `short` | length ×0.5 |
+
 ### `mechanical-orchestra/bearings` · Bearings
 
 Tiny tuned metal pings (short bars) for textures; use a part `textures` block for seeded Poisson rain over chord tones.
@@ -192,6 +247,12 @@ Version `1.0.0+mutation-001-C` · range C5–C8 (MIDI 72–108) · suggested gai
 | `ping` | default |
 
 Setup (per part): `seed` (0 … 4294967295: random seed); `spread` (0 … 1: stereo spread (default 0.8, random per note)).
+
+| Gesture (score/2 motifs) | Played as |
+|---|---|
+| `accent` | velocity ×1.15 |
+| `soft` | velocity ×0.7 |
+| `short` | length ×0.5 |
 
 ## Context instruments (for musical-context mixes)
 
@@ -206,6 +267,12 @@ Version `1.0.0+headliner-001` · range C1–C3 (MIDI 24–48) · suggested gain 
 | `hit` | default |
 | `short` | tighter body |
 
+| Gesture (score/2 motifs) | Played as |
+|---|---|
+| `accent` | velocity ×1.15 |
+| `soft` | velocity ×0.7 |
+| `short` | length ×0.5 |
+
 ### `context/snare` · Context snare
 
 Snare/clap from the HEADLINER 001 toolkit (unchanged). Pitch is ignored. For musical-context mixes.
@@ -217,3 +284,9 @@ Version `1.0.0+headliner-001` · range C-1–G9 (MIDI 0–127) · suggested gain
 | `snare` | snare with clap layer |
 | `ghost` | soft short snare |
 | `clap` | clap-forward |
+
+| Gesture (score/2 motifs) | Played as |
+|---|---|
+| `accent` | velocity ×1.15 |
+| `soft` | velocity ×0.7 |
+| `short` | length ×0.5 |

@@ -4,10 +4,11 @@
  * seeded textures, seeded humanisation) expand deterministically into explicit notes; the expanded performance is
  * saved beside the authored score in every package.
  */
-import { SCORE_SCHEMA, type Breath, type Curve, type Key, type MotionSpan, type NoteEvent, type NoteInput, type PartInput, type PartPerformance, type RackInstrument, type ScoreInput } from './types.ts';
+import { SCORE_SCHEMA, SCORE_SCHEMA_V2, type Breath, type Curve, type Key, type MotionSpan, type NoteEvent, type NoteInput, type PartInput, type PartPerformance, type RackInstrument, type ScoreInput } from './types.ts';
 import { beatSecondsOf, curveAt, keyOf, pitchOf, swung } from './curves.ts';
 import { getInstrument } from './registry.ts';
 import { VOWELS } from './instruments.ts';
+import { lowerScore } from './motif.ts';
 
 export interface NormalizedPart { id: string; instrument: RackInstrument; gainDb: number; pan: number; room: number; context: boolean; perf: PartPerformance }
 export interface NormalizedSection { id: string; bars: number; development: string; startBeat: number }
@@ -88,6 +89,8 @@ function partNotes(part: PartInput, path: string, p: Problems, endBeat: number, 
 }
 
 export function normalizeScore(input: unknown, opts: NormalizeOptions = {}): NormalizedScore {
+  // v0.9: a motif score lowers to a plain /1 score first; a /1 score never enters the motif layer.
+  if ((input as { schema?: unknown } | null)?.schema === SCORE_SCHEMA_V2) input = lowerScore(input, opts.transpose !== undefined ? { transpose: opts.transpose } : {}).score;
   const p = new Problems(), s = input as ScoreInput;
   if (!s || typeof s !== 'object') throw new Error('score: a JSON object is required');
   p.check(s.schema === SCORE_SCHEMA, `schema: expected "${SCORE_SCHEMA}"`);
