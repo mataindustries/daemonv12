@@ -1,5 +1,5 @@
 /**
- * HOOK//10 build: renders each benchmark score with the unchanged rack, folds the render's tail back onto its start
+ * HOOK//10 build: renders each benchmark score with the unchanged rack (score/2 scores are lowered first), folds the render's tail back onto its start
  * (a sample-exact loop without a crossfade), loudness-matches every version with one gain, and writes masters,
  * listening copies, the motif report and event map (score/2 only) and a manifest with the loop verification.
  *
@@ -14,15 +14,13 @@ import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { normalizeScore, performanceJson } from '../../rack/score.ts';
+import { performanceJson } from '../../rack/score.ts';
 import { renderScore, mixdown, peak, type Stereo } from '../../rack/render.ts';
 import { wavBytes } from '../../rack/package.ts';
 import { sha256 } from '../../rack/frozen.ts';
 import { beatFrame } from '../../rack/curves.ts';
 import { loudness, ffmpegVersion } from '../../rack/cli.ts';
-import { lowerScore } from '../../rack/motif.ts';
-import { motifReport, motifEvents, hook10Gate } from '../../rack/motif-report.ts';
-import { SCORE_SCHEMA_V2 } from '../../rack/types.ts';
+import { lowerScore, motifReport, motifEvents, hook10Gate, normalizeAnyScore, isMotifScore } from '../../motif/index.ts';
 
 const here = dirname(fileURLToPath(import.meta.url));
 export const LOOP_FRAMES = 441_000, TARGET_LUFS = -16, CEILING_DBTP = -1;
@@ -76,8 +74,8 @@ export function seamCheck(wav: Buffer) {
 }
 
 export async function buildVersion(v: (typeof VERSIONS)[number], out: string, log: (s: string) => void) {
-  const authored = JSON.parse(readFileSync(join(here, v.file), 'utf8')) as { schema: string }, isV2 = authored.schema === SCORE_SCHEMA_V2;
-  const score = normalizeScore(authored), rendered = await renderScore(score, log), mixes = await mixdown(rendered);
+  const authored = JSON.parse(readFileSync(join(here, v.file), 'utf8')) as { schema: string }, isV2 = isMotifScore(authored);
+  const score = normalizeAnyScore(authored), rendered = await renderScore(score, log), mixes = await mixdown(rendered);
   if (beatFrame(score.endBeat, score.bpm) !== LOOP_FRAMES) throw new Error(`${v.id}: the score is ${beatFrame(score.endBeat, score.bpm)} frames, not ${LOOP_FRAMES} (4 bars at 96 BPM)`);
   const x = mixes.context, loop = foldLoop(x, LOOP_FRAMES), tailFrames = x[0].length - LOOP_FRAMES;
   // fold identity, and proof that the render's tail had decayed before the render ended (nothing was cut off)

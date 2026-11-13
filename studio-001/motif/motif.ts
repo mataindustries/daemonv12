@@ -1,13 +1,15 @@
 /**
  * Motif development layer (v0.9). Lowers a `score/2` score (named motifs in scale steps, placed as phrases with
  * transform chains and portable gestures) to an ordinary `score/1` score of plain notes. Pure: no audio, no I/O.
- * Rendering, bouncing, instruments and the engine never see a motif; a `/1` score never enters this file.
+ * Rendering, bouncing, instruments and the engine never see a motif; a `/1` score never enters this file, and no
+ * file of the approved rack (studio-001/rack) is changed.
  * Contract: docs/V0_9_MOTIF_DEVELOPMENT.md.
  */
-import { SCORE_SCHEMA, SCORE_SCHEMA_V2, type Cell, type CellNote, type Gesture, type Key, type LoweredPhrase, type LoweredScore,
-  type MotifInput, type NoteInput, type PartInput, type PhraseInput, type ScaleName, type ScoreInput, type Transform } from './types.ts';
-import { keyOf } from './curves.ts';
-import { getInstrument } from './registry.ts';
+import { SCORE_SCHEMA, type Key, type NoteInput, type PartInput, type ScoreInput } from '../rack/types.ts';
+import { keyOf } from '../rack/curves.ts';
+import { getInstrument } from '../rack/registry.ts';
+import { SCORE_SCHEMA_V2, type Cell, type CellNote, type Gesture, type LoweredPhrase, type LoweredScore, type MotifInput, type PhraseInput, type ScaleName, type Transform } from './types.ts';
+import { gesturesOf } from './gestures.ts';
 
 export const SCALES: Record<ScaleName, readonly number[]> = { major: [0, 2, 4, 5, 7, 9, 11], minor: [0, 2, 3, 5, 7, 8, 10], 'harmonic-minor': [0, 2, 3, 5, 7, 8, 11] };
 export const GESTURES: readonly Gesture[] = ['accent', 'soft', 'short', 'legato', 'lift', 'fall'];
@@ -281,8 +283,8 @@ export interface LowerOptions {
 }
 /**
  * Lower a `score/2` score to a `score/1` score. Errors throw in the rack's `score is invalid (n problems)` form;
- * `problems` holds warnings only. Pitches are resolved against the untransposed key: `normalizeScore` applies
- * `transpose` afterwards, exactly once.
+ * `problems` holds warnings only. Pitches are resolved against the untransposed key: the rack's `normalizeScore`
+ * applies `transpose` afterwards, exactly once.
  */
 export function lowerScore(input: unknown, opts: LowerOptions = {}): LoweredScore {
   const p = new Issues(), s = input as ScoreInput & { motifs?: unknown; parts: (PartInput & { phrases?: PhraseInput[] })[] };
@@ -329,7 +331,7 @@ export function lowerScore(input: unknown, opts: LowerOptions = {}): LoweredScor
       if (!src || !run || at === undefined || !vOk || !fOk) continue;
       const cell = run.cell, chain = [...src.chain, ...run.labels], label = `${pp} (${id})`;
       const made = byOnset(cell.notes).map((n, k) => {
-        const g = n.gesture ? inst!.gestures?.[n.gesture] : undefined; let articulation = n.articulation;
+        const g = n.gesture ? gesturesOf(inst!.id)[n.gesture] : undefined; let articulation = n.articulation;
         if (articulation !== undefined && !(articulation in inst!.articulations)) {
           p.warnings.push(`warning: ${label} note ${k}: articulation "${articulation}" does not exist on ${inst!.id}; dropped (use a gesture, which every instrument maps, or one of ${Object.keys(inst!.articulations).join(', ')})`);
           dropped++; articulation = undefined;

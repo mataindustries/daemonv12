@@ -7,5 +7,3 @@ export { bouncePackage, bounceKit, verifyPackage, sealPackage, packageFiles, con
 export { verifyFrozen, readFreeze, frozen, sha256, REPO_ROOT } from './frozen.ts';
 export { renderToDirectory, ffmpegVersion, loudness } from './cli.ts';
 export { pitchOf, pitchName, keyOf, curveAt, beatFrame, engineEndFrames, beatSecondsOf, haloPitches } from './curves.ts';
-export { lowerScore, expandMotif, applyTransform, transformLabel, stepToMidi, cellPitches, SCALES, GESTURES, TRANSFORM_OPS, LIMITS as MOTIF_LIMITS, type LowerOptions } from './motif.ts';
-export { motifReport, motifEvents, onsetFrame, hook10Gate, type MotifReport, type MotifEvents, type MotifEvent } from './motif-report.ts';

@@ -9,7 +9,7 @@
  *   node studio-001/scores/hook10/compose-a.ts
  */
 import { readFileSync, writeFileSync } from 'node:fs';
-import { lowerScore } from '../../rack/motif.ts';
+import { lowerScore } from '../../motif/index.ts';
 import type { NoteInput, PartInput } from '../../rack/types.ts';
 
 const b1 = lowerScore(JSON.parse(readFileSync(new URL('./hook10-b1.score.json', import.meta.url), 'utf8'))).score;

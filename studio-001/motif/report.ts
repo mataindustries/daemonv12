@@ -3,10 +3,11 @@
  * phrases, never from audio. The report says how a piece was built (statements, variations, repetition); it does
  * not say whether the piece is good. Contract: docs/V0_9_MOTIF_DEVELOPMENT.md.
  */
+import { normalizeScore } from '../rack/score.ts';
+import { RATE, beatFrame, beatSecondsOf, swung } from '../rack/curves.ts';
+import type { PartInput, ScoreInput } from '../rack/types.ts';
 import { lowerScore, NON_DEVELOPING, SCALES } from './motif.ts';
-import { normalizeScore } from './score.ts';
-import { RATE, beatFrame, beatSecondsOf, swung } from './curves.ts';
-import type { LoweredScore, PartInput, ScoreInput } from './types.ts';
+import { EVENTS_SCHEMA, REPORT_SCHEMA, type LoweredScore } from './types.ts';
 
 const r6 = (x: number) => Math.round(x * 1e6) / 1e6;
 const mod = (a: number, n: number) => ((a % n) + n) % n;
@@ -61,7 +62,7 @@ export function motifReport(input: unknown, lowered: LoweredScore = lowerScore(i
     cadence = { part: lead.id, pitch: last.pitch, step: step < 0 ? null : step };
   }
   return {
-    schema: 'daemonv12.motif-report/1', title: n.title, key: n.key.label,
+    schema: REPORT_SCHEMA, title: n.title, key: n.key.label,
     coverage: partNotes ? r6(phraseNotes / partNotes) : 0, phraseNotes, partNotes, statements,
     transformKinds: [...kinds].sort(), developingKinds: [...kinds].filter(k => !NON_DEVELOPING.has(k)).sort(),
     crossPart: Object.entries(statements).filter(([, st]) => st.parts.length >= 2).map(([id]) => id),
@@ -109,5 +110,5 @@ export function motifEvents(input: unknown, lowered: LoweredScore = lowerScore(i
       lengthBeats: ph.lengthBeats, endFrame: onsetFrame(ph.at + ph.lengthBeats, bpm, 0.5) });
     ph.notes.forEach((nt, k) => events.push({ id: `${ph.id}.n${k}`, kind: 'note', part: ph.part, phrase: ph.id, beat: nt.beat, frame: frame(nt.beat), beats: nt.beats, pitch: nt.pitch, velocity: nt.velocity }));
   }
-  return { schema: 'daemonv12.motif-events/1', title: s.title, sampleRate: RATE, bpm, swing, endBeat, endFrame: beatFrame(endBeat, bpm), events };
+  return { schema: EVENTS_SCHEMA, title: s.title, sampleRate: RATE, bpm, swing, endBeat, endFrame: beatFrame(endBeat, bpm), events };
 }

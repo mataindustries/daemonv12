@@ -26,9 +26,6 @@ export function instrumentsMarkdown(): string {
       if (i.controls.length) out.push('| Control | Range | What it does |', '|---|---|---|', ...i.controls.map(c => `| \`${c.name}\` | ${c.min} … ${c.max} | ${c.description} |`), '');
       if (i.setup.length) out.push(`Setup (per part): ${i.setup.map(s => `\`${s.name}\` (${s.min} … ${s.max}: ${s.description})`).join('; ')}.`, '');
       if (Object.keys(i.params).length) out.push(`Per-note parameters: ${Object.entries(i.params).map(([k, v]) => `\`${k}\` (${v})`).join('; ')}.`, '');
-      const g = Object.entries(i.gestures ?? {});
-      if (g.length) out.push('| Gesture (score/2 motifs) | Played as |', '|---|---|', ...g.map(([k, m]) => `| \`${k}\` | ${[m.articulation ? `\`${m.articulation}\`` : '', ...Object.entries(m.params ?? {}).map(([pk, pv]) => `${pk} ${pv}`),
-        m.velocity !== undefined ? `velocity ×${m.velocity}` : '', m.beats !== undefined ? `length ×${m.beats}` : ''].filter(Boolean).join(', ')} |`), '');
     }
   }
   return out.join('\n');

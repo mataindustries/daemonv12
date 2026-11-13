@@ -6,11 +6,12 @@ import { spawnSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { normalizeScore, keyOf, getInstrument, listInstruments, SCORE_SCHEMA, RACK_INTERFACE_VERSION, type PartInput } from '../studio-001/rack/index.ts';
 import {
-  lowerScore, expandMotif, applyTransform, cellPitches, motifReport, motifEvents, onsetFrame, hook10Gate, normalizeScore, keyOf, getInstrument, listInstruments,
-  SCORE_SCHEMA, SCORE_SCHEMA_V2, RACK_INTERFACE_VERSION, GESTURES, TRANSFORM_OPS, MOTIF_LIMITS,
-  type Cell, type Gesture, type GestureMap, type MotifInput, type MotifNoteInput, type PhraseInput, type PartInput, type ScoreInputV2, type Transform,
-} from '../studio-001/rack/index.ts';
+  lowerScore, expandMotif, applyTransform, cellPitches, motifReport, motifEvents, onsetFrame, hook10Gate, normalizeAnyScore, GESTURE_TABLE,
+  SCORE_SCHEMA_V2, MOTIF_INTERFACE_VERSION, GESTURES, TRANSFORM_OPS, MOTIF_LIMITS,
+  type Cell, type Gesture, type GestureMap, type MotifInput, type MotifNoteInput, type PhraseInput, type ScoreInputV2, type Transform,
+} from '../studio-001/motif/index.ts';
 
 const C_MINOR = keyOf('C minor');
 const M: MotifInput = { id: 'm', role: 'hook', notes: [[0, 1, 0], [1, 0.5, 1], [1.5, 0.5, 2], [2, 2, 4]] };
@@ -25,8 +26,9 @@ const voice = (phrases: PhraseInput[], extra: Partial<Part> = {}): Part => ({ id
 const message = (f: () => unknown): string => { try { f(); } catch (e) { return (e as Error).message; } return 'no error'; };
 const only = (msg: string) => { const lines = msg.split('\n'); assert.equal(lines[0], 'score is invalid (1 problem):', msg); return lines[1]!.slice(2); };
 
-test('interface: additive score/2 schema, interface 1.1.0, fifteen transforms, six gestures', () => {
-  assert.equal(RACK_INTERFACE_VERSION, '1.1.0');
+test('interface: a separate layer over the unchanged rack; score/2 schema, fifteen transforms, six gestures', () => {
+  assert.equal(RACK_INTERFACE_VERSION, '1.0.0', 'the approved rack interface is untouched'); assert.equal(MOTIF_INTERFACE_VERSION, '0.9.0');
+  assert.equal('gestures' in getInstrument('living-bass')!, false, 'gesture tables live in the motif layer, not in the rack registry');
   assert.equal(SCORE_SCHEMA, 'daemonv12.signature-rack.score/1'); assert.equal(SCORE_SCHEMA_V2, 'daemonv12.signature-rack.score/2');
   assert.equal(TRANSFORM_OPS.length, 15); assert.deepEqual([...GESTURES], ['accent', 'soft', 'short', 'legato', 'lift', 'fall']);
 });
@@ -98,13 +100,13 @@ const committed = normalizeScore(crossing);
 const window = (part: string, from: number, to: number) => committed.parts.find(p => p.id === part)!.perf.notes.filter(n => n.beat >= from && n.beat < to);
 
 test('R1: the CROSSING theme as a motif lowers to the notes committed in crossing.score.json', () => {
-  const n = normalizeScore(v2([THEME], [voice([{ motif: 'theme', at: 8 }])], crossingHead));
+  const n = normalizeAnyScore(v2([THEME], [voice([{ motif: 'theme', at: 8 }])], crossingHead));
   assert.equal(n.parts[0]!.perf.notes.length, 8);
   assert.deepEqual(n.parts[0]!.perf.notes, window('voice', 8, 16), 'beats, durations, pitches, velocities, articulations, slides and params');
 });
 
 test('R2: transpose -2 reproduces the hand-typed voice-2 harmony at beats 40-47.5', () => {
-  const n = normalizeScore(v2([THEME], [voice([{ motif: 'theme', at: 40, transforms: [{ op: 'transpose', steps: -2 }] }])], crossingHead));
+  const n = normalizeAnyScore(v2([THEME], [voice([{ motif: 'theme', at: 40, transforms: [{ op: 'transpose', steps: -2 }] }])], crossingHead));
   const got = n.parts[0]!.perf.notes.map(x => [x.beat, x.beats, x.pitch]), hand = window('voice-2', 40, 48).map(x => [x.beat, x.beats, x.pitch]);
   assert.deepEqual(got, hand);
   assert.deepEqual(got.map(x => x[2]), [63, 65, 67, 72, 70, 68, 67, 63]); assert.deepEqual(got.map(x => x[1]), [1.5, 0.5, 1, 1, 2, 1, 0.5, 0.45]);
@@ -120,7 +122,10 @@ test('lowering: phrase notes follow authored notes in phrase order; the output i
     { beat: 0, beats: 1, pitch: 60, velocity: 0.4 }, { beat: 1, beats: 0.5, pitch: 62, velocity: 0.4 }, { beat: 1.5, beats: 0.5, pitch: 63, velocity: 0.4 }, { beat: 2, beats: 2, pitch: 67, velocity: 0.4 }]);
   assert.deepEqual(l.trace.map(t => `${t.phrase}.n${t.note}`), ['voice.p0.n0', 'voice.p0.n1', 'voice.p0.n2', 'voice.p0.n3', 'voice.p1.n0', 'voice.p1.n1', 'voice.p1.n2', 'voice.p1.n3']);
   assert.deepEqual(input.parts[0]!.phrases!.length, 2, 'the authored score is not mutated');
-  assert.deepEqual(normalizeScore(input).parts[0]!.perf.notes, normalizeScore(l.score).parts[0]!.perf.notes, 'normalizeScore lowers through its one hook');
+  assert.deepEqual(normalizeAnyScore(input).parts[0]!.perf.notes, normalizeScore(l.score).parts[0]!.perf.notes, 'normalizeAnyScore lowers, then uses the rack');
+  assert.match(message(() => normalizeScore(input)), /schema: expected "daemonv12\.signature-rack\.score\/1"/, 'the approved rack itself still accepts only score/1');
+  const plain = l.score;
+  assert.deepEqual(normalizeAnyScore(plain), normalizeScore(plain), 'a score/1 passes straight through to the rack');
 });
 
 test('section-relative placement, derived motifs and phrase chains', () => {
@@ -139,10 +144,10 @@ test('S4: score transpose reaches every lowered pitch exactly once', () => {
   const input = v2([M], [voice([{ motif: 'm', at: 0 }, { motif: 'm', at: 4, transforms: [{ op: 'transpose', steps: 3 }] }])], { transpose: 5 });
   const lowered = lowerScore(input).score.parts[0]!.notes!.map(n => (n as { pitch: number }).pitch);
   assert.deepEqual(lowered, [60, 62, 63, 67, 65, 67, 68, 72], 'lowering resolves against the untransposed key');
-  const played = normalizeScore(input);
+  const played = normalizeAnyScore(input);
   assert.deepEqual(played.parts[0]!.perf.notes.map(n => n.pitch), lowered.map(p => p + 5));
   assert.equal(played.key.label, 'F minor');
-  assert.deepEqual(normalizeScore({ ...input, transpose: 0 }, { transpose: 5 }).parts[0]!.perf.notes.map(n => n.pitch), lowered.map(p => p + 5), '--transpose behaves the same');
+  assert.deepEqual(normalizeAnyScore({ ...input, transpose: 0 }, { transpose: 5 }).parts[0]!.perf.notes.map(n => n.pitch), lowered.map(p => p + 5), '--transpose behaves the same');
 });
 
 test('S5: lowering errors are specific and carry a fix (exact messages)', () => {
@@ -192,7 +197,7 @@ test('S6: a sung motif handed to the mallet bars lowers, and reports what it dro
   assert.equal(l.problems[0], 'warning: parts[0] (bars).phrases[0] (bars.p0) note 0: parameter "vowel" does not exist on mechanical-orchestra/bar; dropped (hardness, damp)');
   assert.match(l.problems[2]!, /articulation "cry" does not exist on mechanical-orchestra\/bar; dropped \(use a gesture/);
   assert.deepEqual(l.score.parts[0]!.notes, [{ beat: 0, beats: 1, pitch: 72, velocity: 0.8 }, { beat: 1, beats: 1, pitch: 75, velocity: 0.8 }, { beat: 2, beats: 2, pitch: 79, velocity: 0.8, articulation: 'ring', damp: 1.2 }]);
-  assert.doesNotThrow(() => normalizeScore(input));
+  assert.doesNotThrow(() => normalizeAnyScore(input));
   assert.equal(lowerScore(v2([sung], [voice([{ motif: 'sung', at: 0 }])])).droppedParams, 0, 'nothing is dropped on the instrument the motif was written for');
 });
 
@@ -210,13 +215,13 @@ test('S7: every gesture lowers to the specification table on every instrument', 
   };
   assert.deepEqual(listInstruments().map(i => i.id).sort(), Object.keys(TABLE).sort(), 'the table covers every rack instrument');
   for (const [id, [octave, table]] of Object.entries(TABLE)) {
-    assert.deepEqual(getInstrument(id)!.gestures, table, `${id}: registry table`);
+    assert.deepEqual(GESTURE_TABLE[id], table, `${id}: gesture table`);
     for (const g of GESTURES) {
       const input = v2([{ id: 'g', octave, notes: [[0, 1, 0, 0.5, { gesture: g }]] }], [{ id: 'p', instrument: id, phrases: [{ motif: 'g', at: 0 }] }]);
       const e = table[g] ?? {}, want = { beat: 0, beats: e.beats ?? 1, pitch: 12 * (octave + 1), velocity: +(0.5 * (e.velocity ?? 1)).toFixed(6), ...(e.articulation ? { articulation: e.articulation } : {}), ...e.params };
       const l = lowerScore(input);
       assert.deepEqual(l.score.parts[0]!.notes, [want], `${id} ${g}`); assert.equal(l.droppedParams, 0);
-      assert.doesNotThrow(() => normalizeScore(input), `${id} ${g}: only existing articulations and params`);
+      assert.doesNotThrow(() => normalizeAnyScore(input), `${id} ${g}: only existing articulations and params`);
     }
   }
   const explicit = lowerScore(v2([{ id: 'g', octave: 2, notes: [[0, 1, 0, 0.5, { gesture: 'lift', articulation: 'accent', params: { scoop: 5 } }]] }], [{ id: 'b', instrument: 'living-bass', phrases: [{ motif: 'g', at: 0 }] }]));
@@ -227,7 +232,7 @@ test('S8: event frames are the onset frames the rack renders at; a phrase starts
   const figure: MotifInput = { id: 'f', octave: 5, notes: [[0.25, 0.25, 0], [0.75, 0.25, 2], [1, 0.5, 4], [1.5, 0.25, 2], [2.75, 0.25, 0], [3.5, 0.5, 4]] };
   for (const [bpm, swing] of [[96, 0.5], [96, 0.55], [120, 0.6], [84, 0.55], [133, 0.5]] as const) {
     const input = v2([figure], [{ id: 'bars', instrument: 'mechanical-orchestra/bar', phrases: [{ motif: 'f', at: 0 }, { motif: 'f', at: { section: 'a', bar: 3 }, transforms: [{ op: 'scale', factor: 0.5 }, { op: 'displace', beats: 1 / 3 }] }] }], { bpm, swing });
-    const ev = motifEvents(input), n = normalizeScore(input), notes = ev.events.filter(e => e.kind === 'note');
+    const ev = motifEvents(input), n = normalizeAnyScore(input), notes = ev.events.filter(e => e.kind === 'note');
     assert.deepEqual(notes.map(e => e.frame).sort((a, b) => a - b), n.parts[0]!.perf.notes.map(x => Math.round(x.beat * n.beatSeconds * 44100)), `${bpm} BPM, swing ${swing}: the mallet render path places notes at round(beat * beatSeconds * 44100)`);
     for (const e of notes) assert.equal(e.frame, onsetFrame(e.beat, bpm, swing));
     for (const ph of ev.events.filter(e => e.kind === 'phrase')) assert.equal(ph.frame, notes.find(e => e.phrase === ph.id)!.frame, 'phrase frame = first note frame');
@@ -277,24 +282,31 @@ test('S3: two fresh processes expand to byte-identical lowered score, report and
   const dir = mkdtempSync(join(tmpdir(), 'v09-motif-')); t.after(() => rmSync(dir, { recursive: true, force: true }));
   const score = 'studio-001/scores/hook10/hook10-b1.score.json';
   const expand = (k: string) => {
-    const r = spawnSync(process.execPath, ['studio-001/rack/cli.ts', 'expand', score, '--out', join(dir, `${k}.score.json`), '--report', join(dir, `${k}.report.json`), '--events', join(dir, `${k}.events.json`)], { encoding: 'utf8' });
+    const r = spawnSync(process.execPath, ['studio-001/motif/cli.ts', 'expand', score, '--out', join(dir, `${k}.score.json`), '--report', join(dir, `${k}.report.json`), '--events', join(dir, `${k}.events.json`)], { encoding: 'utf8' });
     assert.equal(r.status, 0, r.stderr);
     return ['score', 'report', 'events'].map(f => readFileSync(join(dir, `${k}.${f}.json`), 'utf8'));
   };
   const a = expand('a'), b = expand('b');
   assert.deepEqual(a, b);
   assert.equal(a[0], readFileSync('proofs/v09-motif/hook10/B1/score.lowered.json', 'utf8'), 'and equal to the lowered score committed with the HOOK//10 masters');
-  const again = spawnSync(process.execPath, ['studio-001/rack/cli.ts', 'expand', score, '--out', join(dir, 'a.score.json')], { encoding: 'utf8' });
+  const again = spawnSync(process.execPath, ['studio-001/motif/cli.ts', 'expand', score, '--out', join(dir, 'a.score.json')], { encoding: 'utf8' });
   assert.equal(again.status, 1); assert.match(again.stderr, /refusing to overwrite an existing file/);
-  const stdout = spawnSync(process.execPath, ['studio-001/rack/cli.ts', 'expand', score], { encoding: 'utf8' });
+  const stdout = spawnSync(process.execPath, ['studio-001/motif/cli.ts', 'expand', score], { encoding: 'utf8' });
   assert.equal(stdout.stdout, a[0], 'without --out the lowered score goes to stdout');
+});
+
+test('the committed score/2 example lowers and passes the rack validation', () => {
+  const s = JSON.parse(readFileSync('studio-001/scores/examples/motif-theme.score.json', 'utf8')) as ScoreInputV2, n = normalizeAnyScore(s), r = motifReport(s);
+  assert.deepEqual(n.parts.map(p => p.perf.notes.length), [16, 8, 12]);
+  assert.deepEqual(n.parts[1]!.perf.notes.slice(0, 7).map(x => x.pitch), [63, 65, 67, 72, 70, 68, 67], 'the second voice is the theme a diatonic third lower');
+  assert.equal(r.coverage, 1); assert.equal(r.recognizability, 1); assert.deepEqual(r.crossPart, ['theme']); assert.equal(r.cadence?.step, 0);
 });
 
 test('HOOK//10 scores: A is a plain score/1; B1-B3 pass the structure gate of the specification', () => {
   const load = (f: string) => JSON.parse(readFileSync(`studio-001/scores/hook10/${f}`, 'utf8')) as ScoreInputV2;
   const a = load('hook10-a.score.json') as unknown as { schema: string; parts: PartInput[] };
   assert.equal(a.schema, SCORE_SCHEMA); assert.equal(JSON.stringify(a).includes('motif'), false); assert.ok(a.parts.every(p => p.repeats?.length === 1));
-  const b1 = normalizeScore(load('hook10-b1.score.json')), an = normalizeScore(a);
+  const b1 = normalizeAnyScore(load('hook10-b1.score.json')), an = normalizeScore(a);
   for (const [i, part] of an.parts.entries()) {
     const same = (from: number, to: number) => assert.deepEqual(part.perf.notes.filter(n => n.beat >= from && n.beat < to).map(n => ({ ...n, beat: n.beat - from })), b1.parts[i]!.perf.notes.filter(n => n.beat >= from && n.beat < to).map(n => ({ ...n, beat: n.beat - from })), `${part.id} beats ${from}-${to}`);
     if (part.id !== 'clock') { same(0, 4); same(12, 16); } // the clock is velocity-humanised per note index; its notated notes are compared below
