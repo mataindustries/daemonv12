@@ -299,7 +299,7 @@ test('the committed score/2 example lowers and passes the rack validation', () =
   const s = JSON.parse(readFileSync('studio-001/scores/examples/motif-theme.score.json', 'utf8')) as ScoreInputV2, n = normalizeAnyScore(s), r = motifReport(s);
   assert.deepEqual(n.parts.map(p => p.perf.notes.length), [16, 8, 12]);
   assert.deepEqual(n.parts[1]!.perf.notes.slice(0, 7).map(x => x.pitch), [63, 65, 67, 72, 70, 68, 67], 'the second voice is the theme a diatonic third lower');
-  assert.equal(r.coverage, 1); assert.equal(r.recognizability, 1); assert.deepEqual(r.crossPart, ['theme']); assert.equal(r.cadence?.step, 0);
+  assert.equal(r.coverage, 1); assert.equal(r.recognizability, 1); assert.deepEqual(r.crossPart, ['theme']); assert.deepEqual([r.cadence?.part, r.cadence?.step], ['bars', 2], 'the mallets are the highest part stating the theme');
 });
 
 test('HOOK//10 scores: A is a plain score/1; B1-B3 pass the structure gate of the specification', () => {
