@@ -1,0 +1,78 @@
+{
+  "schema": "daemonv12.signature-rack.score/2",
+  "title": "HOOK//10 B2 (motif development: signal call, fast mallet response, major reveal)",
+  "bpm": 96, "key": "D minor", "timeSignature": "4/4", "seed": 10, "tailSeconds": 10, "masterGainDb": 0,
+  "description": "HOOK//10, condition B (score/2), second approach. A repeated-note signal in the voice and bass; the mallets answer every call at double speed. Dm | Bb C | D major (the reveal) | Gm A7, then the A7 resolves across the loop point.",
+  "sections": [
+    { "id": "signal", "bars": 1, "development": "the signal: three repeated notes, a leap to the tonic, a reach up to the ninth; voice and bass in rhythmic unison; the mallets answer twice as fast" },
+    { "id": "lift", "bars": 1, "development": "the same call a third lower while the bass climbs B-flat to C under it" },
+    { "id": "reveal", "bars": 1, "development": "the signal in D major, ending on the major third; the clock drops to half time and its ticks sprout springs" },
+    { "id": "turn", "bars": 1, "development": "the signal upside down over G minor and A7; the mallets answer upside down too and both land on A" }
+  ],
+  "room": { "rt60": 1.9, "size": 1.1, "damp": 5600, "predelayMs": 20, "lowCut": 220 },
+  "motifs": [
+    { "id": "signal", "role": "hook", "octave": 4, "lengthBeats": 4, "notes": [
+      [0, 0.5, 4, 0.78, { "gesture": "short", "params": { "vowel": "oh" } }],
+      [0.75, 0.25, 4, 0.68, { "gesture": "short", "params": { "vowel": "oh" } }],
+      [1, 0.5, 4, 0.76, { "params": { "vowel": "oh", "to": "ah" } }],
+      [1.5, 1.25, 7, 0.9, { "gesture": "lift", "params": { "vowel": "ah" } }],
+      [2.75, 0.25, 6, 0.7, { "params": { "vowel": "eh" } }],
+      [3, 0.75, 8, 0.84, { "gesture": "accent", "params": { "vowel": "ah", "to": "oh" } }]
+    ] },
+    { "id": "signal-fast", "role": "answer", "from": "signal", "transforms": [ { "op": "scale", "factor": 0.5 }, { "op": "octave", "by": 1 } ] },
+    { "id": "drive", "role": "bass", "octave": 2, "lengthBeats": 4, "notes": [
+      [0, 0.5, 0, 0.95, { "gesture": "accent" }],
+      [0.75, 0.25, 0, 0.6, { "gesture": "soft" }],
+      [1, 0.5, 0, 0.8],
+      [1.5, 0.5, 7, 0.85, { "gesture": "short" }],
+      [2.5, 0.5, 4, 0.8],
+      [3, 0.5, 7, 0.8],
+      [3.5, 0.5, 6, 0.8, { "gesture": "fall" }]
+    ] },
+    { "id": "drive-half", "from": "drive", "transforms": [ { "op": "fragment", "from": 0, "to": 4 } ] },
+    { "id": "ticks", "role": "figure", "octave": 6, "lengthBeats": 4, "notes": [
+      [0, 0.25, 0, 0.55], [0.5, 0.25, 0, 0.4],
+      [1, 0.25, 0, 0.9, { "articulation": "tock" }], [1.5, 0.25, 0, 0.45], [1.75, 0.25, 4, 0.4],
+      [2, 0.25, 0, 0.55], [2.5, 0.25, 0, 0.4],
+      [3, 0.25, 0, 0.9, { "articulation": "tock" }], [3.25, 0.25, 4, 0.4], [3.5, 0.25, 0, 0.5], [3.75, 0.25, 4, 0.45]
+    ] }
+  ],
+  "parts": [
+    { "id": "voice", "instrument": "impossible-voice", "gainDb": -1, "pan": 0.05, "room": 0.24,
+      "macro": [[0, 0.25], [7.5, 0.25], [8, 0.55], [12, 0.5], [16, 0.25]],
+      "expression": [[0, 0.72], [7.5, 0.72], [8.5, 0.88], [12, 0.8], [16, 0.72]],
+      "setup": { "vibRate": 5.3, "halo": ["D6", "A6", "D7", "E7"], "haloGain": 0.5 },
+      "breaths": [ { "beat": 7.76, "beats": 0.22, "kind": "in", "velocity": 0.45 }, { "beat": 15.76, "beats": 0.22, "kind": "in", "velocity": 0.45 } ],
+      "phrases": [
+        { "id": "voice.signal", "motif": "signal", "at": { "section": "signal", "bar": 1 } },
+        { "id": "voice.lower", "motif": "signal", "at": { "section": "lift", "bar": 1 }, "transforms": [ { "op": "transpose", "steps": -2 } ], "velocity": 0.95 },
+        { "id": "voice.reveal", "motif": "signal", "at": { "section": "reveal", "bar": 1 }, "transforms": [ { "op": "mode", "to": "major" }, { "op": "endOn", "step": 9 } ], "velocity": 1.08 },
+        { "id": "voice.turn", "motif": "signal", "at": { "section": "turn", "bar": 1 }, "transforms": [ { "op": "invert", "axis": 5.5 }, { "op": "endOn", "step": 4 }, { "op": "gesture", "set": "legato", "at": [5] } ] }
+      ] },
+    { "id": "bass", "instrument": "living-bass", "gainDb": -2, "room": 0.05,
+      "macro": [[0, 0.3], [8, 0.4], [12, 0.6], [16, 0.3]], "expression": 0.75,
+      "phrases": [
+        { "id": "bass.drive", "motif": "drive", "at": { "section": "signal", "bar": 1 } },
+        { "id": "bass.climb", "motif": "drive-half", "at": { "section": "lift", "bar": 1 }, "transforms": [ { "op": "sequence", "steps": [-2, -1], "every": 2 } ] },
+        { "id": "bass.reveal", "motif": "drive", "at": { "section": "reveal", "bar": 1 }, "transforms": [ { "op": "mode", "to": "major" } ] },
+        { "id": "bass.turn", "motif": "drive-half", "at": { "section": "turn", "bar": 1 }, "transforms": [ { "op": "sequence", "steps": [-4, -3], "every": 2 }, { "op": "endOn", "step": 6, "alt": 1 } ] }
+      ] },
+    { "id": "bars", "instrument": "mechanical-orchestra/bar", "gainDb": -8, "room": 0.3, "macro": 0.12, "setup": { "spread": 0.45 },
+      "notes": [ [8, 2, "D5", 0.6, { "damp": 0.5 }], [8, 2, "F#5", 0.55, { "damp": 0.5 }], [8, 2, "A5", 0.55, { "damp": 0.5 }] ],
+      "phrases": [
+        { "id": "bars.answer", "motif": "signal-fast", "at": { "section": "signal", "bar": 1, "beat": 2 }, "velocity": 0.8 },
+        { "id": "bars.answer-lower", "motif": "signal-fast", "at": { "section": "lift", "bar": 1, "beat": 2 }, "transforms": [ { "op": "transpose", "steps": -2 } ], "velocity": 0.8 },
+        { "id": "bars.reveal", "motif": "signal-fast", "at": { "section": "reveal", "bar": 1, "beat": 2 }, "transforms": [ { "op": "mode", "to": "major" }, { "op": "transpose", "steps": 2 }, { "op": "endOn", "step": 18 } ], "velocity": 0.9 },
+        { "id": "bars.turn", "motif": "signal-fast", "at": { "section": "turn", "bar": 1, "beat": 2 }, "transforms": [ { "op": "invert", "axis": 12.5 }, { "op": "endOn", "step": 11 } ], "velocity": 0.85 }
+      ] },
+    { "id": "clock", "instrument": "mechanical-orchestra/clock", "gainDb": -12, "room": 0.12,
+      "macro": [[0, 0.25], [7.9, 0.3], [8, 0.8], [12, 0.6], [16, 0.25]], "humanize": { "timingMs": 0, "velocity": 0.1 },
+      "phrases": [
+        { "id": "clock.bar1", "motif": "ticks", "at": { "section": "signal", "bar": 1 } },
+        { "id": "clock.bar2", "motif": "ticks", "at": { "section": "lift", "bar": 1 } },
+        { "id": "clock.half", "motif": "ticks", "at": { "section": "reveal", "bar": 1 }, "transforms": [ { "op": "fragment", "from": 0, "to": 5 }, { "op": "scale", "factor": 2 } ] },
+        { "id": "clock.bar4", "motif": "ticks", "at": { "section": "turn", "bar": 1 }, "transforms": [ { "op": "fragment", "from": 0, "to": 7 } ] },
+        { "id": "clock.roll", "motif": "ticks", "at": { "section": "turn", "bar": 1, "beat": 3 }, "transforms": [ { "op": "fragment", "from": 3, "to": 5 }, { "op": "sequence", "steps": [0, 0], "every": 0.5 }, { "op": "dynamics", "from": 1.1, "to": 1.9 } ] }
+      ] }
+  ]
+}
