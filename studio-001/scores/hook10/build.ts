@@ -30,7 +30,7 @@ export const VERSIONS: { id: string; file: string; label: string; condition: 'A'
   { id: 'A', file: 'hook10-a.score.json', label: 'A-existing-workflow', condition: 'A' },
   { id: 'B1', file: 'hook10-b1.score.json', label: 'B1-motif-development', condition: 'B' },
   { id: 'B2', file: 'hook10-b2.score.json', label: 'B2-motif-call-response', condition: 'B' },
-  { id: 'B3', file: 'hook10-b3.score.json', label: 'B3-motif-rhythm-engine', condition: 'B' },
+  { id: 'B3', file: 'hook10-b3.score.json', label: 'B3-motif-mirror-broad', condition: 'B' },
 ];
 const ffmpeg = process.env.DAEMONV12_FFMPEG || 'ffmpeg';
 const json = (v: unknown) => JSON.stringify(v, null, 2) + '\n';
@@ -97,8 +97,9 @@ export async function buildVersion(v: (typeof VERSIONS)[number], out: string, lo
   if (master.clipped || x3.clipped) throw new Error(`${v.id}: clipped samples in the master`);
   const files: Record<string, { sha256: string; bytes: number }> = {};
   const put = (file: string, data: Buffer | string) => { writeFileSync(join(out, file), data); const b = readFileSync(join(out, file)); files[file] = { sha256: sha256(b), bytes: b.length }; };
-  put(`${name}.wav`, master.bytes); put(`${name}-loop-x3.wav`, x3.bytes);
-  mp3(join(out, `${name}.wav`), join(out, `${name}.mp3`)); mp3(join(out, `${name}-loop-x3.wav`), join(out, `${name}-loop-x3.mp3`));
+  // the three-pass WAV exists only to encode the listening MP3 and to measure loudness across the seam; it is three exact copies of the master
+  put(`${name}.wav`, master.bytes); writeFileSync(join(dir, 'x3.wav'), x3.bytes);
+  mp3(join(out, `${name}.wav`), join(out, `${name}.mp3`)); mp3(join(dir, 'x3.wav'), join(out, `${name}-loop-x3.mp3`));
   for (const f of [`${name}.mp3`, `${name}-loop-x3.mp3`]) { const b = readFileSync(join(out, f)); files[f] = { sha256: sha256(b), bytes: b.length }; }
   put(`${v.id}/score.json`, json(authored)); put(`${v.id}/performance.json`, json(performanceJson(score)));
   let gate: ReturnType<typeof hook10Gate> | undefined;
@@ -108,7 +109,8 @@ export async function buildVersion(v: (typeof VERSIONS)[number], out: string, lo
     put(`${v.id}/score.lowered.json`, json(lowered.score)); put(`${v.id}/motif-report.json`, json(report)); put(`${v.id}/motif-events.json`, json(motifEvents(authored, lowered)));
   }
   const stems = [...mixes.stems].map(([id, st]) => ({ part: id, rmsDb: +db(rmsOf(st, 0, LOOP_FRAMES)).toFixed(2), peakDb: +db(peak(st)).toFixed(2) }));
-  const measured = loudness(join(out, `${name}.wav`))!, measuredX3 = loudness(join(out, `${name}-loop-x3.wav`))!, seam = seamCheck(master.bytes);
+  const measured = loudness(join(out, `${name}.wav`))!, measuredX3 = loudness(join(dir, 'x3.wav'))!, seam = seamCheck(master.bytes);
+  spawnSync('rm', [join(dir, 'x3.wav')]);
   const x3pcm = pcmOf(x3.bytes), m = pcmOf(master.bytes); let x3Exact = true;
   for (let i = 0; i < x3pcm.length; i++) if (x3pcm[i] !== m[i % m.length]) { x3Exact = false; break; }
   const result = {

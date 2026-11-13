@@ -3,6 +3,7 @@
  *   node studio-001/rack/cli.ts list
  *   node studio-001/rack/cli.ts render SCORE.json NEW_DIR [--transpose N] [--bpm X] [--normalize LUFS] [--no-mp3]
  *   node studio-001/rack/cli.ts bounce SCORE.json NEW_PACKAGE [--transpose N] [--bpm X]
+ *   node studio-001/rack/cli.ts expand SCORE.json [--out NEW_FILE] [--report NEW_FILE] [--events NEW_FILE]   (score/2 only)
  *   node studio-001/rack/cli.ts kit INSTRUMENT NEW_PACKAGE --pitches 36-48|36,40,43 [--macro M] [--velocity V] [--beats B] [--bpm X] [--articulation A]
  *   node studio-001/rack/cli.ts verify PACKAGE
  *   node studio-001/rack/cli.ts freeze [--write SOURCE_COMMIT]
@@ -15,7 +16,9 @@ import { normalizeScore, performanceJson } from './score.ts';
 import { renderScore, mixdown, peak, type Stereo } from './render.ts';
 import { bouncePackage, bounceKit, verifyPackage, sealPackage, wavBytes, containmentProblems, ENGINE_BASE } from './package.ts';
 import { registryDocument, RACK_VERSION } from './registry.ts';
-import { RACK_INTERFACE_VERSION } from './types.ts';
+import { RACK_INTERFACE_VERSION, SCORE_SCHEMA_V2 } from './types.ts';
+import { lowerScore } from './motif.ts';
+import { motifReport, motifEvents } from './motif-report.ts';
 
 const ffmpeg = process.env.DAEMONV12_FFMPEG || 'ffmpeg';
 export function ffmpegVersion(): string | null {
@@ -71,6 +74,12 @@ export async function renderToDirectory(scoreFile: string, out: string, o: { tra
   put('mix-context.wav', mixes.context, gain, 'all parts, context parts and room, master gain applied', true);
   writeFileSync(join(root, 'score.json'), JSON.stringify(authored, null, 2) + '\n');
   writeFileSync(join(root, 'performance.json'), JSON.stringify(performanceJson(score), null, 2) + '\n');
+  if ((authored as { schema?: unknown }).schema === SCORE_SCHEMA_V2) { // a motif score also saves what it lowered to, its report and its event map
+    const lowered = lowerScore(authored, o.transpose !== undefined ? { transpose: o.transpose } : {});
+    writeFileSync(join(root, 'score.lowered.json'), JSON.stringify(lowered.score, null, 2) + '\n');
+    writeFileSync(join(root, 'motif-report.json'), JSON.stringify(motifReport(authored, lowered), null, 2) + '\n');
+    writeFileSync(join(root, 'motif-events.json'), JSON.stringify(motifEvents(authored, lowered, o.bpm !== undefined ? { bpm: o.bpm } : {}), null, 2) + '\n');
+  }
   writeFileSync(join(root, 'render.json'), JSON.stringify({ schema: 'daemonv12.signature-rack.render/1', interfaceVersion: RACK_INTERFACE_VERSION, rackVersion: RACK_VERSION,
     title: score.title, bpm: score.bpm, key: score.key.label, transpose: score.transpose, frames: rendered.frames, seconds: +(rendered.frames / 44100).toFixed(6),
     normalizeGainDb: +(20 * Math.log10(gain)).toFixed(3), node: process.version, ffmpeg: ff, scoreSha256: sha256(Buffer.from(JSON.stringify(authored, null, 2) + '\n')), files }, null, 2) + '\n');
@@ -95,6 +104,17 @@ async function main() {
       if (bad.length) throw new Error(`containment: ${bad.join('; ')}`);
       console.log(JSON.stringify({ ...report, files: verifyPackage(report.root), engineBase: ENGINE_BASE }, null, 2)); return;
     }
+    case 'expand': {
+      if (pos.length !== 1) throw new Error('usage: expand SCORE.json [--out NEW_FILE] [--report NEW_FILE] [--events NEW_FILE]');
+      const input = JSON.parse(readFileSync(pos[0]!, 'utf8')) as unknown, lowered = lowerScore(input), json = (v: unknown) => JSON.stringify(v, null, 2) + '\n';
+      normalizeScore(lowered.score); // the lowered score must be a valid /1 score before anything is written
+      const outputs: [string, () => string][] = [['out', () => json(lowered.score)], ['report', () => json(motifReport(input, lowered))], ['events', () => json(motifEvents(input, lowered))]];
+      for (const [flag] of outputs) if (typeof flags[flag] === 'string' && existsSync(resolve(flags[flag]))) throw new Error(`refusing to overwrite an existing file: ${resolve(flags[flag])}`);
+      for (const [flag, make] of outputs) if (typeof flags[flag] === 'string') writeFileSync(resolve(flags[flag]), make());
+      for (const w of lowered.problems) log(w);
+      if (typeof flags.out !== 'string') process.stdout.write(json(lowered.score));
+      return;
+    }
     case 'kit': {
       if (pos.length !== 2 || typeof flags.pitches !== 'string') throw new Error('usage: kit INSTRUMENT NEW_PACKAGE --pitches 36-48 [--macro M] [--velocity V] [--beats B] [--bpm X] [--articulation A]');
       const r = await bounceKit(pos[0]!, pos[1]!, { pitches: pitchList(flags.pitches), ...(numFlag(flags, 'macro') !== undefined ? { macro: numFlag(flags, 'macro')! } : {}), ...(numFlag(flags, 'velocity') !== undefined ? { velocity: numFlag(flags, 'velocity')! } : {}),
@@ -106,7 +126,7 @@ async function main() {
       if (typeof flags.write === 'string') { writeFileSync(FREEZE_FILE, JSON.stringify(computeFreeze(flags.write), null, 2) + '\n'); console.log(`wrote ${FREEZE_FILE}`); return; }
       const bad = verifyFrozen(); console.log(bad.length ? bad.join('\n') : 'all frozen engines, scripts, auditions and manifests match frozen.json'); process.exitCode = bad.length ? 1 : 0; return;
     }
-    default: console.error(readFileSync(new URL(import.meta.url), 'utf8').split('\n').slice(1, 8).join('\n')); process.exitCode = 2;
+    default: console.error(readFileSync(new URL(import.meta.url), 'utf8').split('\n').slice(1, 9).join('\n')); process.exitCode = 2;
   }
 }
 if (process.argv[1] && resolve(process.argv[1]) === resolve(new URL(import.meta.url).pathname)) main().catch(e => { console.error((e as Error).message); process.exitCode = 1; });

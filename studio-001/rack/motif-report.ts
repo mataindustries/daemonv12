@@ -5,7 +5,7 @@
  */
 import { lowerScore, NON_DEVELOPING, SCALES } from './motif.ts';
 import { normalizeScore } from './score.ts';
-import { RATE, beatTick, swung, tickFrame } from './curves.ts';
+import { RATE, beatFrame, beatSecondsOf, swung } from './curves.ts';
 import type { LoweredScore, PartInput, ScoreInput } from './types.ts';
 
 const r6 = (x: number) => Math.round(x * 1e6) / 1e6;
@@ -89,8 +89,12 @@ export interface MotifEvent {
   phrase?: string; pitch?: number; velocity?: number; beats?: number;
 }
 export interface MotifEvents { schema: 'daemonv12.motif-events/1'; title: string; sampleRate: number; bpm: number; swing: number; endBeat: number; endFrame: number; events: MotifEvent[] }
-/** Onset frame of a notated beat: swing, then the engine's 960-PPQ tick grid, then the engine's tick-to-frame rounding. */
-export const onsetFrame = (beat: number, bpm: number, swing: number) => tickFrame(beatTick(swung(beat, swing)), bpm);
+/**
+ * Onset frame of a notated beat at 44.1 kHz: swing, then `round(beat * beatSeconds * 44100)`, the expression the rack's
+ * one-shot instruments place a note with (beatSeconds is the engine's integer-microsecond tempo). On the engine's
+ * 960-PPQ grid this is the engine's own tick frame.
+ */
+export const onsetFrame = (beat: number, bpm: number, swing: number) => Math.round(swung(beat, swing) * beatSecondsOf(bpm) * RATE);
 
 /**
  * The motif event map: one `phrase` event per statement and one `note` event per lowered note, each with the sample
@@ -102,8 +106,8 @@ export function motifEvents(input: unknown, lowered: LoweredScore = lowerScore(i
   const endBeat = 4 * s.sections.reduce((sum, sec) => sum + sec.bars, 0);
   for (const ph of lowered.phrases) {
     events.push({ id: ph.id, kind: 'phrase', part: ph.part, motif: ph.motif, root: ph.root, role: ph.role, chain: ph.chain, literal: ph.literal, beat: ph.beat, frame: frame(ph.beat),
-      lengthBeats: ph.lengthBeats, endFrame: tickFrame(beatTick(ph.at + ph.lengthBeats), bpm) });
+      lengthBeats: ph.lengthBeats, endFrame: onsetFrame(ph.at + ph.lengthBeats, bpm, 0.5) });
     ph.notes.forEach((nt, k) => events.push({ id: `${ph.id}.n${k}`, kind: 'note', part: ph.part, phrase: ph.id, beat: nt.beat, frame: frame(nt.beat), beats: nt.beats, pitch: nt.pitch, velocity: nt.velocity }));
   }
-  return { schema: 'daemonv12.motif-events/1', title: s.title, sampleRate: RATE, bpm, swing, endBeat, endFrame: tickFrame(beatTick(endBeat), bpm), events };
+  return { schema: 'daemonv12.motif-events/1', title: s.title, sampleRate: RATE, bpm, swing, endBeat, endFrame: beatFrame(endBeat, bpm), events };
 }

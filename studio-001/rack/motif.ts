@@ -140,7 +140,7 @@ export function applyTransform(c: Cell, t: Transform): Cell {
   }
 }
 
-interface Resolved { cell: Cell; chain: string[]; root: string; role: string | null }
+interface Resolved { cell: Cell; chain: string[]; root: string; role: string | null; depth: number; path: string[] }
 class Issues {
   errors: string[] = []; warnings: string[] = [];
   check(ok: boolean, msg: string) { if (!ok) this.errors.push(msg); return ok; }
@@ -195,15 +195,17 @@ function motifResolver(motifs: MotifInput[], key: Key, p: Issues) {
     if (m.from !== undefined) {
       if (p.check(m.notes === undefined, `${path}: give either notes (a literal motif) or from + transforms (a derived motif), not both`)
         && p.check(typeof m.from === 'string' && index.has(m.from), `${path}.from: unknown motif ${say(m.from)} (defined: ${[...index.keys()].join(', ')})`)
-        && p.check(!stack.includes(m.from) && m.from !== id, `${path}.from: cycle ${[...stack.slice(Math.max(0, stack.indexOf(m.from))), id, m.from].join(' -> ')} (a derived motif must end at a literal motif)`)
-        && p.check(stack.length < LIMITS.depth, `${path}.from: more than ${LIMITS.depth} motifs deep (${[...stack, id].join(' -> ')}); derive from an earlier motif instead`)) {
-        const src = resolve(m.from, [...stack, id]), run = src && runChain(src.cell, m.transforms, path, p);
-        if (src && run) out = { cell: run.cell, chain: [...src.chain, ...run.labels], root: src.root, role: m.role ?? src.role };
+        && p.check(!stack.includes(m.from) && m.from !== id, `${path}.from: cycle ${[...stack.slice(Math.max(0, stack.indexOf(m.from))), id, m.from].join(' -> ')} (a derived motif must end at a literal motif)`)      ) {
+        const src = resolve(m.from, [...stack, id]);
+        if (src && p.check(src.depth < LIMITS.depth, `${path}.from: more than ${LIMITS.depth} motifs deep (${[id, ...src.path].join(' -> ')}); derive from an earlier motif instead`)) {
+          const run = runChain(src.cell, m.transforms, path, p);
+          if (run) out = { cell: run.cell, chain: [...src.chain, ...run.labels], root: src.root, role: m.role ?? src.role, depth: src.depth + 1, path: [id, ...src.path] };
+        }
       }
     } else {
       p.check(m.transforms === undefined, `${path}.transforms: only a derived motif (with from) takes transforms; place the motif in a phrase to transform it`);
       const cell = literalCell(m, path, key, p);
-      if (cell) out = { cell, chain: [], root: id, role: m.role ?? null };
+      if (cell) out = { cell, chain: [], root: id, role: m.role ?? null, depth: 0, path: [id] };
     }
     if (out && octaveOk && lengthOk) {
       if (m.octave !== undefined) out.cell = { ...out.cell, octave: m.octave };
@@ -258,15 +260,18 @@ function windowOf(sub: string[], full: string[]): boolean {
   for (let a = 0; a + sub.length <= full.length; a++) if (sub.every((s, i) => (i === sub.length - 1 ? strip(s) === strip(full[a + i]!) : s === full[a + i]))) return true;
   return false;
 }
+/** Speeds at which a rhythm still counts as the same pattern: as written, or uniformly augmented / diminished by a `scale` factor. */
+const RHYTHM_SPEEDS = [1, 0.25, 0.5, 2 / 3, 1.5, 2, 4];
 /**
  * A statement keeps the root motif's contour / rhythm when every `sequence` copy of it (ornaments folded) matches a
- * contiguous window of the root's Parsons contour / onset-duration pattern. Copies of fewer than two notes never match.
+ * contiguous window of the root's Parsons contour / onset-duration pattern (the rhythm at the same speed or uniformly
+ * augmented or diminished). Copies of fewer than two notes never match.
  */
 function relation(cell: Cell, root: Cell, key: Key): { keepsContour: boolean; keepsRhythm: boolean } {
   const src = skeletons(root, key)[0]!, parts = skeletons(cell, key), big = parts.every(s => s.length >= 2);
   return {
     keepsContour: big && parts.every(s => windowOf([...contourOf(s)], [...contourOf(src)])),
-    keepsRhythm: big && parts.every(s => windowOf(rhythmOf(s), rhythmOf(src))),
+    keepsRhythm: big && parts.every(s => RHYTHM_SPEEDS.some(f => windowOf(rhythmOf(s.map(n => ({ ...n, beat: n.beat / f, beats: n.beats / f }))), rhythmOf(src)))),
   };
 }
 
