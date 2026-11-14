@@ -1,0 +1,146 @@
+{
+  "schema": "daemonv12.signature-rack.score/2",
+  "title": "V12 motif bridge — two-bar engineering proof",
+  "description": "128 BPM routing/timing fixture only; no FABLE composition or new instrument.",
+  "bpm": 128,
+  "key": "A minor",
+  "seed": 128,
+  "tailSeconds": 0.25,
+  "masterGainDb": -6,
+  "sections": [
+    {
+      "id": "proof",
+      "bars": 2
+    }
+  ],
+  "motifs": [
+    {
+      "id": "pulse",
+      "octave": 1,
+      "lengthBeats": 4,
+      "notes": [
+        [
+          0,
+          0.25,
+          0,
+          0.8
+        ],
+        [
+          1,
+          0.25,
+          0,
+          0.8
+        ],
+        [
+          2,
+          0.25,
+          0,
+          0.8
+        ],
+        [
+          3,
+          0.25,
+          0,
+          0.8
+        ]
+      ]
+    },
+    {
+      "id": "cell",
+      "role": "figure",
+      "octave": 1,
+      "lengthBeats": 2,
+      "notes": [
+        [
+          0,
+          0.5,
+          0,
+          0.8
+        ],
+        [
+          0.75,
+          0.25,
+          2,
+          0.65
+        ],
+        [
+          1.5,
+          0.5,
+          4,
+          0.75
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "kick",
+      "instrument": "v12-signature/sub-hammer",
+      "gainDb": -5,
+      "v12": {
+        "gate": true,
+        "attackSeconds": 0.001,
+        "releaseSeconds": 0.04
+      },
+      "phrases": [
+        {
+          "motif": "pulse",
+          "at": 0
+        },
+        {
+          "motif": "pulse",
+          "at": 4
+        }
+      ]
+    },
+    {
+      "id": "bass",
+      "instrument": "v12-signature/reactor",
+      "gainDb": -8,
+      "v12": {
+        "releaseSeconds": 0.03
+      },
+      "phrases": [
+        {
+          "motif": "cell",
+          "at": 0
+        },
+        {
+          "motif": "cell",
+          "at": {
+            "section": "proof",
+            "bar": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "rack",
+      "instrument": "mechanical-orchestra/bar",
+      "gainDb": -12,
+      "room": 0,
+      "phrases": [
+        {
+          "motif": "cell",
+          "at": 0,
+          "transforms": [
+            {
+              "op": "octave",
+              "by": 3
+            }
+          ]
+        },
+        {
+          "motif": "cell",
+          "at": 4,
+          "transforms": [
+            {
+              "op": "octave",
+              "by": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
