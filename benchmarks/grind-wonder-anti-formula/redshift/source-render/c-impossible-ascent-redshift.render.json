@@ -1,0 +1,6112 @@
+{
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "c-impossible-ascent-redshift.json",
+    "sha256": "7e9c050aec98a41f638d3c5b578b998470bffa321ae0f9c33f0c4fc154bad015",
+    "formatVersion": 1,
+    "seed": 18
+  },
+  "midi": {
+    "file": "c-impossible-ascent-redshift.mid",
+    "sha256": "11b51da39a2cef9dc9115d4358f173442173cef4c4a7a4b79de05b0b5da4cab8",
+    "bytes": 112,
+    "ppq": 960,
+    "durationTicks": 96000,
+    "durationSeconds": 41.6667,
+    "notes": 0
+  },
+  "renderer": {
+    "name": "daemonv12-production",
+    "version": "2",
+    "settings": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "panLaw": "linear stereo balance; unity center",
+      "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+      "normalization": false,
+      "dither": false,
+      "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+      "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+      "saturation": "tanh-v1; no output compensation",
+      "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+    }
+  },
+  "gmRenderer": null,
+  "gmSource": null,
+  "soundfont": null,
+  "samples": {
+    "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+    "assets": [
+      {
+        "file": "assets/glasshouse/01-glass-hit.wav",
+        "sha256": "96ddb71c7aea630fdff30c9e79bfa24f6873547adc0fbf6febff95aff3cdba77",
+        "bytes": 88244,
+        "frames": 44100,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/orbital-foundry/04-machine-tick.wav",
+        "sha256": "76f29351c8c7e257a985e195158db933fc7117e564af6c84a110ae8f6e60e1a2",
+        "bytes": 7542,
+        "frames": 3749,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/orbital-foundry/06-low-boom.wav",
+        "sha256": "37decaa1b61b4afe42c0dd0a1b00e6cd1685eeb651d521849e47f9ff877d73a8",
+        "bytes": 211724,
+        "frames": 105840,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/v12-signature/01-sub-hammer.wav",
+        "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+        "bytes": 83834,
+        "frames": 41895,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/v12-signature/03-titanium-crack.wav",
+        "sha256": "ffe6cee44f204c203a81d3e65ce58a97b3a58d910d0a54eedb15c089cd0781df",
+        "bytes": 105884,
+        "frames": 26460,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/v12-signature/04-neon-clap.wav",
+        "sha256": "b9597ef83f5fd72fc58d19316e7b826d8bb9c263f5c39b2fe4c52a7bcce6187c",
+        "bytes": 114704,
+        "frames": 28665,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/v12-signature/07-abyss.wav",
+        "sha256": "5d6e52ee847aeaebb24d10cd642f9e03de6da21a51c1917cca494d1e1d47b03a",
+        "bytes": 705644,
+        "frames": 352800,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/v12-signature/08-reactor.wav",
+        "sha256": "1afa9ad35a055204305b7f02cbef6df8a14952758cdc4456cf8ca4d3010c2aa2",
+        "bytes": 970244,
+        "frames": 242550,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/v12-signature/10-phantom.wav",
+        "sha256": "f664148e85efa54638926b5e3ad918e3f438faf7815db68bc9842179467d6a9e",
+        "bytes": 1058444,
+        "frames": 264600,
+        "channels": 2,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      }
+    ],
+    "tracks": [
+      {
+        "trackId": "phrase",
+        "trackIndex": 0,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/10-phantom.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 66240,
+            "frame": 1267876,
+            "velocity": 0.78,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 67200,
+            "frame": 1286251,
+            "velocity": 0.82,
+            "playback": {
+              "rate": 1.33484,
+              "voiceFrames": 198227
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 68160,
+            "frame": 1304626,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 176599
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 68880,
+            "frame": 1318407,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 4594
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 5917,
+              "renderedFrames": 5917
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 72960,
+            "frame": 1396501,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 73920,
+            "frame": 1414876,
+            "velocity": 0.78,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 74880,
+            "frame": 1433251,
+            "velocity": 0.82,
+            "playback": {
+              "rate": 1.33484,
+              "voiceFrames": 198227
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 75840,
+            "frame": 1451626,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 176599
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 76560,
+            "frame": 1465407,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 4594
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 5917,
+              "renderedFrames": 5917
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 81600,
+            "frame": 1561876,
+            "velocity": 0.78,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 82560,
+            "frame": 1580251,
+            "velocity": 0.82,
+            "playback": {
+              "rate": 1.33484,
+              "voiceFrames": 198227
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 83520,
+            "frame": 1598626,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 176599
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 84240,
+            "frame": 1612408,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 4593
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 5916,
+              "renderedFrames": 5916
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 90880,
+            "frame": 1739501,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 91840,
+            "frame": 1757876,
+            "velocity": 0.78,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 92800,
+            "frame": 1776251,
+            "velocity": 0.82,
+            "playback": {
+              "rate": 1.33484,
+              "voiceFrames": 198227
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 176599
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 94480,
+            "frame": 1808408,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/8",
+                "frames": 27562
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 28885,
+              "renderedFrames": 28885
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "bass808",
+        "trackIndex": 1,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/07-abyss.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 628620
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 69760,
+            "frame": 1335251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 70400,
+            "frame": 1347501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 628620
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 73600,
+            "frame": 1408751,
+            "velocity": 0.86,
+            "playback": {
+              "rate": 0.8409,
+              "voiceFrames": 419551
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 74880,
+            "frame": 1433251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 75520,
+            "frame": 1445501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 628620
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 80000,
+            "frame": 1531251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 81600,
+            "frame": 1561876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 280018
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 82560,
+            "frame": 1580251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 235466
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 83520,
+            "frame": 1598626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.68179,
+              "voiceFrames": 209777
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 85760,
+            "frame": 1641501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 86720,
+            "frame": 1659876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 280018
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 87680,
+            "frame": 1678251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 235466
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 88640,
+            "frame": 1696626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.68179,
+              "voiceFrames": 209777
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 90880,
+            "frame": 1739501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 91840,
+            "frame": 1757876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 280018
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 92800,
+            "frame": 1776251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 235466
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 628620
+            },
+            "articulation": {
+              "gate": {
+                "duration": "9/16",
+                "frames": 41344
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 42667,
+              "renderedFrames": 42667
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "bass808-grit",
+        "trackIndex": 2,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/08-reactor.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 432176
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 69760,
+            "frame": 1335251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 70400,
+            "frame": 1347501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 432176
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 73600,
+            "frame": 1408751,
+            "velocity": 0.86,
+            "playback": {
+              "rate": 0.8409,
+              "voiceFrames": 288441
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 74880,
+            "frame": 1433251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 75520,
+            "frame": 1445501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 432176
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 80000,
+            "frame": 1531251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 81600,
+            "frame": 1561876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 192513
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 82560,
+            "frame": 1580251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 161883
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 83520,
+            "frame": 1598626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.68179,
+              "voiceFrames": 144222
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 85760,
+            "frame": 1641501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 86720,
+            "frame": 1659876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 192513
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 87680,
+            "frame": 1678251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 161883
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 88640,
+            "frame": 1696626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.68179,
+              "voiceFrames": 144222
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 90880,
+            "frame": 1739501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 91840,
+            "frame": 1757876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 192513
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 92800,
+            "frame": 1776251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 161883
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 432176
+            },
+            "articulation": {
+              "gate": {
+                "duration": "9/16",
+                "frames": 41344
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 42667,
+              "renderedFrames": 42667
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "kick",
+        "trackIndex": 3,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/01-sub-hammer.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 70400,
+            "frame": 1347501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 75520,
+            "frame": 1445501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 81600,
+            "frame": 1561876,
+            "velocity": 0.65,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 82560,
+            "frame": 1580251,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 83520,
+            "frame": 1598626,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 85760,
+            "frame": 1641501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 86720,
+            "frame": 1659876,
+            "velocity": 0.65,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 87680,
+            "frame": 1678251,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 88640,
+            "frame": 1696626,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 90880,
+            "frame": 1739501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 91840,
+            "frame": 1757876,
+            "velocity": 0.65,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 92800,
+            "frame": 1776251,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "snare",
+        "trackIndex": 4,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/03-titanium-crack.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 67840,
+            "frame": 1298501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 72960,
+            "frame": 1396501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 78080,
+            "frame": 1494501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 83200,
+            "frame": 1592501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 88320,
+            "frame": 1690501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 93440,
+            "frame": 1788501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "clap",
+        "trackIndex": 5,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/04-neon-clap.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 67840,
+            "frame": 1298501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          },
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 72960,
+            "frame": 1396501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          },
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 78080,
+            "frame": 1494501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          },
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 83200,
+            "frame": 1592501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          },
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 88320,
+            "frame": 1690501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          },
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 93440,
+            "frame": 1788501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "clock",
+        "trackIndex": 6,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/orbital-foundry/04-machine-tick.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 66560,
+            "frame": 1274001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 67840,
+            "frame": 1298501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 69120,
+            "frame": 1323001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 70400,
+            "frame": 1347501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 71680,
+            "frame": 1372001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 72960,
+            "frame": 1396501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 74240,
+            "frame": 1421001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 75520,
+            "frame": 1445501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 76800,
+            "frame": 1470001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 78080,
+            "frame": 1494501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 79360,
+            "frame": 1519001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 81920,
+            "frame": 1568001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 83200,
+            "frame": 1592501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 84480,
+            "frame": 1617001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 85760,
+            "frame": 1641501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 87040,
+            "frame": 1666001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 88320,
+            "frame": 1690501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 89600,
+            "frame": 1715001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 90880,
+            "frame": 1739501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 92160,
+            "frame": 1764001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 93440,
+            "frame": 1788501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 94720,
+            "frame": 1813001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "wall",
+        "trackIndex": 7,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/orbital-foundry/06-low-boom.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/orbital-foundry/06-low-boom.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 282559
+            },
+            "articulation": {
+              "gate": {
+                "duration": "2/3",
+                "frames": 49000
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.3,
+                "releaseFrames": 13230
+              },
+              "chokeGroup": "w",
+              "voiceFrames": 62230,
+              "renderedFrames": 62230
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/06-low-boom.wav",
+            "tick": 70400,
+            "frame": 1347501,
+            "velocity": 0.88,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 282559
+            },
+            "articulation": {
+              "gate": {
+                "duration": "2/3",
+                "frames": 49000
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.3,
+                "releaseFrames": 13230
+              },
+              "chokeGroup": "w",
+              "voiceFrames": 62230,
+              "renderedFrames": 62230
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/06-low-boom.wav",
+            "tick": 75520,
+            "frame": 1445501,
+            "velocity": 0.88,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 282559
+            },
+            "articulation": {
+              "gate": {
+                "duration": "2/3",
+                "frames": 49000
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.3,
+                "releaseFrames": 13230
+              },
+              "chokeGroup": "w",
+              "voiceFrames": 62230,
+              "renderedFrames": 62230
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/06-low-boom.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 282559
+            },
+            "articulation": {
+              "gate": {
+                "duration": "2/3",
+                "frames": 49000
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.3,
+                "releaseFrames": 13230
+              },
+              "chokeGroup": "w",
+              "voiceFrames": 62230,
+              "renderedFrames": 62230
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/06-low-boom.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 282559
+            },
+            "articulation": {
+              "gate": {
+                "duration": "9/16",
+                "frames": 41344
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.3,
+                "releaseFrames": 13230
+              },
+              "chokeGroup": "w",
+              "voiceFrames": 54574,
+              "renderedFrames": 42875
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      {
+        "trackId": "glass",
+        "trackIndex": 8,
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/glasshouse/01-glass-hit.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 69120,
+            "frame": 1323001,
+            "velocity": 0.45,
+            "playback": {
+              "rate": 0.8909,
+              "voiceFrames": 49501
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 9188
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 10511,
+              "renderedFrames": 10511
+            }
+          },
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 85760,
+            "frame": 1641501,
+            "velocity": 0.75,
+            "playback": {
+              "rate": 0.8909,
+              "voiceFrames": 49501
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 86720,
+            "frame": 1659876,
+            "velocity": 0.75,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 87680,
+            "frame": 1678251,
+            "velocity": 0.75,
+            "playback": {
+              "rate": 1.18921,
+              "voiceFrames": 37084
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 88640,
+            "frame": 1696626,
+            "velocity": 0.75,
+            "playback": {
+              "rate": 1.33484,
+              "voiceFrames": 33038
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.4,
+            "playback": {
+              "rate": 0.8909,
+              "voiceFrames": 49501
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 9188
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 10511,
+              "renderedFrames": 10511
+            }
+          }
+        ],
+        "clippedSamples": 0
+      }
+    ],
+    "playback": {
+      "name": "daemonv12-playback",
+      "version": "1",
+      "settings": {
+        "rate": "0.25 through 4; pitch and duration change together; no time-stretching",
+        "interpolation": "band-limited Kaiser-windowed sinc, 32 zero crossings per side, beta 8.5, 512 table steps per crossing with linear table interpolation; cutoff 0.92 x min(1, 1/rate) of source Nyquist; weights normalized to unity DC gain; silence outside the source; kernel from IEEE-754 basic arithmetic",
+        "glide": "rate linear in output frames from playbackRate to glide.to over the glide frames, then held; read position is the closed-form integral per frame",
+        "offset": "whole source frame: offsetSeconds as microseconds * 44100 / 1000000, nearest frame, ties later",
+        "exactPath": "rate 1 without glide copies source frames from the offset; no interpolation",
+        "end": "voice stops at the first output frame whose read position reaches the source length; no fades",
+        "velocity": "round(value * velocity) per voice sample, as for unperformed voices"
+      }
+    },
+    "articulation": {
+      "name": "daemonv12-articulation",
+      "version": "1",
+      "settings": {
+        "source": "exclusive source end; explicit slice silences interpolation taps outside [offset,end); V0.6 interpolation unchanged otherwise",
+        "envelope": "linear output-frame attack from zero; a scheduled gate/choke release freezes attack gain at its onset; source/output exhaustion compresses overlapping fades proportionally, retaining the authored attack level at the peak and never delaying a gate; last rendered frame reaches zero; defaults 1ms attack, 5ms release; explicit zero disables a fade",
+        "stop": "gate or earliest later same-track choke onset starts release; stop + release capped by source exhaustion and permitted audio boundary; no source extension",
+        "choke": "track-local group; equal output-frame onsets coexist; each older voice uses its own release; a release already started is never restarted",
+        "rounding": "seconds to exact microseconds then nearest frame, ties later; gate via difference of rounded absolute musical boundaries"
+      }
+    }
+  },
+  "timeline": {
+    "authoredDurationTicks": 96000,
+    "authoredFrames": 1837501,
+    "duration": {
+      "bars": 25
+    },
+    "tail": "none",
+    "requestedFinalFrames": 1837501,
+    "audioEndFrames": 1837501,
+    "resultingFrames": 1837501,
+    "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+  },
+  "production": {
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1-3ubuntu5"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v22.23.4"
+    },
+    "tracks": [
+      {
+        "trackId": "phrase",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -7.129091
+      },
+      {
+        "trackId": "bass808",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -3.342512
+      },
+      {
+        "trackId": "bass808-grit",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -6.753076
+      },
+      {
+        "trackId": "kick",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -5.683686
+      },
+      {
+        "trackId": "snare",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -5.735347
+      },
+      {
+        "trackId": "clap",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -11.734938
+      },
+      {
+        "trackId": "clock",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -16.517494
+      },
+      {
+        "trackId": "wall",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -7.417515
+      },
+      {
+        "trackId": "glass",
+        "gainDb": 0,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -9.823391
+      }
+    ],
+    "master": {
+      "gainDb": 0,
+      "effects": [],
+      "clippedSamples": 9539,
+      "preClipPeakDbfs": 3.888098
+    },
+    "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+  },
+  "mix": {
+    "clippedSamples": 9539,
+    "gm": "sum processed independent tracks",
+    "samples": "sum exported track PCM"
+  },
+  "wav": {
+    "file": "c-impossible-ascent-redshift.wav",
+    "sha256": "054abe5ecb3015d110caa48480350f44a73996814ecc12fbe6db4e20ec1eec05",
+    "bytes": 7350048,
+    "frames": 1837501,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 16,
+    "durationSeconds": 41.666689
+  },
+  "stems": [
+    {
+      "trackId": "phrase",
+      "trackIndex": 0,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/10-phantom.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 66240,
+            "frame": 1267876,
+            "velocity": 0.78,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 67200,
+            "frame": 1286251,
+            "velocity": 0.82,
+            "playback": {
+              "rate": 1.33484,
+              "voiceFrames": 198227
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 68160,
+            "frame": 1304626,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 176599
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 68880,
+            "frame": 1318407,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 4594
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 5917,
+              "renderedFrames": 5917
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 72960,
+            "frame": 1396501,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 73920,
+            "frame": 1414876,
+            "velocity": 0.78,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 74880,
+            "frame": 1433251,
+            "velocity": 0.82,
+            "playback": {
+              "rate": 1.33484,
+              "voiceFrames": 198227
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 75840,
+            "frame": 1451626,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 176599
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 13781
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 15104,
+              "renderedFrames": 15104
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 76560,
+            "frame": 1465407,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 4594
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 5917,
+              "renderedFrames": 5917
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 81600,
+            "frame": 1561876,
+            "velocity": 0.78,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 82560,
+            "frame": 1580251,
+            "velocity": 0.82,
+            "playback": {
+              "rate": 1.33484,
+              "voiceFrames": 198227
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 83520,
+            "frame": 1598626,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 176599
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 84240,
+            "frame": 1612408,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/16",
+                "frames": 4593
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 5916,
+              "renderedFrames": 5916
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 90880,
+            "frame": 1739501,
+            "velocity": 0.8,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 91840,
+            "frame": 1757876,
+            "velocity": 0.78,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 92800,
+            "frame": 1776251,
+            "velocity": 0.82,
+            "playback": {
+              "rate": 1.33484,
+              "voiceFrames": 198227
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.85,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 176599
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/v12-signature/10-phantom.wav",
+            "tick": 94480,
+            "frame": 1808408,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 235733
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/8",
+                "frames": 27562
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "ph",
+              "voiceFrames": 28885,
+              "renderedFrames": 28885
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "c-impossible-ascent-redshift.stems/phrase.wav",
+        "sha256": "831848202d9f347e1e9955dc180e4b18052f4b30e0bbed14cd6e377a2c56a0a2",
+        "bytes": 7350048,
+        "frames": 1837501,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 41.666689
+      }
+    },
+    {
+      "trackId": "bass808",
+      "trackIndex": 1,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/07-abyss.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 628620
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 69760,
+            "frame": 1335251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 70400,
+            "frame": 1347501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 628620
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 73600,
+            "frame": 1408751,
+            "velocity": 0.86,
+            "playback": {
+              "rate": 0.8409,
+              "voiceFrames": 419551
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 74880,
+            "frame": 1433251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 75520,
+            "frame": 1445501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 628620
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 80000,
+            "frame": 1531251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 81600,
+            "frame": 1561876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 280018
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 82560,
+            "frame": 1580251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 235466
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 83520,
+            "frame": 1598626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.68179,
+              "voiceFrames": 209777
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 85760,
+            "frame": 1641501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 86720,
+            "frame": 1659876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 280018
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 87680,
+            "frame": 1678251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 235466
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 88640,
+            "frame": 1696626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.68179,
+              "voiceFrames": 209777
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 90880,
+            "frame": 1739501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 314310
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 91840,
+            "frame": 1757876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 280018
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 92800,
+            "frame": 1776251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 235466
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/07-abyss.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 628620
+            },
+            "articulation": {
+              "gate": {
+                "duration": "9/16",
+                "frames": 41344
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 42667,
+              "renderedFrames": 42667
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "c-impossible-ascent-redshift.stems/bass808.wav",
+        "sha256": "3bb86a3968901878e8ae6a56f8f007cf317c0f129458a4ad71eeb9f3da33bd00",
+        "bytes": 7350048,
+        "frames": 1837501,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 41.666689
+      }
+    },
+    {
+      "trackId": "bass808-grit",
+      "trackIndex": 2,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/08-reactor.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 432176
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 69760,
+            "frame": 1335251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 70400,
+            "frame": 1347501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 432176
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 73600,
+            "frame": 1408751,
+            "velocity": 0.86,
+            "playback": {
+              "rate": 0.8409,
+              "voiceFrames": 288441
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 74880,
+            "frame": 1433251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 75520,
+            "frame": 1445501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 432176
+            },
+            "articulation": {
+              "gate": {
+                "duration": "7/12",
+                "frames": 42875
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 44198,
+              "renderedFrames": 44198
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 80000,
+            "frame": 1531251,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 81600,
+            "frame": 1561876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 192513
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 82560,
+            "frame": 1580251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 161883
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 83520,
+            "frame": 1598626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.68179,
+              "voiceFrames": 144222
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 85760,
+            "frame": 1641501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 86720,
+            "frame": 1659876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 192513
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 87680,
+            "frame": 1678251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 161883
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 88640,
+            "frame": 1696626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.68179,
+              "voiceFrames": 144222
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 90880,
+            "frame": 1739501,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.12246,
+              "voiceFrames": 216088
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 91840,
+            "frame": 1757876,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.25992,
+              "voiceFrames": 192513
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 92800,
+            "frame": 1776251,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 1.49831,
+              "voiceFrames": 161883
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/v12-signature/08-reactor.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.92,
+            "playback": {
+              "rate": 0.56123,
+              "voiceFrames": 432176
+            },
+            "articulation": {
+              "gate": {
+                "duration": "9/16",
+                "frames": 41344
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "b808",
+              "voiceFrames": 42667,
+              "renderedFrames": 42667
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "c-impossible-ascent-redshift.stems/bass808-grit.wav",
+        "sha256": "151a9b77dc9e5dcde6828bc3ae1c319ff300ec7a98d1be635bab0b8ddbcab251",
+        "bytes": 7350048,
+        "frames": 1837501,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 41.666689
+      }
+    },
+    {
+      "trackId": "kick",
+      "trackIndex": 3,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/01-sub-hammer.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 70400,
+            "frame": 1347501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 75520,
+            "frame": 1445501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 81600,
+            "frame": 1561876,
+            "velocity": 0.65,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 82560,
+            "frame": 1580251,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 83520,
+            "frame": 1598626,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 85760,
+            "frame": 1641501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 86720,
+            "frame": 1659876,
+            "velocity": 0.65,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 87680,
+            "frame": 1678251,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 88640,
+            "frame": 1696626,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 90880,
+            "frame": 1739501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 91840,
+            "frame": 1757876,
+            "velocity": 0.65,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 92800,
+            "frame": 1776251,
+            "velocity": 0.8,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/01-sub-hammer.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.7,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 55924
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "k",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "c-impossible-ascent-redshift.stems/kick.wav",
+        "sha256": "2e0e1408ea6a93fb137faded5e4ad9f0987f338c3a244aa637d350484b6b618d",
+        "bytes": 7350048,
+        "frames": 1837501,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 41.666689
+      }
+    },
+    {
+      "trackId": "snare",
+      "trackIndex": 4,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/03-titanium-crack.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 67840,
+            "frame": 1298501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 72960,
+            "frame": 1396501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 78080,
+            "frame": 1494501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 83200,
+            "frame": 1592501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 88320,
+            "frame": 1690501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          },
+          {
+            "file": "assets/v12-signature/03-titanium-crack.wav",
+            "tick": 93440,
+            "frame": 1788501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 35320
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/6",
+                "frames": 12250
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 13573,
+              "renderedFrames": 13573
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "c-impossible-ascent-redshift.stems/snare.wav",
+        "sha256": "ba47226e502d698bca6fa059be37967bdbf245e8a3704ef18331e9dbf6ab6f51",
+        "bytes": 7350048,
+        "frames": 1837501,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 41.666689
+      }
+    },
+    {
+      "trackId": "clap",
+      "trackIndex": 5,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/v12-signature/04-neon-clap.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 67840,
+            "frame": 1298501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          },
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 72960,
+            "frame": 1396501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          },
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 78080,
+            "frame": 1494501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          },
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 83200,
+            "frame": 1592501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          },
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 88320,
+            "frame": 1690501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          },
+          {
+            "file": "assets/v12-signature/04-neon-clap.wav",
+            "tick": 93440,
+            "frame": 1788501,
+            "velocity": 0.5,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 38264
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/12",
+                "frames": 6125
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "s",
+              "voiceFrames": 7448,
+              "renderedFrames": 7448
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "c-impossible-ascent-redshift.stems/clap.wav",
+        "sha256": "991ff6dae90f23c8db2a7faac2beb398f4a3d5da00e569ecc1667e863c53cc63",
+        "bytes": 7350048,
+        "frames": 1837501,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 41.666689
+      }
+    },
+    {
+      "trackId": "clock",
+      "trackIndex": 6,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/orbital-foundry/04-machine-tick.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 66560,
+            "frame": 1274001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 67840,
+            "frame": 1298501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 69120,
+            "frame": 1323001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 70400,
+            "frame": 1347501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 71680,
+            "frame": 1372001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 72960,
+            "frame": 1396501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 74240,
+            "frame": 1421001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 75520,
+            "frame": 1445501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 76800,
+            "frame": 1470001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 78080,
+            "frame": 1494501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 79360,
+            "frame": 1519001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 81920,
+            "frame": 1568001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 83200,
+            "frame": 1592501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 84480,
+            "frame": 1617001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 85760,
+            "frame": 1641501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 87040,
+            "frame": 1666001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 88320,
+            "frame": 1690501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 89600,
+            "frame": 1715001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 90880,
+            "frame": 1739501,
+            "velocity": 0.42,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 92160,
+            "frame": 1764001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 93440,
+            "frame": 1788501,
+            "velocity": 0.36,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/04-machine-tick.wav",
+            "tick": 94720,
+            "frame": 1813001,
+            "velocity": 0.3,
+            "playback": {
+              "rate": 0.749154,
+              "voiceFrames": 5005
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "c-impossible-ascent-redshift.stems/clock.wav",
+        "sha256": "7fb2ac491c8b1a908833fb8329687433eff0ae8c68056a799ef9295b0b812be2",
+        "bytes": 7350048,
+        "frames": 1837501,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 41.666689
+      }
+    },
+    {
+      "trackId": "wall",
+      "trackIndex": 7,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/orbital-foundry/06-low-boom.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/orbital-foundry/06-low-boom.wav",
+            "tick": 65280,
+            "frame": 1249501,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 282559
+            },
+            "articulation": {
+              "gate": {
+                "duration": "2/3",
+                "frames": 49000
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.3,
+                "releaseFrames": 13230
+              },
+              "chokeGroup": "w",
+              "voiceFrames": 62230,
+              "renderedFrames": 62230
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/06-low-boom.wav",
+            "tick": 70400,
+            "frame": 1347501,
+            "velocity": 0.88,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 282559
+            },
+            "articulation": {
+              "gate": {
+                "duration": "2/3",
+                "frames": 49000
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.3,
+                "releaseFrames": 13230
+              },
+              "chokeGroup": "w",
+              "voiceFrames": 62230,
+              "renderedFrames": 62230
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/06-low-boom.wav",
+            "tick": 75520,
+            "frame": 1445501,
+            "velocity": 0.88,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 282559
+            },
+            "articulation": {
+              "gate": {
+                "duration": "2/3",
+                "frames": 49000
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.3,
+                "releaseFrames": 13230
+              },
+              "chokeGroup": "w",
+              "voiceFrames": 62230,
+              "renderedFrames": 62230
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/06-low-boom.wav",
+            "tick": 80640,
+            "frame": 1543501,
+            "velocity": 0.9,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 282559
+            },
+            "articulation": {
+              "gate": {
+                "duration": "2/3",
+                "frames": 49000
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.3,
+                "releaseFrames": 13230
+              },
+              "chokeGroup": "w",
+              "voiceFrames": 62230,
+              "renderedFrames": 62230
+            }
+          },
+          {
+            "file": "assets/orbital-foundry/06-low-boom.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.95,
+            "playback": {
+              "rate": 0.374577,
+              "voiceFrames": 282559
+            },
+            "articulation": {
+              "gate": {
+                "duration": "9/16",
+                "frames": 41344
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.3,
+                "releaseFrames": 13230
+              },
+              "chokeGroup": "w",
+              "voiceFrames": 54574,
+              "renderedFrames": 42875
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "c-impossible-ascent-redshift.stems/wall.wav",
+        "sha256": "2201143eb8f9797640bda3d41a2095c038b2d73670b3212d88a188f9470dce05",
+        "bytes": 7350048,
+        "frames": 1837501,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 41.666689
+      }
+    },
+    {
+      "trackId": "glass",
+      "trackIndex": 8,
+      "sample": {
+        "instrument": {
+          "type": "sampler",
+          "sample": "assets/glasshouse/01-glass-hit.wav"
+        },
+        "triggers": [
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 69120,
+            "frame": 1323001,
+            "velocity": 0.45,
+            "playback": {
+              "rate": 0.8909,
+              "voiceFrames": 49501
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 9188
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 10511,
+              "renderedFrames": 10511
+            }
+          },
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 85760,
+            "frame": 1641501,
+            "velocity": 0.75,
+            "playback": {
+              "rate": 0.8909,
+              "voiceFrames": 49501
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 86720,
+            "frame": 1659876,
+            "velocity": 0.75,
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 87680,
+            "frame": 1678251,
+            "velocity": 0.75,
+            "playback": {
+              "rate": 1.18921,
+              "voiceFrames": 37084
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/4",
+                "frames": 18375
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 19698,
+              "renderedFrames": 19698
+            }
+          },
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 88640,
+            "frame": 1696626,
+            "velocity": 0.75,
+            "playback": {
+              "rate": 1.33484,
+              "voiceFrames": 33038
+            },
+            "articulation": {
+              "gate": {
+                "duration": "3/16",
+                "frames": 13782
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 15105,
+              "renderedFrames": 15105
+            }
+          },
+          {
+            "file": "assets/glasshouse/01-glass-hit.wav",
+            "tick": 93760,
+            "frame": 1794626,
+            "velocity": 0.4,
+            "playback": {
+              "rate": 0.8909,
+              "voiceFrames": 49501
+            },
+            "articulation": {
+              "gate": {
+                "duration": "1/8",
+                "frames": 9188
+              },
+              "envelope": {
+                "attackSeconds": 0.003,
+                "attackFrames": 132,
+                "releaseSeconds": 0.03,
+                "releaseFrames": 1323
+              },
+              "chokeGroup": "g",
+              "voiceFrames": 10511,
+              "renderedFrames": 10511
+            }
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "c-impossible-ascent-redshift.stems/glass.wav",
+        "sha256": "83383a2f1c21e33c70d3804363cec926dd979d4e3dbf38c276e7f02ce3f06fd2",
+        "bytes": 7350048,
+        "frames": 1837501,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 41.666689
+      }
+    }
+  ],
+  "audioTool": {
+    "name": "ffmpeg",
+    "version": "6.1.1-3ubuntu5"
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 41.666689,
+      "frames": 1837501,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": 0,
+      "rmsDbfs": -13.667531,
+      "fullScaleSamples": 9541,
+      "clipping": true,
+      "integratedLufs": -8.67,
+      "loudnessRangeLu": 3.9,
+      "truePeakDbfs": 0.27
+    },
+    "tracks": [
+      {
+        "trackId": "phrase",
+        "analysis": {
+          "durationSeconds": 41.666689,
+          "frames": 1837501,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -7.129091,
+          "rmsDbfs": -23.603971,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -12.82,
+          "loudnessRangeLu": 4.6,
+          "truePeakDbfs": -7.12
+        }
+      },
+      {
+        "trackId": "bass808",
+        "analysis": {
+          "durationSeconds": 41.666689,
+          "frames": 1837501,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -3.342512,
+          "rmsDbfs": -17.585907,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -13.25,
+          "loudnessRangeLu": 5.8,
+          "truePeakDbfs": -3.34
+        }
+      },
+      {
+        "trackId": "bass808-grit",
+        "analysis": {
+          "durationSeconds": 41.666689,
+          "frames": 1837501,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -6.753076,
+          "rmsDbfs": -25.111249,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -18.68,
+          "loudnessRangeLu": 3.7,
+          "truePeakDbfs": -6.75
+        }
+      },
+      {
+        "trackId": "kick",
+        "analysis": {
+          "durationSeconds": 41.666689,
+          "frames": 1837501,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -5.683686,
+          "rmsDbfs": -22.49747,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -16.12,
+          "loudnessRangeLu": 6.3,
+          "truePeakDbfs": -5.68
+        }
+      },
+      {
+        "trackId": "snare",
+        "analysis": {
+          "durationSeconds": 41.666689,
+          "frames": 1837501,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -5.735347,
+          "rmsDbfs": -33.62156,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -18.84,
+          "loudnessRangeLu": 3.1,
+          "truePeakDbfs": -5.72
+        }
+      },
+      {
+        "trackId": "clap",
+        "analysis": {
+          "durationSeconds": 41.666689,
+          "frames": 1837501,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -11.734938,
+          "rmsDbfs": -44.681254,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -27.08,
+          "loudnessRangeLu": 3.1,
+          "truePeakDbfs": -11.17
+        }
+      },
+      {
+        "trackId": "clock",
+        "analysis": {
+          "durationSeconds": 41.666689,
+          "frames": 1837501,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -16.517494,
+          "rmsDbfs": -49.89284,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -37.84,
+          "loudnessRangeLu": 1.1,
+          "truePeakDbfs": -16.52
+        }
+      },
+      {
+        "trackId": "wall",
+        "analysis": {
+          "durationSeconds": 41.666689,
+          "frames": 1837501,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -7.417515,
+          "rmsDbfs": -25.239882,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -26.91,
+          "loudnessRangeLu": 3.8,
+          "truePeakDbfs": -7.42
+        }
+      },
+      {
+        "trackId": "glass",
+        "analysis": {
+          "durationSeconds": 41.666689,
+          "frames": 1837501,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -9.823391,
+          "rmsDbfs": -36.934112,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -22.73,
+          "loudnessRangeLu": 11.3,
+          "truePeakDbfs": -9.82
+        }
+      }
+    ]
+  }
+}

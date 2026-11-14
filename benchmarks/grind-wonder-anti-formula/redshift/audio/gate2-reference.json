@@ -1,0 +1,41 @@
+{
+ "note": "Measured from Wonder's unchanged Gate 2 pipeline re-run with a longer render. Used by mix_redshift.ts; nothing here alters Gate 2.",
+ "approvedSha256": {
+  "c-impossible-ascent-gate2.json": "c0d46566bec614595a90f85f54eee2cd0927a52bafeb266818de49fe404b000a",
+  "impossible-ascent-gate2/mix.ts": "5ebb73a26647bb4f58ee11bef961925f6d9dd69094a6b7332e65312fa4139d08",
+  "impossible-ascent-gate2/audio/IMPOSSIBLE-ASCENT-DEVELOPED.wav": "b0eef2f73188243505792ada55c0d034d2bcf0ae5570b98fa43688800ea70afa"
+ },
+ "processedStemsFirst28sByteIdentical": {
+  "hook": true,
+  "atmosphere": true,
+  "wall-drone": true,
+  "bass808": true,
+  "kick": true,
+  "snare": true,
+  "hats-ticks": true
+ },
+ "longerMasterVsApproved": {
+  "framesDifferingBeforeCut": 60,
+  "maxAbsDifference": 0.0003502368927001953,
+  "maxAbsDifferenceDbfs": -69.1,
+  "cause": "Gate 2 master soft clipper (4x oversampled) look-ahead at the 28.0 s cut"
+ },
+ "gains": {
+  "hookPreGainDb": -6.318032934260392,
+  "masterPushDb": -1.9941354606096313,
+  "masterTrimDb": 0.21965197431635008
+ },
+ "tail": {
+  "file": "stems/gate2-tail.wav",
+  "fromFrame": 1234800,
+  "frames": 602701,
+  "peakDbfs": -42.69,
+  "joinOffsetCorrection": {
+   "perChannel": [
+    0.00028324127197265625,
+    -0.0003502368927001953
+   ],
+   "fadeFrames": 221
+  }
+ }
+}

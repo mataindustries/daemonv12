@@ -1,0 +1,316 @@
+{
+ "full": true,
+ "passed": 8,
+ "failed": 0,
+ "note": "Technical checks only. Passing them does not make the section original or memorable; that is the listener's call.",
+ "results": [
+  {
+   "check": "integrity: Gate 2 + sketch C files byte-identical to the approved commit (21 files)",
+   "pass": true,
+   "detail": {
+    "changed": []
+   }
+  },
+  {
+   "check": "timing: 120 triggers placed as designed (world on 108 BPM sixteenths; each phrase statement anchored to a bar line and internally in 144 BPM time), frames as the engine computes them",
+   "pass": true,
+   "detail": {
+    "bad": [],
+    "phraseStatements": [
+     {
+      "tick": 0,
+      "anchor": "both clocks"
+     },
+     {
+      "tick": 7680,
+      "anchor": "Gate 2 bar line"
+     },
+     {
+      "tick": 15360,
+      "anchor": "both clocks"
+     },
+     {
+      "tick": 25600,
+      "anchor": "world downbeat"
+     }
+    ]
+   }
+  },
+  {
+   "check": "timing: bar lines and world downbeats within 1 frame of exact 144/108 BPM grids, no accumulation; bar 18 = Gate 2 bar 17 + one bar",
+   "pass": true,
+   "detail": {
+    "barLineDeviationFrames": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "worldDownbeatDeviationFrames": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "gate2Bar17Frame": 1176001,
+    "bar18Frame": 1249501,
+    "clocksAgreeAtFrames": [
+     1249501,
+     1543501,
+     1837501
+    ],
+    "clocksAgree": true
+   }
+  },
+  {
+   "check": "clipping: no full-scale samples; true peak <= -1.0 dBTP (extension and combined); stems below 0 dBFS",
+   "pass": true,
+   "detail": {
+    "extension": {
+     "samplePeakDbfs": -1.119369,
+     "fullScaleSamples": 0,
+     "truePeakDbtp4x": -1.118321,
+     "ffmpegTruePeakDbtp": -1.1,
+     "lufs": -12.8
+    },
+    "combined": {
+     "samplePeakDbfs": -1.003572,
+     "fullScaleSamples": 0,
+     "truePeakDbtp4x": -1,
+     "ffmpegTruePeakDbtp": -1,
+     "lufs": -13.4
+    },
+    "stemPeaksDbfs": {
+     "bass808.wav": -4.5,
+     "clock.wav": -11,
+     "gate2-tail.wav": -42.692907,
+     "glass.wav": -11,
+     "hook.wav": -12.321456,
+     "kick.wav": -3,
+     "snare.wav": -4.5,
+     "wall.wav": -9.999999
+    }
+   }
+  },
+  {
+   "check": "join: Gate 2 PCM bytes untouched; the step at 28.0 s is no larger than the signal's own sample-to-sample motion",
+   "pass": true,
+   "detail": {
+    "gate2PcmBytesPreservedInCombined": true,
+    "stepAtJoinDbfs": [
+     -71.30368,
+     -61.347681
+    ],
+    "largestNaturalStepInLast10msDbfs": [
+     -60.285887,
+     -56.44917
+    ],
+    "stepIfPlainConcatenationDbfs": [
+     -50.277502,
+     -48.95747
+    ],
+    "rms50msBeforeJoinDb": -48.801386,
+    "rms50msAfterJoinDb": -51.288436,
+    "firstExtensionEventSecondsAfterJoin": 0.333356,
+    "equalsOneGate2BarAfterItsLastDownbeat": true
+   }
+  },
+  {
+   "check": "motif (score): 4 phrase statements, each Wonder's p1 note-for-note (final fall-back held by design)",
+   "pass": true,
+   "detail": {
+    "statementsAtBar18RelativeTicks": [
+     0,
+     7680,
+     15360,
+     25600
+    ],
+    "statementSecondsCombined": [
+     28.333356,
+     31.666689,
+     35.000023,
+     39.444467
+    ],
+    "mismatches": []
+   }
+  },
+  {
+   "check": "reproducible: project, score, source render, Gate 2 tail, stems, WAVs and MP3s rebuilt from scratch are byte-identical",
+   "pass": true,
+   "detail": {
+    "sameProject": true,
+    "sameScore": true,
+    "sameSourceWav": true,
+    "sameSourceStems": true,
+    "differing": [],
+    "hashes": {
+     "REDSHIFT-EXTENSION.wav": {
+      "committed": "43ab9c701e95531214e2eb3bc1b0a0ca05a4f9e909d60f9965304a032b15183c",
+      "rebuilt": "43ab9c701e95531214e2eb3bc1b0a0ca05a4f9e909d60f9965304a032b15183c"
+     },
+     "REDSHIFT-EXTENSION.mp3": {
+      "committed": "0b93bade6255744f9d4e200e2da8c88677f6c21425034674f140c4f1ffe93012",
+      "rebuilt": "0b93bade6255744f9d4e200e2da8c88677f6c21425034674f140c4f1ffe93012"
+     },
+     "GATE2-PLUS-REDSHIFT.wav": {
+      "committed": "ea70265ab7b48056f4e8510f2590a79b7d59eb08e663ea454cf02c99fde859c9",
+      "rebuilt": "ea70265ab7b48056f4e8510f2590a79b7d59eb08e663ea454cf02c99fde859c9"
+     },
+     "GATE2-PLUS-REDSHIFT.mp3": {
+      "committed": "9330e398e8528de48eec570d0ab2ade2f84db4407778e484e9372b12cd020f7b",
+      "rebuilt": "9330e398e8528de48eec570d0ab2ade2f84db4407778e484e9372b12cd020f7b"
+     },
+     "gate2-reference.json": {
+      "committed": "4287dc1351447f447bbfe6c80e81fbef1e10b2718561318f21b3ef981c024117",
+      "rebuilt": "4287dc1351447f447bbfe6c80e81fbef1e10b2718561318f21b3ef981c024117"
+     },
+     "stems/bass808.wav": {
+      "committed": "ed1dd6813c9633e2e844ada10ff3c4d62ad787ce877386a811d7e8d194942483",
+      "rebuilt": "ed1dd6813c9633e2e844ada10ff3c4d62ad787ce877386a811d7e8d194942483"
+     },
+     "stems/clock.wav": {
+      "committed": "e991e1c55f160529c011250758ccf144bdeb81a9353e3b87d7cc514f20b21a9d",
+      "rebuilt": "e991e1c55f160529c011250758ccf144bdeb81a9353e3b87d7cc514f20b21a9d"
+     },
+     "stems/gate2-tail.wav": {
+      "committed": "8c02062262115ecad6115478693e09128edac4bd6a81090d0d441078aeeea261",
+      "rebuilt": "8c02062262115ecad6115478693e09128edac4bd6a81090d0d441078aeeea261"
+     },
+     "stems/glass.wav": {
+      "committed": "46dea5ef472a37c171543fe45fe9ff2476726f7cf7cd02a98cad3ee4af18a2ed",
+      "rebuilt": "46dea5ef472a37c171543fe45fe9ff2476726f7cf7cd02a98cad3ee4af18a2ed"
+     },
+     "stems/hook.wav": {
+      "committed": "222db6f7b3aef7be1a68ab9ab635c329c396c9d81aeb6aa184768ca312573882",
+      "rebuilt": "222db6f7b3aef7be1a68ab9ab635c329c396c9d81aeb6aa184768ca312573882"
+     },
+     "stems/kick.wav": {
+      "committed": "916df80c842879b58e77a6dad56a7e2050d09ac373d9a383c485782425cac03f",
+      "rebuilt": "916df80c842879b58e77a6dad56a7e2050d09ac373d9a383c485782425cac03f"
+     },
+     "stems/snare.wav": {
+      "committed": "e40ca0ec30905f9c8ddf94957e38066129d3727feeb6c459e62f4a62c46a9d81",
+      "rebuilt": "e40ca0ec30905f9c8ddf94957e38066129d3727feeb6c459e62f4a62c46a9d81"
+     },
+     "stems/wall.wav": {
+      "committed": "40cf8ecd52be476accbb038fd0ff48d6f0fc79cd51ca802e398eeaada59e05ff",
+      "rebuilt": "40cf8ecd52be476accbb038fd0ff48d6f0fc79cd51ca802e398eeaada59e05ff"
+     }
+    }
+   }
+  },
+  {
+   "check": "motif (audio): every phrase note renders sample-identical to Gate 2 bar 1 when aligned on its own onset",
+   "pass": true,
+   "detail": {
+    "perStatement": [
+     {
+      "statementStartFrame": 1249501,
+      "notes": [
+       "identical",
+       "identical",
+       "identical",
+       "identical",
+       "identical"
+      ],
+      "onsetFramesRelative": [
+       0,
+       18375,
+       36750,
+       55125,
+       68906
+      ],
+      "gate2Bar1OnsetFrames": [
+       0,
+       18375,
+       36750,
+       55125,
+       68906
+      ]
+     },
+     {
+      "statementStartFrame": 1396501,
+      "notes": [
+       "identical",
+       "identical",
+       "identical",
+       "identical",
+       "identical"
+      ],
+      "onsetFramesRelative": [
+       0,
+       18375,
+       36750,
+       55125,
+       68906
+      ],
+      "gate2Bar1OnsetFrames": [
+       0,
+       18375,
+       36750,
+       55125,
+       68906
+      ]
+     },
+     {
+      "statementStartFrame": 1543501,
+      "notes": [
+       "identical",
+       "identical",
+       "identical",
+       "identical",
+       "max diff 2.04e-1"
+      ],
+      "onsetFramesRelative": [
+       0,
+       18375,
+       36750,
+       55125,
+       68907
+      ],
+      "gate2Bar1OnsetFrames": [
+       0,
+       18375,
+       36750,
+       55125,
+       68906
+      ]
+     },
+     {
+      "statementStartFrame": 1739501,
+      "notes": [
+       "identical",
+       "identical",
+       "identical",
+       "identical",
+       "held by design"
+      ],
+      "onsetFramesRelative": [
+       0,
+       18375,
+       36750,
+       55125,
+       68907
+      ],
+      "gate2Bar1OnsetFrames": [
+       0,
+       18375,
+       36750,
+       55125,
+       68906
+      ]
+     }
+    ],
+    "note": "Where the engine rounds the fall-back onset 1 frame later (absolute-tick rounding at 416667 us/quarter), the B5 it chokes releases 1 frame later; reported, not hidden."
+   }
+  }
+ ]
+}
