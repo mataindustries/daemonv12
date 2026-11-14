@@ -1,0 +1,686 @@
+{
+  "formatVersion": 1,
+  "title": "B - DISPLACED GRAVITY (GRIND Anti-Formula)",
+  "description": "Trap around displacement: an anticipating bass hook (root, flat-2 stab, fifth-to-sub dive) returns shifted +1/16 then -1/8 truncated; a near-silent bar; late kick, early snare.",
+  "bpm": 142,
+  "timeSignature": "4/4",
+  "key": "C# minor",
+  "bars": 6,
+  "seed": 22,
+  "render": {
+    "duration": {
+      "seconds": 9.8
+    },
+    "tail": "none"
+  },
+  "master": {
+    "gainDb": 3,
+    "effects": []
+  },
+  "tracks": [
+    {
+      "id": "hook-sub",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/glasshouse/07-sub-cs.wav"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "h1"
+        },
+        {
+          "bar": 3,
+          "pattern": "h2"
+        },
+        {
+          "bar": 5,
+          "pattern": "dive"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "h1",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:4+1/8",
+              "velocity": 0.95,
+              "playbackRate": 1.0,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            },
+            {
+              "start": "2:1",
+              "velocity": 0.98,
+              "playbackRate": 1.0,
+              "gate": "3/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            },
+            {
+              "start": "2:2+3/16",
+              "velocity": 0.9,
+              "playbackRate": 1.05946,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            },
+            {
+              "start": "2:3+1/8",
+              "velocity": 0.95,
+              "playbackRate": 1.49831,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook",
+              "glide": {
+                "to": 0.74915,
+                "duration": "3/16"
+              }
+            },
+            {
+              "start": "2:4+3/16",
+              "velocity": 0.6,
+              "playbackRate": 0.8909,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            }
+          ]
+        },
+        {
+          "id": "h2",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:4+3/16",
+              "velocity": 0.95,
+              "playbackRate": 1.0,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            },
+            {
+              "start": "2:1+1/16",
+              "velocity": 0.98,
+              "playbackRate": 1.0,
+              "gate": "3/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            },
+            {
+              "start": "2:3",
+              "velocity": 0.9,
+              "playbackRate": 1.05946,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            }
+          ]
+        },
+        {
+          "id": "dive",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.95,
+              "playbackRate": 1.49831,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook",
+              "glide": {
+                "to": 0.74915,
+                "duration": "3/16"
+              }
+            },
+            {
+              "start": "1:4+3/16",
+              "velocity": 0.6,
+              "playbackRate": 0.8909,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -3,
+        "pan": 0
+      }
+    },
+    {
+      "id": "hook-punch",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/glasshouse/06-bass-punch-cs.wav"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "p1"
+        },
+        {
+          "bar": 3,
+          "pattern": "p2"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "p1",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:4+1/8",
+              "velocity": 0.95,
+              "playbackRate": 1.0,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            },
+            {
+              "start": "2:1",
+              "velocity": 0.98,
+              "playbackRate": 1.0,
+              "gate": "3/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            },
+            {
+              "start": "2:2+3/16",
+              "velocity": 0.9,
+              "playbackRate": 1.05946,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            },
+            {
+              "start": "2:3+1/8",
+              "velocity": 0.95,
+              "playbackRate": 1.49831,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook",
+              "glide": {
+                "to": 0.74915,
+                "duration": "3/16"
+              }
+            },
+            {
+              "start": "2:4+3/16",
+              "velocity": 0.6,
+              "playbackRate": 0.8909,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:4+3/16",
+              "velocity": 0.95,
+              "playbackRate": 1.0,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            },
+            {
+              "start": "2:1+1/16",
+              "velocity": 0.98,
+              "playbackRate": 1.0,
+              "gate": "3/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            },
+            {
+              "start": "2:3",
+              "velocity": 0.9,
+              "playbackRate": 1.05946,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "hook"
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -9,
+        "pan": 0
+      }
+    },
+    {
+      "id": "kick-late",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/v12-signature/01-sub-hammer.wav"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "k"
+        },
+        {
+          "bar": 3,
+          "pattern": "k3"
+        },
+        {
+          "bar": 5,
+          "pattern": "k2"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "k",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "velocity": 0.95,
+              "playbackRate": 1,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "k"
+            },
+            {
+              "start": "2:1+3/16",
+              "velocity": 0.9,
+              "playbackRate": 1,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "k"
+            },
+            {
+              "start": "2:4+1/8",
+              "velocity": 0.85,
+              "playbackRate": 1,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "k"
+            }
+          ]
+        },
+        {
+          "id": "k2",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/16",
+              "velocity": 0.95,
+              "playbackRate": 1,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "k"
+            },
+            {
+              "start": "1:3+3/16",
+              "velocity": 0.9,
+              "playbackRate": 1,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "k"
+            }
+          ]
+        },
+        {
+          "id": "k3",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/16",
+              "velocity": 0.95,
+              "playbackRate": 1,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "k"
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -4,
+        "pan": 0
+      }
+    },
+    {
+      "id": "snare-early",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/v12-signature/03-titanium-crack.wav"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "s"
+        },
+        {
+          "bar": 3,
+          "pattern": "s"
+        },
+        {
+          "bar": 6,
+          "pattern": "s2"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "s",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:4+3/16",
+              "velocity": 0.9,
+              "playbackRate": 1,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "s"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:2+15/64",
+              "velocity": 0.95,
+              "playbackRate": 1,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "s"
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -6,
+        "pan": 0.1
+      }
+    },
+    {
+      "id": "hats",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/v12-signature/05-ghost-tick.wav"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "hat"
+        },
+        {
+          "bar": 3,
+          "pattern": "hat3"
+        },
+        {
+          "bar": 4,
+          "pattern": "hat-one"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "hat",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "velocity": 0.4
+            },
+            {
+              "start": "1:2+1/8",
+              "velocity": 0.4
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.4
+            },
+            {
+              "start": "2:1+1/8",
+              "velocity": 0.4
+            },
+            {
+              "start": "2:3",
+              "velocity": 0.4
+            },
+            {
+              "start": "2:4",
+              "velocity": 0.4
+            },
+            {
+              "start": "2:1+1/12",
+              "velocity": 0.55
+            },
+            {
+              "start": "2:1+1/6",
+              "velocity": 0.5
+            },
+            {
+              "start": "2:2",
+              "velocity": 0.6
+            }
+          ]
+        },
+        {
+          "id": "hat-one",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:3+5/64",
+              "velocity": 0.5,
+              "playbackRate": 1.5
+            }
+          ]
+        },
+        {
+          "id": "hat3",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "velocity": 0.4
+            },
+            {
+              "start": "1:2+1/8",
+              "velocity": 0.4
+            },
+            {
+              "start": "1:3+1/6",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:4+1/12",
+              "velocity": 0.55
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -7,
+        "pan": -0.2
+      }
+    },
+    {
+      "id": "vox-whisper",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/glasshouse/04-ghost-vox.wav"
+      },
+      "clips": [
+        {
+          "bar": 4,
+          "pattern": "v"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "v",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:3+1/8",
+              "velocity": 0.35,
+              "playbackRate": 2.0,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "v",
+              "offsetSeconds": 0.3
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -12,
+        "pan": 0.35
+      },
+      "effects": [
+        {
+          "type": "reverb",
+          "roomSize": 0.5,
+          "decaySeconds": 1.6,
+          "wet": 0.18
+        }
+      ]
+    },
+    {
+      "id": "final-drop",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/glasshouse/03-glass-crush.wav"
+      },
+      "clips": [
+        {
+          "bar": 6,
+          "pattern": "d"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "d",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.9,
+              "playbackRate": 1.0,
+              "gate": "1/2",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "d",
+              "glide": {
+                "to": 0.5,
+                "duration": "1/2"
+              }
+            },
+            {
+              "start": "1:4+3/16",
+              "velocity": 0.55,
+              "playbackRate": 4.0,
+              "gate": "1/64",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "d"
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -6,
+        "pan": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,729 @@
+{
+  "formatVersion": 1,
+  "title": "A - MACHINE FAILURE (GRIND Anti-Formula)",
+  "description": "Threatening bass machine losing control: stable ostinato, detune/source-skip faults, lost kick, one alarm, descending death truncated at 10.4s.",
+  "bpm": 132,
+  "timeSignature": "4/4",
+  "key": "A minor",
+  "bars": 6,
+  "seed": 11,
+  "render": {
+    "duration": {
+      "seconds": 10.4
+    },
+    "tail": "none"
+  },
+  "master": {
+    "gainDb": -3,
+    "effects": []
+  },
+  "tracks": [
+    {
+      "id": "bass-machine",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/v12-signature/07-abyss.wav"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "stable"
+        },
+        {
+          "bar": 2,
+          "pattern": "stable"
+        },
+        {
+          "bar": 3,
+          "pattern": "fault"
+        },
+        {
+          "bar": 4,
+          "pattern": "fault"
+        },
+        {
+          "bar": 6,
+          "pattern": "collapse"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "stable",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.95,
+              "playbackRate": 1.0,
+              "gate": "3/4",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "x"
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.9,
+              "playbackRate": 1.0,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "x"
+            },
+            {
+              "start": "1:4+1/8",
+              "velocity": 0.85,
+              "playbackRate": 2.0,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "x"
+            }
+          ]
+        },
+        {
+          "id": "fault",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.95,
+              "playbackRate": 0.97,
+              "gate": "1/2",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:3",
+              "velocity": 0.9,
+              "playbackRate": 1.03,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "bass",
+              "offsetSeconds": 1.3
+            },
+            {
+              "start": "1:3+1/8",
+              "velocity": 0.92,
+              "playbackRate": 1.0,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "bass",
+              "glide": {
+                "to": 0.82,
+                "duration": "1/8"
+              },
+              "offsetSeconds": 2.7
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.8,
+              "playbackRate": 0.8909,
+              "gate": "3/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "bass",
+              "offsetSeconds": 0.4
+            }
+          ]
+        },
+        {
+          "id": "collapse",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.9,
+              "playbackRate": 0.8909,
+              "gate": "1/4",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:2+1/8",
+              "velocity": 0.8,
+              "playbackRate": 0.74915,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "bass"
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.85,
+              "playbackRate": 0.5946,
+              "gate": "3/2",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "bass",
+              "glide": {
+                "to": 0.37458,
+                "duration": "1/1"
+              }
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -2,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "saturation",
+          "driveDb": 6,
+          "mix": 0.5
+        }
+      ]
+    },
+    {
+      "id": "reactor-grind",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/v12-signature/08-reactor.wav"
+      },
+      "clips": [
+        {
+          "bar": 2,
+          "pattern": "grind"
+        },
+        {
+          "bar": 3,
+          "pattern": "grind-broken"
+        },
+        {
+          "bar": 4,
+          "pattern": "grind-broken"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "grind",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "velocity": 0.5,
+              "playbackRate": 1.0,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "g"
+            },
+            {
+              "start": "1:2+1/8",
+              "velocity": 0.45,
+              "playbackRate": 1.0,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "g"
+            },
+            {
+              "start": "1:3+1/8",
+              "velocity": 0.5,
+              "playbackRate": 1.49831,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "g"
+            }
+          ]
+        },
+        {
+          "id": "grind-broken",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/12",
+              "velocity": 0.55,
+              "playbackRate": 1.0,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "g"
+            },
+            {
+              "start": "1:2+1/12",
+              "velocity": 0.5,
+              "playbackRate": 0.94387,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "g"
+            },
+            {
+              "start": "1:3+3/16",
+              "velocity": 0.6,
+              "playbackRate": 1.0,
+              "gate": "1/32",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "g",
+              "glide": {
+                "to": 0.6,
+                "duration": "1/16"
+              }
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -7,
+        "pan": 0
+      },
+      "effects": [
+        {
+          "type": "saturation",
+          "driveDb": 6,
+          "mix": 0.5
+        }
+      ]
+    },
+    {
+      "id": "kick",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/02-mechanical-kick.wav"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "four"
+        },
+        {
+          "bar": 2,
+          "pattern": "four"
+        },
+        {
+          "bar": 3,
+          "pattern": "limp"
+        },
+        {
+          "bar": 4,
+          "pattern": "spasm"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "four",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.95
+            },
+            {
+              "start": "1:2",
+              "velocity": 0.9
+            },
+            {
+              "start": "1:3",
+              "velocity": 0.95
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.9
+            }
+          ]
+        },
+        {
+          "id": "limp",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.95
+            },
+            {
+              "start": "1:3+1/48",
+              "velocity": 0.9
+            },
+            {
+              "start": "1:4+1/8",
+              "velocity": 0.85
+            }
+          ]
+        },
+        {
+          "id": "spasm",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.95
+            },
+            {
+              "start": "1:1+1/32",
+              "velocity": 0.7,
+              "playbackRate": 1.3
+            },
+            {
+              "start": "1:3+3/32",
+              "velocity": 0.9
+            },
+            {
+              "start": "1:3+1/8",
+              "velocity": 0.75,
+              "playbackRate": 0.8
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -3,
+        "pan": 0
+      }
+    },
+    {
+      "id": "ticks",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/04-machine-tick.wav"
+      },
+      "clips": [
+        {
+          "bar": 1,
+          "pattern": "t8"
+        },
+        {
+          "bar": 2,
+          "pattern": "t8"
+        },
+        {
+          "bar": 3,
+          "pattern": "t-accel"
+        },
+        {
+          "bar": 6,
+          "pattern": "t-one"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "t8",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.45
+            },
+            {
+              "start": "1:1+1/8",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:2",
+              "velocity": 0.45
+            },
+            {
+              "start": "1:2+1/8",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:3",
+              "velocity": 0.45
+            },
+            {
+              "start": "1:3+1/8",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.45
+            },
+            {
+              "start": "1:4+1/8",
+              "velocity": 0.5
+            }
+          ]
+        },
+        {
+          "id": "t-accel",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:1+1/12",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:1+1/6",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:2",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:2+1/12",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:2+1/6",
+              "velocity": 0.5
+            },
+            {
+              "start": "1:3",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:3+1/16",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:3+1/8",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:3+3/16",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:4",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:4+1/16",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:4+1/8",
+              "velocity": 0.55
+            },
+            {
+              "start": "1:4+3/16",
+              "velocity": 0.55
+            }
+          ]
+        },
+        {
+          "id": "t-one",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:4+3/16",
+              "velocity": 0.6,
+              "playbackRate": 0.7
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -6,
+        "pan": -0.3
+      }
+    },
+    {
+      "id": "snare",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/05-industrial-snare.wav"
+      },
+      "clips": [
+        {
+          "bar": 2,
+          "pattern": "s"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "s",
+          "bars": 2,
+          "notes": [
+            {
+              "start": "1:3+1/16",
+              "velocity": 0.85
+            },
+            {
+              "start": "2:4+3/16",
+              "velocity": 0.95,
+              "playbackRate": 1.2
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -4,
+        "pan": 0.15
+      }
+    },
+    {
+      "id": "alarm",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/12-alarm-energy-pulse.wav"
+      },
+      "clips": [
+        {
+          "bar": 3,
+          "pattern": "a"
+        },
+        {
+          "bar": 5,
+          "pattern": "a2"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "a",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:4+1/8",
+              "velocity": 0.7,
+              "playbackRate": 0.7,
+              "gate": "1/8",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "al",
+              "endSeconds": 0.35
+            }
+          ]
+        },
+        {
+          "id": "a2",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1+1/8",
+              "velocity": 0.8,
+              "playbackRate": 1.41,
+              "gate": "1/16",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "al",
+              "endSeconds": 0.2
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -8,
+        "pan": 0.3
+      }
+    },
+    {
+      "id": "clang",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/03-metallic-strike.wav"
+      },
+      "clips": [
+        {
+          "bar": 4,
+          "pattern": "c"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "c",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:2+1/16",
+              "velocity": 0.65,
+              "playbackRate": 0.5,
+              "gate": "1/2",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "c"
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -9,
+        "pan": -0.4
+      },
+      "effects": [
+        {
+          "type": "reverb",
+          "roomSize": 0.5,
+          "decaySeconds": 1.6,
+          "wet": 0.18
+        }
+      ]
+    },
+    {
+      "id": "boom-floor",
+      "instrument": {
+        "type": "sampler",
+        "sample": "assets/orbital-foundry/06-low-boom.wav"
+      },
+      "clips": [
+        {
+          "bar": 5,
+          "pattern": "b"
+        }
+      ],
+      "patterns": [
+        {
+          "id": "b",
+          "bars": 1,
+          "notes": [
+            {
+              "start": "1:1",
+              "velocity": 0.8,
+              "playbackRate": 0.5,
+              "gate": "3/4",
+              "envelope": {
+                "attackSeconds": 0.003,
+                "releaseSeconds": 0.03
+              },
+              "chokeGroup": "boom"
+            }
+          ]
+        }
+      ],
+      "mix": {
+        "gainDb": -5,
+        "pan": 0
+      }
+    }
+  ]
+}
