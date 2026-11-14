@@ -14,6 +14,7 @@ import { lowerScore, motifReport, motifEvents, hook10Gate, normalizeAnyScore, on
 import { seamCheck } from '../studio-001/scores/hook10/build.ts';
 import { buildCandidate, eventMap, CANDIDATES, LOOP_FRAMES, EVENT_MAP_SCHEMA } from '../studio-001/scores/hook30/build.ts';
 import { groove, ascension } from '../studio-001/scores/hook30/compose.ts';
+import { integratedLufs, truePeakDb, wavChannels } from '../studio-001/scores/hook30/loudness.ts';
 
 const read = (f: string) => JSON.parse(readFileSync(f, 'utf8')) as unknown;
 const OUT = 'proofs/hook30', SCORES = 'studio-001/scores/hook30', HOOK10 = 'proofs/v09-motif/hook10';
@@ -199,6 +200,26 @@ test('committed masters: manifest, hashes, exact length, loop verification, matc
   }
   const [a, b] = manifest.candidates;
   assert.ok(Math.abs(a!.master.loudness.lufs - b!.master.loudness.lufs) <= 0.1, 'the two candidates are level-matched');
+});
+
+test('loudness and true peak: an independent BS.1770 meter agrees with the FFmpeg numbers in the manifest', () => {
+  // a 1 kHz sine at -20 dBFS peak in both channels is -20.0 LUFS by definition (BS.1770 calibration: 997 Hz at -18 dBFS stereo reads -18)
+  const sine = Float64Array.from({ length: 5 * 44100 }, (_, i) => 0.1 * Math.sin(2 * Math.PI * 997 * i / 44100));
+  assert.ok(Math.abs(integratedLufs([sine, sine]) + 20) < 0.05, `calibration tone reads ${integratedLufs([sine, sine]).toFixed(3)} LUFS`);
+  // a sine sampled at its zero crossings and 45 degrees off its peaks: the samples reach 0.7071 but the true peak is 1.0
+  const inter = Float64Array.from({ length: 4410 }, (_, i) => Math.sin(Math.PI / 2 * i + Math.PI / 4));
+  assert.ok(Math.abs(truePeakDb([inter])) < 0.1, `inter-sample peak reads ${truePeakDb([inter]).toFixed(3)} dBTP`);
+  const manifest = read(`${OUT}/MANIFEST.json`) as { candidates: { id: string; master: { file: string; loudness: { lufs: number; truePeakDb: number } } }[] };
+  const own: number[] = [];
+  for (const v of manifest.candidates) {
+    const ch = wavChannels(readFileSync(join(OUT, v.master.file))), lufs = integratedLufs(ch), tp = truePeakDb(ch);
+    assert.ok(Math.abs(lufs - v.master.loudness.lufs) <= 0.1, `${v.id}: ${lufs.toFixed(2)} LUFS here, ${v.master.loudness.lufs} from FFmpeg`);
+    assert.ok(Math.abs(tp - v.master.loudness.truePeakDb) <= 0.15 && tp <= -1, `${v.id}: ${tp.toFixed(2)} dBTP here, ${v.master.loudness.truePeakDb} from FFmpeg`);
+    own.push(lufs);
+  }
+  assert.ok(Math.abs(own[0]! - own[1]!) <= 0.1, `matched level: ${own.map(x => x.toFixed(2)).join(' and ')} LUFS`);
+  // the B1 master the candidates are compared with sits at the same loudness
+  assert.ok(Math.abs(integratedLufs(wavChannels(readFileSync(`${HOOK10}/HOOK10-B1-motif-development.wav`))) + 16) <= 0.1);
 });
 
 test('stems: the committed FLAC stems add up to the committed master', { skip: !ffmpegVersion() && 'needs FFmpeg to decode FLAC' }, () => {
