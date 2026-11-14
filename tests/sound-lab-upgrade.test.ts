@@ -29,8 +29,9 @@ test('upgrade: clatter taps are plain delayed copies at their gains and pans; ch
   const c = chain([ones(3), ones(2)], 4); assert.equal(c[0].length, 9); assert.deepEqual([...c[0]], [1, 1, 1, 0, 0, 0, 0, 1, 1]);
 });
 
-test('upgrade: the original GRIND and BOLLO masters are byte-for-byte unchanged', () => {
-  for (const dir of ['sound-lab/grind/audio', 'sound-lab/bollo/audio']) {
+test('upgrade: the original masters and the approved G1/G2/B1/B2 files are byte-for-byte unchanged', () => {
+  for (const dir of ['sound-lab/grind/audio', 'sound-lab/bollo/audio', 'sound-lab/upgrade/audio/grind', 'sound-lab/upgrade/audio/bollo', 'sound-lab/upgrade/audio/grind-final', 'sound-lab/upgrade/audio/bollo-final']) {
+    if (!existsSync(join(dir, 'SHA256SUMS'))) continue;
     const sums = readFileSync(join(dir, 'SHA256SUMS'), 'utf8').trim().split('\n');
     assert.ok(sums.length >= 10);
     for (const line of sums) { const [hash, file] = line.split(/\s+/); assert.equal(createHash('sha256').update(readFileSync(join(dir, file!))).digest('hex'), hash, file); }
@@ -40,7 +41,10 @@ test('upgrade: the original GRIND and BOLLO masters are byte-for-byte unchanged'
 // The B1/B2 coin tone overrides, as delivered. Every coin contact must land on the same frame with the same strength.
 const report = (name: string) => json(`sound-lab/upgrade/audio/${name}/REPORT.json`);
 test('upgrade: BOLLO tone overrides touch only damping, hardness or material, and move no coin contact', { skip: !existsSync('sound-lab/upgrade/audio/bollo/REPORT.json') }, () => {
-  const r = report('bollo'), score = json('sound-lab/bollo/score.json') as { parts: { id: string; coin?: CoinOptions; notes?: [number, number, number, number][] }[] };
+  for (const name of ['bollo', 'bollo-final']) if (existsSync(`sound-lab/upgrade/audio/${name}/REPORT.json`)) checkTone(name);
+});
+function checkTone(name: string) {
+  const r = report(name), score = json('sound-lab/bollo/score.json') as { parts: { id: string; coin?: CoinOptions; notes?: [number, number, number, number][] }[] };
   assert.equal(r.originalReproduced, true); assert.equal(r.coinContactTimingIdentical, true);
   let checked = 0;
   for (const v of Object.values(r.settings) as { coinTone?: Record<string, Partial<CoinOptions>> }[]) for (const [id, tone] of Object.entries(v.coinTone ?? {})) {
@@ -52,16 +56,26 @@ test('upgrade: BOLLO tone overrides touch only damping, hardness or material, an
     }
   }
   assert.ok(checked > 40);
-});
+}
 
 test('upgrade: every delivered comparison is loudness-matched, under -1 dBTP, never at full scale, and the original mixes reproduce', { skip: !existsSync('sound-lab/upgrade/audio/grind/REPORT.json') }, () => {
-  for (const name of ['grind', 'bollo']) {
+  for (const name of ['grind', 'bollo', 'grind-final', 'bollo-final']) {
+    if (!existsSync(`sound-lab/upgrade/audio/${name}/REPORT.json`)) continue;
     const r = report(name); assert.equal(r.originalReproduced, true);
     const files = Object.entries(r.files) as [string, { single: { integratedLufs: number; truePeakDbtp: number; samplesAtFullScale: number } }][];
-    assert.ok(files.length === 3, name);
+    assert.equal(files.length, name.endsWith('final') ? 4 : 3, name);
     for (const [k, f] of files) {
       assert.ok(Math.abs(f.single.integratedLufs - r.loudnessTargetLufs) <= 0.1, `${name} ${k} loudness`);
       assert.ok(f.single.truePeakDbtp <= -1, `${name} ${k} true peak`); assert.equal(f.single.samplesAtFullScale, 0);
     }
   }
+});
+
+test('upgrade: the GRIND hybrid is G1 and G2 stages in one pipeline (G1 kick, duck and clip stages; G2 growl held off the kick)', { skip: !existsSync('sound-lab/upgrade/audio/grind-final/REPORT.json') }, () => {
+  const { settings: s } = report('grind-final'), f = s['FINAL-hybrid'], g1 = s['G1-punch'], g2 = s['G2-menace'];
+  assert.deepEqual(f.kick, g1.kick); assert.deepEqual(f.master, g1.master); assert.deepEqual(f.hats, g1.hats); assert.deepEqual(f.snare, g2.snare);
+  const { grit, ...bass } = f.bass, { grit: _none, ...g1bass } = g1.bass; assert.deepEqual(bass, g1bass); assert.equal(_none, undefined);
+  const { kickDuck, ...growl } = grit; assert.deepEqual(growl, g2.bass.grit); assert.ok(kickDuck.db >= g1.bass.duckDb && kickDuck.holdMs >= g1.bass.duckHoldMs);
+  // the kick keeps G1's restored front with the growl added
+  assert.ok(report('grind-final').files['FINAL-hybrid'].single.kick.frontToBodyDb >= report('grind-final').files['G1-punch'].single.kick.frontToBodyDb - 0.3);
 });

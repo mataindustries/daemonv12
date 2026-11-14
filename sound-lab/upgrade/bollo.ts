@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 import { renderCoinBridge, type CoinBridgeScore } from '../../instruments/bollo-coin/bridge.ts';
 import { coinModes } from '../../instruments/bollo-coin/coin.ts';
 import { SR, type Stereo, sum, gainDb, mono, hp, bell, crushed, clipTo, duck, room, ride, shelfHi, cycle, fadeOut, writeAudio, ampDb, peak, rms, truePeak } from '../lib.ts';
-import { shape, taps, band, cachedStems, floatSha, chain, delayed, matchLoudness, qa, round } from './tools.ts';
+import { shape, taps, band, cachedStems, floatSha, chain, delayed, matchLoudness, qa, monoCheck, round } from './tools.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = process.argv[2] ?? join(HERE, 'audio', 'bollo');
@@ -47,6 +47,8 @@ export interface BolloSettings {
     accentDb?: Partial<Record<Coin, number>>;
     /** synth bus ducked under the face call (B2): dB */
     synthUnderCallDb?: number;
+    /** which coin parts key that synth duck (default: the face call only, as in B2) */
+    synthDuckParts?: Coin[];
     /** CRUSH soft clip on the coin bus with its ceiling this many dB from the band's peak: only the sub-millisecond
      *  contact spikes are shaved here, so the master clipper no longer has to (B1/B2) */
     tipClipRelBandDb?: number };
@@ -84,6 +86,21 @@ export const B2: BolloSettings = {
     grit: { lo: 1500, hi: 9000, amount: 0.8, levelDb: -11 }, accentDb: { face: 3, rim: 2 }, synthUnderCallDb: 3, tipClipRelBandDb: -2 },
   band: ORIGINAL.band, pushDb: 3,
 };
+/**
+ * The owner's pick: B1's coins (metal tone, cut ting, short ring, dry floor, contact, tip clip) carrying B2's party
+ * moves (call/answer accents, synth ducked around them, gritty parallel coins, clatter). The clatter is cut back to
+ * the struck accents only, two taps at unrelated delays, high-passed so only contact noise is doubled: fewer combs
+ * and no audible echo on the guiro's sixteenths or the spin.
+ */
+export const FINAL: BolloSettings = {
+  name: 'FINAL-hybrid', note: 'B1 QUARTERS coins and floor; B2 PARTY MONEY accents, synth ducking, grit and (reduced) clatter.',
+  coinTone: METAL,
+  coinGain: { ...B1.coinGain, spin: 20 },
+  coinBus: { ...B1.coinBus, roomDb: -18,
+    clatter: { parts: ['face', 'rim'], taps: [[11, -12, -0.6], [23, -15, 0.6]], hpHz: 2500 },
+    grit: { ...B2.coinBus.grit!, levelDb: -12 }, accentDb: { face: 2, rim: 1.5 }, synthUnderCallDb: 3, synthDuckParts: ['face', 'rim'] },
+  band: ORIGINAL.band, pushDb: 3,
+};
 
 const withTone = (s: CoinBridgeScore, tone: BolloSettings['coinTone']): CoinBridgeScore => !tone ? s :
   { ...s, parts: (s.parts as { id: string; coin?: object }[]).map(p => p.coin && tone[p.id as Coin] ? { ...p, coin: { ...p.coin, ...tone[p.id as Coin] } } : p) as never };
@@ -114,7 +131,7 @@ function mix(r: Render, s: BolloSettings, score: CoinBridgeScore, spinFrame?: nu
   let synth = sum(gainDb(hp(st('lead'), 220), B.lead), gainDb(hp(st('lead2'), 220), B.lead2), gainDb(hp(st('skank'), 300), B.skank));
   bass = crushed(bass, 0.7, { mix: 0.6 }); synth = crushed(synth, 0.7, { mix: 0.5 });
   synth = duck(sum(synth, gainDb(room(synth, 0.9, 400, 105), -13)), kickFrames, 2.5, 15, 130);
-  if (C.synthUnderCallDb) synth = duck(synth, r.manifest.coinEvents.filter(e => e.part === 'face').map(e => e.frame), C.synthUnderCallDb, 25, 90);
+  if (C.synthUnderCallDb) synth = duck(synth, r.manifest.coinEvents.filter(e => (C.synthDuckParts ?? ['face']).includes(e.part as Coin)).map(e => e.frame), C.synthUnderCallDb, 25, 90);
   const bandBus = sum(kick, clap, bass, synth);
   if (C.tipClipRelBandDb !== undefined) { const g = -ampDb(peak(bandBus)); coin = gainDb(clipTo(gainDb(coin, g), C.tipClipRelBandDb), -g); }
   return { coin, band: bandBus, total: sum(coin, bandBus), stems: { coins: coin, kick, clap, bass, synth }, kickFrames };
@@ -131,12 +148,12 @@ async function master(s: BolloSettings) {
   const out = (cycles: number) => gainDb(finish(arrange(body.total, hit.total, cycles)), trim);
   const stems = Object.fromEntries(Object.entries(body.stems).map(([id, x]) => [id, arrange(x, hit.stems[id as keyof typeof hit.stems], 1)]));
   const coinsOnly = arrange(body.coin, hit.coin, 1);
-  return { single: out(1), three: out(3), stems, stemGain: drive + trim, coinsOnly, kickFrames: body.kickFrames, contacts: main.manifest.coinEvents.flatMap(e => e.plan.contacts.map(c => e.frame + c.frame)), drive, trim };
+  return { single: out(1), three: out(3), stems, stemGain: drive + trim, coinsOnly, kickFrames: body.kickFrames, spinFrame, events: main.manifest, closingEvents: end.manifest, contacts: main.manifest.coinEvents.flatMap(e => e.plan.contacts.map(c => e.frame + c.frame)), drive, trim };
 }
 
 // ------------------------------------------------------------------------------------------------- delivery
 const only = (process.env.BOLLO_ONLY ?? 'B1,B2').split(',');
-const variants = [B1, B2].filter(v => only.some(o => v.name.startsWith(o)));
+const variants = [B1, B2, FINAL].filter(v => only.some(o => v.name.startsWith(o)));
 const results: Record<string, Awaited<ReturnType<typeof master>>> = { original: await master(ORIGINAL) };
 const sha = floatSha(results.original!.single);
 if (sha !== ORIGINAL_SHA) throw new Error(`ORIGINAL mix does not reproduce the approved sketch: ${sha} != ${ORIGINAL_SHA}`);
@@ -151,18 +168,28 @@ const label = (k: string) => k === 'original' ? 'BOLLO-original' : `BOLLO-${k}`;
 const report: Record<string, unknown> = {};
 // Coins-only auditions share one gain (the loudest version at -1 dBTP), so their levels compare directly.
 const coinGain = -1 - Math.max(...Object.values(results).map(r => ampDb(truePeak(r.coinsOnly))));
+/** Final mode (FINAL in BOLLO_ONLY): three-cycle, coins-only, stems and events only for the hybrid. */
+const finalMode = variants.includes(FINAL);
+/** The spin's two beats alone (band silent): RMS of the matched master and its 2-8 kHz band, so spin levels compare. */
+const spinWindow = (x: Stereo, f: number) => { const b = Math.round(2 * BEAT); return { rmsDb: round(ampDb(rms(x, f, f + b))), rms2to8kDb: round(ampDb(rms(band(x, 2000, 8000, true), f, f + b))) }; };
 for (const [k, x] of Object.entries(matched.out)) {
   const r = results[k]!, g = matched.gains[k]!, p = join(OUT, `${label(k)}.wav`); writeAudio(p, x);
+  if (finalMode) report[k] = { matchGainDb: g, coinBusPeakIntoClipperDbfs: round(ampDb(peak(r.stems.coins!)) + r.drive), spinWindow: spinWindow(x, r.spinFrame), mono: monoCheck(x, SCRATCH), single: qa(x, p, { onsets: r.kickFrames }) };
+  if (finalMode && k !== FINAL.name) continue;
   const three = gainDb(r.three, g), p3 = join(OUT, `${label(k)}-three-cycles.wav`); writeAudio(p3, three);
   const coinsOnly = gainDb(r.coinsOnly, coinGain), pc = join(OUT, `${label(k)}-coins-only.wav`); writeAudio(pc, fadeOut(coinsOnly, 20));
-  report[k] = { matchGainDb: g, coinBusPeakIntoClipperDbfs: round(ampDb(peak(r.stems.coins!)) + r.drive), single: qa(x, p, { onsets: r.kickFrames }), threeCycles: qa(three, p3, { loopFrames: Math.round(LOOP) }),
+  report[k] = { ...(report[k] as object), matchGainDb: g, coinBusPeakIntoClipperDbfs: round(ampDb(peak(r.stems.coins!)) + r.drive), single: qa(x, p, { onsets: r.kickFrames }), threeCycles: qa(three, p3, { loopFrames: Math.round(LOOP) }),
     coinsOnly: { ...qa(coinsOnly, pc, { onsets: r.contacts }), note: 'one shared gain for every version (the loudest at -1 dBTP), so coin levels compare directly' } };
 }
 const order = Object.keys(matched.out);
 writeAudio(join(OUT, `BOLLO-AB-${order.map(k => k === 'original' ? 'orig' : k.split('-')[0]).join('-')}.wav`), chain(order.map(k => matched.out[k]!), SR));
 writeAudio(join(OUT, `BOLLO-AB-coins-only-${order.map(k => k === 'original' ? 'orig' : k.split('-')[0]).join('-')}.wav`), chain(order.map(k => gainDb(results[k]!.coinsOnly, coinGain)), SR / 2));
-for (const v of variants) { const r = results[v.name]!, sg = Math.min(r.stemGain, -0.5 - Math.max(...Object.values(r.stems).map(x => ampDb(truePeak(x)))));
+for (const v of finalMode ? [FINAL] : variants) { const r = results[v.name]!, sg = Math.min(r.stemGain, -0.5 - Math.max(...Object.values(r.stems).map(x => ampDb(truePeak(x)))));
   for (const [id, x] of Object.entries(r.stems)) writeAudio(join(OUT, 'stems', v.name, `${id}.wav`), fadeOut(gainDb(x, sg), 20)); }
+if (finalMode) { const r = results[FINAL.name]!;
+  writeFileSync(join(OUT, 'events.json'), JSON.stringify({ bpm: BPM, framesPerBeat: BEAT, loopFrames: LOOP, sampleRate: SR, closingHitAtFrame: LOOP, events: r.events.events,
+    coinEvents: r.events.coinEvents.map(e => ({ part: e.part, frame: e.frame, contacts: e.plan.contacts.map(c => e.frame + c.frame) })),
+    closingHit: { events: r.closingEvents.events.map(e => ({ ...e, frame: LOOP + e.frame })), coinEvents: r.closingEvents.coinEvents.map(e => ({ part: e.part, frame: LOOP + e.frame, contacts: e.plan.contacts.map(c => LOOP + e.frame + c.frame) })) } }) + '\n'); }
 writeFileSync(join(OUT, 'REPORT.json'), JSON.stringify({ title: 'BOLLO A-to-S mix pass', loudnessTargetLufs: matched.target, originalFloatSha256: sha, originalReproduced: true,
   coinContactTimingIdentical: true, settings: Object.fromEntries([ORIGINAL, ...variants].map(v => [v.name, v])), files: report }, null, 1) + '\n');
 for (const [k, v] of Object.entries(report)) console.log(k, JSON.stringify(v));

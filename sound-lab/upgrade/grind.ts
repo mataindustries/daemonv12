@@ -12,7 +12,7 @@ import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { renderBridge } from '../../studio-001/v12-bridge/bridge.ts';
 import { SR, type Stereo, sum, gainDb, toPeak, mono, hp, lp, bell, shelfHi, crushed, clipTo, duck, room, ride, cycle, fadeOut, writeAudio, ampDb, peak, rms, truePeak } from '../lib.ts';
-import { shape, band, cachedStems, floatSha, chain, matchLoudness, qa, round } from './tools.ts';
+import { shape, band, cachedStems, floatSha, chain, matchLoudness, qa, monoCheck, round } from './tools.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = process.argv[2] ?? join(HERE, 'audio', 'grind');
@@ -27,7 +27,9 @@ export interface GrindSettings {
   kick: { hammerPeak: number; clickPeak: number; clickHp: number; ownClipDb: number | null; transient?: { attackDb: number; holdMs: number; releaseMs: number; sustainDb: number; recoverMs: number } };
   bass: { duckDb: number; duckHoldMs: number; duckReleaseMs: number; crush: { amount: number; pushDb: number; mix: number }; peak: number;
     /** parallel growl: the 808 above `hpHz`, crushed hard, blended under the main 808 (G2) */
-    grit?: { hpHz: number; lpHz: number; amount: number; pushDb: number; levelDb: number; rideBars34Db: number };
+    grit?: { hpHz: number; lpHz: number; amount: number; pushDb: number; levelDb: number; rideBars34Db: number;
+      /** duck the growl itself under each kick, after CRUSH (whose drive lifts the 808's ducked gap back up) */
+      kickDuck?: { db: number; holdMs: number; releaseMs: number } };
     /** a cut in the 808 where the kick's punch lives, so the two stop competing (G1) */
     kickPocket?: { hz: number; db: number; q: number } };
   snare: { crush: { amount: number; mix: number }; peak: number; clapPeak: number; presence?: { hz: number; db: number } };
@@ -66,6 +68,22 @@ export const G2: GrindSettings = {
   music: { bellPeak: -12, choirPeak: -10.5, choirLp: 2600, duckDb: 3, choirCrush: { amount: 0.8, mix: 0.5 } },
   master: { pushDb: 3.5, busPushDb: 5 },
 };
+/**
+ * The owner's pick: G1's kick, separation, bell and headroom with G2's growl, snare, dark drone and bar-3 rise.
+ * One pipeline, not two mixes summed: every stage below is G1's setting or G2's, plus one envelope on the growl.
+ */
+export const FINAL: GrindSettings = {
+  name: 'FINAL-hybrid', note: 'G1 PUNCH kick, duck, bell, hats and master; G2 MENACE growl (ducked under the kick), snare and drone.',
+  kick: G1.kick,
+  // G1's 808 path and duck. The growl rides on top of it, held off each kick so the kick front stays G1's.
+  bass: { ...G1.bass, grit: { ...G2.bass.grit!, kickDuck: { db: 18, holdMs: 55, releaseMs: 90 } } },
+  snare: G2.snare,
+  hats: G1.hats,
+  // G1's clear bell with G2's darker, crushed drone, 1 dB under G2's level so the bell stays in front.
+  music: { ...G1.music, choirPeak: -11.5, choirLp: G2.music.choirLp, choirCrush: G2.music.choirCrush, duckDb: G2.music.duckDb },
+  // G1's clip stages: no extra clipping for the added layer.
+  master: G1.master,
+};
 
 export interface Mix { stems: Record<string, Stereo>; master: Stereo }
 export function mixGrind(raw: Map<string, Stereo>, kickFrames: number[], set: GrindSettings, kickHz: number): Mix {
@@ -79,6 +97,7 @@ export function mixGrind(raw: Map<string, Stereo>, kickFrames: number[], set: Gr
     // Growl layer: only the 808's harmonics above hpHz, driven hard through CRUSH, low-passed so it snarls rather than fizzes.
     grit = lp(crushed(hp(bass, B.grit.hpHz, true), B.grit.amount, { pushDb: B.grit.pushDb }), B.grit.lpHz, true);
     grit = ride(gainDb(grit, B.grit.levelDb), 8 * BEAT - 2205, 8 * BEAT, 0, B.grit.rideBars34Db);
+    if (B.grit.kickDuck) grit = duck(grit, kickFrames, B.grit.kickDuck.db, B.grit.kickDuck.holdMs, B.grit.kickDuck.releaseMs);
   }
   bass = toPeak(crushed(bass, B.crush.amount, { pushDb: B.crush.pushDb, mix: B.crush.mix }), B.peak);
   if (B.kickPocket) bass = bell(bass, B.kickPocket.hz || kickHz, B.kickPocket.db, B.kickPocket.q);
@@ -125,7 +144,7 @@ const orig = mixGrind(r.stems, kickFrames, ORIGINAL, kickHz);
 const origSha = floatSha(orig.master);
 if (origSha !== ORIGINAL_SHA) throw new Error(`ORIGINAL mix does not reproduce the approved master: ${origSha} != ${ORIGINAL_SHA}`);
 const only = (process.env.GRIND_ONLY ?? 'G1,G2').split(',');
-const variants = [G1, G2].filter(v => only.some(o => v.name.startsWith(o)));
+const variants = [G1, G2, FINAL].filter(v => only.some(o => v.name.startsWith(o)));
 const mixes: Record<string, Mix> = { original: orig };
 for (const v of variants) mixes[v.name] = mixGrind(r.stems, kickFrames, v, kickHz);
 
@@ -135,15 +154,23 @@ const matched = matchLoudness(singles, SCRATCH);
 const label = (k: string) => k === 'original' ? 'GRIND-original' : `GRIND-${k}`;
 const report: Record<string, unknown> = {};
 const seamOf = (x: Stereo) => fadeOut(cycle(x, LOOP, 3), 30);
+/** Final mode (FINAL in GRIND_ONLY): three-cycle, stems and events only for the hybrid; the others are comparison singles. */
+const finalMode = variants.includes(FINAL);
+/** Kick/808 handover, as in ../grind/build.ts: the band under 150 Hz in 25 ms steps after each kick, averaged over kicks. */
+const lowAfterKick = (st: Record<string, Stereo>) => { const low = lp(sum(st.kick!, st.bass808!), 150, true);
+  return Array.from({ length: 10 }, (_, k) => round(kickFrames.reduce((a, f) => a + ampDb(rms(low, f + k * 1102, f + (k + 1) * 1102)), 0) / kickFrames.length, 1)); };
+if (finalMode) writeFileSync(join(OUT, 'events.json'), JSON.stringify({ schema: (r.manifest as { schema?: string }).schema, bpm: BPM, framesPerBeat: BEAT, loopFrames: LOOP, sampleRate: SR, events: r.manifest.events }) + '\n');
 for (const [k, x] of Object.entries(matched.out)) {
   const p = join(OUT, `${label(k)}.wav`); writeAudio(p, x);
+  if (finalMode && k !== FINAL.name) { report[k] = { matchGainDb: matched.gains[k], single: qa(x, p, { onsets: kickFrames }), mono: monoCheck(x, SCRATCH), lowBandAfterKickDb: lowAfterKick(mixes[k]!.stems) }; continue; }
   const three = seamOf(x), p3 = join(OUT, `${label(k)}-three-cycles.wav`); writeAudio(p3, three);
-  report[k] = { matchGainDb: matched.gains[k], single: qa(x, p, { onsets: kickFrames }), threeCycles: qa(three, p3, { loopFrames: LOOP }) };
+  report[k] = { matchGainDb: matched.gains[k], single: qa(x, p, { onsets: kickFrames }), threeCycles: qa(three, p3, { loopFrames: LOOP }),
+    ...(finalMode ? { mono: monoCheck(x, SCRATCH), lowBandAfterKickDb: lowAfterKick(mixes[k]!.stems) } : {}) };
 }
 // A/B/C: one cycle each, original first, 1 s apart, all at the same loudness.
 const order = Object.keys(matched.out);
 writeAudio(join(OUT, `GRIND-AB-${order.map(k => k === 'original' ? 'orig' : k.split('-')[0]).join('-')}.wav`), chain(order.map(k => matched.out[k]!), SR));
-for (const v of variants) for (const [id, st] of Object.entries(mixes[v.name]!.stems)) writeAudio(join(OUT, 'stems', v.name, `${id}.wav`), st);
+for (const v of finalMode ? [FINAL] : variants) for (const [id, st] of Object.entries(mixes[v.name]!.stems)) writeAudio(join(OUT, 'stems', v.name, `${id}.wav`), st);
 writeFileSync(join(OUT, 'REPORT.json'), JSON.stringify({ title: 'GRIND A-to-S mix pass', loudnessTargetLufs: matched.target, kickPunchHz: kickHz,
   originalFloatSha256: origSha, originalReproduced: true, settings: Object.fromEntries([ORIGINAL, ...variants].map(v => [v.name, v])), files: report }, null, 1) + '\n');
 for (const [k, v] of Object.entries(report)) { const x = v as { matchGainDb: number; single: Record<string, unknown> }; console.log(k, x.matchGainDb, JSON.stringify(x.single)); }

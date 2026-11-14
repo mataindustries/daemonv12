@@ -101,6 +101,12 @@ export function punch(x: Stereo, onsets: number[]) {
   for (const o of onsets) { if (o + b1 > x[0].length) continue; full += ampDb(rms(x, o, o + a)) - ampDb(rms(x, o + b0, o + b1)); lo += ampDb(rms(low, o, o + a)) - ampDb(rms(low, o + b0, o + b1)); c++; }
   return { frontRmsToBodyDb: round(full / Math.max(1, c)), lowFrontToBodyDb: round(lo / Math.max(1, c)) };
 }
+/** Mono compatibility: L/R correlation (full band and under 150 Hz) and the loudness change when folded to mono. */
+export function monoCheck(x: Stereo, scratch: string) {
+  const corr = (y: Stereo) => { let lr = 0, ll = 0, rr = 0; for (let i = 0; i < y[0].length; i++) { lr += y[0][i]! * y[1][i]!; ll += y[0][i]! ** 2; rr += y[1][i]! ** 2; } return round(lr / Math.sqrt(ll * rr || 1), 3); };
+  const m = x[0].map((v, i) => 0.5 * (v + x[1][i]!));
+  return { correlation: corr(x), correlationUnder150: corr(lp(x, 150, true)), monoFoldLufsDeltaDb: round(lufsOf([m, m.slice()], scratch) - lufsOf(x, scratch), 2) };
+}
 /** The QA block: loudness, true peak, clipping, band balance, harshness, transients and the loop seam. */
 export function qa(x: Stereo, file: string, o: { onsets?: number[]; loopFrames?: number } = {}) {
   const l = loudness(file), s = bandBalance(x);

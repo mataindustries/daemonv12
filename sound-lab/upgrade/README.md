@@ -4,6 +4,53 @@
 silences and coin mechanics. Only mix settings and two coin *tone* parameters moved. I can't listen to audio, so
 every claim below is a measurement.
 
+## Final hybrids (owner's pick: G1 + G2, B1 + B2)
+
+| | File | What |
+|---|---|---|
+| **GRIND** | [GRIND-FINAL-hybrid.mp3](audio/grind-final/GRIND-FINAL-hybrid.mp3) · [three cycles](audio/grind-final/GRIND-FINAL-hybrid-three-cycles.mp3) | the hybrid |
+| | [GRIND-AB-orig-G1-G2-FINAL.mp3](audio/grind-final/GRIND-AB-orig-G1-G2-FINAL.mp3) | original → G1 → G2 → FINAL, all at **-11.6 LUFS** |
+| **BOLLO** | [BOLLO-FINAL-hybrid.mp3](audio/bollo-final/BOLLO-FINAL-hybrid.mp3) · [three cycles](audio/bollo-final/BOLLO-FINAL-hybrid-three-cycles.mp3) · [coins only](audio/bollo-final/BOLLO-FINAL-hybrid-coins-only.mp3) | the hybrid |
+| | [BOLLO-AB-orig-B1-B2-FINAL.mp3](audio/bollo-final/BOLLO-AB-orig-B1-B2-FINAL.mp3) · [coins only](audio/bollo-final/BOLLO-AB-coins-only-orig-B1-B2-FINAL.mp3) | original → B1 → B2 → FINAL, all at **-10.8 LUFS** |
+
+Each folder also has WAVs, `stems/FINAL-hybrid/`, `events.json` (every event frame; for BOLLO every coin contact),
+`REPORT.json` (settings and measurements) and `SHA256SUMS`.
+
+**GRIND FINAL** is a single pipeline: each stage uses either G1's setting or G2's (`FINAL` in [grind.ts](grind.ts)).
+- **From G1:** the kick (keyed front lift, light tip clip, louder click), the 16 dB / 55 ms 808 duck, the clear bell
+  with its 2.8 kHz presence, the hats, and the bus-then-master clip stages. Clipping is no heavier than G1's.
+- **From G2:** the parallel CRUSH growl (808 above 280 Hz, low-passed at 5.2 kHz) with its +3 dB rise from bar 3,
+  plus the crushed snare/clap with its 2.2 kHz edge and the dark crushed drone (1 dB under G2's level).
+- **The one new decision:** CRUSH's drive re-lifts the 808's ducked gap. To stop that, the growl gets its own kick
+  duck *after* CRUSH (18 dB, 55 ms, 90 ms release; the existing `duck`). The kick front stays G1's.
+
+**BOLLO FINAL** (`FINAL` in [bollo.ts](bollo.ts)).
+- **From B1:** the coin tone (`damping`/`hardness`), the cut at each coin's own ting, the 9 dB contact-keyed decay
+  shortener, the 1.4 kHz contact lift, the coin gains and the tip clip. The room is -18 dB (B1 -20, B2 -15).
+- **From B2:** face/rim accents (+2 / +1.5 dB), the 3 dB synth duck, now keyed by both the face *and* the rim hits,
+  and the gritty parallel coins at -12 dB.
+- **The clatter, reworked against glass and echo:** two taps instead of three, at unrelated delays (11 and 23 ms),
+  on the face and rim accents only (not the guiro's sixteenths, not the spin). They are high-passed at 2.5 kHz, so
+  only contact noise is doubled.
+- **The spin:** 2 dB over B1.
+
+| At matched loudness | GRIND G1 | GRIND G2 | **GRIND FINAL** | | BOLLO B1 | BOLLO B2 | **BOLLO FINAL** |
+|---|---:|---:|---:|---|---:|---:|---:|
+| Kick front/body | 9.9 dB | 8.5 dB | **10.0 dB** | Coin front/body | 16.6 dB | 14.7 dB | **15.9 dB** |
+| 500 Hz–2 kHz | -11.8 | -10.3 | **-10.0** | Coin harshness | 6.4 dB | 7.3 dB | **5.7 dB** |
+| 2–8 kHz | -18.9 | -19.5 | **-18.0** | Mix 8–20 kHz | -15.9 | -15.0 | **-14.6** |
+| Under 150 Hz share | -2.9 dB | -3.0 dB | **-3.0 dB** | Spin window RMS | -21.6 dB | -20.6 dB | **-19.9 dB** |
+| Mono fold | 0.0 LU | -0.1 LU | **-0.1 LU** | Mono fold | -0.3 LU | -0.2 LU | **-0.2 LU** |
+
+**Hybrid QA**
+- Both hybrids are at or under -1.0 dBTP, with no sample at full scale. Correlation under 150 Hz is 1.0.
+- The GRIND kick→808 handover under 150 Hz matches G1 to within 0.1 dB.
+- Three-cycle loudness is within 0.1 LU of one cycle. Loop seams sit below the local sample step.
+- BOLLO coin contacts are frame- and strength-identical to the original (test).
+- Two fresh renders are byte-identical.
+- With the new code, the approved G1/G2/B1/B2 folders re-render byte-identical, REPORTs included. They and the
+  original masters are locked by `SHA256SUMS`, which the tests check.
+
 ## Listen first (all loudness-matched)
 
 | | File | Order |
@@ -112,6 +159,8 @@ QA, all six masters:
 ```sh
 node sound-lab/upgrade/grind.ts      # ~50 s; GRIND_ONLY=G1 to render one variant
 node sound-lab/upgrade/bollo.ts      # ~2 min; BOLLO_ONLY=B1
+GRIND_ONLY=G1,G2,FINAL node sound-lab/upgrade/grind.ts sound-lab/upgrade/audio/grind-final
+BOLLO_ONLY=B1,B2,FINAL node sound-lab/upgrade/bollo.ts sound-lab/upgrade/audio/bollo-final
 node --test tests/sound-lab-upgrade.test.ts
 ```
 `SOUNDLAB_CACHE=<dir>` caches the rendered instrument stems for quick mix iteration (delivery was checked against
