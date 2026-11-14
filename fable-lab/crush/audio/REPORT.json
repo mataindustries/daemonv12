@@ -1,0 +1,573 @@
+{
+  "schema": "daemonv12.fable-lab.crush-ab/1",
+  "amount": 0.7,
+  "bpm": 128,
+  "seconds": 5,
+  "frames": 220500,
+  "ceilingDbtp": -1,
+  "crushInputPeakDbfs": -3,
+  "method": "Each source: dry (engine, no effects), existing (engine saturation + compressor), crush (dry through DAEMON//CRUSH). All three brought to the same integrated loudness, the lowest any of them reaches at -1 dBTP, with one gain per file. densityGainVsDryLu is how much louder a condition is than dry when both peak at -1 dBTP.",
+  "existingEffects": [
+    {
+      "type": "saturation",
+      "driveDb": 10,
+      "mix": 1
+    },
+    {
+      "type": "compressor",
+      "thresholdDb": -16,
+      "ratio": 4,
+      "attackMs": 14,
+      "releaseMs": 120,
+      "makeupGainDb": 6
+    }
+  ],
+  "node": "v22.23.4",
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "sources": {
+    "kick": {
+      "targetLufs": -13.3,
+      "files": {
+        "dry": {
+          "file": "crush-ab-kick-A-dry.wav",
+          "sha256": "40ded758180ebaf0a9a9ed0354cce2c73fd3078d185d7e64ba39e7a637e7fa39",
+          "samplePeakDbfs": -1,
+          "truePeakDbtp": -1,
+          "truePeakDbtpFfmpeg": -1,
+          "rmsDbfs": -13.19,
+          "integratedLufs": -13.3,
+          "loudnessRangeLu": 0.6,
+          "crestDb": 12.18,
+          "peakToLoudnessDb": 12.3,
+          "onsets": 11,
+          "frontToBodyDb": 8.41,
+          "hitCrestDb": 8.18,
+          "bandBalanceDb": {
+            "sub 20-60": -2.86,
+            "bass 60-150": -3.8,
+            "low-mid 150-500": -12.78,
+            "mid 500-2k": -22.86,
+            "high 2k-8k": -33.3,
+            "air 8k-20k": -51.28
+          },
+          "clippedSamples": 0,
+          "delivered": true,
+          "loudnessAtCeilingLufs": -13.3,
+          "densityGainVsDryLu": 0
+        },
+        "existing": {
+          "file": "crush-ab-kick-E-existing-effects.wav",
+          "sha256": "5684f71aad0a3c8387d554b4d3de810e39340057e84411857a617d08a44ec3b4",
+          "samplePeakDbfs": -1.52,
+          "truePeakDbtp": -1.5,
+          "truePeakDbtpFfmpeg": -1.5,
+          "rmsDbfs": -13.07,
+          "integratedLufs": -13.3,
+          "loudnessRangeLu": 0.5,
+          "crestDb": 11.55,
+          "peakToLoudnessDb": 11.8,
+          "onsets": 11,
+          "frontToBodyDb": 9.03,
+          "hitCrestDb": 8.65,
+          "bandBalanceDb": {
+            "sub 20-60": -2.15,
+            "bass 60-150": -5.03,
+            "low-mid 150-500": -12.41,
+            "mid 500-2k": -20.59,
+            "high 2k-8k": -26.85,
+            "air 8k-20k": -42.64
+          },
+          "clippedSamples": 0,
+          "delivered": false,
+          "loudnessAtCeilingLufs": -12.8,
+          "densityGainVsDryLu": 0.5
+        },
+        "crush": {
+          "file": "crush-ab-kick-B-crush.wav",
+          "sha256": "9114cd4434db9d62b5a29f70cf85b5afc2e0b387a61fda8d2830e8d771ca0965",
+          "samplePeakDbfs": -3.3,
+          "truePeakDbtp": -3.3,
+          "truePeakDbtpFfmpeg": -3.3,
+          "rmsDbfs": -13.26,
+          "integratedLufs": -13.3,
+          "loudnessRangeLu": 0.5,
+          "crestDb": 9.96,
+          "peakToLoudnessDb": 10,
+          "onsets": 11,
+          "frontToBodyDb": 7.04,
+          "hitCrestDb": 6.67,
+          "bandBalanceDb": {
+            "sub 20-60": -2.75,
+            "bass 60-150": -4.29,
+            "low-mid 150-500": -10.82,
+            "mid 500-2k": -21.74,
+            "high 2k-8k": -30.12,
+            "air 8k-20k": -50.54
+          },
+          "clippedSamples": 0,
+          "delivered": true,
+          "loudnessAtCeilingLufs": -11,
+          "densityGainVsDryLu": 2.3,
+          "crush": {
+            "amount": 0.7,
+            "ceilingDb": -1,
+            "settings": {
+              "splitHz": [
+                150,
+                2500
+              ],
+              "lowDriveDb": 4.63,
+              "midDriveDb": 5.9,
+              "highDriveDb": 1.05,
+              "thresholdDb": -12.3,
+              "ratio": 3.8,
+              "attackMs": 14,
+              "releaseMs": 120,
+              "makeupDb": 4.45
+            },
+            "maxReductionDb": 4.57,
+            "meanReductionDb": 2.26,
+            "clippedShare": 0.0532,
+            "maxShaveDb": 4.97
+          }
+        }
+      }
+    },
+    "bass": {
+      "targetLufs": -13.9,
+      "files": {
+        "dry": {
+          "file": "crush-ab-bass-A-dry.wav",
+          "sha256": "7d65305d56759638f1aaae7f63cb2a9ffb5003d3e27a1a1e04e81125315d43de",
+          "samplePeakDbfs": -1,
+          "truePeakDbtp": -1,
+          "truePeakDbtpFfmpeg": -1,
+          "rmsDbfs": -15.03,
+          "integratedLufs": -13.9,
+          "loudnessRangeLu": 0.5,
+          "crestDb": 14.03,
+          "peakToLoudnessDb": 12.9,
+          "onsets": 0,
+          "frontToBodyDb": 0,
+          "hitCrestDb": 0,
+          "bandBalanceDb": {
+            "sub 20-60": -3.58,
+            "bass 60-150": -7.29,
+            "low-mid 150-500": -6.08,
+            "mid 500-2k": -9.16,
+            "high 2k-8k": -21.65,
+            "air 8k-20k": -45.44
+          },
+          "clippedSamples": 0,
+          "delivered": true,
+          "loudnessAtCeilingLufs": -13.9,
+          "densityGainVsDryLu": 0
+        },
+        "existing": {
+          "file": "crush-ab-bass-E-existing-effects.wav",
+          "sha256": "f8878a2adc17d8c461f114dcf13096e60fa2b82eda7b892ea901e5e45b3d4a0a",
+          "samplePeakDbfs": -3.61,
+          "truePeakDbtp": -3.6,
+          "truePeakDbtpFfmpeg": -3.6,
+          "rmsDbfs": -15.06,
+          "integratedLufs": -13.9,
+          "loudnessRangeLu": 0.3,
+          "crestDb": 11.45,
+          "peakToLoudnessDb": 10.3,
+          "onsets": 0,
+          "frontToBodyDb": 0,
+          "hitCrestDb": 0,
+          "bandBalanceDb": {
+            "sub 20-60": -3.7,
+            "bass 60-150": -7.1,
+            "low-mid 150-500": -6.04,
+            "mid 500-2k": -9.13,
+            "high 2k-8k": -21.62,
+            "air 8k-20k": -45.55
+          },
+          "clippedSamples": 0,
+          "delivered": false,
+          "loudnessAtCeilingLufs": -11.3,
+          "densityGainVsDryLu": 2.6
+        },
+        "crush": {
+          "file": "crush-ab-bass-B-crush.wav",
+          "sha256": "bb00fba2f86ebc00a6447200120b1c27891c3f7492d9dc101337238a8a205424",
+          "samplePeakDbfs": -5.3,
+          "truePeakDbtp": -5.3,
+          "truePeakDbtpFfmpeg": -5.3,
+          "rmsDbfs": -15.02,
+          "integratedLufs": -13.9,
+          "loudnessRangeLu": 0.3,
+          "crestDb": 9.72,
+          "peakToLoudnessDb": 8.6,
+          "onsets": 0,
+          "frontToBodyDb": 0,
+          "hitCrestDb": 0,
+          "bandBalanceDb": {
+            "sub 20-60": -3.65,
+            "bass 60-150": -7.5,
+            "low-mid 150-500": -5.42,
+            "mid 500-2k": -10.04,
+            "high 2k-8k": -24.57,
+            "air 8k-20k": -48.96
+          },
+          "clippedSamples": 0,
+          "delivered": true,
+          "loudnessAtCeilingLufs": -9.6,
+          "densityGainVsDryLu": 4.3,
+          "crush": {
+            "amount": 0.7,
+            "ceilingDb": -1,
+            "settings": {
+              "splitHz": [
+                150,
+                2500
+              ],
+              "lowDriveDb": 4.63,
+              "midDriveDb": 5.9,
+              "highDriveDb": 1.05,
+              "thresholdDb": -12.3,
+              "ratio": 3.8,
+              "attackMs": 14,
+              "releaseMs": 120,
+              "makeupDb": 4.45
+            },
+            "maxReductionDb": 3.77,
+            "meanReductionDb": 2.69,
+            "clippedShare": 0.0326,
+            "maxShaveDb": 1.3
+          }
+        }
+      }
+    },
+    "bus": {
+      "targetLufs": -14,
+      "files": {
+        "dry": {
+          "file": "crush-ab-bus-A-dry.wav",
+          "sha256": "1b8a1f719519cd7069da83964331deecd45f95315169c1c8716897b3d106f231",
+          "samplePeakDbfs": -1,
+          "truePeakDbtp": -1,
+          "truePeakDbtpFfmpeg": -1,
+          "rmsDbfs": -14.36,
+          "integratedLufs": -14,
+          "loudnessRangeLu": 0.5,
+          "crestDb": 13.35,
+          "peakToLoudnessDb": 13,
+          "onsets": 11,
+          "frontToBodyDb": 9.65,
+          "hitCrestDb": 9.3,
+          "bandBalanceDb": {
+            "sub 20-60": -3.49,
+            "bass 60-150": -3.8,
+            "low-mid 150-500": -10.38,
+            "mid 500-2k": -15.8,
+            "high 2k-8k": -22.13,
+            "air 8k-20k": -23.28
+          },
+          "clippedSamples": 0,
+          "delivered": true,
+          "loudnessAtCeilingLufs": -14,
+          "densityGainVsDryLu": 0
+        },
+        "existing": {
+          "file": "crush-ab-bus-E-existing-effects.wav",
+          "sha256": "6b694f8c684872812566759f11f81c4f00733e39a8caad37ad39f79f50d2ed03",
+          "samplePeakDbfs": -2.84,
+          "truePeakDbtp": -2.8,
+          "truePeakDbtpFfmpeg": -2.8,
+          "rmsDbfs": -14.5,
+          "integratedLufs": -14,
+          "loudnessRangeLu": 0.2,
+          "crestDb": 11.65,
+          "peakToLoudnessDb": 11.2,
+          "onsets": 11,
+          "frontToBodyDb": 9.84,
+          "hitCrestDb": 9.44,
+          "bandBalanceDb": {
+            "sub 20-60": -3.03,
+            "bass 60-150": -5.1,
+            "low-mid 150-500": -9.01,
+            "mid 500-2k": -13,
+            "high 2k-8k": -21.5,
+            "air 8k-20k": -21.91
+          },
+          "clippedSamples": 0,
+          "delivered": true,
+          "loudnessAtCeilingLufs": -12.2,
+          "densityGainVsDryLu": 1.8
+        },
+        "crush": {
+          "file": "crush-ab-bus-B-crush.wav",
+          "sha256": "90446997efefeb20a72e237433729bf335c65bf2a8eaf03846ebc16cd270f193",
+          "samplePeakDbfs": -4.5,
+          "truePeakDbtp": -4.5,
+          "truePeakDbtpFfmpeg": -4.5,
+          "rmsDbfs": -14.55,
+          "integratedLufs": -14,
+          "loudnessRangeLu": 0.3,
+          "crestDb": 10.05,
+          "peakToLoudnessDb": 9.5,
+          "onsets": 11,
+          "frontToBodyDb": 7.75,
+          "hitCrestDb": 7.33,
+          "bandBalanceDb": {
+            "sub 20-60": -3.51,
+            "bass 60-150": -4.5,
+            "low-mid 150-500": -8.37,
+            "mid 500-2k": -13.76,
+            "high 2k-8k": -23.53,
+            "air 8k-20k": -25.85
+          },
+          "clippedSamples": 0,
+          "delivered": true,
+          "loudnessAtCeilingLufs": -10.5,
+          "densityGainVsDryLu": 3.5,
+          "crush": {
+            "amount": 0.7,
+            "ceilingDb": -1,
+            "settings": {
+              "splitHz": [
+                150,
+                2500
+              ],
+              "lowDriveDb": 4.63,
+              "midDriveDb": 5.9,
+              "highDriveDb": 1.05,
+              "thresholdDb": -12.3,
+              "ratio": 3.8,
+              "attackMs": 14,
+              "releaseMs": 120,
+              "makeupDb": 4.45
+            },
+            "maxReductionDb": 4.26,
+            "meanReductionDb": 2.15,
+            "clippedShare": 0.04658,
+            "maxShaveDb": 4.49
+          }
+        }
+      }
+    }
+  },
+  "ablationBus": [
+    {
+      "stages": "all three stages",
+      "densityGainVsDryLu": 3.5,
+      "onsets": 11,
+      "frontToBodyDb": 7.75,
+      "hitCrestDb": 7.33,
+      "bandBalanceDb": {
+        "sub 20-60": -3.51,
+        "bass 60-150": -4.5,
+        "low-mid 150-500": -8.37,
+        "mid 500-2k": -13.76,
+        "high 2k-8k": -23.53,
+        "air 8k-20k": -25.85
+      }
+    },
+    {
+      "stages": "drive only",
+      "densityGainVsDryLu": 0.8,
+      "onsets": 11,
+      "frontToBodyDb": 9.17,
+      "hitCrestDb": 9.03,
+      "bandBalanceDb": {
+        "sub 20-60": -3.65,
+        "bass 60-150": -4.04,
+        "low-mid 150-500": -8.92,
+        "mid 500-2k": -14.76,
+        "high 2k-8k": -23.77,
+        "air 8k-20k": -26.11
+      }
+    },
+    {
+      "stages": "squeeze only",
+      "densityGainVsDryLu": -0.9,
+      "onsets": 11,
+      "frontToBodyDb": 11.1,
+      "hitCrestDb": 10.52,
+      "bandBalanceDb": {
+        "sub 20-60": -3.33,
+        "bass 60-150": -4.18,
+        "low-mid 150-500": -9.85,
+        "mid 500-2k": -15.03,
+        "high 2k-8k": -22.06,
+        "air 8k-20k": -23.14
+      }
+    },
+    {
+      "stages": "clip only",
+      "densityGainVsDryLu": 0.1,
+      "onsets": 11,
+      "frontToBodyDb": 9.58,
+      "hitCrestDb": 9.23,
+      "bandBalanceDb": {
+        "sub 20-60": -3.49,
+        "bass 60-150": -3.79,
+        "low-mid 150-500": -10.38,
+        "mid 500-2k": -15.8,
+        "high 2k-8k": -22.13,
+        "air 8k-20k": -23.35
+      }
+    },
+    {
+      "stages": "without drive",
+      "densityGainVsDryLu": 1.3,
+      "onsets": 11,
+      "frontToBodyDb": 9.27,
+      "hitCrestDb": 8.72,
+      "bandBalanceDb": {
+        "sub 20-60": -3.31,
+        "bass 60-150": -4.18,
+        "low-mid 150-500": -9.92,
+        "mid 500-2k": -15.08,
+        "high 2k-8k": -22.16,
+        "air 8k-20k": -23.11
+      }
+    },
+    {
+      "stages": "without squeeze",
+      "densityGainVsDryLu": 2.2,
+      "onsets": 11,
+      "frontToBodyDb": 8.08,
+      "hitCrestDb": 7.94,
+      "bandBalanceDb": {
+        "sub 20-60": -3.63,
+        "bass 60-150": -4.04,
+        "low-mid 150-500": -8.97,
+        "mid 500-2k": -14.82,
+        "high 2k-8k": -23.76,
+        "air 8k-20k": -26.1
+      }
+    },
+    {
+      "stages": "without clip",
+      "densityGainVsDryLu": -0.8,
+      "onsets": 11,
+      "frontToBodyDb": 11.73,
+      "hitCrestDb": 11.13,
+      "bandBalanceDb": {
+        "sub 20-60": -3.59,
+        "bass 60-150": -4.55,
+        "low-mid 150-500": -8.12,
+        "mid 500-2k": -13.57,
+        "high 2k-8k": -23.62,
+        "air 8k-20k": -25.96
+      }
+    }
+  ],
+  "amountSweepBus": [
+    {
+      "amount": 0.25,
+      "densityGainVsDryLu": 1.1,
+      "onsets": 11,
+      "frontToBodyDb": 8.69,
+      "hitCrestDb": 8.59,
+      "maxReductionDb": 0.66,
+      "meanReductionDb": 0.2,
+      "maxShaveDb": 0.78,
+      "clippedShare": 0.01334
+    },
+    {
+      "amount": 0.5,
+      "densityGainVsDryLu": 2.5,
+      "onsets": 11,
+      "frontToBodyDb": 8.13,
+      "hitCrestDb": 7.84,
+      "maxReductionDb": 2.4,
+      "meanReductionDb": 0.99,
+      "maxShaveDb": 2.9,
+      "clippedShare": 0.03479
+    },
+    {
+      "amount": 0.7,
+      "densityGainVsDryLu": 3.5,
+      "onsets": 11,
+      "frontToBodyDb": 7.75,
+      "hitCrestDb": 7.33,
+      "maxReductionDb": 4.26,
+      "meanReductionDb": 2.15,
+      "maxShaveDb": 4.49,
+      "clippedShare": 0.04658
+    },
+    {
+      "amount": 0.85,
+      "densityGainVsDryLu": 3.9,
+      "onsets": 11,
+      "frontToBodyDb": 7.7,
+      "hitCrestDb": 7.21,
+      "maxReductionDb": 5.72,
+      "meanReductionDb": 3.26,
+      "maxShaveDb": 5.62,
+      "clippedShare": 0.05103
+    },
+    {
+      "amount": 1,
+      "densityGainVsDryLu": 4,
+      "onsets": 11,
+      "frontToBodyDb": 7.82,
+      "hitCrestDb": 7.26,
+      "maxReductionDb": 7.19,
+      "meanReductionDb": 4.5,
+      "maxShaveDb": 6.8,
+      "clippedShare": 0.05012
+    }
+  ],
+  "probes": {
+    "note": "Steady test tones. A steady tone settles under the clipper once the compressor has closed, so crushDriveAndClipOnly switches the compressor off to keep the tone in the clipper. engineSaturation is the engine saturation formula (tanh at the output rate, src/render/dynamics.ts) at the drive used for the existing-effects condition.",
+    "aliasing": {
+      "crush": {
+        "toneHz": 4186.2,
+        "totalDbc": -107.3,
+        "worstDbc": -113.3,
+        "worstHz": 4766
+      },
+      "crushDriveAndClipOnly": {
+        "toneHz": 4186.2,
+        "totalDbc": -112.6,
+        "worstDbc": -117.7,
+        "worstHz": 4766
+      },
+      "engineSaturation": {
+        "toneHz": 4186.2,
+        "totalDbc": -37.3,
+        "worstDbc": -40.7,
+        "worstHz": 14797
+      },
+      "clean": {
+        "toneHz": 4186.2,
+        "totalDbc": -235.9,
+        "worstDbc": -249,
+        "worstHz": 8687
+      }
+    },
+    "intermodulation": {
+      "crush": {
+        "lowHz": 55.2,
+        "midHz": 2999.8,
+        "sidebandsDbc": -41
+      },
+      "engineSaturation": {
+        "lowHz": 55.2,
+        "midHz": 2999.8,
+        "sidebandsDbc": -4.9
+      },
+      "clean": {
+        "lowHz": 55.2,
+        "midHz": 2999.8,
+        "sidebandsDbc": -263.6
+      }
+    }
+  },
+  "bypass": {
+    "amountZeroMaxAbsDifference": 0
+  },
+  "waveformPicture": "crush-ab-bus-waveforms.png: rows 1-2 the whole five seconds (blue A dry, red B crush), rows 3-4 the first beat (468.75 ms). Same vertical scale; the files are at the same integrated loudness.",
+  "switchFile": "crush-ab-bus-switch-A-B-A-B: bar 1 A (dry), bar 2 B (crush), bar 3 A, bar 4 B; 4 ms crossfades on the bar lines; 7.5 s.",
+  "hashes": {
+    "crush.ts": "fb7463a7b2c47c523164e18383e54bb81f08f4ce0c01a33aee028d6aacbadfe8",
+    "measure.ts": "cb5cb30de14f3d6f5103780029e19c23349aa13c03ed4d74fbd83aeaf8a1f02d",
+    "ab.ts": "2051243c1b118d60dd40a05f8243801b4a6bf33de90d8705bdb948b8e6e60e09"
+  }
+}
