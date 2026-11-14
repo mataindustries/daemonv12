@@ -1,0 +1,692 @@
+{
+  "schema": "daemonv12.v12-motif-bridge/1",
+  "bridgeVersion": "1.0.0",
+  "title": "V12 motif bridge — two-bar engineering proof",
+  "sampleRate": 44100,
+  "frames": 176400,
+  "bpm": 128,
+  "beatSeconds": 0.46875,
+  "endBeat": 8,
+  "tailSeconds": 0.25,
+  "masterGainDb": -6,
+  "timing": "actual normalized note onsets; nearest absolute frame, no second PPQ quantization; noteEndFrame is nominal gate release onset, not rack acoustic end",
+  "stemConvention": "all stems include master gain; sum all parts and room to reconstruct master before quantization",
+  "scoreSha256": "5b4285344a02199e1e52b7870fe9e42528057845126354d7f33b64e33d0444b8",
+  "catalogSha256": "d65035cd25030886779e77345285ce8ca9b6af99d19e994f29f2de0456b15c5c",
+  "provenanceFile": "packs/v12-signature-v1/PROVENANCE.md",
+  "provenanceSha256": "b0e573b04cbd3623d8bfca5090b5fed0caec47f504cb60d5a9066ddba004c91a",
+  "provenance": "Every WAV is computed by scripts/generate-v12-signature.ts from numeric parameters and seeded xorshift32 noise. No recordings, downloaded samples, SoundFonts, impulse responses, loops or third-party audio are read or embedded.",
+  "license": "pending owner declaration (see packs/v12-signature-v1/PROVENANCE.md)",
+  "frozenFilesVerified": true,
+  "warnings": [],
+  "phrases": [
+    {
+      "id": "kick.p0",
+      "part": "kick",
+      "motif": "pulse",
+      "root": "pulse",
+      "role": null,
+      "chain": [],
+      "at": 0,
+      "beat": 0,
+      "lengthBeats": 4,
+      "octaveShift": 0,
+      "literal": true,
+      "keepsContour": true,
+      "keepsRhythm": true,
+      "notes": [
+        {
+          "beat": 0,
+          "beats": 0.25,
+          "pitch": 33,
+          "velocity": 0.8
+        },
+        {
+          "beat": 1,
+          "beats": 0.25,
+          "pitch": 33,
+          "velocity": 0.8
+        },
+        {
+          "beat": 2,
+          "beats": 0.25,
+          "pitch": 33,
+          "velocity": 0.8
+        },
+        {
+          "beat": 3,
+          "beats": 0.25,
+          "pitch": 33,
+          "velocity": 0.8
+        }
+      ]
+    },
+    {
+      "id": "kick.p1",
+      "part": "kick",
+      "motif": "pulse",
+      "root": "pulse",
+      "role": null,
+      "chain": [],
+      "at": 4,
+      "beat": 4,
+      "lengthBeats": 4,
+      "octaveShift": 0,
+      "literal": true,
+      "keepsContour": true,
+      "keepsRhythm": true,
+      "notes": [
+        {
+          "beat": 4,
+          "beats": 0.25,
+          "pitch": 33,
+          "velocity": 0.8
+        },
+        {
+          "beat": 5,
+          "beats": 0.25,
+          "pitch": 33,
+          "velocity": 0.8
+        },
+        {
+          "beat": 6,
+          "beats": 0.25,
+          "pitch": 33,
+          "velocity": 0.8
+        },
+        {
+          "beat": 7,
+          "beats": 0.25,
+          "pitch": 33,
+          "velocity": 0.8
+        }
+      ]
+    },
+    {
+      "id": "bass.p0",
+      "part": "bass",
+      "motif": "cell",
+      "root": "cell",
+      "role": "figure",
+      "chain": [],
+      "at": 0,
+      "beat": 0,
+      "lengthBeats": 2,
+      "octaveShift": 0,
+      "literal": true,
+      "keepsContour": true,
+      "keepsRhythm": true,
+      "notes": [
+        {
+          "beat": 0,
+          "beats": 0.5,
+          "pitch": 33,
+          "velocity": 0.8
+        },
+        {
+          "beat": 0.75,
+          "beats": 0.25,
+          "pitch": 36,
+          "velocity": 0.65
+        },
+        {
+          "beat": 1.5,
+          "beats": 0.5,
+          "pitch": 40,
+          "velocity": 0.75
+        }
+      ]
+    },
+    {
+      "id": "bass.p1",
+      "part": "bass",
+      "motif": "cell",
+      "root": "cell",
+      "role": "figure",
+      "chain": [],
+      "at": 4,
+      "beat": 4,
+      "lengthBeats": 2,
+      "octaveShift": 0,
+      "literal": true,
+      "keepsContour": true,
+      "keepsRhythm": true,
+      "notes": [
+        {
+          "beat": 4,
+          "beats": 0.5,
+          "pitch": 33,
+          "velocity": 0.8
+        },
+        {
+          "beat": 4.75,
+          "beats": 0.25,
+          "pitch": 36,
+          "velocity": 0.65
+        },
+        {
+          "beat": 5.5,
+          "beats": 0.5,
+          "pitch": 40,
+          "velocity": 0.75
+        }
+      ]
+    },
+    {
+      "id": "rack.p0",
+      "part": "rack",
+      "motif": "cell",
+      "root": "cell",
+      "role": "figure",
+      "chain": [
+        "octave:3"
+      ],
+      "at": 0,
+      "beat": 0,
+      "lengthBeats": 2,
+      "octaveShift": 0,
+      "literal": true,
+      "keepsContour": true,
+      "keepsRhythm": true,
+      "notes": [
+        {
+          "beat": 0,
+          "beats": 0.5,
+          "pitch": 69,
+          "velocity": 0.8
+        },
+        {
+          "beat": 0.75,
+          "beats": 0.25,
+          "pitch": 72,
+          "velocity": 0.65
+        },
+        {
+          "beat": 1.5,
+          "beats": 0.5,
+          "pitch": 76,
+          "velocity": 0.75
+        }
+      ]
+    },
+    {
+      "id": "rack.p1",
+      "part": "rack",
+      "motif": "cell",
+      "root": "cell",
+      "role": "figure",
+      "chain": [
+        "octave:3"
+      ],
+      "at": 4,
+      "beat": 4,
+      "lengthBeats": 2,
+      "octaveShift": 0,
+      "literal": true,
+      "keepsContour": true,
+      "keepsRhythm": true,
+      "notes": [
+        {
+          "beat": 4,
+          "beats": 0.5,
+          "pitch": 69,
+          "velocity": 0.8
+        },
+        {
+          "beat": 4.75,
+          "beats": 0.25,
+          "pitch": 72,
+          "velocity": 0.65
+        },
+        {
+          "beat": 5.5,
+          "beats": 0.5,
+          "pitch": 76,
+          "velocity": 0.75
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "kick.n0",
+      "part": "kick",
+      "instrument": "v12-signature/sub-hammer",
+      "beat": 0,
+      "beats": 0.25,
+      "pitch": 33,
+      "velocity": 0.8,
+      "frame": 0,
+      "noteEndFrame": 5168,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/01-sub-hammer.wav",
+        "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+        "rootMidi": 33,
+        "kitPitch": 36,
+        "mode": "one-shot",
+        "rate": 1,
+        "channels": 1,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1764,
+        "naturalEndFrame": 41895,
+        "endFrame": 6932,
+        "truncated": true
+      }
+    },
+    {
+      "id": "kick.n1",
+      "part": "kick",
+      "instrument": "v12-signature/sub-hammer",
+      "beat": 1,
+      "beats": 0.25,
+      "pitch": 33,
+      "velocity": 0.8,
+      "frame": 20672,
+      "noteEndFrame": 25840,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/01-sub-hammer.wav",
+        "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+        "rootMidi": 33,
+        "kitPitch": 36,
+        "mode": "one-shot",
+        "rate": 1,
+        "channels": 1,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1764,
+        "naturalEndFrame": 62567,
+        "endFrame": 27604,
+        "truncated": true
+      }
+    },
+    {
+      "id": "kick.n2",
+      "part": "kick",
+      "instrument": "v12-signature/sub-hammer",
+      "beat": 2,
+      "beats": 0.25,
+      "pitch": 33,
+      "velocity": 0.8,
+      "frame": 41344,
+      "noteEndFrame": 46512,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/01-sub-hammer.wav",
+        "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+        "rootMidi": 33,
+        "kitPitch": 36,
+        "mode": "one-shot",
+        "rate": 1,
+        "channels": 1,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1764,
+        "naturalEndFrame": 83239,
+        "endFrame": 48276,
+        "truncated": true
+      }
+    },
+    {
+      "id": "kick.n3",
+      "part": "kick",
+      "instrument": "v12-signature/sub-hammer",
+      "beat": 3,
+      "beats": 0.25,
+      "pitch": 33,
+      "velocity": 0.8,
+      "frame": 62016,
+      "noteEndFrame": 67184,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/01-sub-hammer.wav",
+        "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+        "rootMidi": 33,
+        "kitPitch": 36,
+        "mode": "one-shot",
+        "rate": 1,
+        "channels": 1,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1764,
+        "naturalEndFrame": 103911,
+        "endFrame": 68948,
+        "truncated": true
+      }
+    },
+    {
+      "id": "kick.n4",
+      "part": "kick",
+      "instrument": "v12-signature/sub-hammer",
+      "beat": 4,
+      "beats": 0.25,
+      "pitch": 33,
+      "velocity": 0.8,
+      "frame": 82688,
+      "noteEndFrame": 87855,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/01-sub-hammer.wav",
+        "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+        "rootMidi": 33,
+        "kitPitch": 36,
+        "mode": "one-shot",
+        "rate": 1,
+        "channels": 1,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1764,
+        "naturalEndFrame": 124583,
+        "endFrame": 89619,
+        "truncated": true
+      }
+    },
+    {
+      "id": "kick.n5",
+      "part": "kick",
+      "instrument": "v12-signature/sub-hammer",
+      "beat": 5,
+      "beats": 0.25,
+      "pitch": 33,
+      "velocity": 0.8,
+      "frame": 103359,
+      "noteEndFrame": 108527,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/01-sub-hammer.wav",
+        "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+        "rootMidi": 33,
+        "kitPitch": 36,
+        "mode": "one-shot",
+        "rate": 1,
+        "channels": 1,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1764,
+        "naturalEndFrame": 145254,
+        "endFrame": 110291,
+        "truncated": true
+      }
+    },
+    {
+      "id": "kick.n6",
+      "part": "kick",
+      "instrument": "v12-signature/sub-hammer",
+      "beat": 6,
+      "beats": 0.25,
+      "pitch": 33,
+      "velocity": 0.8,
+      "frame": 124031,
+      "noteEndFrame": 129199,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/01-sub-hammer.wav",
+        "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+        "rootMidi": 33,
+        "kitPitch": 36,
+        "mode": "one-shot",
+        "rate": 1,
+        "channels": 1,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1764,
+        "naturalEndFrame": 165926,
+        "endFrame": 130963,
+        "truncated": true
+      }
+    },
+    {
+      "id": "kick.n7",
+      "part": "kick",
+      "instrument": "v12-signature/sub-hammer",
+      "beat": 7,
+      "beats": 0.25,
+      "pitch": 33,
+      "velocity": 0.8,
+      "frame": 144703,
+      "noteEndFrame": 149871,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/01-sub-hammer.wav",
+        "sha256": "ec3b7b65ac7405b6852afc4f29866de854800e76fc52defb61e234b01e0f64c1",
+        "rootMidi": 33,
+        "kitPitch": 36,
+        "mode": "one-shot",
+        "rate": 1,
+        "channels": 1,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1764,
+        "naturalEndFrame": 186598,
+        "endFrame": 151635,
+        "truncated": true
+      }
+    },
+    {
+      "id": "bass.n0",
+      "part": "bass",
+      "instrument": "v12-signature/reactor",
+      "beat": 0,
+      "beats": 0.5,
+      "pitch": 33,
+      "velocity": 0.8,
+      "frame": 0,
+      "noteEndFrame": 10336,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/08-reactor.wav",
+        "sha256": "1afa9ad35a055204305b7f02cbef6df8a14952758cdc4456cf8ca4d3010c2aa2",
+        "rootMidi": 33,
+        "kitPitch": null,
+        "mode": "pitched",
+        "rate": 1,
+        "channels": 2,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1323,
+        "naturalEndFrame": 242550,
+        "endFrame": 11659,
+        "truncated": true
+      }
+    },
+    {
+      "id": "bass.n1",
+      "part": "bass",
+      "instrument": "v12-signature/reactor",
+      "beat": 0.75,
+      "beats": 0.25,
+      "pitch": 36,
+      "velocity": 0.65,
+      "frame": 15504,
+      "noteEndFrame": 20672,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/08-reactor.wav",
+        "sha256": "1afa9ad35a055204305b7f02cbef6df8a14952758cdc4456cf8ca4d3010c2aa2",
+        "rootMidi": 33,
+        "kitPitch": null,
+        "mode": "pitched",
+        "rate": 1.189207115002721,
+        "channels": 2,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1323,
+        "naturalEndFrame": 219464,
+        "endFrame": 21995,
+        "truncated": true
+      }
+    },
+    {
+      "id": "bass.n2",
+      "part": "bass",
+      "instrument": "v12-signature/reactor",
+      "beat": 1.5,
+      "beats": 0.5,
+      "pitch": 40,
+      "velocity": 0.75,
+      "frame": 31008,
+      "noteEndFrame": 41344,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/08-reactor.wav",
+        "sha256": "1afa9ad35a055204305b7f02cbef6df8a14952758cdc4456cf8ca4d3010c2aa2",
+        "rootMidi": 33,
+        "kitPitch": null,
+        "mode": "pitched",
+        "rate": 1.4983070768766815,
+        "channels": 2,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1323,
+        "naturalEndFrame": 192891,
+        "endFrame": 42667,
+        "truncated": true
+      }
+    },
+    {
+      "id": "bass.n3",
+      "part": "bass",
+      "instrument": "v12-signature/reactor",
+      "beat": 4,
+      "beats": 0.5,
+      "pitch": 33,
+      "velocity": 0.8,
+      "frame": 82688,
+      "noteEndFrame": 93023,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/08-reactor.wav",
+        "sha256": "1afa9ad35a055204305b7f02cbef6df8a14952758cdc4456cf8ca4d3010c2aa2",
+        "rootMidi": 33,
+        "kitPitch": null,
+        "mode": "pitched",
+        "rate": 1,
+        "channels": 2,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1323,
+        "naturalEndFrame": 325238,
+        "endFrame": 94346,
+        "truncated": true
+      }
+    },
+    {
+      "id": "bass.n4",
+      "part": "bass",
+      "instrument": "v12-signature/reactor",
+      "beat": 4.75,
+      "beats": 0.25,
+      "pitch": 36,
+      "velocity": 0.65,
+      "frame": 98191,
+      "noteEndFrame": 103359,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/08-reactor.wav",
+        "sha256": "1afa9ad35a055204305b7f02cbef6df8a14952758cdc4456cf8ca4d3010c2aa2",
+        "rootMidi": 33,
+        "kitPitch": null,
+        "mode": "pitched",
+        "rate": 1.189207115002721,
+        "channels": 2,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1323,
+        "naturalEndFrame": 302151,
+        "endFrame": 104682,
+        "truncated": true
+      }
+    },
+    {
+      "id": "bass.n5",
+      "part": "bass",
+      "instrument": "v12-signature/reactor",
+      "beat": 5.5,
+      "beats": 0.5,
+      "pitch": 40,
+      "velocity": 0.75,
+      "frame": 113695,
+      "noteEndFrame": 124031,
+      "sample": {
+        "file": "packs/v12-signature-v1/assets/v12-signature/08-reactor.wav",
+        "sha256": "1afa9ad35a055204305b7f02cbef6df8a14952758cdc4456cf8ca4d3010c2aa2",
+        "rootMidi": 33,
+        "kitPitch": null,
+        "mode": "pitched",
+        "rate": 1.4983070768766815,
+        "channels": 2,
+        "gate": true,
+        "attackFrames": 44,
+        "releaseFrames": 1323,
+        "naturalEndFrame": 275578,
+        "endFrame": 125354,
+        "truncated": true
+      }
+    },
+    {
+      "id": "rack.n0",
+      "part": "rack",
+      "instrument": "mechanical-orchestra/bar",
+      "beat": 0,
+      "beats": 0.5,
+      "pitch": 69,
+      "velocity": 0.8,
+      "frame": 0,
+      "noteEndFrame": 10336
+    },
+    {
+      "id": "rack.n1",
+      "part": "rack",
+      "instrument": "mechanical-orchestra/bar",
+      "beat": 0.75,
+      "beats": 0.25,
+      "pitch": 72,
+      "velocity": 0.65,
+      "frame": 15504,
+      "noteEndFrame": 20672
+    },
+    {
+      "id": "rack.n2",
+      "part": "rack",
+      "instrument": "mechanical-orchestra/bar",
+      "beat": 1.5,
+      "beats": 0.5,
+      "pitch": 76,
+      "velocity": 0.75,
+      "frame": 31008,
+      "noteEndFrame": 41344
+    },
+    {
+      "id": "rack.n3",
+      "part": "rack",
+      "instrument": "mechanical-orchestra/bar",
+      "beat": 4,
+      "beats": 0.5,
+      "pitch": 69,
+      "velocity": 0.8,
+      "frame": 82688,
+      "noteEndFrame": 93023
+    },
+    {
+      "id": "rack.n4",
+      "part": "rack",
+      "instrument": "mechanical-orchestra/bar",
+      "beat": 4.75,
+      "beats": 0.25,
+      "pitch": 72,
+      "velocity": 0.65,
+      "frame": 98191,
+      "noteEndFrame": 103359
+    },
+    {
+      "id": "rack.n5",
+      "part": "rack",
+      "instrument": "mechanical-orchestra/bar",
+      "beat": 5.5,
+      "beats": 0.5,
+      "pitch": 76,
+      "velocity": 0.75,
+      "frame": 113695,
+      "noteEndFrame": 124031
+    }
+  ],
+  "interpolation": {
+    "algorithm": "exact-interpolation-reuse-v1",
+    "interpolationTaps": 1781098,
+    "cachedBytes": 290400,
+    "uniqueVoices": 2,
+    "reusedVoices": 2,
+    "workLimit": 1000000000,
+    "cacheBytesLimit": 134217728,
+    "scope": "one render; source PCM identity, playback rate/glide/offset, explicit endpoint and rendered frame count; velocity/envelope per onset; full continuous track/master processing"
+  }
+}
