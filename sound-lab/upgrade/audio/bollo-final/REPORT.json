@@ -1,0 +1,575 @@
+{
+ "title": "BOLLO A-to-S mix pass",
+ "loudnessTargetLufs": -10.8,
+ "originalFloatSha256": "1aaa36202cfd69ff3722c1932d0b0e9ad4965ea7ba19d0c2a0d1c50e89bd2d25",
+ "originalReproduced": true,
+ "coinContactTimingIdentical": true,
+ "settings": {
+  "original": {
+   "name": "original",
+   "note": "The approved BOLLO-A-sketch mix, reproduced exactly.",
+   "coinGain": {
+    "guiro": 11,
+    "face": 8,
+    "rim": 9,
+    "bounce": 19,
+    "spin": 13,
+    "drop1": 11,
+    "drop2": 11,
+    "drop3": 11
+   },
+   "coinBus": {
+    "shelfHz": 6500,
+    "shelfDb": 4,
+    "roomDb": -10,
+    "roomRt60": 0.45,
+    "spinRide": [
+     0,
+     12
+    ]
+   },
+   "band": {
+    "kick": 1.5,
+    "clap": -4,
+    "bass": 9,
+    "lead": -3,
+    "lead2": -6,
+    "skank": -8
+   },
+   "pushDb": 3
+  },
+  "B1-quarters": {
+   "name": "B1-quarters",
+   "note": "Short, dry, sharp: damped coins, the pitched lowest mode cut, contact lifted, room nearly gone.",
+   "coinTone": {
+    "guiro": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "face": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "rim": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "bounce": {
+     "damping": 0.9,
+     "hardness": 1
+    },
+    "spin": {
+     "damping": 0.85,
+     "hardness": 1
+    },
+    "drop1": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "drop2": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "drop3": {
+     "damping": 1,
+     "hardness": 1
+    }
+   },
+   "coinGain": {
+    "guiro": 16,
+    "face": 14,
+    "rim": 14,
+    "bounce": 24,
+    "spin": 18,
+    "drop1": 16,
+    "drop2": 16,
+    "drop3": 16
+   },
+   "coinBus": {
+    "shelfHz": 7000,
+    "shelfDb": 3,
+    "roomDb": -20,
+    "roomRt60": 0.3,
+    "spinRide": [
+     0,
+     12
+    ],
+    "fundamentalCut": {
+     "db": -6,
+     "q": 5
+    },
+    "damp": {
+     "attackDb": 1,
+     "holdMs": 6,
+     "releaseMs": 18,
+     "sustainDb": -9
+    },
+    "contact": {
+     "hz": 1400,
+     "db": 3,
+     "q": 0.8
+    },
+    "tipClipRelBandDb": -2.5
+   },
+   "band": {
+    "kick": 1.5,
+    "clap": -4,
+    "bass": 9,
+    "lead": -3,
+    "lead2": -6,
+    "skank": -8
+   },
+   "pushDb": 3
+  },
+  "B2-party-money": {
+   "name": "B2-party-money",
+   "note": "The quarters, exaggerated: clatter taps, gritty parallel coins, louder call accents, synth tucked under the call.",
+   "coinTone": {
+    "guiro": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "face": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "rim": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "bounce": {
+     "damping": 0.9,
+     "hardness": 1
+    },
+    "spin": {
+     "damping": 0.85,
+     "hardness": 1
+    },
+    "drop1": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "drop2": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "drop3": {
+     "damping": 1,
+     "hardness": 1
+    }
+   },
+   "coinGain": {
+    "guiro": 14,
+    "face": 12,
+    "rim": 12,
+    "bounce": 22,
+    "spin": 17,
+    "drop1": 15,
+    "drop2": 15,
+    "drop3": 15
+   },
+   "coinBus": {
+    "shelfHz": 7000,
+    "shelfDb": 3,
+    "roomDb": -15,
+    "roomRt60": 0.35,
+    "spinRide": [
+     0,
+     12
+    ],
+    "fundamentalCut": {
+     "db": -4,
+     "q": 5
+    },
+    "damp": {
+     "attackDb": 2,
+     "holdMs": 6,
+     "releaseMs": 22,
+     "sustainDb": -7
+    },
+    "contact": {
+     "hz": 1400,
+     "db": 4,
+     "q": 0.8
+    },
+    "clatter": {
+     "parts": [
+      "guiro",
+      "face",
+      "rim"
+     ],
+     "taps": [
+      [
+       9,
+       -9,
+       -0.7
+      ],
+      [
+       17,
+       -12,
+       0.7
+      ],
+      [
+       28,
+       -16,
+       -0.3
+      ]
+     ],
+     "hpHz": 1200
+    },
+    "grit": {
+     "lo": 1500,
+     "hi": 9000,
+     "amount": 0.8,
+     "levelDb": -11
+    },
+    "accentDb": {
+     "face": 3,
+     "rim": 2
+    },
+    "synthUnderCallDb": 3,
+    "tipClipRelBandDb": -2
+   },
+   "band": {
+    "kick": 1.5,
+    "clap": -4,
+    "bass": 9,
+    "lead": -3,
+    "lead2": -6,
+    "skank": -8
+   },
+   "pushDb": 3
+  },
+  "FINAL-hybrid": {
+   "name": "FINAL-hybrid",
+   "note": "B1 QUARTERS coins and floor; B2 PARTY MONEY accents, synth ducking, grit and (reduced) clatter.",
+   "coinTone": {
+    "guiro": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "face": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "rim": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "bounce": {
+     "damping": 0.9,
+     "hardness": 1
+    },
+    "spin": {
+     "damping": 0.85,
+     "hardness": 1
+    },
+    "drop1": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "drop2": {
+     "damping": 1,
+     "hardness": 1
+    },
+    "drop3": {
+     "damping": 1,
+     "hardness": 1
+    }
+   },
+   "coinGain": {
+    "guiro": 16,
+    "face": 14,
+    "rim": 14,
+    "bounce": 24,
+    "spin": 20,
+    "drop1": 16,
+    "drop2": 16,
+    "drop3": 16
+   },
+   "coinBus": {
+    "shelfHz": 7000,
+    "shelfDb": 3,
+    "roomDb": -18,
+    "roomRt60": 0.3,
+    "spinRide": [
+     0,
+     12
+    ],
+    "fundamentalCut": {
+     "db": -6,
+     "q": 5
+    },
+    "damp": {
+     "attackDb": 1,
+     "holdMs": 6,
+     "releaseMs": 18,
+     "sustainDb": -9
+    },
+    "contact": {
+     "hz": 1400,
+     "db": 3,
+     "q": 0.8
+    },
+    "tipClipRelBandDb": -2.5,
+    "clatter": {
+     "parts": [
+      "face",
+      "rim"
+     ],
+     "taps": [
+      [
+       11,
+       -12,
+       -0.6
+      ],
+      [
+       23,
+       -15,
+       0.6
+      ]
+     ],
+     "hpHz": 2500
+    },
+    "grit": {
+     "lo": 1500,
+     "hi": 9000,
+     "amount": 0.8,
+     "levelDb": -12
+    },
+    "accentDb": {
+     "face": 2,
+     "rim": 1.5
+    },
+    "synthUnderCallDb": 3,
+    "synthDuckParts": [
+     "face",
+     "rim"
+    ]
+   },
+   "band": {
+    "kick": 1.5,
+    "clap": -4,
+    "bass": 9,
+    "lead": -3,
+    "lead2": -6,
+    "skank": -8
+   },
+   "pushDb": 3
+  }
+ },
+ "files": {
+  "original": {
+   "matchGainDb": -0.7,
+   "coinBusPeakIntoClipperDbfs": 2.68,
+   "spinWindow": {
+    "rmsDb": -20.85,
+    "rms2to8kDb": -24.05
+   },
+   "mono": {
+    "correlation": 0.911,
+    "correlationUnder150": 1,
+    "monoFoldLufsDeltaDb": -0.3
+   },
+   "single": {
+    "seconds": 11.829,
+    "integratedLufs": -10.8,
+    "lra": 3.6,
+    "truePeakDbtp": -1.7,
+    "samplePeakDbfs": -1.81,
+    "samplesAtFullScale": 0,
+    "crestDb": 11.68,
+    "psrDb": 11.79,
+    "lowUnder150Db": -3.46,
+    "harsh2to5vs05to2Db": -6.67,
+    "bandBalanceDb": {
+     "sub 20-60": -6.19,
+     "bass 60-150": -5.44,
+     "low-mid 150-500": -7.98,
+     "mid 500-2k": -6.88,
+     "high 2k-8k": -10.23,
+     "air 8k-20k": -18.56
+    },
+    "kick": {
+     "onsets": 15,
+     "frontToBodyDb": 8.86,
+     "hitCrestDb": 8.55,
+     "frontRmsToBodyDb": 2.66,
+     "lowFrontToBodyDb": -5.26
+    }
+   }
+  },
+  "B1-quarters": {
+   "matchGainDb": 0,
+   "coinBusPeakIntoClipperDbfs": 0.91,
+   "spinWindow": {
+    "rmsDb": -21.57,
+    "rms2to8kDb": -26.99
+   },
+   "mono": {
+    "correlation": 0.916,
+    "correlationUnder150": 1,
+    "monoFoldLufsDeltaDb": -0.3
+   },
+   "single": {
+    "seconds": 11.829,
+    "integratedLufs": -10.8,
+    "lra": 3.8,
+    "truePeakDbtp": -1,
+    "samplePeakDbfs": -1.01,
+    "samplesAtFullScale": 0,
+    "crestDb": 12.27,
+    "psrDb": 12.28,
+    "lowUnder150Db": -3.28,
+    "harsh2to5vs05to2Db": -10.29,
+    "bandBalanceDb": {
+     "sub 20-60": -6.02,
+     "bass 60-150": -5.27,
+     "low-mid 150-500": -7.81,
+     "mid 500-2k": -6.67,
+     "high 2k-8k": -13.41,
+     "air 8k-20k": -15.91
+    },
+    "kick": {
+     "onsets": 15,
+     "frontToBodyDb": 9.1,
+     "hitCrestDb": 8.7,
+     "frontRmsToBodyDb": 3.04,
+     "lowFrontToBodyDb": -5.39
+    }
+   }
+  },
+  "B2-party-money": {
+   "matchGainDb": -0.4,
+   "coinBusPeakIntoClipperDbfs": 1.54,
+   "spinWindow": {
+    "rmsDb": -20.6,
+    "rms2to8kDb": -25.02
+   },
+   "mono": {
+    "correlation": 0.914,
+    "correlationUnder150": 1,
+    "monoFoldLufsDeltaDb": -0.2
+   },
+   "single": {
+    "seconds": 11.829,
+    "integratedLufs": -10.8,
+    "lra": 3.9,
+    "truePeakDbtp": -1.4,
+    "samplePeakDbfs": -1.43,
+    "samplesAtFullScale": 0,
+    "crestDb": 12.09,
+    "psrDb": 12.12,
+    "lowUnder150Db": -3.45,
+    "harsh2to5vs05to2Db": -7.99,
+    "bandBalanceDb": {
+     "sub 20-60": -6.17,
+     "bass 60-150": -5.43,
+     "low-mid 150-500": -8.07,
+     "mid 500-2k": -6.96,
+     "high 2k-8k": -10.9,
+     "air 8k-20k": -14.96
+    },
+    "kick": {
+     "onsets": 15,
+     "frontToBodyDb": 9,
+     "hitCrestDb": 8.56,
+     "frontRmsToBodyDb": 3.23,
+     "lowFrontToBodyDb": -5.65
+    }
+   }
+  },
+  "FINAL-hybrid": {
+   "matchGainDb": -0.2,
+   "coinBusPeakIntoClipperDbfs": 1.25,
+   "spinWindow": {
+    "rmsDb": -19.94,
+    "rms2to8kDb": -24.52
+   },
+   "mono": {
+    "correlation": 0.919,
+    "correlationUnder150": 1,
+    "monoFoldLufsDeltaDb": -0.2
+   },
+   "single": {
+    "seconds": 11.829,
+    "integratedLufs": -10.8,
+    "lra": 3.6,
+    "truePeakDbtp": -1.2,
+    "samplePeakDbfs": -1.31,
+    "samplesAtFullScale": 0,
+    "crestDb": 12.07,
+    "psrDb": 12.18,
+    "lowUnder150Db": -3.32,
+    "harsh2to5vs05to2Db": -9.77,
+    "bandBalanceDb": {
+     "sub 20-60": -6.05,
+     "bass 60-150": -5.31,
+     "low-mid 150-500": -7.97,
+     "mid 500-2k": -6.96,
+     "high 2k-8k": -12.16,
+     "air 8k-20k": -14.6
+    },
+    "kick": {
+     "onsets": 15,
+     "frontToBodyDb": 9,
+     "hitCrestDb": 8.58,
+     "frontRmsToBodyDb": 3.11,
+     "lowFrontToBodyDb": -5.48
+    }
+   },
+   "threeCycles": {
+    "seconds": 30.114,
+    "integratedLufs": -10.7,
+    "lra": 1.5,
+    "truePeakDbtp": -1.2,
+    "samplePeakDbfs": -1.31,
+    "samplesAtFullScale": 0,
+    "crestDb": 11.78,
+    "psrDb": 11.89,
+    "lowUnder150Db": -3.41,
+    "harsh2to5vs05to2Db": -9.5,
+    "bandBalanceDb": {
+     "sub 20-60": -6.7,
+     "bass 60-150": -4.98,
+     "low-mid 150-500": -7.91,
+     "mid 500-2k": -7,
+     "high 2k-8k": -11.66,
+     "air 8k-20k": -14.19
+    },
+    "loopSeam": {
+     "stepDb": -46.9,
+     "localMedianStepDb": -34.7
+    }
+   },
+   "coinsOnly": {
+    "seconds": 11.829,
+    "integratedLufs": -18.9,
+    "lra": 4.1,
+    "truePeakDbtp": -2.8,
+    "samplePeakDbfs": -2.84,
+    "samplesAtFullScale": 0,
+    "crestDb": 23.1,
+    "psrDb": 23.13,
+    "lowUnder150Db": -38.8,
+    "harsh2to5vs05to2Db": 5.7,
+    "bandBalanceDb": {
+     "sub 20-60": -43.64,
+     "bass 60-150": -39.57,
+     "low-mid 150-500": -32.24,
+     "mid 500-2k": -13.8,
+     "high 2k-8k": -2.24,
+     "air 8k-20k": -4.42
+    },
+    "kick": {
+     "onsets": 140,
+     "frontToBodyDb": 15.9,
+     "hitCrestDb": 19,
+     "frontRmsToBodyDb": 5.67,
+     "lowFrontToBodyDb": 9.41
+    },
+    "note": "one shared gain for every version (the loudest at -1 dBTP), so coin levels compare directly"
+   }
+  }
+ }
+}
