@@ -1,0 +1,309 @@
+{
+  "version": "1.0.0",
+  "node": "v24.19.0",
+  "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "sampleRate": 44100,
+  "sourceHashes": {
+    "coin.ts": "6cb30ae13f6455e01f8f4c822ca025abfeb03fcd5801bbd8a436291c8228471b",
+    "presets.ts": "fc4e625edf8ef5814bf9b6ec81aeee14e5a4f169f0110092eba0170e09bcd91b",
+    "bridge.ts": "b80034600753fbb41403af0a8c5e34748fdd4b8718b26c5ee2e7981674402fad",
+    "proof.ts": "1d1becbf339b4c1b66a77adb71ab5503b5581b38fccdd7559061829090490682",
+    "proof.score.json": "23544126f3fb9ea3afce8bb4a715d9d3e97f9bd1cc031269eaeba02060051658"
+  },
+  "rights": "Coin audio is numeric synthesis only. Kick/clap are unchanged repository V12 signature assets; see their existing provenance.",
+  "determinism": "two independent renders: identical PCM24 SHA-256 for each audition and groove",
+  "frozenFilesVerified": true,
+  "protectedBridgeFilesVerified": 138,
+  "crush": {
+    "routing": [
+      "face",
+      "bounce"
+    ],
+    "unaffected": [
+      "kick",
+      "clap",
+      "rim",
+      "turn",
+      "roll"
+    ],
+    "wetShare": 0.25,
+    "matchDb": 0.3999999999999986,
+    "report": {
+      "amount": 0.46,
+      "ceilingDb": -6,
+      "settings": {
+        "splitHz": [
+          150,
+          2500
+        ],
+        "lowDriveDb": 2.79,
+        "midDriveDb": 3.59,
+        "highDriveDb": 0.48,
+        "thresholdDb": -23.14,
+        "ratio": 2.84,
+        "attackMs": 14,
+        "releaseMs": 120,
+        "makeupDb": 3.01
+      },
+      "maxReductionDb": 1.59,
+      "meanReductionDb": 0.33,
+      "clippedShare": 0.00035,
+      "maxShaveDb": 0.97
+    }
+  },
+  "ab": "I: 0..5 s dry, 5..10 s selective CRUSH; no gaps or voiceover",
+  "records": {
+    "A-quarter-face": {
+      "frames": 52920,
+      "seconds": 1.2,
+      "samplePeakDbfs": -12.75691061409364,
+      "truePeak4xDbfs": -12.7377117816002,
+      "rmsDbfs": -39.603371903390325,
+      "dc": [
+        -4.96254052792097e-19,
+        -5.710601288500513e-19
+      ],
+      "correlation": 1.0000000000000002,
+      "monoRmsRelativeDb": 0,
+      "lastSample": [
+        0,
+        0
+      ],
+      "bandsDb": {
+        "sub 20-60": -55.73,
+        "bass 60-150": -48.57,
+        "low-mid 150-500": -42.18,
+        "mid 500-2k": -16.85,
+        "high 2k-8k": -0.09,
+        "air 8k-20k": -34.2
+      },
+      "lufs": -30.9,
+      "lra": 0,
+      "truePeakDb": -12.7
+    },
+    "B-quarter-edge": {
+      "frames": 52920,
+      "seconds": 1.2,
+      "samplePeakDbfs": -11.214892019370273,
+      "truePeak4xDbfs": -11.121780539508885,
+      "rmsDbfs": -32.213122698336,
+      "dc": [
+        -1.6250481583101371e-12,
+        -1.6250458105553111e-12
+      ],
+      "correlation": 0.9999999999999999,
+      "monoRmsRelativeDb": 0,
+      "lastSample": [
+        0,
+        0
+      ],
+      "bandsDb": {
+        "sub 20-60": -52.62,
+        "bass 60-150": -47.04,
+        "low-mid 150-500": -38.41,
+        "mid 500-2k": -30.77,
+        "high 2k-8k": -0.04,
+        "air 8k-20k": -20.5
+      },
+      "lufs": -24.6,
+      "lra": 0,
+      "truePeakDb": -11.1
+    },
+    "C-quarter-bounce-settle": {
+      "frames": 132300,
+      "seconds": 3,
+      "samplePeakDbfs": -12.625498687057885,
+      "truePeak4xDbfs": -12.570589375192043,
+      "rmsDbfs": -37.439931611921494,
+      "dc": [
+        -9.110308295289088e-16,
+        -8.123360309931518e-16
+      ],
+      "correlation": 0.9999834270705467,
+      "monoRmsRelativeDb": -0.060484698909541036,
+      "lastSample": [
+        0,
+        0
+      ],
+      "bandsDb": {
+        "sub 20-60": -53.95,
+        "bass 60-150": -48.7,
+        "low-mid 150-500": -40.47,
+        "mid 500-2k": -26.04,
+        "high 2k-8k": -0.02,
+        "air 8k-20k": -27.02
+      },
+      "lufs": -28.2,
+      "lra": 20,
+      "truePeakDb": -12.6
+    },
+    "D-quarter-spin-wobble": {
+      "frames": 176400,
+      "seconds": 4,
+      "samplePeakDbfs": -12.213271570102203,
+      "truePeak4xDbfs": -12.186066281440976,
+      "rmsDbfs": -33.15384547291184,
+      "dc": [
+        -3.60234539929598e-15,
+        -3.5657281686797e-15
+      ],
+      "correlation": 0.9931991839992682,
+      "monoRmsRelativeDb": -0.01541243846309802,
+      "lastSample": [
+        0,
+        0
+      ],
+      "bandsDb": {
+        "sub 20-60": -51.4,
+        "bass 60-150": -46.29,
+        "low-mid 150-500": -39.36,
+        "mid 500-2k": -27.99,
+        "high 2k-8k": -0.03,
+        "air 8k-20k": -23.48
+      },
+      "lufs": -25.8,
+      "lra": 5,
+      "truePeakDb": -12.2
+    },
+    "E-quarter-roll-tile": {
+      "frames": 176400,
+      "seconds": 4,
+      "samplePeakDbfs": -14.728695205905407,
+      "truePeak4xDbfs": -14.697225334357697,
+      "rmsDbfs": -38.2227695561596,
+      "dc": [
+        -5.728640586128961e-16,
+        -5.213176388705741e-16
+      ],
+      "correlation": 0.9663679145062232,
+      "monoRmsRelativeDb": -0.2689529919657625,
+      "lastSample": [
+        0,
+        0
+      ],
+      "bandsDb": {
+        "sub 20-60": -31.67,
+        "bass 60-150": -26.88,
+        "low-mid 150-500": -19.88,
+        "mid 500-2k": -9.18,
+        "high 2k-8k": -0.68,
+        "air 8k-20k": -19.97
+      },
+      "lufs": -28.4,
+      "lra": 8.9,
+      "truePeakDb": -14.7
+    },
+    "F-BOLLO-5s-dry": {
+      "frames": 220500,
+      "seconds": 5,
+      "samplePeakDbfs": -4.244003933714577,
+      "truePeak4xDbfs": -4.122621418933142,
+      "rmsDbfs": -22.488505991973312,
+      "dc": [
+        -0.00006796536067773901,
+        -0.00006842295648530505
+      ],
+      "correlation": 0.9812972049172309,
+      "monoRmsRelativeDb": -0.04555097447787247,
+      "lastSample": [
+        0,
+        0
+      ],
+      "bandsDb": {
+        "sub 20-60": -4.32,
+        "bass 60-150": -5.3,
+        "low-mid 150-500": -13.83,
+        "mid 500-2k": -23.49,
+        "high 2k-8k": -5.46,
+        "air 8k-20k": -24.83
+      },
+      "lufs": -19.6,
+      "lra": 0.9,
+      "truePeakDb": -4.1
+    },
+    "G-coins-only-dry": {
+      "frames": 220500,
+      "seconds": 5,
+      "samplePeakDbfs": -4.837815604468771,
+      "truePeak4xDbfs": -4.712963669892789,
+      "rmsDbfs": -28.05159543028192,
+      "dc": [
+        -7.677913326752162e-11,
+        -1.1629445042978214e-10
+      ],
+      "correlation": 0.959029247660489,
+      "monoRmsRelativeDb": -0.1520079709389488,
+      "lastSample": [
+        0,
+        0
+      ],
+      "bandsDb": {
+        "sub 20-60": -48.21,
+        "bass 60-150": -43.78,
+        "low-mid 150-500": -35.95,
+        "mid 500-2k": -23.1,
+        "high 2k-8k": -0.04,
+        "air 8k-20k": -24.8
+      },
+      "lufs": -21.7,
+      "lra": 1,
+      "truePeakDb": -4.7
+    },
+    "H-BOLLO-5s-selective-CRUSH": {
+      "frames": 220500,
+      "seconds": 5,
+      "samplePeakDbfs": -3.8438108150404027,
+      "truePeak4xDbfs": -3.7224773742173967,
+      "rmsDbfs": -22.215549999239723,
+      "dc": [
+        -0.00007086454441173488,
+        -0.00007189424604668552
+      ],
+      "correlation": 0.9836843694672757,
+      "monoRmsRelativeDb": -0.042395612640640276,
+      "lastSample": [
+        1.0400260782324538e-15,
+        7.29892285028537e-16
+      ],
+      "bandsDb": {
+        "sub 20-60": -4.2,
+        "bass 60-150": -5.18,
+        "low-mid 150-500": -13.71,
+        "mid 500-2k": -23.47,
+        "high 2k-8k": -5.79,
+        "air 8k-20k": -24.7
+      },
+      "lufs": -19.6,
+      "lra": 0.9,
+      "truePeakDb": -3.7
+    },
+    "I-dry-then-selective-CRUSH": {
+      "frames": 441000,
+      "seconds": 10,
+      "samplePeakDbfs": -3.8438108150404027,
+      "truePeak4xDbfs": -3.7224773742173967,
+      "rmsDbfs": -22.349883922936215,
+      "dc": [
+        -0.00006941495254473804,
+        -0.00007015860126599514
+      ],
+      "correlation": 0.9825063835282378,
+      "monoRmsRelativeDb": -0.043923444622574026,
+      "lastSample": [
+        1.0400260782324538e-15,
+        7.29892285028537e-16
+      ],
+      "bandsDb": {
+        "sub 20-60": -4.34,
+        "bass 60-150": -5.02,
+        "low-mid 150-500": -14.01,
+        "mid 500-2k": -23.93,
+        "high 2k-8k": -5.72,
+        "air 8k-20k": -25.17
+      },
+      "lufs": -19.6,
+      "lra": 1.1,
+      "truePeakDb": -3.7
+    }
+  }
+}

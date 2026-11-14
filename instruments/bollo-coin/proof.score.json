@@ -1,0 +1,38 @@
+{
+  "schema": "daemonv12.signature-rack.score/2",
+  "title": "BOLLO — five-second coin percussion instrument proof",
+  "description": "Two bars only, 100 BPM. Coin face/rim syncopation, a rolling pickup, one bounce fill and spin turnarounds. No song, melody or FABLE composition.",
+  "bpm": 100,
+  "key": "A minor",
+  "seed": 250,
+  "tailSeconds": 0.2,
+  "masterGainDb": -1,
+  "sections": [{ "id": "proof", "bars": 2 }],
+  "motifs": [
+    { "id": "coin-call", "role": "figure", "octave": 4, "lengthBeats": 4,
+      "notes": [[0, 0.08, 0, 0.95], [0.75, 0.08, 0, 0.7], [1.5, 0.08, 0, 0.9], [2.5, 0.08, 0, 0.82], [3.25, 0.08, 0, 0.72]] },
+    { "id": "rim-answer", "role": "figure", "octave": 4, "lengthBeats": 4,
+      "notes": [[0.5, 0.08, 0, 0.72], [1.25, 0.08, 0, 0.55], [2, 0.08, 0, 0.68], [2.75, 0.08, 0, 0.8], [3.5, 0.08, 0, 0.63]] }
+  ],
+  "parts": [
+    { "id": "kick", "instrument": "v12-signature/sub-hammer", "gainDb": -6, "room": 0,
+      "notes": [[0, 0.2, 36, 0.88], [1.5, 0.2, 36, 0.76], [2.75, 0.2, 36, 0.85], [4, 0.2, 36, 0.9], [5.5, 0.2, 36, 0.78], [6.75, 0.2, 36, 0.86]] },
+    { "id": "clap", "instrument": "v12-signature/neon-clap", "gainDb": -10, "room": 0,
+      "notes": [[1, 0.15, 39, 0.78], [3, 0.15, 39, 0.9], [5, 0.15, 39, 0.78], [7, 0.15, 39, 0.92]] },
+    { "id": "face", "instrument": "bollo-coin", "gainDb": 3, "room": 0,
+      "coin": { "motion": "face", "velocity": 0.95, "strike": 0.06, "damping": 0.7, "position": -0.22, "seed": 255 },
+      "phrases": [{ "motif": "coin-call", "at": 0 }, { "motif": "coin-call", "at": 4, "transforms": [{ "op": "dynamics", "from": 0.8, "to": 1.1 }] }] },
+    { "id": "rim", "instrument": "bollo-coin", "gainDb": 5, "room": 0,
+      "coin": { "motion": "edge", "velocity": 0.95, "strike": 0.98, "damping": 0.58, "position": 0.27, "seed": 256 },
+      "phrases": [{ "motif": "rim-answer", "at": 0 }, { "motif": "rim-answer", "at": 4 }] },
+    { "id": "turn", "instrument": "bollo-coin", "gainDb": 8, "room": 0,
+      "coin": { "motion": "spin", "velocity": 0.85, "spin": 0.88, "motionSeconds": 0.36, "damping": 0.7, "position": 0.05, "seed": 257 },
+      "notes": [[3.25, 0.1, 60, 0.9], [7.2, 0.1, 60, 0.85]] },
+    { "id": "bounce", "instrument": "bollo-coin", "gainDb": 10, "room": 0,
+      "coin": { "motion": "bounce", "velocity": 0.55, "spin": 0.22, "restitution": 0.54, "position": -0.1, "damping": 0.68, "seed": 258 },
+      "notes": [[6, 0.1, 60, 0.35]] },
+    { "id": "roll", "instrument": "bollo-coin", "gainDb": 12, "room": 0,
+      "coin": { "motion": "roll", "velocity": 0.8, "spin": 0, "motionSeconds": 0.85, "damping": 0.65, "seed": 254 },
+      "notes": [[0.25, 0.1, 60, 0.7]] }
+  ]
+}
