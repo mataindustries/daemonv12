@@ -1,0 +1,372 @@
+{
+ "schema": "daemonv12.signature-rack.score/2",
+ "title": "BOLLO - closing hit",
+ "bpm": 105,
+ "key": "A major",
+ "tailSeconds": 0.4,
+ "masterGainDb": 0,
+ "seed": 250,
+ "sections": [
+  {
+   "id": "hit",
+   "bars": 1
+  }
+ ],
+ "motifs": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "lengthBeats": 4,
+   "notes": [
+    [
+     0,
+     0.5,
+     4,
+     0.85
+    ],
+    [
+     0.5,
+     0.5,
+     2,
+     0.75
+    ],
+    [
+     1,
+     0.5,
+     4,
+     0.8
+    ],
+    [
+     1.5,
+     0.75,
+     7,
+     0.95
+    ],
+    [
+     2.25,
+     0.25,
+     6,
+     0.75
+    ],
+    [
+     2.5,
+     0.5,
+     5,
+     0.8
+    ],
+    [
+     3,
+     0.9,
+     4,
+     0.85
+    ]
+   ]
+  },
+  {
+   "id": "lift",
+   "role": "hook",
+   "lengthBeats": 4,
+   "notes": [
+    [
+     0,
+     0.5,
+     4,
+     0.85
+    ],
+    [
+     0.5,
+     0.5,
+     2,
+     0.75
+    ],
+    [
+     1,
+     0.5,
+     4,
+     0.8
+    ],
+    [
+     1.5,
+     0.75,
+     7,
+     0.95
+    ],
+    [
+     2.25,
+     0.25,
+     8,
+     0.8
+    ],
+    [
+     2.5,
+     0.5,
+     9,
+     0.95
+    ],
+    [
+     3,
+     0.9,
+     7,
+     0.9
+    ]
+   ]
+  },
+  {
+   "id": "stops",
+   "role": "hook",
+   "lengthBeats": 4,
+   "notes": [
+    [
+     0,
+     0.4,
+     8,
+     0.95
+    ],
+    [
+     0.75,
+     0.4,
+     8,
+     0.9
+    ],
+    [
+     1.5,
+     0.45,
+     6,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "last",
+   "role": "hook",
+   "lengthBeats": 4,
+   "notes": [
+    [
+     0,
+     1.6,
+     7,
+     0.95
+    ]
+   ]
+  }
+ ],
+ "parts": [
+  {
+   "id": "kick",
+   "instrument": "v12-signature/iron-pulse",
+   "gainDb": 0,
+   "pan": 0,
+   "room": 0,
+   "notes": [
+    [
+     0,
+     0.25,
+     35,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "bass",
+   "instrument": "living-bass",
+   "gainDb": 0,
+   "pan": 0,
+   "room": 0,
+   "controls": {
+    "fold": 0.2,
+    "pm": 0.5,
+    "grind": 0,
+    "gear": 0,
+    "drive": 0.45,
+    "bright": 0.4,
+    "hold": 0.6,
+    "chassis": 0,
+    "ratchet": 0,
+    "servo": 0,
+    "motion": 0,
+    "harm": 0,
+    "body": 0.9
+   },
+   "motion": [
+    {
+     "fromBeat": 0,
+     "toBeat": 64,
+     "preset": "none"
+    }
+   ],
+   "setup": {
+    "seed": 105
+   },
+   "notes": [
+    [
+     0,
+     2.5,
+     "A1",
+     1,
+     {
+      "articulation": "accent",
+      "scoop": 1
+     }
+    ]
+   ]
+  },
+  {
+   "id": "lead",
+   "instrument": "v12-signature/phantom",
+   "gainDb": 0,
+   "pan": 0,
+   "room": 0,
+   "v12": {
+    "releaseSeconds": 0.06
+   },
+   "phrases": [
+    {
+     "motif": "last",
+     "at": 0,
+     "transforms": [
+      {
+       "op": "transpose",
+       "steps": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lead2",
+   "instrument": "v12-signature/phantom",
+   "gainDb": 0,
+   "pan": 0,
+   "room": 0,
+   "v12": {
+    "releaseSeconds": 0.06
+   },
+   "phrases": [
+    {
+     "motif": "last",
+     "at": 0,
+     "transforms": [
+      {
+       "op": "transpose",
+       "steps": -2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "skank",
+   "instrument": "v12-signature/signal",
+   "gainDb": 0,
+   "pan": 0,
+   "room": 0,
+   "v12": {
+    "releaseSeconds": 0.05
+   },
+   "notes": [
+    [
+     0,
+     1.5,
+     "A4",
+     0.85
+    ],
+    [
+     0,
+     1.5,
+     "C#5",
+     0.85
+    ],
+    [
+     0,
+     1.5,
+     "E5",
+     0.85
+    ],
+    [
+     0,
+     1.5,
+     "A5",
+     0.85
+    ]
+   ]
+  },
+  {
+   "gainDb": 0,
+   "pan": 0,
+   "room": 0,
+   "id": "drop1",
+   "instrument": "bollo-coin",
+   "coin": {
+    "motion": "bounce",
+    "strike": 0.8,
+    "size": 0.74,
+    "restitution": 0.46,
+    "spin": 0.3,
+    "damping": 0.55,
+    "velocity": 1,
+    "position": -0.55,
+    "seed": 601
+   },
+   "notes": [
+    [
+     0,
+     0.1,
+     60,
+     0.62
+    ]
+   ]
+  },
+  {
+   "gainDb": 0,
+   "pan": 0,
+   "room": 0,
+   "id": "drop2",
+   "instrument": "bollo-coin",
+   "coin": {
+    "motion": "bounce",
+    "strike": 0.8,
+    "size": 0.82,
+    "restitution": 0.56,
+    "spin": 0.3,
+    "damping": 0.55,
+    "velocity": 1,
+    "position": 0.1,
+    "seed": 602
+   },
+   "notes": [
+    [
+     0.021,
+     0.1,
+     60,
+     0.74
+    ]
+   ]
+  },
+  {
+   "gainDb": 0,
+   "pan": 0,
+   "room": 0,
+   "id": "drop3",
+   "instrument": "bollo-coin",
+   "coin": {
+    "motion": "bounce",
+    "strike": 0.8,
+    "size": 0.92,
+    "restitution": 0.62,
+    "spin": 0.3,
+    "damping": 0.55,
+    "velocity": 1,
+    "position": 0.6,
+    "seed": 603
+   },
+   "notes": [
+    [
+     0.04725,
+     0.1,
+     60,
+     0.55
+    ]
+   ]
+  }
+ ]
+}
