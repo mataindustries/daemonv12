@@ -13,7 +13,18 @@ writes plus its six later patches, replayed in order (every patch's exact-match 
 
 Status when the session stopped: both candidates rendered end to end three times (about -10.5 LUFS, -1 dBTP); the
 last patch (bass/stab pump depths) was applied but never rendered, and the lab typecheck had not completed.
-**No audio survived** (renders lived in that session's scratch directory) and nobody has listened to either candidate.
+That session's renders lived in its scratch directory and did not survive.
 
-Nothing here is wired into tests or other modules. Do not treat it as approved material. To hear it again:
+**Re-rendered once from the recovered sources (2026-11-14), unchanged, so the audio exists again:**
+
+| Candidate | One loop (15 s) | Three loops |
+|---|---|---|
+| A · INDUSTRIAL PURSUIT | [mp3](audio/FABLE-A-industrial-pursuit.mp3) · [wav](audio/FABLE-A-industrial-pursuit.wav) | [mp3](audio/FABLE-A-industrial-pursuit-loop-x3.mp3) |
+| B · CHROME FUNK | [mp3](audio/FABLE-B-chrome-funk.mp3) · [wav](audio/FABLE-B-chrome-funk.wav) | [mp3](audio/FABLE-B-chrome-funk-loop-x3.mp3) |
+
+Measurements are in [audio/REPORT.json](audio/REPORT.json). The build ran without error; **nobody has listened to
+either candidate**, and nothing was composed, edited or mixed after recovery. Stems were not kept (the build writes
+them; rerun it to get them).
+
+Nothing here is wired into tests or other modules. Do not treat it as approved material. To render again:
 `FABLE_CACHE=<dir> node fable-lab/fable/build.ts <new-output-dir>` (about three minutes; needs FFmpeg).

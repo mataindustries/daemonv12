@@ -1,0 +1,549 @@
+{
+  "schema": "daemonv12.fable-lab.fable/1",
+  "loopFrames": 661500,
+  "sampleRate": 44100,
+  "ceilingDbtp": -1,
+  "targetLufs": -10.5,
+  "method": "Each part is rendered once, dry, with a 6 s tail (rack parts by the rack, V12 parts by the engine CLI) and folded onto one loop. Buses are processed on a wrapped buffer (4 s lead-in, 0.5 s lead-out) so every processor is in steady state at the loop point. The master is a peak-normalised push into the DAEMON//CRUSH clipper only. Both candidates are then set to the same integrated loudness, the lower of the two at -1 dBTP, with one gain each.",
+  "node": "v22.23.4",
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "candidates": {
+    "A": {
+      "title": "FABLE A - INDUSTRIAL PURSUIT",
+      "key": "A minor",
+      "bpm": 128,
+      "swing": 0.5,
+      "files": {
+        "wav": "FABLE-A-industrial-pursuit.wav",
+        "mp3": "FABLE-A-industrial-pursuit.mp3",
+        "loopX3": "FABLE-A-industrial-pursuit-loop-x3.mp3"
+      },
+      "sha256": "87bb5443dc2dc7923b1e9837b494876cb9e189d48ca803706cc1107c650bd827",
+      "frames": 661500,
+      "seconds": 15,
+      "integratedLufs": -10.5,
+      "loudnessRangeLu": 0.9,
+      "truePeakDbtp": -1,
+      "truePeakDbtpFfmpeg": -1,
+      "samplePeakDbfs": -1.04,
+      "rmsDbfs": -12.11,
+      "crestDb": 11.07,
+      "clippedSamples": 0,
+      "dcOffset": -0.000537,
+      "stereoCorrelation": 0.869,
+      "lowBandCorrelation": 0.995,
+      "bandBalanceDb": {
+        "sub 20-60": -5.76,
+        "bass 60-150": -5.23,
+        "low-mid 150-500": -5.71,
+        "mid 500-2k": -8.94,
+        "high 2k-8k": -15.48,
+        "air 8k-20k": -22.24
+      },
+      "kick": {
+        "onsets": 30,
+        "inMaster": {
+          "onsets": 30,
+          "frontToBodyDb": 8.2,
+          "hitCrestDb": 8.58
+        },
+        "kickBusAlone": {
+          "onsets": 30,
+          "frontToBodyDb": 8.05,
+          "hitCrestDb": 7.84
+        },
+        "note": "frontToBodyDb of the kick bus alone is the kick as the pack plays it; inMaster is what is left after everything else is added and the master clipper has run",
+        "lowBandOthersVsKickDb": -17.58,
+        "lowBandNote": "energy under 120 Hz of everything except the kick, relative to the kick, in the first 80 ms after each kick"
+      },
+      "master": {
+        "pushDb": 2.5,
+        "stage": {
+          "amount": 0.7,
+          "drive": false,
+          "squeeze": false,
+          "clip": true
+        },
+        "clipperMaxShaveDb": 2.63,
+        "clipperShare": 0.02335,
+        "loudnessAtCeilingLufs": -10.5,
+        "matchGainDb": 0.1
+      },
+      "wholeBusCrush07ForComparison": {
+        "loudnessAtCeilingLufs": -9.1,
+        "kick": {
+          "onsets": 30,
+          "frontToBodyDb": 8.16,
+          "hitCrestDb": 8.33
+        },
+        "bandBalanceDb": {
+          "sub 20-60": -6.39,
+          "bass 60-150": -5.55,
+          "low-mid 150-500": -4.99,
+          "mid 500-2k": -8.23,
+          "high 2k-8k": -17.26,
+          "air 8k-20k": -25.6
+        }
+      },
+      "seam": {
+        "wrapStep": 0.01182,
+        "medianStep": 0.01531,
+        "p99Step": 0.14455,
+        "wrapStepPercentile": 42.29
+      },
+      "stems": {
+        "kick": {
+          "peakDbfs": -4.32,
+          "rmsDbfs": -16.56,
+          "clippedSamples": 0
+        },
+        "sub": {
+          "peakDbfs": -9.68,
+          "rmsDbfs": -19.88,
+          "clippedSamples": 0
+        },
+        "bass": {
+          "peakDbfs": -7.15,
+          "rmsDbfs": -17.37,
+          "clippedSamples": 0
+        },
+        "snare": {
+          "peakDbfs": -8.8,
+          "rmsDbfs": -24.98,
+          "clippedSamples": 0
+        },
+        "hats": {
+          "peakDbfs": -10.63,
+          "rmsDbfs": -37.39,
+          "clippedSamples": 0
+        },
+        "metal": {
+          "peakDbfs": -11.88,
+          "rmsDbfs": -24.34,
+          "clippedSamples": 0
+        },
+        "stab": {
+          "peakDbfs": -9.32,
+          "rmsDbfs": -24.18,
+          "clippedSamples": 0
+        },
+        "fx": {
+          "peakDbfs": -9.82,
+          "rmsDbfs": -33.72,
+          "clippedSamples": 0
+        },
+        "room": {
+          "peakDbfs": -18.93,
+          "rmsDbfs": -35.22,
+          "clippedSamples": 0
+        }
+      },
+      "stemSumPeakDbfs": 1.6,
+      "dryStemPeaksDbfs": {
+        "edge": -6.16,
+        "anvil": -2.16,
+        "tick": -5.93,
+        "zap": -2.36,
+        "kick": -4.43,
+        "kick-top": -6.3,
+        "snare": -6.41,
+        "clap": -8.1,
+        "roll": -5,
+        "hat": -10.61,
+        "ohat": -13.61,
+        "body": -6.01,
+        "sub": -2.3,
+        "stab": -4.37,
+        "chrome": -6.46,
+        "riser": -9.1,
+        "impact": -5.94
+      },
+      "engineClippedSamples": {
+        "kick": 0,
+        "kick-top": 0,
+        "snare": 0,
+        "clap": 0,
+        "roll": 0,
+        "hat": 0,
+        "ohat": 0,
+        "body": 0,
+        "sub": 0,
+        "stab": 0,
+        "chrome": 0,
+        "riser": 0,
+        "impact": 0
+      },
+      "motif": {
+        "warnings": 0,
+        "report": {
+          "schema": "daemonv12.motif-report/1",
+          "title": "FABLE A - INDUSTRIAL PURSUIT",
+          "key": "A minor",
+          "coverage": 1,
+          "phraseNotes": 79,
+          "partNotes": 79,
+          "statements": {
+            "head": {
+              "literal": 12,
+              "varied": 15,
+              "parts": [
+                "body",
+                "sub",
+                "edge"
+              ]
+            },
+            "menace": {
+              "literal": 6,
+              "varied": 3,
+              "parts": [
+                "body",
+                "sub",
+                "edge"
+              ]
+            },
+            "fall": {
+              "literal": 6,
+              "varied": 3,
+              "parts": [
+                "body",
+                "sub",
+                "edge"
+              ]
+            },
+            "hit": {
+              "literal": 0,
+              "varied": 18,
+              "parts": [
+                "body",
+                "sub",
+                "edge"
+              ]
+            },
+            "stabs": {
+              "literal": 1,
+              "varied": 3,
+              "parts": [
+                "stab"
+              ]
+            },
+            "chord": {
+              "literal": 0,
+              "varied": 6,
+              "parts": [
+                "stab"
+              ]
+            }
+          },
+          "transformKinds": [
+            "fragment",
+            "shift"
+          ],
+          "developingKinds": [
+            "fragment",
+            "shift"
+          ],
+          "crossPart": [
+            "head",
+            "menace",
+            "fall",
+            "hit"
+          ],
+          "recognizability": 0.625,
+          "variedStatements": 48,
+          "unrecognizable": [
+            "body.p16",
+            "body.p17",
+            "body.p18",
+            "body.p19",
+            "body.p20",
+            "body.p21",
+            "sub.p13",
+            "sub.p14",
+            "sub.p15",
+            "sub.p16",
+            "sub.p17",
+            "sub.p18",
+            "edge.p16",
+            "edge.p17",
+            "edge.p18",
+            "edge.p19",
+            "edge.p20",
+            "edge.p21"
+          ],
+          "maxLiteralRun": {
+            "body": 1,
+            "sub": 1,
+            "edge": 1,
+            "stab": 1
+          },
+          "cadence": {
+            "part": "edge",
+            "pitch": 34,
+            "step": null
+          },
+          "droppedParams": 0
+        }
+      }
+    },
+    "B": {
+      "title": "FABLE B - CHROME FUNK",
+      "key": "C minor",
+      "bpm": 128,
+      "swing": 0.57,
+      "files": {
+        "wav": "FABLE-B-chrome-funk.wav",
+        "mp3": "FABLE-B-chrome-funk.mp3",
+        "loopX3": "FABLE-B-chrome-funk-loop-x3.mp3"
+      },
+      "sha256": "740a13d4f1b36ff8ad35b7a9753d2f28eddb6c53a241770e762370f280fe29ba",
+      "frames": 661500,
+      "seconds": 15,
+      "integratedLufs": -10.5,
+      "loudnessRangeLu": 1.2,
+      "truePeakDbtp": -1.2,
+      "truePeakDbtpFfmpeg": -1.2,
+      "samplePeakDbfs": -1.2,
+      "rmsDbfs": -12.1,
+      "crestDb": 10.89,
+      "clippedSamples": 0,
+      "dcOffset": 0.000173,
+      "stereoCorrelation": 0.959,
+      "lowBandCorrelation": 1,
+      "bandBalanceDb": {
+        "sub 20-60": -10.61,
+        "bass 60-150": -2.98,
+        "low-mid 150-500": -6.13,
+        "mid 500-2k": -8.71,
+        "high 2k-8k": -16.64,
+        "air 8k-20k": -22.38
+      },
+      "kick": {
+        "onsets": 33,
+        "inMaster": {
+          "onsets": 33,
+          "frontToBodyDb": 8.55,
+          "hitCrestDb": 8.5
+        },
+        "kickBusAlone": {
+          "onsets": 33,
+          "frontToBodyDb": 8.34,
+          "hitCrestDb": 7.72
+        },
+        "note": "frontToBodyDb of the kick bus alone is the kick as the pack plays it; inMaster is what is left after everything else is added and the master clipper has run",
+        "lowBandOthersVsKickDb": -17.77,
+        "lowBandNote": "energy under 120 Hz of everything except the kick, relative to the kick, in the first 80 ms after each kick"
+      },
+      "master": {
+        "pushDb": 2.5,
+        "stage": {
+          "amount": 0.7,
+          "drive": false,
+          "squeeze": false,
+          "clip": true
+        },
+        "clipperMaxShaveDb": 2.65,
+        "clipperShare": 0.029,
+        "loudnessAtCeilingLufs": -10.3,
+        "matchGainDb": -0.06
+      },
+      "wholeBusCrush07ForComparison": {
+        "loudnessAtCeilingLufs": -8.8,
+        "kick": {
+          "onsets": 33,
+          "frontToBodyDb": 7.61,
+          "hitCrestDb": 8.05
+        },
+        "bandBalanceDb": {
+          "sub 20-60": -11.22,
+          "bass 60-150": -3.4,
+          "low-mid 150-500": -5.36,
+          "mid 500-2k": -8.06,
+          "high 2k-8k": -18.39,
+          "air 8k-20k": -25.76
+        }
+      },
+      "seam": {
+        "wrapStep": 0.00665,
+        "medianStep": 0.01416,
+        "p99Step": 0.13849,
+        "wrapStepPercentile": 30.92
+      },
+      "stems": {
+        "kick": {
+          "peakDbfs": -3.96,
+          "rmsDbfs": -15.82,
+          "clippedSamples": 0
+        },
+        "sub": {
+          "peakDbfs": -8.9,
+          "rmsDbfs": -19.75,
+          "clippedSamples": 0
+        },
+        "bass": {
+          "peakDbfs": -8.83,
+          "rmsDbfs": -17.39,
+          "clippedSamples": 0
+        },
+        "snare": {
+          "peakDbfs": -8.85,
+          "rmsDbfs": -28.67,
+          "clippedSamples": 0
+        },
+        "hats": {
+          "peakDbfs": -9.77,
+          "rmsDbfs": -36.33,
+          "clippedSamples": 0
+        },
+        "perc": {
+          "peakDbfs": -13.06,
+          "rmsDbfs": -28.41,
+          "clippedSamples": 0
+        },
+        "stab": {
+          "peakDbfs": -9.76,
+          "rmsDbfs": -24.79,
+          "clippedSamples": 0
+        },
+        "lead": {
+          "peakDbfs": -10.28,
+          "rmsDbfs": -25.85,
+          "clippedSamples": 0
+        },
+        "room": {
+          "peakDbfs": -20.98,
+          "rmsDbfs": -39.07,
+          "clippedSamples": 0
+        }
+      },
+      "stemSumPeakDbfs": 1.44,
+      "dryStemPeaksDbfs": {
+        "bass": -7.24,
+        "tock": -6.73,
+        "boing": -1.55,
+        "kick": -3.19,
+        "kick-top": -6.74,
+        "clap": -6.94,
+        "ghost": -5.49,
+        "hat": -11.15,
+        "ohat": -13.61,
+        "stab": -4.25,
+        "lead": -2.39,
+        "chrome": -10.45
+      },
+      "engineClippedSamples": {
+        "kick": 0,
+        "kick-top": 0,
+        "clap": 0,
+        "ghost": 0,
+        "hat": 0,
+        "ohat": 0,
+        "stab": 0,
+        "lead": 0,
+        "chrome": 0
+      },
+      "motif": {
+        "warnings": 0,
+        "report": {
+          "schema": "daemonv12.motif-report/1",
+          "title": "FABLE B - CHROME FUNK",
+          "key": "C minor",
+          "coverage": 1,
+          "phraseNotes": 63,
+          "partNotes": 63,
+          "statements": {
+            "strut": {
+              "literal": 5,
+              "varied": 2,
+              "parts": [
+                "bass"
+              ]
+            },
+            "pop": {
+              "literal": 3,
+              "varied": 3,
+              "parts": [
+                "bass",
+                "lead"
+              ]
+            },
+            "crawl": {
+              "literal": 1,
+              "varied": 0,
+              "parts": [
+                "bass"
+              ]
+            },
+            "zip": {
+              "literal": 1,
+              "varied": 0,
+              "parts": [
+                "bass"
+              ]
+            },
+            "anchor": {
+              "literal": 1,
+              "varied": 1,
+              "parts": [
+                "bass"
+              ]
+            },
+            "turn": {
+              "literal": 1,
+              "varied": 0,
+              "parts": [
+                "bass"
+              ]
+            },
+            "jab": {
+              "literal": 14,
+              "varied": 0,
+              "parts": [
+                "stab"
+              ]
+            },
+            "sharp-nine": {
+              "literal": 3,
+              "varied": 0,
+              "parts": [
+                "stab"
+              ]
+            }
+          },
+          "transformKinds": [
+            "octave",
+            "shift",
+            "transpose"
+          ],
+          "developingKinds": [
+            "shift",
+            "transpose"
+          ],
+          "crossPart": [
+            "pop"
+          ],
+          "recognizability": 1,
+          "variedStatements": 6,
+          "unrecognizable": [],
+          "maxLiteralRun": {
+            "bass": 1,
+            "stab": 4,
+            "lead": 1
+          },
+          "cadence": {
+            "part": "bass",
+            "pitch": 35,
+            "step": null
+          },
+          "droppedParams": 0
+        }
+      }
+    }
+  },
+  "hashes": {
+    "bridge.ts": "61dc0be0c0e7626d0e906f3ae05b7dfde064e457c49f3ccb71fc58fa996b36a4",
+    "mix.ts": "fe3d9910d31a2a69fe6d29c2f88addf360bc74cf67bfe25761e16be4bb361e24",
+    "compose.ts": "40ed5b89499673ee35cc3c31d993e3a347a5015ae3344122fcd39d8a1a45dc44",
+    "build.ts": "76e35c640ed8a2c5ccf225c4dbb48ba684e5cbbc4147fe180e5014cbbbc8b0e9",
+    "../crush/crush.ts": "fb7463a7b2c47c523164e18383e54bb81f08f4ce0c01a33aee028d6aacbadfe8"
+  }
+}

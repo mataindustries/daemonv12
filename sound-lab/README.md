@@ -110,6 +110,8 @@ node --test tests/sound-lab.test.ts
 ## Technical QA
 
 - Typecheck clean. `tests/sound-lab.test.ts`: 7 of 7. Coin, bridge and CRUSH tests (30) pass unchanged.
+- Full suite (`npm test`): 430 tests, 422 pass, 0 fail, 8 skipped. All eight skips need FluidSynth or a GM
+  SoundFont, which this container does not have. No frozen file was changed to make anything pass.
 - Both builds rendered twice with identical hashes for every WAV, MP3 and JSON (Node 22.23.4, FFmpeg 6.1.1).
 - No clipped samples (the PCM24 writer refuses them); every delivered file is at or under -1.0 dBTP.
 - No coin event is truncated. Frame counts follow the tempo exactly (18,900 and 25,200 frames per beat).
@@ -127,3 +129,22 @@ cleared for commercial release.
 
 The interrupted session's two candidates, INDUSTRIAL PURSUIT and CHROME FUNK, are preserved untouched in
 [../fable-lab/fable/](../fable-lab/fable/RECOVERED.md). No FABLE composition was started here.
+
+**Is the palette enough for dark electro?** Mostly, with one gap.
+
+- *Have:* Living Bass at its machine end (folding, phase-modulation edge, sub-octave grind, the phase-locked gear
+  chopper, tube drive, ratcheting slides) is a distorted, mechanical, sliding riff voice. REACTOR is a driven
+  mid-bass. SUB HAMMER and IRON PULSE are the kick. The Mechanical Orchestra supplies clock, spring and bar
+  machinery. CRUSH adds bus density, and the keyed duck in `lib.ts` gives the hard kick-pumped groove.
+- *Gap:* nothing above C4 can slide or snarl. V12 samples cannot glide or change timbre over a note, and CRUSH is a
+  density tool, not a fuzz (its knob stops adding much past 0.7). A French-electro lead needs a mid-range voice with
+  heavy distortion and a filter that moves. A swept low-pass over a whole bus does not exist yet either; it is a
+  few lines of mix code, not infrastructure.
+- *Porting note:* the recovered candidates use that session's own adapter, which has two options the official
+  bridge lacks (starting inside a sample and ending a riser on a beat).
+
+**Best next experiment (needs approval):** a four-bar riff test, no full track. One Living Bass riff at the machine
+end, an octave above GRIND's 808, through CRUSH with a deep kick-keyed pump and one slow bus filter sweep; A/B it
+against the same riff on REACTOR. If the Living Bass riff carries, FABLE can be built on it and INDUSTRIAL PURSUIT's
+gallop is the natural starting material. If it does not, the missing piece is a distorted mid-range lead, and that is
+an engineering task to hand back before composing.
