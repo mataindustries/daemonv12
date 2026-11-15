@@ -1,0 +1,37 @@
+{
+  "schema": "daemonv12.anti-formula.plan/1",
+  "identity": {
+    "motif": "hook",
+    "headNotes": 2,
+    "essence": "The cry: A4 leaping a minor sixth to an F5 that arrives early, on the off-beat, and is held. Then the short descent E5 C5 D5 that brings it home to the tonic. The bass riff and the clock under it are the pocket; they are the groove of this ident and are not material for variation.",
+    "protect": {
+      "parts": ["bass", "clock", "bars"],
+      "phrases": ["voice.hook-1", "voice.hook-2", "voice.cadence"]
+    }
+  },
+  "expectation": {
+    "part": "voice",
+    "minStatements": 2,
+    "statement": "Twice the voice cries and twice it comes home: the leap to F5 is always answered by the descent to D5 on beat 4. By bar 3 the listener can sing the answer before it happens."
+  },
+  "intervention": {
+    "kind": "withhold",
+    "target": "voice.hook-3",
+    "resolveWithinBeats": 2,
+    "intent": "The third cry is left hanging. The voice stops after the F5 and does not come home; for two beats the pocket carries on without it and the listener supplies the missing descent. The mallet echo, which until now only repeated what the voice had just sung, now speaks into the gap alone.",
+    "reason": "The hook is already learnable after two statements; a third identical one teaches nothing and spends the tonic one beat before the cadence needs it. Taking three notes away keeps the head, the groove and every sound exactly as they are and makes the one thing the listener already knows the thing that is missing. Adding a variation here would cover the hook; silence exposes it."
+  },
+  "payoff": {
+    "phrase": "voice.cadence",
+    "delivers": "landing",
+    "intent": "The cadence is left exactly as written. Its first note is the D5 the voice did not sing; it now arrives on the downbeat of bar 4 as the first tonic the voice has sung since bar 2, and then turns into the falling sigh. The payoff is not louder or thicker than before. It matters more only because of what was held back."
+  },
+  "output": {
+    "title": "HOOK//10 C (Anti-Formula: the third cry is left hanging; the cadence brings it home)",
+    "description": "HOOK//10, condition C (score/2). Condition A with one decision applied by the Anti-Formula layer: in bar 3 the voice sings only the head of the hook and withholds its descent; the unchanged cadence in bar 4 delivers the withheld tonic. Three notes are removed and none added; bass, clock, mallets, curves, seed and tempo are those of A. Ledger: hook10-c.ledger.json.",
+    "developments": {
+      "loop": "the hook twice, whole; the third time only its cry, and two beats of the voice's silence over the unchanged pocket",
+      "turn": "the same hand-written turnaround over D minor and A7; its first note is the tonic the voice withheld"
+    }
+  }
+}
