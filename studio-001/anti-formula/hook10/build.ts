@@ -1,7 +1,7 @@
 /**
  * Anti-Formula Gate 1 listening proof: HOOK//10 A / B1 / C on one render path.
  *
- *   node studio-001/anti-formula/hook10/build.ts NEW_DIR        (needs FFmpeg with libmp3lame; about 40 s of CPU)
+ *   node studio-001/anti-formula/hook10/build.ts NEW_DIR        (needs FFmpeg with libmp3lame; about 30 s of CPU)
  *
  * It reuses the unchanged HOOK//10 build (`studio-001/scores/hook10/build.ts`: rack render, tail fold, one gain to
  * -16 LUFS) for every version, so C is made exactly the way A and B1 were made.
@@ -18,6 +18,8 @@ import { fileURLToPath } from 'node:url';
 import { sha256 } from '../../rack/frozen.ts';
 import { ffmpegVersion } from '../../rack/cli.ts';
 import { buildVersion, VERSIONS, LOOP_FRAMES, TARGET_LUFS, CEILING_DBTP } from '../../scores/hook10/build.ts';
+import { renderScore } from '../../rack/render.ts';
+import { normalizeAnyScore } from '../../motif/index.ts';
 import { applyAntiFormula } from '../apply.ts';
 import { json } from '../cli.ts';
 
@@ -26,20 +28,28 @@ const REL = '../../anti-formula/hook10'; // buildVersion resolves score files fr
 export const C_VERSION = { id: 'C', file: `${REL}/hook10-c.score.json`, label: 'C-anti-formula', condition: 'B' as const };
 const SOURCE_VERSION = { id: 'A-as-motifs', file: `${REL}/hook10-literal.score.json`, label: 'A-as-motifs', condition: 'B' as const };
 const read = (f: string) => JSON.parse(readFileSync(f, 'utf8')) as unknown;
-const pcmOf = (wav: Buffer) => new Int16Array(wav.buffer, wav.byteOffset + 44, (wav.length - 44) / 2);
-const db = (x: number) => (x > 0 ? +(20 * Math.log10(x)).toFixed(1) : null);
+const db1 = (x: number) => (x > 0 ? +(20 * Math.log10(x)).toFixed(1) : null);
 
 /**
- * How far C is from A in each bar, as signal: both masters are divided by their own gain (so the one loudness gain
- * does not count as a difference), subtracted, and the RMS of the difference is given relative to A's RMS in that bar.
+ * Signal evidence of what the one decision changed, from the rack's own stems (before the room, the fold and the
+ * loudness gain): A (through its transcription) and C are rendered and compared sample by sample.
+ * Per part: whether the stem is identical, and the first beat where it is not. For the voice: its level in every
+ * quarter beat of bars 3 and 4 in A and in C. Levels are RMS in dBFS; `null` is digital silence.
  */
-export function differenceByBar(a: Buffer, aGainDb: number, c: Buffer, cGainDb: number) {
-  const x = pcmOf(a), y = pcmOf(c), ga = 10 ** (aGainDb / 20), gc = 10 ** (cGainDb / 20), bar = LOOP_FRAMES / 4;
-  return [0, 1, 2, 3].map(k => {
-    let d = 0, s = 0;
-    for (let i = 2 * k * bar; i < 2 * (k + 1) * bar; i++) { const u = x[i]! / ga, v = y[i]! / gc; d += (v - u) * (v - u); s += u * u; }
-    return { bar: k + 1, differenceRelativeToADb: db(Math.sqrt(d / s)) };
+export async function stemComparison() {
+  const stems = async (file: string) => (await renderScore(normalizeAnyScore(read(join(here, file))), () => {})).parts;
+  const a = await stems('hook10-literal.score.json'), c = await stems('hook10-c.score.json'), beat = LOOP_FRAMES / 16;
+  const parts = a.map((p, i) => {
+    const x = p.audio, y = c[i]!.audio; let first = -1;
+    for (let n = 0; n < x[0].length && first < 0; n++) if (x[0][n] !== y[0][n] || x[1][n] !== y[1][n]) first = n;
+    return { part: p.part.id, identicalToA: first < 0, firstDifferingFrame: first < 0 ? null : first, firstDifferingBeat: first < 0 ? null : +(first / beat).toFixed(4) };
   });
+  const v = a.findIndex(p => p.part.id === 'voice'), level = (x: Float64Array, from: number) => { let t = 0; const s = Math.round(from * beat), e = Math.round((from + 0.25) * beat); for (let n = s; n < e; n++) t += x[n]! * x[n]!; return db1(Math.sqrt(t / (e - s))); };
+  const voiceLevelDb = Array.from({ length: 32 }, (_, k) => ({ beat: 8 + k / 4, a: level(a[v]!.audio[0], 8 + k / 4), c: level(c[v]!.audio[0], 8 + k / 4) }));
+  const bar4 = voiceLevelDb.filter(q => q.beat >= 12).map(q => Math.abs(q.a! - q.c!));
+  return { method: 'stems rendered by the rack from hook10-literal.score.json (identical to A) and hook10-c.score.json; left channel levels, RMS dBFS per quarter beat', parts, voiceLevelDb,
+    voiceBar4MaxLevelDifferenceDb: +Math.max(...bar4).toFixed(1),
+    note: 'The cadence in bar 4 has the same notes in A and C and the voice sings them at nearly the same level, but not sample for sample: the voice engine carries its phase and noise state on from what it sang before. Whether that is audible is for the listener.' };
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url))) {
@@ -79,7 +89,7 @@ if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import
     }
     const version = { ...rest, scoreFile: 'studio-001/anti-formula/hook10/hook10-c.score.json', planFile: 'studio-001/anti-formula/hook10/hook10-c.plan.json', sourceFile: 'studio-001/anti-formula/hook10/hook10-literal.score.json',
       ledger: { file: 'C/ledger.json', intervention: `${applied.ledger.intervention.kind} ${applied.ledger.intervention.target}: ${applied.ledger.intervention.transform}`, notes: applied.ledger.unchanged.notes, payoff: applied.ledger.payoff },
-      differenceFromA: differenceByBar(readFileSync(join(scratch, a!.master.file)), a!.master.gainDb, readFileSync(join(out, c.master.file)), c.master.gainDb),
+      stemComparisonWithA: await stemComparison(),
       v09StructureGate: { ...gate, note: 'The v0.9 HOOK//10 gate asks for no bar repeated more than once in a row in any part. C keeps the bass, clock and mallet pocket of A on purpose, so that one check fails by design. It is recorded, not hidden, and it is not a listening result.' },
       files };
     const manifest = {

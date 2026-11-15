@@ -1,0 +1,437 @@
+{
+  "schema": "daemonv12.anti-formula.gate1.manifest/1",
+  "benchmark": "HOOK//10 A / B1 / C",
+  "note": "Measurements, hashes and a record of how the files were made. Nothing here says which version sounds better: that is the producer's listening decision, and all three may be rejected.",
+  "candidates": "Exactly one C was composed and rendered. No alternative C was rendered, auditioned or discarded.",
+  "targetLufs": -16,
+  "ceilingDbtp": -1,
+  "loopFrames": 441000,
+  "node": "v22.23.4",
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "sameFfmpegAsV09Proof": true,
+  "baseline": [
+    {
+      "id": "A",
+      "committedIn": "proofs/v09-motif/hook10",
+      "master": "HOOK10-A-existing-workflow.wav",
+      "masterSha256": "19ee0ba4a0749d4dfee372a8362121d44a28ae20a992106a90c70aaa309044c9",
+      "filesCompared": 5,
+      "rebuiltIdentical": true,
+      "loudness": {
+        "lufs": -16,
+        "lra": 0.7,
+        "truePeakDb": -6.1
+      }
+    },
+    {
+      "id": "B1",
+      "committedIn": "proofs/v09-motif/hook10",
+      "master": "HOOK10-B1-motif-development.wav",
+      "masterSha256": "41c8541b546a46081e0d940bbef7c8cd34869434167728b5e602a3f3649e7a38",
+      "filesCompared": 8,
+      "rebuiltIdentical": true,
+      "loudness": {
+        "lufs": -16,
+        "lra": 1.9,
+        "truePeakDb": -5.6
+      }
+    },
+    {
+      "id": "A-as-motifs",
+      "scoreFile": "studio-001/anti-formula/hook10/hook10-literal.score.json",
+      "masterSha256": "19ee0ba4a0749d4dfee372a8362121d44a28ae20a992106a90c70aaa309044c9",
+      "identicalToMasterOf": "A"
+    }
+  ],
+  "versions": [
+    {
+      "id": "C",
+      "condition": "B",
+      "title": "HOOK//10 C (Anti-Formula: the third cry is left hanging; the cadence brings it home)",
+      "schema": "daemonv12.signature-rack.score/2",
+      "scoreFile": "studio-001/anti-formula/hook10/hook10-c.score.json",
+      "scoreSha256": "a9f92b896124880e8ba6a2a39c041b1fbbe1d1aefa328e522f771219bb65e09e",
+      "bpm": 96,
+      "key": "D minor",
+      "bars": 4,
+      "notes": {
+        "voice": 17,
+        "bass": 24,
+        "bars": 22,
+        "clock": 45
+      },
+      "master": {
+        "file": "HOOK10-C-anti-formula.wav",
+        "frames": 441000,
+        "seconds": 10,
+        "sampleRate": 44100,
+        "bits": 16,
+        "channels": 2,
+        "gainDb": 0.885,
+        "loudness": {
+          "lufs": -15.9,
+          "lra": 0.9,
+          "truePeakDb": -5.4
+        },
+        "loudnessLoopX3": {
+          "lufs": -16,
+          "lra": 0.9,
+          "truePeakDb": -5.4
+        },
+        "clipped": 0
+      },
+      "loop": {
+        "method": "tail fold: y[n] = x[n] + x[n + 441000]; no crossfade",
+        "renderFrames": 882000,
+        "tailFrames": 441000,
+        "foldMaxAbsError": 0,
+        "renderTailEndRmsDb": -195,
+        "bodyRmsDb": -19.2,
+        "tailFullyDecayed": true,
+        "seamResidueLsb": {
+          "renderFirstSample": 0,
+          "renderLastSample": 0
+        },
+        "loopX3IsThreeExactCopies": true,
+        "seam": {
+          "frames": 441000,
+          "seamStepLsb": 541,
+          "seamBendLsb": 728,
+          "insideStepLsb": {
+            "median": 249,
+            "p99": 1160,
+            "max": 3293
+          },
+          "insideBendLsb": {
+            "median": 104,
+            "p99": 735,
+            "max": 2433
+          },
+          "seamStepPercentile": 0.832695,
+          "seamBendPercentile": 0.989499,
+          "pass": true
+        }
+      },
+      "stems": [
+        {
+          "part": "voice",
+          "rmsDb": -21.63,
+          "peakDb": -12.37
+        },
+        {
+          "part": "bass",
+          "rmsDb": -23.34,
+          "peakDb": -10.37
+        },
+        {
+          "part": "bars",
+          "rmsDb": -32.77,
+          "peakDb": -17.23
+        },
+        {
+          "part": "clock",
+          "rmsDb": -41.84,
+          "peakDb": -17.47
+        }
+      ],
+      "technicalGate": {
+        "frames441000": true,
+        "noClipping": true,
+        "truePeakAtMostMinus1": true,
+        "seamContinuous": true,
+        "tailFullyDecayed": true,
+        "foldExact": true,
+        "loopX3IsThreeExactCopies": true
+      },
+      "files": {
+        "HOOK10-C-anti-formula.wav": {
+          "sha256": "0b12d0fe5674216ab5704b9c835dcf688afd25993169907758a64b42c1540f97",
+          "bytes": 1764044
+        },
+        "HOOK10-C-anti-formula.mp3": {
+          "sha256": "d194d9e859e429ef999d23b513c355626958c3bfd431e280beb68e77e1bc360c",
+          "bytes": 321847
+        },
+        "HOOK10-C-anti-formula-loop-x3.mp3": {
+          "sha256": "f3830e3d24b79c46c56c75a7d1f13b9a4c5d457e759bd0f3b9fecca50c524d9e",
+          "bytes": 962161
+        },
+        "C/score.json": {
+          "sha256": "a9f92b896124880e8ba6a2a39c041b1fbbe1d1aefa328e522f771219bb65e09e",
+          "bytes": 13302
+        },
+        "C/performance.json": {
+          "sha256": "48096756b7e53a1c467b8ce0e16c76eb759f20d3e19df622e9a1e058daa449b8",
+          "bytes": 20723
+        },
+        "C/score.lowered.json": {
+          "sha256": "6de1a77b3051ec80b0a227ed29c5fe4e9702a0bbe4cdeaa0f574dbdaeb9b2de6",
+          "bytes": 18780
+        },
+        "C/motif-report.json": {
+          "sha256": "3486ac76d31b56f39a0eeefc22a1933db4a55b7accffd41cd981d29d2e96362a",
+          "bytes": 1134
+        },
+        "C/motif-events.json": {
+          "sha256": "b6acc5729d118328ce544d63e65d0b1243a4ce3aa76aa8c1903b15f716bb4ff3",
+          "bytes": 30860
+        },
+        "C/ledger.json": {
+          "sha256": "92e29beb174a71be896cbe1015c95b9910f6f98bb52ffccdce368eed3424a58a",
+          "bytes": 11840
+        },
+        "C/plan.json": {
+          "sha256": "6a73d40b2008a479bf1b97a1ea5b2aded5dec2d8639d1a8b09d8e6d318f03976",
+          "bytes": 2809
+        },
+        "C/source.score.json": {
+          "sha256": "9377b14aa64a11a122c5039d91b97f73e0c3c03f4e03842105891228de235f19",
+          "bytes": 6644
+        }
+      },
+      "planFile": "studio-001/anti-formula/hook10/hook10-c.plan.json",
+      "sourceFile": "studio-001/anti-formula/hook10/hook10-literal.score.json",
+      "ledger": {
+        "file": "C/ledger.json",
+        "intervention": "withhold voice.hook-3: fragment:0-2",
+        "notes": {
+          "source": 111,
+          "output": 108,
+          "removed": 3,
+          "added": 0,
+          "altered": 0
+        },
+        "payoff": {
+          "state": "resolved",
+          "by": "existing-phrase",
+          "changedByAntiFormula": false,
+          "phrase": "voice.cadence",
+          "part": "voice",
+          "delivers": "landing",
+          "intent": "The cadence is left exactly as written. Its first note is the D5 the voice did not sing; it now arrives on the downbeat of bar 4 as the first tonic the voice has sung since bar 2, and then turns into the falling sigh. The payoff is not louder or thicker than before. It matters more only because of what was held back.",
+          "beat": 12,
+          "bar": 4,
+          "beatInBar": 0,
+          "seconds": 7.5,
+          "frame": 330750,
+          "note": {
+            "beat": 12,
+            "beats": 0.75,
+            "pitch": 74,
+            "name": "D5",
+            "velocity": 0.72
+          },
+          "sameOctave": true,
+          "transform": null,
+          "waitedBeats": 2,
+          "withinBeats": 2
+        }
+      },
+      "stemComparisonWithA": {
+        "method": "stems rendered by the rack from hook10-literal.score.json (identical to A) and hook10-c.score.json; left channel levels, RMS dBFS per quarter beat",
+        "parts": [
+          {
+            "part": "voice",
+            "identicalToA": false,
+            "firstDifferingFrame": 275625,
+            "firstDifferingBeat": 10
+          },
+          {
+            "part": "bass",
+            "identicalToA": true,
+            "firstDifferingFrame": null,
+            "firstDifferingBeat": null
+          },
+          {
+            "part": "bars",
+            "identicalToA": true,
+            "firstDifferingFrame": null,
+            "firstDifferingBeat": null
+          },
+          {
+            "part": "clock",
+            "identicalToA": true,
+            "firstDifferingFrame": null,
+            "firstDifferingBeat": null
+          }
+        ],
+        "voiceLevelDb": [
+          {
+            "beat": 8,
+            "a": -24,
+            "c": -24
+          },
+          {
+            "beat": 8.25,
+            "a": -20.8,
+            "c": -20.8
+          },
+          {
+            "beat": 8.5,
+            "a": -20.5,
+            "c": -20.5
+          },
+          {
+            "beat": 8.75,
+            "a": -19.8,
+            "c": -19.8
+          },
+          {
+            "beat": 9,
+            "a": -18.4,
+            "c": -18.4
+          },
+          {
+            "beat": 9.25,
+            "a": -17.8,
+            "c": -17.8
+          },
+          {
+            "beat": 9.5,
+            "a": -17.8,
+            "c": -17.8
+          },
+          {
+            "beat": 9.75,
+            "a": -18.2,
+            "c": -18.2
+          },
+          {
+            "beat": 10,
+            "a": -19.6,
+            "c": -22.9
+          },
+          {
+            "beat": 10.25,
+            "a": -19.2,
+            "c": -32.2
+          },
+          {
+            "beat": 10.5,
+            "a": -20.4,
+            "c": -41.1
+          },
+          {
+            "beat": 10.75,
+            "a": -19.9,
+            "c": -46.4
+          },
+          {
+            "beat": 11,
+            "a": -20.3,
+            "c": -48.2
+          },
+          {
+            "beat": 11.25,
+            "a": -18.8,
+            "c": -52.6
+          },
+          {
+            "beat": 11.5,
+            "a": -19.1,
+            "c": -50.1
+          },
+          {
+            "beat": 11.75,
+            "a": -23.9,
+            "c": -54.7
+          },
+          {
+            "beat": 12,
+            "a": -23,
+            "c": -24.2
+          },
+          {
+            "beat": 12.25,
+            "a": -19.8,
+            "c": -19.9
+          },
+          {
+            "beat": 12.5,
+            "a": -19.1,
+            "c": -19.1
+          },
+          {
+            "beat": 12.75,
+            "a": -18.2,
+            "c": -18.7
+          },
+          {
+            "beat": 13,
+            "a": -17.8,
+            "c": -17.9
+          },
+          {
+            "beat": 13.25,
+            "a": -17,
+            "c": -17.2
+          },
+          {
+            "beat": 13.5,
+            "a": -17.5,
+            "c": -17.6
+          },
+          {
+            "beat": 13.75,
+            "a": -18,
+            "c": -18
+          },
+          {
+            "beat": 14,
+            "a": -19.3,
+            "c": -19.8
+          },
+          {
+            "beat": 14.25,
+            "a": -19.4,
+            "c": -19.3
+          },
+          {
+            "beat": 14.5,
+            "a": -20.4,
+            "c": -20.7
+          },
+          {
+            "beat": 14.75,
+            "a": -20.3,
+            "c": -20.5
+          },
+          {
+            "beat": 15,
+            "a": -20.8,
+            "c": -20.9
+          },
+          {
+            "beat": 15.25,
+            "a": -19.5,
+            "c": -19.6
+          },
+          {
+            "beat": 15.5,
+            "a": -19.9,
+            "c": -19.9
+          },
+          {
+            "beat": 15.75,
+            "a": -24.5,
+            "c": -24.7
+          }
+        ],
+        "voiceBar4MaxLevelDifferenceDb": 1.2,
+        "note": "The cadence in bar 4 has the same notes in A and C and the voice sings them at nearly the same level, but not sample for sample: the voice engine carries its phase and noise state on from what it sang before. Whether that is audible is for the listener."
+      },
+      "v09StructureGate": {
+        "pass": false,
+        "checks": {
+          "coverage >= 0.6": true,
+          "at least 3 pitch- or rhythm-changing transform kinds": true,
+          "recognizability = 1.0": true,
+          "maxLiteralRun <= 2 in every part": false,
+          "crossPart >= 1": true,
+          "cadence on a tonic-triad step (0, 2 or 4)": true
+        },
+        "note": "The v0.9 HOOK//10 gate asks for no bar repeated more than once in a row in any part. C keeps the bass, clock and mallet pocket of A on purpose, so that one check fails by design. It is recorded, not hidden, and it is not a listening result."
+      }
+    }
+  ]
+}

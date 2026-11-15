@@ -1,0 +1,241 @@
+<title>HOOK//10 A/B1/C Listening</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+  /* Layout: one narrow column. The four-bar ruler and three large keys are the instrument; everything else is quiet text under it. */
+  :root {
+    --bg: #edf0f3; --surface: #ffffff; --ink: #16202b; --muted: #566473; --line: #c9d1d9;
+    --accent: #8f6210; --accent-ink: #ffffff; --mark: rgba(143, 98, 16, 0.16); --warn: #a13a2a;
+    --display: "Space Grotesk", "Inter", system-ui, sans-serif;
+    --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg: #0f151c; --surface: #172029; --ink: #e6ecf2; --muted: #94a2b0; --line: #2b3845;
+    --accent: #e0b04a; --accent-ink: #15110a; --mark: rgba(224, 176, 74, 0.2); --warn: #f08a76; color-scheme: dark } }
+  :root[data-theme="dark"] {
+    --bg: #0f151c; --surface: #172029; --ink: #e6ecf2; --muted: #94a2b0; --line: #2b3845;
+    --accent: #e0b04a; --accent-ink: #15110a; --mark: rgba(224, 176, 74, 0.2); --warn: #f08a76; color-scheme: dark }
+
+  body { background: var(--bg); color: var(--ink); font: 400 16px/1.55 var(--body); }
+  .page { max-width: 44rem; margin: 0 auto; padding-block: 1.5rem 3rem; display: flex; flex-direction: column; gap: 1.75rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  h1, h2 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.15; }
+  h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; }
+  h2 { font-size: 1.15rem; font-weight: 500; }
+  p { margin: 0; max-width: 65ch; }
+  .lede { color: var(--muted); }
+  .eyebrow { font: 600 0.72rem/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  header { display: flex; flex-direction: column; gap: 0.6rem; }
+
+  .player { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
+  .readout { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font: 400 0.85rem/1 var(--mono); font-variant-numeric: tabular-nums; color: var(--muted); }
+  .readout strong { color: var(--ink); font-weight: 600; }
+  .ruler { position: relative; display: grid; grid-template-columns: repeat(16, 1fr); height: 3.25rem; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .ruler .cell { border-left: 1px solid var(--line); opacity: 0.55; display: flex; align-items: flex-end; padding: 0 0 3px 4px; font: 400 0.68rem/1 var(--mono); color: var(--muted); }
+  .ruler .cell:first-child { border-left: 0; }
+  .ruler .cell.bar { border-left: 2px solid var(--muted); opacity: 1; }
+  .ruler .cell.bar:first-child { border-left: 0; }
+  .ruler .diff { position: absolute; top: 0; bottom: 0; background: var(--mark); pointer-events: none; }
+  .ruler .head { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--accent); left: 0; pointer-events: none; }
+  .legend { font-size: 0.82rem; color: var(--muted); min-height: 1.3em; }
+
+  .keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+  .key { min-width: 0; min-height: 5rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem; padding: 0.5rem 0.4rem; font: inherit; }
+  .key .letter { font: 700 1.9rem/1 var(--display); }
+  .key .name { font-size: 0.78rem; line-height: 1.25; color: var(--muted); text-align: center; overflow-wrap: anywhere; }
+  .key[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .key[aria-pressed="true"] .name { color: var(--accent-ink); }
+  .key:disabled { opacity: 0.5; cursor: default; }
+  .row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .btn { border: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 6px; padding: 0.55rem 0.9rem; font: 500 0.9rem/1.2 var(--body); cursor: pointer; }
+  .btn.primary { border-color: var(--accent); color: var(--accent); }
+  .btn:disabled { opacity: 0.5; cursor: default; }
+  :is(.key, .btn, input, textarea):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .status { font-size: 0.85rem; color: var(--muted); }
+  .status.error { color: var(--warn); }
+
+  section { display: flex; flex-direction: column; gap: 0.9rem; }
+  .q { border-top: 1px solid var(--line); padding-top: 0.8rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .q .text { font-weight: 500; }
+  .q .hint { font-size: 0.85rem; color: var(--muted); }
+  .picks { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .picks label { display: inline-flex; align-items: center; justify-content: center; min-width: 3rem; padding: 0.4rem 0.7rem; border: 1px solid var(--line); border-radius: 999px; font: 600 0.85rem/1 var(--mono); cursor: pointer; }
+  .picks input { position: absolute; opacity: 0; pointer-events: none; }
+  .picks label:has(input:checked) { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .picks label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+  textarea { width: 100%; min-height: 5.5rem; box-sizing: border-box; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit; padding: 0.6rem; resize: vertical; }
+  .copyout { font: 400 0.8rem/1.45 var(--mono); min-height: 11rem; }
+
+  .versions { display: flex; flex-direction: column; gap: 0.8rem; }
+  .version { border-top: 1px solid var(--line); padding-top: 0.8rem; display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 0.2rem 0.8rem; }
+  .version .tag { font: 700 1.2rem/1.3 var(--display); }
+  .version .what { color: var(--muted); font-size: 0.92rem; }
+  .small { font-size: 0.85rem; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="page">
+  <header>
+    <span class="eyebrow">DaemonV12 · Anti-Formula Gate 1</span>
+    <h1>HOOK//10: three versions of one ten-second ident</h1>
+    <p class="lede">D minor, 96 BPM, four bars, the same four instruments, all at −16 LUFS. Tap a letter to play. It loops without a gap, and tapping another letter switches at the same point in the bar. Names are hidden and the order is shuffled until you choose to reveal them.</p>
+  </header>
+
+  <div class="player">
+    <div class="readout"><span>bar <strong id="pos">–</strong></span><span><strong id="sec">0.00</strong> / 10.00 s</span></div>
+    <div class="ruler" id="ruler" aria-hidden="true"><div class="diff" id="diff" hidden></div><div class="head" id="head" hidden></div></div>
+    <div class="legend" id="legend"></div>
+    <div class="keys" id="keys"></div>
+    <div class="row">
+      <button class="btn" id="stop" type="button" disabled>Stop</button>
+      <button class="btn" id="restart" type="button" disabled>Back to bar 1</button>
+      <button class="btn primary" id="reveal" type="button">Reveal names</button>
+      <button class="btn" id="shuffle" type="button">Reshuffle</button>
+    </div>
+    <div class="status" id="status" role="status">Loading audio…</div>
+  </div>
+
+  <section>
+    <h2>Listen blind first</h2>
+    <p class="small">Answer before revealing. "None" is a real answer: you may reject all three. Your picks stay on this device only.</p>
+    <div id="questions"></div>
+    <div class="q">
+      <label class="text" for="notes">Anything that sounds wrong, broken or generic, and the moment you liked best (say where: bar and letter)</label>
+      <textarea id="notes" placeholder="e.g. Y bar 3: the gap feels like a mistake / like a breath"></textarea>
+    </div>
+    <div class="row"><button class="btn primary" id="copy" type="button">Copy my answers</button></div>
+    <textarea class="copyout" id="copyout" readonly hidden aria-label="Your answers as text"></textarea>
+    <p class="small" id="copied" role="status"></p>
+  </section>
+
+  <section id="about" hidden>
+    <h2>What each version is</h2>
+    <div class="versions" id="versions"></div>
+    <p class="small">Bars 1 and 4 are the same notes in all three. The shaded part of the ruler shows where the playing version's notes differ from A. The composing agent cannot hear; these are descriptions of what was written, not of how it sounds.</p>
+  </section>
+</div>
+
+<script>
+(() => {
+  const VERSIONS = [
+    { id: 'A', file: 'a.wav', name: 'Baseline', what: 'The hook three times, unchanged, then the turnaround. Only the timbre moves.', diff: null },
+    { id: 'B1', file: 'b1.wav', name: 'Motif development', what: 'Bar 2 answers the hook a third lower. Bar 3 breaks off its rising sixth and climbs with it while the mallets play it twice as fast and the clock doubles.', diff: [4, 12] },
+    { id: 'C', file: 'c.wav', name: 'Anti-Formula', what: 'A with three notes taken away. In bar 3 the voice sings the cry and does not come home: two beats of rest over the same bass, clock and mallets. The unchanged cadence in bar 4 starts on the note it held back.', diff: [10, 12] },
+  ];
+  const QUESTIONS = [
+    ['replay', 'Which one do you want to hear again?', 'Let each loop a few times first.'],
+    ['hum', 'Stop the player. Which hook can you hum back?', ''],
+    ['record', 'Which sounds most like a record and least like a loop?', ''],
+    ['pocket', 'Which has the best pocket?', 'The bass and clock feel, not the melody.'],
+    ['return', 'In which does bar 4 land hardest and pull you back to bar 1?', ''],
+    ['character', 'Which has the most character: the one you would describe to someone?', ''],
+  ];
+  const LETTERS = ['X', 'Y', 'Z'], BEATS = 16, DUR = 10;
+  const $ = id => document.getElementById(id);
+  const store = { get(k, d) { try { const v = localStorage.getItem('hook10abc.' + k); return v === null ? d : JSON.parse(v); } catch { return d; } }, set(k, v) { try { localStorage.setItem('hook10abc.' + k, JSON.stringify(v)); } catch {} } };
+  const shuffled = () => { const o = [0, 1, 2]; for (let i = 2; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [o[i], o[j]] = [o[j], o[i]]; } return o; };
+  const validOrder = o => Array.isArray(o) && o.length === 3 && [0, 1, 2].every(i => o.includes(i));
+
+  let order = store.get('order', null); if (!validOrder(order)) { order = shuffled(); store.set('order', order); }
+  let revealed = store.get('revealed', false) === true, answers = store.get('answers', {}) || {};
+  let ctx = null, buffers = [], current = null, node = null, startedAt = 0, ready = false;
+
+  // ruler: 16 beats, a heavier line at each bar
+  const ruler = $('ruler');
+  for (let b = BEATS - 1; b >= 0; b--) { const c = document.createElement('div'); c.className = 'cell' + (b % 4 === 0 ? ' bar' : ''); c.textContent = b % 4 === 0 ? String(b / 4 + 1) : ''; ruler.prepend(c); }
+
+  function renderKeys() {
+    const keys = $('keys'); keys.textContent = '';
+    order.forEach((vi, slot) => {
+      const v = VERSIONS[vi], b = document.createElement('button');
+      b.type = 'button'; b.className = 'key'; b.id = 'key-' + slot; b.disabled = !ready; b.setAttribute('aria-pressed', String(current === slot));
+      b.innerHTML = '<span class="letter"></span><span class="name"></span>';
+      b.firstChild.textContent = LETTERS[slot]; b.lastChild.textContent = revealed ? v.id + ' · ' + v.name : 'hidden';
+      b.addEventListener('click', () => play(slot)); keys.append(b);
+    });
+    $('reveal').textContent = revealed ? 'Hide names' : 'Reveal names';
+    $('about').hidden = !revealed;
+    const list = $('versions'); list.textContent = '';
+    if (revealed) order.forEach((vi, slot) => { const v = VERSIONS[vi], row = document.createElement('div'); row.className = 'version';
+      row.innerHTML = '<span class="tag"></span><strong></strong><span></span><span class="what"></span>';
+      row.children[0].textContent = LETTERS[slot]; row.children[1].textContent = v.id + ' · ' + v.name; row.children[3].textContent = v.what; list.append(row); });
+    renderDiff();
+  }
+  function renderDiff() {
+    const d = $('diff'), v = current === null ? null : VERSIONS[order[current]];
+    if (revealed && v && v.diff) { d.hidden = false; d.style.left = (v.diff[0] / BEATS * 100) + '%'; d.style.width = ((v.diff[1] - v.diff[0]) / BEATS * 100) + '%'; } else d.hidden = true;
+    $('legend').textContent = !revealed ? '' : !v ? 'Play a version to see where its notes differ from A.' : v.diff ? 'Shaded: where ' + v.id + ' has different notes from A.' : 'A is the reference: nothing is shaded.';
+  }
+  function renderQuestions() {
+    const box = $('questions'); box.textContent = '';
+    for (const [key, text, hint] of QUESTIONS) {
+      const q = document.createElement('div'); q.className = 'q'; q.setAttribute('role', 'group'); q.setAttribute('aria-label', text);
+      const t = document.createElement('div'); t.className = 'text'; t.textContent = text; q.append(t);
+      if (hint) { const h = document.createElement('div'); h.className = 'hint'; h.textContent = hint; q.append(h); }
+      const picks = document.createElement('div'); picks.className = 'picks';
+      for (const opt of [...LETTERS, 'None']) { const l = document.createElement('label'), i = document.createElement('input');
+        i.type = 'radio'; i.name = 'q-' + key; i.id = 'q-' + key + '-' + opt; i.value = opt; i.checked = answers[key] === opt;
+        i.addEventListener('change', () => { answers[key] = opt; store.set('answers', answers); });
+        l.append(i, document.createTextNode(opt)); picks.append(l); }
+      q.append(picks); box.append(q);
+    }
+    $('notes').value = typeof answers.notes === 'string' ? answers.notes : '';
+  }
+
+  // audio: the three WAV masters, decoded once; a looping buffer source per switch, with a 20 ms fade so the switch does not click
+  async function load() {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      try { ctx = new AC({ sampleRate: 44100 }); } catch { ctx = new AC(); }
+      buffers = await Promise.all(VERSIONS.map(async v => { const r = await fetch(v.file); if (!r.ok) throw new Error(v.file + ': ' + r.status); return ctx.decodeAudioData(await r.arrayBuffer()); }));
+      ready = true; $('status').textContent = 'Ready. Headphones first, then a phone speaker or the car.';
+      document.querySelectorAll('.key').forEach(b => { b.disabled = false; });
+    } catch (e) { $('status').className = 'status error'; $('status').textContent = 'The audio did not load (' + (e && e.message ? e.message : 'unknown error') + '). Reload the page; if it still fails, the same files are in the repository under proofs/.'; }
+  }
+  const position = () => (((ctx.currentTime - startedAt) % DUR) + DUR) % DUR;
+  function silence() { if (!node) return; const { src, gain } = node, t = ctx.currentTime; gain.gain.setValueAtTime(gain.gain.value, t); gain.gain.linearRampToValueAtTime(0, t + 0.02); src.stop(t + 0.03); node = null; }
+  function play(slot, fromStart) {
+    if (!ready) return;
+    if (ctx.state !== 'running') ctx.resume();
+    if (current === slot && !fromStart) return;
+    const at = current === null || fromStart ? 0 : position(), t = ctx.currentTime + 0.03;
+    silence();
+    const src = ctx.createBufferSource(), gain = ctx.createGain(); src.buffer = buffers[order[slot]]; src.loop = true;
+    gain.gain.setValueAtTime(0, t); gain.gain.linearRampToValueAtTime(1, t + 0.02); src.connect(gain).connect(ctx.destination); src.start(t, at);
+    node = { src, gain }; startedAt = t - at; current = slot; mark(); requestAnimationFrame(tick);
+  }
+  function stop() { silence(); current = null; mark(); $('head').hidden = true; $('pos').textContent = '–'; $('sec').textContent = '0.00'; }
+  function mark() { document.querySelectorAll('.key').forEach((b, i) => b.setAttribute('aria-pressed', String(i === current))); $('stop').disabled = $('restart').disabled = current === null; renderDiff(); }
+  function tick() {
+    if (current === null) return;
+    const p = Math.max(0, position()), beat = p / DUR * BEATS;
+    $('head').hidden = false; $('head').style.left = 'calc(' + (beat / BEATS * 100) + '% - 1px)';
+    $('pos').textContent = (Math.floor(beat / 4) + 1) + '.' + (Math.floor(beat % 4) + 1); $('sec').textContent = p.toFixed(2);
+    requestAnimationFrame(tick);
+  }
+
+  function answerText() {
+    const lines = ['HOOK//10 A/B1/C: my blind answers'];
+    for (const [key, text] of QUESTIONS) lines.push('- ' + text + ' ' + (answers[key] || '(no answer)'));
+    lines.push('Notes: ' + (($('notes').value || '').trim() || '(none)'));
+    lines.push('Order on my device: ' + order.map((vi, s) => LETTERS[s] + '=' + VERSIONS[vi].id).join(', ') + (revealed ? ' (names were revealed when I copied this)' : ' (names still hidden)'));
+    return lines.join('\n');
+  }
+
+  $('stop').addEventListener('click', stop);
+  $('restart').addEventListener('click', () => { if (current !== null) play(current, true); });
+  $('reveal').addEventListener('click', () => { revealed = !revealed; store.set('revealed', revealed); renderKeys(); mark(); });
+  $('shuffle').addEventListener('click', () => { stop(); order = shuffled(); store.set('order', order); revealed = false; store.set('revealed', false); answers = {}; store.set('answers', answers); renderKeys(); renderQuestions(); $('copyout').hidden = true; $('copied').textContent = 'New order. Names hidden and picks cleared.'; });
+  $('notes').addEventListener('input', () => { answers.notes = $('notes').value; store.set('answers', answers); });
+  $('copy').addEventListener('click', () => {
+    const text = answerText(), out = $('copyout'); out.value = text; out.hidden = false;
+    const fallback = () => { out.focus(); out.select(); $('copied').textContent = 'Select the text above and copy it, then paste it to Claude.'; };
+    try { navigator.clipboard.writeText(text).then(() => { $('copied').textContent = 'Copied. Paste it into the chat with Claude.'; }, fallback); } catch { fallback(); }
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && current !== null) stop(); });
+
+  renderKeys(); renderQuestions(); load();
+})();
+</script>
