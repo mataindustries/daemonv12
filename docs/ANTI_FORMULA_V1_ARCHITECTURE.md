@@ -4,6 +4,8 @@ Status: **design only.** No code, scores, renders or production behaviour change
 with this document. It is based on `main` at
 `eee072d71a7581913faebff95c935cae8c9be41b` (the PR #45 merge, engine `0.7.0`).
 
+**Current Fable handoff (2026-11-15):** Read [§11](#11-producer-feedback-and-fable-implementation-handoff-2026-11-15) before following §10. The v0.9 motif implementation in draft PR #49 already supplies the transform layer; §10's original main-based task is historical. The producer's listening criteria and current owner decisions are recorded in §11.
+
 **Goal.** Find the smallest addition that helps DaemonV12 make music that is
 surprising, memorable and emotionally compelling, rather than only technically
 correct, while keeping every existing instrument, renderer, deterministic
@@ -680,3 +682,138 @@ There is no paid compute, no GPU and no new dependency at any step.
 > Stop after committing and pushing. Do not start operators or the planner
 > (task 2). Report what the baseline flags say about CROSSING, without
 > claiming anything about how it sounds.
+---
+
+## 11. Producer feedback and Fable implementation handoff (2026-11-15)
+
+> **Read this section before executing §10.** The original §10 was written
+> against \`main\` before the separate v0.9 motif implementation was considered.
+> It remains useful as an architecture reference, **not** the current instruction
+> to implement motif tools from scratch. As of this handoff, draft
+> [motif-development PR #49](https://github.com/mataindustries/daemonv12/pull/49)
+> supplies \`studio-001/motif/\`, \`score/2\`, 15 deterministic transforms, a
+> motif report, an event map, and a HOOK//10 listening comparison. That work is
+> **draft, not merged or released**. Inspect its actual code and tests first.
+>
+> **Evidence distinction:** The feedback below comes from the producer's
+> earlier listening reactions and creative direction in conversations. It is
+> subjective, not a completed blind benchmark or a result stored in this repo.
+> Engineering observations from §1 and musical-quality judgments must remain
+> separate.
+
+### 11.1 What the producer actually wants
+
+- **Chrome Stallion is the positive reference for identity.** The producer
+  selected Wonder's version B ahead of A and C and described it as
+  "griiiiiimey and weird" and said they loved it and wanted to push that
+  sound. They later said it sounded even better in the car than on headphones.
+  Retain the dirty, springy groove, unexpected timbral turns, character and
+  replay value; do not flatten an unusual idea into a conventional cinematic
+  build.
+- **GRIND — IMPOSSIBLE ASCENT is a second directional reference.** Its unusual
+  core idea remained recognizable as the arrangement developed. That survival
+  of the idea matters more than the number of effects or transformations.
+- **CROSSING is not an example of proven bad music.** The producer previously
+  called it impressive, warm and deep. §1's findings about verbatim theme
+  restatements and repeated pulse cells are structural measurements, **not**
+  proof that CROSSING sounds generic or should be automatically "fixed."
+  Its pulse, warmth and space may be exactly what makes it work.
+- **The negative reference is technically correct but forgettable music.**
+  Earlier DaemonV12 soundtrack passes could align to picture or achieve precise
+  hit timing yet strike the producer as generic, dull or overly predictable.
+  Audio/video synchronization, test counts, LUFS and a clean render do not
+  constitute an artistic success.
+- **Surprise must serve the song.** The aim is a memorable musical character,
+  a hook or gesture worth replaying, emotional movement, tension and release,
+  and an arrangement that can surprise without losing its pocket or identity.
+  The producer wants music with ambitious finished-record quality, not
+  "AI-sounding" filler or complexity for its own sake.
+
+### 11.2 Design constraints for Anti-Formula
+
+1. **Protect a compelling initial idea.** Identify what makes the seed
+   recognizable (rhythmic pocket, contour, gesture, timbre, or a relationship
+   between instruments). Do not normalize away the weirdness in the name of
+   polish, balance or regular phrase length.
+2. **Make recurrence mean something.** When a recognizable motif returns, it
+   may change function, context, tension or emotional meaning. Mere exact
+   repetition and unrelated rewriting are both insufficient as a universal
+   development strategy. Neither must be prohibited outright.
+3. **Create expectation, then make an intentional decision about it.**
+   Withholding, deferral, an incomplete answer, reframing or a payoff are
+   available compositional choices, not obligatory steps in a new formula.
+   Record the setup, choice and resolution in an auditable ledger.
+4. **Keep groove and space.** A strong physical pocket, contrast, restraint
+   and silence can matter more than extra notes. Displacement or fragmentation
+   must not destroy what listeners liked about the original.
+5. **Reject a universal prescription.** Avoid rules such as "always change
+   the fourth bar," "always add a drop" or "every payoff must be louder."
+   Different pieces should earn different decisions. Bounded controlled
+   rule-breaking is useful; aimless randomization is not.
+6. **Let listening override metrics.** Reports prove what changed, not whether
+   it got better. No aggregate "banger score" or stylistic score that rewards
+   complexity for its own sake. Permit a producer to reject all variants.
+
+### 11.3 Reconcile the actual code before building
+
+The intended layering is:
+
+\`\`\`text
+Composer / agent artistic intent
+           |
+           v
+Anti-Formula: motif memory + expectation/debt ledger
+              + deliberate intervention selection
+           |
+           v
+Existing v0.9 motif score/2 + existing transformations (PR #49)
+           |
+           v
+Existing score/1 rack -> existing renderer, stems and exports
+\`\`\`
+
+- **Do not write another 15 operators.** Reuse \`studio-001/motif/\` only after
+  inspecting its actual API, input/output contract, determinism guarantees and
+  HOOK//10 proof. Preserve \`score/1\` and \`score/2\` compatibility.
+- First deliverable should be a **thin, tested vertical slice**: reference a
+  named motif, recognize its statements, represent one intentionally set-up
+  expectation and a later payoff, invoke an existing transformation only when
+  needed, and emit a decision/expectation ledger explaining **why** the change
+  was selected. The first statement and approved audio remain untouched.
+- A focused **A/B/C listening comparison** is useful *after* code passes:
+  A = the unchanged original; B = existing authored v0.9 motif treatment;
+  C = one Anti-Formula intervention. Keep source motif, length, sound palette,
+  render path and listening loudness comparable. Retain all three masters for
+  blinded listening; the producer decides the winner. Don't cherry-pick
+  multiple C renders until one appears to win.
+- If the two draft designs are incompatible, **report the precise conflict
+  and a minimal reconciliation plan** rather than launching a parallel
+  architecture or modifying approved rack/engine/MCP code.
+- Keep the first proof short and CPU-only. No new instruments, paid model calls,
+  large music renders, full album production, releases or merges without
+  explicit approval.
+
+### 11.4 Owner decisions carried forward
+
+| Question from §9 | Direction for the next implementation |
+|---|---|
+| MCP/project-file composition | **Yes eventually**, because agent-driven composition uses it; **not** in this first vertical slice |
+| Harmony as a score layer | **Eventually**; optional planning metadata first, no immediate rack-schema migration |
+| Composer skill generating plan files | **Yes** as an intended interface, but implement only what is needed for the first proof |
+| Second new seed | **No for now**; first establish meaningful development on one existing seed |
+| Cross-piece memory | **Defer**; do not create a library of fixed tricks |
+| Mixed meter | **Defer**; prove musical decisions within current constraints |
+
+### 11.5 Acceptance is musical, not just technical
+
+The next Fable report must answer:
+
+- What distinctive material was protected?
+- What expectation was established, deliberately changed, and resolved?
+- Which existing v0.9 components were reused?
+- Can the ledger trace every intervention to an explicit intention?
+- Are the unmodified baseline and all frozen rack/engine outputs still intact?
+- What did the producer **actually hear** in a blind comparison?
+
+A passing test suite without a convincing listen is an engineering milestone,
+**not** a finished Anti-Formula composition breakthrough.
