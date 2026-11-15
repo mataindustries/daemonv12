@@ -6,6 +6,8 @@ with this document. It is based on `main` at
 
 **Current Fable handoff (2026-11-15):** Read [§11](#11-producer-feedback-and-fable-implementation-handoff-2026-11-15) before following §10. The v0.9 motif implementation in draft PR #49 already supplies the transform layer; §10's original main-based task is historical. The producer's listening criteria and current owner decisions are recorded in §11.
 
+**Gate 1 implemented (2026-11-15, draft):** the first vertical slice of §11.3 exists in `studio-001/anti-formula/`, above the v0.9 motif layer. It supersedes the interfaces of §3 and §4 where they differ. Contract and reconciliation notes: [ANTI_FORMULA_GATE1.md](ANTI_FORMULA_GATE1.md). Listening proof (HOOK//10 A / B1 / C): [proofs/anti-formula-gate1](../proofs/anti-formula-gate1/README.md). No human has listened yet.
+
 **Goal.** Find the smallest addition that helps DaemonV12 make music that is
 surprising, memorable and emotionally compelling, rather than only technically
 correct, while keeping every existing instrument, renderer, deterministic
@@ -817,3 +819,13 @@ The next Fable report must answer:
 
 A passing test suite without a convincing listen is an engineering milestone,
 **not** a finished Anti-Formula composition breakthrough.
+
+---
+
+## 12. Gate 1 outcome (2026-11-15)
+
+Gate 1 built the thin slice §11.3 asks for and stopped there. What it is, what it reuses from v0.9, what it
+refuses, and which parts of §§3–7 it did not build are in [ANTI_FORMULA_GATE1.md](ANTI_FORMULA_GATE1.md). The
+answers to the §11.5 questions, except the last, are in the
+[Gate 1 proof](../proofs/anti-formula-gate1/README.md). The last question, what the producer actually heard, is
+open: the three files are ready and nobody has listened.
