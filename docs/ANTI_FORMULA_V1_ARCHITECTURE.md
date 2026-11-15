@@ -687,11 +687,11 @@ There is no paid compute, no GPU and no new dependency at any step.
 ## 11. Producer feedback and Fable implementation handoff (2026-11-15)
 
 > **Read this section before executing §10.** The original §10 was written
-> against \`main\` before the separate v0.9 motif implementation was considered.
+> against `main` before the separate v0.9 motif implementation was considered.
 > It remains useful as an architecture reference, **not** the current instruction
 > to implement motif tools from scratch. As of this handoff, draft
 > [motif-development PR #49](https://github.com/mataindustries/daemonv12/pull/49)
-> supplies \`studio-001/motif/\`, \`score/2\`, 15 deterministic transforms, a
+> supplies `studio-001/motif/`, `score/2`, 15 deterministic transforms, a
 > motif report, an event map, and a HOOK//10 listening comparison. That work is
 > **draft, not merged or released**. Inspect its actual code and tests first.
 >
@@ -758,7 +758,7 @@ There is no paid compute, no GPU and no new dependency at any step.
 
 The intended layering is:
 
-\`\`\`text
+```text
 Composer / agent artistic intent
            |
            v
@@ -770,11 +770,11 @@ Existing v0.9 motif score/2 + existing transformations (PR #49)
            |
            v
 Existing score/1 rack -> existing renderer, stems and exports
-\`\`\`
+```
 
-- **Do not write another 15 operators.** Reuse \`studio-001/motif/\` only after
+- **Do not write another 15 operators.** Reuse `studio-001/motif/` only after
   inspecting its actual API, input/output contract, determinism guarantees and
-  HOOK//10 proof. Preserve \`score/1\` and \`score/2\` compatibility.
+  HOOK//10 proof. Preserve `score/1` and `score/2` compatibility.
 - First deliverable should be a **thin, tested vertical slice**: reference a
   named motif, recognize its statements, represent one intentionally set-up
   expectation and a later payoff, invoke an existing transformation only when
