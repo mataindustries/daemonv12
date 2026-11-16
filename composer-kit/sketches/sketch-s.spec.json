@@ -1,0 +1,182 @@
+{
+  "maker": "Sonnet subagent · skill + kit only",
+ "title": "Reservoir Radio",
+ "key": "E minor",
+ "groove": "ghost-train",
+ "seed": 17,
+ "world": "A radio station drowned at the bottom of a reservoir: a hollow reed whistles one tune through the water, a fuzz bass wheezes below, and a breathy voice answers from somewhere it should not be.",
+ "hook": "lead",
+ "voices": {
+  "bass": {
+   "patch": "tube-fuzz"
+  },
+  "lead": {
+   "patch": "hollow-whistle",
+   "cell": {
+    "bars": 2,
+    "notes": [
+     [
+      0,
+      0.5,
+      "B4",
+      0.95
+     ],
+     [
+      0.75,
+      0.25,
+      "G4",
+      0.5
+     ],
+     [
+      1.5,
+      1.5,
+      "A4",
+      0.8
+     ],
+     [
+      3.25,
+      0.5,
+      "E4",
+      0.7
+     ],
+     [
+      5.5,
+      0.5,
+      "D5",
+      0.85
+     ],
+     [
+      6.25,
+      0.25,
+      "B4",
+      0.55
+     ],
+     [
+      6.5,
+      1,
+      "G4",
+      0.8
+     ]
+    ],
+    "alt": [
+     [
+      0,
+      0.5,
+      "B4",
+      0.95
+     ],
+     [
+      0.75,
+      0.25,
+      "G4",
+      0.5
+     ],
+     [
+      1.5,
+      1.5,
+      "A4",
+      0.8
+     ],
+     [
+      3.25,
+      0.5,
+      "E4",
+      0.7
+     ],
+     [
+      5.5,
+      0.5,
+      "D5",
+      0.85
+     ],
+     [
+      6.25,
+      0.25,
+      "B4",
+      0.55
+     ],
+     [
+      6.5,
+      1.5,
+      "E4",
+      0.9
+     ]
+    ]
+   }
+  },
+  "answer": {
+   "patch": "wounded-cry"
+  },
+  "texture": {
+   "patch": "bearing-rain"
+  }
+ },
+ "sections": [
+  {
+   "id": "bait",
+   "bars": 4,
+   "play": [
+    "bass",
+    "drums",
+    "hat",
+    "lead:head"
+   ],
+   "heat": 0.2
+  },
+  {
+   "id": "switch",
+   "bars": 4,
+   "play": [
+    "bass",
+    "drums",
+    "hat",
+    "lead",
+    "answer"
+   ],
+   "heat": 0.35
+  },
+  {
+   "id": "hole",
+   "bars": 2,
+   "play": [
+    "kick",
+    "answer",
+    "texture"
+   ],
+   "heat": 0.3
+  },
+  {
+   "id": "give",
+   "bars": 6,
+   "play": [
+    "bass",
+    "drums",
+    "hat",
+    "lead",
+    "answer:tail"
+   ],
+   "heat": {
+    "bass": 0.4,
+    "lead": 0.6,
+    "answer": 0.3,
+    "hat": 0.3
+   }
+  }
+ ],
+ "moves": [
+  {
+   "move": "negativeSpace",
+   "section": "hole",
+   "beats": 2,
+   "at": "end",
+   "keep": [
+    "answer"
+   ]
+  },
+  {
+   "move": "riffReturn",
+   "section": "give",
+   "heat": 0.9
+  }
+ ]
+}
