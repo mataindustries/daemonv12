@@ -1,0 +1,32 @@
+{
+  "maker": "Haiku subagent · skill + kit only",
+  "title": "Glass Tide Clock",
+  "world": "A flooded chapel where the bells are underwater: the pulse is the tide's, a glass music box keeps trying to count it, and a drowned human throat cracks every time it tries to answer.",
+  "key": "E minor",
+  "groove": "drunk-clock",
+  "seed": 17,
+  "hook": "lead",
+  "voices": {
+    "bass":    { "patch": "hollow-knock" },
+    "lead":    { "patch": "music-box", "gainDb": -2, "cell": { "bars": 2,
+      "notes": [[0, 0.5, "E5", 0.9], [0.75, 0.25, "G4", 0.6], [1.5, 1.0, "B4", 0.8], [3.5, 0.5, "D5", 0.85],
+                [4.0, 0.25, "G4", 0.6], [4.5, 0.5, "B4", 0.7], [6.0, 1.5, "F5", 0.9]],
+      "alt":   [[0, 0.5, "E5", 0.9], [0.75, 0.25, "G4", 0.6], [1.5, 1.0, "B4", 0.8], [3.5, 0.5, "D5", 0.85],
+                [4.0, 0.25, "G4", 0.6], [4.5, 0.5, "B4", 0.7], [6.0, 0.5, "B4", 0.8], [6.5, 1.5, "E5", 0.9]] } },
+    "answer":  { "patch": "wounded-cry", "cell": { "bars": 2,
+      "notes": [[2.5, 0.75, "B3", 0.75, {"articulation": "cry"}], [5.0, 1.0, "E4", 0.7, {"articulation": "fall"}]],
+      "alt": [] } },
+    "texture": { "patch": "bearing-rain", "gainDb": -6 }
+  },
+  "sections": [
+    { "id": "statement", "bars": 4, "play": ["lead", "bass", "drums"], "heat": { "lead": 0.1, "bass": 0.2 } },
+    { "id": "answered",  "bars": 4, "play": ["lead", "answer", "bass", "drums"], "heat": { "lead": 0.15, "answer": 0.2, "bass": 0.3 } },
+    { "id": "floor",     "bars": 2, "play": ["bass", "texture"], "heat": { "bass": 0.45, "texture": 0.3 } },
+    { "id": "return",    "bars": 4, "play": ["lead", "bass", "drums", "answer"], "heat": { "lead": 0.15, "answer": 0.3, "bass": 0.9 } },
+    { "id": "outro",     "bars": 2, "play": ["lead", "bass"], "heat": { "lead": 0.5, "bass": 0.6 } }
+  ],
+  "moves": [
+    { "move": "stopTime", "section": "answered", "bar": -1, "hits": [0, 1.5, 3.5] },
+    { "move": "diveOut", "section": "outro", "part": "bass", "semis": 5, "beats": 1.5 }
+  ]
+}
