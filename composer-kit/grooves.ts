@@ -126,7 +126,7 @@ export const GROOVES: Groove[] = [
     perc2: { patch: 'log-tongue', octave: 3, notes: hands('..k..K..s..k..K.|.s..k..K..S..k.K', LOG, 0.3) },
     bass: [[0, 1.4, 0, 0.95, { ...A, scoop: 2 }], [1.5, 1.9, 0, 0.85], [3.5, 0.5, -2, 0.7, { slide: 0.12 }],
       [4, 1.4, 0, 0.9, A], [5.5, 0.9, 3, 0.8], [6.5, 1.3, 5, 0.85, { slide: 0.15 }]] },
-  { id: 'clay-skip', bpm: 126, swing: 0.56, bassPatch: 'hollow-knock',
+  { id: 'clay-skip', bpm: 120, swing: 0.56, bassPatch: 'hollow-knock',
     feel: 'Quick and barefoot: a clay pot whoops in the holes the kick leaves, a wooden rim chatters where a hi-hat would be, a light backbeat, and the bass knocks rather than sings.',
     where: 'Fast, small, bright-eyed. A short clean hook in a high instrument; nothing heavy belongs here until the last section.',
     kick: kick('x.....o...x.....|x..o......x...o.'), snare: snare('....o.......o...|....o.......o.-.'), hat: hat('..x.....-.x.....|..x.....-.x...x.'),

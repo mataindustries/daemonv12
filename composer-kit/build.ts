@@ -110,7 +110,7 @@ export function assemble(spec: Spec, seedOverride?: number): Draft {
       }
     }
     // a seeded turnaround in the last bar of a section that leads somewhere
-    if (s.fill !== false && si < secs.length - 1 && tokens.includes('snare')) {
+    if (s.fill !== false && si < secs.length - 1 && tokens.includes('snare') && sg.snare.length) { // hand grooves have no snare drum: no drum-kit fill
       const b = end - 4, kind = Math.floor(rand() * 3), kickP = part(d, 'kick'), snareP = part(d, 'snare'), hatP = part(d, 'hat');
       if (kind === 0) { cut(snareP, b + 3.2, end); cut(hatP, b + 3, end); snareP.notes.push([b + 3.25, 0.25, 60, 0.4, { articulation: 'ghost' }], [b + 3.5, 0.25, 60, 0.55, { articulation: 'ghost' }], [b + 3.75, 0.25, 60, 0.75, { articulation: 'snare' }]); }
       else if (kind === 1) { cut(kickP, b + 3.2, end); cut(hatP, b + 3.5, end); kickP.notes.push([b + 3.5, 0.25, bassT, 0.8], [b + 3.75, 0.25, bassT, 0.95]); }
