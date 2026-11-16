@@ -20,7 +20,7 @@ const kickPitch = (d: Draft) => tonicFrom(d, 28);
 /** The hook cell tiled over [from, to). */
 export function tileHook(d: Draft, from: number, to: number): N[] {
   const L = d.hook.bars * 4, out: N[] = [];
-  for (let b = from; b < to - 1e-6; b += L) for (const n of d.hook.notes) if (b + n[0] < to - 1e-6) out.push([r3(b + n[0]), n[1], n[2], n[3], n[4] ? { ...n[4] } : undefined]);
+  for (let b = from, i = 0; b < to - 1e-6; b += L, i++) for (const n of i % 2 === 1 && d.hook.alt ? d.hook.alt : d.hook.notes) if (b + n[0] < to - 1e-6) out.push([r3(b + n[0]), n[1], n[2], n[3], n[4] ? { ...n[4] } : undefined]);
   return out;
 }
 /** A line re-voiced for another instrument: no ghosts, no foreign articulations, in range; sung legato for voices. */
@@ -108,7 +108,7 @@ export const MOVES: Move[] = [
     cheap: 'As an octave doubling with the owner still playing, or handed to a sound of the same family (tine -> marimba is a costume change, not a hand-off).',
     apply(d, o) {
       const s = sec(d, o), p = owner(d), to = part(d, str(o.to, ''));
-      const src = notesIn(p, s.start, s.end).length ? notesIn(p, s.start, s.end) : tileHook(d, s.start, s.end);
+      const whole = tileHook(d, s.start, s.end), mine = notesIn(p, s.start, s.end), src = mine.length >= whole.length ? mine : whole;
       cut(to, s.start, s.end); to.notes.push(...revoice(src, to, s.end));
       setHeat(to, s.start, s.end, Math.max(0.3, heatAt(to, s.start)));
       if (o.keep === true) return;
@@ -146,13 +146,14 @@ export const MOVES: Move[] = [
       });
     } },
   { id: 'stagger', options: 'section, order? ([part ids, first enters first]), every? (1 bar)',
-    does: 'Parts enter one at a time, `every` bars apart. Default order is strangest first: textures and leads, then bass, hat, snare, and the kick last.',
+    does: 'Parts enter one after another (at most `every` bars apart, always all in by the last bar). Default order is strangest first: textures and leads, then bass, hat, snare, and the kick last.',
     works: 'For openings: the first sound heard defines the world, so lead with the one nobody expects and let the kick be the arrival.',
     cheap: 'In DAW order (kick, hat, bass, lead): everybody has heard that build. Also cheap if nothing interesting is alone at the start.',
     apply(d, o) {
       const s = sec(d, o), rank = (p: DPart) => (p.id === 'kick' ? 5 : p.id === 'snare' ? 4 : p.id === 'hat' || p.id === 'perc' ? 3 : p.id === 'bass' ? 2 : p.id === d.hook.owner ? 1 : 0);
       const playing = d.parts.filter(p => notesIn(p, s.start, s.end).length).sort((a, b) => rank(a) - rank(b)).map(p => p.id);
-      list(o.order, playing).forEach((id, i) => { if (i > 0) cut(part(d, id), s.start, Math.min(s.end, s.start + i * 4 * num(o.every, 1))); });
+      const order = list(o.order, playing), bars = (s.end - s.start) / 4, step = Math.min(num(o.every, 1), (bars - 1) / Math.max(1, order.length - 1));
+      order.forEach((id, i) => { const bar = Math.floor(i * step + 1e-6); if (bar > 0) cut(part(d, id), s.start, s.start + bar * 4); });
     } },
   { id: 'liftEnding', options: 'section, bars? (2), lift? ([5, 7] semitones: iv then V)',
     does: 'The last bars of the section climb: bass and hook are transposed up a fourth, then a fifth, so the phrase ends leaning forward.',

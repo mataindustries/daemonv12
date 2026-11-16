@@ -36,6 +36,9 @@ export const PATCHES: Patch[] = [
     gainDb: 0, room: 0.08, humanize: { timingMs: 4, velocity: 0.08 } },
 
   // ---------------------------------------------------------------- Impossible Voice
+  { id: 'warm-throat', instrument: 'impossible-voice', character: 'human',
+    where: 'A plain human voice, close and unpolished. The one that sings the hook whole after a machine taught it; short, mostly stepwise lines.',
+    macro: [0.02, 0.3], controls: { breath: [0.35, 0.25], vib: [0.8, 1.1], glass: [0.05, 0.2] }, params: { vowel: 'oh', to: 'ah' }, gainDb: -4, pan: -0.1, room: 0.18 },
   { id: 'wounded-cry', instrument: 'impossible-voice', character: 'human',
     where: 'Breathy voice that breaks upward at every onset. One- or two-note answers to a riff; never a whole melody.',
     macro: [0.08, 0.4], controls: { breath: [0.5, 0.35], vib: [1.2, 1.5], glass: [0.1, 0.3] }, setup: { vibRate: 5.8, vibCents: 38 },
@@ -75,9 +78,6 @@ export const PATCHES: Patch[] = [
   { id: 'laser-spring', instrument: 'mechanical-orchestra/spring', character: 'broken',
     where: 'Coil spring that chirps downward like a toy laser. Pickups into a section and single rude answers; a spice, not a part.',
     macro: [0.7, 1], controls: { bend: [0.14, 0.3], decay: [0.5, 1.4] }, art: 'twang', hotArt: 'laser', gainDb: -9, pan: -0.25, room: 0.2 },
-  { id: 'steel-thumb', instrument: 'mechanical-orchestra/spring', character: 'rubbery',
-    where: 'Short plucked steel string, almost a thumb bass. Doubles a riff an octave up or carries a second, higher riff against the bass.',
-    macro: [0, 0.2], controls: { bend: [0.03, 0.07], decay: [0.45, 0.8] }, gainDb: -6, pan: 0.15, room: 0.1, humanize: { timingMs: 3, velocity: 0.07 } },
   { id: 'rosin-drone', instrument: 'mechanical-orchestra/bow', character: 'dirty',
     where: 'Bowed bar pressed too hard: stick-slip chatter and a subharmonic below the note. Drones under breaks, a swell into the return.',
     macro: [0.6, 0.95], controls: { sub: [0.5, 1], chatter: [0.2, 0.55], attack: [0.7, 0.12] }, gainDb: -13, room: 0.25 },

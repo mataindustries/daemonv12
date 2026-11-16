@@ -31,10 +31,10 @@ export const FORMS: Form[] = [
     when: 'A hook owned by a machine (lead) with a human voice as `answer`. The ear learns the tune from machinery, recognises it when a person sings it, then hears both argue.',
     make: (h, has) => ({
       sections: [
-        { id: 'signal', bars: 4, heat: { [h]: 0.75, hat: 0.5 }, play: play(has, h, 'texture', 'hat'), fill: false, note: 'the hook alone, as machinery; no bass, no drums' },
-        { id: 'body', bars: 6, heat: 0.3, play: play(has, 'bass', 'drums', 'hat', 'perc', `${h}:head`, 'answer'), note: 'groove enters; a voice takes the hook whole' },
-        { id: 'void', bars: 2, heat: 0.15, play: play(has, 'pad', 'texture', `${h}:once`), fill: false, note: 'almost nothing' },
-        { id: 'collide', bars: 6, heat: 0.8, play: play(has, 'bass', 'drums', 'hat', 'perc', h, 'answer', 'texture'), note: 'machine and voice split the hook; hot' },
+        { id: 'signal', bars: 4, heat: { [h]: 0.15, hat: 0.5 }, play: play(has, h, 'texture', 'hat'), fill: false, note: 'the hook alone, cold machinery; no bass, no drums' },
+        { id: 'body', bars: 6, heat: 0.22, play: play(has, 'bass', 'drums', 'hat', `${h}:head`, 'answer'), note: 'groove enters; a voice takes the hook whole' },
+        { id: 'void', bars: 2, heat: 0.15, play: play(has, 'pad', 'texture'), fill: false, note: 'almost nothing; no hook' },
+        { id: 'collide', bars: 6, heat: 0.85, play: play(has, 'bass', 'drums', 'hat', 'perc', h, 'answer', 'texture'), note: 'machine and voice split the hook; hot' },
       ],
       moves: [...(has('answer') ? [{ move: 'handOff', section: 'body', to: 'answer', keep: true }, { move: 'callAnswer', section: 'collide', answer: 'answer' }] : []), { move: 'diveOut', section: 'collide' }],
     }) },

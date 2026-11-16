@@ -67,7 +67,7 @@ export function assemble(spec: Spec, seedOverride?: number): Draft {
     sections.push({ id: s.id, bars: s.bars, start: at, end: at + s.bars * 4, note: s.note ?? '' }); at += s.bars * 4;
   }
   const d: Draft = { title: spec.title, bpm: spec.bpm ?? g.bpm, key: spec.key, tonic, minor, swing: spec.swing ?? g.swing, seed, tailSeconds: spec.tailSeconds ?? 2,
-    room: spec.room ?? { rt60: 1.6, size: 1, damp: 6000, predelayMs: 12, lowCut: 250 }, description: spec.world ?? '', sections, parts, hook: { owner, bars: hookCell.bars, notes: hookCell.notes }, log: [] };
+    room: spec.room ?? { rt60: 1.6, size: 1, damp: 6000, predelayMs: 12, lowCut: 250 }, description: spec.world ?? '', sections, parts, hook: { owner, bars: hookCell.bars, notes: hookCell.notes, ...('alt' in hookCell && hookCell.alt ? { alt: hookCell.alt } : {}) }, log: [] };
 
   secs.forEach((s, si) => {
     const { start, end } = sections[si]!, sg = s.groove === 'B' ? gB : s.groove ? groove(s.groove) : g, bars = s.bars;
@@ -136,7 +136,7 @@ export function critique(d: Draft): { table: string[]; warnings: string[] } {
   const first = withHook[0], last = withHook[withHook.length - 1];
   if (first && last && first !== last && last.ownHeat - first.ownHeat < 0.25) w.push(`the last hook section (${last.s.id}) is not clearly hotter than the first (${first.s.id}): a repeat, not a return. Raise its heat or use riffReturn.`);
   if (last && last !== rows[rows.length - 1] && rows[rows.length - 1]!.s.bars > 2) w.push('the track ends on a section without the hook: is that an ending or a fade?');
-  if (new Set(rows.filter(r => r.kicks > 0).map(r => r.kicks.toFixed(1))).size < 2) w.push('the kick pattern never changes density: consider floorDrop, a second groove, or a section without drums.');
+  if (new Set(rows.map(r => r.kicks.toFixed(1))).size < 2) w.push('the kick pattern never changes density: consider floorDrop, a second groove, or a section without drums.');
   if (d.log.length === 0) w.push('no moves: the sections differ only by layers. Pick one move with a reason.');
   if (d.log.length > 4) w.push(`${d.log.length} moves: each one is weaker for the company. Keep the one to three you can justify.`);
   if (total < 28 || total > 65) w.push(`length ${Math.round(total)} s: a sketch is about 40 s.`);

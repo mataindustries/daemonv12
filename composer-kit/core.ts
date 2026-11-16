@@ -51,7 +51,7 @@ export interface Draft {
   tailSeconds: number; room: Record<string, number>; description: string;
   sections: DSection[]; parts: DPart[];
   /** the hook: owner part id and its cell (beats relative to the cell start) */
-  hook: { owner: string; bars: number; notes: N[] };
+  hook: { owner: string; bars: number; notes: N[]; alt?: N[] };
   /** what was done, for the score's `kit` block and the critique */
   log: string[];
 }

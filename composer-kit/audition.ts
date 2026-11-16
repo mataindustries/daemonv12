@@ -5,6 +5,7 @@
  * Patch auditions play the same phrase twice: bar 1 cold (heat 0.1), bar 2 hot (heat 0.95).
  */
 import { writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { PATCHES, patch } from './palette.ts';
 import { finalize, type Draft, type DPart, type N, type Patch } from './core.ts';
 import { renderMp3 } from './render.ts';
@@ -53,4 +54,4 @@ async function main() {
   } else { console.error('usage: node composer-kit/audition.ts palette|grooves [id ...]'); process.exitCode = 2; return; }
   if (!ids.length) writeFileSync(`${HERE}auditions/${what}.json`, JSON.stringify(rows, null, 2) + '\n');
 }
-main().catch(e => { console.error((e as Error).message); process.exitCode = 1; });
+if (process.argv[1] && resolve(process.argv[1]) === resolve(new URL(import.meta.url).pathname)) main().catch(e => { console.error((e as Error).message); process.exitCode = 1; });
