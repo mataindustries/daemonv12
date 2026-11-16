@@ -75,10 +75,11 @@ test('every lab instrument is deterministic, finite and calibrated to the rack l
     assert.ok(db(rms(a![0]!)) > -45, `${i.id}: silent`);
   }
   // the rack's contract: a reference note at macro 0, velocity 0.8 is -20 dBFS RMS (expression 0.7 is neutral)
-  const [[[skin]], [[reed]]] = await Promise.all([
+  const [skinParts, reedParts] = await Promise.all([
     render([{ id: 'p', instrument: 'organic-percussion/skin', setup: { spread: 0 }, notes: [[0, 1, 55, 0.8, { articulation: 'open', pos: 0.5 }]] }]),
     render([{ id: 'p', instrument: 'breath-reed', controls: { vib: 0, drift: 0 }, notes: [[0, 3, 57, 0.8]] }]),
   ]);
+  const skin = skinParts[0]![0], reed = reedParts[0]![0];
   assert.ok(Math.abs(db(rms(skin!, 0, Math.round(0.3 * RATE))) + 20) < 1.5, `skin reference ${db(rms(skin!, 0, Math.round(0.3 * RATE))).toFixed(1)} dBFS`);
   assert.ok(Math.abs(db(rms(reed!, Math.round(0.3 * RATE), Math.round(0.9 * RATE))) + 20) < 1.5, `reed reference ${db(rms(reed!, Math.round(0.3 * RATE), Math.round(0.9 * RATE))).toFixed(1)} dBFS`);
 });
