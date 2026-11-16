@@ -1,4 +1,18 @@
-# DaemonV12 Composer · 0.4.0
+# DaemonV12 Composer · 0.5.0
+
+Composer 0.5 rewrites the skill for small models (Sonnet, Haiku). The default path is now the
+**Composer Kit** in the DaemonV12 checkout ([`composer-kit/KIT.md`](../../composer-kit/KIT.md)):
+pick a world, write a hook owned by one instrument, build four to six contrasting sections,
+use one to three form moves with a reason, check the score against a taste list, render once.
+The skill also states *why* Chrome Stallion's choices work, as reusable principles.
+
+The previous workflow (three serious versions, evidence, risk pass, lock) is no longer in the
+default path; it lives unchanged in
+[engine production workflow](skills/daemonv12-composer/references/engine-production-workflow.md)
+for release-grade engine productions. Behavioral improvement has **not** been established by
+agent evaluations.
+
+## Historical v0.4.0 overview
 
 Composer 0.4 adds a short hook-selection stage before full composition, distilled
 from the V12 Signature Composer Playbook. Compare 3–4 genuinely different ideas,
