@@ -62,6 +62,8 @@ falls on a whole video frame at 30 fps (`validate` passes with no warnings); kee
 
 ## 2 · Seventeen Sparks — Haiku
 
+Built and rendered: `album/haiku/seventeen-sparks.spec.json` → `album/haiku/render/`. Listening page: `node album/haiku/listen.ts OUT.html`. The Sandbox picture is not built (`enm-studio` is not in this repository).
+
 - **Mood / story beat:** quick, bright, delighted. The smallest model says it in seventeen notes and is
   already gone. Epic the way a spark is epic. The shortest track on the album, on purpose.
 - **Tempo / key:** 120 BPM, E minor. *The ask:* E5 G5 B5 A5.

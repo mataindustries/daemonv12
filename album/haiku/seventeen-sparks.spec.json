@@ -1,0 +1,60 @@
+{
+  "title": "Seventeen Sparks",
+  "world": "A toy workshop after closing: a music box tries to say a whole haiku in seventeen notes, a spring laser answers it in the silence it leaves, and the clay pot and the log keep time until it is gone.",
+  "key": "E minor",
+  "groove": "clay-skip",
+  "seed": 17,
+  "form": "tease",
+  "hook": "lead",
+  "voices": {
+    "bass": {},
+    "lead": {
+      "patch": "music-box",
+      "gainDb": -4,
+      "cell": {
+        "bars": 4,
+        "notes": [
+          [0, 0.5, "E5", 0.9],
+          [0.5, 0.25, "G5", 0.6],
+          [1.5, 0.5, "B5", 0.85],
+          [2.25, 0.25, "A5", 0.65],
+          [3.5, 0.25, "D5", 0.4],
+          [4, 0.25, "E5", 0.75],
+          [4.25, 0.25, "G5", 0.6],
+          [4.5, 0.25, "A5", 0.7],
+          [4.75, 0.25, "G5", 0.6],
+          [5.5, 0.25, "D5", 0.55],
+          [6, 0.25, "A5", 0.7],
+          [6.5, 0.5, "G5", 0.7],
+          [8, 0.5, "A5", 0.85],
+          [8.75, 0.25, "D5", 0.55],
+          [9.5, 0.25, "B5", 0.95, { "articulation": "buzz" }],
+          [9.75, 0.25, "E5", 0.6],
+          [10.5, 1.5, "A5", 0.85]
+        ]
+      }
+    },
+    "answer": {
+      "patch": "laser-spring",
+      "cell": {
+        "bars": 4,
+        "notes": [
+          [12, 1.5, "B4", 0.8, { "articulation": "laser" }],
+          [14, 1.5, "D4", 0.7, { "articulation": "damped" }]
+        ]
+      }
+    },
+    "texture": { "patch": "bearing-rain" }
+  },
+  "sections": [
+    { "id": "bait", "bars": 4, "heat": 0.2, "play": ["bass", "drums", "hat", "lead:head"], "note": "half a hook: the first two lines, cold" },
+    { "id": "switch", "bars": 4, "heat": 0.4, "play": ["bass", "drums", "hat", "perc", "lead:head", "answer"], "note": "still half; the laser answers in the gap" },
+    { "id": "hole", "bars": 2, "heat": 0.3, "play": ["bass", "drums"], "fill": false, "note": "stop-time, then nothing: the last line is withheld" },
+    { "id": "give", "bars": 6, "heat": { "lead": 0.6, "bass": 0.4, "kick": 0.4, "snare": 0.4, "hat": 0.4, "perc": 0.4, "perc2": 0.4, "answer": 0.4, "texture": 0.4 }, "play": ["bass", "drums", "hat", "perc", "lead", "answer", "texture"], "note": "the whole poem: the last line arrives, the owner heats, the room stays put" }
+  ],
+  "moves": [
+    { "move": "stopTime", "section": "hole", "bar": 0 },
+    { "move": "negativeSpace", "section": "hole", "beats": 3, "keep": [] },
+    { "move": "riffReturn", "section": "give", "heat": 0.9 }
+  ]
+}
