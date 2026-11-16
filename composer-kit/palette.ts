@@ -81,6 +81,31 @@ export const PATCHES: Patch[] = [
   { id: 'rosin-drone', instrument: 'mechanical-orchestra/bow', character: 'dirty',
     where: 'Bowed bar pressed too hard: stick-slip chatter and a subharmonic below the note. Drones under breaks, a swell into the return.',
     macro: [0.6, 0.95], controls: { sub: [0.5, 1], chatter: [0.2, 0.55], attack: [0.7, 0.12] }, gainDb: -13, room: 0.25 },
+  // ---------------------------------------------------------------- Breath Reed (Timbre Lab): whisper -> feral
+  { id: 'feral-reed', instrument: 'breath-reed', character: 'broken',
+    where: 'The whole whisper-to-feral journey in one player: cold it is air that barely finds a note, warm it sings, hot it growls, barks and splits. Give it the hook and move its heat; timbreMorph 0.05 -> 1 on it is the kit\'s biggest single transformation.',
+    macro: [0, 1], controls: { breath: [0.48, 1.15], air: [0.8, 0.2], overblow: [0, 0.3] }, coldArt: 'breathy', hotArt: 'growl', legato: true, slide: 0.1,
+    gainDb: -6, pan: 0.05, room: 0.22 },
+  { id: 'smoke-reed', instrument: 'breath-reed', character: 'human',
+    where: 'Subtone reed, close to the ear: more air than tone, late lip vibrato, notes that touch are slurred under one breath. Quiet hooks, intros, the human answer to a machine; write phrases with rests so it can breathe.',
+    macro: [0.04, 0.38], controls: { breath: [0.7, 0.95], air: [0.7, 0.5], vib: [0.9, 1.3], bite: [0.12, 0.34] }, coldArt: 'breathy', legato: true, slide: 0.12,
+    gainDb: -5, pan: -0.1, room: 0.25 },
+  { id: 'split-horn', instrument: 'breath-reed', character: 'broken',
+    where: 'Reed pushed past its register break: every note barks, buzzes and cracks toward its upper octave. Short rude answers, stabs in a hole, one long overblown note before a return; never a whole melody.',
+    macro: [0.6, 1], controls: { overblow: [0.3, 0.8], bore: [0.6, 0.95], growl: [0.25, 0.8], flutter: [0, 0.35] }, art: 'accent',
+    gainDb: -8, pan: 0.2, room: 0.18 },
+
+  // ---------------------------------------------------------------- Organic Percussion (Timbre Lab): tight -> cavernous
+  { id: 'talking-skin', instrument: 'organic-percussion/skin', character: 'human',
+    where: 'Hands on a skin drum, one drum per written pitch. Cold it is tight and dry; hot the shell booms an octave under and beads rattle. Write the hand per note: bass (palm boom), open, slap (crack), tap (ghost), mute, roll, rub (a moan).',
+    macro: [0.1, 0.85], controls: { buzz: [0, 0.45] }, art: 'open', setup: { spread: 0.6 }, gainDb: -6, room: 0.14, humanize: { timingMs: 5, velocity: 0.1 } },
+  { id: 'log-tongue', instrument: 'organic-percussion/log', character: 'mechanical',
+    where: 'Wooden tongue over a hollow box: every note is a slow doublet that wobbles as it dies. Dry knocking ostinatos, a bell line against the drums, hooks that should sound carved: strike, knuckle (bright tok), rim (click), scrape.',
+    macro: [0.1, 0.8], art: 'strike', setup: { spread: 0.5 }, gainDb: -8, pan: 0.25, room: 0.12, humanize: { timingMs: 3, velocity: 0.08 } },
+  { id: 'clay-whoop', instrument: 'organic-percussion/pot', character: 'rubbery',
+    where: 'Clay pot with a side hole: the hand makes the pitch whoop up (whoop), sag (drop) or thud (palm); fingertips tick the wall (tap). A drum that talks back: answers in the holes of a groove, a hook of three notes. Write it G2–G3; lower than that a phone cannot hear it.',
+    macro: [0.15, 0.8], controls: { air: [0.4, 0.75] }, art: 'whoop', gainDb: -5, pan: -0.2, room: 0.16, humanize: { timingMs: 4, velocity: 0.08 } },
+
   // ---------------------------------------------------------------- utility (rhythm and air)
   { id: 'clock-hat', instrument: 'mechanical-orchestra/clock', character: 'utility',
     where: 'Escapement tick/tock as the hi-hat; hot, the accents sprout tiny springs. The kit\'s default hat.',

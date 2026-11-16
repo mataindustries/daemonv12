@@ -7,7 +7,8 @@ import { PATCHES } from '../composer-kit/palette.ts';
 import { GROOVES } from '../composer-kit/grooves.ts';
 import { FORMS } from '../composer-kit/forms.ts';
 import { MOVES } from '../composer-kit/moves.ts';
-import { normalizeScore } from '../studio-001/rack/score.ts';
+// The kit registers the Timbre Lab instruments on import; the rack is loaded after it so both see the same registry.
+const { normalizeScore } = await import('../studio-001/rack/score.ts');
 
 const hook = { bars: 2, notes: [[0, 0.5, 'G4', 0.9], [0.75, 0.25, 'D4', 0.6], [1.5, 0.5, 'F4', 0.85], [3, 0.75, 'Bb3', 0.8], [4.5, 0.5, 'C4', 0.75], [6, 1, 'G3', 0.9]] } as Spec['voices'][string]['cell'];
 const spec = (over: Partial<Spec> = {}): Spec => ({
@@ -84,4 +85,35 @@ test('composer kit: the critique flags a track where nothing changes, and mistak
   assert.throws(() => buildScore(spec({ voices: { bass: { patch: 'supersaw' } }, hook: 'bass' })), /unknown patch/);
   assert.throws(() => buildScore(spec({ sections: plainSections, moves: [{ move: 'riser', section: 'b' }] })), /unknown move/);
   assert.throws(() => buildScore(spec({ sections: [{ id: 'a', bars: 4, play: ['bass', 'vocals'] }] })), /not a voice/);
+});
+
+test('composer kit: Timbre Lab patches, hand grooves and the roll are in the kit', async () => {
+  const { sidesOf } = await import('../composer-kit/build.ts');
+  for (const id of ['feral-reed', 'smoke-reed', 'split-horn', 'talking-skin', 'log-tongue', 'clay-whoop']) assert.ok(PATCHES.some(p => p.id === id), id);
+  // whisper to feral: one patch covers the whole macro, breathy when cold, growling when hot, slurred when notes touch
+  const reed = (heat: number) => finalize(assemble(spec({ voices: { bass: {}, lead: { patch: 'feral-reed', cell: hook! } }, sections: [{ id: 'a', bars: 2, heat, play: ['lead'] }] }))).parts.find(p => p.id === 'lead')!;
+  const cold = reed(0.05), hot = reed(0.95);
+  assert.ok((cold.macro as number) < 0.1 && (hot.macro as number) > 0.9);
+  assert.equal((cold.notes[0] as unknown[])[4] && ((cold.notes[0] as unknown[])[4] as { articulation: string }).articulation, 'breathy');
+  assert.equal(((hot.notes[0] as unknown[])[4] as { articulation: string }).articulation, 'growl');
+  // hand grooves bring two percussion layers on the perc token, with hand articulations
+  const hands = GROOVES.filter(g => g.perc2);
+  assert.ok(hands.length >= 2);
+  for (const g of hands) {
+    const sc = grooveAudition(g.id), ids = sc.parts.map(p => p.id);
+    assert.ok(ids.includes('perc') && ids.includes('perc2'), g.id);
+    assert.ok(sc.parts.find(p => p.id === 'perc')!.instrument.startsWith('organic-percussion/'), g.id);
+  }
+  // rollIn: the last bar is one drum alone, getting louder
+  const d = assemble(spec({ groove: 'twelve-hands', sections: plainSections.map(s => ({ ...s, play: [...s.play, 'perc'] })), moves: [{ move: 'rollIn', section: 'b', beats: 4, step: 1 / 3 }] })), b = section(d, 'b');
+  for (const p of d.parts) assert.equal(notesIn(p, b.end - 4, b.end).length, p.id === 'perc' ? 12 : 0, p.id);
+  const roll = notesIn(part(d, 'perc'), b.end - 4, b.end);
+  assert.ok(roll[11]![3] > roll[0]![3] + 0.5);
+  // two-sided specs: one complete spec per side, own tempo, shared key and voices
+  const two = sidesOf(spec({ sides: [{ groove: 'twelve-hands' }, { groove: 'half-stomp', voices: { bass: { patch: 'chrome-grinder' } } }] }));
+  assert.equal(two.length, 2);
+  const [a, c] = two.map(s => normalizeScore(buildScore(s)));
+  assert.deepEqual([a!.bpm, c!.bpm], [96, 144]);
+  assert.equal(two[1]!.voices.lead!.patch, 'dead-marimba');
+  assert.equal(sidesOf(spec()).length, 1);
 });

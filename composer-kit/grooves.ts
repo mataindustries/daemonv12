@@ -9,13 +9,14 @@ import type { Opts } from './core.ts';
 
 export type Hit = [number, number, string?];
 export type Tone = [number, number, number, number, Opts?];
+export interface PercLine { patch: string; octave: number; notes: Tone[] }
 export interface Groove {
   id: string; feel: string; where: string; bpm: number; swing: number;
   kick: Hit[]; snare: Hit[];
   /** hat: [beat, beats, semitones above the tonic (octave 6), velocity, {articulation}] for the clock */
   hat: Tone[];
-  /** optional pitched percussion on another patch */
-  perc?: { patch: string; octave: number; notes: Tone[] };
+  /** optional pitched percussion on another patch (part `perc`), and a second layer (part `perc2`); the `perc` token plays both */
+  perc?: PercLine; perc2?: PercLine;
   bass: Tone[]; bassPatch: string;
 }
 
@@ -32,6 +33,11 @@ const kick = (p: string) => grid(p, KICK, (b, v) => [r(b), v[1]]) as Hit[];
 const snare = (p: string) => grid(p, SNARE, (b, v) => [r(b), v[1], v[2]]) as Hit[];
 const hat = (p: string) => grid(p, HAT, (b, v) => [r(b), 0.1, v[0], v[1], { articulation: v[2] }]) as Tone[];
 const late = (hits: Hit[], by: number) => hits.map(h => [r(h[0] + by), h[1], h[2]] as Hit);
+/** Hand percussion written as a grid: each character is [semitones above the low drum, velocity, articulation]. */
+const hands = (p: string, map: Record<string, [number, number, string]>, beats = 0.4) => grid(p, map, (b, v) => [r(b), beats, v[0], v[1], { articulation: v[2] }]) as Tone[];
+const SKIN: Record<string, [number, number, string]> = { B: [0, 0.95, 'bass'], b: [0, 0.75, 'bass'], o: [7, 0.72, 'open'], l: [5, 0.7, 'open'], h: [12, 0.75, 'open'], S: [12, 0.92, 'slap'], s: [7, 0.8, 'slap'], t: [7, 0.4, 'tap'], '-': [12, 0.32, 'tap'], m: [7, 0.55, 'mute'] };
+const LOG: Record<string, [number, number, string]> = { K: [7, 0.7, 'knuckle'], k: [0, 0.6, 'knuckle'], s: [3, 0.7, 'strike'], S: [10, 0.75, 'strike'], r: [0, 0.45, 'rim'], '-': [7, 0.3, 'rim'] };
+const POT: Record<string, [number, number, string]> = { W: [0, 0.85, 'whoop'], w: [7, 0.65, 'whoop'], D: [5, 0.8, 'drop'], d: [3, 0.75, 'drop'], P: [0, 0.8, 'palm'], t: [7, 0.45, 'tap'], '-': [12, 0.35, 'tap'] };
 const A: Opts = { articulation: 'accent' }, GH: Opts = { articulation: 'ghost' }, ST: Opts = { articulation: 'staccato' };
 
 export const GROOVES: Groove[] = [
@@ -111,6 +117,31 @@ export const GROOVES: Groove[] = [
     kick: kick('x....ox.....|x.....x.o..o'), snare: snare('...x.....x.-|...x.-...x..'), hat: hat('X-xX-xX-xX-x|X-xX-xX-xX-x'),
     bass: [[0, 0.667, 0, 0.9, { ...A, scoop: 2 }], [0.667, 0.333, 0, 0.5, GH], [1.667, 0.333, -2, 0.7], [2, 1, 0, 0.85], [3.333, 0.333, 3, 0.7], [3.667, 0.333, 5, 0.75],
       [4, 1, 7, 0.9, A], [5.667, 0.333, 5, 0.7], [6, 0.667, 3, 0.85], [6.667, 0.333, 0, 0.6], [7, 0.667, -2, 0.8, { slide: 0.1 }], [7.667, 0.333, -2, 0.5, GH]] },
+  // ---------------------------------------------------------------- hand grooves (Timbre Lab organic percussion)
+  { id: 'hand-procession', bpm: 88, swing: 0.54, bassPatch: 'sub-whale',
+    feel: 'A procession on hands: palm booms on a slow 3+3+2, one cracking slap on three, finger taps talking in between, and a log knocking a three-sixteenth wheel across it. No snare drum at all.',
+    where: 'Ceremonial, wide, heavy without machines. Long notes and slow hooks sit on it like banners; raise the heat and the drums turn cavernous.',
+    kick: kick('x.....o.........|x.....o...o.....'), snare: [], hat: hat('..x...x...x...x.|..x...x...x..-x.'),
+    perc: { patch: 'talking-skin', octave: 2, notes: hands('B..tt.b.S..to.l.|B..t..b.S.otSol.', SKIN) },
+    perc2: { patch: 'log-tongue', octave: 3, notes: hands('..k..K..s..k..K.|.s..k..K..S..k.K', LOG, 0.3) },
+    bass: [[0, 1.4, 0, 0.95, { ...A, scoop: 2 }], [1.5, 1.9, 0, 0.85], [3.5, 0.5, -2, 0.7, { slide: 0.12 }],
+      [4, 1.4, 0, 0.9, A], [5.5, 0.9, 3, 0.8], [6.5, 1.3, 5, 0.85, { slide: 0.15 }]] },
+  { id: 'clay-skip', bpm: 126, swing: 0.56, bassPatch: 'hollow-knock',
+    feel: 'Quick and barefoot: a clay pot whoops in the holes the kick leaves, a wooden rim chatters where a hi-hat would be, a light backbeat, and the bass knocks rather than sings.',
+    where: 'Fast, small, bright-eyed. A short clean hook in a high instrument; nothing heavy belongs here until the last section.',
+    kick: kick('x.....o...x.....|x..o......x...o.'), snare: snare('....o.......o...|....o.......o.-.'), hat: hat('..x.....-.x.....|..x.....-.x...x.'),
+    perc: { patch: 'clay-whoop', octave: 3, notes: hands('...W..t..t..D..w|...W..t.t..-.d..', POT) },
+    perc2: { patch: 'log-tongue', octave: 4, notes: hands('r.rK.r.rr.K.r.rK|r.rK.r.rr.K.rKrK', LOG, 0.2) },
+    bass: [[0.75, 0.5, 0, 0.85], [1.5, 0.25, 0, 0.5, GH], [2.5, 0.5, 3, 0.8], [3.5, 0.5, -2, 0.75],
+      [4, 0.5, 0, 0.9, A], [4.75, 0.5, 0, 0.8], [5.75, 0.5, 7, 0.8, ST], [6.5, 0.75, 5, 0.85, A], [7.5, 0.5, 3, 0.75, { slide: 0.06 }]] },
+  { id: 'twelve-hands', bpm: 96, swing: 0.5, bassPatch: 'sub-whale',
+    feel: 'Twelve to the bar on hands: a wooden bell line (2+2+1+2+2+2+1) that never agrees with the palm, a slap on four, and the low drum answering itself late. It sways in three and walks in four at once.',
+    where: 'Night, fire, patience. The bed for a breath or a low voice; its triplet is the hinge for a switch into a straight groove at 144 (three of these = two of those).',
+    kick: kick('x.......o...|x.....x..o..'), snare: [], hat: [],
+    perc: { patch: 'talking-skin', octave: 2, notes: hands('B.to.tb.oSto|B.to.tB.oS.l', SKIN) },
+    perc2: { patch: 'log-tongue', octave: 4, notes: hands('K.r.rK.r.r.K|K.r.rK.r.r.r', LOG, 0.2) },
+    bass: [[0, 2.3, 0, 0.9, { ...A, scoop: 2 }], [2.667, 1, -2, 0.75, { slide: 0.15 }],
+      [4, 1.667, 0, 0.9, A], [6, 0.9, 3, 0.8], [7, 0.9, 5, 0.8, { slide: 0.12 }]] },
 ];
 export function groove(id: string): Groove {
   const g = GROOVES.find(x => x.id === id);

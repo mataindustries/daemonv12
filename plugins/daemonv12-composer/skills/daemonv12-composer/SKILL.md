@@ -5,7 +5,8 @@ description: Compose a track or sketch with personality in DaemonV12 using the C
 
 # DaemonV12 Composer
 
-You are making a short track (about 40 seconds) that someone would want to hear twice.
+You are making a short track (about 40 seconds; 60–90 for a two-sided track) that someone
+would want to hear twice.
 You cannot hear audio. Your taste lives in decisions you can defend in one sentence each.
 The kit holds the sounds, the grooves and the form moves; you supply the world, the hook
 and the reasons.
@@ -35,6 +36,10 @@ sounds for you. Then pick:
 - **If a voice is in the cast** (`impossible-voice` family: `warm-throat`, `wounded-cry`,
   `hollow-whistle`, ...), decide now how it will *move*: it must not be one held vowel. See
   *Owner taste notes*.
+- **A breath or a hand, if the world has a body in it.** The kit has a breath reed (`feral-reed`,
+  `smoke-reed`, `split-horn`) and hand percussion (`talking-skin`, `log-tongue`, `clay-whoop`,
+  and the hand grooves `hand-procession`, `clay-skip`, `twelve-hands`). They are the most alive
+  sounds in the kit and the easiest to waste: read *Breath and hands* below before using one.
 - **A key**: any minor key from D to A sits well (`"G minor"`, `"D minor"`, `"E minor"`).
 
 If the user gave a mood or genre, the world must serve it. If they gave nothing, choose
@@ -110,6 +115,47 @@ world sentence, the hook and its owner, the sections with their jobs, the moves 
 reasons, the file path, and the one thing you are least sure about. Then stop. Do not write a
 README, a validation file, hashes, or a log. Do not run the test suite.
 
+## Breath and hands
+
+KIT.md has the full reference ("Breath reed and hand percussion: how to write for them").
+The decisions that matter:
+
+- **The reed is one player.** Give it the hook or the answer, never a pad. Write phrases a
+  person could blow: three to six notes, then a rest of at least a beat. Notes that touch are
+  slurred; a gap of a quarter beat makes the tongue start the next note.
+- **Heat is breath: whisper to feral.** `feral-reed` cold (heat 0–0.25) is mostly air, hot
+  (0.8–1) it growls and barks. Decide where on that road each section sits and travel in one
+  direction. The strongest version: the hook whispered first, absent for a section, then back
+  feral (`riffReturn`, or `timbreMorph` from 0.05 to 1 over repeating notes).
+- **A whisper needs room.** Under a cold reed keep three parts or fewer. If the drums are
+  loud, nobody hears air.
+- **One extreme gesture per track**, on a long note: `{"articulation":"overblow"}`,
+  `{"articulation":"fall","fall":7}`, `{"articulation":"scoop","bend":4}` or `"flutter"`.
+- **Hands are a groove, not a decoration.** Start from a hand groove and put `perc` in `play`;
+  the pattern, the articulations and the tuning are already right. Take `perc` OUT of one
+  section (the floor) so its return is felt. Heat makes the drums cavernous: save it.
+- **A drum can answer.** `clay-whoop` or `talking-skin` as `answer` with a two- or three-note
+  cell (`whoop`, `drop`, `slap`, `rub`) is a stranger answer than any tine.
+- **Phones.** The low drum is felt, not heard. Make sure the hook lives above 200 Hz
+  (octave 4–5) when the track is for a phone.
+
+## Two-sided tracks (a beat and tempo switch)
+
+A spec with `"sides": [A, B]` is two sketches joined on a bar line with a real tempo change
+(KIT.md, "Two-sided tracks"). Use it only when the track is about one thing having two
+natures. Rules:
+
+1. **One hook, two bodies.** Both sides use the same hook pitches (same contour, re-written
+   for the new groove's kick map). If side B has a new tune, it is a second track.
+2. **Each side is a complete small sketch** (30–45 s): side A states and withdraws; side B
+   arrives, drops to a floor, and returns. Check each side's table.
+3. **The switch is prepared, not sprung.** The last bar of side A already speaks side B's
+   pulse: use `rollIn` with `"step": 0.3333` when side B's tempo is 1.5 × side A's
+   (96 → 144, 80 → 120, 72 → 108). Before the roll, take something away.
+4. **Side B's first downbeat is the heaviest moment of the track** and its hook starts there.
+   Do not put a pickup, an intro or a build at the start of side B.
+5. **The ending remembers side A**: one cold phrase from the first side's body, alone.
+
 ## Taste list (answer every line before rendering)
 
 1. **World**: does every patch belong to the one-sentence world? Remove the one that does not.
@@ -132,6 +178,11 @@ README, a validation file, hashes, or a log. Do not run the test suite.
     lengths, register, articulation. One vowel held for most of the track fails. It sings
     phrases (a start, a stop, a rest), and somewhere it does one impossible thing: a huge pitch
     bend or a rhythmic, scat- or rap-like run. A held voice is fine for one section, not the track.
+
+15. **The breath breathes**: if a reed is in the cast, every phrase has a rest, the reed's heat
+    travels in one direction, and its whisper has three parts or fewer under it.
+16. **The switch is earned** (two-sided tracks only): same hook on both sides, side B's pulse
+    heard in side A's last bar, side B's first downbeat the heaviest moment.
 
 ### Owner taste notes (Composer Kit v1 listening)
 
@@ -240,6 +291,9 @@ accents sit on the tresillo kicks at 0, 1.5 and 3.
 
 - `unknown patch / groove / move / form`: the message lists the valid names. Use one of them.
 - `"x" is not a voice`: a `play` token or move option names a voice that is not in `voices`.
+- `unknown instrument breath-reed` / `organic-percussion/...`: you rendered a kit score with the
+  rack CLI directly. Render with `node composer-kit/build.ts` (it registers the Timbre Lab), or
+  add `--import ./timbre-lab/register.ts`.
 - `score is invalid`: read the first problem line; it names the part and the beat. Usually a
   note outside its cell or a misspelled option. Fix the spec, not the kit.
 - Do not work around an error by editing `composer-kit/`, the rack, or the engine.
