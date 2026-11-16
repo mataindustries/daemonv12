@@ -2,6 +2,8 @@
  * One-command builder: spec (palette + groove + hook + form + moves) -> score.json -> render.
  *   node composer-kit/build.ts SPEC.json OUT_DIR [--seed N] [--no-render]
  *   node composer-kit/build.ts SPEC.json --check        (critique only, writes nothing)
+ * A spec with "sides": [{...}, {...}] is a two-sided track: each side has its own groove, tempo and sections; they are
+ * rendered separately and joined on the bar line, so the tempo really switches (see KIT.md, Two-sided tracks).
  * Same spec + same seed = the same score, byte for byte. See composer-kit/KIT.md for the catalogue.
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -25,6 +27,9 @@ export interface Spec {
   hook?: string;
   form?: string; sections?: SectionSpec[]; moves?: MoveSpec[];
   room?: Record<string, number>;
+  /** two-sided track: each entry overrides this spec (groove, bpm, swing, hook, voices by name, form/sections, moves) */
+  sides?: Partial<Spec>[];
+  maker?: string;
 }
 
 const RHYTHM_TOKENS = ['kick', 'snare', 'hat', 'perc'];
@@ -43,11 +48,12 @@ export function assemble(spec: Spec, seedOverride?: number): Draft {
   const secs = spec.sections ?? fm.sections, moves = spec.moves ?? (spec.sections ? [] : fm.moves);
   const bassT = tonicFrom({ tonic }, 28), hatT = tonicFrom({ tonic }, 84);
   const mk = (id: string, patchId: string, v: VoiceSpec = {}): DPart => ({ id, patch: patch(patchId), notes: [], heat: [], motionBars: [], textures: [], ...(v.gainDb !== undefined ? { gainDb: v.gainDb } : {}), ...(v.pan !== undefined ? { pan: v.pan } : {}) });
-  const percPatch = g.perc?.patch ?? gB.perc?.patch;
+  const percPatch = g.perc?.patch ?? gB.perc?.patch, perc2Patch = g.perc2?.patch ?? gB.perc2?.patch;
   const parts: DPart[] = [mk('bass', spec.voices.bass.patch ?? g.bassPatch, spec.voices.bass), mk('kick', 'kick'), mk('snare', 'snare'), mk('hat', spec.voices.hat?.patch ?? 'clock-hat', spec.voices.hat),
-    ...(percPatch ? [mk('perc', spec.voices.perc?.patch ?? percPatch, spec.voices.perc)] : [])];
+    ...(percPatch ? [mk('perc', spec.voices.perc?.patch ?? percPatch, spec.voices.perc)] : []),
+    ...(percPatch && perc2Patch ? [mk('perc2', spec.voices.perc2?.patch ?? perc2Patch, spec.voices.perc2)] : [])];
   for (const [name, v] of Object.entries(spec.voices)) {
-    if (['bass', 'hat', 'perc'].includes(name)) continue;
+    if (['bass', 'hat', 'perc', 'perc2'].includes(name)) continue;
     if (!/^[a-z][a-z0-9-]{0,31}$/.test(name) || ['kick', 'snare', 'drums', 'room'].includes(name)) throw new Error(`voices.${name}: use a lowercase name other than kick/snare/drums/room`);
     if (!v.patch) throw new Error(`voices.${name}.patch is required`);
     parts.push(mk(name, v.patch, v));
@@ -81,7 +87,10 @@ export function assemble(spec: Spec, seedOverride?: number): Draft {
       if (name === 'kick') p.notes.push(...tile(sg.kick.map(h => [h[0], 0.5, bassT, h[1]] as N)));
       else if (name === 'snare') p.notes.push(...tile(sg.snare.map(h => [h[0], 0.5, 60, h[1], { articulation: h[2] ?? 'snare' }] as N)));
       else if (name === 'hat') p.notes.push(...tile(tones(sg.hat, hatT, minor)));
-      else if (name === 'perc') { if (sg.perc) p.notes.push(...tile(tones(sg.perc.notes, tonicFrom({ tonic }, 12 * (sg.perc.octave + 1)), minor))); }
+      else if (name === 'perc') for (const [id, line] of [['perc', sg.perc], ['perc2', sg.perc2]] as const) {
+        const q = parts.find(x => x.id === id);
+        if (q && line) q.notes.push(...tile(tones(line.notes, tonicFrom({ tonic }, 12 * (line.octave + 1)), minor)));
+      }
       else if (name === 'bass' && (variant === 'groove' || !cells.has('bass'))) p.notes.push(...tile(tones(sg.bass, bassT, minor)));
       else {
         const cell = cells.get(name);
@@ -101,7 +110,7 @@ export function assemble(spec: Spec, seedOverride?: number): Draft {
       }
     }
     // a seeded turnaround in the last bar of a section that leads somewhere
-    if (s.fill !== false && si < secs.length - 1 && tokens.includes('snare')) {
+    if (s.fill !== false && si < secs.length - 1 && tokens.includes('snare') && sg.snare.length) { // hand grooves have no snare drum: no drum-kit fill
       const b = end - 4, kind = Math.floor(rand() * 3), kickP = part(d, 'kick'), snareP = part(d, 'snare'), hatP = part(d, 'hat');
       if (kind === 0) { cut(snareP, b + 3.2, end); cut(hatP, b + 3, end); snareP.notes.push([b + 3.25, 0.25, 60, 0.4, { articulation: 'ghost' }], [b + 3.5, 0.25, 60, 0.55, { articulation: 'ghost' }], [b + 3.75, 0.25, 60, 0.75, { articulation: 'snare' }]); }
       else if (kind === 1) { cut(kickP, b + 3.2, end); cut(hatP, b + 3.5, end); kickP.notes.push([b + 3.5, 0.25, bassT, 0.8], [b + 3.75, 0.25, bassT, 0.95]); }
@@ -112,6 +121,13 @@ export function assemble(spec: Spec, seedOverride?: number): Draft {
   return d;
 }
 export function buildScore(spec: Spec, seed?: number) { return finalize(assemble(spec, seed)); }
+/** A two-sided spec as one complete spec per side (shared title, key, seed, world, room; voices merged by name). */
+export function sidesOf(spec: Spec): Spec[] {
+  if (!Array.isArray(spec.sides) || !spec.sides.length) return [spec];
+  if (spec.sides.length > 3) throw new Error('sides: two (at most three) sides');
+  const { sides, ...top } = spec;
+  return sides.map((s, i) => ({ ...top, ...s, title: `${spec.title} · side ${'ABC'[i]}`, key: spec.key, voices: { ...(top.voices ?? {}), ...(s.voices ?? {}) } }) as Spec);
+}
 
 /** Facts and taste warnings about a draft, before it costs a render. Warnings are prompts to think, not rules. */
 export function critique(d: Draft): { table: string[]; warnings: string[] } {
@@ -153,16 +169,20 @@ export function grooveAudition(id: string) {
 async function main() {
   const argv = process.argv.slice(2), flags = new Set(argv.filter(a => a.startsWith('--'))), seedAt = argv.indexOf('--seed');
   const seed = seedAt >= 0 ? Number(argv[seedAt + 1]) : undefined, pos = argv.filter((a, i) => !a.startsWith('--') && !(seedAt >= 0 && i === seedAt + 1));
-  if (!pos[0] || (!pos[1] && !flags.has('--check'))) { console.error(readFileSync(new URL(import.meta.url), 'utf8').split('\n').slice(1, 6).join('\n')); process.exitCode = 2; return; }
-  const spec = JSON.parse(readFileSync(pos[0], 'utf8')) as Spec, d = assemble(spec, seed), c = critique(d);
-  console.log(c.table.join('\n')); console.log(c.warnings.length ? `\nTASTE CHECK (${c.warnings.length}):\n${c.warnings.map(x => `  ! ${x}`).join('\n')}` : '\nTASTE CHECK: nothing flagged (that is not the same as good).');
+  if (!pos[0] || (!pos[1] && !flags.has('--check'))) { console.error(readFileSync(new URL(import.meta.url), 'utf8').split('\n').slice(1, 8).join('\n')); process.exitCode = 2; return; }
+  const spec = JSON.parse(readFileSync(pos[0], 'utf8')) as Spec, drafts = sidesOf(spec).map(s => assemble(s, seed)), two = drafts.length > 1;
+  for (const d of drafts) {
+    const c = critique(d);
+    console.log(c.table.join('\n')); console.log(c.warnings.length ? `\nTASTE CHECK (${c.warnings.length}):\n${c.warnings.map(x => `  ! ${x}`).join('\n')}\n` : '\nTASTE CHECK: nothing flagged (that is not the same as good).\n');
+  }
+  if (two) console.log(`two-sided: ${drafts.map(d => `${d.bpm} BPM`).join(' -> ')}, joined on the bar line. The switch is yours to earn: what in the last bar of side A already belongs to side B?`);
   if (flags.has('--check')) return;
-  const out = resolve(pos[1]!), score = finalize(d), slug = spec.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'sketch';
+  const out = resolve(pos[1]!), scores = drafts.map(finalize), slug = spec.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'sketch';
   mkdirSync(out, { recursive: true });
-  writeFileSync(join(out, 'score.json'), JSON.stringify(score, null, 2) + '\n');
-  if (flags.has('--no-render')) { console.log(`\nwrote ${join(out, 'score.json')}`); return; }
-  const { renderMp3 } = await import('./render.ts');
-  const r = await renderMp3(score, join(out, `${slug}.mp3`), { kbps: 160 });
-  console.log(`\nwrote ${join(out, 'score.json')}\nwrote ${r.mp3}  (${r.seconds} s, ${r.lufs} LUFS, true peak ${r.truePeakDb} dB)`);
+  const files = scores.map((score, i) => { const f = join(out, two ? `score-${'abc'[i]}.json` : 'score.json'); writeFileSync(f, JSON.stringify(score, null, 2) + '\n'); return f; });
+  if (flags.has('--no-render')) { console.log(`wrote ${files.join(', ')}`); return; }
+  const { renderMp3, renderSidesMp3 } = await import('./render.ts');
+  const r = two ? await renderSidesMp3(scores, join(out, `${slug}.mp3`), { kbps: 160 }) : await renderMp3(scores[0], join(out, `${slug}.mp3`), { kbps: 160 });
+  console.log(`wrote ${files.join(', ')}\nwrote ${r.mp3}  (${r.seconds} s, ${r.lufs} LUFS, true peak ${r.truePeakDb} dB)`);
 }
 if (process.argv[1] && resolve(process.argv[1]) === resolve(new URL(import.meta.url).pathname)) main().catch(e => { console.error((e as Error).message); process.exitCode = 1; });

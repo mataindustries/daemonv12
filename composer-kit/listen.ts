@@ -36,7 +36,7 @@ const sketches = readdirSync(`${HERE}sketches`).filter(f => f.endsWith('.spec.js
 }).filter(x => x !== null).sort((a, b) => a.key.localeCompare(b.key));
 sketches.forEach((s, i) => { audio[`s-${i}`] = b64(s.file, 128); });
 
-const FAMILY: [string, string][] = [['living-bass', 'Living Bass'], ['impossible-voice', 'Impossible Voice'], ['mechanical-orchestra', 'Mechanical Orchestra']];
+const FAMILY: [string, string][] = [['living-bass', 'Living Bass'], ['impossible-voice', 'Impossible Voice'], ['mechanical-orchestra', 'Mechanical Orchestra'], ['breath-reed', 'Breath Reed'], ['organic-percussion', 'Organic Percussion']];
 const row = (id: string, name: string, meta: string, tag: string, text: string) =>
   `<li class="clip"><button class="play" data-clip="${id}" aria-label="Play ${esc(name)}"><span class="ico"></span></button><div class="body"><div class="top"><span class="name">${esc(name)}</span>${tag ? `<span class="tag t-${tag}">${tag}</span>` : ''}<span class="meta">${esc(meta)}</span></div><p>${esc(text)}</p><div class="bar"><i></i></div></div></li>`;
 

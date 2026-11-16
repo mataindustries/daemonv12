@@ -3,7 +3,7 @@
  * with a reason to exist; `works` and `cheap` say when it earns its place and when it is a trick.
  * Spec usage: { "move": "floorDrop", "section": "floor", ...options }
  */
-import { getInstrument } from '../studio-001/rack/registry.ts';
+import { getInstrument } from '../timbre-lab/registry.ts';
 import { choke, cut, fit, hasPart, heatAt, isDrum, notesIn, part, plain, r3, RHYTHM, section, setHeat, tonicFrom, type Draft, type DPart, type N } from './core.ts';
 
 type O = Record<string, unknown>;
@@ -150,7 +150,7 @@ export const MOVES: Move[] = [
     works: 'For openings: the first sound heard defines the world, so lead with the one nobody expects and let the kick be the arrival.',
     cheap: 'In DAW order (kick, hat, bass, lead): everybody has heard that build. Also cheap if nothing interesting is alone at the start.',
     apply(d, o) {
-      const s = sec(d, o), rank = (p: DPart) => (p.id === 'kick' ? 5 : p.id === 'snare' ? 4 : p.id === 'hat' || p.id === 'perc' ? 3 : p.id === 'bass' ? 2 : p.id === d.hook.owner ? 1 : 0);
+      const s = sec(d, o), rank = (p: DPart) => (p.id === 'kick' ? 5 : p.id === 'snare' ? 4 : p.id === 'hat' || p.id === 'perc' || p.id === 'perc2' ? 3 : p.id === 'bass' ? 2 : p.id === d.hook.owner ? 1 : 0);
       const playing = d.parts.filter(p => notesIn(p, s.start, s.end).length).sort((a, b) => rank(a) - rank(b)).map(p => p.id);
       const order = list(o.order, playing), bars = (s.end - s.start) / 4, step = Math.min(num(o.every, 1), (bars - 1) / Math.max(1, order.length - 1));
       order.forEach((id, i) => { const bar = Math.floor(i * step + 1e-6); if (bar > 0) cut(part(d, id), s.start, s.start + bar * 4); });
@@ -178,6 +178,22 @@ export const MOVES: Move[] = [
       if (isBass(p)) last[4] = { ...(last[4] ?? {}), dive: num(o.semis, 5), diveBeats: r3(Math.min(beats, last[1] * 0.75)) };
       if (isVoice(p)) last[4] = { ...(last[4] ?? {}), articulation: 'fall', fall: 2 };
       for (const q of d.parts) if (q !== p) { cut(q, from + 0.01, s.end); clearTextures(q, from, s.end); }
+    } },
+  { id: 'rollIn', options: 'section, part? (perc, else snare), beats? (4), step? (beats per stroke; default 1/3 = triplets), pitch? (semitones above the part\'s lowest drum, default 0)',
+    does: 'The last beats of the section belong to one drum: everything else stops and a hand roll climbs from finger taps to slaps in the subdivision you name, the drum opening from tight to cavernous as it goes.',
+    works: 'Before a switch of groove, feel or tempo (the end of side A in a two-sided track). Roll in the pulse of what comes NEXT and the body learns the new tempo before it arrives, so the switch lands as an arrival, not an edit.',
+    cheap: 'As a drum-roll riser before every section, or into a section that is the same groove at the same size. A roll into nothing new is a fill, not a door.',
+    apply(d, o) {
+      const s = sec(d, o), beats = Math.min(num(o.beats, 4), s.end - s.start), step = Math.max(0.1, num(o.step, 1 / 3)), from = s.end - beats;
+      const p = part(d, str(o.part, hasPart(d, 'perc') ? 'perc' : 'snare')), drum = isDrum(p);
+      const low = drum ? 60 : (p.notes.length ? Math.min(...p.notes.map(n => n[2])) : tonicFrom(d, 36)) + num(o.pitch, 0);
+      for (const q of d.parts) { cut(q, from, s.end); choke(q, from); clearTextures(q, from, s.end); }
+      const n = Math.max(2, Math.round(beats / step));
+      for (let i = 0; i < n; i++) {
+        const t = i / (n - 1), art = drum ? (t < 0.75 ? 'ghost' : 'snare') : t < 0.4 ? 'tap' : t < 0.8 ? 'open' : 'slap';
+        p.notes.push([r3(from + i * step), r3(step * 0.9), low, r3(0.28 + 0.72 * Math.pow(t, 1.4)), { articulation: art }]);
+      }
+      if (!drum) setHeat(p, from, s.end, heatAt(p, from), 0.95);
     } },
 ];
 export function move(id: string): Move {

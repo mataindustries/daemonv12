@@ -2,8 +2,11 @@
  * DaemonV12 Composer Kit · core. A Draft is a score-in-progress: explicit notes per part plus a "heat" lane
  * (0 cold .. 1 hot) that each patch turns into macro/control curves at the end. Moves edit Drafts; finalize()
  * turns a Draft into a Signature Rack score (studio-001). Nothing here touches the rack, src/ or mcp/.
+ * Importing the kit registers the Timbre Lab instruments (organic percussion, breath reed) for this process, so
+ * kit scores that use them render without any flag; the rack's own files stay untouched.
  */
-import { getInstrument } from '../studio-001/rack/registry.ts';
+import '../timbre-lab/register.ts';
+import { getInstrument } from '../timbre-lab/registry.ts';
 import { pitchOf, keyOf } from '../studio-001/rack/curves.ts';
 
 export type Opts = Record<string, number | string>;
@@ -25,8 +28,10 @@ export interface Patch {
   setup?: Record<string, number>;
   /** living-bass motion presets, cold .. hot */
   motion?: string[];
-  /** default articulation for notes that carry none; hotArt replaces it when heat >= 0.6 */
-  art?: string; hotArt?: string;
+  /** default articulation for notes that carry none; hotArt replaces it when heat >= 0.6, coldArt when heat < 0.3 */
+  art?: string; hotArt?: string; coldArt?: string;
+  /** one player, one breath: a note that touches the previous one is played legato (no new attack) */
+  legato?: boolean;
   /** default per-note params (vowel, scoop, ...) for notes that carry none of that name */
   params?: Opts;
   /** legato: notes that touch the previous note slide into it over this many beats */
@@ -80,7 +85,7 @@ export const cut = (p: DPart, from: number, to: number) => { p.notes = p.notes.f
 /** Shorten notes that ring into [from, ...) so the window is really empty. */
 export function choke(p: DPart, from: number) { for (const n of p.notes) if (n[0] < from && n[0] + n[1] > from) n[1] = Math.max(0.1, r3(from - n[0])); }
 export const isDrum = (p: DPart) => p.patch.instrument.startsWith('context/');
-export const RHYTHM = ['kick', 'snare', 'hat', 'perc'];
+export const RHYTHM = ['kick', 'snare', 'hat', 'perc', 'perc2'];
 
 /** Set a part's heat over [from, to): constant, or a ramp a -> b. Replaces whatever was there. */
 export function setHeat(p: DPart, from: number, to: number, a: number, b = a) {
@@ -133,10 +138,12 @@ export function finalize(d: Draft) {
     if (!drum) notes = fit(notes, inst.range as [number, number]);
     const out = notes.map((n, i) => {
       const o: Opts = { ...(n[4] ?? {}) }, h = heatAt(p, n[0]), prev = notes[i - 1];
-      if (o.articulation === undefined) { const a = h >= 0.6 && p.patch.hotArt ? p.patch.hotArt : p.patch.art; if (a) o.articulation = a; }
+      const touches = !!prev && prev[0] + prev[1] >= n[0] - 0.05 && prev[2] !== n[2];
+      if (o.articulation === undefined && p.patch.legato && touches) o.articulation = 'legato';
+      if (o.articulation === undefined) { const a = h >= 0.6 && p.patch.hotArt ? p.patch.hotArt : h < 0.3 && p.patch.coldArt ? p.patch.coldArt : p.patch.art; if (a) o.articulation = a; }
       if (o.articulation !== undefined && !(String(o.articulation) in inst.articulations)) delete o.articulation;
       for (const [k, v] of Object.entries(p.patch.params ?? {})) if (o[k] === undefined) o[k] = v;
-      if (p.patch.slide && o.slide === undefined && prev && prev[0] + prev[1] >= n[0] - 0.05 && prev[2] !== n[2] && !o.articulation) o.slide = p.patch.slide;
+      if (p.patch.slide && o.slide === undefined && touches && (!o.articulation || (p.patch.legato && o.articulation === 'legato'))) o.slide = p.patch.slide;
       for (const k of Object.keys(o)) if (k !== 'articulation' && k !== 'slide' && !(k in inst.params)) delete o[k];
       return [r3(n[0]), r3(Math.max(0.05, n[1])), n[2], r3(Math.min(1, Math.max(0.05, n[3]))), ...(Object.keys(o).length ? [o] : [])];
     });
