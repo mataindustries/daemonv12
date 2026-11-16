@@ -103,7 +103,7 @@ function simulate(perf: PartPerformance, ctx: RenderContext, notes: NoteEvent[],
     // drive (0 silent .. 1 full) -> mouth pressure inside the window where this reed speaks: under about 0.1 there is
     // only air, the top of the window is where the reed starts to choke; a harder blow also firms the embouchure
     const bite = clamp(cBite + 0.3 * (pe - 0.6), 0, 1), pMin = Math.max(0.45, 0.9 - 0.75 * bite), pMax = 1.24 - 0.33 * bite;
-    const frac = pe < 0.15 ? -0.2 + 2.13 * pe : Math.min(0.97, 0.12 + 0.8 * (pe - 0.15) + 0.2 * kick);
+    const frac = pe < 0.15 ? -0.6 + 4.8 * pe : Math.min(0.97, 0.12 + 0.8 * (pe - 0.15) + 0.2 * kick);
     const lg = 0.22 + 0.62 * bite, slope = 0.22 + 0.3 * bite, offset = 0.72 - 0.14 * bite;
     const air = clamp(cAir * (art === 'breathy' ? 2.2 : 1), 0, 1.5), pb = (pMin + (pMax - pMin) * frac) * Math.min(1, pe / 0.04) * (1 + (0.05 + 0.55 * air + 0.7 * chiff) * bn);
     // ---- pitch: note, slide, scoop, fall, lip bend, vibrato, wander, and the breath leaning on it
@@ -134,7 +134,7 @@ function simulate(perf: PartPerformance, ctx: RenderContext, notes: NoteEvent[],
     const y = ((1 - cBore) * acc + cBore * 3.2 * flow) / OS; dc += 0.002 * (y - dc);
     const tone = (y - dc) * (0.12 + Math.pow(Math.min(1.3, pe), 1.5)), bright = tone + (0.6 + 2.2 * Math.min(1.2, pe)) * (tone - tone1); tone1 = tone; y1 = tone;
     const wl = rnd() * 2 - 1, wr = rnd() * 2 - 1; hl += 0.5 * (wl - hl); hr += 0.5 * (wr - hr);
-    const hiss = 0.05 * air * pe;
+    const hiss = air * (0.07 + 0.15 * pe) * Math.min(1, pe / 0.03);
     L[i] = bright + hiss * (wl - hl); R[i] = bright + hiss * (wr - hr);
   }
   return [L, R];

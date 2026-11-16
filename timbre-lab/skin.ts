@@ -4,7 +4,7 @@
  * Nothing in the Signature Rack works like this. The rack's struck sounds are fixed excitations into modal bars or
  * one-shot drum patches; here a hand (a mass with soft, stiffening flesh) actually collides with a vibrating body:
  *
- *   hand:   M z'' = P - F                 F = K c (1 + c/c0) + R (z' - u')       while c = z - u > 0
+ *   hand:   M z'' = P - F - A z'          F = K c (1 + c/c0) + R (z' - u')       while c = z - u > 0   (A: the arm, if it stays)
  *   body:   q_n'' + 2 s_n q_n' + w_n(t)^2 q_n = phi_n(x) F / m_n               u = sum phi_n(x) q_n
  *
  * so contact time, brightness and loudness are consequences of how hard, where and with what the body is hit, a hand
@@ -52,11 +52,11 @@ const SKIN_MODES: SkinMode[] = (() => {
 })();
 
 interface Hand {
-  on: boolean; rub: boolean; z: number; vz: number; im: number; k: number; kcap: number; d: number; vs: number; press: number; hold: number; age: number; fp: number; snap: number;
+  on: boolean; rub: boolean; z: number; vz: number; im: number; k: number; kcap: number; d: number; vs: number; press: number; hold: number; age: number; fp: number; snap: number; arm: number;
   w: Float64Array; wm: Float64Array; vb: number; nf: number; nfNow: number; veps: number; phase: number;
 }
 type Ev =
-  | { f: number; t: 'hit'; pos: number; area: number; mass: number; k: number; d: number; v: number; hold: number; press: number; snap: number }
+  | { f: number; t: 'hit'; pos: number; area: number; mass: number; k: number; d: number; v: number; hold: number; press: number; snap: number; arm: number }
   | { f: number; t: 'rub'; pos: number; len: number; vb: number; nf: number }
   | { f: number; t: 'air'; amp: number; ap0: number; ap1: number; tau: number }
   | { f: number; t: 'bend'; to: number; len: number };
@@ -106,7 +106,7 @@ class Body {
     this.sig = Float64Array.from(defs, d => 6.9 / d.t60); this.oL = Float64Array.from(defs, d => d.oL); this.oR = Float64Array.from(defs, d => d.oR);
     defs.forEach((d, i) => { if (d.vol !== 0) { this.volI.push(i); this.volW.push(d.vol); } });
     this.a = new Float64Array(n); this.b = new Float64Array(n); this.co = new Float64Array(n); this.si = new Float64Array(n); this.rr = new Float64Array(n); this.iw = new Float64Array(n);
-    for (let h = 0; h < 2; h++) this.hands.push({ on: false, rub: false, z: 0, vz: 0, im: 1, k: 0, kcap: 0, d: 0, press: 0, hold: 0, age: 0, fp: 0, snap: 0, vs: 0.08, w: new Float64Array(n), wm: new Float64Array(n), vb: 0, nf: 0, nfNow: 0, veps: 0.01, phase: 0 });
+    for (let h = 0; h < 2; h++) this.hands.push({ on: false, rub: false, z: 0, vz: 0, im: 1, k: 0, kcap: 0, d: 0, press: 0, hold: 0, age: 0, fp: 0, snap: 0, arm: 0, vs: 0.08, w: new Float64Array(n), wm: new Float64Array(n), vb: 0, nf: 0, nfNow: 0, veps: 0.01, phase: 0 });
     const nb = Math.min(this.nb, n);
     [[0.7, 1.1], [0.36, 3.9]].forEach(([pos, th]) => { const w = new Float64Array(nb); for (let k = 0; k < nb; k++) w[k] = kind === 'skin' ? besselJ(SKIN_MODES[k]!.m, SKIN_MODES[k]!.j * pos!) * Math.cos(SKIN_MODES[k]!.m * th!) : this.shape(k, pos!, 0.02); this.beadW.push(w); });
   }
@@ -121,7 +121,7 @@ class Body {
     if (e.t === 'hit') {
       const h = this.slot(), y = this.weights(h, e.pos, e.area);
       let u = 0; for (let k = 0; k < this.n; k++) u += h.w[k]! * this.b[k]! * this.iw[k]!;
-      h.rub = false; h.z = u; h.vz = e.v; h.im = 1 / e.mass; h.k = e.k; h.hold = e.hold; h.press = e.press; h.snap = e.snap;
+      h.rub = false; h.z = u; h.vz = e.v; h.im = 1 / e.mass; h.k = e.k; h.hold = e.hold; h.press = e.press; h.snap = e.snap; h.arm = e.arm;
       // stiffness and flesh damping are capped so the explicit contact loop stays well inside its stability limit
       h.kcap = 1.5e9 / (h.im + y); h.d = e.d * 0.5 / (DT * (h.im + y));
     } else if (e.t === 'rub') {
@@ -183,7 +183,8 @@ class Body {
         if (c > 0) { F = Math.min(h.k * c * (1 + c / C0), h.kcap * c) + h.d * (h.vz - ud); if (F < 0) F = 0; }
         h.age++;
         const p = h.age < h.hold ? h.press : -(h.hold > 0 ? 60 : h.age > 440 ? 600 : 0) / h.im; // stay, lift, or get out of the way
-        h.vz += (p - F) * h.im * DT; h.z += h.vz * DT;
+        // a hand that stays is held by an arm: that is where the skin's energy goes
+        h.vz += (p - F - (h.age < h.hold ? h.arm * h.vz : 0)) * h.im * DT; h.z += h.vz * DT;
         direct += (F - h.fp) * h.snap; h.fp = F;
         if (c <= 0 && h.vz < 0 && h.age >= h.hold) h.on = false;
       }
@@ -283,7 +284,7 @@ function simulate(def: Def, perf: PartPerformance, ctx: RenderContext, notes: No
     else if (slot.body.kind === 'skin') slot.ev.push({ f: frame, t: 'bend', to: 0, len: Math.round(0.004 * RATE) });
     if (typeof n.params?.bend === 'number') slot.ev.push({ f: frame + 1, t: 'bend', to: travel + n.params.bend, len });
     const hard = at('hard', n.beat, 0.5), k = st.k === 1 ? 5e4 * Math.pow(14, hard) : st.k;
-    const hit = (f: number, v: number, p: number, s: Stroke = st): void => { slot!.ev.push({ f, t: 'hit', pos: p, area: s.area, mass: s.mass * hand, k: s.k === 1 ? k : s.k, d: s.d, v: v * s.v, hold: s.hold === HOLD_NOTE ? len : Math.round(s.hold * RATE), press: s.press, snap: s.snap }); };
+    const hit = (f: number, v: number, p: number, s: Stroke = st): void => { slot!.ev.push({ f, t: 'hit', pos: p, area: s.area, mass: s.mass * hand, k: s.k === 1 ? k : s.k, d: s.d, v: v * s.v, hold: s.hold === HOLD_NOTE ? len : Math.round(s.hold * RATE), press: s.press, snap: s.snap, arm: s.hold === HOLD_NOTE ? 45 : 5 }); };
     if (art === 'rub') slot.ev.push({ f: frame, t: 'rub', pos, len, vb: 0.1 + 0.5 * vel, nf: 2.2 * (0.1 + 0.5 * vel) * 0.012 * TAU * hz(n.pitch) / 0.9 }); // enough grip to stick at this pitch
     else if (art === 'roll' || art === 'scrape') { // many small contacts: fingers in turn, or a stick over ridges
       const dur = n.beats * bs; let t = 0, j = 0;
