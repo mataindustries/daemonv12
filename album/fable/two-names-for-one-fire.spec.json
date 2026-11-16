@@ -1,0 +1,684 @@
+{
+  "title": "Two Names for One Fire",
+  "maker": "Claude Fable 5.2",
+  "world": "A storyteller at a fire and the creature in the story are the same animal: the tale is whispered on a reed over hands and clay, and when the drum calls it by its other name it comes out of the dark at one and a half times the speed.",
+  "key": "G minor",
+  "seed": 52,
+  "voices": {},
+  "sides": [
+    {
+      "groove": "twelve-hands",
+      "hook": "lead",
+      "voices": {
+        "bass": {
+          "gainDb": -7
+        },
+        "lead": {
+          "patch": "feral-reed",
+          "gainDb": 3,
+          "cell": {
+            "bars": 2,
+            "notes": [
+              [
+                0,
+                1.667,
+                "G4",
+                0.8
+              ],
+              [
+                1.667,
+                0.333,
+                "Bb4",
+                0.6
+              ],
+              [
+                2,
+                1.5,
+                "D5",
+                0.85
+              ],
+              [
+                4.667,
+                0.667,
+                "C5",
+                0.7
+              ],
+              [
+                5.333,
+                0.667,
+                "Bb4",
+                0.65
+              ],
+              [
+                6,
+                1.6,
+                "C5",
+                0.8,
+                {
+                  "articulation": "scoop",
+                  "bend": 2
+                }
+              ]
+            ],
+            "alt": [
+              [
+                0,
+                1.667,
+                "G4",
+                0.8
+              ],
+              [
+                1.667,
+                0.333,
+                "Bb4",
+                0.6
+              ],
+              [
+                2,
+                1.5,
+                "D5",
+                0.85
+              ],
+              [
+                4.667,
+                0.667,
+                "C5",
+                0.7
+              ],
+              [
+                5.333,
+                0.667,
+                "Bb4",
+                0.65
+              ],
+              [
+                6,
+                1.6,
+                "G4",
+                0.8,
+                {
+                  "articulation": "fall",
+                  "fall": 3
+                }
+              ]
+            ]
+          }
+        },
+        "answer": {
+          "patch": "clay-whoop",
+          "cell": {
+            "bars": 2,
+            "notes": [
+              [
+                3.667,
+                0.5,
+                "G3",
+                0.75
+              ],
+              [
+                7.667,
+                0.333,
+                "D3",
+                0.55,
+                {
+                  "articulation": "tap"
+                }
+              ]
+            ]
+          }
+        },
+        "perc": {
+          "gainDb": -10
+        },
+        "perc2": {
+          "gainDb": -12
+        },
+        "pad": {
+          "patch": "giant-undertone",
+          "gainDb": -10
+        }
+      },
+      "sections": [
+        {
+          "id": "embers",
+          "bars": 2,
+          "heat": {
+            "lead": 0.05,
+            "answer": 0.2
+          },
+          "play": [
+            "lead",
+            "answer"
+          ],
+          "note": "the tale, whispered once; one clay pot answers"
+        },
+        {
+          "id": "circle",
+          "bars": 4,
+          "heat": {
+            "lead": 0.3,
+            "answer": 0.3,
+            "perc": 0.15,
+            "perc2": 0.15,
+            "bass": 0.1
+          },
+          "play": [
+            "bass",
+            "drums",
+            "perc",
+            "lead",
+            "answer"
+          ],
+          "note": "hands join in twelve; the reed finds its voice"
+        },
+        {
+          "id": "telling",
+          "bars": 4,
+          "heat": {
+            "lead": 0.5,
+            "perc": 0.4,
+            "perc2": 0.3,
+            "bass": 0.2
+          },
+          "play": [
+            "bass",
+            "drums",
+            "perc",
+            "lead"
+          ],
+          "note": "same tale, more breath: the reed warms bar by bar"
+        },
+        {
+          "id": "door",
+          "bars": 2,
+          "heat": {
+            "perc": 0.5,
+            "perc2": 0.4,
+            "bass": 0.3,
+            "pad": 0.8
+          },
+          "play": [
+            "bass",
+            "drums",
+            "perc",
+            "pad"
+          ],
+          "note": "the teller stops, something hums in the dark; then the drum rolls alone in the pulse of what is coming"
+        }
+      ],
+      "moves": [
+        {
+          "move": "timbreMorph",
+          "section": "telling",
+          "part": "lead",
+          "from": 0.35,
+          "to": 0.5
+        },
+        {
+          "move": "rollIn",
+          "section": "door",
+          "beats": 4,
+          "step": 0.3333,
+          "pitch": 12
+        }
+      ]
+    },
+    {
+      "groove": "half-stomp",
+      "hook": "lead",
+      "voices": {
+        "bass": {
+          "patch": "tube-fuzz",
+          "gainDb": -3
+        },
+        "lead": {
+          "patch": "feral-reed",
+          "gainDb": -1,
+          "cell": {
+            "bars": 2,
+            "notes": [
+              [
+                0,
+                1.4,
+                "G4",
+                1,
+                {
+                  "articulation": "accent"
+                }
+              ],
+              [
+                1.5,
+                1,
+                "Bb4",
+                0.85
+              ],
+              [
+                2.5,
+                1.5,
+                "D5",
+                0.95
+              ],
+              [
+                4,
+                0.6,
+                "C5",
+                0.9,
+                {
+                  "articulation": "accent"
+                }
+              ],
+              [
+                4.75,
+                0.5,
+                "Bb4",
+                0.75
+              ],
+              [
+                5.5,
+                0.4,
+                "C5",
+                0.6
+              ]
+            ],
+            "alt": [
+              [
+                0,
+                1.4,
+                "G4",
+                1,
+                {
+                  "articulation": "accent"
+                }
+              ],
+              [
+                1.5,
+                1,
+                "Bb4",
+                0.85
+              ],
+              [
+                2.5,
+                1.5,
+                "D5",
+                0.95
+              ],
+              [
+                4,
+                0.6,
+                "C5",
+                0.9,
+                {
+                  "articulation": "accent"
+                }
+              ],
+              [
+                4.75,
+                0.5,
+                "Bb4",
+                0.75
+              ],
+              [
+                5.5,
+                2.3,
+                "G4",
+                0.95,
+                {
+                  "articulation": "fall",
+                  "fall": 7
+                }
+              ]
+            ]
+          }
+        },
+        "gong": {
+          "patch": "alien-gong",
+          "gainDb": -3,
+          "cell": {
+            "bars": 8,
+            "notes": [
+              [
+                0,
+                6,
+                "G3",
+                1
+              ]
+            ]
+          }
+        },
+        "moan": {
+          "patch": "talking-skin",
+          "gainDb": -3,
+          "cell": {
+            "bars": 2,
+            "notes": [
+              [
+                0,
+                3.5,
+                "G3",
+                0.85,
+                {
+                  "articulation": "rub",
+                  "bend": 5
+                }
+              ],
+              [
+                4,
+                3.5,
+                "D4",
+                0.9,
+                {
+                  "articulation": "rub",
+                  "bend": -4
+                }
+              ]
+            ]
+          }
+        },
+        "hands": {
+          "patch": "talking-skin",
+          "cell": {
+            "bars": 2,
+            "notes": [
+              [
+                0,
+                0.5,
+                "G2",
+                0.95,
+                {
+                  "articulation": "bass"
+                }
+              ],
+              [
+                0.75,
+                0.25,
+                "D3",
+                0.5,
+                {
+                  "articulation": "tap"
+                }
+              ],
+              [
+                1.5,
+                0.5,
+                "G2",
+                0.85,
+                {
+                  "articulation": "bass"
+                }
+              ],
+              [
+                2,
+                0.5,
+                "G3",
+                0.9,
+                {
+                  "articulation": "slap"
+                }
+              ],
+              [
+                3,
+                0.5,
+                "D3",
+                0.7
+              ],
+              [
+                3.5,
+                0.5,
+                "D3",
+                0.75
+              ],
+              [
+                4,
+                0.5,
+                "G2",
+                0.95,
+                {
+                  "articulation": "bass"
+                }
+              ],
+              [
+                4.75,
+                0.5,
+                "G2",
+                0.8,
+                {
+                  "articulation": "bass"
+                }
+              ],
+              [
+                5.5,
+                0.25,
+                "D3",
+                0.5,
+                {
+                  "articulation": "tap"
+                }
+              ],
+              [
+                6,
+                0.5,
+                "G3",
+                0.92,
+                {
+                  "articulation": "slap"
+                }
+              ],
+              [
+                6.5,
+                0.5,
+                "D3",
+                0.8
+              ],
+              [
+                7,
+                0.25,
+                "G3",
+                0.7,
+                {
+                  "articulation": "slap"
+                }
+              ],
+              [
+                7.5,
+                0.5,
+                "D3",
+                0.8
+              ]
+            ]
+          }
+        },
+        "teller": {
+          "patch": "feral-reed",
+          "gainDb": 4,
+          "cell": {
+            "bars": 4,
+            "notes": [
+              [
+                0,
+                2.5,
+                "G4",
+                0.8
+              ],
+              [
+                2.5,
+                0.5,
+                "Bb4",
+                0.6
+              ],
+              [
+                3,
+                2.25,
+                "D5",
+                0.85
+              ],
+              [
+                7,
+                1,
+                "C5",
+                0.7
+              ],
+              [
+                8,
+                1,
+                "Bb4",
+                0.65
+              ],
+              [
+                9,
+                3,
+                "G4",
+                0.8,
+                {
+                  "articulation": "fall",
+                  "fall": 3
+                }
+              ]
+            ]
+          }
+        },
+        "hat": {
+          "patch": "log-tongue",
+          "gainDb": -15
+        },
+        "pad": {
+          "patch": "giant-undertone",
+          "gainDb": -7,
+          "cell": {
+            "bars": 4,
+            "notes": [
+              [
+                0,
+                7.6,
+                "G2",
+                0.8,
+                {
+                  "vowel": "oo",
+                  "to": "aw"
+                }
+              ],
+              [
+                8,
+                3.6,
+                "Bb2",
+                0.8,
+                {
+                  "vowel": "aw"
+                }
+              ],
+              [
+                12,
+                3.6,
+                "C3",
+                0.85,
+                {
+                  "vowel": "ah",
+                  "articulation": "cry"
+                }
+              ]
+            ]
+          }
+        },
+        "howl": {
+          "patch": "split-horn",
+          "gainDb": -6,
+          "cell": {
+            "bars": 4,
+            "notes": [
+              [
+                8,
+                7.5,
+                "G3",
+                0.95,
+                {
+                  "articulation": "overblow"
+                }
+              ]
+            ]
+          }
+        }
+      },
+      "sections": [
+        {
+          "id": "beast",
+          "bars": 8,
+          "heat": {
+            "lead": 0.7,
+            "bass": 0.6,
+            "hat": 0.3,
+            "gong": 0.9
+          },
+          "play": [
+            "bass",
+            "drums",
+            "hat",
+            "lead",
+            "gong:once"
+          ],
+          "note": "the same tale at one and a half times the speed, barked; no build, the downbeat is the arrival"
+        },
+        {
+          "id": "hollow",
+          "bars": 4,
+          "heat": {
+            "pad": 0.9,
+            "moan": 0.8,
+            "bass": 0.4,
+            "howl": 0.9,
+            "hat": 0.3
+          },
+          "play": [
+            "bass",
+            "drums",
+            "hat",
+            "pad",
+            "moan:once",
+            "howl"
+          ],
+          "fill": false,
+          "note": "half-time floor: a wet finger moans on the skin, then one reed howl cracks upward"
+        },
+        {
+          "id": "chase",
+          "bars": 8,
+          "heat": {
+            "lead": 1,
+            "bass": 0.6,
+            "hat": 0.3,
+            "hands": 0.85
+          },
+          "play": [
+            "bass",
+            "drums",
+            "hat",
+            "lead",
+            "hands"
+          ],
+          "fill": false,
+          "note": "the tale returns feral; the only new thing is the hands, now inside the stomp"
+        },
+        {
+          "id": "ember",
+          "bars": 4,
+          "heat": {
+            "teller": 0.05
+          },
+          "play": [
+            "teller"
+          ],
+          "note": "the teller alone again, whispering the tale home"
+        }
+      ],
+      "moves": [
+        {
+          "move": "floorDrop",
+          "section": "hollow"
+        },
+        {
+          "move": "riffReturn",
+          "section": "chase",
+          "heat": 1
+        }
+      ]
+    }
+  ]
+}
