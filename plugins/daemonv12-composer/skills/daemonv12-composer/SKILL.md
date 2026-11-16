@@ -24,10 +24,17 @@ a bass that climbs in stairs, one human throat that argues back."* The sentence 
 sounds for you. Then pick:
 
 - **One groove** from KIT.md by its *feel* line, not its name. The groove sets the tempo and swing.
+  The owner's favourites are `half-stomp`, `gallop-hole` and `swamp-shuffle`: if your world
+  can live on one of them, start there (see *Owner taste notes* below).
 - **Three to five patches**: a bass, a hook owner, one answerer, and at most one pad and one
   texture. Take them from at least two different characters (rubbery / dirty / mechanical /
   glassy / broken / human). One sound should be a little ugly. If every patch is "nice", the
-  track has no personality.
+  track has no personality. The owner's loved sounds are `giant-undertone` (when a section
+  needs weight) and `alien-gong`, `dead-marimba`, `laser-spring` (hooks and answers); check
+  whether any of them fits your world before reaching for something else.
+- **If a voice is in the cast** (`impossible-voice` family: `warm-throat`, `wounded-cry`,
+  `hollow-whistle`, ...), decide now how it will *move*: it must not be one held vowel. See
+  *Owner taste notes*.
 - **A key**: any minor key from D to A sits well (`"G minor"`, `"D minor"`, `"E minor"`).
 
 If the user gave a mood or genre, the world must serve it. If they gave nothing, choose
@@ -58,6 +65,10 @@ Write the rhythm first, then the pitches:
 A bass-owned hook uses bass note options, which are most of its character:
 `{"articulation":"accent","scoop":2}`, `"ghost"`, `"staccato"`, `{"slide":0.1}`,
 `{"dive":4,"diveBeats":1}`. A hook played with no articulations is a MIDI file, not a riff.
+
+If the hook owner or the answerer is a voice patch, write it as phrases, not sustained notes:
+change the vowel, the note length, the register and the articulation as it goes (see
+*Owner taste notes*).
 
 ### 3. Build four to six contrasting sections
 
@@ -113,6 +124,40 @@ README, a validation file, hashes, or a log. Do not run the test suite.
 10. **Something is a little wrong on purpose**: one ugly sound, one displaced note, one silence that lasts too long. If nothing could annoy anybody, nothing will delight anybody.
 11. **The ending is a decision**: a dive, a lone note, a cut. Not a fade, not "everything stops".
 12. **TASTE CHECK warnings**: each one either fixed or answered with a reason.
+13. **Owner favourites**: did you consider `giant-undertone` where a section needs weight,
+    `alien-gong` / `dead-marimba` / `laser-spring` for the hook and answers, and one of
+    `half-stomp` / `gallop-hole` / `swamp-shuffle` for the groove? Use each as its KIT.md line
+    says. A favourite that does not belong to the world (item 1) still loses to the world.
+14. **The voice moves**: if the track has a voice, count what changes in it: vowels, note
+    lengths, register, articulation. One vowel held for most of the track fails. It sings
+    phrases (a start, a stop, a rest), and somewhere it does one impossible thing: a huge pitch
+    bend or a rhythmic, scat- or rap-like run. A held voice is fine for one section, not the track.
+
+### Owner taste notes (Composer Kit v1 listening)
+
+These are the owner's reactions after listening to the kit, not guesses.
+
+**Loved**
+
+- `giant-undertone`: menacing and massive. Use it when a section needs weight.
+- `alien-gong`, `dead-marimba`, `laser-spring`: sound expensive and clean. Strong picks for
+  hooks and answers.
+- Grooves: `half-stomp`, `gallop-hole` and `swamp-shuffle` (the owner says "Swamp Groove") are
+  the favourites.
+- Sketch B on the listening page, "Reservoir Radio" (`composer-kit/sketches/sketch-s`): a
+  really strong instrumental.
+
+**Wanted more of**
+
+- `impossible-voice` doing impossible things: extreme pitch bends (`scoop`, `slide`, `cry`,
+  `fall`), and rhythmic, almost scat- or rap-like phrasing (short `detached` notes, a new
+  `vowel` or `to` on each) instead of sustained vowels.
+
+**Avoid**
+
+- A voice that holds the same "ahh" for most of a track. Sketch B's vocal lost interest
+  because it barely changed. The voice should move: vary vowels, rhythm, register and
+  articulation, and give it phrases, not just pads.
 
 ## Why Chrome Stallion works (the bar to aim for)
 
