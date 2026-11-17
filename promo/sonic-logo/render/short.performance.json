@@ -1,0 +1,358 @@
+{
+  "title": "DaemonV12 sonic logo · short",
+  "bpm": 160,
+  "beatSeconds": 0.375,
+  "key": "D minor",
+  "transpose": 0,
+  "swing": 0.5,
+  "seed": 12,
+  "sections": [
+    {
+      "id": "sting",
+      "bars": 1,
+      "development": "compressed sting",
+      "startBeat": 0
+    }
+  ],
+  "parts": [
+    {
+      "id": "pot",
+      "instrument": "organic-percussion/pot",
+      "instrumentVersion": "0.1.0+timbre-lab",
+      "gainDb": -5,
+      "pan": -0.15,
+      "room": 0.1,
+      "context": false,
+      "notes": [
+        {
+          "beat": 0,
+          "beats": 0.8,
+          "pitch": 50,
+          "velocity": 0.95,
+          "articulation": "whoop"
+        }
+      ],
+      "macro": 0.5,
+      "controls": {
+        "air": 0.6,
+        "depth": 0.5
+      },
+      "offsets": {},
+      "expression": 0.7,
+      "setup": {
+        "seed": 3
+      },
+      "breaths": [],
+      "motion": []
+    },
+    {
+      "id": "skin",
+      "instrument": "organic-percussion/skin",
+      "instrumentVersion": "0.1.0+timbre-lab",
+      "gainDb": -9,
+      "pan": 0.05,
+      "room": 0.1,
+      "context": false,
+      "notes": [
+        {
+          "beat": 0,
+          "beats": 0.5,
+          "pitch": 38,
+          "velocity": 0.95,
+          "articulation": "bass"
+        },
+        {
+          "beat": 0.5,
+          "beats": 0.25,
+          "pitch": 57,
+          "velocity": 0.8,
+          "articulation": "slap"
+        }
+      ],
+      "macro": 0.55,
+      "controls": {
+        "shell": 0.35,
+        "glide": 1.5,
+        "buzz": 0.1
+      },
+      "offsets": {},
+      "expression": 0.7,
+      "setup": {
+        "seed": 5,
+        "spread": 0.5
+      },
+      "breaths": [],
+      "motion": []
+    },
+    {
+      "id": "log",
+      "instrument": "organic-percussion/log",
+      "instrumentVersion": "0.1.0+timbre-lab",
+      "gainDb": -9,
+      "pan": 0.3,
+      "room": 0.08,
+      "context": false,
+      "notes": [
+        {
+          "beat": 0.5,
+          "beats": 0.2,
+          "pitch": 62,
+          "velocity": 0.75,
+          "articulation": "knuckle"
+        },
+        {
+          "beat": 0.75,
+          "beats": 0.2,
+          "pitch": 69,
+          "velocity": 0.85,
+          "articulation": "knuckle"
+        }
+      ],
+      "macro": 0.35,
+      "controls": {
+        "hard": 0.9,
+        "hollow": 0.03
+      },
+      "offsets": {},
+      "expression": 0.7,
+      "setup": {
+        "seed": 8,
+        "spread": 0.5
+      },
+      "breaths": [],
+      "motion": []
+    },
+    {
+      "id": "voice",
+      "instrument": "impossible-voice",
+      "instrumentVersion": "1.0.0+mutation-001-B",
+      "gainDb": 1,
+      "pan": 0.08,
+      "room": 0.22,
+      "context": false,
+      "notes": [
+        {
+          "beat": 1,
+          "beats": 1.2,
+          "pitch": 69,
+          "velocity": 0.9,
+          "articulation": "cry",
+          "params": {
+            "cry": 2,
+            "vowel": "oo",
+            "to": "ah"
+          }
+        },
+        {
+          "beat": 2.2,
+          "beats": 1.7,
+          "pitch": 74,
+          "velocity": 0.85,
+          "articulation": "legato",
+          "slide": 0.15,
+          "params": {
+            "vowel": "ah",
+            "to": "ee",
+            "fall": 0
+          }
+        }
+      ],
+      "macro": [
+        [
+          1,
+          0.15
+        ],
+        [
+          2,
+          0.8
+        ],
+        [
+          3,
+          0.9
+        ]
+      ],
+      "controls": {
+        "glass": [
+          [
+            1,
+            0.3
+          ],
+          [
+            2.2,
+            1
+          ]
+        ],
+        "shimmer": [
+          [
+            1,
+            0.1
+          ],
+          [
+            3,
+            0.8
+          ]
+        ],
+        "stretch": [
+          [
+            1,
+            0
+          ],
+          [
+            3,
+            0.02
+          ]
+        ],
+        "breath": 0.15,
+        "vib": 0.3
+      },
+      "offsets": {},
+      "expression": [
+        [
+          0,
+          0.85
+        ],
+        [
+          3,
+          0.9
+        ],
+        [
+          4,
+          0.5
+        ]
+      ],
+      "setup": {
+        "haloDecay": 1.2,
+        "haloGain": 1.6,
+        "vowelTau": 0.15,
+        "seed": 21
+      },
+      "breaths": [],
+      "motion": []
+    },
+    {
+      "id": "reed",
+      "instrument": "breath-reed",
+      "instrumentVersion": "0.1.0+timbre-lab",
+      "gainDb": -6,
+      "pan": -0.25,
+      "room": 0.15,
+      "context": false,
+      "notes": [
+        {
+          "beat": 1,
+          "beats": 0.45,
+          "pitch": 69,
+          "velocity": 0.9,
+          "articulation": "accent",
+          "params": {
+            "fall": 2
+          }
+        }
+      ],
+      "macro": 0.7,
+      "controls": {
+        "overblow": 0.35,
+        "bore": 0.8,
+        "growl": 0.3,
+        "bite": 0.7
+      },
+      "offsets": {},
+      "expression": 0.7,
+      "setup": {
+        "seed": 4
+      },
+      "breaths": [],
+      "motion": []
+    },
+    {
+      "id": "gong",
+      "instrument": "mechanical-orchestra/bar",
+      "instrumentVersion": "1.0.0+mutation-001-C",
+      "gainDb": -6,
+      "pan": -0.1,
+      "room": 0.25,
+      "context": false,
+      "notes": [
+        {
+          "beat": 1,
+          "beats": 2.9,
+          "pitch": 74,
+          "velocity": 0.85,
+          "articulation": "ring"
+        },
+        {
+          "beat": 2.2,
+          "beats": 1.7,
+          "pitch": 81,
+          "velocity": 0.6,
+          "articulation": "ring"
+        }
+      ],
+      "macro": 0.9,
+      "controls": {
+        "hardness": 0.7,
+        "damp": 0.8,
+        "detune": -20
+      },
+      "offsets": {},
+      "expression": 0.7,
+      "setup": {
+        "seed": 2,
+        "spread": 0.3
+      },
+      "breaths": [],
+      "motion": []
+    },
+    {
+      "id": "pings",
+      "instrument": "mechanical-orchestra/bearings",
+      "instrumentVersion": "1.0.0+mutation-001-C",
+      "gainDb": -17,
+      "pan": 0,
+      "room": 0.3,
+      "context": false,
+      "notes": [
+        {
+          "beat": 1.5,
+          "beats": 0.3,
+          "pitch": 93,
+          "velocity": 0.5
+        },
+        {
+          "beat": 1.75,
+          "beats": 0.3,
+          "pitch": 98,
+          "velocity": 0.45
+        },
+        {
+          "beat": 2.25,
+          "beats": 0.3,
+          "pitch": 89,
+          "velocity": 0.4
+        },
+        {
+          "beat": 2.75,
+          "beats": 0.3,
+          "pitch": 93,
+          "velocity": 0.35
+        },
+        {
+          "beat": 3.25,
+          "beats": 0.3,
+          "pitch": 98,
+          "velocity": 0.3
+        }
+      ],
+      "macro": 0.8,
+      "controls": {},
+      "offsets": {},
+      "expression": 0.7,
+      "setup": {
+        "seed": 7,
+        "spread": 0.9
+      },
+      "breaths": [],
+      "motion": []
+    }
+  ]
+}

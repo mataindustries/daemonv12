@@ -1,0 +1,317 @@
+{
+ "schema": "daemonv12.signature-rack.score/1",
+ "title": "DaemonV12 sonic logo · quiet tail",
+ "bpm": 120,
+ "key": "D minor",
+ "seed": 12,
+ "tailSeconds": 3.4,
+ "masterGainDb": 0,
+ "swing": 0.5,
+ "description": "The outro: the pot sags instead of whooping, a fingertip ghosts the skin, the knocks are soft, and the voice hums the same rise then falls away into a glass halo and a few last pings. For the end of a video.",
+ "room": {
+  "rt60": 2.8,
+  "size": 1.3,
+  "damp": 5200,
+  "predelayMs": 20,
+  "lowCut": 220
+ },
+ "sections": [
+  {
+   "id": "outro",
+   "bars": 1,
+   "development": "soft sting into a long halo"
+  }
+ ],
+ "parts": [
+  {
+   "id": "pot",
+   "instrument": "organic-percussion/pot",
+   "gainDb": -8,
+   "pan": -0.15,
+   "room": 0.25,
+   "macro": 0.7,
+   "controls": {
+    "air": 0.5,
+    "depth": 0.45
+   },
+   "setup": {
+    "seed": 3
+   },
+   "notes": [
+    [
+     0,
+     1.2,
+     "D3",
+     0.6,
+     {
+      "articulation": "drop"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "skin",
+   "instrument": "organic-percussion/skin",
+   "gainDb": -12,
+   "pan": 0.05,
+   "room": 0.2,
+   "macro": 0.75,
+   "controls": {
+    "shell": 0.4,
+    "glide": 0.8,
+    "buzz": 0
+   },
+   "setup": {
+    "seed": 5,
+    "spread": 0.5
+   },
+   "notes": [
+    [
+     0,
+     0.5,
+     "D2",
+     0.55,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     0.5,
+     0.25,
+     "A3",
+     0.35,
+     {
+      "articulation": "tap"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "log",
+   "instrument": "organic-percussion/log",
+   "gainDb": -12,
+   "pan": 0.3,
+   "room": 0.2,
+   "macro": 0.6,
+   "controls": {
+    "hard": 0.4,
+    "hollow": 0.03
+   },
+   "setup": {
+    "seed": 8,
+    "spread": 0.5
+   },
+   "notes": [
+    [
+     0.5,
+     0.3,
+     "D4",
+     0.45,
+     {
+      "articulation": "strike"
+     }
+    ],
+    [
+     0.75,
+     0.3,
+     "A4",
+     0.5,
+     {
+      "articulation": "strike"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "voice",
+   "instrument": "impossible-voice",
+   "gainDb": -1,
+   "pan": 0.08,
+   "room": 0.4,
+   "macro": [
+    [
+     1,
+     0.3
+    ],
+    [
+     2.5,
+     0.85
+    ],
+    [
+     4,
+     0.95
+    ]
+   ],
+   "expression": [
+    [
+     0,
+     0.6
+    ],
+    [
+     2,
+     0.7
+    ],
+    [
+     4,
+     0.35
+    ]
+   ],
+   "controls": {
+    "glass": [
+     [
+      1,
+      0.5
+     ],
+     [
+      2.5,
+      1
+     ]
+    ],
+    "shimmer": [
+     [
+      1,
+      0.2
+     ],
+     [
+      3.5,
+      0.9
+     ]
+    ],
+    "stretch": [
+     [
+      1,
+      0
+     ],
+     [
+      3.5,
+      0.025
+     ]
+    ],
+    "disperse": [
+     [
+      2,
+      0
+     ],
+     [
+      4,
+      0.6
+     ]
+    ],
+    "breath": 0.35,
+    "vib": 0.25
+   },
+   "setup": {
+    "haloDecay": 3,
+    "haloGain": 2.2,
+    "vowelTau": 0.35,
+    "seed": 21
+   },
+   "notes": [
+    [
+     1,
+     1.4,
+     "A4",
+     0.6,
+     {
+      "articulation": "hum",
+      "vowel": "mm",
+      "to": "oo"
+     }
+    ],
+    [
+     2.4,
+     1.6,
+     "D5",
+     0.55,
+     {
+      "articulation": "fall",
+      "slide": 0.25,
+      "fall": 1.5,
+      "vowel": "oo",
+      "to": "oh"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "gong",
+   "instrument": "mechanical-orchestra/bar",
+   "gainDb": -9,
+   "pan": -0.1,
+   "room": 0.4,
+   "macro": 0.95,
+   "controls": {
+    "hardness": 0.35,
+    "damp": 1.5,
+    "detune": -25
+   },
+   "setup": {
+    "seed": 2,
+    "spread": 0.3
+   },
+   "notes": [
+    [
+     1,
+     3,
+     "D5",
+     0.6,
+     {
+      "articulation": "ring"
+     }
+    ],
+    [
+     2.4,
+     1.6,
+     "A5",
+     0.4,
+     {
+      "articulation": "ring"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "pings",
+   "instrument": "mechanical-orchestra/bearings",
+   "gainDb": -19,
+   "room": 0.45,
+   "macro": 0.9,
+   "setup": {
+    "seed": 7,
+    "spread": 0.9
+   },
+   "notes": [
+    [
+     1.5,
+     0.3,
+     "A6",
+     0.4
+    ],
+    [
+     2.25,
+     0.3,
+     "D7",
+     0.35
+    ],
+    [
+     2.9,
+     0.3,
+     "F6",
+     0.3
+    ],
+    [
+     3.5,
+     0.3,
+     "A6",
+     0.25
+    ],
+    [
+     3.9,
+     0.3,
+     "D7",
+     0.2
+    ]
+   ]
+  }
+ ]
+}

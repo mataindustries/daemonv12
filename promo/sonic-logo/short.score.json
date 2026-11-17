@@ -1,0 +1,337 @@
+{
+ "schema": "daemonv12.signature-rack.score/1",
+ "title": "DaemonV12 sonic logo · short",
+ "bpm": 160,
+ "key": "D minor",
+ "seed": 12,
+ "tailSeconds": 0.1,
+ "masterGainDb": 0,
+ "swing": 0.5,
+ "description": "The same two syllables compressed to about a second and a half: pot and skin on the downbeat, two knocks, the cry to glass with a shorter ring.",
+ "room": {
+  "rt60": 1.2,
+  "size": 0.9,
+  "damp": 6500,
+  "predelayMs": 10,
+  "lowCut": 240
+ },
+ "sections": [
+  {
+   "id": "sting",
+   "bars": 1,
+   "development": "compressed sting"
+  }
+ ],
+ "parts": [
+  {
+   "id": "pot",
+   "instrument": "organic-percussion/pot",
+   "gainDb": -5,
+   "pan": -0.15,
+   "room": 0.1,
+   "macro": 0.5,
+   "controls": {
+    "air": 0.6,
+    "depth": 0.5
+   },
+   "setup": {
+    "seed": 3
+   },
+   "notes": [
+    [
+     0,
+     0.8,
+     "D3",
+     0.95,
+     {
+      "articulation": "whoop"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "skin",
+   "instrument": "organic-percussion/skin",
+   "gainDb": -9,
+   "pan": 0.05,
+   "room": 0.1,
+   "macro": 0.55,
+   "controls": {
+    "shell": 0.35,
+    "glide": 1.5,
+    "buzz": 0.1
+   },
+   "setup": {
+    "seed": 5,
+    "spread": 0.5
+   },
+   "notes": [
+    [
+     0,
+     0.5,
+     "D2",
+     0.95,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     0.5,
+     0.25,
+     "A3",
+     0.8,
+     {
+      "articulation": "slap"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "log",
+   "instrument": "organic-percussion/log",
+   "gainDb": -9,
+   "pan": 0.3,
+   "room": 0.08,
+   "macro": 0.35,
+   "controls": {
+    "hard": 0.9,
+    "hollow": 0.03
+   },
+   "setup": {
+    "seed": 8,
+    "spread": 0.5
+   },
+   "notes": [
+    [
+     0.5,
+     0.2,
+     "D4",
+     0.75,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     0.75,
+     0.2,
+     "A4",
+     0.85,
+     {
+      "articulation": "knuckle"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "voice",
+   "instrument": "impossible-voice",
+   "gainDb": 1,
+   "pan": 0.08,
+   "room": 0.22,
+   "macro": [
+    [
+     1,
+     0.15
+    ],
+    [
+     2,
+     0.8
+    ],
+    [
+     3,
+     0.9
+    ]
+   ],
+   "expression": [
+    [
+     0,
+     0.85
+    ],
+    [
+     3,
+     0.9
+    ],
+    [
+     4,
+     0.5
+    ]
+   ],
+   "controls": {
+    "glass": [
+     [
+      1,
+      0.3
+     ],
+     [
+      2.2,
+      1
+     ]
+    ],
+    "shimmer": [
+     [
+      1,
+      0.1
+     ],
+     [
+      3,
+      0.8
+     ]
+    ],
+    "stretch": [
+     [
+      1,
+      0
+     ],
+     [
+      3,
+      0.02
+     ]
+    ],
+    "breath": 0.15,
+    "vib": 0.3
+   },
+   "setup": {
+    "haloDecay": 1.2,
+    "haloGain": 1.6,
+    "vowelTau": 0.15,
+    "seed": 21
+   },
+   "notes": [
+    [
+     1,
+     1.2,
+     "A4",
+     0.9,
+     {
+      "articulation": "cry",
+      "cry": 2,
+      "vowel": "oo",
+      "to": "ah"
+     }
+    ],
+    [
+     2.2,
+     1.7,
+     "D5",
+     0.85,
+     {
+      "articulation": "legato",
+      "slide": 0.15,
+      "vowel": "ah",
+      "to": "ee",
+      "fall": 0
+     }
+    ]
+   ]
+  },
+  {
+   "id": "reed",
+   "instrument": "breath-reed",
+   "gainDb": -6,
+   "pan": -0.25,
+   "room": 0.15,
+   "macro": 0.7,
+   "controls": {
+    "overblow": 0.35,
+    "bore": 0.8,
+    "growl": 0.3,
+    "bite": 0.7
+   },
+   "setup": {
+    "seed": 4
+   },
+   "notes": [
+    [
+     1,
+     0.45,
+     "A4",
+     0.9,
+     {
+      "articulation": "accent",
+      "fall": 2
+     }
+    ]
+   ]
+  },
+  {
+   "id": "gong",
+   "instrument": "mechanical-orchestra/bar",
+   "gainDb": -6,
+   "pan": -0.1,
+   "room": 0.25,
+   "macro": 0.9,
+   "controls": {
+    "hardness": 0.7,
+    "damp": 0.8,
+    "detune": -20
+   },
+   "setup": {
+    "seed": 2,
+    "spread": 0.3
+   },
+   "notes": [
+    [
+     1,
+     2.9,
+     "D5",
+     0.85,
+     {
+      "articulation": "ring"
+     }
+    ],
+    [
+     2.2,
+     1.7,
+     "A5",
+     0.6,
+     {
+      "articulation": "ring"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "pings",
+   "instrument": "mechanical-orchestra/bearings",
+   "gainDb": -17,
+   "room": 0.3,
+   "macro": 0.8,
+   "setup": {
+    "seed": 7,
+    "spread": 0.9
+   },
+   "notes": [
+    [
+     1.5,
+     0.3,
+     "A6",
+     0.5
+    ],
+    [
+     1.75,
+     0.3,
+     "D7",
+     0.45
+    ],
+    [
+     2.25,
+     0.3,
+     "F6",
+     0.4
+    ],
+    [
+     2.75,
+     0.3,
+     "A6",
+     0.35
+    ],
+    [
+     3.25,
+     0.3,
+     "D7",
+     0.3
+    ]
+   ]
+  }
+ ]
+}
