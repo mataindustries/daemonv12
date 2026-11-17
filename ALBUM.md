@@ -83,6 +83,8 @@ falls on a whole video frame at 30 fps (`validate` passes with no warnings); kee
 
 ## 3 · Volta — Sonnet
 
+Built and rendered: `album/volta/volta.spec.json` → `album/volta/render/`. Listening page: `node album/volta/listen.ts OUT.html`.
+
 - **Mood / story beat:** warm, sure-footed, a grin. The one that shows up every day and makes it sing.
   Fourteen bars like fourteen lines, with a turn (the *volta*) after the eighth.
 - **Tempo / key:** 96 BPM, A minor. *The ask:* A3 C4 E4 D4.

@@ -1,0 +1,79 @@
+{
+  "title": "Volta",
+  "world": "A wordless poet who shows up every day: one plain human throat scats a fourteen-line sonnet over a drummer who cannot stop talking, a dead typewriter takes dictation in every gap, and at the turn the room goes quiet except for glass that changes the light.",
+  "key": "A minor",
+  "groove": "ghost-train",
+  "seed": 23,
+  "hook": "lead",
+  "voices": {
+    "bass": { "gainDb": -2 },
+    "lead": {
+      "patch": "warm-throat",
+      "gainDb": 3,
+      "cell": {
+        "bars": 2,
+        "notes": [
+          [0, 0.5, "A3", 1.0, { "articulation": "detached", "vowel": "ah" }],
+          [0.75, 0.25, "C4", 0.6, { "articulation": "detached", "vowel": "oo" }],
+          [1.5, 0.5, "E4", 0.85, { "articulation": "detached", "vowel": "eh" }],
+          [2, 0.25, "D4", 0.9, { "articulation": "detached", "vowel": "oh" }],
+          [4, 0.5, "E4", 0.9, { "articulation": "detached", "vowel": "ee" }],
+          [4.75, 0.25, "D4", 0.55, { "articulation": "detached", "vowel": "uh" }],
+          [5.5, 0.25, "C4", 0.8, { "articulation": "detached", "vowel": "aw" }],
+          [6.25, 0.5, "A4", 1.0, { "articulation": "sung", "vowel": "oo", "to": "ee", "scoop": 12 }],
+          [6.75, 1.0, "D4", 0.85, { "articulation": "sung", "vowel": "oh", "to": "mm" }]
+        ],
+        "alt": [
+          [0, 0.5, "A3", 1.0, { "articulation": "detached", "vowel": "ah" }],
+          [0.75, 0.25, "C4", 0.6, { "articulation": "detached", "vowel": "oo" }],
+          [1.5, 0.5, "E4", 0.85, { "articulation": "detached", "vowel": "eh" }],
+          [2, 0.25, "D4", 0.9, { "articulation": "detached", "vowel": "oh" }],
+          [4, 0.5, "E4", 0.9, { "articulation": "detached", "vowel": "ee" }],
+          [4.75, 0.25, "D4", 0.55, { "articulation": "detached", "vowel": "uh" }],
+          [5.5, 0.25, "C4", 0.8, { "articulation": "detached", "vowel": "aw" }],
+          [6.25, 0.5, "A4", 1.0, { "articulation": "sung", "vowel": "oo", "to": "ee", "scoop": 12 }],
+          [6.75, 1.0, "E4", 0.9, { "articulation": "sung", "vowel": "oh", "to": "mm" }]
+        ]
+      }
+    },
+    "answer": {
+      "patch": "dead-marimba",
+      "gainDb": -3,
+      "cell": {
+        "bars": 2,
+        "notes": [
+          [2.5, 0.125, "E5", 0.8, { "articulation": "hard" }],
+          [2.625, 0.125, "E5", 0.5, { "articulation": "muted" }],
+          [2.75, 0.125, "E5", 0.65, { "articulation": "muted" }],
+          [2.875, 0.25, "A5", 0.95, { "articulation": "strike" }]
+        ]
+      }
+    },
+    "pad": {
+      "patch": "glass-choir",
+      "gainDb": -5,
+      "cell": {
+        "bars": 2,
+        "notes": [
+          [0, 7.7, "F3", 0.8, { "vowel": "oo", "to": "ah" }],
+          [0, 7.7, "C4", 0.65, { "vowel": "ah", "to": "oh" }]
+        ],
+        "alt": [
+          [0, 7.7, "D3", 0.8, { "vowel": "oo", "to": "ah" }],
+          [0, 7.7, "A3", 0.65, { "vowel": "ah", "to": "oh" }]
+        ]
+      }
+    }
+  },
+  "sections": [
+    { "id": "octave-a", "bars": 4, "heat": 0.2, "play": ["bass", "drums", "hat", "lead"], "note": "the ask, spoken and nearly naked: a voice and a drummer who will not stop talking" },
+    { "id": "octave-b", "bars": 4, "heat": 0.35, "play": ["bass", "drums", "hat", "lead", "answer"], "note": "the same lines; a dead typewriter takes dictation in the voice's rests, and the octave leans forward" },
+    { "id": "volta", "bars": 2, "heat": 0.3, "fill": false, "play": ["bass", "drums", "pad"], "note": "the turn: the drummer is cut off mid-sentence and the glass changes the light to F" },
+    { "id": "sestet", "bars": 4, "heat": 0.6, "play": ["bass", "drums", "hat", "lead", "answer", "pad"], "note": "the same lines, said with more breath; the glass settles on D, not home, and the last question is hummed" }
+  ],
+  "moves": [
+    { "move": "liftEnding", "section": "octave-b" },
+    { "move": "negativeSpace", "section": "volta", "beats": 6, "keep": ["pad"] },
+    { "move": "riffReturn", "section": "sestet", "heat": 0.9 }
+  ]
+}
