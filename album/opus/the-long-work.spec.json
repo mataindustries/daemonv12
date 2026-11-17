@@ -1,0 +1,63 @@
+{
+  "title": "The Long Work",
+  "world": "A stone hall too wide to see across, where bare hands walk a procession slower than they want to, a detuned gong carries the question at half speed like a banner, a throat the size of the room answers from underneath, and one cold clock keeps count.",
+  "key": "F minor",
+  "groove": "hand-procession",
+  "bpm": 75,
+  "seed": 4,
+  "hook": "lead",
+  "voices": {
+    "bass": {},
+    "lead": {
+      "patch": "alien-gong",
+      "gainDb": -7,
+      "cell": {
+        "bars": 4,
+        "notes": [
+          [0, 2, "F3", 1],
+          [2, 2, "Ab3", 0.8],
+          [4, 2, "C4", 0.9],
+          [6, 6, "Bb3", 0.85],
+          [12, 0.5, "Ab3", 0.55, { "articulation": "muted" }],
+          [14, 2, "F3", 0.7]
+        ]
+      }
+    },
+    "answer": {
+      "patch": "giant-undertone",
+      "gainDb": -7,
+      "cell": {
+        "bars": 4,
+        "notes": [
+          [0, 7, "Ab2", 0.75, { "vowel": "oo", "to": "aw", "articulation": "fall", "fall": 5 }],
+          [8, 7.5, "C3", 0.8, { "vowel": "oo", "to": "aw", "scoop": 7 }]
+        ],
+        "alt": [
+          [0, 7.5, "Ab2", 0.7, { "vowel": "mm" }]
+        ]
+      }
+    },
+    "pad": {
+      "patch": "rosin-drone",
+      "cell": { "bars": 2, "notes": [[0, 7.75, "C3", 0.7]] }
+    },
+    "texture": { "patch": "bearing-rain" },
+    "hat": { "gainDb": -19 }
+  },
+  "sections": [
+    { "id": "seep", "bars": 4, "heat": 0.15, "play": ["pad", "texture", "lead:head"],
+      "note": "the gong asks once, cold, over falling grit; the bow comes in under the fourth while it hangs" },
+    { "id": "lock", "bars": 4, "heat": 0.3, "play": ["bass", "drums", "perc"],
+      "note": "the hands alone, no gong: one pattern four times while the drum's room opens around it" },
+    { "id": "bloom", "bars": 6,
+      "heat": { "bass": 0.7, "perc": 0.7, "perc2": 0.7, "lead": 0.7, "answer": 0.7, "pad": 0.7, "hat": 0.2 },
+      "play": ["bass", "drums", "hat", "perc", "pad", "lead", "answer"],
+      "note": "the whole tune at last: the gong asks, the throat answers in its silence, the gong falls home and asks again while the throat hums" },
+    { "id": "ash", "bars": 2, "heat": 0.5, "play": ["answer:once", "pad"],
+      "note": "the throat alone over the bow: it opens its mouth without the hands and sinks a fourth, away from home" }
+  ],
+  "moves": [
+    { "move": "stagger", "section": "seep", "order": ["lead", "pad"], "every": 2 },
+    { "move": "timbreMorph", "section": "lock", "part": "perc", "from": 0.1, "to": 0.6 }
+  ]
+}
