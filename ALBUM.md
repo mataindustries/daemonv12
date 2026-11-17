@@ -104,6 +104,8 @@ falls on a whole video frame at 30 fps (`validate` passes with no warnings); kee
 
 ## 4 · The Long Work — Opus
 
+Built and rendered: `album/opus/the-long-work.spec.json` → `album/opus/render/`. Phone page: `node album/opus/listen.ts OUT.html`.
+
 - **Mood / story beat:** colossal, patient, ceremonial. Nothing is rushed; the tune is only given whole
   after eight bars of building, and when it arrives it is carried by hands, not machines.
 - **Tempo / key:** 75 BPM (`"bpm": 75` in the spec: slower than the groove's own 88), F minor. *The ask:*
