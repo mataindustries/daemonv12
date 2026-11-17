@@ -197,7 +197,7 @@ h3 { font: 500 12px/1.3 var(--mono); letter-spacing: 0.12em; text-transform: upp
     <dl class="dl">${moves.map(m => `<div><dt>${esc(m.name)}</dt><dd>${esc(m.why)}</dd></div>`).join('')}</dl>
     <h3>Where the brief was silent</h3>
     <dl class="dl">${calls.map(([k, v]) => `<div><dt>${esc(k!)}</dt><dd>${esc(v!)}</dd></div>`).join('')}</dl>
-    <p class="fine">Checked on the audio: the scoop is a full octave, the lifted notes are on pitch, the turn sits at about −22 dBFS against −14 for the groove, and the typewriter is back to the groove’s floor when the voice returns. Not checked: how any of it sounds.</p>
+    <p class="fine">Checked on the audio: the scoop is a full octave, the lifted notes are on pitch, the turn sits at about −22 dBFS against −14 for the groove, and the typewriter is back to the groove’s floor within a quarter beat of the voice returning. Not checked: how any of it sounds.</p>
     <p class="fine">Unofficial fan tribute made with the DaemonV12 Composer Kit. Not affiliated with or endorsed by Anthropic.</p>
   </section>
 </div>
