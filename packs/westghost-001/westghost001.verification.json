@@ -1,0 +1,418 @@
+{
+  "pack": "WEST//GHOST 001",
+  "status": "experimental independent prototypes",
+  "license": "pending-owner-declaration",
+  "engineBase": "e2962cc1a443c841cd6ca7cb2cc56c5ebabf0e99",
+  "node": "v24.19.0",
+  "regeneration": {
+    "files": 249,
+    "identical": true
+  },
+  "nativePrecision": "Float64 synthesis -> PCM16 portable sources -> unchanged v0.7 production. No higher-fidelity release export claim.",
+  "methods": {
+    "source": "Original synthesis only; no input audio, SoundFont, IR, learned voice or presets",
+    "boundaries": "Native pitch/duration; integrated oscillator phase; fixed silent source endpoints; gate+release checked against engine absolute rounded tempo/frame boundaries",
+    "mono": "All sources mono. Stereo contexts use track balance only. Fold-down compared against mean channel energy; no decorrelation process",
+    "pitch": "Autocorrelation around expected pitch, parabolic lag refinement; GRAVITY steady native notes",
+    "spectral": "65536-point Hann-windowed power, steady high-timbre note; aggregate energy above16k does not isolate aliasing"
+  },
+  "listening": "No human listening or perceived-quality judgment performed. Demonstrations are provisional instrument studies.",
+  "pitch": [
+    {
+      "note": 26,
+      "expectedHz": 36.70809598967594,
+      "windows": 32,
+      "medianCents": 0,
+      "p10Cents": 0,
+      "p90Cents": 0
+    },
+    {
+      "note": 38,
+      "expectedHz": 73.41619197935188,
+      "windows": 62,
+      "medianCents": 0,
+      "p10Cents": 0,
+      "p90Cents": 0
+    },
+    {
+      "note": 50,
+      "expectedHz": 146.8323839587038,
+      "windows": 63,
+      "medianCents": 0,
+      "p10Cents": 0,
+      "p90Cents": 0
+    }
+  ],
+  "spectral": [
+    {
+      "instrument": "gravity",
+      "frames": 97020,
+      "seconds": 2.2,
+      "peakDbfs": -9.391031679742262,
+      "rmsDbfs": -12.09488477093414,
+      "dc": -0.00004442631111366384,
+      "maxDifference": 0.00844269163089955,
+      "first": 0,
+      "last": 0,
+      "bandAbove16kHzDbRelative": -237.84657521530505,
+      "interpretation": "High-band energy check, not an alias measurement or quality score"
+    },
+    {
+      "instrument": "vandal",
+      "frames": 97020,
+      "seconds": 2.2,
+      "peakDbfs": -11.132809348681427,
+      "rmsDbfs": -18.07410470101668,
+      "dc": 0.000001812173014704177,
+      "maxDifference": 0.0700284222267539,
+      "first": 0,
+      "last": 0,
+      "bandAbove16kHzDbRelative": -122.84230121301809,
+      "interpretation": "High-band energy check, not an alias measurement or quality score"
+    },
+    {
+      "instrument": "apparition",
+      "frames": 97020,
+      "seconds": 2.2,
+      "peakDbfs": -10.373330634753748,
+      "rmsDbfs": -17.0999908554354,
+      "dc": 7.214190287198396e-7,
+      "maxDifference": 0.1272548284862539,
+      "first": 0,
+      "last": 0,
+      "bandAbove16kHzDbRelative": -34.279461709161424,
+      "interpretation": "High-band energy check, not an alias measurement or quality score"
+    },
+    {
+      "instrument": "iron-bloom",
+      "frames": 97020,
+      "seconds": 2.2,
+      "peakDbfs": -8.485020558900331,
+      "rmsDbfs": -21.428416748527855,
+      "dc": -0.00014468025514561487,
+      "maxDifference": 0.08978606627672234,
+      "first": 0,
+      "last": 0,
+      "bandAbove16kHzDbRelative": -237.20527621492107,
+      "interpretation": "High-band energy check, not an alias measurement or quality score"
+    }
+  ],
+  "projects": [
+    {
+      "id": "dry-gravity",
+      "notes": 4,
+      "frames": 705600,
+      "seconds": 16,
+      "wavSha256": "0dd40ef93e36efca9387349f8eb08ed00ad963153f2e88da3c5f0aa428a7a5f4",
+      "twoFreshRendersIdentical": true,
+      "comparedArtifacts": 5,
+      "analysis": {
+        "durationSeconds": 16,
+        "frames": 705600,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "format": "pcm_s16le",
+        "peakDbfs": -10.338581,
+        "rmsDbfs": -15.23157,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "integratedLufs": -14.43,
+        "loudnessRangeLu": 3.7,
+        "truePeakDbfs": -10.34
+      },
+      "stereo": {
+        "correlation": 1,
+        "monoFoldDownDb": 0,
+        "lowBandMethod": "two cascaded one-pole 150 Hz low-passes",
+        "lowBandCorrelation": 1,
+        "lowBandMonoFoldDownDb": 0
+      },
+      "stems": [
+        {
+          "trackId": "gravity",
+          "frames": 705600,
+          "sha256": "0dd40ef93e36efca9387349f8eb08ed00ad963153f2e88da3c5f0aa428a7a5f4"
+        }
+      ]
+    },
+    {
+      "id": "dry-vandal",
+      "notes": 4,
+      "frames": 705600,
+      "seconds": 16,
+      "wavSha256": "56ad5b91608477c1dd653e20058d1837d6185f814497f479d0938f97d042df20",
+      "twoFreshRendersIdentical": true,
+      "comparedArtifacts": 5,
+      "analysis": {
+        "durationSeconds": 16,
+        "frames": 705600,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "format": "pcm_s16le",
+        "peakDbfs": -10.119981,
+        "rmsDbfs": -21.727408,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "integratedLufs": -18.69,
+        "loudnessRangeLu": 3.2,
+        "truePeakDbfs": -10.12
+      },
+      "stereo": {
+        "correlation": 1,
+        "monoFoldDownDb": 0,
+        "lowBandMethod": "two cascaded one-pole 150 Hz low-passes",
+        "lowBandCorrelation": 1,
+        "lowBandMonoFoldDownDb": 0
+      },
+      "stems": [
+        {
+          "trackId": "vandal",
+          "frames": 705600,
+          "sha256": "56ad5b91608477c1dd653e20058d1837d6185f814497f479d0938f97d042df20"
+        }
+      ]
+    },
+    {
+      "id": "dry-apparition",
+      "notes": 4,
+      "frames": 705600,
+      "seconds": 16,
+      "wavSha256": "9843377ccfde108f2d329b739f0955378c7aa46b8c9b4d1ca88072750b24039b",
+      "twoFreshRendersIdentical": true,
+      "comparedArtifacts": 5,
+      "analysis": {
+        "durationSeconds": 16,
+        "frames": 705600,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "format": "pcm_s16le",
+        "peakDbfs": -10.488023,
+        "rmsDbfs": -21.115755,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "integratedLufs": -17.31,
+        "loudnessRangeLu": 2.6,
+        "truePeakDbfs": -10.46
+      },
+      "stereo": {
+        "correlation": 1,
+        "monoFoldDownDb": 0,
+        "lowBandMethod": "two cascaded one-pole 150 Hz low-passes",
+        "lowBandCorrelation": 1,
+        "lowBandMonoFoldDownDb": 0
+      },
+      "stems": [
+        {
+          "trackId": "apparition",
+          "frames": 705600,
+          "sha256": "9843377ccfde108f2d329b739f0955378c7aa46b8c9b4d1ca88072750b24039b"
+        }
+      ]
+    },
+    {
+      "id": "dry-iron-bloom",
+      "notes": 4,
+      "frames": 705600,
+      "seconds": 16,
+      "wavSha256": "f88e1da53117a0c598efa3ff07f5e73e07bf096baf4f3033d99ac80137edf54a",
+      "twoFreshRendersIdentical": true,
+      "comparedArtifacts": 5,
+      "analysis": {
+        "durationSeconds": 16,
+        "frames": 705600,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "format": "pcm_s16le",
+        "peakDbfs": -10.203672,
+        "rmsDbfs": -22.550018,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "integratedLufs": -17.87,
+        "loudnessRangeLu": 6.7,
+        "truePeakDbfs": -9.97
+      },
+      "stereo": {
+        "correlation": 1,
+        "monoFoldDownDb": 0,
+        "lowBandMethod": "two cascaded one-pole 150 Hz low-passes",
+        "lowBandCorrelation": 1,
+        "lowBandMonoFoldDownDb": 0
+      },
+      "stems": [
+        {
+          "trackId": "iron-bloom",
+          "frames": 705600,
+          "sha256": "f88e1da53117a0c598efa3ff07f5e73e07bf096baf4f3033d99ac80137edf54a"
+        }
+      ]
+    },
+    {
+      "id": "a-gravity-vandal",
+      "notes": 224,
+      "frames": 1411200,
+      "seconds": 32,
+      "wavSha256": "dde32c14796d26e367677aa3a0b16ea59565a85ea1da575b389cb8794c481d1a",
+      "twoFreshRendersIdentical": true,
+      "comparedArtifacts": 9,
+      "analysis": {
+        "durationSeconds": 32,
+        "frames": 1411200,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "format": "pcm_s16le",
+        "peakDbfs": -5.955109,
+        "rmsDbfs": -19.045578,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "integratedLufs": -19.51,
+        "loudnessRangeLu": 3.6,
+        "truePeakDbfs": -5.95
+      },
+      "stereo": {
+        "correlation": 0.9998652880414858,
+        "monoFoldDownDb": -0.0002950625964543728,
+        "lowBandMethod": "two cascaded one-pole 150 Hz low-passes",
+        "lowBandCorrelation": 0.9999966873271431,
+        "lowBandMonoFoldDownDb": -0.0000071961996635183934
+      },
+      "stems": [
+        {
+          "trackId": "gravity",
+          "frames": 1411200,
+          "sha256": "d00626a8cf4ce4939f3cc0d2e9e96f66566788b2b473f7cbeda09f23a4f20d2d"
+        },
+        {
+          "trackId": "vandal",
+          "frames": 1411200,
+          "sha256": "0c950f529dad7a6b580aad4da5d56fb610835e34f0cd9d2690de50e12fdbcd35"
+        },
+        {
+          "trackId": "impact",
+          "frames": 1411200,
+          "sha256": "3220238333318d776b92937f8f21f1e458b745a75bc570e3ff2bd5413c8c3ee8"
+        },
+        {
+          "trackId": "metal",
+          "frames": 1411200,
+          "sha256": "e11b39ed398ea057dc1e8d492c8023bd54b7671584d99e6e89b332177c0f38b8"
+        },
+        {
+          "trackId": "ticks",
+          "frames": 1411200,
+          "sha256": "b8bb50af0a1134656003e70b455454040179bb1fbf2460d21b67fceb2705f913"
+        }
+      ]
+    },
+    {
+      "id": "b-apparition",
+      "notes": 21,
+      "frames": 1058400,
+      "seconds": 24,
+      "wavSha256": "db163835917883118f6980ba6e53545e9ce37c38ebaa8e3a5ee30b27e59d734e",
+      "twoFreshRendersIdentical": true,
+      "comparedArtifacts": 8,
+      "analysis": {
+        "durationSeconds": 24,
+        "frames": 1058400,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "format": "pcm_s16le",
+        "peakDbfs": -9.865382,
+        "rmsDbfs": -20.898404,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "integratedLufs": -18.1,
+        "loudnessRangeLu": 4.7,
+        "truePeakDbfs": -9.77
+      },
+      "stereo": {
+        "correlation": 0.9982180358142048,
+        "monoFoldDownDb": -0.00544460186286011,
+        "lowBandMethod": "two cascaded one-pole 150 Hz low-passes",
+        "lowBandCorrelation": 0.9995496070150529,
+        "lowBandMonoFoldDownDb": -0.0010222399947552594
+      },
+      "stems": [
+        {
+          "trackId": "apparition",
+          "frames": 1058400,
+          "sha256": "63e9f2d4a5d82b1d193231a7cacf4f56f23fdf281bf12621ab5959cdd96301d6"
+        },
+        {
+          "trackId": "whisper",
+          "frames": 1058400,
+          "sha256": "966f5e121bcb395b610e631e75f960106d83f66c56b2e052949d5dcc44325aa8"
+        },
+        {
+          "trackId": "bloom",
+          "frames": 1058400,
+          "sha256": "18762e5db879b4e485b02beebb02a12bff7bde9375bf3f0777b74e7322498bed"
+        },
+        {
+          "trackId": "gravity",
+          "frames": 1058400,
+          "sha256": "4f835f520033c1406ff5596edada817b5d0167800e54b2fd2efbbcd260acdc73"
+        }
+      ]
+    },
+    {
+      "id": "c-iron-bloom",
+      "notes": 89,
+      "frames": 1058400,
+      "seconds": 24,
+      "wavSha256": "579a4a3c8e4538ecb3b16f045bea6d123fd6f23896df1577f7fa34727c823cd0",
+      "twoFreshRendersIdentical": true,
+      "comparedArtifacts": 8,
+      "analysis": {
+        "durationSeconds": 24,
+        "frames": 1058400,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "format": "pcm_s16le",
+        "peakDbfs": -10.217413,
+        "rmsDbfs": -25.699929,
+        "fullScaleSamples": 0,
+        "clipping": false,
+        "integratedLufs": -23.53,
+        "loudnessRangeLu": 7.3,
+        "truePeakDbfs": -10.22
+      },
+      "stereo": {
+        "correlation": 0.9932774175083955,
+        "monoFoldDownDb": -0.017389644045998763,
+        "lowBandMethod": "two cascaded one-pole 150 Hz low-passes",
+        "lowBandCorrelation": 0.9994652460029431,
+        "lowBandMonoFoldDownDb": -0.0011862585451417904
+      },
+      "stems": [
+        {
+          "trackId": "body",
+          "frames": 1058400,
+          "sha256": "2dce1f11060263323c7102c2e04a9abe4c4c918debf45b3c6ff8302e88bc00e9"
+        },
+        {
+          "trackId": "strikes",
+          "frames": 1058400,
+          "sha256": "e56d24ffe497cf0af732579ac0f65433a221e74b3d4f70344454e420a2d1384d"
+        },
+        {
+          "trackId": "answer",
+          "frames": 1058400,
+          "sha256": "6168aa1c90337eb164391702cf2100cdea05d43edc0ae914e38a68cb64c92fc5"
+        },
+        {
+          "trackId": "bow",
+          "frames": 1058400,
+          "sha256": "20f247c9cb7201f0f26ccdb39e47cc50c5e9115f7be5f0299c7da9965ce5e377"
+        }
+      ]
+    }
+  ]
+}

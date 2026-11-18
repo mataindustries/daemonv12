@@ -1,0 +1,288 @@
+{
+  "engine": {
+    "name": "daemonv12",
+    "version": "0.7.0"
+  },
+  "project": {
+    "file": "dry-iron-bloom.json",
+    "sha256": "fe5601a64a133b28294997eaed01f1878e9a2210641475bfb7a078b63c829b66",
+    "formatVersion": 1,
+    "seed": 12003
+  },
+  "midi": {
+    "file": "dry-iron-bloom.mid",
+    "sha256": "bbbe78c5454312e2370e3cd083c90b28c0cb01f60cb964c73b859b6455b04d1c",
+    "bytes": 93,
+    "ppq": 960,
+    "durationTicks": 30720,
+    "durationSeconds": 16,
+    "notes": 0
+  },
+  "renderer": {
+    "name": "daemonv12-production",
+    "version": "2",
+    "settings": {
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "panLaw": "linear stereo balance; unity center",
+      "order": "source and tail cap, track gain/pan automation, ordered track effects, tail cap, s16 track elements; sum, master gain, ordered master effects, tail cap and final trim/pad, VO ducking, s16 master; trim/pad pre-master stems to master frames",
+      "normalization": false,
+      "dither": false,
+      "automation": "absolute values; step or outgoing linear segment; gain interpolated in dB; rounded sample positions",
+      "reverb": "schroeder-4-comb-2-allpass-v1; finite RT60 tail",
+      "saturation": "tanh-v1; no output compensation",
+      "ducking": "trailing 20ms channel-energy RMS; threshold gate; exponential reduction in dB; v1"
+    }
+  },
+  "gmRenderer": null,
+  "gmSource": null,
+  "soundfont": null,
+  "samples": {
+    "timing": "nearest absolute trigger and fixed boundary, ties later; ceil minimum only without fixed boundary; tick * usPerQuarter * 44100 / 960000000",
+    "assets": [
+      {
+        "file": "assets/westghost001/dry-iron-bloom/iron-bloom-3049fe2e49cdab18.wav",
+        "sha256": "08960218f22d8ee434c60ab6b566ea0fc52bef8920b0ffddf2dfda4d9a1d55b3",
+        "bytes": 326384,
+        "frames": 163170,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/dry-iron-bloom/iron-bloom-67503749d9d9f9dd.wav",
+        "sha256": "2ea03c88589268b06fd5dc6dbbc0ffe589283d367fe999e118dbd0009515a8a6",
+        "bytes": 326384,
+        "frames": 163170,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/dry-iron-bloom/iron-bloom-d403f1333b1a4f96.wav",
+        "sha256": "4aba1fc657de5ff8b052a9c37bb61f7f888719049e5989237937e63495021592",
+        "bytes": 326384,
+        "frames": 163170,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/dry-iron-bloom/iron-bloom-fc4a66fdf1d3f971.wav",
+        "sha256": "5d35d3f727ca674f838bfb2fe7b79fcb4503708a88fcf182cecf9b8841f8990a",
+        "bytes": 326384,
+        "frames": 163170,
+        "channels": 1,
+        "sampleRate": 44100,
+        "bitsPerSample": 16
+      },
+      {
+        "file": "assets/westghost001/dry-iron-bloom/iron-bloom.kit.json",
+        "sha256": "e01601dc0e15fb4d295559964e98431080371bcefc311b1aa4c6ac64ad032cfa",
+        "bytes": 504,
+        "kind": "drumkit"
+      }
+    ],
+    "tracks": [
+      {
+        "trackId": "iron-bloom",
+        "trackIndex": 0,
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/dry-iron-bloom/iron-bloom.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/dry-iron-bloom/iron-bloom-fc4a66fdf1d3f971.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-iron-bloom/iron-bloom-67503749d9d9f9dd.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-iron-bloom/iron-bloom-3049fe2e49cdab18.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-iron-bloom/iron-bloom-d403f1333b1a4f96.wav",
+            "tick": 23040,
+            "frame": 529200,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      }
+    ]
+  },
+  "timeline": {
+    "authoredDurationTicks": 30720,
+    "authoredFrames": 705600,
+    "duration": {
+      "bars": 8
+    },
+    "tail": "none",
+    "requestedFinalFrames": 705600,
+    "audioEndFrames": 705600,
+    "resultingFrames": 705600,
+    "rounding": "nearest sample frame; ties later; combined musical timeline + explicit tail rounded once"
+  },
+  "production": {
+    "processor": {
+      "name": "ffmpeg",
+      "version": "6.1.1"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v24.19.0"
+    },
+    "tracks": [
+      {
+        "trackId": "iron-bloom",
+        "gainDb": -1.5,
+        "pan": 0,
+        "effects": [],
+        "clippedSamples": 0,
+        "preClipPeakDbfs": -10.203686
+      }
+    ],
+    "master": {
+      "gainDb": 0,
+      "effects": [],
+      "clippedSamples": 0,
+      "preClipPeakDbfs": -10.203672
+    },
+    "stemAlignment": "trim/pad to master frames; post-track, pre-master gain/effects/ducking"
+  },
+  "mix": {
+    "clippedSamples": 0,
+    "gm": "sum processed independent tracks",
+    "samples": "sum exported track PCM"
+  },
+  "wav": {
+    "file": "dry-iron-bloom.wav",
+    "sha256": "f88e1da53117a0c598efa3ff07f5e73e07bf096baf4f3033d99ac80137edf54a",
+    "bytes": 2822444,
+    "frames": 705600,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 16,
+    "durationSeconds": 16
+  },
+  "stems": [
+    {
+      "trackId": "iron-bloom",
+      "trackIndex": 0,
+      "sample": {
+        "instrument": {
+          "type": "drumkit",
+          "kit": "assets/westghost001/dry-iron-bloom/iron-bloom.kit.json"
+        },
+        "triggers": [
+          {
+            "file": "assets/westghost001/dry-iron-bloom/iron-bloom-fc4a66fdf1d3f971.wav",
+            "tick": 0,
+            "frame": 0,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-iron-bloom/iron-bloom-67503749d9d9f9dd.wav",
+            "tick": 7680,
+            "frame": 176400,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-iron-bloom/iron-bloom-3049fe2e49cdab18.wav",
+            "tick": 15360,
+            "frame": 352800,
+            "velocity": 1
+          },
+          {
+            "file": "assets/westghost001/dry-iron-bloom/iron-bloom-d403f1333b1a4f96.wav",
+            "tick": 23040,
+            "frame": 529200,
+            "velocity": 1
+          }
+        ],
+        "clippedSamples": 0
+      },
+      "renderer": {
+        "name": "daemonv12-pcm",
+        "version": "1",
+        "settings": {
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "velocity": "round(sample * velocity)",
+          "mix": "integer sum, saturate s16",
+          "resampling": false
+        }
+      },
+      "wav": {
+        "file": "dry-iron-bloom.stems/iron-bloom.wav",
+        "sha256": "f88e1da53117a0c598efa3ff07f5e73e07bf096baf4f3033d99ac80137edf54a",
+        "bytes": 2822444,
+        "frames": 705600,
+        "sampleRate": 44100,
+        "channels": 2,
+        "bitsPerSample": 16,
+        "durationSeconds": 16
+      }
+    }
+  ],
+  "audioTool": {
+    "name": "ffmpeg",
+    "version": "6.1.1"
+  },
+  "analysis": {
+    "master": {
+      "durationSeconds": 16,
+      "frames": 705600,
+      "sampleRate": 44100,
+      "channels": 2,
+      "bitsPerSample": 16,
+      "format": "pcm_s16le",
+      "peakDbfs": -10.203672,
+      "rmsDbfs": -22.550018,
+      "fullScaleSamples": 0,
+      "clipping": false,
+      "integratedLufs": -17.87,
+      "loudnessRangeLu": 6.7,
+      "truePeakDbfs": -9.97
+    },
+    "tracks": [
+      {
+        "trackId": "iron-bloom",
+        "analysis": {
+          "durationSeconds": 16,
+          "frames": 705600,
+          "sampleRate": 44100,
+          "channels": 2,
+          "bitsPerSample": 16,
+          "format": "pcm_s16le",
+          "peakDbfs": -10.203672,
+          "rmsDbfs": -22.550018,
+          "fullScaleSamples": 0,
+          "clipping": false,
+          "integratedLufs": -17.87,
+          "loudnessRangeLu": 6.7,
+          "truePeakDbfs": -9.97
+        }
+      }
+    ]
+  },
+  "mp3": {
+    "file": "dry-iron-bloom.mp3",
+    "sha256": "41f500ced2c5e5b031b1c6c882680f844a4fbbfc66130a780f26cb8e8cebcc13",
+    "bytes": 385611,
+    "codec": "libmp3lame",
+    "bitrateKbps": 192
+  }
+}
