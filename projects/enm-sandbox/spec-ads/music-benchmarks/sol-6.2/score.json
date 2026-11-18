@@ -1,0 +1,75 @@
+{
+  "schema": "daemonv12.signature-rack.score/1",
+  "title": "The Balance Spring",
+  "bpm": 80,
+  "key": "E minor",
+  "swing": 0.5,
+  "seed": 62080,
+  "tailSeconds": 3,
+  "masterGainDb": 0,
+  "sections": [
+    { "id": "weight", "bars": 1, "development": "A soft E3 mallet strike over E2, with a bowed B opening into the space." },
+    { "id": "reflection", "bars": 1, "development": "An E6 tine answers, then steps down through B5 and G5 to hang on F#5." }
+  ],
+  "room": { "rt60": 1.85 },
+  "parts": [
+    {
+      "id": "foundation",
+      "instrument": "living-bass",
+      "macro": 0,
+      "controls": { "body": 0.24, "bright": 0.28, "hold": 0.23, "chassis": 0 },
+      "gainDb": -9,
+      "pan": 0,
+      "room": 0.08,
+      "notes": [
+        [0, 2.25, "E2", 0.66],
+        [5.5, 1.6, "B2", 0.25]
+      ]
+    },
+    {
+      "id": "low-strike",
+      "instrument": "mechanical-orchestra/bar",
+      "macro": 0.08,
+      "controls": { "hardness": 0.23, "damp": 1.1 },
+      "setup": { "spread": 0.19 },
+      "gainDb": -3,
+      "pan": -0.09,
+      "room": 0.24,
+      "notes": [
+        [0, 2, "E3", 0.82, { "articulation": "soft" }],
+        [1.75, 0.5, "G3", 0.39, { "articulation": "soft" }]
+      ]
+    },
+    {
+      "id": "bowed-resonance",
+      "instrument": "mechanical-orchestra/bow",
+      "macro": 0.14,
+      "controls": { "sub": 0.02, "chatter": 0.035, "attack": 0.52 },
+      "setup": { "spread": 0.3 },
+      "gainDb": -15,
+      "pan": -0.11,
+      "room": 0.31,
+      "notes": [
+        [0.875, 2.55, "B3", 0.42, { "articulation": "swell" }],
+        [3, 2.25, "G4", 0.33, { "articulation": "swell" }],
+        [5.5, 2.5, "E4", 0.39, { "articulation": "swell" }]
+      ]
+    },
+    {
+      "id": "high-answer",
+      "instrument": "mechanical-orchestra/tine",
+      "macro": 0.03,
+      "controls": { "buzz": 0, "detune": 0 },
+      "setup": { "spread": 0.29 },
+      "gainDb": -7,
+      "pan": 0.12,
+      "room": 0.31,
+      "notes": [
+        [4, 0.75, "E6", 0.71, { "articulation": "clean" }],
+        [4.75, 0.5, "B5", 0.46, { "articulation": "clean" }],
+        [5.5, 0.875, "G5", 0.54, { "articulation": "clean" }],
+        [6.5, 1.5, "F#5", 0.43, { "articulation": "clean" }]
+      ]
+    }
+  ]
+}
