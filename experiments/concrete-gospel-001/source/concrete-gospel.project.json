@@ -1,0 +1,3154 @@
+{
+ "formatVersion": 1,
+ "title": "Concrete Gospel",
+ "description": "DaemonV12 First Listening Benchmark. 16 bars, 144 BPM halftime, F minor. Rack/Timbre Lab stems (reed, choir, Living Bass 808, kick layers, room) mixed with V12 Signature drums and steel.",
+ "bpm": 144,
+ "timeSignature": "4/4",
+ "key": "F minor",
+ "bars": 16,
+ "seed": 1440,
+ "render": {
+  "tail": {
+   "seconds": 2.4
+  }
+ },
+ "master": {
+  "gainDb": 1,
+  "effects": [
+   {
+    "type": "highpass",
+    "frequencyHz": 25
+   },
+   {
+    "type": "compressor",
+    "thresholdDb": -16,
+    "ratio": 2,
+    "attackMs": 20,
+    "releaseMs": 160
+   },
+   {
+    "type": "saturation",
+    "driveDb": 2,
+    "mix": 1
+   }
+  ]
+ },
+ "tracks": [
+  {
+   "id": "kick",
+   "description": "V12 IRON PULSE tuned to C2 and gated, layered with the rack skin punch (F2) and log rim click stems.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/kick-kit.json"
+   },
+   "mix": {
+    "gainDb": 0
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 30
+    },
+    {
+     "type": "saturation",
+     "driveDb": 5,
+     "mix": 0.35
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "punch",
+       "velocity": 1
+      },
+      {
+       "start": "1:1",
+       "pitch": "click",
+       "velocity": 1
+      },
+      {
+       "start": "5:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "5:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "5:4+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "6:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "6:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "7:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "7:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "7:4+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "8:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "8:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "9:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "9:1+3/16",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "9:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "9:4+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "10:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "10:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "10:4+1/16",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "11:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "11:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "11:4+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "13:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "13:1+3/16",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "13:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "13:4+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "14:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "14:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "14:4+1/16",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "15:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "15:1+3/16",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "15:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "15:4+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "16:1",
+       "pitch": "iron-pulse",
+       "velocity": 1,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      },
+      {
+       "start": "16:2+1/8",
+       "pitch": "iron-pulse",
+       "velocity": 0.88,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "kick"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "snare",
+   "description": "V12 TITANIUM CRACK (down a semitone) stacked with NEON CLAP on the halftime backbeat.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/v12/kit.json"
+   },
+   "mix": {
+    "gainDb": 1
+   },
+   "effects": [
+    {
+     "type": "saturation",
+     "driveDb": 4,
+     "mix": 0.3
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.35,
+     "decaySeconds": 0.8,
+     "wet": 0.12
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "5:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "5:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "6:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "6:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "7:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "7:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "8:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "8:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "9:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "9:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "10:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "10:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "13:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "13:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "14:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "14:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "15:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "15:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "16:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "16:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "11:3",
+       "pitch": "titanium-crack",
+       "velocity": 0.92,
+       "playbackRate": 0.943874
+      },
+      {
+       "start": "11:3",
+       "pitch": "neon-clap",
+       "velocity": 0.8
+      },
+      {
+       "start": "8:4+1/8",
+       "pitch": "titanium-crack",
+       "velocity": 0.32,
+       "playbackRate": 0.943874,
+       "gate": "1/32",
+       "envelope": {
+        "attackSeconds": 0.001,
+        "releaseSeconds": 0.02
+       },
+       "chokeGroup": "snare"
+      },
+      {
+       "start": "8:4+3/16",
+       "pitch": "titanium-crack",
+       "velocity": 0.5,
+       "playbackRate": 0.943874,
+       "gate": "1/32",
+       "envelope": {
+        "attackSeconds": 0.001,
+        "releaseSeconds": 0.02
+       },
+       "chokeGroup": "snare"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hats",
+   "description": "V12 GHOST TICK eighths, written rolls and OPEN CIRCUIT, one choke group.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/v12/kit.json"
+   },
+   "mix": {
+    "gainDb": -1,
+    "pan": 0.12
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 4000
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "3:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.237804,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "3:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.216806,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "3:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.264508,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "3:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.196832,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "3:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.244068,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "3:3+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.222641,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "3:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.277699,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "3:4+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.200263,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "4:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.261641,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "4:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.201524,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "4:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.226393,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "4:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.206464,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.627778,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.453093,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.644434,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.448856,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.614568,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:3+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.441646,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.654112,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:4+1/8",
+       "pitch": "ghost-tick",
+       "velocity": 0.354699,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:4+5/32",
+       "pitch": "ghost-tick",
+       "velocity": 0.452256,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:4+3/16",
+       "pitch": "ghost-tick",
+       "velocity": 0.53797,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "5:4+7/32",
+       "pitch": "ghost-tick",
+       "velocity": 0.568042,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "6:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.628964,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "6:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.490347,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "6:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.600971,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "6:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.47861,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "6:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.595838,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "6:3+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.488833,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "6:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.59746,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "6:4+1/8",
+       "pitch": "open-circuit",
+       "velocity": 0.5,
+       "gate": "1/8",
+       "envelope": {
+        "attackSeconds": 0.001,
+        "releaseSeconds": 0.06
+       },
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "7:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.609059,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "7:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.464458,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "7:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.610743,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "7:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.453303,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "7:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.624911,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "7:3+1/8",
+       "pitch": "ghost-tick",
+       "velocity": 0.37302,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "7:3+1/6",
+       "pitch": "ghost-tick",
+       "velocity": 0.484774,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "7:3+5/24",
+       "pitch": "ghost-tick",
+       "velocity": 0.582246,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "7:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.602418,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "7:4+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.443351,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "8:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.639756,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "8:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.48478,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "8:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.629788,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "8:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.430597,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "8:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.619862,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "8:3+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.481608,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "8:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.356689,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "8:4+1/24",
+       "pitch": "ghost-tick",
+       "velocity": 0.391196,
+       "chokeGroup": "hats",
+       "playbackRate": 1.06
+      },
+      {
+       "start": "8:4+1/12",
+       "pitch": "ghost-tick",
+       "velocity": 0.495324,
+       "chokeGroup": "hats",
+       "playbackRate": 1.12
+      },
+      {
+       "start": "8:4+1/8",
+       "pitch": "ghost-tick",
+       "velocity": 0.533965,
+       "chokeGroup": "hats",
+       "playbackRate": 1.12
+      },
+      {
+       "start": "8:4+5/32",
+       "pitch": "ghost-tick",
+       "velocity": 0.601872,
+       "chokeGroup": "hats",
+       "playbackRate": 1.166667
+      },
+      {
+       "start": "8:4+3/16",
+       "pitch": "ghost-tick",
+       "velocity": 0.645372,
+       "chokeGroup": "hats",
+       "playbackRate": 1.213333
+      },
+      {
+       "start": "8:4+7/32",
+       "pitch": "ghost-tick",
+       "velocity": 0.709584,
+       "chokeGroup": "hats",
+       "playbackRate": 1.26
+      },
+      {
+       "start": "9:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.619372,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "9:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.430363,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "9:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.648729,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "9:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.445562,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "9:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.60888,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "9:3+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.468171,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "9:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.62662,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "9:4+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.460954,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "9:4+3/16",
+       "pitch": "ghost-tick",
+       "velocity": 0.384841,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "10:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.650814,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "10:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.491893,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "10:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.594766,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "10:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.633957,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "10:3+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.430718,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "10:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.654116,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "10:4+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.462207,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "10:4+3/16",
+       "pitch": "ghost-tick",
+       "velocity": 0.412995,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "11:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.626819,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "11:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.456304,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "11:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.617491,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "11:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.425333,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "11:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.636032,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "11:3+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.44832,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "11:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.341509,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "11:4+1/24",
+       "pitch": "ghost-tick",
+       "velocity": 0.462374,
+       "chokeGroup": "hats",
+       "playbackRate": 1.06
+      },
+      {
+       "start": "11:4+1/12",
+       "pitch": "ghost-tick",
+       "velocity": 0.553604,
+       "chokeGroup": "hats",
+       "playbackRate": 1.12
+      },
+      {
+       "start": "11:4+1/8",
+       "pitch": "ghost-tick",
+       "velocity": 0.483802,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "13:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.611106,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "13:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.482147,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "13:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.631567,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "13:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.492826,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "13:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.658556,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "13:3+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.488516,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "13:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.647969,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "13:4+1/8",
+       "pitch": "open-circuit",
+       "velocity": 0.5,
+       "gate": "1/8",
+       "envelope": {
+        "attackSeconds": 0.001,
+        "releaseSeconds": 0.06
+       },
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.614082,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.477091,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.645726,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.457171,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.604052,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:3+1/16",
+       "pitch": "ghost-tick",
+       "velocity": 0.390397,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:3+1/8",
+       "pitch": "ghost-tick",
+       "velocity": 0.508299,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:3+3/16",
+       "pitch": "ghost-tick",
+       "velocity": 0.371391,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.643924,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:4+1/16",
+       "pitch": "ghost-tick",
+       "velocity": 0.349934,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:4+1/8",
+       "pitch": "ghost-tick",
+       "velocity": 0.523725,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "14:4+3/16",
+       "pitch": "ghost-tick",
+       "velocity": 0.357112,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "15:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.623784,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "15:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.486229,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "15:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.607691,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "15:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.469855,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "15:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.666679,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "15:3+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.458523,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "15:4",
+       "pitch": "ghost-tick",
+       "velocity": 0.668682,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "15:4+1/8",
+       "pitch": "ghost-tick",
+       "velocity": 0.410466,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "15:4+5/32",
+       "pitch": "ghost-tick",
+       "velocity": 0.518148,
+       "chokeGroup": "hats",
+       "playbackRate": 1.063333
+      },
+      {
+       "start": "15:4+3/16",
+       "pitch": "ghost-tick",
+       "velocity": 0.569724,
+       "chokeGroup": "hats",
+       "playbackRate": 1.126667
+      },
+      {
+       "start": "15:4+7/32",
+       "pitch": "ghost-tick",
+       "velocity": 0.712242,
+       "chokeGroup": "hats",
+       "playbackRate": 1.19
+      },
+      {
+       "start": "16:1",
+       "pitch": "ghost-tick",
+       "velocity": 0.670809,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "16:1+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.485362,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "16:2",
+       "pitch": "ghost-tick",
+       "velocity": 0.642901,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "16:2+81/640",
+       "pitch": "ghost-tick",
+       "velocity": 0.489326,
+       "chokeGroup": "hats"
+      },
+      {
+       "start": "16:3",
+       "pitch": "ghost-tick",
+       "velocity": 0.648401,
+       "chokeGroup": "hats"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "toll",
+   "description": "V12 CHROME STRIKE at F4 + F3: the bell that marks bars 1, 5, 13 and the end.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/v12/kit.json"
+   },
+   "mix": {
+    "gainDb": -5
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 150
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.75,
+     "decaySeconds": 2.2,
+     "wet": 0.25
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "chrome-strike",
+       "velocity": 0.8,
+       "playbackRate": 0.793701,
+       "gate": "2/1",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 1.2
+       }
+      },
+      {
+       "start": "1:1",
+       "pitch": "chrome-strike",
+       "velocity": 0.64,
+       "playbackRate": 0.39685,
+       "gate": "2/1",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 1.2
+       }
+      },
+      {
+       "start": "5:1",
+       "pitch": "chrome-strike",
+       "velocity": 0.85,
+       "playbackRate": 0.793701,
+       "gate": "2/1",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 1.2
+       }
+      },
+      {
+       "start": "5:1",
+       "pitch": "chrome-strike",
+       "velocity": 0.68,
+       "playbackRate": 0.39685,
+       "gate": "2/1",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 1.2
+       }
+      },
+      {
+       "start": "13:1",
+       "pitch": "chrome-strike",
+       "velocity": 0.9,
+       "playbackRate": 0.793701,
+       "gate": "2/1",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 1.2
+       }
+      },
+      {
+       "start": "13:1",
+       "pitch": "chrome-strike",
+       "velocity": 0.72,
+       "playbackRate": 0.39685,
+       "gate": "2/1",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 1.2
+       }
+      },
+      {
+       "start": "16:3",
+       "pitch": "chrome-strike",
+       "velocity": 0.85,
+       "playbackRate": 0.793701,
+       "gate": "1/1",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 1.1
+       }
+      },
+      {
+       "start": "16:3",
+       "pitch": "chrome-strike",
+       "velocity": 0.68,
+       "playbackRate": 0.39685,
+       "gate": "1/1",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 1.1
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clank",
+   "description": "The same bell gated short on C5/F5: a sparse steel off-beat figure.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/v12/kit.json"
+   },
+   "mix": {
+    "gainDb": -7,
+    "pan": -0.22
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 500
+    },
+    {
+     "type": "delay",
+     "timeMs": 312.5,
+     "wet": 0.22
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "5:2+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.62,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "5:4+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.55,
+       "playbackRate": 1.587401,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "6:2+3/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.58,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "7:2+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.62,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "7:4+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.55,
+       "playbackRate": 1.587401,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "8:2+3/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.58,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "9:2+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.62,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "9:4+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.55,
+       "playbackRate": 1.587401,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "10:2+3/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.58,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "10:4+3/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.5,
+       "playbackRate": 1.587401,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "13:2+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.62,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "13:4+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.55,
+       "playbackRate": 1.587401,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "14:2+3/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.58,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "14:4+3/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.5,
+       "playbackRate": 1.587401,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "15:2+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.62,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "15:4+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.55,
+       "playbackRate": 1.587401,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "16:2+3/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.58,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "11:2+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.62,
+       "playbackRate": 1.189207,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "11:4+1/16",
+       "pitch": "chrome-strike",
+       "velocity": 0.55,
+       "playbackRate": 1.587401,
+       "gate": "1/16",
+       "envelope": {
+        "attackSeconds": 0,
+        "releaseSeconds": 0.08
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bass808",
+   "description": "Living Bass played as a tuned sliding 808 (rack stem), ducked under every kick.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/rack/bass808.wav"
+   },
+   "mix": {
+    "gainDb": 0
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 28
+    },
+    {
+     "type": "saturation",
+     "driveDb": 9,
+     "mix": 0.5
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 1600
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "musical": "4:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:2+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:4+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:4+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:4+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:4+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "5:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "6:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "6:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "6:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "6:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "6:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "6:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "6:2+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "6:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:2+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:4+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:4+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:4+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:4+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "7:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "8:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "8:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "8:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "8:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "8:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "8:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "8:2+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "8:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:1+23/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:1+3/16"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:1+7/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:2"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:2+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:4+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:4+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:4+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:4+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "9:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:2+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:4+7/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:4+1/16"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:4+3/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:4+1/8"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "10:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:2+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:4+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:4+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:4+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "11:4+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "12:1+1/20"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "12:1+3/20"
+      },
+      "value": -40
+     },
+     {
+      "at": {
+       "musical": "12:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:1+23/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:1+3/16"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:1+7/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:2"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:2+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:4+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:4+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:4+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:4+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:2+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:4+7/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:4+1/16"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:4+3/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:4+1/8"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "14:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:1+23/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:1+3/16"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:1+7/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:2"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:2+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:4+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:4+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:4+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:4+3/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "15:4+31/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "16:1"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "16:1+1/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "16:1+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "16:2+15/128"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "16:2+1/8"
+      },
+      "value": -5,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "16:2+5/32"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "16:2+3/16"
+      },
+      "value": 0
+     },
+     {
+      "at": {
+       "musical": "16:3+1/16"
+      },
+      "value": 0,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "16:4+3/16"
+      },
+      "value": -45
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "velocity": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reed-far",
+   "description": "The breath reed hook behind the concrete wall (bars 1-4 only).",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/rack/reed.wav"
+   },
+   "mix": {
+    "gainDb": 2
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 320
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 1500
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "musical": "4:4+3/20"
+      },
+      "value": 2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "4:4+19/80"
+      },
+      "value": -60
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "velocity": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reed",
+   "description": "The breath reed hook, full band from bar 5.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/rack/reed.wav"
+   },
+   "mix": {
+    "gainDb": -60
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 180
+    },
+    {
+     "type": "compressor",
+     "thresholdDb": -20,
+     "ratio": 2.5,
+     "attackMs": 6,
+     "releaseMs": 120,
+     "makeupGainDb": 3
+    },
+    {
+     "type": "saturation",
+     "driveDb": 3,
+     "mix": 0.2
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "musical": "4:4+3/20"
+      },
+      "value": -60,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "4:4+19/80"
+      },
+      "value": 3
+     },
+     {
+      "at": {
+       "musical": "12:4+9/40"
+      },
+      "value": 3,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "13:1"
+      },
+      "value": 4.5
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "velocity": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "choir-far",
+   "description": "Three impossible voices behind the wall (bars 1-4).",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/choir-kit.json"
+   },
+   "mix": {
+    "gainDb": -2
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 220
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 1400
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "musical": "4:4+3/20"
+      },
+      "value": -2,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "4:4+19/80"
+      },
+      "value": -60
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "top",
+       "velocity": 1
+      },
+      {
+       "start": "1:1",
+       "pitch": "mid",
+       "velocity": 1
+      },
+      {
+       "start": "1:1",
+       "pitch": "low",
+       "velocity": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "choir",
+   "description": "The same voices in the room: the bar-12 major answer and the last amen.",
+   "instrument": {
+    "type": "drumkit",
+    "kit": "assets/choir-kit.json"
+   },
+   "mix": {
+    "gainDb": -60
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 150
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "musical": "4:4+3/20"
+      },
+      "value": -60,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "4:4+19/80"
+      },
+      "value": -8.5
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "pitch": "top",
+       "velocity": 1
+      },
+      {
+       "start": "1:1",
+       "pitch": "mid",
+       "velocity": 1
+      },
+      {
+       "start": "1:1",
+       "pitch": "low",
+       "velocity": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "room-far",
+   "description": "The rack room (FDN) on the reed and choir, behind the wall.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/rack/room.wav"
+   },
+   "mix": {
+    "gainDb": 1
+   },
+   "effects": [
+    {
+     "type": "lowpass",
+     "frequencyHz": 1400
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "musical": "4:4+3/20"
+      },
+      "value": 1,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "4:4+19/80"
+      },
+      "value": -60
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "velocity": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "room",
+   "description": "The rack room, full band from bar 5.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/rack/room.wav"
+   },
+   "mix": {
+    "gainDb": -60
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 200
+    }
+   ],
+   "automation": {
+    "gainDb": [
+     {
+      "at": {
+       "musical": "4:4+3/20"
+      },
+      "value": -60,
+      "transition": "linear"
+     },
+     {
+      "at": {
+       "musical": "4:4+19/80"
+      },
+      "value": 2
+     }
+    ]
+   },
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "all"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "all",
+     "bars": 16,
+     "notes": [
+      {
+       "start": "1:1",
+       "velocity": 1
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
