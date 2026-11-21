@@ -98,8 +98,13 @@ rather than a preset.
 - **Polyphonic:** chords are separate voices, and a legato note continues the voice nearest in pitch, so chord changes
   glide voice by voice.
 
-**Measured in context:** the held notes are within ±2.8 cents. Pitch tracking shows the moan holding A♭4 at
-68.00 ± 0.03, then falling with acceleration to F4 (bars 5–6) or to E♭4 (bars 9–10).
+**Measured in context:**
+
+- **Not a flute.** On the hook's six held C5s, harmonics 2–8 sit at −0.2, −6.8, −8.1, −7.8, −8.6, −8.4 and −11.9 dB,
+  and the fundamental carries 30% of the energy. The reed's even harmonics were −40 dB, with 81% in the fundamental.
+- **Tuning:** the held notes are within ±2.8 cents.
+- **The moan:** pitch tracking shows it holding A♭4 at 68.00 ± 0.03, then falling with acceleration to F4 (bars 5–6) or
+  to E♭4 (bars 9–10).
 
 ### CATHEDRAL//ENGINE · synthetic pipe organ (`whisper → full organ`)
 
@@ -128,8 +133,12 @@ rather than a preset.
     of on it.
 - **Trap-mix control (added in the QA pass):** a zero-phase low-frequency mono crossover, `lowMono`.
 
-**Measured in context:** the held notes are within ±3.1 cents. The organ "moan" steps A♭–G–F, and its last key droops
-about 30 cents (`sag`).
+**Measured in context:**
+
+- **Spectrum:** the Principal-and-Trumpet solo's held C5s show a chorus-reed profile, with harmonics 2–4 at −6.4, −11.9
+  and −9.0 dB and 61% of the energy in the fundamental.
+- **Tuning:** the held notes are within ±3.1 cents.
+- **The moan:** the organ steps A♭–G–F, and its last key droops about 30 cents (`sag`).
 
 ### HEAVEN//MASS · synthetic celestial choir (`intimate → heavenly`)
 
