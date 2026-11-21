@@ -1,0 +1,129 @@
+{
+ "schema": "daemonv12.concrete-gospel-v3.build/1",
+ "stage": "final (after the QA/fix pass)",
+ "node": "v22.23.5",
+ "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+ "v2Backing": {
+  "masterSha256": "16681d1ab9302e45c6536c6401f277e65bb47507b9f87e1edf11c5b48c43bd14",
+  "identicalToDeliveredV2": true,
+  "stemsIdentical": true
+ },
+ "targets": {
+  "lufs": -14,
+  "maxTruePeakDbtp": -1
+ },
+ "listening": [
+  {
+   "id": "concrete-gospel-v3",
+   "label": "Concrete Gospel V3: Dark to Divine (16 bars, the sketch)",
+   "source": "build/engine/render/concrete-gospel-v3.wav",
+   "seconds": 31.167,
+   "lufsBefore": -12,
+   "tpBefore": -0.2,
+   "gainDb": -2,
+   "lufs": -14,
+   "tp": -2.2,
+   "lra": 7.9,
+   "wav": "build/out/concrete-gospel-v3.wav",
+   "mp3": "build/out/concrete-gospel-v3.mp3",
+   "wavSha256": "2ce6f6eca8108a15556679ab3f1b9f975c5fe9194700e149f7844c5a27222ad0",
+   "mp3Sha256": "1195571ff75fc60a7a0d30559c13d8ef3c10eb82b79611a172aff9053826e1c6"
+  },
+  {
+   "id": "concrete-gospel-v2-reference",
+   "label": "Concrete Gospel V2 (the approved master, all 16 bars): the A/B reference",
+   "source": "cathedral-experiment-001/build/v2/render/concrete-gospel.wav (bit-identical to the delivered V2 master)",
+   "seconds": 29.067,
+   "lufsBefore": -13,
+   "tpBefore": -1,
+   "gainDb": -1,
+   "lufs": -14,
+   "tp": -2,
+   "lra": 7.2,
+   "wav": "build/out/concrete-gospel-v2-reference.wav",
+   "mp3": "build/out/concrete-gospel-v2-reference.mp3",
+   "wavSha256": "d40d726a258d342b17ea8ff50a06673028fdb1a35fd450d465bb241de1565eaf",
+   "mp3Sha256": "e0839c41a69eba16c6ca5573bcbb381a02182320b5c21b25f38e8b0548db3c15"
+  }
+ ],
+ "stems": [
+  {
+   "id": "01-kick",
+   "tracks": [
+    "kick"
+   ],
+   "wav": "build/out/stems/01-kick.wav",
+   "peakDbfs": -0.22,
+   "wavSha256": "3f7adee4558105c9b96ef146bd6d41658e918cc6081743b53d97fb8b6c7f0499"
+  },
+  {
+   "id": "02-snare",
+   "tracks": [
+    "snare"
+   ],
+   "wav": "build/out/stems/02-snare.wav",
+   "peakDbfs": -2.64,
+   "wavSha256": "ff1491dd6f050bb4652bb0cae8e97211a606cfbb3a7a86b9646b57864562d502"
+  },
+  {
+   "id": "03-hats-and-steel",
+   "tracks": [
+    "hats",
+    "toll",
+    "clank"
+   ],
+   "wav": "build/out/stems/03-hats-and-steel.wav",
+   "peakDbfs": -10.32,
+   "wavSha256": "f1cc387d96f133978cbe58080681d9c24ec888ee27e5443d36c4e3774c81fde3"
+  },
+  {
+   "id": "04-808",
+   "tracks": [
+    "bass808"
+   ],
+   "wav": "build/out/stems/04-808.wav",
+   "peakDbfs": -7.82,
+   "wavSha256": "a5aec77cdf27aeb74d9d537def3224c8ab0b7cfcabb9b6561a89b24a347fc8c0"
+  },
+  {
+   "id": "05-throne-volt-lead",
+   "tracks": [
+    "volt",
+    "volt-room"
+   ],
+   "wav": "build/out/stems/05-throne-volt-lead.wav",
+   "peakDbfs": -0.44,
+   "wavSha256": "ef3d19dcd2c68237dd2c64374d95af2a73ee1140d744d354ed908d32062a2c41"
+  },
+  {
+   "id": "06-cathedral-engine-organ",
+   "tracks": [
+    "great",
+    "swell",
+    "pedal"
+   ],
+   "wav": "build/out/stems/06-cathedral-engine-organ.wav",
+   "peakDbfs": -2.61,
+   "wavSha256": "e21fa48721f06d0eb2ec685275c4f9180d48b925ce993b7ea63bbe2e5dba573a"
+  },
+  {
+   "id": "07-heaven-mass-choir",
+   "tracks": [
+    "choir-low",
+    "choir-mid",
+    "choir-high"
+   ],
+   "wav": "build/out/stems/07-heaven-mass-choir.wav",
+   "peakDbfs": -2.89,
+   "wavSha256": "0e5a7b36ed8d030b76de2b2b5b76df148300336a6c68367b07ff4a8c441597ed"
+  }
+ ],
+ "rackSeconds": {
+  "v3-lead": 7.1,
+  "v3-organ": 30.3,
+  "v3-choir-low": 12.6,
+  "v3-choir-mid": 14.8,
+  "v3-choir-high": 12.9
+ },
+ "seconds": 66.2
+}
