@@ -1,0 +1,35 @@
+{
+ "schema": "daemonv12.cathedral-experiment.upstream/1",
+ "purpose": "Byte-identical copies of the Concrete Gospel sources needed to rebuild the approved V2 drum/bass backing. Nothing here is edited; backing.ts imports them and verifies the rebuild against V2's delivered hashes.",
+ "source": {
+  "repository": "mataindustries/daemonv12",
+  "branch": "claude/awesome-dijkstra-nf60w1",
+  "commit": "620426eb82c1f5d615883922a0422a7a6e59e609",
+  "commitSubject": "Concrete Gospel V2: drum surgery (kick, snare, pocket, 808 duck)",
+  "base": "917f4439f85a9f7bfba1c336c1f76090a24b49e3 (main, the same base as this branch)"
+ },
+ "files": [
+  {
+   "path": "concrete-gospel-001/compose.ts",
+   "from": "experiments/concrete-gospel-001/compose.ts",
+   "gitBlob": "f5cc3de039aade0b0276bcd9ba8a9a42790129ce",
+   "sha256": "769eda491522a5825573802860f74b10a30141f16ed952ea24129ab10c44f65d",
+   "role": "V1 composition (hook, 808 notes, choir, bell, form). V2 imports it unchanged."
+  },
+  {
+   "path": "concrete-gospel-002/compose.ts",
+   "from": "experiments/concrete-gospel-002/compose.ts",
+   "gitBlob": "f257b8a3efc5809e12c2a99b225d41627c4965fe",
+   "sha256": "9f34fdb7221457484f2b1923f675a87e000797faade975106ad6803b49793d26",
+   "role": "V2 composition: the approved kick/snare layering, pocket, hats, 808 duck and mix."
+  },
+  {
+   "path": "concrete-gospel-002/delivery/SHA256SUMS",
+   "from": "experiments/concrete-gospel-002/delivery/SHA256SUMS",
+   "gitBlob": "8e46d8e337ab0ee9c2052f0f78c68b7034859ca6",
+   "sha256": "74d998159c12ab20d47bf900f6f5b2d9bf8762dbe14561a924abde17b04a029e",
+   "role": "V2's delivered hashes (master WAV, MP3, stems, engine stem WAVs): the reference the rebuild is checked against."
+  }
+ ],
+ "verification": "node experiments/cathedral-experiment-001/backing.ts rebuilds V2 with the same commands as V2's build.ts `full` and requires the master WAV and all 12 engine stem WAVs to match these hashes bit for bit (Linux, Node 22.23.5, FFmpeg 6.1.1-3ubuntu5)."
+}
