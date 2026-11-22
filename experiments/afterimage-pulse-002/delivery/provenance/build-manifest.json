@@ -1,0 +1,164 @@
+{
+ "schema": "daemonv12.afterimage-pulse-v2.build/1",
+ "stage": "final (after the QA/fix pass)",
+ "node": "v22.23.5",
+ "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+ "targets": {
+  "lufs": -14,
+  "maxTruePeakDbtp": -1
+ },
+ "record": {
+  "file": "build/out/afterimage-pulse-v2.wav",
+  "mp3": "build/out/afterimage-pulse-v2.mp3",
+  "seconds": 51.412,
+  "masterLufs": -16,
+  "masterTp": -2.1,
+  "gainDb": 0.9,
+  "lufs": -15.1,
+  "tp": -1.2,
+  "lra": 6.7,
+  "mp3Lufs": -15.1,
+  "mp3Tp": -1.2,
+  "wavSha256": "87d717eb565ae936ae677e26efff06ac1f2da91bb4d5b09d40e983f8275cd138",
+  "mp3Sha256": "69e7d58d7f2feeb3e62ba65ce5f7cc18254c689562cb77b29f5d999103f7ad2a"
+ },
+ "stems": [
+  {
+   "id": "01-kick",
+   "tracks": [
+    "kick"
+   ],
+   "wav": "build/out/stems/01-kick.wav",
+   "peakDbfs": -1.86,
+   "wavSha256": "c7f3bb16d86cc7a4127e0f8efb5aef032f990665dbd1067c60f099ca24034955"
+  },
+  {
+   "id": "02-snare-and-hats",
+   "tracks": [
+    "snare",
+    "hats"
+   ],
+   "wav": "build/out/stems/02-snare-and-hats.wav",
+   "peakDbfs": -7.3,
+   "wavSha256": "9e9f0bfe349dec2653245e92b9b04a949d304537937e36f0f89f596d51647bb4"
+  },
+  {
+   "id": "03-hand-percussion",
+   "tracks": [
+    "perc"
+   ],
+   "wav": "build/out/stems/03-hand-percussion.wav",
+   "peakDbfs": -4.49,
+   "wavSha256": "41d78ded0b3588d58642977eeec1e4ae93e70c882405779c2fe16d38c350ef15"
+  },
+  {
+   "id": "04-living-bass",
+   "tracks": [
+    "bass-sub",
+    "bass-mid"
+   ],
+   "wav": "build/out/stems/04-living-bass.wav",
+   "peakDbfs": -5.77,
+   "wavSha256": "f54ca63c19fa212acd5a1c3ff7bb97e2894665ff29540bb2c3031dc319eef494"
+  },
+  {
+   "id": "05-throne-volt-lead",
+   "tracks": [
+    "lead"
+   ],
+   "wav": "build/out/stems/05-throne-volt-lead.wav",
+   "peakDbfs": -3.56,
+   "wavSha256": "c8da847ba409d5ebcf24bd2ae46187e96ab12432eef37513210ca9ca72ff379b"
+  },
+  {
+   "id": "06-throne-volt-pad",
+   "tracks": [
+    "pad"
+   ],
+   "wav": "build/out/stems/06-throne-volt-pad.wav",
+   "peakDbfs": -17.94,
+   "wavSha256": "f04f9145becb69e20c7acdd9088e33a1c6bf14553230694908375cb6c37a18a8"
+  },
+  {
+   "id": "07-afterimage-music-box",
+   "tracks": [
+    "echo"
+   ],
+   "wav": "build/out/stems/07-afterimage-music-box.wav",
+   "peakDbfs": -14.44,
+   "wavSha256": "1922de058a4106298a24d82faf14f78e98fc55ef498ac66a91b2a553e1929d32"
+  },
+  {
+   "id": "08-impossible-voice",
+   "tracks": [
+    "voice"
+   ],
+   "wav": "build/out/stems/08-impossible-voice.wav",
+   "peakDbfs": -10.26,
+   "wavSha256": "80e2f5185c81d1ff7deb170d7e54105c951b92018662cf637304396a7869ae7f"
+  },
+  {
+   "id": "09-heaven-mass-choir",
+   "tracks": [
+    "choir-low",
+    "choir-high"
+   ],
+   "wav": "build/out/stems/09-heaven-mass-choir.wav",
+   "peakDbfs": -3.59,
+   "wavSha256": "c2a365a5b4b67f1c2b6f032f5a9dda8c6b6a9ae1cd117d1adf7953ffb5ef829e"
+  },
+  {
+   "id": "10-room",
+   "tracks": [
+    "room"
+   ],
+   "wav": "build/out/stems/10-room.wav",
+   "peakDbfs": -27.46,
+   "wavSha256": "b5544e61d3bc0f9bf0323bf313b361da1c2de3a40cd5ebe6b154bb628e9201de"
+  }
+ ],
+ "rack": [
+  {
+   "id": "lead",
+   "seconds": 0,
+   "reused": true
+  },
+  {
+   "id": "keys",
+   "seconds": 0,
+   "reused": true
+  },
+  {
+   "id": "bassvox",
+   "seconds": 0,
+   "reused": true
+  },
+  {
+   "id": "perc",
+   "seconds": 0,
+   "reused": true
+  },
+  {
+   "id": "choir-low",
+   "seconds": 0,
+   "reused": true
+  },
+  {
+   "id": "choir-high",
+   "seconds": 0,
+   "reused": true
+  }
+ ],
+ "rackGroupsPeakDbfs": {
+  "lead": -5.87,
+  "pad": -14.49,
+  "bass": -10.98,
+  "voice": -8.74,
+  "echo": -19.3,
+  "perc": -4.1,
+  "choir-low": -5.53,
+  "choir-high": -2.4,
+  "room": -27.42
+ },
+ "seconds": 53.7
+}

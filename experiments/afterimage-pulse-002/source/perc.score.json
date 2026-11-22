@@ -1,0 +1,938 @@
+{
+ "schema": "daemonv12.signature-rack.score/1",
+ "title": "AFTERIMAGE//PULSE V2: music box and hand percussion",
+ "description": "The afterimage (Mechanical Orchestra bar), Timbre Lab hollow log and hand skin, escapement clock.",
+ "bpm": 136,
+ "key": "E major",
+ "swing": 0.5,
+ "seed": 2364,
+ "tailSeconds": 2,
+ "masterGainDb": 0,
+ "sections": [
+  {
+   "id": "image",
+   "bars": 4,
+   "development": "The hook on THRONE//VOLT, dark and close: closed pickups, held notes that open; the music box behind it; kick and bass from bar 3; a hand-drum answer."
+  },
+  {
+   "id": "pulse",
+   "bars": 8,
+   "development": "Eight bars of 2-step that never repeat a bar. The hook talks; the bass answers each held note with its own phrase, then in bars 9-11 pulls against the hook in dotted eighths and drags the kick off the downbeat until bar 12 realigns."
+  },
+  {
+   "id": "glitch",
+   "bars": 4,
+   "development": "E minor: Am, B7, Cmaj7#11, D7. Voice and bass split the melody (pickups/held notes), swap, become leader and afterimage, converge in octaves; three sixteenths of silence; the cry."
+  },
+  {
+   "id": "afterimage",
+   "bars": 4,
+   "development": "As V1: no drums, a heartbeat, the hook at half speed in the choir, the music box at tempo; the sink into C major and the bloom."
+  },
+  {
+   "id": "payoff",
+   "bars": 8,
+   "development": "The lift to A; a rising descant against the falling hook; the hook over the tonic; the bass finishes the answer; the 5-sixteenth cascade climbs across the bar lines over a falling bass and lands on a downbeat; D# -> E; the music box replays the opening image."
+  }
+ ],
+ "room": {
+  "rt60": 1.5,
+  "size": 1.05,
+  "damp": 6500,
+  "predelayMs": 22,
+  "lowCut": 300
+ },
+ "parts": [
+  {
+   "id": "echo",
+   "instrument": "mechanical-orchestra/bar",
+   "gainDb": -6,
+   "pan": 0,
+   "room": 0.38,
+   "setup": {
+    "seed": 23606,
+    "spread": 0.85
+   },
+   "macro": {
+    "steps": [
+     [
+      0,
+      0.06
+     ],
+     [
+      64,
+      0.04
+     ],
+     [
+      104,
+      0.06
+     ]
+    ],
+    "glide": 0.5
+   },
+   "controls": {
+    "damp": {
+     "steps": [
+      [
+       0,
+       0.62
+      ],
+      [
+       64,
+       0.85
+      ],
+      [
+       108,
+       1.2
+      ]
+     ],
+     "glide": 0.25
+    },
+    "hardness": {
+     "steps": [
+      [
+       0,
+       0.55
+      ],
+      [
+       64,
+       0.35
+      ],
+      [
+       108,
+       0.5
+      ]
+     ],
+     "glide": 0.25
+    }
+   },
+   "notes": [
+    [
+     1.275,
+     0.725,
+     "E6",
+     0.492106
+    ],
+    [
+     2.5,
+     0.775,
+     "D#6",
+     0.527925
+    ],
+    [
+     3.775,
+     1,
+     "C#6",
+     0.487264
+    ],
+    [
+     5.275,
+     0.725,
+     "C#6",
+     0.521268
+    ],
+    [
+     6.5,
+     1,
+     "B5",
+     0.472387
+    ],
+    [
+     9.275,
+     0.725,
+     "E6",
+     0.500972
+    ],
+    [
+     10.5,
+     0.775,
+     "D#6",
+     0.542578
+    ],
+    [
+     11.775,
+     1,
+     "G#6",
+     0.548319
+    ],
+    [
+     13.275,
+     0.725,
+     "C#6",
+     0.508096
+    ],
+    [
+     14.5,
+     1,
+     "G#6",
+     0.519282
+    ],
+    [
+     64,
+     0.5,
+     "G#5",
+     0.215849,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     64.5,
+     0.785,
+     "E6",
+     0.290163,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     65.285,
+     0.5,
+     "F#5",
+     0.23281,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     65.785,
+     0.715,
+     "D#6",
+     0.283418,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     66.5,
+     0.5,
+     "E5",
+     0.266034,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     67,
+     0.785,
+     "C#6",
+     0.316693,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     68,
+     0.5,
+     "G#5",
+     0.180395,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     68.5,
+     0.785,
+     "E6",
+     0.265204,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     69.285,
+     0.5,
+     "F#5",
+     0.180104,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     69.785,
+     0.715,
+     "D#6",
+     0.219738,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     70.5,
+     0.5,
+     "E5",
+     0.220674,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     71,
+     0.785,
+     "C#6",
+     0.220746,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     109.285,
+     0.715,
+     "E6",
+     0.46367
+    ],
+    [
+     110.5,
+     0.785,
+     "D#6",
+     0.491682
+    ],
+    [
+     111.785,
+     1.6,
+     "C#6",
+     0.55,
+     {
+      "articulation": "ring"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "log",
+   "instrument": "organic-percussion/log",
+   "gainDb": -6,
+   "pan": -0.22,
+   "room": 0.12,
+   "setup": {
+    "seed": 23607,
+    "spread": 0.35
+   },
+   "macro": 0.1,
+   "humanize": {
+    "timingMs": 3,
+    "velocity": 0.08,
+    "seed": 2371
+   },
+   "notes": [
+    [
+     1,
+     0.275,
+     "D4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     3,
+     0.275,
+     "D4",
+     0.38,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     5,
+     0.275,
+     "D4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     7,
+     0.275,
+     "D4",
+     0.38,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     9,
+     0.275,
+     "D4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     11,
+     0.275,
+     "D4",
+     0.38,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     13,
+     0.275,
+     "D4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     15,
+     0.275,
+     "D4",
+     0.38,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     16.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     19.5,
+     0.285,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     21.785,
+     0.215,
+     "E4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     22.285,
+     0.215,
+     "B4",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     23.785,
+     0.215,
+     "E5",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     25.5,
+     0.285,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     26.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     28.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     30.5,
+     0.285,
+     "E4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     31.785,
+     0.215,
+     "E5",
+     0.38,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     33.285,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     35.5,
+     0.285,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     36.285,
+     0.215,
+     "B4",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     37.785,
+     0.215,
+     "E4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     40.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     42.285,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     43.5,
+     0.285,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     45.5,
+     0.285,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     46.785,
+     0.215,
+     "E4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     47.785,
+     0.215,
+     "E5",
+     0.4,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     81.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     83.785,
+     0.215,
+     "B4",
+     0.32,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     86.285,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     89.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     91.785,
+     0.215,
+     "B4",
+     0.32,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     92.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "skin",
+   "instrument": "organic-percussion/skin",
+   "gainDb": -4,
+   "pan": 0.08,
+   "room": 0.14,
+   "setup": {
+    "seed": 23608,
+    "spread": 0.3
+   },
+   "macro": {
+    "steps": [
+     [
+      0,
+      0.2
+     ],
+     [
+      64,
+      0.45
+     ],
+     [
+      80,
+      0.3
+     ]
+    ],
+    "glide": 0.5
+   },
+   "controls": {
+    "damp": {
+     "steps": [
+      [
+       0,
+       1
+      ],
+      [
+       64,
+       1.3
+      ],
+      [
+       80,
+       1.2
+      ]
+     ],
+     "glide": 0.5
+    }
+   },
+   "humanize": {
+    "timingMs": 4,
+    "velocity": 0.06,
+    "seed": 2372
+   },
+   "notes": [
+    [
+     14,
+     0.275,
+     "E3",
+     0.45,
+     {
+      "articulation": "tap"
+     }
+    ],
+    [
+     14.275,
+     0.225,
+     "B3",
+     0.7,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     14.775,
+     0.225,
+     "F#3",
+     0.5,
+     {
+      "articulation": "tap"
+     }
+    ],
+    [
+     15,
+     0.275,
+     "C#4",
+     0.76,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     15.5,
+     0.275,
+     "G#3",
+     0.72,
+     {
+      "articulation": "open"
+     }
+    ],
+    [
+     15.775,
+     0.225,
+     "E4",
+     0.84,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     64,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     64.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     66,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     66.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     68,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     68.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     70,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     70.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     72,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     72.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     74,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     74.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     79,
+     0.375,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     79.5,
+     0.5,
+     "E2",
+     0.74,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     110,
+     0.375,
+     "E2",
+     0.46,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     110.5,
+     0.5,
+     "E2",
+     0.6,
+     {
+      "articulation": "bass"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "clock",
+   "instrument": "mechanical-orchestra/clock",
+   "gainDb": -8,
+   "pan": 0.3,
+   "room": 0.1,
+   "setup": {
+    "seed": 23609,
+    "spread": 0.4
+   },
+   "macro": 0.5,
+   "notes": [
+    [
+     55.5,
+     0.125,
+     "B6",
+     0.4,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     55.8,
+     0.075,
+     "B6",
+     0.48,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     56.8,
+     0.075,
+     "E6",
+     0.46,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     58,
+     0.125,
+     "E6",
+     0.46,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     59.3,
+     0.075,
+     "E6",
+     0.46,
+     {
+      "articulation": "tick"
+     }
+    ]
+   ]
+  }
+ ]
+}
