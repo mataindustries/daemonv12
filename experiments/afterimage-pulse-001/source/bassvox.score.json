@@ -1,0 +1,1576 @@
+{
+ "schema": "daemonv12.signature-rack.score/1",
+ "title": "AFTERIMAGE//PULSE: Living Bass and Impossible Voice",
+ "description": "The talking bass and the glitch-section voice.",
+ "bpm": 136,
+ "key": "E major",
+ "swing": 0.5,
+ "seed": 1363,
+ "tailSeconds": 2,
+ "masterGainDb": 0,
+ "sections": [
+  {
+   "id": "image",
+   "bars": 4,
+   "development": "The hook alone on an analog pluck with the music-box afterimage behind it; light rims and hats; kick and bass join in bar 3; a hand-drum fill in the hook rhythm."
+  },
+  {
+   "id": "pulse",
+   "bars": 8,
+   "development": "2-step groove. THRONE//VOLT sings the hook, swooping into each held note; Living Bass talks in the holes. The second statement adds the full canon and open hats."
+  },
+  {
+   "id": "glitch",
+   "bars": 4,
+   "development": "E minor: Am, B7, Cmaj7#11, D7. Impossible Voice chops the hook with impossible vowels; the bass answers with ratchet dives; half-time broken beat; the pulse quickens and the band falls away."
+  },
+  {
+   "id": "afterimage",
+   "bars": 4,
+   "development": "No drums, a hand-drum heartbeat. The choir sings the hook at half speed (F#m9, Amaj9, C#m7) while the music box remembers it at tempo; the harmony sinks into C major and the choir blooms."
+  },
+  {
+   "id": "payoff",
+   "bars": 6,
+   "development": "C to A: everything lifts a semitone. Lead an octave up at blaze, the choir on the long notes, bass and kick locked to the pulse pairs; the answer resolves to E. The band stops on the next first pair and the music box finishes alone."
+  }
+ ],
+ "room": {
+  "rt60": 1.5,
+  "size": 1.05,
+  "damp": 6500,
+  "predelayMs": 22,
+  "lowCut": 300
+ },
+ "parts": [
+  {
+   "id": "bass",
+   "instrument": "living-bass",
+   "gainDb": -2,
+   "pan": 0,
+   "room": 0,
+   "setup": {
+    "seed": 13604
+   },
+   "macro": {
+    "steps": [
+     [
+      0,
+      0.3
+     ],
+     [
+      16,
+      0.38
+     ],
+     [
+      32,
+      0.46
+     ],
+     [
+      48,
+      0.78
+     ],
+     [
+      60,
+      0.85
+     ],
+     [
+      64,
+      0.02
+     ],
+     [
+      80,
+      0.55
+     ],
+     [
+      100,
+      0.5
+     ]
+    ],
+    "glide": 0.25
+   },
+   "motion": [
+    {
+     "fromBeat": 16,
+     "toBeat": 48,
+     "preset": "eighths"
+    },
+    {
+     "fromBeat": 48,
+     "toBeat": 62,
+     "preset": "growl"
+    },
+    {
+     "fromBeat": 62,
+     "toBeat": 80,
+     "preset": "none"
+    },
+    {
+     "fromBeat": 80,
+     "toBeat": 104,
+     "preset": "sixteenths"
+    }
+   ],
+   "expression": [
+    [
+     0,
+     0.72
+    ],
+    [
+     16,
+     0.78
+    ],
+    [
+     48,
+     0.82
+    ],
+    [
+     64,
+     0.6
+    ],
+    [
+     80,
+     0.84
+    ]
+   ],
+   "controls": {
+    "hold": {
+     "steps": [
+      [
+       0,
+       0.6
+      ],
+      [
+       64,
+       0.84
+      ],
+      [
+       80,
+       0.6
+      ]
+     ],
+     "glide": 0.5
+    },
+    "ratchet": {
+     "steps": [
+      [
+       0,
+       0
+      ],
+      [
+       48,
+       1
+      ],
+      [
+       64,
+       0
+      ]
+     ],
+     "glide": 0.05
+    },
+    "servo": {
+     "steps": [
+      [
+       0,
+       0.3
+      ],
+      [
+       48,
+       0.85
+      ],
+      [
+       64,
+       0.1
+      ],
+      [
+       80,
+       0.4
+      ]
+     ],
+     "glide": 0.05
+    }
+   },
+   "offsets": {
+    "grind": {
+     "steps": [
+      [
+       0,
+       0
+      ],
+      [
+       48,
+       -0.35
+      ],
+      [
+       64,
+       0
+      ]
+     ],
+     "glide": 0.1
+    },
+    "chassis": {
+     "steps": [
+      [
+       0,
+       -0.2
+      ],
+      [
+       48,
+       0
+      ],
+      [
+       64,
+       -0.5
+      ],
+      [
+       80,
+       -0.25
+      ]
+     ],
+     "glide": 0.1
+    },
+    "bright": {
+     "steps": [
+      [
+       0,
+       0.05
+      ],
+      [
+       80,
+       0.12
+      ]
+     ],
+     "glide": 0.5
+    }
+   },
+   "notes": [
+    [
+     8,
+     0.744,
+     "A1",
+     0.82
+    ],
+    [
+     10.5,
+     0.744,
+     "A1",
+     0.78
+    ],
+    [
+     11.5,
+     0.48,
+     "A2",
+     0.5,
+     {
+      "articulation": "ghost"
+     }
+    ],
+    [
+     12,
+     0.744,
+     "C#2",
+     0.84
+    ],
+    [
+     14.5,
+     0.48,
+     "C#2",
+     0.74
+    ],
+    [
+     15.5,
+     0.48,
+     "B1",
+     0.7,
+     {
+      "articulation": "legato",
+      "slide": 0.12
+     }
+    ],
+    [
+     16,
+     0.7536,
+     "A1",
+     0.95,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     16.785,
+     0.2064,
+     "A2",
+     0.55,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     17.5,
+     0.48,
+     "A1",
+     0.68
+    ],
+    [
+     18.5,
+     0.7536,
+     "A1",
+     0.86
+    ],
+    [
+     19.285,
+     0.2064,
+     "E2",
+     0.55,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     19.5,
+     0.48,
+     "A#1",
+     0.7,
+     {
+      "articulation": "legato",
+      "slide": 0.1
+     }
+    ],
+    [
+     20,
+     0.7536,
+     "B1",
+     0.95,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     20.785,
+     0.2064,
+     "B2",
+     0.55,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     21.785,
+     0.48,
+     "F#2",
+     0.76
+    ],
+    [
+     22.285,
+     0.2064,
+     "A2",
+     0.62
+    ],
+    [
+     22.5,
+     0.48,
+     "B2",
+     0.8,
+     {
+      "articulation": "legato",
+      "slide": 0.05
+     }
+    ],
+    [
+     23,
+     0.48,
+     "E2",
+     0.72
+    ],
+    [
+     23.5,
+     0.48,
+     "G#1",
+     0.7,
+     {
+      "articulation": "legato",
+      "slide": 0.1
+     }
+    ],
+    [
+     24,
+     0.7536,
+     "A1",
+     0.95,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     24.785,
+     0.2064,
+     "A2",
+     0.55,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     25.5,
+     0.2736,
+     "A1",
+     0.66
+    ],
+    [
+     25.785,
+     0.2064,
+     "E2",
+     0.6,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     26.5,
+     0.7536,
+     "A1",
+     0.86
+    ],
+    [
+     27.285,
+     0.2064,
+     "C#2",
+     0.6,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     27.5,
+     0.48,
+     "C2",
+     0.7,
+     {
+      "articulation": "legato",
+      "slide": 0.1
+     }
+    ],
+    [
+     28,
+     0.7536,
+     "C#2",
+     0.95,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     28.785,
+     0.2064,
+     "C#3",
+     0.55,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     29.785,
+     0.48,
+     "G#2",
+     0.76
+    ],
+    [
+     30.285,
+     0.2064,
+     "B2",
+     0.62
+    ],
+    [
+     30.5,
+     0.48,
+     "C#3",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.05
+     }
+    ],
+    [
+     31,
+     0.2736,
+     "E2",
+     0.66
+    ],
+    [
+     31.285,
+     0.2064,
+     "F#2",
+     0.68
+    ],
+    [
+     31.5,
+     0.48,
+     "G#1",
+     0.72,
+     {
+      "articulation": "legato",
+      "slide": 0.1
+     }
+    ],
+    [
+     32,
+     0.7536,
+     "A1",
+     0.95,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     32.785,
+     0.2064,
+     "A2",
+     0.55,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     33.5,
+     0.48,
+     "A1",
+     0.68
+    ],
+    [
+     34.5,
+     0.7536,
+     "A1",
+     0.86
+    ],
+    [
+     35.285,
+     0.2064,
+     "E2",
+     0.55,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     35.5,
+     0.48,
+     "A#1",
+     0.7,
+     {
+      "articulation": "legato",
+      "slide": 0.1
+     }
+    ],
+    [
+     36,
+     0.7536,
+     "B1",
+     0.95,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     36.785,
+     0.2064,
+     "B2",
+     0.55,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     37.785,
+     0.48,
+     "F#2",
+     0.76
+    ],
+    [
+     38.285,
+     0.2064,
+     "A2",
+     0.62
+    ],
+    [
+     38.5,
+     0.48,
+     "B2",
+     0.8,
+     {
+      "articulation": "legato",
+      "slide": 0.05
+     }
+    ],
+    [
+     39,
+     0.48,
+     "E2",
+     0.72
+    ],
+    [
+     39.5,
+     0.48,
+     "G#1",
+     0.7,
+     {
+      "articulation": "legato",
+      "slide": 0.1
+     }
+    ],
+    [
+     40,
+     0.7536,
+     "A1",
+     0.95,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     40.785,
+     0.2064,
+     "A2",
+     0.55,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     41.5,
+     0.2736,
+     "A1",
+     0.66
+    ],
+    [
+     41.785,
+     0.2064,
+     "E2",
+     0.6,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     42.5,
+     0.7536,
+     "A1",
+     0.86
+    ],
+    [
+     43.285,
+     0.2064,
+     "C#2",
+     0.6,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     43.5,
+     0.48,
+     "C2",
+     0.7,
+     {
+      "articulation": "legato",
+      "slide": 0.1
+     }
+    ],
+    [
+     44,
+     0.7536,
+     "C#2",
+     0.95,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     44.785,
+     0.2064,
+     "C#3",
+     0.55,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     45.785,
+     0.48,
+     "G#2",
+     0.76
+    ],
+    [
+     46.285,
+     0.2064,
+     "B2",
+     0.62
+    ],
+    [
+     46.5,
+     0.48,
+     "C#3",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.05
+     }
+    ],
+    [
+     47,
+     0.2736,
+     "E2",
+     0.66
+    ],
+    [
+     47.285,
+     0.2064,
+     "F#2",
+     0.68
+    ],
+    [
+     47.5,
+     0.48,
+     "G#1",
+     0.72,
+     {
+      "articulation": "legato",
+      "slide": 0.1
+     }
+    ],
+    [
+     48,
+     0.48,
+     "A1",
+     0.95,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     48.8,
+     0.192,
+     "A2",
+     0.6,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     50,
+     0.288,
+     "E2",
+     0.78
+    ],
+    [
+     50.3,
+     0.192,
+     "G2",
+     0.76,
+     {
+      "articulation": "legato",
+      "slide": 0.05
+     }
+    ],
+    [
+     51.3,
+     0.672,
+     "A2",
+     0.88,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     52,
+     0.768,
+     "B1",
+     0.9,
+     {
+      "articulation": "legato",
+      "slide": 0.32
+     }
+    ],
+    [
+     53.3,
+     0.192,
+     "B2",
+     0.62,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     54,
+     0.48,
+     "F#2",
+     0.8
+    ],
+    [
+     54.8,
+     0.192,
+     "A2",
+     0.7
+    ],
+    [
+     55,
+     0.48,
+     "B2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.05
+     }
+    ],
+    [
+     55.5,
+     0.48,
+     "B1",
+     0.75
+    ],
+    [
+     56,
+     0.48,
+     "C2",
+     0.95,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     56.8,
+     0.192,
+     "C3",
+     0.6,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     58,
+     0.288,
+     "G2",
+     0.78
+    ],
+    [
+     58.3,
+     0.192,
+     "B2",
+     0.76,
+     {
+      "articulation": "legato",
+      "slide": 0.05
+     }
+    ],
+    [
+     59.3,
+     0.672,
+     "C3",
+     0.9,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     60,
+     0.768,
+     "D2",
+     0.92,
+     {
+      "articulation": "legato",
+      "slide": 0.3
+     }
+    ],
+    [
+     61.3,
+     0.48,
+     "D2",
+     0.8
+    ],
+    [
+     62.5,
+     0.96,
+     "D2",
+     0.84,
+     {
+      "dive": 7,
+      "diveBeats": 0.6
+     }
+    ],
+    [
+     64,
+     3.72,
+     "F#1",
+     0.62
+    ],
+    [
+     68,
+     3.72,
+     "A1",
+     0.62
+    ],
+    [
+     72,
+     3.36,
+     "C#2",
+     0.62
+    ],
+    [
+     75.5,
+     4.2,
+     "C2",
+     0.6
+    ],
+    [
+     80,
+     0.48,
+     "A1",
+     0.96,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     80.5,
+     0.7536,
+     "A2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     81.285,
+     0.48,
+     "A1",
+     0.9
+    ],
+    [
+     81.785,
+     0.6864,
+     "E2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     82.5,
+     0.48,
+     "A1",
+     0.9
+    ],
+    [
+     83,
+     0.7536,
+     "C#2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     83.785,
+     0.2064,
+     "A2",
+     0.5,
+     {
+      "articulation": "ghost"
+     }
+    ],
+    [
+     84,
+     0.48,
+     "C#2",
+     0.96,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     84.5,
+     0.7536,
+     "C#3",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     85.285,
+     0.48,
+     "C#2",
+     0.9
+    ],
+    [
+     85.785,
+     0.6864,
+     "G#2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     86.5,
+     0.48,
+     "B1",
+     0.88
+    ],
+    [
+     87,
+     0.48,
+     "B2",
+     0.8,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     87.5,
+     0.48,
+     "G#1",
+     0.76,
+     {
+      "articulation": "legato",
+      "slide": 0.08
+     }
+    ],
+    [
+     88,
+     0.48,
+     "A1",
+     0.96,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     88.5,
+     0.7536,
+     "A2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     89.285,
+     0.48,
+     "A1",
+     0.9
+    ],
+    [
+     89.785,
+     0.6864,
+     "E2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     90.5,
+     0.48,
+     "A1",
+     0.9
+    ],
+    [
+     91,
+     0.7536,
+     "G#2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     91.785,
+     0.2064,
+     "A#1",
+     0.6
+    ],
+    [
+     92,
+     0.48,
+     "B1",
+     0.96,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     92.5,
+     0.7536,
+     "B2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     93.285,
+     0.48,
+     "B1",
+     0.9
+    ],
+    [
+     93.785,
+     1.44,
+     "E1",
+     1,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     95.285,
+     0.2064,
+     "E2",
+     0.7,
+     {
+      "articulation": "staccato"
+     }
+    ],
+    [
+     95.5,
+     0.48,
+     "G#1",
+     0.76,
+     {
+      "articulation": "legato",
+      "slide": 0.08
+     }
+    ],
+    [
+     96,
+     0.48,
+     "A1",
+     0.96,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     96.5,
+     0.7536,
+     "A2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     97.285,
+     0.48,
+     "A1",
+     0.9
+    ],
+    [
+     97.785,
+     0.6864,
+     "E2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     98.5,
+     0.48,
+     "A1",
+     0.9
+    ],
+    [
+     99,
+     0.7536,
+     "C#2",
+     0.82,
+     {
+      "articulation": "legato",
+      "slide": 0.07
+     }
+    ],
+    [
+     99.785,
+     0.2064,
+     "A#1",
+     0.6
+    ],
+    [
+     100,
+     0.48,
+     "B1",
+     0.96,
+     {
+      "articulation": "accent"
+     }
+    ],
+    [
+     100.5,
+     0.624,
+     "B2",
+     0.84,
+     {
+      "articulation": "legato",
+      "slide": 0.07,
+      "dive": 5,
+      "diveBeats": 0.35
+     }
+    ]
+   ]
+  },
+  {
+   "id": "voice",
+   "instrument": "impossible-voice",
+   "gainDb": -2,
+   "pan": 0,
+   "room": 0.3,
+   "setup": {
+    "seed": 13605,
+    "size": 0.15,
+    "vibRate": 5.6,
+    "vibCents": 22,
+    "vowelTau": 0.05,
+    "haloDecay": 0.9,
+    "haloGain": 0.8,
+    "halo": [
+     "E5",
+     "B5",
+     "E6"
+    ]
+   },
+   "macro": [
+    [
+     48,
+     0.3
+    ],
+    [
+     56,
+     0.5
+    ],
+    [
+     62,
+     0.72
+    ],
+    [
+     66,
+     0.6
+    ]
+   ],
+   "expression": [
+    [
+     48,
+     0.74
+    ],
+    [
+     60,
+     0.82
+    ],
+    [
+     66,
+     0.7
+    ]
+   ],
+   "controls": {
+    "tilt": 0.72,
+    "breath": 0.28,
+    "glass": [
+     [
+      48,
+      0.2
+     ],
+     [
+      62,
+      0.45
+     ]
+    ],
+    "split": [
+     [
+      48,
+      0
+     ],
+     [
+      60,
+      0.16
+     ],
+     [
+      66,
+      0.2
+     ]
+    ],
+    "stretch": [
+     [
+      48,
+      0
+     ],
+     [
+      62,
+      0.022
+     ]
+    ],
+    "shimmer": [
+     [
+      48,
+      0.1
+     ],
+     [
+      62,
+      0.4
+     ]
+    ],
+    "vib": 0.7
+   },
+   "notes": [
+    [
+     48,
+     0.35,
+     "G4",
+     0.72,
+     {
+      "vowel": "ee",
+      "articulation": "detached"
+     }
+    ],
+    [
+     48.5,
+     0.6,
+     "E5",
+     0.86,
+     {
+      "vowel": "ah",
+      "articulation": "cry",
+      "cry": 2
+     }
+    ],
+    [
+     49.3,
+     0.3,
+     "F#4",
+     0.7,
+     {
+      "vowel": "ee",
+      "articulation": "detached"
+     }
+    ],
+    [
+     49.8,
+     0.55,
+     "D5",
+     0.82,
+     {
+      "vowel": "oh"
+     }
+    ],
+    [
+     50.5,
+     0.35,
+     "E4",
+     0.7,
+     {
+      "vowel": "ee",
+      "articulation": "detached"
+     }
+    ],
+    [
+     51,
+     0.8,
+     "C5",
+     0.82,
+     {
+      "vowel": "ah",
+      "to": "oo"
+     }
+    ],
+    [
+     52,
+     0.35,
+     "B4",
+     0.74,
+     {
+      "vowel": "eh",
+      "articulation": "detached"
+     }
+    ],
+    [
+     52.5,
+     0.6,
+     "D#5",
+     0.84,
+     {
+      "vowel": "ah"
+     }
+    ],
+    [
+     53.3,
+     0.3,
+     "F#5",
+     0.8,
+     {
+      "vowel": "ee",
+      "articulation": "cry",
+      "cry": 1.5
+     }
+    ],
+    [
+     53.8,
+     1.5,
+     "A5",
+     0.86,
+     {
+      "vowel": "ah",
+      "to": "oh",
+      "articulation": "fall",
+      "fall": 2
+     }
+    ],
+    [
+     56,
+     0.35,
+     "G4",
+     0.74,
+     {
+      "vowel": "ee",
+      "articulation": "detached"
+     }
+    ],
+    [
+     56.5,
+     0.6,
+     "E5",
+     0.86,
+     {
+      "vowel": "oh",
+      "articulation": "cry",
+      "cry": 2
+     }
+    ],
+    [
+     57.3,
+     0.3,
+     "F#4",
+     0.72,
+     {
+      "vowel": "ee",
+      "articulation": "detached"
+     }
+    ],
+    [
+     57.8,
+     0.55,
+     "D5",
+     0.84,
+     {
+      "vowel": "ah"
+     }
+    ],
+    [
+     58.5,
+     0.35,
+     "B4",
+     0.76,
+     {
+      "vowel": "eh",
+      "articulation": "detached"
+     }
+    ],
+    [
+     59,
+     0.8,
+     "G5",
+     0.88,
+     {
+      "vowel": "ah",
+      "to": "eh"
+     }
+    ],
+    [
+     60,
+     0.3,
+     "A4",
+     0.72,
+     {
+      "vowel": "ee"
+     }
+    ],
+    [
+     60.3,
+     0.2,
+     "F#5",
+     0.8,
+     {
+      "vowel": "ah"
+     }
+    ],
+    [
+     60.5,
+     0.3,
+     "B4",
+     0.74,
+     {
+      "vowel": "ee"
+     }
+    ],
+    [
+     60.8,
+     0.2,
+     "G5",
+     0.82,
+     {
+      "vowel": "ah"
+     }
+    ],
+    [
+     61,
+     0.3,
+     "C5",
+     0.76,
+     {
+      "vowel": "ee"
+     }
+    ],
+    [
+     61.3,
+     0.3,
+     "A5",
+     0.86,
+     {
+      "vowel": "ah"
+     }
+    ],
+    [
+     61.8,
+     0.3,
+     "D5",
+     0.74,
+     {
+      "vowel": "oh"
+     }
+    ],
+    [
+     62.3,
+     2.7,
+     "A5",
+     0.84,
+     {
+      "vowel": "ah",
+      "to": "oo",
+      "articulation": "cry",
+      "cry": 1
+     }
+    ]
+   ]
+  }
+ ]
+}

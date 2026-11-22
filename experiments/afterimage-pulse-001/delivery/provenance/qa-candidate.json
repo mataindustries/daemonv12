@@ -1,0 +1,195 @@
+{
+ "master": {
+  "lufs": -15.2,
+  "truePeakDbtp": -1.2,
+  "lra": 7.1
+ },
+ "mp3": {
+  "lufs": -15.2,
+  "truePeakDbtp": -1.2,
+  "lra": 7.1
+ },
+ "monoFoldDownLossLu": 0.22,
+ "sectionLufs": {
+  "image": -19.5,
+  "pulse": -14.79,
+  "glitch": -14.78,
+  "afterimage": -18.12,
+  "payoff": -13.48
+ },
+ "sectionContrastLu": 6.02,
+ "transients": {
+  "kicks": {
+   "image": {
+    "n": 5,
+    "broadbandDb": 21.4,
+    "phoneBandDb": 21.8
+   },
+   "pulse": {
+    "n": 21,
+    "broadbandDb": 14.65,
+    "phoneBandDb": 16.57
+   },
+   "glitch": {
+    "n": 12,
+    "broadbandDb": 14.75,
+    "phoneBandDb": 14.4
+   },
+   "payoff": {
+    "n": 20,
+    "broadbandDb": 13.64,
+    "phoneBandDb": 14.14
+   }
+  },
+  "snares": {
+   "pulse": {
+    "n": 16,
+    "broadbandDb": 10.83,
+    "phoneBandDb": 12.93
+   },
+   "glitch": {
+    "n": 4,
+    "broadbandDb": 12.74,
+    "phoneBandDb": 13.79
+   },
+   "payoff": {
+    "n": 10,
+    "broadbandDb": 10.87,
+    "phoneBandDb": 12.71
+   }
+  }
+ },
+ "lowEnd": {
+  "lrCorrelationBelow120": 0.9998,
+  "sideOverMidBelow120Db": -40.13,
+  "subAfterKickMinusTailDb": -2.97,
+  "bassSubUnderKickHitDb": -12.11
+ },
+ "hook": {
+  "pluck": {
+   "bySection": {
+    "image": {
+     "over300to1kDb": 0.98,
+     "over1to4kDb": 0.98,
+     "shareOf1to4kPct": 55.82
+    }
+   },
+   "sideOverMidDb": -10.17,
+   "monoLossDb": 0.4
+  },
+  "lead": {
+   "bySection": {
+    "pulse": {
+     "over300to1kDb": 0.79,
+     "over1to4kDb": 3.56,
+     "shareOf1to4kPct": 68.14
+    },
+    "payoff": {
+     "over300to1kDb": -9.07,
+     "over1to4kDb": 2.29,
+     "shareOf1to4kPct": 63.94
+    }
+   },
+   "sideOverMidDb": -14.19,
+   "monoLossDb": 0.16
+  },
+  "voice": {
+   "bySection": {
+    "glitch": {
+     "over300to1kDb": 2.81,
+     "over1to4kDb": -2.03,
+     "shareOf1to4kPct": 38.17
+    },
+    "afterimage": {
+     "over300to1kDb": 9.39,
+     "over1to4kDb": 1.94,
+     "shareOf1to4kPct": 64.45
+    }
+   },
+   "sideOverMidDb": -22.73,
+   "monoLossDb": 0.02
+  },
+  "choir-high": {
+   "bySection": {
+    "afterimage": {
+     "over300to1kDb": 3.37,
+     "over1to4kDb": 2.83,
+     "shareOf1to4kPct": 65.58
+    }
+   },
+   "sideOverMidDb": -6.49,
+   "monoLossDb": 0.88
+  }
+ },
+ "stereoSideOverMidDb": {
+  "image": -11.93,
+  "pulse": -16.27,
+  "glitch": -17.13,
+  "afterimage": -10.42,
+  "payoff": -12.98
+ },
+ "hygiene": {
+  "masterFullScaleSamples": 0,
+  "masterDc": [
+   -3.8e-05,
+   -3.6e-05
+  ],
+  "last10msDbfs": -61.16,
+  "stemPeaksDbfs": {
+   "bass-mid": -6.95,
+   "bass-sub": -14.55,
+   "choir-high": -5.27,
+   "choir-low": -7.89,
+   "echo": -15.46,
+   "hats": -12.86,
+   "kick": -1.43,
+   "lead": -7.79,
+   "pad": -17.1,
+   "perc": -6.59,
+   "pluck": -12.58,
+   "room": -21.49,
+   "snare": -7.37,
+   "voice": -11.76
+  },
+  "clickEvents": {
+   "lead": {
+    "hfEvents": 26,
+    "awayFromWrittenOnsets": 0
+   },
+   "pluck": {
+    "hfEvents": 14,
+    "awayFromWrittenOnsets": 0
+   },
+   "pad": {
+    "hfEvents": 0,
+    "awayFromWrittenOnsets": null
+   },
+   "voice": {
+    "hfEvents": 0,
+    "awayFromWrittenOnsets": 0
+   },
+   "choir-low": {
+    "hfEvents": 0,
+    "awayFromWrittenOnsets": null
+   },
+   "choir-high": {
+    "hfEvents": 0,
+    "awayFromWrittenOnsets": null
+   },
+   "bass-mid": {
+    "hfEvents": 0,
+    "awayFromWrittenOnsets": null
+   },
+   "echo": {
+    "hfEvents": 0,
+    "awayFromWrittenOnsets": null
+   }
+  }
+ },
+ "leadHeldNoteCents": {
+  "n": 13,
+  "min": -7.52,
+  "max": 3.71,
+  "medianAbs": 1.19
+ }
+}
