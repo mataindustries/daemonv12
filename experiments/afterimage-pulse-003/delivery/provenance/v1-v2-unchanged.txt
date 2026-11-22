@@ -1,0 +1,81 @@
+$ (cd experiments/afterimage-pulse-001/delivery && sha256sum -c SHA256SUMS)
+afterimage-pulse.mp3: OK
+afterimage-pulse.wav: OK
+provenance/build-manifest-candidate.json: OK
+provenance/build-manifest.json: OK
+provenance/cathedral-instruments.json: OK
+provenance/engine/afterimage-pulse.analysis.json: OK
+provenance/engine/afterimage-pulse.render.json: OK
+provenance/freeze-check.txt: OK
+provenance/licensing.json: OK
+provenance/qa-candidate.json: OK
+provenance/qa-final.json: OK
+provenance/rack/bassvox.performance.json: OK
+provenance/rack/bassvox.render.json: OK
+provenance/rack/choir-high.performance.json: OK
+provenance/rack/choir-high.render.json: OK
+provenance/rack/choir-low.performance.json: OK
+provenance/rack/choir-low.render.json: OK
+provenance/rack/keys.performance.json: OK
+provenance/rack/keys.render.json: OK
+provenance/rack/lead.performance.json: OK
+provenance/rack/lead.render.json: OK
+provenance/rack/perc.performance.json: OK
+provenance/rack/perc.render.json: OK
+source/afterimage-pulse.mid: OK
+stems/01-kick.flac: OK
+stems/02-snare-and-hats.flac: OK
+stems/03-hand-percussion.flac: OK
+stems/04-living-bass.flac: OK
+stems/05-throne-volt-lead.flac: OK
+stems/06-throne-volt-pluck-and-pad.flac: OK
+stems/07-afterimage-music-box.flac: OK
+stems/08-impossible-voice.flac: OK
+stems/09-heaven-mass-choir.flac: OK
+stems/10-room.flac: OK
+$ git status --porcelain -- experiments/afterimage-pulse-001
+(nothing)
+$ git diff --stat 97f9467 -- experiments/afterimage-pulse-001
+(nothing: identical to its commit)
+
+$ (cd experiments/afterimage-pulse-002/delivery && sha256sum -c SHA256SUMS)
+afterimage-pulse-v2.mp3: OK
+afterimage-pulse-v2.wav: OK
+provenance/build-manifest-candidate.json: OK
+provenance/build-manifest.json: OK
+provenance/cathedral-instruments.json: OK
+provenance/engine/afterimage-pulse-v2.analysis.json: OK
+provenance/engine/afterimage-pulse-v2.render.json: OK
+provenance/freeze-check.txt: OK
+provenance/licensing.json: OK
+provenance/qa-candidate.json: OK
+provenance/qa-final.json: OK
+provenance/rack/bassvox.performance.json: OK
+provenance/rack/bassvox.render.json: OK
+provenance/rack/choir-high.performance.json: OK
+provenance/rack/choir-high.render.json: OK
+provenance/rack/choir-low.performance.json: OK
+provenance/rack/choir-low.render.json: OK
+provenance/rack/keys.performance.json: OK
+provenance/rack/keys.render.json: OK
+provenance/rack/lead.performance.json: OK
+provenance/rack/lead.render.json: OK
+provenance/rack/perc.performance.json: OK
+provenance/rack/perc.render.json: OK
+provenance/v1-unchanged.txt: OK
+source/afterimage-pulse-v2.mid: OK
+stems/01-kick.flac: OK
+stems/02-snare-and-hats.flac: OK
+stems/03-hand-percussion.flac: OK
+stems/04-living-bass.flac: OK
+stems/05-throne-volt-lead.flac: OK
+stems/06-throne-volt-pad.flac: OK
+stems/07-afterimage-music-box.flac: OK
+stems/08-impossible-voice.flac: OK
+stems/09-heaven-mass-choir.flac: OK
+stems/10-room.flac: OK
+$ git status --porcelain -- experiments/afterimage-pulse-002
+(nothing)
+$ git diff --stat e171a9d -- experiments/afterimage-pulse-002
+(nothing: identical to its commit)
+

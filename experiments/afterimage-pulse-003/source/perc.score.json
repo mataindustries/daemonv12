@@ -1,0 +1,2792 @@
+{
+ "schema": "daemonv12.signature-rack.score/1",
+ "title": "AFTERIMAGE//PULSE (full length): music box and hand percussion",
+ "description": "The afterimage (Mechanical Orchestra bar), Timbre Lab hollow log and hand skin (talking drum, heartbeat), escapement clock.",
+ "bpm": 136,
+ "key": "E major",
+ "swing": 0.5,
+ "seed": 3364,
+ "tailSeconds": 2.5,
+ "masterGainDb": 0,
+ "sections": [
+  {
+   "id": "image",
+   "bars": 4,
+   "development": "V2: the hook dark and close; the music box behind it; kick and bass from bar 3."
+  },
+  {
+   "id": "pulse",
+   "bars": 8,
+   "development": "V2: 2-step; the bass answers each held note, then pulls in dotted eighths and realigns."
+  },
+  {
+   "id": "undertow",
+   "bars": 14,
+   "development": "C#m A F#m G#7: the bass leads with the reply; the synth answers with single pulse pairs; the voice takes two notes of each riff; breakdown and a stop on the pulse."
+  },
+  {
+   "id": "dark-union",
+   "bars": 8,
+   "development": "The hook over the reply in C# minor."
+  },
+  {
+   "id": "glitch",
+   "bars": 5,
+   "development": "One melody passed between voice, bass, talking drum and log; convergence; silence; the cry."
+  },
+  {
+   "id": "afterimage",
+   "bars": 4,
+   "development": "V2 note for note: the hook at half speed in the choir; the sink into C major; the bloom."
+  },
+  {
+   "id": "hymn",
+   "bars": 10,
+   "development": "C turns to E; the reply as a hymn in canon (altos, sopranos, music box); the glitch chords become the cadence."
+  },
+  {
+   "id": "return",
+   "bars": 10,
+   "development": "The heartbeat quickens into the groove; the reply as an E major bass riff; the synth answers."
+  },
+  {
+   "id": "finale",
+   "bars": 19,
+   "development": "Hook over reply; the swap; the choir catches up through the cascade; the deceptive landing on C; C D E; the last groove; the bass break; the first pulse pair."
+  },
+  {
+   "id": "ending",
+   "bars": 4,
+   "development": "The music box alone: the opening image, the reply, the resolving pair."
+  }
+ ],
+ "room": {
+  "rt60": 1.5,
+  "size": 1.05,
+  "damp": 6500,
+  "predelayMs": 22,
+  "lowCut": 300
+ },
+ "parts": [
+  {
+   "id": "echo",
+   "instrument": "mechanical-orchestra/bar",
+   "gainDb": -6,
+   "pan": 0,
+   "room": 0.38,
+   "setup": {
+    "seed": 33606,
+    "spread": 0.85
+   },
+   "macro": {
+    "steps": [
+     [
+      0,
+      0.06
+     ],
+     [
+      156,
+      0.04
+     ],
+     [
+      328,
+      0.06
+     ]
+    ],
+    "glide": 0.5
+   },
+   "controls": {
+    "damp": {
+     "steps": [
+      [
+       0,
+       0.62
+      ],
+      [
+       156,
+       0.85
+      ],
+      [
+       192,
+       0.9
+      ],
+      [
+       212,
+       0.62
+      ],
+      [
+       328,
+       0.9
+      ],
+      [
+       336,
+       1.3
+      ]
+     ],
+     "glide": 0.25
+    },
+    "hardness": {
+     "steps": [
+      [
+       0,
+       0.55
+      ],
+      [
+       156,
+       0.35
+      ],
+      [
+       212,
+       0.45
+      ],
+      [
+       252,
+       0.55
+      ],
+      [
+       328,
+       0.42
+      ]
+     ],
+     "glide": 0.25
+    }
+   },
+   "notes": [
+    [
+     1.275,
+     0.725,
+     "E6",
+     0.492106
+    ],
+    [
+     2.5,
+     0.775,
+     "D#6",
+     0.527925
+    ],
+    [
+     3.775,
+     1,
+     "C#6",
+     0.487264
+    ],
+    [
+     5.275,
+     0.725,
+     "C#6",
+     0.521268
+    ],
+    [
+     6.5,
+     1,
+     "B5",
+     0.472387
+    ],
+    [
+     9.275,
+     0.725,
+     "E6",
+     0.500972
+    ],
+    [
+     10.5,
+     0.775,
+     "D#6",
+     0.542578
+    ],
+    [
+     11.775,
+     1,
+     "G#6",
+     0.548319
+    ],
+    [
+     13.275,
+     0.725,
+     "C#6",
+     0.508096
+    ],
+    [
+     14.5,
+     1,
+     "G#6",
+     0.519282
+    ],
+    [
+     121.29,
+     0.71,
+     "E6",
+     0.403791
+    ],
+    [
+     122.5,
+     0.79,
+     "D#6",
+     0.3849
+    ],
+    [
+     123.79,
+     1,
+     "C#6",
+     0.445529
+    ],
+    [
+     125.29,
+     0.71,
+     "C#6",
+     0.456458
+    ],
+    [
+     126.5,
+     1,
+     "F#6",
+     0.44818
+    ],
+    [
+     129.29,
+     0.71,
+     "E6",
+     0.47714
+    ],
+    [
+     130.5,
+     0.79,
+     "D#6",
+     0.448787
+    ],
+    [
+     131.79,
+     1,
+     "A6",
+     0.42657
+    ],
+    [
+     156,
+     0.5,
+     "G#5",
+     0.265241,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     156.5,
+     0.785,
+     "E6",
+     0.314547,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     157.285,
+     0.5,
+     "F#5",
+     0.217631,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     157.785,
+     0.715,
+     "D#6",
+     0.309168,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     158.5,
+     0.5,
+     "E5",
+     0.256191,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     159,
+     0.785,
+     "C#6",
+     0.279971,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     160,
+     0.5,
+     "G#5",
+     0.162155,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     160.5,
+     0.785,
+     "E6",
+     0.251827,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     161.285,
+     0.5,
+     "F#5",
+     0.164314,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     161.785,
+     0.715,
+     "D#6",
+     0.217527,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     162.5,
+     0.5,
+     "E5",
+     0.190867,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     163,
+     0.785,
+     "C#6",
+     0.227125,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     195,
+     1.5,
+     "E5",
+     0.36,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     198,
+     1,
+     "D#6",
+     0.38,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     199,
+     1.5,
+     "B5",
+     0.4,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     200.5,
+     1.5,
+     "A5",
+     0.42,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     202,
+     1,
+     "G#5",
+     0.44,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     203,
+     1.5,
+     "F#5",
+     0.46,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     206,
+     1,
+     "E6",
+     0.48,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     209,
+     2,
+     "G#5",
+     0.42,
+     {
+      "articulation": "ring"
+     }
+    ],
+    [
+     221.785,
+     0.715,
+     "C#6",
+     0.347625,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     225.785,
+     0.715,
+     "G#6",
+     0.350468,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     229.785,
+     0.715,
+     "E6",
+     0.367004,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     233.785,
+     0.715,
+     "D#6",
+     0.365674,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     237.785,
+     0.715,
+     "C#6",
+     0.360818,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     241.785,
+     0.715,
+     "G#6",
+     0.347007,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     245.785,
+     0.715,
+     "E6",
+     0.386412,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     253.285,
+     0.715,
+     "E6",
+     0.423029
+    ],
+    [
+     254.5,
+     0.785,
+     "D#6",
+     0.408438
+    ],
+    [
+     255.785,
+     1,
+     "C#6",
+     0.366347
+    ],
+    [
+     261.285,
+     0.715,
+     "E6",
+     0.404631
+    ],
+    [
+     262.5,
+     0.785,
+     "D#6",
+     0.397957
+    ],
+    [
+     263.785,
+     1,
+     "G#6",
+     0.426267
+    ],
+    [
+     305.285,
+     0.715,
+     "E6",
+     0.458939
+    ],
+    [
+     306.5,
+     0.785,
+     "D#6",
+     0.388151
+    ],
+    [
+     307.785,
+     1,
+     "C#6",
+     0.415494
+    ],
+    [
+     313.285,
+     0.715,
+     "E6",
+     0.422114
+    ],
+    [
+     314.5,
+     0.785,
+     "D#6",
+     0.405662
+    ],
+    [
+     315.785,
+     1,
+     "G#6",
+     0.455272
+    ],
+    [
+     329.275,
+     0.725,
+     "E6",
+     0.464013
+    ],
+    [
+     330.5,
+     0.775,
+     "D#6",
+     0.49313
+    ],
+    [
+     331.775,
+     1,
+     "C#6",
+     0.471082
+    ],
+    [
+     332,
+     1,
+     "E5",
+     0.495906,
+     {
+      "articulation": "soft"
+     }
+    ],
+    [
+     333.5,
+     0.5,
+     "D#6",
+     0.487299
+    ],
+    [
+     334,
+     0.775,
+     "B5",
+     0.48683
+    ],
+    [
+     334.775,
+     0.725,
+     "A5",
+     0.457785
+    ],
+    [
+     335.5,
+     0.5,
+     "G#5",
+     0.477507
+    ],
+    [
+     337.275,
+     0.5,
+     "D#6",
+     0.52
+    ],
+    [
+     337.775,
+     2,
+     "E6",
+     0.6,
+     {
+      "articulation": "ring"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "log",
+   "instrument": "organic-percussion/log",
+   "gainDb": -6,
+   "pan": -0.22,
+   "room": 0.12,
+   "setup": {
+    "seed": 33607,
+    "spread": 0.35
+   },
+   "macro": 0.1,
+   "humanize": {
+    "timingMs": 3,
+    "velocity": 0.08,
+    "seed": 3371
+   },
+   "notes": [
+    [
+     1,
+     0.275,
+     "D4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     3,
+     0.275,
+     "D4",
+     0.38,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     5,
+     0.275,
+     "D4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     7,
+     0.275,
+     "D4",
+     0.38,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     9,
+     0.275,
+     "D4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     11,
+     0.275,
+     "D4",
+     0.38,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     13,
+     0.275,
+     "D4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     15,
+     0.275,
+     "D4",
+     0.38,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     16.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     19.5,
+     0.285,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     21.785,
+     0.215,
+     "E4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     22.285,
+     0.215,
+     "B4",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     23.785,
+     0.215,
+     "E5",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     25.5,
+     0.285,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     26.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     28.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     30.5,
+     0.285,
+     "E4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     31.785,
+     0.215,
+     "E5",
+     0.38,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     33.285,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     35.5,
+     0.285,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     36.285,
+     0.215,
+     "B4",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     37.785,
+     0.215,
+     "E4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     40.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     42.285,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     43.5,
+     0.285,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     45.5,
+     0.285,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     46.785,
+     0.215,
+     "E4",
+     0.34,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     47.785,
+     0.215,
+     "E5",
+     0.4,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     48.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     51.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     52.5,
+     0.29,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     55.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     56.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     59.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     60.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     61.79,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     64.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     66.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     67.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     68.5,
+     0.29,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     70.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     71.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     72.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     74.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     75.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     76.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     77.79,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     78.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     80.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     82.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     83.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     84.5,
+     0.29,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     86.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     87.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     88.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     90.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     91.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     92.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     93.79,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     94.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     96.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     98.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     99.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     104.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     106.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     107.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     108.5,
+     0.29,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     110.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     111.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     112.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     114.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     115.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     116.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     117.79,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     118.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     120.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     122.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     123.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     124.5,
+     0.29,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     126.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     127.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     128.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     130.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     131.29,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     132.79,
+     0.21,
+     "C#5",
+     0.28,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     133.79,
+     0.21,
+     "E4",
+     0.32,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     134.29,
+     0.21,
+     "G#4",
+     0.24,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     149.8,
+     0.7,
+     "D5",
+     0.8,
+     {
+      "articulation": "strike"
+     }
+    ],
+    [
+     150.5,
+     0.5,
+     "E4",
+     0.7,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     225.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     227.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     229.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     231.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     233.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     235.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     237.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     239.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     241.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     243.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     245.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     247.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     249.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     251.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     253.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     255.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     257.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     259.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     261.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     263.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     265.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     267.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     269.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     271.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     273.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     275.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     277.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     279.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     281.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     283.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     285.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     287.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     289.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     291.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     305.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     307.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     309.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     311.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     313.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     315.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     317.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     319.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ],
+    [
+     321.785,
+     0.215,
+     "E4",
+     0.3,
+     {
+      "articulation": "rim"
+     }
+    ],
+    [
+     323.785,
+     0.215,
+     "B4",
+     0.3,
+     {
+      "articulation": "knuckle"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "skin",
+   "instrument": "organic-percussion/skin",
+   "gainDb": -4,
+   "pan": 0.08,
+   "room": 0.14,
+   "setup": {
+    "seed": 33608,
+    "spread": 0.3
+   },
+   "macro": {
+    "steps": [
+     [
+      0,
+      0.2
+     ],
+     [
+      80,
+      0.3
+     ],
+     [
+      156,
+      0.45
+     ],
+     [
+      220,
+      0.3
+     ]
+    ],
+    "glide": 0.5
+   },
+   "controls": {
+    "damp": {
+     "steps": [
+      [
+       0,
+       1
+      ],
+      [
+       80,
+       1.1
+      ],
+      [
+       156,
+       1.3
+      ],
+      [
+       220,
+       1.2
+      ]
+     ],
+     "glide": 0.5
+    }
+   },
+   "humanize": {
+    "timingMs": 4,
+    "velocity": 0.06,
+    "seed": 3372
+   },
+   "notes": [
+    [
+     14,
+     0.275,
+     "E3",
+     0.45,
+     {
+      "articulation": "tap"
+     }
+    ],
+    [
+     14.275,
+     0.225,
+     "B3",
+     0.7,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     14.775,
+     0.225,
+     "F#3",
+     0.5,
+     {
+      "articulation": "tap"
+     }
+    ],
+    [
+     15,
+     0.275,
+     "C#4",
+     0.76,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     15.5,
+     0.275,
+     "G#3",
+     0.72,
+     {
+      "articulation": "open"
+     }
+    ],
+    [
+     15.775,
+     0.225,
+     "E4",
+     0.84,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     83.5,
+     0.5,
+     "C#3",
+     0.54,
+     {
+      "articulation": "open",
+      "bend": 9
+     }
+    ],
+    [
+     87.5,
+     0.5,
+     "C#3",
+     0.54,
+     {
+      "articulation": "open",
+      "bend": 8
+     }
+    ],
+    [
+     91.5,
+     0.5,
+     "C#3",
+     0.54,
+     {
+      "articulation": "open",
+      "bend": 9
+     }
+    ],
+    [
+     95.5,
+     0.5,
+     "C#3",
+     0.54,
+     {
+      "articulation": "open",
+      "bend": 8
+     }
+    ],
+    [
+     144.8,
+     1,
+     "G3",
+     0.78,
+     {
+      "articulation": "open",
+      "bend": 9
+     }
+    ],
+    [
+     146,
+     1,
+     "F#3",
+     0.76,
+     {
+      "articulation": "open",
+      "bend": 8
+     }
+    ],
+    [
+     147.3,
+     0.7,
+     "B3",
+     0.8,
+     {
+      "articulation": "open",
+      "bend": 8
+     }
+    ],
+    [
+     152,
+     0.3,
+     "A3",
+     0.62,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     152.3,
+     0.2,
+     "F#4",
+     0.65,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     152.5,
+     0.3,
+     "B3",
+     0.68,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     152.8,
+     0.2,
+     "G4",
+     0.71,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     153,
+     0.3,
+     "C4",
+     0.74,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     153.3,
+     0.2,
+     "A4",
+     0.77,
+     {
+      "articulation": "slap"
+     }
+    ],
+    [
+     156,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     156.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     158,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     158.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     160,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     160.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     162,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     162.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     164,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     164.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     166,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     166.5,
+     0.5,
+     "E2",
+     0.7,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     171,
+     0.375,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     171.5,
+     0.5,
+     "E2",
+     0.74,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     176,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     176.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     178,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     178.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     180,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     180.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     182,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     182.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     184,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     184.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     186,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     186.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     188,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     188.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     190,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     190.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     192,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     192.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     194,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     194.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     196,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     196.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     198,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     198.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     200,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     200.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     202,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     202.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     204,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     204.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     206,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     206.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     208,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     208.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     210,
+     0.375,
+     "E2",
+     0.38,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     210.5,
+     0.5,
+     "E2",
+     0.52,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     212,
+     0.375,
+     "E2",
+     0.46,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     212.5,
+     0.5,
+     "E2",
+     0.62,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     214,
+     0.375,
+     "E2",
+     0.46,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     214.5,
+     0.5,
+     "E2",
+     0.62,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     216,
+     0.375,
+     "E2",
+     0.5,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     216.5,
+     0.5,
+     "E2",
+     0.66,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     217,
+     0.375,
+     "E2",
+     0.58,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     217.5,
+     0.5,
+     "E2",
+     0.74,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     218,
+     0.375,
+     "E2",
+     0.66,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     218.5,
+     0.5,
+     "E2",
+     0.82,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     219,
+     0.375,
+     "E2",
+     0.74,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     219.5,
+     0.5,
+     "E2",
+     0.9,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     339,
+     0.375,
+     "E2",
+     0.42,
+     {
+      "articulation": "bass"
+     }
+    ],
+    [
+     339.5,
+     0.5,
+     "E2",
+     0.56,
+     {
+      "articulation": "bass"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "clock",
+   "instrument": "mechanical-orchestra/clock",
+   "gainDb": -8,
+   "pan": 0.3,
+   "room": 0.1,
+   "setup": {
+    "seed": 33609,
+    "spread": 0.4
+   },
+   "macro": 0.5,
+   "notes": [
+    [
+     143.5,
+     0.125,
+     "B6",
+     0.4,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     143.8,
+     0.075,
+     "B6",
+     0.48,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     144.8,
+     0.075,
+     "E6",
+     0.46,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     146,
+     0.125,
+     "E6",
+     0.46,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     147.3,
+     0.075,
+     "E6",
+     0.46,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     148,
+     0.125,
+     "B6",
+     0.36,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     148.8,
+     0.075,
+     "B6",
+     0.42,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     149.5,
+     0.125,
+     "B6",
+     0.48,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     150.3,
+     0.075,
+     "B6",
+     0.54,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     151,
+     0.125,
+     "B6",
+     0.6,
+     {
+      "articulation": "tick"
+     }
+    ],
+    [
+     151.8,
+     0.075,
+     "B6",
+     0.66,
+     {
+      "articulation": "tick"
+     }
+    ]
+   ]
+  }
+ ]
+}
