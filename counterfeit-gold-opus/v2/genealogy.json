@@ -1,0 +1,816 @@
+{
+ "title": "FERRYMAN TAKES FAKES (V2): sample genealogy",
+ "nodes": [
+  {
+   "id": "lp-score",
+   "generation": 0,
+   "file": "source/two-coins-for-the-ferryman.score.json",
+   "made": "composed: source/compose.ts (rack score, 13 parts, 1,260 notes)",
+   "sha256": "561972443d297baea3f64f5bb03f5f771573a375e1b68d47c14e0484d05e8fb3"
+  },
+  {
+   "id": "street-score",
+   "generation": 0,
+   "file": "v2/procession/two-coins-procession-take.score.json",
+   "made": "composed: v2/procession/compose.ts (rack score, 11 parts, 579 notes)",
+   "sha256": "f16821b09af5099b20105d73ecb107e3dba2970ebcd599fb58c6f6c9515aa243"
+  },
+  {
+   "id": "lp",
+   "generation": 1,
+   "file": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav",
+   "parents": [
+    "lp-score"
+   ],
+   "made": "performed and printed once by the Signature Rack + Timbre Lab (context mix, normalized to -16 LUFS); reproduced byte for byte by a second render",
+   "sha256": "a6280c7219fac080ee4dd0c9f980f7bd544c5ad955502771ae98fb7ba9f21a95"
+  },
+  {
+   "id": "street",
+   "generation": 1,
+   "file": "assets/record/the-velvet-hearse--two-coins-procession-take.wav",
+   "parents": [
+    "street-score"
+   ],
+   "made": "performed and printed once by the Signature Rack + Timbre Lab (context mix, normalized to -16 LUFS)",
+   "sha256": "3ae2d7cd2c2f2e891b2418286cc12785721db7aa6f655fee6da23f32a6b2d31e"
+  },
+  {
+   "id": "v1-swell",
+   "generation": 2,
+   "file": "assets/derived/swell-reversed.wav",
+   "parents": [
+    "lp"
+   ],
+   "made": "V1: one LP slice, frames reversed, bit-exact",
+   "sha256": "7612095f0e9beb2965bd8b04ee8ca523eb7ed81dc45591e883ee9720ccc507c4"
+  },
+  {
+   "id": "v1",
+   "generation": 2,
+   "file": "assets/v1/ferryman-takes-fakes-v1.wav",
+   "parents": [
+    "lp",
+    "v1-swell"
+   ],
+   "made": "V1 master (ferryman-takes-fakes.json, unchanged engine): 29 LP chops; byte-identical to beat/ferryman-takes-fakes.wav",
+   "sha256": "282334843f6ed47cc8d1986547da89f5fa9aa7706df6a7acf03cd7da1402c815"
+  },
+  {
+   "id": "eternal",
+   "generation": 2,
+   "file": "assets/v2/eternal-deacon.wav",
+   "parents": [
+    "lp"
+   ],
+   "made": "engine print (v2-print-eternal-deacon.json): the Deacon's pluck, then 8 periods of its sustain spliced every 4 periods, 62 phase-locked voices",
+   "sha256": "5b97d8f049a3981182213fba699151cfd03d461a292224feb33c311403faf212"
+  },
+  {
+   "id": "reversed",
+   "generation": 2,
+   "file": "assets/v2/reversed.wav",
+   "parents": [
+    "lp"
+   ],
+   "made": "two LP slices, frames reversed bit-exact, laid end to end; the second is byte-identical to V1's swell",
+   "sha256": "78443e57d52e471e6352d5a98f6fbce3a203b0226a2157f60d7aacaa77bd0afc"
+  }
+ ],
+ "v2": {
+  "project": "ferryman-takes-fakes-v2.json",
+  "projectSha256": "b0084c365f760bec67df193051ebed266f818aea570fc5e79b2f92243510109b",
+  "events": 1187,
+  "chopsPlayed": 52,
+  "eventsBySource": {
+   "generation 1 (lp)": 985,
+   "generation 2 (eternal)": 103,
+   "generation 1 (street)": 94,
+   "generation 2 (v1)": 3,
+   "generation 2 (reversed)": 2
+  },
+  "unmatched": 0
+ },
+ "played": [
+  {
+   "chop": "snare-2",
+   "source": "lp",
+   "generation": 1,
+   "role": "break snare",
+   "events": 395,
+   "tracks": {
+    "snare": 67,
+    "hat": 328
+   },
+   "rates": [
+    0.94,
+    1
+   ]
+  },
+  {
+   "chop": "snare-0",
+   "source": "lp",
+   "generation": 1,
+   "role": "break snare",
+   "events": 377,
+   "tracks": {
+    "snare": 49,
+    "hat": 328
+   },
+   "rates": [
+    0.840896,
+    1
+   ]
+  },
+  {
+   "chop": "kick-3",
+   "source": "lp",
+   "generation": 1,
+   "role": "break kick",
+   "events": 129,
+   "tracks": {
+    "kick": 129
+   },
+   "rates": [
+    1
+   ]
+  },
+  {
+   "chop": "eternal",
+   "source": "eternal",
+   "generation": 2,
+   "role": "the Deacon plucks, and the note never dies",
+   "events": 87,
+   "tracks": {
+    "sub": 87
+   },
+   "rates": [
+    0.749153,
+    0.840896,
+    0.890898,
+    1.122461,
+    1.25992
+   ]
+  },
+  {
+   "chop": "eternal-hold",
+   "source": "eternal",
+   "generation": 2,
+   "role": "the eternal note without its pluck, for legato slides",
+   "events": 16,
+   "tracks": {
+    "sub": 16
+   },
+   "rates": [
+    0.840896,
+    0.890898,
+    1.122461,
+    1.25992
+   ]
+  },
+  {
+   "chop": "riff-0",
+   "source": "street",
+   "generation": 1,
+   "role": "riff note 1 of 9",
+   "events": 15,
+   "tracks": {
+    "horns": 15
+   },
+   "rates": [
+    0.420448,
+    0.840896,
+    1.122461
+   ]
+  },
+  {
+   "chop": "riff-1",
+   "source": "street",
+   "generation": 1,
+   "role": "riff note 2 of 9",
+   "events": 15,
+   "tracks": {
+    "horns": 15
+   },
+   "rates": [
+    0.420448,
+    0.840896,
+    1.122461
+   ]
+  },
+  {
+   "chop": "riff-2",
+   "source": "street",
+   "generation": 1,
+   "role": "riff note 3 of 9",
+   "events": 15,
+   "tracks": {
+    "horns": 15
+   },
+   "rates": [
+    0.420448,
+    0.840896,
+    1.122461
+   ]
+  },
+  {
+   "chop": "riff-3",
+   "source": "street",
+   "generation": 1,
+   "role": "riff note 4 of 9",
+   "events": 15,
+   "tracks": {
+    "horns": 15
+   },
+   "rates": [
+    0.420448,
+    0.840896,
+    1.122461
+   ]
+  },
+  {
+   "chop": "clink",
+   "source": "lp",
+   "generation": 1,
+   "role": "one coin (the first reed staccato)",
+   "events": 10,
+   "tracks": {
+    "lp": 10
+   },
+   "rates": [
+    0.420448,
+    0.840896,
+    0.853509,
+    0.866123,
+    0.878736,
+    0.89135,
+    0.903963,
+    0.916577,
+    0.92919,
+    0.941804
+   ]
+  },
+  {
+   "chop": "dah",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile: \"dah\"",
+   "events": 10,
+   "tracks": {
+    "vox": 10
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "a-ferry",
+   "source": "lp",
+   "generation": 1,
+   "role": "head-a bar 4: the Gb7#11, the ferryman C, E leading home, vibes fill",
+   "events": 8,
+   "tracks": {
+    "lp": 8
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "a-coins",
+   "source": "lp",
+   "generation": 1,
+   "role": "head-a bar 1, beats 1-3: Fm9, the two coins, the scooped Eb",
+   "events": 7,
+   "tracks": {
+    "lp": 7
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "deh",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile: \"deh\"",
+   "events": 7,
+   "tracks": {
+    "vox": 7
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "coins",
+   "source": "lp",
+   "generation": 1,
+   "role": "the two coins alone (reed staccato C5 C5)",
+   "events": 6,
+   "tracks": {
+    "lp": 6
+   },
+   "rates": [
+    0.420448,
+    0.840896
+   ]
+  },
+  {
+   "chop": "conga-open",
+   "source": "lp",
+   "generation": 1,
+   "role": "conga open tone",
+   "events": 6,
+   "tracks": {
+    "perc": 6
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "riff-4",
+   "source": "street",
+   "generation": 1,
+   "role": "riff note 5 of 9",
+   "events": 5,
+   "tracks": {
+    "horns": 5
+   },
+   "rates": [
+    0.420448,
+    0.840896,
+    1.122461
+   ]
+  },
+  {
+   "chop": "riff-5",
+   "source": "street",
+   "generation": 1,
+   "role": "riff note 6 of 9",
+   "events": 5,
+   "tracks": {
+    "horns": 5
+   },
+   "rates": [
+    0.420448,
+    0.840896,
+    1.122461
+   ]
+  },
+  {
+   "chop": "riff-6",
+   "source": "street",
+   "generation": 1,
+   "role": "riff note 7 of 9",
+   "events": 5,
+   "tracks": {
+    "horns": 5
+   },
+   "rates": [
+    0.420448,
+    0.840896,
+    1.122461
+   ]
+  },
+  {
+   "chop": "riff-7",
+   "source": "street",
+   "generation": 1,
+   "role": "riff note 8 of 9",
+   "events": 5,
+   "tracks": {
+    "horns": 5
+   },
+   "rates": [
+    0.420448,
+    0.840896,
+    1.122461
+   ]
+  },
+  {
+   "chop": "riff-8",
+   "source": "street",
+   "generation": 1,
+   "role": "riff note 9 of 9",
+   "events": 5,
+   "tracks": {
+    "horns": 5
+   },
+   "rates": [
+    0.420448,
+    0.840896,
+    1.122461
+   ]
+  },
+  {
+   "chop": "scat-3",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile scat syllable 4 of 8",
+   "events": 4,
+   "tracks": {
+    "vox": 4
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "scat-2",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile scat syllable 3 of 8",
+   "events": 3,
+   "tracks": {
+    "vox": 3
+   },
+   "rates": [
+    0.7937,
+    0.840896
+   ]
+  },
+  {
+   "chop": "conga-low",
+   "source": "lp",
+   "generation": 1,
+   "role": "low conga open",
+   "events": 3,
+   "tracks": {
+    "perc": 3
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "scat-1",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile scat syllable 2 of 8",
+   "events": 2,
+   "tracks": {
+    "vox": 2
+   },
+   "rates": [
+    0.840896,
+    0.943874
+   ]
+  },
+  {
+   "chop": "scat-4",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile scat syllable 5 of 8",
+   "events": 2,
+   "tracks": {
+    "vox": 2
+   },
+   "rates": [
+    0.7937,
+    0.840896
+   ]
+  },
+  {
+   "chop": "scat-5",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile scat syllable 6 of 8",
+   "events": 2,
+   "tracks": {
+    "vox": 2
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "scat-cry",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile, the cry up to F5",
+   "events": 2,
+   "tracks": {
+    "vox": 2
+   },
+   "rates": [
+    0.7937,
+    0.840896
+   ]
+  },
+  {
+   "chop": "roll-late",
+   "source": "street",
+   "generation": 1,
+   "role": "the loud end of the press roll and the HAH",
+   "events": 2,
+   "tracks": {
+    "street": 2
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "v1-shout-1",
+   "source": "v1",
+   "generation": 2,
+   "role": "V1's shout, first pass: s-coins, s-ferry, its tail, the record's claps",
+   "events": 2,
+   "tracks": {
+    "v1": 2
+   },
+   "rates": [
+    0.5,
+    1
+   ]
+  },
+  {
+   "chop": "a-sigh",
+   "source": "lp",
+   "generation": 1,
+   "role": "chime: Odile sighs one note over the bell",
+   "events": 1,
+   "tracks": {
+    "lp": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "s-coins",
+   "source": "lp",
+   "generation": 1,
+   "role": "shout bar 1, beats 1-2: feral coins, bell, the band",
+   "events": 1,
+   "tracks": {
+    "lp": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "s-ferry",
+   "source": "lp",
+   "generation": 1,
+   "role": "shout bar 4: the overblown ferryman C over Gb7#11",
+   "events": 1,
+   "tracks": {
+    "lp": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "s-ferry-tail",
+   "source": "lp",
+   "generation": 1,
+   "role": "shout bar 4, beats 3-4: the overblown C let go, Bb, Ab, E; the claps on the backbeat",
+   "events": 1,
+   "tracks": {
+    "lp": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "crossing-run",
+   "source": "lp",
+   "generation": 1,
+   "role": "the whole 7/8 crossing, eight cycles: 28 record beats = 7 bars of 4/4",
+   "events": 1,
+   "tracks": {
+    "seven": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "stop-bar",
+   "source": "lp",
+   "generation": 1,
+   "role": "the stop bar whole: two stabs, silence, the Deacon alone, his pickups",
+   "events": 1,
+   "tracks": {
+    "stabs": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "ferryman-end",
+   "source": "lp",
+   "generation": 1,
+   "role": "the unresolved last hit: reed and voice fall a fifth, bass dives",
+   "events": 1,
+   "tracks": {
+    "stabs": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "scat-7",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile scat syllable 8 of 8",
+   "events": 1,
+   "tracks": {
+    "vox": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "scat-0",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile scat syllable 1 of 8",
+   "events": 1,
+   "tracks": {
+    "vox": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "scat-6",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile scat syllable 7 of 8",
+   "events": 1,
+   "tracks": {
+    "vox": 1
+   },
+   "rates": [
+    0.7937
+   ]
+  },
+  {
+   "chop": "breath-out",
+   "source": "lp",
+   "generation": 1,
+   "role": "Odile's breath out",
+   "events": 1,
+   "tracks": {
+    "vox": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "bell",
+   "source": "lp",
+   "generation": 1,
+   "role": "the viewing-room bell alone",
+   "events": 1,
+   "tracks": {
+    "bell": 1
+   },
+   "rates": [
+    0.420448
+   ]
+  },
+  {
+   "chop": "dirge",
+   "source": "street",
+   "generation": 1,
+   "role": "to the cemetery: two tolls, the theme at half speed, hums, the pram tuba",
+   "events": 1,
+   "tracks": {
+    "street": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "roll-shout",
+   "source": "street",
+   "generation": 1,
+   "role": "the press roll swelling under Odile's shout, bent up a fifth; the mourners' HAH",
+   "events": 1,
+   "tracks": {
+    "street": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "line",
+   "source": "street",
+   "generation": 1,
+   "role": "the second line home, eight bars: F7 Bb7 F7 C7 F7 Bb7 F7|Gb7#11 F7",
+   "events": 1,
+   "tracks": {
+    "street": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "shout-a",
+   "source": "street",
+   "generation": 1,
+   "role": "the shout chorus, three bars: the riff over the band, Odile above",
+   "events": 1,
+   "tracks": {
+    "street": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "shout-4",
+   "source": "street",
+   "generation": 1,
+   "role": "the last shout bar: C5 growl, Bb, A, E, G",
+   "events": 1,
+   "tracks": {
+    "street": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "home",
+   "source": "street",
+   "generation": 1,
+   "role": "the band holds F major; the bell for the living",
+   "events": 1,
+   "tracks": {
+    "street": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "riff",
+   "source": "street",
+   "generation": 1,
+   "role": "THE RIFF: Brother Ezra alone",
+   "events": 1,
+   "tracks": {
+    "horns": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "v1-shout-2",
+   "source": "v1",
+   "generation": 2,
+   "role": "V1's shout, second pass: ends in Odile's stuttered scat",
+   "events": 1,
+   "tracks": {
+    "v1": 1
+   },
+   "rates": [
+    0.5
+   ]
+  },
+  {
+   "chop": "bell-reversed",
+   "source": "reversed",
+   "generation": 2,
+   "role": "the viewing-room bell inhales into its own strike (lead = whole slice: it lands at its end)",
+   "events": 1,
+   "tracks": {
+    "fx": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  },
+  {
+   "chop": "swell-reversed",
+   "source": "reversed",
+   "generation": 2,
+   "role": "the shout downbeat (bell, band, feral coins) swelling into itself; identical bytes to V1's derived swell (lead = whole slice: it lands at its end)",
+   "events": 1,
+   "tracks": {
+    "fx": 1
+   },
+   "rates": [
+    0.840896
+   ]
+  }
+ ]
+}

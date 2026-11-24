@@ -9,6 +9,14 @@ dug through, broken and rebuilt into an instrumental hip-hop track.
 | [`beat/ferryman-takes-fakes.mp3`](beat/ferryman-takes-fakes.mp3) | **The production.** "Ferryman Takes Fakes", made only from that record | 0:59.5 |
 | [`beat/ferryman-takes-fakes--creative-pass.mp3`](beat/ferryman-takes-fakes--creative-pass.mp3) | The production before the refinement pass, for A/B | 0:59.5 |
 
+## V2: the definitive reconstruction
+
+**[`v2/`](v2)** holds **FERRYMAN TAKES FAKES (V2)** (2:32), made from the LP, an unreleased Procession Take by the
+same band, and V1 sampled as an old record. Start with [`v2/LINER-NOTES.md`](v2/LINER-NOTES.md) and
+[`v2/PRODUCTION-QA.md`](v2/PRODUCTION-QA.md). The listening master is
+[`v2/delivery/FERRYMAN-TAKES-FAKES-V2.mp3`](v2/delivery/FERRYMAN-TAKES-FAKES-V2.mp3). Everything below describes V1,
+which is preserved unchanged.
+
 Lossless: `assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav` (the print the beat samples) and
 `beat/ferryman-takes-fakes.wav` (the engine's master). Both are 44.1 kHz/16-bit stereo.
 

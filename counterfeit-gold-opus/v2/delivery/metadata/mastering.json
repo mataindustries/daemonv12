@@ -1,0 +1,427 @@
+{
+  "schema": "daemonv12.headliner-production24-mastering/1",
+  "status": "Technical production candidate; no subjective improvement or release approval asserted.",
+  "authoredMaster": {
+    "gainDb": -3.6,
+    "effects": [
+      {
+        "type": "highpass",
+        "frequencyHz": 26
+      },
+      {
+        "type": "compressor",
+        "thresholdDb": -14,
+        "ratio": 2,
+        "attackMs": 15,
+        "releaseMs": 150,
+        "makeupGainDb": 2
+      },
+      {
+        "type": "saturation",
+        "driveDb": 4,
+        "mix": 0.3
+      }
+    ]
+  },
+  "authoredRender": {
+    "duration": {
+      "seconds": 152
+    },
+    "tail": "auto"
+  },
+  "authoredTracks": [
+    {
+      "trackId": "lp",
+      "mix": {
+        "gainDb": -2
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 170
+        },
+        {
+          "type": "saturation",
+          "driveDb": 5,
+          "mix": 0.3
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -20,
+          "ratio": 2.5,
+          "attackMs": 15,
+          "releaseMs": 120,
+          "makeupGainDb": 2
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "seven",
+      "mix": {
+        "gainDb": -5
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 60
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 6000
+        },
+        {
+          "type": "saturation",
+          "driveDb": 8,
+          "mix": 0.4
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "stabs",
+      "mix": {
+        "gainDb": -1
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 80
+        },
+        {
+          "type": "saturation",
+          "driveDb": 6,
+          "mix": 0.35
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.6,
+          "decaySeconds": 2.2,
+          "wet": 0.18
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "vox",
+      "mix": {
+        "gainDb": 7,
+        "pan": -0.08
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 280
+        },
+        {
+          "type": "delay",
+          "timeMs": 511,
+          "wet": 0.18
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.55,
+          "decaySeconds": 1.8,
+          "wet": 0.16
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "bell",
+      "mix": {
+        "gainDb": 1
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 28
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.85,
+          "decaySeconds": 3.5,
+          "wet": 0.25
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "kick",
+      "mix": {
+        "gainDb": 0
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 58
+        },
+        {
+          "type": "highpass",
+          "frequencyHz": 58
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 7000
+        },
+        {
+          "type": "saturation",
+          "driveDb": 8,
+          "mix": 0.45
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -16,
+          "ratio": 4,
+          "attackMs": 6,
+          "releaseMs": 90,
+          "makeupGainDb": 3
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "snare",
+      "mix": {
+        "gainDb": 3
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 150
+        },
+        {
+          "type": "saturation",
+          "driveDb": 9,
+          "mix": 0.45
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -18,
+          "ratio": 3,
+          "attackMs": 4,
+          "releaseMs": 120,
+          "makeupGainDb": 2
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.3,
+          "decaySeconds": 0.7,
+          "wet": 0.08
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "hat",
+      "mix": {
+        "gainDb": 10,
+        "pan": -0.2
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 6500
+        },
+        {
+          "type": "lowpass",
+          "frequencyHz": 15000
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "perc",
+      "mix": {
+        "gainDb": 7,
+        "pan": 0.35
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 140
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.35,
+          "decaySeconds": 1,
+          "wet": 0.12
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "street",
+      "mix": {
+        "gainDb": 0.5
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 90
+        },
+        {
+          "type": "saturation",
+          "driveDb": 3,
+          "mix": 0.2
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -18,
+          "ratio": 2,
+          "attackMs": 20,
+          "releaseMs": 150,
+          "makeupGainDb": 1
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "horns",
+      "mix": {
+        "gainDb": 0,
+        "pan": 0.1
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 120
+        },
+        {
+          "type": "saturation",
+          "driveDb": 7,
+          "mix": 0.35
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -18,
+          "ratio": 3,
+          "attackMs": 8,
+          "releaseMs": 120,
+          "makeupGainDb": 2
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.45,
+          "decaySeconds": 1.2,
+          "wet": 0.15
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "v1",
+      "mix": {
+        "gainDb": -2
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 32
+        },
+        {
+          "type": "saturation",
+          "driveDb": 4,
+          "mix": 0.25
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "sub",
+      "mix": {
+        "gainDb": -4
+      },
+      "effects": [
+        {
+          "type": "lowpass",
+          "frequencyHz": 380
+        },
+        {
+          "type": "saturation",
+          "driveDb": 10,
+          "mix": 0.45
+        },
+        {
+          "type": "compressor",
+          "thresholdDb": -18,
+          "ratio": 3,
+          "attackMs": 10,
+          "releaseMs": 150,
+          "makeupGainDb": 2
+        }
+      ],
+      "automation": {}
+    },
+    {
+      "trackId": "fx",
+      "mix": {
+        "gainDb": -3
+      },
+      "effects": [
+        {
+          "type": "highpass",
+          "frequencyHz": 90
+        },
+        {
+          "type": "reverb",
+          "roomSize": 0.6,
+          "decaySeconds": 2,
+          "wet": 0.2
+        }
+      ],
+      "automation": {}
+    }
+  ],
+  "additionalMastering": "None; original project gain, ordered effects and ducking are preserved.",
+  "export": {
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "dither": false,
+    "normalization": false
+  },
+  "analysis": {
+    "format": "pcm_s24le",
+    "frames": 6703200,
+    "sampleRate": 44100,
+    "channels": 2,
+    "bitsPerSample": 24,
+    "durationSeconds": 152,
+    "peakDbfs": -1.10058,
+    "rmsDbfs": -17.335379,
+    "fullScaleSamples": 0,
+    "clipping": false,
+    "stereoCorrelation": 0.963092,
+    "monoFoldRmsDbfs": -17.416972,
+    "monoFoldChangeDb": -0.081592,
+    "nonzeroLowBytes": 13146495,
+    "integratedLufs": -15.17,
+    "loudnessRangeLu": 4.5,
+    "truePeakDbfs": -1.08
+  },
+  "headroom": {
+    "samplePeakDbfs": -1.10058,
+    "truePeakDbfs": -1.08,
+    "truePeakHeadroomDb": 1.08
+  },
+  "stems": "Aligned post-track/pre-master PCM24; independently quantized. Summing exported stems does not reproduce the Float64-summed, master-processed WAV byte for byte.",
+  "sourcePrecision": "Sources are PCM16. No lost source detail is recovered. Newly computed fractional processing detail is retained.",
+  "listening": {
+    "file": "listening/ferryman-takes-fakes-v2.24.mp3",
+    "sha256": "8445e4ba40489ef1231607d91a181c6051297e6a5c90f59270c886bc1107b2c8",
+    "bytes": 3649454,
+    "codec": "libmp3lame",
+    "bitrateKbps": 192,
+    "derivedFrom": {
+      "file": "masters/ferryman-takes-fakes-v2.24.wav",
+      "sha256": "b455c8259e7e05f07265ab76b99becd10aa8e2d8542e57e360746e08a6c329a8"
+    },
+    "processing": "Encoding only; no normalization, extra mastering, gain change or PCM16 intermediate."
+  },
+  "releaseBlockers": [
+    "Human listening approval remains pending.",
+    "Source, composition and generated-audio rights require owner review; no new license is granted.",
+    "Release-specific mastering approval remains pending."
+  ]
+}

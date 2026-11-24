@@ -1,0 +1,57 @@
+{
+ "note": "Second-generation prints for V2; see prints.ts. Hashes are SHA-256.",
+ "eternal": {
+  "file": "assets/v2/eternal-deacon.wav",
+  "project": "v2-print-eternal-deacon.json",
+  "inputs": {
+   "lp": "a6280c7219fac080ee4dd0c9f980f7bd544c5ad955502771ae98fb7ba9f21a95",
+   "project": "3421fa8af09eb64a7efb20ce0cd25909c747a018c825f2db584ac5ed6d836981"
+  },
+  "sha256": "5b97d8f049a3981182213fba699151cfd03d461a292224feb33c311403faf212",
+  "seconds": 6,
+  "splice": {
+   "onsetSeconds": 53.8917,
+   "spliceAfterSeconds": 0.25,
+   "windowSeconds": 0.183261,
+   "hopSeconds": 0.091631,
+   "periodsPerHop": 4,
+   "pitchHz": 43.653529,
+   "voices": 62
+  }
+ },
+ "reversed": {
+  "file": "assets/v2/reversed.wav",
+  "inputs": {
+   "lp": "a6280c7219fac080ee4dd0c9f980f7bd544c5ad955502771ae98fb7ba9f21a95"
+  },
+  "sha256": "78443e57d52e471e6352d5a98f6fbce3a203b0226a2157f60d7aacaa77bd0afc",
+  "slices": [
+   {
+    "id": "bell-reversed",
+    "why": "the viewing-room bell inhales into its own strike",
+    "sourceFrames": [
+     0,
+     61188
+    ],
+    "sheetSeconds": [
+     0,
+     1.387483
+    ],
+    "operation": "frame order reversed, bit-exact; no gain, no fades"
+   },
+   {
+    "id": "swell-reversed",
+    "why": "the shout downbeat (bell, band, feral coins) swelling into itself; identical bytes to V1's derived swell",
+    "sourceFrames": [
+     2427138,
+     2467738
+    ],
+    "sheetSeconds": [
+     1.637483,
+     2.558118
+    ],
+    "operation": "frame order reversed, bit-exact; no gain, no fades"
+   }
+  ]
+ }
+}
