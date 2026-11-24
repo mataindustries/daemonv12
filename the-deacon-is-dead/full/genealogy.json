@@ -1,0 +1,884 @@
+{
+ "schema": "daemonv12.the-deacon-is-dead.genealogy/1",
+ "title": "THE DEACON KNOCKS BACK (FULL WAKE)",
+ "files": [
+  {
+   "file": "source/compose.ts",
+   "gen": 0,
+   "role": "the composer script",
+   "sha256": "a30737f1cfa039f10cdebc0d9a01da55dba968dc76950295e283c619b14927f9"
+  },
+  {
+   "file": "source/the-deacon-is-dead.score.json",
+   "gen": 0,
+   "parents": [
+    "source/compose.ts"
+   ],
+   "role": "the rack score",
+   "sha256": "92faeb7cbe921ef2ba3bd90f25ab89f1492373cb9a9d36b8dddf7028c6d74959"
+  },
+  {
+   "file": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "gen": 1,
+   "parents": [
+    "source/the-deacon-is-dead.score.json"
+   ],
+   "role": "THE VELVET HEARSE, \"The Deacon Is Dead\": the rack print",
+   "sha256": "7f0b2175fef4af186b9d90947df9d12813a2d0cb1ffb8d63b34e93508bb2c1be"
+  },
+  {
+   "file": "the-deacon-knocks-back.json",
+   "gen": 2,
+   "parents": [
+    "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+    "production/chops.json"
+   ],
+   "role": "the approved short version's project",
+   "sha256": "3ed7780504849b2aa883ef99d8e72469cc30a027b4451bccdcd9f73cb716d963"
+  },
+  {
+   "file": "production/the-deacon-knocks-back.wav",
+   "gen": 2,
+   "parents": [
+    "the-deacon-knocks-back.json",
+    "assets/record/the-velvet-hearse--the-deacon-is-dead.wav"
+   ],
+   "role": "THE DEACON KNOCKS BACK, the approved short version (preserved byte for byte)",
+   "sha256": "65aede4d09fb6b70b64430cdfaad1d85d8b20537693c95bfa847389d16e1ac7f"
+  },
+  {
+   "file": "assets/short/the-deacon-knocks-back.wav",
+   "gen": 2,
+   "parents": [
+    "production/the-deacon-knocks-back.wav"
+   ],
+   "role": "a byte-identical copy of the approved master, where the engine reads samples; sampled here as a second record",
+   "sha256": "65aede4d09fb6b70b64430cdfaad1d85d8b20537693c95bfa847389d16e1ac7f"
+  },
+  {
+   "file": "assets/full/the-other-side.wav",
+   "gen": 3,
+   "parents": [
+    "assets/short/the-deacon-knocks-back.wav"
+   ],
+   "role": "THE OTHER SIDE: three gen-2 fragments, frames reversed bit-exact (full/dig.py)",
+   "sha256": "2dc4ae086b059a58a82d54adb9abe78cf1c3e3971130dad5313dba244d2872c4",
+   "pieces": {
+    "g3-reply-rev": {
+     "from": "assets/short/the-deacon-knocks-back.wav",
+     "fromFrames": [
+      109985,
+      145817
+     ],
+     "operation": "frame order reversed, bit-exact, no fades or gain"
+    },
+    "g3-knocks-rev": {
+     "from": "assets/short/the-deacon-knocks-back.wav",
+     "fromFrames": [
+      68642,
+      109985
+     ],
+     "operation": "frame order reversed, bit-exact, no fades or gain"
+    },
+    "g3-scale-rev": {
+     "from": "assets/short/the-deacon-knocks-back.wav",
+     "fromFrames": [
+      2266751,
+      2314985
+     ],
+     "operation": "frame order reversed, bit-exact, no fades or gain"
+    }
+   }
+  },
+  {
+   "file": "the-deacon-knocks-back-full-wake.json",
+   "gen": 4,
+   "parents": [
+    "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+    "assets/short/the-deacon-knocks-back.wav",
+    "assets/full/the-other-side.wav",
+    "full/chops.json"
+   ],
+   "role": "this project"
+  }
+ ],
+ "summary": {
+  "chops": 60,
+  "events": 1293,
+  "byGeneration": [
+   {
+    "gen": 1,
+    "chops": 42,
+    "events": 1213
+   },
+   {
+    "gen": 2,
+    "chops": 16,
+    "events": 73
+   },
+   {
+    "gen": 3,
+    "chops": 2,
+    "events": 7
+   }
+  ]
+ },
+ "chops": {
+  "door-lid": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "door"
+   ],
+   "rates": [
+    0.410168
+   ],
+   "events": 1,
+   "firstBar": 1
+  },
+  "knock-1": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "knock"
+   ],
+   "rates": [
+    1.640672,
+    2.208181,
+    2.971991,
+    2.438029
+   ],
+   "events": 25,
+   "firstBar": 1
+  },
+  "knock-2": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "knock"
+   ],
+   "rates": [
+    1.640672,
+    2.000002,
+    1.811449,
+    2.438029
+   ],
+   "events": 20,
+   "firstBar": 1
+  },
+  "knock-3": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "knock"
+   ],
+   "rates": [
+    1.640672,
+    2.438029,
+    2.000002,
+    2.691802
+   ],
+   "events": 21,
+   "firstBar": 1
+  },
+  "inside-3": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "reply",
+    "dead"
+   ],
+   "rates": [
+    0.552045,
+    0.820336
+   ],
+   "events": 42,
+   "firstBar": 2
+  },
+  "boing-0": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "bass"
+   ],
+   "rates": [
+    0.820336,
+    1.219015,
+    1.000001,
+    1.485995,
+    2.000002,
+    1.640672,
+    2.438029,
+    1.345901,
+    1.10409,
+    2.208181,
+    1.811449,
+    2.691802
+   ],
+   "events": 72,
+   "firstBar": 2
+  },
+  "lik-pick": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "lik"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 2
+  },
+  "thumb-a": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "lik"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 15,
+   "firstBar": 3
+  },
+  "thumb-b": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "lik"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 11,
+   "firstBar": 4
+  },
+  "g3-reply-rev": {
+   "gen": 3,
+   "source": "assets/full/the-other-side.wav",
+   "tracks": [
+    "other"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 2,
+   "firstBar": 5
+  },
+  "kick": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "kick"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 98,
+   "firstBar": 5
+  },
+  "snare": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "snare"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 66,
+   "firstBar": 5
+  },
+  "coins": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "hat"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 718,
+   "firstBar": 5
+  },
+  "tap": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "snare"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 57,
+   "firstBar": 7
+  },
+  "whoop": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "whoop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 7,
+   "firstBar": 7
+  },
+  "hihi": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "odile"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 2,
+   "firstBar": 7
+  },
+  "ooo": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "odile"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 2,
+   "firstBar": 9
+  },
+  "laugh": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "odile"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 5,
+   "firstBar": 11
+  },
+  "inside-1": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "dead"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 7,
+   "firstBar": 14
+  },
+  "inside-2": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "dead"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 6,
+   "firstBar": 14
+  },
+  "scream": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "odile"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 3,
+   "firstBar": 19
+  },
+  "g2-groove": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "ghost"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 2,
+   "firstBar": 21
+  },
+  "g2a-0": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 10,
+   "firstBar": 25
+  },
+  "g2a-1": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 10,
+   "firstBar": 25
+  },
+  "g2a-2": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 8,
+   "firstBar": 25
+  },
+  "g2a-4": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 4,
+   "firstBar": 25
+  },
+  "g2a-5": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 4,
+   "firstBar": 25
+  },
+  "g2a-8": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 2,
+   "firstBar": 25
+  },
+  "g2a-9": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 2,
+   "firstBar": 25
+  },
+  "g2a-10": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 2,
+   "firstBar": 25
+  },
+  "g2a-12": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 6,
+   "firstBar": 25
+  },
+  "g2a-13": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 2,
+   "firstBar": 25
+  },
+  "g2a-14": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 4,
+   "firstBar": 25
+  },
+  "g2a-15": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 2,
+   "firstBar": 26
+  },
+  "g2a-3": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 2,
+   "firstBar": 28
+  },
+  "g2-scale": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1,
+    1.219014,
+    1.485994,
+    1.640671,
+    2,
+    2.438027,
+    1.3459,
+    1.811447,
+    2.208179,
+    2.6918
+   ],
+   "events": 12,
+   "firstBar": 29
+  },
+  "g3-scale-rev": {
+   "gen": 3,
+   "source": "assets/full/the-other-side.wav",
+   "tracks": [
+    "other"
+   ],
+   "rates": [
+    1,
+    1.640671,
+    1.3459
+   ],
+   "events": 5,
+   "firstBar": 30
+  },
+  "g2-laugh": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "tracks": [
+    "cut"
+   ],
+   "rates": [
+    1
+   ],
+   "events": 1,
+   "firstBar": 32
+  },
+  "odile-ab": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 33
+  },
+  "odile-cd": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 35
+  },
+  "stair-1": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 37
+  },
+  "stair-2": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 38
+  },
+  "stair-3": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 39
+  },
+  "stair-4": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 40
+  },
+  "step-5": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336,
+    1.640672
+   ],
+   "events": 2,
+   "firstBar": 41
+  },
+  "step-6": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336,
+    1.640672
+   ],
+   "events": 2,
+   "firstBar": 41
+  },
+  "step-7": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336,
+    1.640672
+   ],
+   "events": 2,
+   "firstBar": 42
+  },
+  "step-1": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    1.640672
+   ],
+   "events": 1,
+   "firstBar": 42
+  },
+  "step-2": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    1.640672
+   ],
+   "events": 1,
+   "firstBar": 42
+  },
+  "step-3": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    1.640672
+   ],
+   "events": 1,
+   "firstBar": 43
+  },
+  "step-4": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    1.640672
+   ],
+   "events": 1,
+   "firstBar": 43
+  },
+  "stab-1": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 44
+  },
+  "stab-2": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 44
+  },
+  "door-knock": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "door"
+   ],
+   "rates": [
+    0.410168
+   ],
+   "events": 1,
+   "firstBar": 45
+  },
+  "shout-a": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 6,
+   "firstBar": 47
+  },
+  "shout-bk": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 48
+  },
+  "shout-b": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 5,
+   "firstBar": 50
+  },
+  "out": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "loop"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 67
+  },
+  "inside-out": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "reply"
+   ],
+   "rates": [
+    0.552045
+   ],
+   "events": 1,
+   "firstBar": 68
+  },
+  "door-out": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "tracks": [
+    "door"
+   ],
+   "rates": [
+    0.820336
+   ],
+   "events": 1,
+   "firstBar": 68
+  }
+ }
+}

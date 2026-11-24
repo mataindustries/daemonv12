@@ -1,0 +1,975 @@
+{
+ "sources": {
+  "assets/record/the-velvet-hearse--the-deacon-is-dead.wav": {
+   "gen": 1,
+   "sha256": "7f0b2175fef4af186b9d90947df9d12813a2d0cb1ffb8d63b34e93508bb2c1be",
+   "beatSeconds": 0.51271,
+   "swing": 0.54,
+   "madeBy": "source/compose.ts on the Signature Rack and the Timbre Lab, printed once"
+  },
+  "assets/short/the-deacon-knocks-back.wav": {
+   "gen": 2,
+   "sha256": "65aede4d09fb6b70b64430cdfaad1d85d8b20537693c95bfa847389d16e1ac7f",
+   "beatSeconds": 0.625,
+   "parents": [
+    "assets/record/the-velvet-hearse--the-deacon-is-dead.wav"
+   ],
+   "identicalTo": "production/the-deacon-knocks-back.wav",
+   "madeBy": "production/build.ts: the approved short version, THE DEACON KNOCKS BACK"
+  },
+  "assets/full/the-other-side.wav": {
+   "gen": 3,
+   "sha256": "2dc4ae086b059a58a82d54adb9abe78cf1c3e3971130dad5313dba244d2872c4",
+   "parents": [
+    "assets/short/the-deacon-knocks-back.wav"
+   ],
+   "madeBy": "full/dig.py: frame-reversed fragments of gen 2, bit-exact"
+  }
+ },
+ "note": "offsetSeconds/endSeconds address the source; leadSeconds is where the source beat (or a reversed chop's end) sits after the chop start.",
+ "chops": {
+  "door-lid": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the door creaks open",
+   "srcBeats": [
+    0.0,
+    1.9
+   ],
+   "offsetSeconds": 0.0,
+   "endSeconds": 0.974149,
+   "leadSeconds": 0.0,
+   "riseDb": 0.0,
+   "peakDbfs": -13.2
+  },
+  "knock-1": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "Iggy's knock 1 on the lid",
+   "srcBeats": [
+    2.5,
+    2.95
+   ],
+   "offsetSeconds": 1.277007,
+   "endSeconds": 1.512495,
+   "leadSeconds": 0.004768,
+   "riseDb": 22.6,
+   "peakDbfs": -9.8,
+   "cleanDb": 17.3
+  },
+  "knock-2": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "Iggy's knock 2 on the lid",
+   "srcBeats": [
+    3.0,
+    3.45
+   ],
+   "offsetSeconds": 1.535125,
+   "endSeconds": 1.76885,
+   "leadSeconds": 0.003005,
+   "riseDb": 12.1,
+   "peakDbfs": -11.0,
+   "cleanDb": 7.6
+  },
+  "knock-3": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "Iggy's knock 3 on the lid",
+   "srcBeats": [
+    3.5,
+    3.98
+   ],
+   "offsetSeconds": 1.788912,
+   "endSeconds": 2.040586,
+   "leadSeconds": 0.005573,
+   "riseDb": 15.6,
+   "peakDbfs": -9.3,
+   "cleanDb": 10.2
+  },
+  "boing-0": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the hearse spring alone: twang on A1",
+   "srcBeats": [
+    4.0,
+    5.95
+   ],
+   "offsetSeconds": 2.047823,
+   "endSeconds": 3.050625,
+   "leadSeconds": 0.003017,
+   "riseDb": 27.9,
+   "peakDbfs": -7.4,
+   "cleanDb": 17.5
+  },
+  "whoop": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the urn's whoop, alone",
+   "srcBeats": [
+    7.0,
+    7.45
+   ],
+   "offsetSeconds": 3.580839,
+   "endSeconds": 3.819689,
+   "leadSeconds": 0.008131,
+   "riseDb": 21.8,
+   "peakDbfs": -20.4,
+   "cleanDb": 12.2
+  },
+  "lik-pick": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the likembe picks up",
+   "srcBeats": [
+    10.25,
+    12.0
+   ],
+   "offsetSeconds": 5.258526,
+   "endSeconds": 6.15252,
+   "leadSeconds": 0.007006,
+   "riseDb": 8.1,
+   "peakDbfs": -17.4
+  },
+  "thumb-a": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the likembe alone, one bar on the tonic",
+   "srcBeats": [
+    12.0,
+    16.0
+   ],
+   "offsetSeconds": 6.14941,
+   "endSeconds": 8.20336,
+   "leadSeconds": 0.00311,
+   "riseDb": 3.7,
+   "peakDbfs": -16.5
+  },
+  "thumb-b": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the likembe bar that stops for the knocks",
+   "srcBeats": [
+    16.0,
+    18.5
+   ],
+   "offsetSeconds": 8.200272,
+   "endSeconds": 9.485135,
+   "leadSeconds": 0.003088,
+   "riseDb": 3.5,
+   "peakDbfs": -9.0
+  },
+  "kick": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "break: urn palm thud",
+   "srcBeats": [
+    52.0,
+    52.24
+   ],
+   "offsetSeconds": 26.657778,
+   "endSeconds": 26.78397,
+   "leadSeconds": 0.003142,
+   "riseDb": 18.7,
+   "peakDbfs": -11.3,
+   "cleanDb": 12.9
+  },
+  "snare": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "break: bead slap",
+   "srcBeats": [
+    53.0,
+    53.7
+   ],
+   "offsetSeconds": 27.168141,
+   "endSeconds": 27.532527,
+   "leadSeconds": 0.005489,
+   "riseDb": 23.7,
+   "peakDbfs": -9.6,
+   "cleanDb": 11.5
+  },
+  "tap": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "break: bead tap",
+   "srcBeats": [
+    55.75,
+    55.99
+   ],
+   "offsetSeconds": 28.588957,
+   "endSeconds": 28.706633,
+   "leadSeconds": 0.00488,
+   "riseDb": 16.5,
+   "peakDbfs": -23.9,
+   "cleanDb": 10.4
+  },
+  "coins": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "break: one shake of the collection plate",
+   "srcBeats": [
+    52.25,
+    52.47
+   ],
+   "offsetSeconds": 26.795624,
+   "endSeconds": 26.901894,
+   "leadSeconds": 0.003728,
+   "riseDb": 5.6,
+   "peakDbfs": -26.9,
+   "cleanDb": 3.5
+  },
+  "scrape": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "break: a stick along the coffin panels",
+   "srcBeats": [
+    57.5,
+    58.45
+   ],
+   "offsetSeconds": 29.473923,
+   "endSeconds": 29.9679,
+   "leadSeconds": 0.006902,
+   "riseDb": 8.9,
+   "peakDbfs": -19.9
+  },
+  "odile-ab": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "odile bars 1-2 as found (root 3)",
+   "srcBeats": [
+    60.0,
+    68.0
+   ],
+   "offsetSeconds": 30.759229,
+   "endSeconds": 34.86428,
+   "leadSeconds": 0.003371,
+   "riseDb": 18.0,
+   "peakDbfs": -5.6
+  },
+  "odile-cd": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "odile bars 3-4 as found (roots 1 and 6): the laugh and the long moan",
+   "srcBeats": [
+    68.0,
+    76.0
+   ],
+   "offsetSeconds": 34.861179,
+   "endSeconds": 38.96596,
+   "leadSeconds": 0.003101,
+   "riseDb": 11.4,
+   "peakDbfs": -6.6
+  },
+  "hihi": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "Odile: two quick squeaks",
+   "srcBeats": [
+    60.75,
+    61.45
+   ],
+   "offsetSeconds": 31.153673,
+   "endSeconds": 31.50603,
+   "leadSeconds": 0.003713,
+   "riseDb": 5.0,
+   "peakDbfs": -19.0
+  },
+  "ooo": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "Odile: a moan bent down",
+   "srcBeats": [
+    61.5,
+    62.5
+   ],
+   "offsetSeconds": 31.527937,
+   "endSeconds": 32.044375,
+   "leadSeconds": 0.003728,
+   "riseDb": 5.5,
+   "peakDbfs": -16.7
+  },
+  "laugh": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "Odile: four squeaks, a laugh",
+   "srcBeats": [
+    66.0,
+    67.0
+   ],
+   "offsetSeconds": 33.835805,
+   "endSeconds": 34.35157,
+   "leadSeconds": 0.003055,
+   "riseDb": 2.1,
+   "peakDbfs": -19.6
+  },
+  "step-1": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 1: beats 1-2 (root 1)",
+   "srcBeats": [
+    76.0,
+    78.0
+   ],
+   "offsetSeconds": 38.958118,
+   "endSeconds": 39.99138,
+   "leadSeconds": 0.007842,
+   "riseDb": 21.2,
+   "peakDbfs": -3.5
+  },
+  "stair-1": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 1 whole (root 1), half time",
+   "srcBeats": [
+    76.0,
+    80.0
+   ],
+   "offsetSeconds": 38.958118,
+   "endSeconds": 41.0168,
+   "leadSeconds": 0.007842,
+   "riseDb": 21.2,
+   "peakDbfs": -3.5
+  },
+  "step-2": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 2: beats 1-2 (root 2)",
+   "srcBeats": [
+    80.0,
+    82.0
+   ],
+   "offsetSeconds": 41.012086,
+   "endSeconds": 42.04222,
+   "leadSeconds": 0.004714,
+   "riseDb": 9.1,
+   "peakDbfs": -5.2
+  },
+  "stair-2": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 2 whole (root 2), half time",
+   "srcBeats": [
+    80.0,
+    84.0
+   ],
+   "offsetSeconds": 41.012086,
+   "endSeconds": 43.06764,
+   "leadSeconds": 0.004714,
+   "riseDb": 9.1,
+   "peakDbfs": -5.2
+  },
+  "step-3": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 3: beats 1-2 (root 3)",
+   "srcBeats": [
+    84.0,
+    86.0
+   ],
+   "offsetSeconds": 43.064558,
+   "endSeconds": 44.09306,
+   "leadSeconds": 0.003082,
+   "riseDb": 16.0,
+   "peakDbfs": -5.1
+  },
+  "stair-3": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 3 whole (root 3), half time",
+   "srcBeats": [
+    84.0,
+    88.0
+   ],
+   "offsetSeconds": 43.064558,
+   "endSeconds": 45.11848,
+   "leadSeconds": 0.003082,
+   "riseDb": 16.0,
+   "peakDbfs": -5.1
+  },
+  "step-4": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 4: beats 1-2 (root 4)",
+   "srcBeats": [
+    88.0,
+    90.0
+   ],
+   "offsetSeconds": 45.114286,
+   "endSeconds": 46.1439,
+   "leadSeconds": 0.004194,
+   "riseDb": 16.5,
+   "peakDbfs": -4.3
+  },
+  "stair-4": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 4 whole (root 4), half time",
+   "srcBeats": [
+    88.0,
+    92.0
+   ],
+   "offsetSeconds": 45.114286,
+   "endSeconds": 47.16932,
+   "leadSeconds": 0.004194,
+   "riseDb": 16.5,
+   "peakDbfs": -4.3
+  },
+  "step-5": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 5: beats 1-2 (root 5)",
+   "srcBeats": [
+    92.0,
+    94.0
+   ],
+   "offsetSeconds": 47.165782,
+   "endSeconds": 48.19474,
+   "leadSeconds": 0.003538,
+   "riseDb": 16.9,
+   "peakDbfs": -2.1
+  },
+  "step-6": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 6: beats 1-2 (root 6)",
+   "srcBeats": [
+    96.0,
+    98.0
+   ],
+   "offsetSeconds": 49.21678,
+   "endSeconds": 50.24558,
+   "leadSeconds": 0.00338,
+   "riseDb": 9.2,
+   "peakDbfs": -4.4
+  },
+  "step-7": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "stairs bar 7: beats 1-2 (root 7)",
+   "srcBeats": [
+    100.0,
+    102.0
+   ],
+   "offsetSeconds": 51.265125,
+   "endSeconds": 52.29642,
+   "leadSeconds": 0.005875,
+   "riseDb": 15.5,
+   "peakDbfs": -5.0
+  },
+  "stab-1": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "tutti stab",
+   "srcBeats": [
+    104.0,
+    104.72
+   ],
+   "offsetSeconds": 53.317891,
+   "endSeconds": 53.690991,
+   "leadSeconds": 0.003949,
+   "riseDb": 11.6,
+   "peakDbfs": -3.3
+  },
+  "stab-2": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "tutti stab and its ring",
+   "srcBeats": [
+    104.75,
+    105.9
+   ],
+   "offsetSeconds": 53.710884,
+   "endSeconds": 54.295989,
+   "leadSeconds": 0.005742,
+   "riseDb": 20.9,
+   "peakDbfs": -4.1
+  },
+  "inside-1": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the Deacon knocks from inside (1)",
+   "srcBeats": [
+    108.5,
+    109.22
+   ],
+   "offsetSeconds": 55.625964,
+   "endSeconds": 55.998186,
+   "leadSeconds": 0.003071,
+   "riseDb": 34.4,
+   "peakDbfs": -13.2,
+   "cleanDb": 30.3
+  },
+  "inside-2": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the Deacon knocks from inside (2)",
+   "srcBeats": [
+    109.25,
+    109.97
+   ],
+   "offsetSeconds": 56.020816,
+   "endSeconds": 56.382719,
+   "leadSeconds": 0.003005,
+   "riseDb": 29.2,
+   "peakDbfs": -12.2,
+   "cleanDb": 23.8
+  },
+  "inside-3": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the Deacon knocks from inside (3)",
+   "srcBeats": [
+    110.0,
+    110.72
+   ],
+   "offsetSeconds": 56.395079,
+   "endSeconds": 56.767251,
+   "leadSeconds": 0.003021,
+   "riseDb": 25.8,
+   "peakDbfs": -11.0,
+   "cleanDb": 20.7
+  },
+  "door-knock": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the door, overpressure",
+   "srcBeats": [
+    110.75,
+    112.0
+   ],
+   "offsetSeconds": 56.789887,
+   "endSeconds": 57.42352,
+   "leadSeconds": 0.003,
+   "riseDb": 0.0,
+   "peakDbfs": -15.0
+  },
+  "shout-a": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "shout bar 1: the hook hot",
+   "srcBeats": [
+    112.0,
+    116.0
+   ],
+   "offsetSeconds": 57.420317,
+   "endSeconds": 59.47436,
+   "leadSeconds": 0.003203,
+   "riseDb": 14.4,
+   "peakDbfs": -7.2
+  },
+  "shout-b": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "shout bar 2 up to the knocks",
+   "srcBeats": [
+    116.0,
+    118.5
+   ],
+   "offsetSeconds": 59.471338,
+   "endSeconds": 60.756135,
+   "leadSeconds": 0.003022,
+   "riseDb": 15.6,
+   "peakDbfs": -4.7
+  },
+  "shout-bk": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "shout bar 2 whole: the third knock from inside",
+   "srcBeats": [
+    116.0,
+    120.0
+   ],
+   "offsetSeconds": 59.471338,
+   "endSeconds": 61.5252,
+   "leadSeconds": 0.003022,
+   "riseDb": 15.6,
+   "peakDbfs": -4.7
+  },
+  "scream": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "Odile screams: wee-oo",
+   "srcBeats": [
+    113.75,
+    114.6
+   ],
+   "offsetSeconds": 58.328005,
+   "endSeconds": 58.756566,
+   "leadSeconds": 0.003012,
+   "riseDb": 4.3,
+   "peakDbfs": -10.4
+  },
+  "out": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the last hit, the spring as a laser, the coins spilling",
+   "srcBeats": [
+    144.0,
+    148.0
+   ],
+   "offsetSeconds": 73.824195,
+   "endSeconds": 75.88108,
+   "leadSeconds": 0.006045,
+   "riseDb": 19.8,
+   "peakDbfs": -2.8
+  },
+  "inside-out": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the last knock from inside",
+   "srcBeats": [
+    149.0,
+    149.9
+   ],
+   "offsetSeconds": 76.390726,
+   "endSeconds": 76.855229,
+   "leadSeconds": 0.003064,
+   "riseDb": 18.3,
+   "peakDbfs": -16.2,
+   "cleanDb": 14.4
+  },
+  "door-out": {
+   "gen": 1,
+   "source": "assets/record/the-velvet-hearse--the-deacon-is-dead.wav",
+   "role": "the door closes",
+   "srcBeats": [
+    150.0,
+    152.6
+   ],
+   "offsetSeconds": 76.903311,
+   "endSeconds": 78.239546,
+   "leadSeconds": 0.003189,
+   "riseDb": 0.0,
+   "peakDbfs": -16.3
+  },
+  "g2-viewing": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version opening: door, three knocks, the reply",
+   "srcBeats": [
+    0.0,
+    5.3
+   ],
+   "offsetSeconds": 0.0,
+   "endSeconds": 3.3125,
+   "leadSeconds": 0.0,
+   "riseDb": 0.0,
+   "peakDbfs": -6.3
+  },
+  "g2-groove": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version's wake, pair 2: reply, the one-shot groove, Odile, the knocks",
+   "srcBeats": [
+    16.0,
+    24.0
+   ],
+   "offsetSeconds": 9.993991,
+   "endSeconds": 15.0,
+   "leadSeconds": 0.006009,
+   "riseDb": 0.0,
+   "peakDbfs": -3.4
+  },
+  "g2a-0": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 0",
+   "srcBeats": [
+    16.0,
+    16.25
+   ],
+   "offsetSeconds": 9.993991,
+   "endSeconds": 10.15625,
+   "leadSeconds": 0.006009,
+   "riseDb": 0.0,
+   "peakDbfs": -5.4
+  },
+  "g2a-1": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 1",
+   "srcBeats": [
+    16.25,
+    16.5
+   ],
+   "offsetSeconds": 10.150249,
+   "endSeconds": 10.3125,
+   "leadSeconds": 0.006001,
+   "riseDb": 0.0,
+   "peakDbfs": -5.7
+  },
+  "g2a-2": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 2",
+   "srcBeats": [
+    16.5,
+    16.75
+   ],
+   "offsetSeconds": 10.306485,
+   "endSeconds": 10.46875,
+   "leadSeconds": 0.006015,
+   "riseDb": 0.0,
+   "peakDbfs": -5.8
+  },
+  "g2a-3": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 3",
+   "srcBeats": [
+    16.75,
+    17.0
+   ],
+   "offsetSeconds": 10.462744,
+   "endSeconds": 10.625,
+   "leadSeconds": 0.006006,
+   "riseDb": 0.0,
+   "peakDbfs": -5.1
+  },
+  "g2a-4": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 4",
+   "srcBeats": [
+    17.0,
+    17.25
+   ],
+   "offsetSeconds": 10.618934,
+   "endSeconds": 10.78125,
+   "leadSeconds": 0.006066,
+   "riseDb": 0.0,
+   "peakDbfs": -3.9
+  },
+  "g2a-5": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 5",
+   "srcBeats": [
+    17.25,
+    17.5
+   ],
+   "offsetSeconds": 10.775125,
+   "endSeconds": 10.9375,
+   "leadSeconds": 0.006125,
+   "riseDb": 0.0,
+   "peakDbfs": -8.3
+  },
+  "g2a-6": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 6",
+   "srcBeats": [
+    17.5,
+    17.75
+   ],
+   "offsetSeconds": 10.931134,
+   "endSeconds": 11.09375,
+   "leadSeconds": 0.006366,
+   "riseDb": 0.0,
+   "peakDbfs": -5.0
+  },
+  "g2a-7": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 7",
+   "srcBeats": [
+    17.75,
+    18.0
+   ],
+   "offsetSeconds": 11.087211,
+   "endSeconds": 11.25,
+   "leadSeconds": 0.006539,
+   "riseDb": 0.0,
+   "peakDbfs": -5.2
+  },
+  "g2a-8": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 8",
+   "srcBeats": [
+    18.0,
+    18.25
+   ],
+   "offsetSeconds": 11.24381,
+   "endSeconds": 11.40625,
+   "leadSeconds": 0.00619,
+   "riseDb": 0.0,
+   "peakDbfs": -6.7
+  },
+  "g2a-9": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 9",
+   "srcBeats": [
+    18.25,
+    18.5
+   ],
+   "offsetSeconds": 11.399955,
+   "endSeconds": 11.5625,
+   "leadSeconds": 0.006295,
+   "riseDb": 0.0,
+   "peakDbfs": -6.5
+  },
+  "g2a-10": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 10",
+   "srcBeats": [
+    18.5,
+    18.75
+   ],
+   "offsetSeconds": 11.556485,
+   "endSeconds": 11.71875,
+   "leadSeconds": 0.006015,
+   "riseDb": 0.0,
+   "peakDbfs": -4.6
+  },
+  "g2a-11": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 11",
+   "srcBeats": [
+    18.75,
+    19.0
+   ],
+   "offsetSeconds": 11.712041,
+   "endSeconds": 11.875,
+   "leadSeconds": 0.006709,
+   "riseDb": 0.0,
+   "peakDbfs": -4.8
+  },
+  "g2a-12": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 12",
+   "srcBeats": [
+    19.0,
+    19.25
+   ],
+   "offsetSeconds": 11.867551,
+   "endSeconds": 12.03125,
+   "leadSeconds": 0.007449,
+   "riseDb": 0.0,
+   "peakDbfs": -3.6
+  },
+  "g2a-13": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 13",
+   "srcBeats": [
+    19.25,
+    19.5
+   ],
+   "offsetSeconds": 12.025079,
+   "endSeconds": 12.1875,
+   "leadSeconds": 0.006171,
+   "riseDb": 0.0,
+   "peakDbfs": -7.9
+  },
+  "g2a-14": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 14",
+   "srcBeats": [
+    19.5,
+    19.75
+   ],
+   "offsetSeconds": 12.181066,
+   "endSeconds": 12.34375,
+   "leadSeconds": 0.006434,
+   "riseDb": 0.0,
+   "peakDbfs": -3.7
+  },
+  "g2a-15": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version, wake pair 2, bar A, sixteenth 15",
+   "srcBeats": [
+    19.75,
+    20.0
+   ],
+   "offsetSeconds": 12.337528,
+   "endSeconds": 12.5,
+   "leadSeconds": 0.006222,
+   "riseDb": 0.0,
+   "peakDbfs": -6.6
+  },
+  "g2-laugh": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version's laugh stutter: he-he, he-he, he-he-he-he",
+   "srcBeats": [
+    38.0,
+    40.0
+   ],
+   "offsetSeconds": 23.743628,
+   "endSeconds": 25.0,
+   "leadSeconds": 0.006372,
+   "riseDb": 0.0,
+   "peakDbfs": -4.7
+  },
+  "g2-scale": {
+   "gen": 2,
+   "source": "assets/short/the-deacon-knocks-back.wav",
+   "role": "the short version's seven-knock scale",
+   "srcBeats": [
+    82.25,
+    84.0
+   ],
+   "offsetSeconds": 51.400181,
+   "endSeconds": 52.5,
+   "leadSeconds": 0.006069,
+   "riseDb": 0.0,
+   "peakDbfs": -5.6
+  },
+  "g3-reply-rev": {
+   "gen": 3,
+   "source": "assets/full/the-other-side.wav",
+   "role": "the Deacon's reply from the short version's opening, backwards: an inhale into a thud",
+   "offsetSeconds": 0.0,
+   "endSeconds": 0.812517,
+   "leadSeconds": 0.812517,
+   "derivedFrom": {
+    "from": "assets/short/the-deacon-knocks-back.wav",
+    "fromFrames": [
+     109985,
+     145817
+    ],
+    "operation": "frame order reversed, bit-exact, no fades or gain"
+   }
+  },
+  "g3-knocks-rev": {
+   "gen": 3,
+   "source": "assets/full/the-other-side.wav",
+   "role": "Iggy's three knocks from the short version's opening, backwards: three swells",
+   "offsetSeconds": 1.112517,
+   "endSeconds": 2.05,
+   "leadSeconds": 0.937483,
+   "derivedFrom": {
+    "from": "assets/short/the-deacon-knocks-back.wav",
+    "fromFrames": [
+     68642,
+     109985
+    ],
+    "operation": "frame order reversed, bit-exact, no fades or gain"
+   }
+  },
+  "g3-scale-rev": {
+   "gen": 3,
+   "source": "assets/full/the-other-side.wav",
+   "role": "the seven-knock scale from the short version, backwards: the dead climbing down",
+   "offsetSeconds": 2.35,
+   "endSeconds": 3.443741,
+   "leadSeconds": 1.093741,
+   "derivedFrom": {
+    "from": "assets/short/the-deacon-knocks-back.wav",
+    "fromFrames": [
+     2266751,
+     2314985
+    ],
+    "operation": "frame order reversed, bit-exact, no fades or gain"
+   }
+  }
+ }
+}

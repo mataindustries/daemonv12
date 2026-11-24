@@ -1,23 +1,161 @@
 # THE DEACON IS DEAD
 
-A second imaginary record by The Velvet Hearse, and a production made only from it. Nothing in either track is a
-reed, a horn-like lead, a synthetic voice, or a sample of one. The bass player, the singer and the reed player are
-written out of the story, and with them the three most recognisable DaemonV12 sounds.
+A second imaginary record by The Velvet Hearse, and the productions made from it. Nothing in any track is a reed, a
+horn-like lead, a synthetic voice, or a sample of one. The bass player, the singer and the reed player are written out
+of the story, and with them the three most recognisable DaemonV12 sounds.
 
 | Listen | What it is | Length |
 |---|---|---|
-| [`production/the-deacon-knocks-back.mp3`](production/the-deacon-knocks-back.mp3) | **The production.** "THE DEACON KNOCKS BACK", made only from the record | 0:58.5 |
+| [`full/delivery/THE-DEACON-KNOCKS-BACK-FULL-WAKE.mp3`](full/delivery/THE-DEACON-KNOCKS-BACK-FULL-WAKE.mp3) | **The definitive version.** "THE DEACON KNOCKS BACK (FULL WAKE)": the record, the approved short version sampled as a second record, and pieces of it reversed | 2:52 |
+| [`production/the-deacon-knocks-back.mp3`](production/the-deacon-knocks-back.mp3) | The approved short version, "THE DEACON KNOCKS BACK", made only from the record (preserved byte for byte) | 0:58.5 |
 | [`source/the-velvet-hearse--the-deacon-is-dead.mp3`](source/the-velvet-hearse--the-deacon-is-dead.mp3) | **The record.** The Velvet Hearse, "The Deacon Is Dead" (1972, imaginary) | 1:21 |
-| [`production/the-deacon-knocks-back--creative-pass.mp3`](production/the-deacon-knocks-back--creative-pass.mp3) | The production before the refinement pass, for A/B | 0:58.5 |
+| [`production/the-deacon-knocks-back--creative-pass.mp3`](production/the-deacon-knocks-back--creative-pass.mp3) | The short version before its refinement pass, for A/B | 0:58.5 |
 
-The record plays about 8 LU quieter than the production (-22.5 against -14.5 LUFS). Every part on it is a hard
-transient and the rack has no limiter, so its normalisation stops at the -1 dBTP ceiling. Turn it up.
+The record plays about 8 LU quieter than the productions (-22.5 against -14.2 to -14.5 LUFS). Every part on it is a
+hard transient and the rack has no limiter, so its normalisation stops at the -1 dBTP ceiling. Turn it up.
 
-Lossless: `assets/record/the-velvet-hearse--the-deacon-is-dead.wav` (the print the production samples) and
-`production/the-deacon-knocks-back.wav` (the engine's master). Both are 44.1 kHz/16-bit stereo.
+Lossless: `assets/record/the-velvet-hearse--the-deacon-is-dead.wav` (the print), `production/the-deacon-knocks-back.wav`
+(the short version's master; both 44.1 kHz/16-bit) and `full/delivery/THE-DEACON-KNOCKS-BACK-FULL-WAKE.24.wav` (PCM24).
 
 > The producer (an AI agent) cannot hear audio. Musical descriptions here are design intent. Numbers are signal
-> measurements, not quality scores. Nobody has listened to either track yet.
+> measurements, not quality scores. The owner approved the short version after normal and car playback; nobody has
+> heard the full wake yet.
+
+---
+
+## THE DEACON KNOCKS BACK (FULL WAKE)
+
+**96 BPM · seven equal steps · 2:52.** The definitive version. Three generations of one record, every sound read by
+the unchanged DaemonV12 sampler:
+
+| Gen | Source | Made by | Chops | Events |
+|---|---|---|---|---|
+| 1 | the record print, `assets/record/the-velvet-hearse--the-deacon-is-dead.wav` | `source/compose.ts`, printed once by the rack | 42 | 1,213 |
+| 2 | **the approved short version**, sampled as a second record: `assets/short/the-deacon-knocks-back.wav`, a byte-identical copy of `production/the-deacon-knocks-back.wav` (the engine reads samples only under `assets/`) | `production/build.ts` | 16 | 73 |
+| 3 | **the other side**, `assets/full/the-other-side.wav`: three gen-2 fragments (its reply, Iggy's three knocks, its seven-knock scale), frame order reversed bit-exact | `full/dig.py` | 2 | 7 |
+
+The complete genealogy is [`full/genealogy.json`](full/genealogy.json): every file with its parents and hash, and every
+chop played, with its source, generation, tracks, rates and event count. The chop notebook is
+[`full/chops.json`](full/chops.json) (66 chops; the full wake plays 60). Gen 1 plays at 0.820336, two of its own seven
+steps down. Gen 2 and gen 3 already live at 96 BPM and play at 1. Any chop moves by whole steps: rate × 2^(k/7).
+
+**The conversation changes hands.** The short version had one idea: the living knock and the dead answer. The full
+wake lets that conversation turn over. The dead start talking first. The wake is heard from inside the coffin. The
+two sides knock at each other faster and faster, then climb past each other in opposite directions, then argue in
+different meters. On the last call, for the first time, nobody answers, until the band has finished.
+
+| Time | Bars | Section | What happens |
+|---|---|---|---|
+| 0:00 | 1-2 | VIEWING | The short version's opening, rebuilt: the door at half speed, three knocks, the reply, the likembé picks up |
+| 0:05 | 3-4 | THUMB | The likembé alone and three knocks; from the other side, the reply played backwards inhales into the reply |
+| 0:10 | 5-12 | WAKE | The approved one-shot groove, four knock-and-reply pairs, Odile's squeaks and the urn's whoop arriving one by one. In the fourth pair the third knock is already his |
+| 0:30 | 13-20 | HE KNOCKS FIRST | The roles turn over. The dead knock first, from inside, in dotted eighths; the living answer with one crisp knock on the one. The spring bass moves five steps, then three, under a likembé that stays on the tonic: two keys at once |
+| 0:50 | 21-24 | SEANCE i | The short version as a record: its wake (reply, groove, Odile, knocks) heard through the coffin lid, muffled and roomy, with only live coins on top |
+| 1:00 | 25-28 | SEANCE ii | The same bar cut into sixteenths and dealt out again in 3+3+2, his reply leading each group, a snare roll made of one slice; then Iggy knocks for real |
+| 1:10 | 29-32 | SEANCE iii | Half time. The short version's seven-knock scale stacked three high into a neutral chord, each voice at its own speed so the chord smears apart; the same scale backwards lands on every next downbeat. Ends on the short version's laugh, sampled |
+| 1:20 | 33-36 | ODILE | The floor: four bars of the record as found, no drums. Her laugh stutters |
+| 1:30 | 37-44 | FOURTEEN STEPS | The pallbearers' whole bars (half time, a march growing under them), then half bars, then the climb doubles: one step a beat, an octave up, fourteen steps in all. Two stabs |
+| 1:50 | 45-46 | KNOCK | Silence and the door lifting. Dead and living knock at each other, the gaps shrinking from a beat to a sixteenth. Silence. His knock is the drop |
+| 1:55 | 47-54 | KNOCKS BACK | The record's hot shout. The knocks as found, as a triad, as the seven-step scale; in the last pair the living climb the scale while the dead climb down it backwards |
+| 2:15 | 55-62 | THE ARGUMENT | Three against four. The dead are the kick, on dotted quarters; the spring answers a dotted eighth later, so the bass line passes back and forth between the living and the dead. Odile screams; the bass moves five steps and back |
+| 2:35 | 63-66 | LAST SHOUT | The shout once more with the scale both ways. Then the last call, the scale climbing alone, and no answer |
+| 2:45 | 67-68 | CLOSED CASKET | The approved ending, now a late answer: the record's last hit, the spring's laser, the coins. Then one knock from inside, late. The door |
+
+**The ending is earned by absence.** The reply has answered every call for 2:45, so its silence on the last downbeat
+is the loudest event in the track. The knock that arrives four beats after the band has stopped is the same late knock
+as in the short version, but now it is an answer.
+
+### Delivery
+
+| File | What it is |
+|---|---|
+| [`full/delivery/THE-DEACON-KNOCKS-BACK-FULL-WAKE.mp3`](full/delivery/THE-DEACON-KNOCKS-BACK-FULL-WAKE.mp3) | 320 kbps, encoded from the PCM24 master with no gain or normalisation change |
+| `full/delivery/THE-DEACON-KNOCKS-BACK-FULL-WAKE.24.wav` | the master: PCM24 stereo, 44.1 kHz, 7,585,200 frames (172.0 s), through the Production24 path |
+| `full/delivery/stems/*.flac` | 15 aligned PCM24 stems (post-track, pre-master), losslessly packed; each decodes sample-identical to the package's PCM24 stem |
+| `full/delivery/metadata/` | the Production24 package's render, mastering, provenance and inventory records and its SHA256SUMS |
+| [`full/SHA256SUMS`](full/SHA256SUMS) | hashes of every full-wake file above, and of its three sources |
+| [`the-deacon-knocks-back-full-wake.json`](the-deacon-knocks-back-full-wake.json) | the editable native project |
+| [`full/build.ts`](full/build.ts), [`full/dig.py`](full/dig.py) | the composition, and the dig of all three generations (it also derives gen 3) |
+| [`full/genealogy.json`](full/genealogy.json), [`full/chops.json`](full/chops.json) | the sample genealogy and the chop notebook |
+
+To restore a stem as WAV:
+
+```bash
+ffmpeg -i the-deacon-is-dead/full/delivery/stems/reply.flac -c:a pcm_s24le reply.wav
+```
+
+### The two passes
+
+**Arrangement pass.** The form above, the three generations and the dig, rendered once at -13.94 LUFS, -1.87 dBTP and
+LRA 4.5, with no clipping, 1,293 events and 33 % of the interpolation budget. The section arc measured as designed:
+the séance dips through the lid, there is true silence before the drop (-74 LUFS momentary, then -12.9), and the
+unanswered downbeat is the loudest moment. The weakness was the low end: as the dead talked more, energy below
+120 Hz rose to 57 % in HE KNOCKS FIRST and 61 % in THE ARGUMENT. The car-approved short version runs 24-49 %.
+
+**Refinement and QA pass.**
+
+| | Change | Measured result |
+|---|---|---|
+| R1 | The Deacon's own knocks shortened, 0.7 → 0.45 beats | below 120 Hz in HE KNOCKS FIRST 57 → 56 %: no real effect |
+| R2 | THE ARGUMENT's dead kick shorter (0.55 → 0.4 beats) and softer between accents | 61 → 56 %: little effect |
+| R3 | His knocks and the argument's unaccented thuds moved to their own lightly driven `dead` track (6 dB drive). The approved reply sound keeps the hook answers and the accents. The two stabs joined the record-loop track to stay within 15 tracks | below 120 Hz: HE KNOCKS FIRST 56 → 32 %, THE ARGUMENT 56 → 32 %, the knock exchange 76 → 27 %, the wake 40 → 37 %. Every new section is now inside the approved range |
+
+Measuring which stem carried the sub (the reply track: 59-97 %) showed why R1 and R2 failed. The reply's 18 dB
+saturation flattens any level change made before it, and gain, velocity and gate all come before it. R3 also made HE
+KNOCKS FIRST darker than the wake (-15.7 against -14.5 LUFS short-term), so the arc now dips there before the séance.
+
+### Measurements (final PCM24 master)
+
+| | |
+|---|---|
+| Length | 172.0 s; the door's groan is the last sound, from 2:48 |
+| Loudness | -14.25 LUFS integrated, LRA 4.6 LU; the 320 kbps MP3 measures -14.2 LUFS |
+| True peak | -1.83 dBTP; MP3 sample peak -1.8 dBFS; no full-scale samples, no clipping on the master or any of the 15 stems |
+| Mono / stereo | fold-down changes RMS by -0.25 dB; stereo correlation 0.887 |
+| Short-term loudness at each section's end (3 s) | viewing -17.0 · thumb -16.6 · wake -14.5 · he knocks first -15.7 · séance -14.1 · odile -17.2 · fourteen steps -15.1 · knock -17.2 · knocks back -12.2 · argument -14.7 · last shout -12.9 · then the ending decays |
+| Low end | energy below 120 Hz 7-43 % per section; 52-56 % only in the viewing and the ending, the short version's own reply-alone moments |
+| Timing (onsets vs grid) | living knocks 0 ms; the dead's knocks and the drop within 2 ms; gen-2 slices within 3 ms (the snare slice keeps the short version's +11 ms lay-back); the gen-2 wake within 4 ms; the reversed inhale peaks 7 ms before its beat |
+| Preservation | the approved short version's 8 checksums ([`SHA256SUMS`](SHA256SUMS)) still pass; nothing under `production/`, `source/`, `assets/record/` or `counterfeit-gold-opus/` changed |
+| Determinism | a Production24 replay of the whole package reproduced the master, all 15 stems and its MP3 byte for byte |
+
+### Rebuild
+
+From the repository root (Node 22.18+, FFmpeg, Python 3 with NumPy). The record print and the short version are
+committed and reused as they are.
+
+```bash
+python3 the-deacon-is-dead/full/dig.py
+```
+
+```bash
+node the-deacon-is-dead/full/build.ts --project-only
+```
+
+```bash
+node scripts/headliner-production24.ts project the-deacon-is-dead/the-deacon-knocks-back-full-wake.json NEW_DELIVERY_DIR --reuse-voices
+```
+
+`full/build.ts full` instead renders an ordinary engine WAV with stems into `the-deacon-is-dead/work/full`.
+[`full/measure.py`](full/measure.py) prints the per-section table (stems, mix, short-term loudness, low end).
+
+### Things to check by ear
+
+- **The séance.** Gen 2 is a finished, compressed master, so the cut-up and the smeared scale chords sit beside raw
+  record chops. The re-dealt 3+3+2 bars and the smear are the least conventional and least tested passages.
+- **THE ARGUMENT.** A dotted-quarter kick under a four-on-the-floor likembé and backbeat. It is meant to tilt; it may
+  just sound out of time.
+- **HE KNOCKS FIRST.** The bass five and then three steps away from a likembé that never moves: two keys at once in
+  seven equal steps, on purpose.
+- **The late knock.** It is the short version's, at the same distance from the last hit, but it follows 2:45 of
+  answers. Whether its silence before reads as an ending or a mistake is the main bet.
+- Everything the short version's list says about the tuning, the 45 Hz reply on phones, and the ringing likembé still
+  applies.
+
+---
+
+## The short version: THE DEACON KNOCKS BACK
+
+The approved 58.5-second version follows, preserved as delivered.
 
 ---
 
