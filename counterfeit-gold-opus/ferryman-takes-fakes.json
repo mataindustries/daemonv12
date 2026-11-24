@@ -1,0 +1,3933 @@
+{
+ "formatVersion": 1,
+ "title": "FERRYMAN TAKES FAKES",
+ "description": "A beat made only from one printed record: THE VELVET HEARSE, \"Two Coins for the Ferryman\" (1971, imaginary), slowed to 88 BPM in D minor, re-cut so the ferryman's chord comes early, with its own break, bass note, voice and bell. One reversed slice is derived offline.",
+ "bpm": 88,
+ "timeSignature": "4/4",
+ "key": "D minor",
+ "bars": 20,
+ "seed": 1971,
+ "render": {
+  "duration": {
+   "seconds": 59.5
+  },
+  "tail": "auto"
+ },
+ "master": {
+  "gainDb": -1.1,
+  "effects": [
+   {
+    "type": "highpass",
+    "frequencyHz": 26
+   },
+   {
+    "type": "compressor",
+    "thresholdDb": -14,
+    "ratio": 2.4,
+    "attackMs": 12,
+    "releaseMs": 160,
+    "makeupGainDb": 2.5
+   },
+   {
+    "type": "saturation",
+    "driveDb": 2,
+    "mix": 0.2
+   }
+  ]
+ },
+ "tracks": [
+  {
+   "id": "record",
+   "description": "The record as found, two bars straight, heard through the wall of the viewing room.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": 0
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 320
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 2400
+    },
+    {
+     "type": "saturation",
+     "driveDb": 6,
+     "mix": 0.35
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.35,
+     "decaySeconds": 0.9,
+     "wet": 0.2
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "1:1",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 4.582313,
+       "endSeconds": 9.173408,
+       "gate": "7200/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.03
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "description": "The counterfeit: head-a bar 1 cut into bar 4 on the and-of-three; later the same cut from the feral shout chorus; the two coins.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": -2
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 170
+    },
+    {
+     "type": "saturation",
+     "driveDb": 5,
+     "mix": 0.3
+    },
+    {
+     "type": "compressor",
+     "thresholdDb": -20,
+     "ratio": 2.5,
+     "attackMs": 15,
+     "releaseMs": 120,
+     "makeupGainDb": 2
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "2:4+451/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 4.855941,
+       "endSeconds": 5.148575,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "2:4+953/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 4.582313,
+       "endSeconds": 6.020049,
+       "gate": "2400/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "3:3+79/640",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 11.463311,
+       "endSeconds": 13.760112,
+       "gate": "3840/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "4:3+95/768",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 1.43034,
+       "endSeconds": 2.293352,
+       "gate": "1440/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.03
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "4:4+953/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 4.582313,
+       "endSeconds": 6.020049,
+       "gate": "2400/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "5:3+79/640",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 11.463311,
+       "endSeconds": 13.760112,
+       "gate": "3840/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "6:3+451/3840",
+       "velocity": 0.85,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 4.855941,
+       "endSeconds": 5.148575,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "6:3+931/3840",
+       "velocity": 0.85,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 4.855941,
+       "endSeconds": 5.148575,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "6:4+451/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 4.855941,
+       "endSeconds": 5.148575,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "6:4+953/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 4.582313,
+       "endSeconds": 6.020049,
+       "gate": "2400/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "7:3+79/640",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 11.463311,
+       "endSeconds": 13.760112,
+       "gate": "3840/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "8:4+953/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 4.582313,
+       "endSeconds": 6.020049,
+       "gate": "2400/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "9:3+79/640",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 11.463311,
+       "endSeconds": 13.760112,
+       "gate": "3840/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "15:4+159/640",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 55.037143,
+       "endSeconds": 56.187124,
+       "gate": "1920/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "16:2+953/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 61.916463,
+       "endSeconds": 64.213856,
+       "gate": "3840/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "17:2+191/768",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 63.064036,
+       "endSeconds": 64.213856,
+       "gate": "1920/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "17:4+159/640",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 55.037143,
+       "endSeconds": 56.187124,
+       "gate": "1920/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "18:2+953/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 61.916463,
+       "endSeconds": 64.213856,
+       "gate": "3840/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "19:2+191/768",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 63.064036,
+       "endSeconds": 64.213856,
+       "gate": "1920/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      },
+      {
+       "start": "20:2+931/3840",
+       "velocity": 0.95,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 4.855941,
+       "endSeconds": 5.148575,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.014
+       },
+       "chokeGroup": "loop"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seven",
+   "description": "One 7/8 cycle of the crossing, retriggered every three and a half beats across 4/4.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": -3
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 70
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 5500
+    },
+    {
+     "type": "saturation",
+     "driveDb": 8,
+     "mix": 0.4
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "10:4+191/768",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 38.697098,
+       "endSeconds": 40.706998,
+       "gate": "3360/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.02
+       },
+       "chokeGroup": "seven"
+      },
+      {
+       "start": "11:4+95/768",
+       "velocity": 0.92,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 38.697098,
+       "endSeconds": 40.706998,
+       "gate": "3360/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.02
+       },
+       "chokeGroup": "seven"
+      },
+      {
+       "start": "12:3+191/768",
+       "velocity": 0.92,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 38.697098,
+       "endSeconds": 40.706998,
+       "gate": "3360/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.02
+       },
+       "chokeGroup": "seven"
+      },
+      {
+       "start": "13:3+95/768",
+       "velocity": 0.92,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 38.697098,
+       "endSeconds": 40.706998,
+       "gate": "3360/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.02
+       },
+       "chokeGroup": "seven"
+      },
+      {
+       "start": "14:2+191/768",
+       "velocity": 0.92,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 38.697098,
+       "endSeconds": 40.706998,
+       "gate": "1920/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.02
+       },
+       "chokeGroup": "seven"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vox",
+   "description": "Odile: the sung coins, a cry, the scat run, the long fall, the last breath.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": 5,
+    "pan": -0.08
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 300
+    },
+    {
+     "type": "delay",
+     "timeMs": 511,
+     "wet": 0.2
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.55,
+     "decaySeconds": 1.8,
+     "wet": 0.16
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "7:1+89/768",
+       "velocity": 0.8,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 27.785828,
+       "endSeconds": 28.093562,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "8:3+89/768",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 27.785828,
+       "endSeconds": 28.093562,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "8:3+185/768",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 27.785828,
+       "endSeconds": 28.093562,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "8:4+79/640",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 9.043583,
+       "endSeconds": 9.517411,
+       "gate": "720/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "9:1+89/768",
+       "velocity": 0.8,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 27.785828,
+       "endSeconds": 28.093562,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "10:3+473/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 32.102902,
+       "endSeconds": 33.253604,
+       "gate": "1440/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "12:4+159/640",
+       "velocity": 0.95,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 34.396531,
+       "endSeconds": 36.005626,
+       "gate": "2688/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.08
+       }
+      },
+      {
+       "start": "15:3+185/768",
+       "velocity": 0.9,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 27.785828,
+       "endSeconds": 28.093562,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "16:1+89/768",
+       "velocity": 0.85,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 27.785828,
+       "endSeconds": 28.093562,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "17:2+39/640",
+       "velocity": 0.9,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 9.043583,
+       "endSeconds": 9.517411,
+       "gate": "720/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "17:2+953/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 32.102902,
+       "endSeconds": 33.253604,
+       "gate": "1920/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "18:1+89/768",
+       "velocity": 0.85,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 27.785828,
+       "endSeconds": 28.093562,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "19:2+953/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 32.102902,
+       "endSeconds": 33.253604,
+       "gate": "960/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "19:3+953/3840",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 32.102902,
+       "endSeconds": 33.253604,
+       "gate": "960/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.012
+       },
+       "chokeGroup": "vox"
+      },
+      {
+       "start": "20:4+1/8",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 76.987778,
+       "endSeconds": 77.973968,
+       "gate": "1920/3840",
+       "envelope": {
+        "attackSeconds": 0.05,
+        "releaseSeconds": 0.3
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "stabs",
+   "description": "The record's stop-time stabs and its unresolved last chord.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": -2
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 90
+    },
+    {
+     "type": "saturation",
+     "driveDb": 6,
+     "mix": 0.35
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.6,
+     "decaySeconds": 2.2,
+     "wet": 0.18
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "14:4+95/384",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 52.741088,
+       "endSeconds": 53.148433,
+       "gate": "624/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "15:1+143/768",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.191156,
+       "endSeconds": 53.664437,
+       "gate": "768/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.1
+       }
+      },
+      {
+       "start": "19:4+191/768",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 73.384014,
+       "endSeconds": 75.107278,
+       "gate": "3072/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.2
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bell",
+   "description": "The viewing-room bell, two octaves down.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": 3
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 28
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.85,
+     "decaySeconds": 3.5,
+     "wet": 0.25
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "1:1",
+       "velocity": 0.9,
+       "playbackRate": 0.420448,
+       "endSeconds": 1.387478,
+       "gate": "4800/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.5
+       }
+      },
+      {
+       "start": "20:4",
+       "velocity": 0.95,
+       "playbackRate": 0.420448,
+       "endSeconds": 1.387478,
+       "gate": "5280/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.8
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fx",
+   "description": "A reed bark, the steel string chirping like a toy laser, and the shout downbeat reversed.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": -4,
+    "pan": 0.15
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 120
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.6,
+     "decaySeconds": 2,
+     "wet": 0.2
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "14:2+157/1280",
+       "velocity": 0.9,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 45.861542,
+       "endSeconds": 46.612379,
+       "gate": "1248/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.05
+       }
+      },
+      {
+       "start": "14:3+313/1280",
+       "velocity": 0.9,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 52.160998,
+       "endSeconds": 52.747096,
+       "gate": "960/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.03
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "kick",
+   "description": "Iggy's break kick (bar 2, beat 1) at its own speed, above the sub.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": 0
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 38
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 6500
+    },
+    {
+     "type": "saturation",
+     "driveDb": 8,
+     "mix": 0.45
+    },
+    {
+     "type": "compressor",
+     "thresholdDb": -16,
+     "ratio": 4,
+     "attackMs": 6,
+     "releaseMs": 90,
+     "makeupGainDb": 3
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "2:4+953/3840",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "3:2+709/3840",
+       "velocity": 0.72,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "3:3+467/3840",
+       "velocity": 0.95,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "4:1+179/960",
+       "velocity": 0.88,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "4:3+473/3840",
+       "velocity": 0.92,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "4:4+239/960",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "5:2+59/320",
+       "velocity": 0.72,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "5:3+59/480",
+       "velocity": 0.95,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "6:1+239/1280",
+       "velocity": 0.88,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "6:3+39/320",
+       "velocity": 0.92,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "6:4+179/960",
+       "velocity": 0.5,
+       "offsetSeconds": 16.910431,
+       "endSeconds": 17.171473,
+       "gate": "288/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "7:3+47/384",
+       "velocity": 0.95,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "8:1+143/768",
+       "velocity": 0.88,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "8:3+469/3840",
+       "velocity": 0.92,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "8:4+479/1920",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "9:2+353/1920",
+       "velocity": 0.72,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "9:3+469/3840",
+       "velocity": 0.95,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "10:1+179/960",
+       "velocity": 0.88,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "10:3+39/320",
+       "velocity": 0.92,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "10:4+179/960",
+       "velocity": 0.5,
+       "offsetSeconds": 16.910431,
+       "endSeconds": 17.171473,
+       "gate": "288/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "10:4+239/960",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "11:3+469/3840",
+       "velocity": 0.82,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "11:4+239/960",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "12:3+469/3840",
+       "velocity": 0.82,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "12:4+239/960",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "13:3+469/3840",
+       "velocity": 0.82,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "13:4+239/960",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "14:3+469/3840",
+       "velocity": 0.82,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "14:4+239/960",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "15:1+179/960",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "15:4+319/1280",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "16:1+237/1280",
+       "velocity": 0.6,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "16:2+953/3840",
+       "velocity": 0.95,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "16:4+233/1920",
+       "velocity": 0.75,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "17:1+95/768",
+       "velocity": 0.9,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "17:2+59/480",
+       "velocity": 0.7,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "17:3+59/480",
+       "velocity": 0.92,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "17:4+119/1920",
+       "velocity": 0.55,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "17:4+191/768",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "18:1+709/3840",
+       "velocity": 0.6,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "18:2+119/480",
+       "velocity": 0.95,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "18:4+469/3840",
+       "velocity": 0.75,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "19:1+119/960",
+       "velocity": 0.9,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "19:2+469/3840",
+       "velocity": 0.7,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "19:3+47/384",
+       "velocity": 0.92,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "19:4+39/640",
+       "velocity": 0.55,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "19:4+239/960",
+       "velocity": 1,
+       "offsetSeconds": 16.050385,
+       "endSeconds": 16.311466,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "snare",
+   "description": "Iggy's break snare (bar 2, beat 2), laid back 20-28 ms.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": 0.5
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 150
+    },
+    {
+     "type": "saturation",
+     "driveDb": 9,
+     "mix": 0.45
+    },
+    {
+     "type": "compressor",
+     "thresholdDb": -18,
+     "ratio": 3,
+     "attackMs": 4,
+     "releaseMs": 120,
+     "makeupGainDb": 2
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.3,
+     "decaySeconds": 0.7,
+     "wet": 0.08
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "3:2+29/3840",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "3:4+7/768",
+       "velocity": 0.9,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "4:2+7/1280",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "4:4+19/1920",
+       "velocity": 0.92,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "5:2+5/768",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "5:4+11/1280",
+       "velocity": 0.9,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "5:4+243/1280",
+       "velocity": 0.22,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "6:2+11/1920",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "6:3+83/1280",
+       "velocity": 0.22,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "6:4+37/3840",
+       "velocity": 0.92,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "7:4+7/768",
+       "velocity": 0.9,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "7:4+243/1280",
+       "velocity": 0.22,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "8:2+1/160",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "8:3+83/1280",
+       "velocity": 0.22,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "8:4+3/320",
+       "velocity": 0.92,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "9:2+7/960",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "9:4+17/1920",
+       "velocity": 0.9,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "9:4+243/1280",
+       "velocity": 0.22,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "10:2+9/1280",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "10:3+83/1280",
+       "velocity": 0.22,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "10:4+11/1280",
+       "velocity": 0.92,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "11:3+11/1280",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "12:3+5/768",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "13:3+9/1280",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "14:3+13/1920",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "16:2+29/3840",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "16:3+243/1280",
+       "velocity": 0.24,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "16:4+11/1280",
+       "velocity": 0.9,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "17:1+83/1280",
+       "velocity": 0.24,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "17:2+9/1280",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "17:3+83/1280",
+       "velocity": 0.24,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "17:4+1/120",
+       "velocity": 0.92,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "18:2+1/128",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "18:3+243/1280",
+       "velocity": 0.24,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "18:4+1/128",
+       "velocity": 0.9,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "19:1+83/1280",
+       "velocity": 0.24,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "19:2+9/1280",
+       "velocity": 0.95,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      },
+      {
+       "start": "19:3+83/1280",
+       "velocity": 0.24,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "192/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "19:4+3/320",
+       "velocity": 0.92,
+       "playbackRate": 0.94,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.06
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hat",
+   "description": "Iggy's break snares with everything below 6.5 kHz taken away: the wires and the room, cut to a sixteenth.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": 6,
+    "pan": -0.2
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 6500
+    },
+    {
+     "type": "lowpass",
+     "frequencyHz": 15000
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "3:1+95/768",
+       "velocity": 0.694,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "3:2+473/3840",
+       "velocity": 0.708,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "3:3+119/960",
+       "velocity": 0.733,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "3:3+769/3840",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "77/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "3:4+79/640",
+       "velocity": 0.75,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "4:1+1/8",
+       "velocity": 0.722,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "4:2+239/1920",
+       "velocity": 0.806,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "4:3+79/640",
+       "velocity": 0.729,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "4:3+769/3840",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "77/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "4:4+95/768",
+       "velocity": 0.684,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "5:1+119/960",
+       "velocity": 0.786,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "5:2+157/1280",
+       "velocity": 0.734,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "5:3+47/384",
+       "velocity": 0.77,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "5:3+769/3840",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "77/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "5:4+95/768",
+       "velocity": 0.8,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "6:1+95/768",
+       "velocity": 0.678,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "6:2+119/960",
+       "velocity": 0.675,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "6:3+79/640",
+       "velocity": 0.805,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "6:3+769/3840",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "77/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "6:4+59/480",
+       "velocity": 0.814,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "7:1+95/768",
+       "velocity": 0.802,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "7:2+159/1280",
+       "velocity": 0.682,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "7:3+119/960",
+       "velocity": 0.816,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "7:3+769/3840",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "77/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "7:4+479/3840",
+       "velocity": 0.792,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "8:1+159/1280",
+       "velocity": 0.687,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "8:2+119/960",
+       "velocity": 0.73,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "8:3+239/1920",
+       "velocity": 0.691,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "8:3+769/3840",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "77/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "8:4+79/640",
+       "velocity": 0.754,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "9:1+59/480",
+       "velocity": 0.766,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "9:2+79/640",
+       "velocity": 0.736,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "9:3+79/640",
+       "velocity": 0.779,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "9:3+769/3840",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "77/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "9:4+119/960",
+       "velocity": 0.69,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "10:1+59/480",
+       "velocity": 0.755,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "10:2+79/640",
+       "velocity": 0.784,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "10:3+119/960",
+       "velocity": 0.791,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "10:3+769/3840",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "77/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "10:4+59/480",
+       "velocity": 0.709,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "10:4+239/960",
+       "velocity": 0.7,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "11:1+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "11:2+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "11:3+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "11:4+239/960",
+       "velocity": 0.7,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "12:1+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "12:2+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "12:3+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "12:4+239/960",
+       "velocity": 0.7,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "13:1+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "13:2+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "13:3+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "13:4+239/960",
+       "velocity": 0.7,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "14:1+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "14:2+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "14:3+239/960",
+       "velocity": 0.55,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "15:4+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "16:1+479/3840",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "16:1+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "16:2+59/480",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "16:2+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "16:3+47/384",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "16:3+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "16:4+473/3840",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "16:4+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "17:1+473/3840",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "17:1+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "17:2+479/3840",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "17:2+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "17:3+119/960",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "17:3+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "17:4+159/1280",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "17:4+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "18:1+157/1280",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "18:1+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "18:2+47/384",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "18:2+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "18:3+473/3840",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "18:3+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "18:4+159/1280",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "18:4+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "19:1+239/1920",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "19:1+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "19:2+1/8",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "19:2+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "19:3+119/960",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "19:3+239/960",
+       "velocity": 0.45,
+       "offsetSeconds": 14.330431,
+       "endSeconds": 14.677453,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      },
+      {
+       "start": "19:4+159/1280",
+       "velocity": 0.78,
+       "offsetSeconds": 16.623787,
+       "endSeconds": 16.970805,
+       "gate": "106/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.015
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "perc",
+   "description": "The conga roll at the end of Iggy's break, one hand at a time.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": 7,
+    "pan": 0.35
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 140
+    },
+    {
+     "type": "reverb",
+     "roomSize": 0.35,
+     "decaySeconds": 1,
+     "wet": 0.12
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "5:4+61/320",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 17.930998,
+       "endSeconds": 18.054414,
+       "gate": "384/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "6:4+13/192",
+       "velocity": 0.65,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 18.056871,
+       "endSeconds": 18.197748,
+       "gate": "384/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "7:4+61/320",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 17.930998,
+       "endSeconds": 18.054414,
+       "gate": "384/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "8:4+13/192",
+       "velocity": 0.65,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 18.056871,
+       "endSeconds": 18.197748,
+       "gate": "384/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "9:4+61/320",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 17.930998,
+       "endSeconds": 18.054414,
+       "gate": "384/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "10:4+13/192",
+       "velocity": 0.65,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 18.056871,
+       "endSeconds": 18.197748,
+       "gate": "384/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "10:4+79/640",
+       "velocity": 0.7,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 18.217211,
+       "endSeconds": 18.507351,
+       "gate": "288/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "10:4+63/320",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 18.217211,
+       "endSeconds": 18.507351,
+       "gate": "288/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "16:2+367/1920",
+       "velocity": 0.55,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 17.770136,
+       "endSeconds": 17.911079,
+       "gate": "336/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "16:4+49/256",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 17.930998,
+       "endSeconds": 18.054414,
+       "gate": "336/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "17:2+367/1920",
+       "velocity": 0.55,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 17.770136,
+       "endSeconds": 17.911079,
+       "gate": "336/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "17:4+127/1920",
+       "velocity": 0.65,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 18.056871,
+       "endSeconds": 18.197748,
+       "gate": "336/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "17:4+247/1920",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 18.217211,
+       "endSeconds": 18.507351,
+       "gate": "336/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "18:2+367/1920",
+       "velocity": 0.55,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 17.770136,
+       "endSeconds": 17.911079,
+       "gate": "336/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "18:4+49/256",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 17.930998,
+       "endSeconds": 18.054414,
+       "gate": "336/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "19:2+367/1920",
+       "velocity": 0.55,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 17.770136,
+       "endSeconds": 17.911079,
+       "gate": "336/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "19:4+127/1920",
+       "velocity": 0.65,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 18.056871,
+       "endSeconds": 18.197748,
+       "gate": "336/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      },
+      {
+       "start": "19:4+247/1920",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 18.217211,
+       "endSeconds": 18.507351,
+       "gate": "336/3840",
+       "envelope": {
+        "attackSeconds": 0.0005,
+        "releaseSeconds": 0.04
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bass",
+   "description": "The Deacon's one lone low F from the stop bar, played at every pitch of the bass line.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/record/the-velvet-hearse--two-coins-for-the-ferryman.wav"
+   },
+   "mix": {
+    "gainDb": -4.5
+   },
+   "effects": [
+    {
+     "type": "lowpass",
+     "frequencyHz": 420
+    },
+    {
+     "type": "saturation",
+     "driveDb": 10,
+     "mix": 0.45
+    },
+    {
+     "type": "compressor",
+     "thresholdDb": -18,
+     "ratio": 3,
+     "attackMs": 10,
+     "releaseMs": 150,
+     "makeupGainDb": 2
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "2:4+95/384",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1344/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "3:2+117/640",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "3:3+31/256",
+       "velocity": 0.95,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1536/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "4:1+237/1280",
+       "velocity": 0.85,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "4:3+31/256",
+       "velocity": 0.9,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "4:4+469/3840",
+       "velocity": 0.6,
+       "playbackRate": 0.749153,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass",
+       "glide": {
+        "to": 0.840896,
+        "duration": "120/3840"
+       }
+      },
+      {
+       "start": "4:4+95/384",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1344/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "5:2+117/640",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "5:3+31/256",
+       "velocity": 0.95,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1536/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "6:1+237/1280",
+       "velocity": 0.85,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "6:3+31/256",
+       "velocity": 0.9,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "6:4+469/3840",
+       "velocity": 0.6,
+       "playbackRate": 0.749153,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass",
+       "glide": {
+        "to": 0.840896,
+        "duration": "120/3840"
+       }
+      },
+      {
+       "start": "7:3+31/256",
+       "velocity": 0.95,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1536/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "8:1+237/1280",
+       "velocity": 0.85,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "8:3+31/256",
+       "velocity": 0.9,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "8:4+469/3840",
+       "velocity": 0.6,
+       "playbackRate": 0.749153,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass",
+       "glide": {
+        "to": 0.840896,
+        "duration": "120/3840"
+       }
+      },
+      {
+       "start": "8:4+95/384",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1344/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "9:2+117/640",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "9:3+31/256",
+       "velocity": 0.95,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1536/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "10:1+237/1280",
+       "velocity": 0.85,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "10:3+467/3840",
+       "velocity": 0.9,
+       "playbackRate": 1.122461,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "10:4+95/384",
+       "velocity": 0.8,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1920/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.08
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "12:4+95/384",
+       "velocity": 0.72,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1920/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.08
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "14:4+95/384",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "480/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.04
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "15:1+237/1280",
+       "velocity": 1,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.04
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "15:2+95/384",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1248/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.1
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "15:4+95/384",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1344/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "16:2+47/384",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "384/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "16:2+947/3840",
+       "velocity": 0.95,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1824/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "17:1+157/1280",
+       "velocity": 0.85,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "17:2+157/1280",
+       "velocity": 0.7,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass",
+       "glide": {
+        "to": 0.749153,
+        "duration": "240/3840"
+       }
+      },
+      {
+       "start": "17:3+467/3840",
+       "velocity": 0.9,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "17:4+469/3840",
+       "velocity": 0.62,
+       "playbackRate": 0.749153,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass",
+       "glide": {
+        "to": 0.840896,
+        "duration": "120/3840"
+       }
+      },
+      {
+       "start": "17:4+95/384",
+       "velocity": 1,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1344/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "18:2+47/384",
+       "velocity": 0.6,
+       "playbackRate": 0.840896,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "384/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "18:2+947/3840",
+       "velocity": 0.95,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1824/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "19:1+157/1280",
+       "velocity": 0.85,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "19:2+157/1280",
+       "velocity": 0.7,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "576/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass",
+       "glide": {
+        "to": 0.749153,
+        "duration": "240/3840"
+       }
+      },
+      {
+       "start": "19:3+467/3840",
+       "velocity": 0.9,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "864/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass"
+      },
+      {
+       "start": "19:4+469/3840",
+       "velocity": 0.62,
+       "playbackRate": 0.749153,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "432/3840",
+       "envelope": {
+        "attackSeconds": 0.003,
+        "releaseSeconds": 0.05
+       },
+       "chokeGroup": "bass",
+       "glide": {
+        "to": 0.840896,
+        "duration": "120/3840"
+       }
+      },
+      {
+       "start": "19:4+317/1280",
+       "velocity": 1,
+       "playbackRate": 0.890898,
+       "offsetSeconds": 53.888073,
+       "endSeconds": 54.725112,
+       "gate": "1536/3840",
+       "envelope": {
+        "attackSeconds": 0.002,
+        "releaseSeconds": 0.15
+       },
+       "chokeGroup": "bass",
+       "glide": {
+        "to": 0.594603,
+        "duration": "1440/3840"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "swell",
+   "description": "The shout downbeat reversed (bit-exact offline): it swells into the return.",
+   "instrument": {
+    "type": "sampler",
+    "sample": "assets/derived/swell-reversed.wav"
+   },
+   "mix": {
+    "gainDb": -5
+   },
+   "effects": [
+    {
+     "type": "highpass",
+     "frequencyHz": 90
+    }
+   ],
+   "clips": [
+    {
+     "bar": 1,
+     "pattern": "song"
+    }
+   ],
+   "patterns": [
+    {
+     "id": "song",
+     "bars": 20,
+     "notes": [
+      {
+       "start": "15:3+63/640",
+       "velocity": 0.85,
+       "playbackRate": 0.840896,
+       "endSeconds": 0.920635,
+       "envelope": {
+        "attackSeconds": 0.02,
+        "releaseSeconds": 0.004
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
