@@ -23,14 +23,15 @@
  *
  * TUNING. Lucius had nothing to tune the likembe against, so he tuned it to nothing: seven equal steps to the octave
  * (171.4 cents each). Everything pitched on the record (the coffin's tongues, the urn, the spring, the brake drum) was
- * matched to it. In seven equal steps every triad has the same shape (root, a neutral third of 343 cents, a fifth 14
+ * matched to it. In seven equal steps every triad has the same shape (root, a neutral third of 343 cents, a fifth 16
  * cents flat), so no chord is major or minor and a chord change is only a change of root. The tonic is A.
  *
  * 117.03 BPM (96 x 2^(2/7): slowed two steps of its own scale the record sits on a 96 BPM grid, still in seven equal
- * steps), swing 0.54, 37 bars, 4/4. The hook: a bass line hocketed between urn, coffin and spring, and every second bar
+ * steps), swing 0.54, 38 bars, 4/4. The hook: a bass line hocketed between urn, coffin and spring, and every second bar
  * the band drops out for three knocks on the coffin lid.
  *
- *   lid      2 bars  the door creaks; three knocks on the lid; coins; the likembe picks up
+ *   lid      3 bars  the door creaks; three knocks on the lid; the spring and the urn tried once each; coins;
+ *                    the likembe picks up
  *   thumb    2 bars  the likembe alone, then Iggy's three knocks: the hook's skeleton
  *   wake     8 bars  the hook: urn, coffin and spring split the Deacon's line; bead snare, coins. Bars 5-8 add Odile's
  *                    friction drum in the holes and the brake drum. Roots 0 0 5 3 | 0 0 5 6
@@ -58,7 +59,7 @@ export const STEP = 12 / 7;
 /** Degree `k` (any integer, 7 = the octave) above a base MIDI pitch, rounded to 1/10000 semitone. */
 export const deg = (k: number, base: number) => +(base + k * STEP).toFixed(4);
 export const BPM = 96 * 2 ** (2 / 7);
-export const SEC = { lid: 0, thumb: 8, wake: 16, brk: 48, odile: 56, stairs: 72, knock: 100, shout: 108, out: 140, end: 148 };
+export const SEC = { lid: 0, thumb: 12, wake: 20, brk: 52, odile: 60, stairs: 76, knock: 104, shout: 112, out: 144, end: 152 };
 const { lid: LID, thumb: TH, wake: WK, brk: BRK, odile: OD, stairs: ST, knock: KN, shout: SH, out: OUT, end: END } = SEC;
 const s16 = (slot: number) => slot / 4;   // sixteenth slot -> beats
 
@@ -135,8 +136,11 @@ function weeOo(bar0: number, v = 0.85, up = 0) {
 // ------------------------------------------------------------------------------------------------ lid (2 bars)
 door.push([LID, 1.6, 47, 0.85, { articulation: 'bite', attack: 0.12 }]);
 knocks(LID, 0.95);
-for (const s of [4, 5, 6, 7]) coin(LID + 4 + s16(s), 0.3 + 0.08 * (s - 4));
-lik(LID + 4, 0, { from: 9 });
+// Mrs. Vane tries the spring, Ezra the urn: each sound alone once before the band starts
+spring.push([LID + 4, 1.5, deg(0, SPR), 0.95, { articulation: 'twang' }], [LID + 6, 1, deg(4, SPR), 0.9, { articulation: 'twang' }]);
+urn.push([LID + 7, 0.25, deg(2, WHOOP), 0.88, { articulation: 'whoop' }], [LID + 7.5, 0.5, deg(0, URN), 0.95, { articulation: 'palm' }]);
+for (const s of [0, 1, 2, 3, 4, 5, 6, 7]) coin(LID + 8 + s16(s), 0.24 + 0.05 * s);
+lik(LID + 8, 0, { from: 9 });
 
 // ------------------------------------------------------------------------------------------------ thumb (2 bars)
 lik(TH, 0);
@@ -243,7 +247,7 @@ const score = {
   tailSeconds: 3, masterGainDb: -3,
   description: 'THE VELVET HEARSE, "The Deacon Is Dead" (an imaginary 1972 single): the band plays the funeral home the night before the bass player\'s funeral, because their instruments are locked in the hearse with him. Coffin, urn, a hearse spring, a likembe tuned to seven equal steps, a friction drum, beads, coins, a brake drum and a door. No bass, no voice, no reed.',
   sections: [
-    { id: 'lid', bars: 2, development: 'the door creaks; three knocks on the lid; coins; the likembe picks up' },
+    { id: 'lid', bars: 3, development: 'the door creaks; three knocks on the lid; the spring and the urn tried once each; coins; the likembe picks up' },
     { id: 'thumb', bars: 2, development: 'the likembe alone, then the three knocks' },
     { id: 'wake', bars: 8, development: 'the hook: urn, coffin and spring split the bass line; every second bar drops out for the knocks; friction drum and brake drum join' },
     { id: 'break', bars: 2, development: 'drums alone: urn, beads, coins, rim, scrape, the knocks' },
