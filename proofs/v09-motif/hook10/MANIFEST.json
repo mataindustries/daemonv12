@@ -1,0 +1,569 @@
+{
+  "schema": "daemonv12.hook10.manifest/1",
+  "benchmark": "HOOK//10",
+  "note": "Plain measurements and symbolic structure checks. Nothing here says which version sounds better: that verdict is a human listening test.",
+  "targetLufs": -16,
+  "ceilingDbtp": -1,
+  "loopFrames": 441000,
+  "node": "v22.23.4",
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "versions": [
+    {
+      "id": "A",
+      "condition": "A",
+      "title": "HOOK//10 A (existing workflow: the hook tiled with repeats, hand-written turnaround)",
+      "schema": "daemonv12.signature-rack.score/1",
+      "scoreFile": "studio-001/scores/hook10/hook10-a.score.json",
+      "scoreSha256": "46c3ef9cc5f11bfffa4de578b6365d00aa09f8387b494882f0b5310d4a5b247a",
+      "bpm": 96,
+      "key": "D minor",
+      "bars": 4,
+      "notes": {
+        "voice": 20,
+        "bass": 24,
+        "bars": 22,
+        "clock": 45
+      },
+      "master": {
+        "file": "HOOK10-A-existing-workflow.wav",
+        "frames": 441000,
+        "seconds": 10,
+        "sampleRate": 44100,
+        "bits": 16,
+        "channels": 2,
+        "gainDb": 0.474,
+        "loudness": {
+          "lufs": -16,
+          "lra": 0.7,
+          "truePeakDb": -6.1
+        },
+        "loudnessLoopX3": {
+          "lufs": -16,
+          "lra": 0.8,
+          "truePeakDb": -6.1
+        },
+        "clipped": 0
+      },
+      "loop": {
+        "method": "tail fold: y[n] = x[n] + x[n + 441000]; no crossfade",
+        "renderFrames": 882000,
+        "tailFrames": 441000,
+        "foldMaxAbsError": 0,
+        "renderTailEndRmsDb": -195,
+        "bodyRmsDb": -18.8,
+        "tailFullyDecayed": true,
+        "seamResidueLsb": {
+          "renderFirstSample": 0,
+          "renderLastSample": 0
+        },
+        "loopX3IsThreeExactCopies": true,
+        "seam": {
+          "frames": 441000,
+          "seamStepLsb": 445,
+          "seamBendLsb": 706,
+          "insideStepLsb": {
+            "median": 262,
+            "p99": 1119,
+            "max": 3140
+          },
+          "insideBendLsb": {
+            "median": 109,
+            "p99": 705,
+            "max": 2322
+          },
+          "seamStepPercentile": 0.752005,
+          "seamBendPercentile": 0.990039,
+          "pass": true
+        }
+      },
+      "stems": [
+        {
+          "part": "voice",
+          "rmsDb": -21.06,
+          "peakDb": -12
+        },
+        {
+          "part": "bass",
+          "rmsDb": -23.34,
+          "peakDb": -10.37
+        },
+        {
+          "part": "bars",
+          "rmsDb": -32.77,
+          "peakDb": -17.23
+        },
+        {
+          "part": "clock",
+          "rmsDb": -41.84,
+          "peakDb": -17.47
+        }
+      ],
+      "technicalGate": {
+        "frames441000": true,
+        "noClipping": true,
+        "truePeakAtMostMinus1": true,
+        "seamContinuous": true,
+        "tailFullyDecayed": true,
+        "foldExact": true,
+        "loopX3IsThreeExactCopies": true
+      },
+      "files": {
+        "HOOK10-A-existing-workflow.wav": {
+          "sha256": "19ee0ba4a0749d4dfee372a8362121d44a28ae20a992106a90c70aaa309044c9",
+          "bytes": 1764044
+        },
+        "HOOK10-A-existing-workflow.mp3": {
+          "sha256": "a56401ca1ae3ebc4678135a8df4b44f9a448f0c41a449d26010f3c681b3b179d",
+          "bytes": 321847
+        },
+        "HOOK10-A-existing-workflow-loop-x3.mp3": {
+          "sha256": "400b8296dae244ceeddf5ba743cb3fb27be359838e4d60d86fbbcd211f039c26",
+          "bytes": 962161
+        },
+        "A/score.json": {
+          "sha256": "46c3ef9cc5f11bfffa4de578b6365d00aa09f8387b494882f0b5310d4a5b247a",
+          "bytes": 12639
+        },
+        "A/performance.json": {
+          "sha256": "7bd3ad0c52035a3b12ebe7415dfe10973f505817fca710491cec460f94da5cc2",
+          "bytes": 21281
+        }
+      }
+    },
+    {
+      "id": "B1",
+      "condition": "B",
+      "title": "HOOK//10 B1 (motif development: statement, answer, climb, inversion)",
+      "schema": "daemonv12.signature-rack.score/2",
+      "scoreFile": "studio-001/scores/hook10/hook10-b1.score.json",
+      "scoreSha256": "07e5e92173ccff49b8dec064eee5493d2dc5b7d4891a51bcfc1a4b9dbbfcab8e",
+      "bpm": 96,
+      "key": "D minor",
+      "bars": 4,
+      "notes": {
+        "voice": 19,
+        "bass": 24,
+        "bars": 25,
+        "clock": 56
+      },
+      "master": {
+        "file": "HOOK10-B1-motif-development.wav",
+        "frames": 441000,
+        "seconds": 10,
+        "sampleRate": 44100,
+        "bits": 16,
+        "channels": 2,
+        "gainDb": 0.15,
+        "loudness": {
+          "lufs": -16,
+          "lra": 1.9,
+          "truePeakDb": -5.6
+        },
+        "loudnessLoopX3": {
+          "lufs": -16,
+          "lra": 1.9,
+          "truePeakDb": -5.6
+        },
+        "clipped": 0
+      },
+      "loop": {
+        "method": "tail fold: y[n] = x[n] + x[n + 441000]; no crossfade",
+        "renderFrames": 882000,
+        "tailFrames": 441000,
+        "foldMaxAbsError": 0,
+        "renderTailEndRmsDb": -195,
+        "bodyRmsDb": -18.6,
+        "tailFullyDecayed": true,
+        "seamResidueLsb": {
+          "renderFirstSample": 0,
+          "renderLastSample": 0
+        },
+        "loopX3IsThreeExactCopies": true,
+        "seam": {
+          "frames": 441000,
+          "seamStepLsb": 194,
+          "seamBendLsb": 673,
+          "insideStepLsb": {
+            "median": 275,
+            "p99": 1246,
+            "max": 3001
+          },
+          "insideBendLsb": {
+            "median": 113,
+            "p99": 694,
+            "max": 2064
+          },
+          "seamStepPercentile": 0.36778,
+          "seamBendPercentile": 0.988379,
+          "pass": true
+        }
+      },
+      "stems": [
+        {
+          "part": "voice",
+          "rmsDb": -20.74,
+          "peakDb": -11.39
+        },
+        {
+          "part": "bass",
+          "rmsDb": -23.79,
+          "peakDb": -11.06
+        },
+        {
+          "part": "bars",
+          "rmsDb": -30.88,
+          "peakDb": -15.71
+        },
+        {
+          "part": "clock",
+          "rmsDb": -40.54,
+          "peakDb": -16.86
+        }
+      ],
+      "gate": {
+        "pass": true,
+        "checks": {
+          "coverage >= 0.6": true,
+          "at least 3 pitch- or rhythm-changing transform kinds": true,
+          "recognizability = 1.0": true,
+          "maxLiteralRun <= 2 in every part": true,
+          "crossPart >= 1": true,
+          "cadence on a tonic-triad step (0, 2 or 4)": true
+        }
+      },
+      "technicalGate": {
+        "frames441000": true,
+        "noClipping": true,
+        "truePeakAtMostMinus1": true,
+        "seamContinuous": true,
+        "tailFullyDecayed": true,
+        "foldExact": true,
+        "loopX3IsThreeExactCopies": true
+      },
+      "files": {
+        "HOOK10-B1-motif-development.wav": {
+          "sha256": "41c8541b546a46081e0d940bbef7c8cd34869434167728b5e602a3f3649e7a38",
+          "bytes": 1764044
+        },
+        "HOOK10-B1-motif-development.mp3": {
+          "sha256": "e6cbef9da4678ebdf0605dc60f7e4645b24c0b5b875ac25b55b62198b6c6bfcb",
+          "bytes": 321847
+        },
+        "HOOK10-B1-motif-development-loop-x3.mp3": {
+          "sha256": "d4c83bb34b6c46ef95993d993d6b4fb0ca69c8aa937fa3d5a5e1d199c9b657bd",
+          "bytes": 962161
+        },
+        "B1/score.json": {
+          "sha256": "3465e828302b56ef4e02607b1101a73d876095dfc06523b71260d201d5f767d8",
+          "bytes": 14985
+        },
+        "B1/performance.json": {
+          "sha256": "9763b6a245b0965b2a6b185f64a1e362702e5c4520cd4d891b3afefd8deb90f1",
+          "bytes": 23523
+        },
+        "B1/score.lowered.json": {
+          "sha256": "b888b043744af52711813a5c968047b51c0afdda78507e33cec5a5224bb86a42",
+          "bytes": 21119
+        },
+        "B1/motif-report.json": {
+          "sha256": "179317226cd09f99973440791bf68303ecb438bb037b3a41a85afbea3a694390",
+          "bytes": 1146
+        },
+        "B1/motif-events.json": {
+          "sha256": "d0cdb8a7dd102e2fb78634524f3b3bcf7ea552451b403176f19cbff4a565ee15",
+          "bytes": 34565
+        }
+      }
+    },
+    {
+      "id": "B2",
+      "condition": "B",
+      "title": "HOOK//10 B2 (motif development: signal call, fast mallet response, major reveal)",
+      "schema": "daemonv12.signature-rack.score/2",
+      "scoreFile": "studio-001/scores/hook10/hook10-b2.score.json",
+      "scoreSha256": "51537354704e7601f2cc62fe208264ab316287764c7ea7cb39611ec650aa3307",
+      "bpm": 96,
+      "key": "D minor",
+      "bars": 4,
+      "notes": {
+        "voice": 24,
+        "bass": 30,
+        "bars": 27,
+        "clock": 38
+      },
+      "master": {
+        "file": "HOOK10-B2-motif-call-response.wav",
+        "frames": 441000,
+        "seconds": 10,
+        "sampleRate": 44100,
+        "bits": 16,
+        "channels": 2,
+        "gainDb": -0.28,
+        "loudness": {
+          "lufs": -16,
+          "lra": 2.6,
+          "truePeakDb": -4.8
+        },
+        "loudnessLoopX3": {
+          "lufs": -16,
+          "lra": 2.6,
+          "truePeakDb": -4.8
+        },
+        "clipped": 0
+      },
+      "loop": {
+        "method": "tail fold: y[n] = x[n] + x[n + 441000]; no crossfade",
+        "renderFrames": 882000,
+        "tailFrames": 441000,
+        "foldMaxAbsError": 0,
+        "renderTailEndRmsDb": -284,
+        "bodyRmsDb": -18.2,
+        "tailFullyDecayed": true,
+        "seamResidueLsb": {
+          "renderFirstSample": 0,
+          "renderLastSample": 0
+        },
+        "loopX3IsThreeExactCopies": true,
+        "seam": {
+          "frames": 441000,
+          "seamStepLsb": 303,
+          "seamBendLsb": 532,
+          "insideStepLsb": {
+            "median": 238,
+            "p99": 1467,
+            "max": 3505
+          },
+          "insideBendLsb": {
+            "median": 104,
+            "p99": 709,
+            "max": 2442
+          },
+          "seamStepPercentile": 0.590768,
+          "seamBendPercentile": 0.968811,
+          "pass": true
+        }
+      },
+      "stems": [
+        {
+          "part": "voice",
+          "rmsDb": -20.26,
+          "peakDb": -6.87
+        },
+        {
+          "part": "bass",
+          "rmsDb": -23.2,
+          "peakDb": -12.62
+        },
+        {
+          "part": "bars",
+          "rmsDb": -31.61,
+          "peakDb": -14.74
+        },
+        {
+          "part": "clock",
+          "rmsDb": -42.52,
+          "peakDb": -17.52
+        }
+      ],
+      "gate": {
+        "pass": true,
+        "checks": {
+          "coverage >= 0.6": true,
+          "at least 3 pitch- or rhythm-changing transform kinds": true,
+          "recognizability = 1.0": true,
+          "maxLiteralRun <= 2 in every part": true,
+          "crossPart >= 1": true,
+          "cadence on a tonic-triad step (0, 2 or 4)": true
+        }
+      },
+      "technicalGate": {
+        "frames441000": true,
+        "noClipping": true,
+        "truePeakAtMostMinus1": true,
+        "seamContinuous": true,
+        "tailFullyDecayed": true,
+        "foldExact": true,
+        "loopX3IsThreeExactCopies": true
+      },
+      "files": {
+        "HOOK10-B2-motif-call-response.wav": {
+          "sha256": "34d5744a83ecd158b39ca151530b8c66f77ff0fc0200532626a65cd2d7403f0c",
+          "bytes": 1764044
+        },
+        "HOOK10-B2-motif-call-response.mp3": {
+          "sha256": "6b78c43629267328ddf4c6cb4b5cb72d5dd70c96945a2f7ea7354b6611ab1906",
+          "bytes": 321847
+        },
+        "HOOK10-B2-motif-call-response-loop-x3.mp3": {
+          "sha256": "660461cfeaeeaf5990135eeb8ddb5b6ed9f77a72a283a0b32afa346a03a34f30",
+          "bytes": 962161
+        },
+        "B2/score.json": {
+          "sha256": "1333cec971f029841553e3b3b4152f923274d2b87d933656dd133121c9fd1a06",
+          "bytes": 13631
+        },
+        "B2/performance.json": {
+          "sha256": "87ba990ed780ed8e49f90fba4db51c02c85045dfd7774fb16018c8562eb72447",
+          "bytes": 22978
+        },
+        "B2/score.lowered.json": {
+          "sha256": "299ad6d4adb770947f5682823c5e65c2bf36788df769c46e133bac2ffe6bbd80",
+          "bytes": 20836
+        },
+        "B2/motif-report.json": {
+          "sha256": "59216c0b4c6fcc2ce0a4e08d38b70299e6f0aad0fe606f755d948fddf50958c1",
+          "bytes": 1157
+        },
+        "B2/motif-events.json": {
+          "sha256": "903705ad676fa5901a10d9d898202e461876c86ba54d84946a087161d5b28f70",
+          "bytes": 31765
+        }
+      }
+    },
+    {
+      "id": "B3",
+      "condition": "B",
+      "title": "HOOK//10 B3 (motif development: mirror answer, then the hook at half speed)",
+      "schema": "daemonv12.signature-rack.score/2",
+      "scoreFile": "studio-001/scores/hook10/hook10-b3.score.json",
+      "scoreSha256": "05a1165de957d4476c8d5e043c6a9b9711c4c72d5224ef36e353684e151edfbd",
+      "bpm": 96,
+      "key": "D minor",
+      "bars": 4,
+      "notes": {
+        "voice": 17,
+        "bass": 24,
+        "bars": 20,
+        "clock": 35
+      },
+      "master": {
+        "file": "HOOK10-B3-motif-mirror-broad.wav",
+        "frames": 441000,
+        "seconds": 10,
+        "sampleRate": 44100,
+        "bits": 16,
+        "channels": 2,
+        "gainDb": 0.335,
+        "loudness": {
+          "lufs": -15.9,
+          "lra": 1.3,
+          "truePeakDb": -7
+        },
+        "loudnessLoopX3": {
+          "lufs": -16,
+          "lra": 1.4,
+          "truePeakDb": -7
+        },
+        "clipped": 0
+      },
+      "loop": {
+        "method": "tail fold: y[n] = x[n] + x[n + 441000]; no crossfade",
+        "renderFrames": 882000,
+        "tailFrames": 441000,
+        "foldMaxAbsError": 0,
+        "renderTailEndRmsDb": -210.6,
+        "bodyRmsDb": -18.6,
+        "tailFullyDecayed": true,
+        "seamResidueLsb": {
+          "renderFirstSample": 0,
+          "renderLastSample": 0
+        },
+        "loopX3IsThreeExactCopies": true,
+        "seam": {
+          "frames": 441000,
+          "seamStepLsb": 268,
+          "seamBendLsb": 573,
+          "insideStepLsb": {
+            "median": 265,
+            "p99": 1122,
+            "max": 3114
+          },
+          "insideBendLsb": {
+            "median": 106,
+            "p99": 673,
+            "max": 2349
+          },
+          "seamStepPercentile": 0.504675,
+          "seamBendPercentile": 0.980372,
+          "pass": true
+        }
+      },
+      "stems": [
+        {
+          "part": "voice",
+          "rmsDb": -20.74,
+          "peakDb": -12.29
+        },
+        {
+          "part": "bass",
+          "rmsDb": -23.4,
+          "peakDb": -11.79
+        },
+        {
+          "part": "bars",
+          "rmsDb": -32.13,
+          "peakDb": -17.18
+        },
+        {
+          "part": "clock",
+          "rmsDb": -42.27,
+          "peakDb": -16.86
+        }
+      ],
+      "gate": {
+        "pass": true,
+        "checks": {
+          "coverage >= 0.6": true,
+          "at least 3 pitch- or rhythm-changing transform kinds": true,
+          "recognizability = 1.0": true,
+          "maxLiteralRun <= 2 in every part": true,
+          "crossPart >= 1": true,
+          "cadence on a tonic-triad step (0, 2 or 4)": true
+        }
+      },
+      "technicalGate": {
+        "frames441000": true,
+        "noClipping": true,
+        "truePeakAtMostMinus1": true,
+        "seamContinuous": true,
+        "tailFullyDecayed": true,
+        "foldExact": true,
+        "loopX3IsThreeExactCopies": true
+      },
+      "files": {
+        "HOOK10-B3-motif-mirror-broad.wav": {
+          "sha256": "a66a9b1af45e18f3a8aee80b25852fc082485a55e8b4f2d619d718cc7eccad41",
+          "bytes": 1764044
+        },
+        "HOOK10-B3-motif-mirror-broad.mp3": {
+          "sha256": "7fd208624d9634d20fb05b10aaaee3dd203b4944a6dd64ed132d372c45be4617",
+          "bytes": 321847
+        },
+        "HOOK10-B3-motif-mirror-broad-loop-x3.mp3": {
+          "sha256": "fd3440807fcaad133f61c0531ad7357ec482dd1327b8c3a78cb664202f23dbab",
+          "bytes": 962161
+        },
+        "B3/score.json": {
+          "sha256": "05a1165de957d4476c8d5e043c6a9b9711c4c72d5224ef36e353684e151edfbd",
+          "bytes": 13052
+        },
+        "B3/performance.json": {
+          "sha256": "aea2639524da4086299b22fe61e728a506b53cabfb9dc8e6e8e2f7e578c26c85",
+          "bytes": 19291
+        },
+        "B3/score.lowered.json": {
+          "sha256": "51a7775a6d94facc065abe724c8aef6b970f8b00b73703d597ab44665e925e7b",
+          "bytes": 17420
+        },
+        "B3/motif-report.json": {
+          "sha256": "fa28036f826bd84742cdc6df8f581f0de1f55c737a79df830e74f40b183b26d3",
+          "bytes": 1147
+        },
+        "B3/motif-events.json": {
+          "sha256": "e9b74da36366a82cbb71372fc094c593e378ebd327a0ce2be3a96dde22985d99",
+          "bytes": 27212
+        }
+      }
+    }
+  ]
+}

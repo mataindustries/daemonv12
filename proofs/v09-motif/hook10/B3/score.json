@@ -1,0 +1,721 @@
+{
+  "schema": "daemonv12.signature-rack.score/2",
+  "title": "HOOK//10 B3 (motif development: mirror answer, then the hook at half speed)",
+  "bpm": 96,
+  "key": "D minor",
+  "timeSignature": "4/4",
+  "seed": 10,
+  "tailSeconds": 10,
+  "masterGainDb": 0,
+  "description": "HOOK//10, condition B (score/2), third approach. The B1 hook, answered by its mirror image, then sung at half speed across two bars while the mallets keep playing it at full speed. Dm | F | Bb | C A7, then the A7 resolves across the loop point.",
+  "sections": [
+    {
+      "id": "call",
+      "bars": 1,
+      "development": "the hook over D minor"
+    },
+    {
+      "id": "mirror",
+      "bars": 1,
+      "development": "the hook upside down over F major: it starts on the high note, falls the sixth and climbs back"
+    },
+    {
+      "id": "broad",
+      "bars": 2,
+      "development": "the hook at half speed in the voice, with an upper-neighbour melisma on its long note; the mallets play it at full speed underneath, once per bar; the clock drops to half time"
+    }
+  ],
+  "room": {
+    "rt60": 1.9,
+    "size": 1.1,
+    "damp": 5600,
+    "predelayMs": 20,
+    "lowCut": 220
+  },
+  "motifs": [
+    {
+      "id": "hook",
+      "role": "hook",
+      "octave": 4,
+      "lengthBeats": 4,
+      "notes": [
+        [
+          0,
+          0.75,
+          4,
+          0.72,
+          {
+            "params": {
+              "vowel": "oh",
+              "to": "ah"
+            }
+          }
+        ],
+        [
+          0.75,
+          1.25,
+          9,
+          0.9,
+          {
+            "gesture": "lift",
+            "params": {
+              "vowel": "ah"
+            }
+          }
+        ],
+        [
+          2,
+          0.5,
+          8,
+          0.74,
+          {
+            "params": {
+              "vowel": "ah",
+              "to": "eh"
+            }
+          }
+        ],
+        [
+          2.5,
+          0.5,
+          6,
+          0.68,
+          {
+            "params": {
+              "vowel": "oh"
+            }
+          }
+        ],
+        [
+          3,
+          0.75,
+          7,
+          0.76,
+          {
+            "gesture": "fall",
+            "params": {
+              "vowel": "oh",
+              "to": "oo"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "from": "hook",
+      "transforms": [
+        {
+          "op": "fragment",
+          "from": 0,
+          "to": 2
+        }
+      ]
+    },
+    {
+      "id": "echo",
+      "role": "answer",
+      "from": "hook",
+      "transforms": [
+        {
+          "op": "fragment",
+          "from": 2,
+          "to": 5
+        },
+        {
+          "op": "scale",
+          "factor": 0.5
+        },
+        {
+          "op": "octave",
+          "by": 1
+        },
+        {
+          "op": "gesture",
+          "set": "short",
+          "at": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mirror",
+      "role": "answer",
+      "from": "hook",
+      "transforms": [
+        {
+          "op": "invert",
+          "axis": 6.5
+        }
+      ]
+    },
+    {
+      "id": "riff",
+      "role": "bass",
+      "octave": 2,
+      "lengthBeats": 4,
+      "notes": [
+        [
+          0,
+          0.75,
+          0,
+          0.95,
+          {
+            "gesture": "accent"
+          }
+        ],
+        [
+          0.75,
+          0.5,
+          0,
+          0.6,
+          {
+            "gesture": "soft"
+          }
+        ],
+        [
+          1.5,
+          0.5,
+          7,
+          0.78,
+          {
+            "gesture": "short"
+          }
+        ],
+        [
+          2.5,
+          0.5,
+          4,
+          0.8
+        ],
+        [
+          3,
+          0.5,
+          6,
+          0.78
+        ],
+        [
+          3.5,
+          0.5,
+          7,
+          0.82,
+          {
+            "gesture": "fall"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "riff-half",
+      "from": "riff",
+      "transforms": [
+        {
+          "op": "fragment",
+          "from": 0,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "id": "pulse",
+      "role": "figure",
+      "octave": 6,
+      "lengthBeats": 4,
+      "notes": [
+        [
+          0,
+          0.25,
+          0,
+          0.55
+        ],
+        [
+          0.5,
+          0.25,
+          0,
+          0.4
+        ],
+        [
+          0.75,
+          0.25,
+          4,
+          0.7
+        ],
+        [
+          1,
+          0.25,
+          0,
+          0.9,
+          {
+            "articulation": "tock"
+          }
+        ],
+        [
+          1.5,
+          0.25,
+          0,
+          0.45
+        ],
+        [
+          2,
+          0.25,
+          0,
+          0.5
+        ],
+        [
+          2.5,
+          0.25,
+          0,
+          0.45
+        ],
+        [
+          2.75,
+          0.25,
+          4,
+          0.6
+        ],
+        [
+          3,
+          0.25,
+          0,
+          0.9,
+          {
+            "articulation": "tock"
+          }
+        ],
+        [
+          3.5,
+          0.25,
+          0,
+          0.45
+        ],
+        [
+          3.75,
+          0.25,
+          0,
+          0.35
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": "voice",
+      "instrument": "impossible-voice",
+      "gainDb": -1,
+      "pan": 0.05,
+      "room": 0.24,
+      "macro": [
+        [
+          0,
+          0.3
+        ],
+        [
+          8,
+          0.35
+        ],
+        [
+          10,
+          0.6
+        ],
+        [
+          14,
+          0.55
+        ],
+        [
+          16,
+          0.3
+        ]
+      ],
+      "expression": [
+        [
+          0,
+          0.72
+        ],
+        [
+          8,
+          0.74
+        ],
+        [
+          10,
+          0.88
+        ],
+        [
+          14,
+          0.84
+        ],
+        [
+          16,
+          0.72
+        ]
+      ],
+      "setup": {
+        "vibRate": 5.3,
+        "haloGain": 0.6
+      },
+      "breaths": [
+        {
+          "beat": 3.76,
+          "beats": 0.22,
+          "kind": "in",
+          "velocity": 0.4
+        },
+        {
+          "beat": 7.76,
+          "beats": 0.22,
+          "kind": "in",
+          "velocity": 0.45
+        },
+        {
+          "beat": 15.72,
+          "beats": 0.26,
+          "kind": "in",
+          "velocity": 0.45
+        }
+      ],
+      "phrases": [
+        {
+          "id": "voice.hook",
+          "motif": "hook",
+          "at": {
+            "section": "call",
+            "bar": 1
+          }
+        },
+        {
+          "id": "voice.mirror",
+          "motif": "mirror",
+          "at": {
+            "section": "mirror",
+            "bar": 1
+          },
+          "velocity": 0.96
+        },
+        {
+          "id": "voice.broad",
+          "motif": "hook",
+          "at": {
+            "section": "broad",
+            "bar": 1
+          },
+          "transforms": [
+            {
+              "op": "scale",
+              "factor": 2
+            },
+            {
+              "op": "ornament",
+              "at": 1,
+              "kind": "upper"
+            },
+            {
+              "op": "dynamics",
+              "from": 1,
+              "to": 1.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bass",
+      "instrument": "living-bass",
+      "gainDb": -2,
+      "room": 0.05,
+      "macro": [
+        [
+          0,
+          0.3
+        ],
+        [
+          8,
+          0.4
+        ],
+        [
+          12,
+          0.6
+        ],
+        [
+          16,
+          0.3
+        ]
+      ],
+      "expression": 0.75,
+      "phrases": [
+        {
+          "id": "bass.riff",
+          "motif": "riff",
+          "at": {
+            "section": "call",
+            "bar": 1
+          }
+        },
+        {
+          "id": "bass.mirror",
+          "motif": "riff",
+          "at": {
+            "section": "mirror",
+            "bar": 1
+          },
+          "transforms": [
+            {
+              "op": "transpose",
+              "steps": 2
+            }
+          ]
+        },
+        {
+          "id": "bass.broad",
+          "motif": "riff",
+          "at": {
+            "section": "broad",
+            "bar": 1
+          },
+          "transforms": [
+            {
+              "op": "transpose",
+              "steps": -2
+            }
+          ]
+        },
+        {
+          "id": "bass.turn",
+          "motif": "riff-half",
+          "at": {
+            "section": "broad",
+            "bar": 2
+          },
+          "transforms": [
+            {
+              "op": "sequence",
+              "steps": [
+                -1,
+                -3
+              ],
+              "every": 2
+            },
+            {
+              "op": "endOn",
+              "step": 6,
+              "alt": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bars",
+      "instrument": "mechanical-orchestra/bar",
+      "gainDb": -8,
+      "room": 0.3,
+      "macro": 0.12,
+      "setup": {
+        "spread": 0.45
+      },
+      "phrases": [
+        {
+          "id": "bars.head",
+          "motif": "head",
+          "at": {
+            "section": "call",
+            "bar": 1
+          },
+          "transforms": [
+            {
+              "op": "octave",
+              "by": 1
+            }
+          ],
+          "velocity": 0.8
+        },
+        {
+          "id": "bars.echo",
+          "motif": "echo",
+          "at": {
+            "section": "call",
+            "bar": 1,
+            "beat": 3.25
+          },
+          "velocity": 0.8
+        },
+        {
+          "id": "bars.mirror",
+          "motif": "mirror",
+          "at": {
+            "section": "mirror",
+            "bar": 1
+          },
+          "transforms": [
+            {
+              "op": "fragment",
+              "from": 0,
+              "to": 2
+            },
+            {
+              "op": "octave",
+              "by": 1
+            }
+          ],
+          "velocity": 0.8
+        },
+        {
+          "id": "bars.echo-mirror",
+          "motif": "echo",
+          "at": {
+            "section": "mirror",
+            "bar": 1,
+            "beat": 3.25
+          },
+          "transforms": [
+            {
+              "op": "transpose",
+              "steps": -1
+            }
+          ],
+          "velocity": 0.8
+        },
+        {
+          "id": "bars.full-1",
+          "motif": "hook",
+          "at": {
+            "section": "broad",
+            "bar": 1
+          },
+          "transforms": [
+            {
+              "op": "octave",
+              "by": 1
+            },
+            {
+              "op": "transpose",
+              "steps": -2
+            }
+          ],
+          "velocity": 0.82
+        },
+        {
+          "id": "bars.full-2",
+          "motif": "hook",
+          "at": {
+            "section": "broad",
+            "bar": 2
+          },
+          "transforms": [
+            {
+              "op": "octave",
+              "by": 1
+            },
+            {
+              "op": "transpose",
+              "steps": -1
+            },
+            {
+              "op": "endOn",
+              "step": 11
+            }
+          ],
+          "velocity": 0.86
+        }
+      ]
+    },
+    {
+      "id": "clock",
+      "instrument": "mechanical-orchestra/clock",
+      "gainDb": -12,
+      "room": 0.12,
+      "macro": [
+        [
+          0,
+          0.25
+        ],
+        [
+          7.9,
+          0.3
+        ],
+        [
+          8,
+          0.7
+        ],
+        [
+          14,
+          0.6
+        ],
+        [
+          16,
+          0.25
+        ]
+      ],
+      "humanize": {
+        "timingMs": 0,
+        "velocity": 0.1
+      },
+      "phrases": [
+        {
+          "id": "clock.bar1",
+          "motif": "pulse",
+          "at": {
+            "section": "call",
+            "bar": 1
+          }
+        },
+        {
+          "id": "clock.bar2",
+          "motif": "pulse",
+          "at": {
+            "section": "mirror",
+            "bar": 1
+          }
+        },
+        {
+          "id": "clock.half",
+          "motif": "pulse",
+          "at": {
+            "section": "broad",
+            "bar": 1
+          },
+          "transforms": [
+            {
+              "op": "scale",
+              "factor": 2
+            },
+            {
+              "op": "fragment",
+              "from": 0,
+              "to": 9
+            }
+          ]
+        },
+        {
+          "id": "clock.roll",
+          "motif": "pulse",
+          "at": {
+            "section": "broad",
+            "bar": 2,
+            "beat": 3
+          },
+          "transforms": [
+            {
+              "op": "fragment",
+              "from": 1,
+              "to": 3
+            },
+            {
+              "op": "sequence",
+              "steps": [
+                0,
+                0
+              ],
+              "every": 0.5
+            },
+            {
+              "op": "dynamics",
+              "from": 1.1,
+              "to": 1.9
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

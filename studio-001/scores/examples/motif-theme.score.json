@@ -1,0 +1,27 @@
+{
+  "schema": "daemonv12.signature-rack.score/2",
+  "title": "Motif example: the CROSSING theme, developed (C minor, 84 BPM)",
+  "bpm": 84, "key": "C minor", "swing": 0.55, "seed": 11, "tailSeconds": 2.4, "masterGainDb": 0,
+  "description": "score/2 example. The CROSSING theme written once as a motif in scale steps, then restated: a third lower as the second voice (what crossing.compose.ts typed out by hand), with a closing ending, and as a rising mallet sequence built from its first three notes.",
+  "sections": [
+    { "id": "statement", "bars": 2, "development": "the theme, alone" },
+    { "id": "answer", "bars": 2, "development": "the theme again, ending on the tonic; a second voice a third below; the mallets climb on its head" }
+  ],
+  "motifs": [
+    { "id": "theme", "role": "hook", "octave": 4, "notes": [
+      [0, 1.5, 4, 0.62, { "params": { "vowel": "oo", "to": "oh" } }], [1.5, 0.5, 5, 0.58, { "params": { "vowel": "oh" } }], [2, 1, 6, 0.66, { "params": { "vowel": "oh", "to": "ah" } }],
+      [3, 1, 9, 0.74, { "slide": 0.12, "params": { "vowel": "ah" } }], [4, 2, 8, 0.8, { "params": { "vowel": "ah", "to": "aw" } }], [6, 1, 7, 0.68, { "params": { "vowel": "aw", "to": "oh" } }],
+      [7, 0.5, 6, 0.6, { "params": { "vowel": "oh" } }], [7.5, 0.45, 4, 0.55, { "params": { "vowel": "oh", "to": "oo" } }]
+    ] },
+    { "id": "closing", "role": "answer", "from": "theme", "transforms": [ { "op": "endOn", "step": 7 }, { "op": "gesture", "set": "fall", "at": [7] } ] },
+    { "id": "head", "from": "theme", "transforms": [ { "op": "fragment", "from": 0, "to": 3 }, { "op": "scale", "factor": 0.5 } ] }
+  ],
+  "parts": [
+    { "id": "voice", "instrument": "impossible-voice", "gainDb": -2, "pan": 0.06, "room": 0.22, "macro": [[0, 0.6], [16, 0.2]],
+      "phrases": [ { "motif": "theme", "at": { "section": "statement", "bar": 1 } }, { "motif": "closing", "at": { "section": "answer", "bar": 1 } } ] },
+    { "id": "voice-2", "instrument": "impossible-voice", "gainDb": -8, "pan": -0.3, "room": 0.25, "macro": [[0, 0.6], [16, 0.2]], "setup": { "size": -0.12, "detune": -4, "seed": 47 },
+      "phrases": [ { "motif": "closing", "at": { "section": "answer", "bar": 1 }, "transforms": [ { "op": "transpose", "steps": -2 } ], "velocity": 0.8 } ] },
+    { "id": "bars", "instrument": "mechanical-orchestra/bar", "gainDb": -9, "room": 0.25, "macro": 0.3,
+      "phrases": [ { "motif": "head", "at": { "section": "answer", "bar": 1 }, "transforms": [ { "op": "octave", "by": 1 }, { "op": "sequence", "steps": [0, 1, 2, 3], "every": 2 }, { "op": "dynamics", "from": 0.8, "to": 1.1 } ] } ] }
+  ]
+}
